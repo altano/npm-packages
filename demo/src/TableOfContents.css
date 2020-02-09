@@ -1,0 +1,16 @@
+nav {
+  flex: 0;
+  margin-right: 25px;
+  white-space: nowrap;
+  word-wrap: none;
+}
+
+nav > ul {
+  position: sticky;
+  top: 20px;
+}
+
+nav > ul > li > a.active,
+nav > ul > li > a:hover {
+  color: red;
+}

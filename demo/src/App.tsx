@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import useIntersectionSpy from 'intersection-spy-hook';
+
+import Article from './Article';
+import TableOfContents from './TableOfContents';
+
 import './App.css';
 
-const App = () => {
+function App() {
+  useIntersectionSpy({
+    rootMargin: '-100px 0px',
+    getTarget: (heading: Element) => {
+      const section = heading.nextElementSibling;
+      if (section == null) {
+        throw new Error('Could not get target from heading');
+      }
+      return section;
+    },
+    navigationLinksSelector: 'nav > ul > li > a',
+    // @TODO optional callback that handles selection
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TableOfContents />
+      <Article />
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

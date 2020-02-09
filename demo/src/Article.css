@@ -1,0 +1,8 @@
+article {
+  flex: 1;
+}
+
+article h1.active,
+article > *.active {
+  color: red;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "intersection-spy",
+  "version": "1.0.0",
+  "description": "Intersection-Observer-based Scroll Spy",
+  "main": "dist/intersection-spy.js",
+  "types": "dist/intersection-spy.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "prepublishOnly": "npm run build",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^3.0.0",
+    "@wessberg/rollup-plugin-ts": "^1.2.16",
+    "rollup": "^1.31.0",
+    "typescript": "^3.7.5"
+  }
+}
