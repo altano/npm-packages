@@ -193,7 +193,18 @@ class Observer {
   }
 
   getSectionToSelect(): Section | null {
+    const selectedSection = this.sections.find(s => s.isSelected);
     const sectionToSelect = getSectionGivenCurrentState({
+      // @TODO This makes switching the active element too passive. Come up with
+      // new heuristic. Perhaps something that occupies more of the center can
+      // takeover even if the selected section is still just as visible?
+      getAlreadySelectedSectionIfNoLessVisible: () => {
+        return selectedSection != null &&
+          selectedSection.lastIntersectionRatio <=
+            selectedSection.intersectionRatio
+          ? selectedSection
+          : null;
+      },
       getSectionToMostRecentlyBecome100PctVisible: () =>
         this.sections
           .filter(s => s.intersectionRatio === 1)
@@ -211,7 +222,7 @@ class Observer {
         }),
       isAnything100PctVisible: () =>
         this.sections.some(s => s.intersectionRatio === 1),
-      isAnythingSelectedYet: () => this.sections.some(s => s.isSelected),
+      isAnythingSelectedYet: () => selectedSection != null,
     });
 
     return sectionToSelect.isSelected ? null : sectionToSelect;
