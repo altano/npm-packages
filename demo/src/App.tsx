@@ -1,5 +1,5 @@
 import React from 'react';
-import {useIntersectionSpy} from 'intersection-spy-hook';
+import {useRegardedElement} from 'use-regarded-element';
 
 import Article from './Article';
 import TableOfContents from './TableOfContents';
@@ -7,7 +7,7 @@ import TableOfContents from './TableOfContents';
 import './App.css';
 
 function App() {
-  const spyRef = useIntersectionSpy({
+  const spyRef = useRegardedElement({
     rootMargin: '-100px 0px',
     getElementToSpyFromLinkTarget: (heading: Element) => {
       const section = heading.nextElementSibling;

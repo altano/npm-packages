@@ -1,9 +1,9 @@
 {
-  "name": "intersection-spy",
+  "name": "regarded-element-observer",
   "version": "1.0.0",
-  "description": "Intersection-Observer-based Scroll Spy",
-  "main": "dist/intersection-spy.js",
-  "types": "dist/intersection-spy.d.ts",
+  "description": "Intersection-Observer-based Scroll Spy that guesses what element is being regarded",
+  "main": "dist/regarded-element-observer.js",
+  "types": "dist/regarded-element-observer.d.ts",
   "files": [
     "dist/**/*"
   ],

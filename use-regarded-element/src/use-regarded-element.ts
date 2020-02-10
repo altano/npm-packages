@@ -4,7 +4,7 @@ import Observer from 'regarded-element-observer';
 type ObserverOptions = ConstructorParameters<typeof Observer>[0];
 export type ObserverHookOptions = Omit<ObserverOptions, 'rootElement'>;
 
-function useIntersectionSpy(options: ObserverHookOptions) {
+function useRegardedElement(options: ObserverHookOptions) {
   const rootElementRef = React.useRef(null);
   React.useEffect(() => {
     if (rootElementRef.current == null) {
@@ -22,4 +22,4 @@ function useIntersectionSpy(options: ObserverHookOptions) {
   return rootElementRef;
 }
 
-export {useIntersectionSpy};
+export {useRegardedElement};

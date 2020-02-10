@@ -170,7 +170,7 @@ class Observer {
 }
 var regardedElementObserver = Observer;
 
-function useIntersectionSpy(options) {
+function useRegardedElement(options) {
     const rootElementRef = React.useRef(null);
     React.useEffect(() => {
         var _a;
@@ -186,4 +186,4 @@ function useIntersectionSpy(options) {
     return rootElementRef;
 }
 
-exports.useIntersectionSpy = useIntersectionSpy;
+exports.useRegardedElement = useRegardedElement;

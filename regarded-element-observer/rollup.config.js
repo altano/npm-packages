@@ -1,7 +1,7 @@
 import ts from '@wessberg/rollup-plugin-ts';
 
 export default {
-  input: 'src/intersection-spy.ts',
+  input: 'src/regarded-element-observer.ts',
   output: {
     dir: 'dist',
     format: 'cjs',

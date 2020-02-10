@@ -1,9 +1,9 @@
 {
-  "name": "regarded-element-hook",
+  "name": "use-regarded-element",
   "version": "1.0.0",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
-  "main": "dist/regarded-element-hook.js",
-  "types": "dist/regarded-element-hook.d.ts",
+  "main": "dist/use-regarded-element.js",
+  "types": "dist/use-regarded-element.d.ts",
   "files": [
     "dist/**/*"
   ],
