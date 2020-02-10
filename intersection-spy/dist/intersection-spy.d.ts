@@ -5,19 +5,24 @@ interface Section {
     hash: string;
     isSelected: boolean;
     lastIntersectionObservationTime: number;
+    lastIntersectionRatio: number;
     intersectionRatio: number;
     intersectionRectArea: number;
 }
 interface ObserverOptions {
+    rootElement?: HTMLElement;
     rootMargin: string;
-    getTarget: getTargetFn;
+    getElementToSpyFromLinkTarget: getElementToSpyFromLinkTargetFn;
     navigationLinksSelector: string;
+    className?: string;
 }
-type getTargetFn = (e: Element) => Element;
+type getElementToSpyFromLinkTargetFn = (e: Element) => Element;
 declare class Observer {
     private observer;
-    readonly rootMargin: string | undefined;
+    readonly rootElement: HTMLElement;
+    readonly rootMargin: string;
     readonly sections: Section[];
+    readonly className: string;
     readonly listenerRemovalFunctions: Array<() => void>;
     // @TODO replace this with something that snapshots the scroll position and
     // doesn't get reset until the scroll position changes?
@@ -26,9 +31,10 @@ declare class Observer {
     // has changed at all (don't highlight anything on page load unless the hash
     // matches!)
     private ignoreNextIntersectionObserverCallback;
-    constructor({ rootMargin, getTarget, navigationLinksSelector }: ObserverOptions);
+    constructor({ className, getElementToSpyFromLinkTarget, navigationLinksSelector, rootElement, rootMargin }: ObserverOptions);
     destroy(): void;
-    setupSections(getTarget: getTargetFn, navigationLinksSelector: string): void;
+    getAnchorsFromHash(hash: string): HTMLAnchorElement[];
+    setupSections(getElementToSpyFromLinkTarget: getElementToSpyFromLinkTargetFn, navigationLinksSelector: string): void;
     // tslint:disable-next-line:no-any
     filterElements(arr: any[]): Element[];
     removeAllSelections(): void;

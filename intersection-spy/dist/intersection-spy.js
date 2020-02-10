@@ -1,6 +1,6 @@
 'use strict';
 
-function getSectionGivenCurrentState(sections, { isAnythingSelectedYet, isAnything100PctVisible, getSectionsWithLargestVisibleTargetRect, getSectionToMostRecentlyBecome100PctVisible, }) {
+function getSectionGivenCurrentState({ isAnythingSelectedYet, isAnything100PctVisible, getSectionsWithLargestVisibleTargetRect, getSectionToMostRecentlyBecome100PctVisible, }) {
     if (!isAnythingSelectedYet()) {
         return getSectionsWithLargestVisibleTargetRect();
     }
@@ -12,9 +12,8 @@ function getSectionGivenCurrentState(sections, { isAnythingSelectedYet, isAnythi
     }
 }
 
-const getAnchorsFromHash = (hash) => Array.from(document.querySelectorAll(`a[href="${hash}"]`));
 class Observer {
-    constructor({ rootMargin, getTarget, navigationLinksSelector, }) {
+    constructor({ className = 'active', getElementToSpyFromLinkTarget, navigationLinksSelector, rootElement = document.documentElement, rootMargin = '-50px 0', }) {
         this.sections = [];
         this.listenerRemovalFunctions = [];
         // @TODO replace this with something that snapshots the scroll position and
@@ -24,12 +23,14 @@ class Observer {
         // has changed at all (don't highlight anything on page load unless the hash
         // matches!)
         this.ignoreNextIntersectionObserverCallback = false;
+        this.rootElement = rootElement;
         this.rootMargin = rootMargin;
+        this.className = className;
         this.observer = new IntersectionObserver(this.onIntersectionChange.bind(this), {
             rootMargin: this.rootMargin,
             threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
         });
-        this.setupSections(getTarget, navigationLinksSelector);
+        this.setupSections(getElementToSpyFromLinkTarget, navigationLinksSelector);
         this.observeHashChange();
         this.observeSectionIntersection();
         if (globalThis.location.hash) {
@@ -42,20 +43,23 @@ class Observer {
         this.removeAllSelections();
         this.sections.length = 0;
     }
-    setupSections(getTarget, navigationLinksSelector) {
-        const navLinks = Array.from(document.querySelectorAll(navigationLinksSelector));
+    getAnchorsFromHash(hash) {
+        return Array.from(this.rootElement.querySelectorAll(`a[href="${hash}"]`));
+    }
+    setupSections(getElementToSpyFromLinkTarget, navigationLinksSelector) {
+        const navLinks = Array.from(this.rootElement.querySelectorAll(navigationLinksSelector));
         navLinks.forEach(navLink => {
             if (!navLink) {
                 console.warn(`Heading did not have a sibling element.`);
                 return;
             }
             const hash = navLink.hash;
-            const heading = document.querySelector(hash);
+            const heading = this.rootElement.querySelector(hash);
             if (!heading) {
                 console.warn(`Anchor hash '${hash}' doesn't reference a valid DOM node, cannot continue`);
                 return;
             }
-            const target = getTarget(heading);
+            const target = getElementToSpyFromLinkTarget(heading);
             if (!target) {
                 console.warn(`Heading did not have a sibling element.`);
                 return;
@@ -67,6 +71,7 @@ class Observer {
                 intersectionRectArea: 0,
                 isSelected: false,
                 lastIntersectionObservationTime: 0,
+                lastIntersectionRatio: 0,
                 navLink,
                 target,
             });
@@ -80,33 +85,30 @@ class Observer {
         this.sections
             .filter(section => section.isSelected)
             .forEach(section => {
-            this.filterElements(Object.values(section)).forEach(element => element.classList.remove('active'));
+            this.filterElements(Object.values(section)).forEach(element => element.classList.remove(this.className));
             section.isSelected = false;
         });
     }
     observeHashChange() {
-        // console.log('Observing hashchange');
         globalThis.addEventListener('hashchange', this.onHashChange.bind(this));
         this.listenerRemovalFunctions.push(() => {
             globalThis.removeEventListener('hashchange', this.onHashChange.bind(this));
         });
     }
     selectSection(section) {
-        this.filterElements(Object.values(section)).forEach(element => element.classList.add('active'));
+        this.filterElements(Object.values(section)).forEach(element => element.classList.add(this.className));
         section.isSelected = true;
     }
     onHashChange() {
-        // console.log('hashchange', globalThis.location.hash);
         this.ignoreNextIntersectionObserverCallback = true;
         this.removeAllSelections();
-        const anchors = getAnchorsFromHash(globalThis.location.hash);
+        const anchors = this.getAnchorsFromHash(globalThis.location.hash);
         anchors.forEach(anchor => {
             const sectionsToSelect = this.sections.filter(section => section.navLink === anchor);
             sectionsToSelect.forEach(this.selectSection.bind(this));
         });
     }
     observeSectionIntersection() {
-        // console.log('Observing Sections');
         this.sections.forEach(({ target }) => this.observer.observe(target));
         this.listenerRemovalFunctions.push(() => {
             this.sections.forEach(({ target }) => this.observer.disconnect());
@@ -117,19 +119,18 @@ class Observer {
             this.sections
                 .filter(s => s.target === entry.target)
                 .forEach(s => {
+                // @TODO Move this data to an internal weakmap?
                 s.lastIntersectionObservationTime = entry.time;
+                s.lastIntersectionRatio = s.intersectionRatio;
                 s.intersectionRatio = entry.intersectionRatio;
                 s.intersectionRectArea = this.getVisibleRectArea(entry);
             });
         });
         if (this.ignoreNextIntersectionObserverCallback) {
             this.ignoreNextIntersectionObserverCallback = false;
-            // console.log('ignoring intersection observer callback once');
         }
         else {
-            if (window.loggging === true) {
-                console.table(entries);
-            }
+            // console.table(entries);
             const newlySelectedSection = this.getSectionToSelect();
             if (newlySelectedSection != null) {
                 this.removeAllSelections();
@@ -142,7 +143,7 @@ class Observer {
         return (right - left) * (bottom - top);
     }
     getSectionToSelect() {
-        const sectionToSelect = getSectionGivenCurrentState(this.sections, {
+        const sectionToSelect = getSectionGivenCurrentState({
             getSectionToMostRecentlyBecome100PctVisible: () => this.sections
                 .filter(s => s.intersectionRatio === 1)
                 .reduce((toReturn, next) => {

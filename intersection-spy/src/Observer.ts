@@ -3,20 +3,21 @@ import {getSectionGivenCurrentState} from './selection';
 import Section from './Section';
 
 export interface ObserverOptions {
+  rootElement?: HTMLElement;
   rootMargin: string;
-  getTarget: getTargetFn;
+  getElementToSpyFromLinkTarget: getElementToSpyFromLinkTargetFn;
   navigationLinksSelector: string;
+  className?: string;
 }
 
-type getTargetFn = (e: Element) => Element;
-
-const getAnchorsFromHash = (hash: string) =>
-  Array.from(document.querySelectorAll(`a[href="${hash}"]`));
+type getElementToSpyFromLinkTargetFn = (e: Element) => Element;
 
 class Observer {
   private observer: IntersectionObserver;
-  readonly rootMargin: string | undefined;
+  readonly rootElement: HTMLElement;
+  readonly rootMargin: string;
   readonly sections: Section[] = [];
+  readonly className: string;
   readonly listenerRemovalFunctions: Array<() => void> = [];
 
   // @TODO replace this with something that snapshots the scroll position and
@@ -28,11 +29,15 @@ class Observer {
   private ignoreNextIntersectionObserverCallback = false;
 
   constructor({
-    rootMargin,
-    getTarget,
+    className = 'active',
+    getElementToSpyFromLinkTarget,
     navigationLinksSelector,
+    rootElement = document.documentElement,
+    rootMargin = '-50px 0',
   }: ObserverOptions) {
+    this.rootElement = rootElement;
     this.rootMargin = rootMargin;
+    this.className = className;
     this.observer = new IntersectionObserver(
       this.onIntersectionChange.bind(this),
       {
@@ -41,7 +46,7 @@ class Observer {
       },
     );
 
-    this.setupSections(getTarget, navigationLinksSelector);
+    this.setupSections(getElementToSpyFromLinkTarget, navigationLinksSelector);
     this.observeHashChange();
     this.observeSectionIntersection();
 
@@ -58,9 +63,16 @@ class Observer {
     this.sections.length = 0;
   }
 
-  setupSections(getTarget: getTargetFn, navigationLinksSelector: string) {
+  getAnchorsFromHash(hash: string): HTMLAnchorElement[] {
+    return Array.from(this.rootElement.querySelectorAll(`a[href="${hash}"]`));
+  }
+
+  setupSections(
+    getElementToSpyFromLinkTarget: getElementToSpyFromLinkTargetFn,
+    navigationLinksSelector: string,
+  ) {
     const navLinks: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(navigationLinksSelector),
+      this.rootElement.querySelectorAll(navigationLinksSelector),
     );
     navLinks.forEach(navLink => {
       if (!navLink) {
@@ -68,14 +80,14 @@ class Observer {
         return;
       }
       const hash = navLink.hash;
-      const heading: Element | null = document.querySelector(hash);
+      const heading: Element | null = this.rootElement.querySelector(hash);
       if (!heading) {
         console.warn(
           `Anchor hash '${hash}' doesn't reference a valid DOM node, cannot continue`,
         );
         return;
       }
-      const target = getTarget(heading);
+      const target = getElementToSpyFromLinkTarget(heading);
       if (!target) {
         console.warn(`Heading did not have a sibling element.`);
         return;
@@ -87,6 +99,7 @@ class Observer {
         intersectionRectArea: 0,
         isSelected: false,
         lastIntersectionObservationTime: 0,
+        lastIntersectionRatio: 0,
         navLink,
         target,
       });
@@ -103,14 +116,13 @@ class Observer {
       .filter(section => section.isSelected)
       .forEach(section => {
         this.filterElements(Object.values(section)).forEach(element =>
-          element.classList.remove('active'),
+          element.classList.remove(this.className),
         );
         section.isSelected = false;
       });
   }
 
   observeHashChange() {
-    // console.log('Observing hashchange');
     globalThis.addEventListener('hashchange', this.onHashChange.bind(this));
 
     this.listenerRemovalFunctions.push(() => {
@@ -123,19 +135,17 @@ class Observer {
 
   selectSection(section: Section) {
     this.filterElements(Object.values(section)).forEach(element =>
-      element.classList.add('active'),
+      element.classList.add(this.className),
     );
     section.isSelected = true;
   }
 
   onHashChange() {
-    // console.log('hashchange', globalThis.location.hash);
-
     this.ignoreNextIntersectionObserverCallback = true;
 
     this.removeAllSelections();
 
-    const anchors = getAnchorsFromHash(globalThis.location.hash);
+    const anchors = this.getAnchorsFromHash(globalThis.location.hash);
     anchors.forEach(anchor => {
       const sectionsToSelect = this.sections.filter(
         section => section.navLink === anchor,
@@ -145,7 +155,6 @@ class Observer {
   }
 
   observeSectionIntersection() {
-    // console.log('Observing Sections');
     this.sections.forEach(({target}) => this.observer.observe(target));
 
     this.listenerRemovalFunctions.push(() => {
@@ -158,7 +167,9 @@ class Observer {
       this.sections
         .filter(s => s.target === entry.target)
         .forEach(s => {
+          // @TODO Move this data to an internal weakmap?
           s.lastIntersectionObservationTime = entry.time;
+          s.lastIntersectionRatio = s.intersectionRatio;
           s.intersectionRatio = entry.intersectionRatio;
           s.intersectionRectArea = this.getVisibleRectArea(entry);
         });
@@ -166,11 +177,8 @@ class Observer {
 
     if (this.ignoreNextIntersectionObserverCallback) {
       this.ignoreNextIntersectionObserverCallback = false;
-      // console.log('ignoring intersection observer callback once');
     } else {
-      if ((window as any).loggging === true) {
-        console.table(entries);
-      }
+      // console.table(entries);
       const newlySelectedSection = this.getSectionToSelect();
       if (newlySelectedSection != null) {
         this.removeAllSelections();
@@ -185,7 +193,7 @@ class Observer {
   }
 
   getSectionToSelect(): Section | null {
-    const sectionToSelect = getSectionGivenCurrentState(this.sections, {
+    const sectionToSelect = getSectionGivenCurrentState({
       getSectionToMostRecentlyBecome100PctVisible: () =>
         this.sections
           .filter(s => s.intersectionRatio === 1)

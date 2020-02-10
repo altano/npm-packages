@@ -2,7 +2,6 @@ article {
   flex: 1;
 }
 
-article h1.active,
-article > *.active {
+article > *.demo-active {
   color: red;
 }

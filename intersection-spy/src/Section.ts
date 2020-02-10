@@ -5,6 +5,7 @@ interface Section {
   hash: string;
   isSelected: boolean;
   lastIntersectionObservationTime: number;
+  lastIntersectionRatio: number;
   intersectionRatio: number;
   intersectionRectArea: number;
 }
