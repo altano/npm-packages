@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   external: ['react', 'react-dom'],
-  input: 'src/intersection-spy-hook.ts',
+  input: 'src/use-regarded-element.ts',
   output: {
     dir: 'dist',
     format: 'cjs',

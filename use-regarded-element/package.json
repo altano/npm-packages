@@ -1,9 +1,9 @@
 {
-  "name": "intersection-spy-hook",
+  "name": "regarded-element-hook",
   "version": "1.0.0",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
-  "main": "dist/intersection-spy-hook.js",
-  "types": "dist/intersection-spy-hook.d.ts",
+  "main": "dist/regarded-element-hook.js",
+  "types": "dist/regarded-element-hook.d.ts",
   "files": [
     "dist/**/*"
   ],
@@ -18,7 +18,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "intersection-spy": "file:../intersection-spy"
+    "regarded-element-observer": "file:../regarded-element-observer"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",

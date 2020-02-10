@@ -1,5 +1,5 @@
 import React from 'react';
-import Observer from 'intersection-spy';
+import Observer from 'regarded-element-observer';
 
 type ObserverOptions = ConstructorParameters<typeof Observer>[0];
 export type ObserverHookOptions = Omit<ObserverOptions, 'rootElement'>;

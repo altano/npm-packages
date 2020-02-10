@@ -168,7 +168,7 @@ class Observer {
         return sectionToSelect.isSelected ? null : sectionToSelect;
     }
 }
-var intersectionSpy = Observer;
+var regardedElementObserver = Observer;
 
 function useIntersectionSpy(options) {
     const rootElementRef = React.useRef(null);
@@ -178,7 +178,7 @@ function useIntersectionSpy(options) {
             // @TODO Warn?
             return;
         }
-        const observer = new intersectionSpy(Object.assign(Object.assign({}, options), { rootElement: (_a = rootElementRef.current, (_a !== null && _a !== void 0 ? _a : undefined)) }));
+        const observer = new regardedElementObserver(Object.assign(Object.assign({}, options), { rootElement: (_a = rootElementRef.current, (_a !== null && _a !== void 0 ? _a : undefined)) }));
         return () => {
             observer.destroy();
         };
