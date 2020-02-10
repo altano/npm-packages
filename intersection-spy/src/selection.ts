@@ -7,15 +7,12 @@ interface Options {
   getSectionToMostRecentlyBecome100PctVisible: () => Section;
 }
 
-export function getSectionGivenCurrentState(
-  sections: Section[],
-  {
-    isAnythingSelectedYet,
-    isAnything100PctVisible,
-    getSectionsWithLargestVisibleTargetRect,
-    getSectionToMostRecentlyBecome100PctVisible,
-  }: Options,
-): Section {
+export function getSectionGivenCurrentState({
+  isAnythingSelectedYet,
+  isAnything100PctVisible,
+  getSectionsWithLargestVisibleTargetRect,
+  getSectionToMostRecentlyBecome100PctVisible,
+}: Options): Section {
   if (!isAnythingSelectedYet()) {
     return getSectionsWithLargestVisibleTargetRect();
   } else if (isAnything100PctVisible()) {
