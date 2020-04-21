@@ -116,7 +116,7 @@ function useSetDelta<T>(set: Set<T>): Differences<T> {
 
 interface Options {
   tree: React.ReactNode;
-  useWrapperDiv: boolean;
+  useWrapperDiv?: boolean;
   onMount: (e: Element) => void;
   onUnmount: (e: Element) => void;
   selector: string;

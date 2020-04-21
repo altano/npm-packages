@@ -13,9 +13,9 @@ export function useVisibilityOfTarget(href: string): boolean {
 
 interface VisibleElementObserverOptions {
   children: React.ReactNode;
-  useWrapperDiv: boolean;
+  useWrapperDiv?: boolean;
   selector: string;
-  intersectionOptions: IntersectionObserverInit | undefined;
+  intersectionOptions?: IntersectionObserverInit;
 }
 
 export function VisibleElementObserver({

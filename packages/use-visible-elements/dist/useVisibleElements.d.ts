@@ -3,9 +3,9 @@ import React from "react";
 declare function useVisibilityOfTarget(href: string): boolean;
 interface VisibleElementObserverOptions {
     children: React.ReactNode;
-    useWrapperDiv: boolean;
+    useWrapperDiv?: boolean;
     selector: string;
-    intersectionOptions: IntersectionObserverInit | undefined;
+    intersectionOptions?: IntersectionObserverInit;
 }
 declare function VisibleElementObserver({ children, useWrapperDiv, selector, intersectionOptions, }: VisibleElementObserverOptions): React.ReactElement;
 declare function useVisibleElements(): Set<Element>;

@@ -2,7 +2,7 @@
 import React from "react";
 interface Options {
     tree: React.ReactNode;
-    useWrapperDiv: boolean;
+    useWrapperDiv?: boolean;
     onMount: (e: Element) => void;
     onUnmount: (e: Element) => void;
     selector: string;

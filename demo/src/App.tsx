@@ -7,7 +7,7 @@ import { VisibleElementObserver } from "@altano/use-visible-elements";
 import "./App.css";
 
 const intersectionOptions = {
-  // rootMargin: '-100px 0px',
+  rootMargin: "-100px 0px",
 };
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
     <div className="App">
       <VisibleElementObserver
         intersectionOptions={intersectionOptions}
-        useWrapperDiv={true}
         selector="article section"
       >
         <TableOfContents />
