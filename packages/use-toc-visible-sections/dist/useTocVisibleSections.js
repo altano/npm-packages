@@ -835,7 +835,7 @@ var useVisibleElements_3 = useVisibleElements_1.useVisibleElements;
 
 function useVisibilityOfTarget(href) {
     const visibleElements = useVisibleElements_3();
-    return [...visibleElements].some((s) => s.querySelector(href));
+    return [...visibleElements].some((s) => s.querySelector(`:scope > ${href}`));
 }
 function TocVisibleSectionObserver(options) {
     return react.createElement(useVisibleElements_2, Object.assign({ selector: "article section" }, options));

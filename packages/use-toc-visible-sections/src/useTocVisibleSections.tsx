@@ -7,7 +7,7 @@ import {
 
 export function useVisibilityOfTarget(href: string): boolean {
   const visibleElements = useVisibleElements();
-  return [...visibleElements].some((s) => s.querySelector(href));
+  return [...visibleElements].some((s) => s.querySelector(`:scope > ${href}`));
 }
 
 type Options =
