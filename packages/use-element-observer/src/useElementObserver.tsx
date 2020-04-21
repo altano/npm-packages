@@ -83,27 +83,6 @@ function Observer({
   );
 }
 
-// // @TODO
-// type Options =
-//   | {
-//       // We can have an arbitrary # of children if ...
-//       tree: React.ReactNode;
-//       // ... we're using a wrapper div
-//       useWrapperDiv: true;
-//       onMount: (e: Element) => void;
-//       onUnmount: (e: Element) => void;
-//       selector: string;
-//     }
-//   | {
-//       // We must have a single child if ...
-//       tree: React.ReactElement;
-//       // ... we're not using a wrapper div
-//       useWrapperDiv: false;
-//       onMount: (e: Element) => void;
-//       onUnmount: (e: Element) => void;
-//       selector: string;
-//     };
-
 interface Options {
   selector: string;
   tree: React.ReactNode;

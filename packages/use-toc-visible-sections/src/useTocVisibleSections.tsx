@@ -6,14 +6,28 @@ import {
   useVisibleElements,
 } from "@altano/use-visible-elements";
 
-type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-
 export function useVisibilityOfTarget(href: string): boolean {
   const visibleElements = useVisibleElements();
   return [...visibleElements].some((s) => s.querySelector(href));
 }
 
-type Options = WithOptional<VisibleElementObserverOptions, "selector">;
+type Options =
+  | {
+      // We can have an arbitrary # of children if ...
+      children: React.ReactNode;
+      // ... we're using a wrapper div
+      useWrapperDiv?: true;
+      selector?: string;
+      intersectionOptions?: IntersectionObserverInit;
+    }
+  | {
+      // We must have a single child if ...
+      children: React.ReactElement;
+      // ... we're not using a wrapper div
+      useWrapperDiv: false;
+      selector?: string;
+      intersectionOptions?: IntersectionObserverInit;
+    };
 
 export function TocVisibleSectionObserver(
   options: Options,

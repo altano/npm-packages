@@ -1,6 +1,17 @@
-import { VisibleElementObserverOptions, VisibleElementObserver } from "@altano/use-visible-elements";
-type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+/// <reference types="react" />
+import React from "react";
+import { VisibleElementObserver } from "@altano/use-visible-elements";
 declare function useVisibilityOfTarget(href: string): boolean;
-type Options = WithOptional<VisibleElementObserverOptions, "selector">;
+type Options = {
+    children: React.ReactNode;
+    useWrapperDiv?: true;
+    selector?: string;
+    intersectionOptions?: IntersectionObserverInit;
+} | {
+    children: React.ReactElement;
+    useWrapperDiv: false;
+    selector?: string;
+    intersectionOptions?: IntersectionObserverInit;
+};
 declare function TocVisibleSectionObserver(options: Options): ReturnType<typeof VisibleElementObserver>;
 export { useVisibilityOfTarget, TocVisibleSectionObserver };
