@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import './Article.css';
+import "./Article.css";
 
 export default () => {
   return (

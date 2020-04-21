@@ -1,16 +1,23 @@
-import * as React from 'react';
+import * as React from "react";
 
-import {useVisibilityOfTarget} from '@altano/use-visible-elements';
+import { useVisibilityOfTarget } from "@altano/use-visible-elements";
 
-import './TableOfContents.css';
+import "./TableOfContents.css";
 
-function ListItem({href, children}: {href: string; children: React.ReactNode}) {
+function ListItem({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   const isVisible = useVisibilityOfTarget(href);
   return (
     <li
       style={{
-        borderLeft: isVisible ? '3px solid black' : '3px solid transparent',
-      }}>
+        borderLeft: isVisible ? "3px solid black" : "3px solid transparent",
+      }}
+    >
       <a href={href}>{children}</a>
     </li>
   );

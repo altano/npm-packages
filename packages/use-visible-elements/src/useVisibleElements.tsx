@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import {useElementObserver} from '@altano/use-element-observer';
-import useSet from 'react-use/lib/useSet';
+import { useElementObserver } from "@altano/use-element-observer";
+import useSet from "react-use/lib/useSet";
 
 type Context = Set<Element>;
 const VisibleElementsContext = React.createContext<Context | null>(null);
 
-export function useVisibilityOfTarget(href: string) {
+export function useVisibilityOfTarget(href: string): boolean {
   const visibleElements = useVisibleElements();
   return [...visibleElements].some((s) => s.querySelector(href));
 }
@@ -23,8 +23,8 @@ export function VisibleElementObserver({
   useWrapperDiv,
   selector,
   intersectionOptions = {},
-}: VisibleElementObserverOptions) {
-  const [visibleElements, {add, remove}] = useSet<Element>();
+}: VisibleElementObserverOptions): React.ReactElement {
+  const [visibleElements, { add, remove }] = useSet<Element>();
   const intersectionObserver = React.useRef<IntersectionObserver | null>();
   const handleIntersect = React.useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -38,7 +38,7 @@ export function VisibleElementObserver({
     (item: Element) => {
       if (intersectionObserver.current == null) {
         throw new Error(
-          'Observed element mount with null intersection observer',
+          "Observed element mount with null intersection observer",
         );
       }
       intersectionObserver.current.observe(item);
@@ -49,7 +49,7 @@ export function VisibleElementObserver({
     (item: Element) => {
       if (intersectionObserver.current == null) {
         throw new Error(
-          'Observed element unmount with null intersection observer',
+          "Observed element unmount with null intersection observer",
         );
       }
       intersectionObserver.current.unobserve(item);
@@ -69,7 +69,7 @@ export function VisibleElementObserver({
       intersectionOptions,
     );
     intersectionObserver.current = observer;
-    return () => {
+    return (): void => {
       observer.disconnect();
       intersectionObserver.current = null;
     };
@@ -88,6 +88,7 @@ export function VisibleElementObserver({
     //
     // @TODO Okay then, just get rid of this Set and expose everything through
     // the callback methods.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [intersectionObserver.current],
   );
 

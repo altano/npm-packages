@@ -18,6 +18,7 @@
     "start:use-visible-elements": "yarn workspace @altano/use-visible-elements start",
     "build:use-visible-elements": "yarn workspace @altano/use-visible-elements build",
     "start": "concurrently --kill-others-on-fail \"yarn demo\"  \"yarn start:use-element-observer\"  \"yarn start:use-visible-elements\"",
-    "build": "yarn build:use-element-observer && yarn build:use-visible-elements"
+    "build": "yarn build:use-element-observer && yarn build:use-visible-elements",
+    "pretty": "prettier --write \"./**/*.{json,ts,tsx}\""
   }
 }
