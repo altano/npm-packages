@@ -5,6 +5,13 @@
     "demo",
     "packages/*"
   ],
+  "description": "React hooks to faciliate observing sections linked to a table of contents",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "UNLICENSED",
   "dependencies": {
     "concurrently": "^5.1.0",
     "react": "^16.13.1",
