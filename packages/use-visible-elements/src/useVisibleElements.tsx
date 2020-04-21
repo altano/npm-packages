@@ -6,12 +6,7 @@ import useSet from "react-use/lib/useSet";
 type Context = Set<Element>;
 const VisibleElementsContext = React.createContext<Context | null>(null);
 
-export function useVisibilityOfTarget(href: string): boolean {
-  const visibleElements = useVisibleElements();
-  return [...visibleElements].some((s) => s.querySelector(href));
-}
-
-interface VisibleElementObserverOptions {
+export interface VisibleElementObserverOptions {
   children: React.ReactNode;
   useWrapperDiv?: boolean;
   selector: string;

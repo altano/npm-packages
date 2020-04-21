@@ -24,7 +24,7 @@ module.exports = {
       version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-  ignorePatterns: ["dist/", "node_modules/"],
+  ignorePatterns: ["dist/", "node_modules/", "rollup.config.js"],
   rules: {
     "react/jsx-filename-extension": [
       2,

@@ -836,10 +836,6 @@ exports.default = useSet;
 var useSet = unwrapExports(useSet_1);
 
 const VisibleElementsContext = React.createContext(null);
-function useVisibilityOfTarget(href) {
-    const visibleElements = useVisibleElements();
-    return [...visibleElements].some((s) => s.querySelector(href));
-}
 function VisibleElementObserver({ children, useWrapperDiv, selector, intersectionOptions = {}, }) {
     const [visibleElements, { add, remove }] = useSet();
     const intersectionObserver = React.useRef();
@@ -884,5 +880,4 @@ function useVisibleElements() {
 }
 
 exports.VisibleElementObserver = VisibleElementObserver;
-exports.useVisibilityOfTarget = useVisibilityOfTarget;
 exports.useVisibleElements = useVisibleElements;

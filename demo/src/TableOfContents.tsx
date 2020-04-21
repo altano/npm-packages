@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useVisibilityOfTarget } from "@altano/use-visible-elements";
+import { useVisibilityOfTarget } from "@altano/use-toc-visible-sections";
 
 import "./TableOfContents.css";
 

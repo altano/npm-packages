@@ -2,7 +2,7 @@ import React from "react";
 
 import Article from "./Article";
 import TableOfContents from "./TableOfContents";
-import { VisibleElementObserver } from "@altano/use-visible-elements";
+import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";
 
 import "./App.css";
 
@@ -13,13 +13,13 @@ const intersectionOptions = {
 function App() {
   return (
     <div className="App">
-      <VisibleElementObserver
+      <TocVisibleSectionObserver
         intersectionOptions={intersectionOptions}
         selector="article section"
       >
         <TableOfContents />
         <Article />
-      </VisibleElementObserver>
+      </TocVisibleSectionObserver>
     </div>
   );
 }

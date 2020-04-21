@@ -17,8 +17,10 @@
     "build:use-element-observer": "yarn workspace @altano/use-element-observer build",
     "start:use-visible-elements": "yarn workspace @altano/use-visible-elements start",
     "build:use-visible-elements": "yarn workspace @altano/use-visible-elements build",
-    "start": "concurrently --kill-others-on-fail \"yarn demo\"  \"yarn start:use-element-observer\"  \"yarn start:use-visible-elements\"",
-    "build": "yarn build:use-element-observer && yarn build:use-visible-elements",
+    "start:use-toc-visible-sections": "yarn workspace @altano/use-toc-visible-sections start",
+    "build:use-toc-visible-sections": "yarn workspace @altano/use-toc-visible-sections build",
+    "start": "concurrently --kill-others-on-fail \"yarn demo\"  \"yarn start:use-element-observer\"  \"yarn start:use-toc-visible-sections\" \"yarn start:use-visible-elements\"",
+    "build": "yarn build:use-element-observer && yarn build:use-visible-elements && yarn build:use-toc-visible-sections",
     "pretty": "prettier --write \"./**/*.{json,ts,tsx}\""
   }
 }
