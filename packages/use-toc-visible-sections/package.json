@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-toc-visible-sections",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Intersection-Observer-based Table of Contents Scroll Spy React Hook",
   "main": "dist/useTocVisibleSections.js",
   "types": "dist/useTocVisibleSections.d.ts",
@@ -18,6 +18,10 @@
     "url": "https://alan.norbauer.com"
   },
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/use-toc-visible-sections"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
