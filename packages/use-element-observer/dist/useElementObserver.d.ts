@@ -1,11 +1,11 @@
 /// <reference types="react" />
 import React from "react";
 interface Options {
-  tree: React.ReactNode;
-  useWrapperDiv: boolean;
-  onMount: (e: Element) => void;
-  onUnmount: (e: Element) => void;
-  selector: string;
+    tree: React.ReactNode;
+    useWrapperDiv: boolean;
+    onMount: (e: Element) => void;
+    onUnmount: (e: Element) => void;
+    selector: string;
 }
 /**
  * Allows observing mount/unmount of elements that match a given selector in the
@@ -25,11 +25,5 @@ interface Options {
  * @returns A tuple of: (1) array of elements and (2) the observed tree to be
  * rendered.
  */
-declare function useElementObserver({
-  tree,
-  onMount,
-  onUnmount,
-  selector,
-  useWrapperDiv,
-}: Options): [Set<Element>, React.ReactElement];
+declare function useElementObserver({ tree, onMount, onUnmount, selector, useWrapperDiv, }: Options): [React.ReactElement];
 export { useElementObserver };

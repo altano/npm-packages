@@ -471,7 +471,7 @@ function useElementObserver({ tree, onMount, onUnmount, selector, useWrapperDiv 
     [...addedElements].forEach(onMount);
     [...removedElements].forEach(onUnmount);
     const observedTree = (React__default.createElement(ElementObserverContext.Provider, { value: { mountedElements, methods } }, React__default.createElement(Observer, { selector: selector, useWrapperDiv: useWrapperDiv }, tree)));
-    return [mountedElements, observedTree];
+    return [observedTree];
 }
 exports.useElementObserver = useElementObserver;
 });
@@ -848,17 +848,17 @@ function VisibleElementObserver({ children, useWrapperDiv, selector, intersectio
     }, [add, remove]);
     const observe = React.useCallback((item) => {
         if (intersectionObserver.current == null) {
-            throw new Error('Observed element mount with null intersection observer');
+            throw new Error("Observed element mount with null intersection observer");
         }
         intersectionObserver.current.observe(item);
     }, [intersectionObserver]);
     const unobserve = React.useCallback((item) => {
         if (intersectionObserver.current == null) {
-            throw new Error('Observed element unmount with null intersection observer');
+            throw new Error("Observed element unmount with null intersection observer");
         }
         intersectionObserver.current.unobserve(item);
     }, [intersectionObserver]);
-    const [mountedElements, observedTree] = useElementObserver_2({
+    const [observedTree] = useElementObserver_2({
         tree: children,
         selector,
         useWrapperDiv,
@@ -873,20 +873,6 @@ function VisibleElementObserver({ children, useWrapperDiv, selector, intersectio
             intersectionObserver.current = null;
         };
     }, [handleIntersect, intersectionOptions]);
-    React.useEffect(() => {
-        const observer = intersectionObserver.current;
-        if (observer != null) {
-            mountedElements.forEach((s) => observer.observe(s));
-        }
-    }, 
-    // mountedElements is intentionally left out of the useEffect dependencies
-    // array. We don't want to recreate the intersection observer everytime the
-    // set of mounted elements changes. Instead, we hear about incremental
-    // changes from the onMount/onUnmount callbacks.
-    //
-    // @TODO Okay then, just get rid of this Set and expose everything through
-    // the callback methods.
-    [intersectionObserver.current]);
     return (React.createElement(VisibleElementsContext.Provider, { value: visibleElements }, observedTree));
 }
 function useVisibleElements() {

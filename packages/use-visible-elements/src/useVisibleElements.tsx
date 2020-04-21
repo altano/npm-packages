@@ -56,7 +56,7 @@ export function VisibleElementObserver({
     },
     [intersectionObserver],
   );
-  const [mountedElements, observedTree] = useElementObserver({
+  const [observedTree] = useElementObserver({
     tree: children,
     selector,
     useWrapperDiv,
@@ -74,24 +74,6 @@ export function VisibleElementObserver({
       intersectionObserver.current = null;
     };
   }, [handleIntersect, intersectionOptions]);
-  React.useEffect(
-    () => {
-      const observer = intersectionObserver.current;
-      if (observer != null) {
-        mountedElements.forEach((s) => observer.observe(s));
-      }
-    },
-    // mountedElements is intentionally left out of the useEffect dependencies
-    // array. We don't want to recreate the intersection observer everytime the
-    // set of mounted elements changes. Instead, we hear about incremental
-    // changes from the onMount/onUnmount callbacks.
-    //
-    // @TODO Okay then, just get rid of this Set and expose everything through
-    // the callback methods.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [intersectionObserver.current],
-  );
-
   return (
     <VisibleElementsContext.Provider value={visibleElements}>
       {observedTree}

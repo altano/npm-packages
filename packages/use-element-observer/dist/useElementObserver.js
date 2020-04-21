@@ -472,7 +472,7 @@ function useElementObserver({ tree, onMount, onUnmount, selector, useWrapperDiv 
     [...removedElements].forEach(onUnmount);
     const observedTree = (React__default.createElement(ElementObserverContext.Provider, { value: { mountedElements, methods } },
         React__default.createElement(Observer, { selector: selector, useWrapperDiv: useWrapperDiv }, tree)));
-    return [mountedElements, observedTree];
+    return [observedTree];
 }
 
 exports.useElementObserver = useElementObserver;

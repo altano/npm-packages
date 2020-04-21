@@ -146,7 +146,7 @@ export function useElementObserver({
   onUnmount,
   selector,
   useWrapperDiv = true,
-}: Options): [Set<Element>, React.ReactElement] {
+}: Options): [React.ReactElement] {
   // @TODO Add mutation observer to catch changes to grandchildren?
   const [mountedElements, methods] = useSet<Element>();
   const [addedElements, removedElements] = useSetDelta<Element>(
@@ -161,5 +161,5 @@ export function useElementObserver({
       </Observer>
     </ElementObserverContext.Provider>
   );
-  return [mountedElements, observedTree];
+  return [observedTree];
 }
