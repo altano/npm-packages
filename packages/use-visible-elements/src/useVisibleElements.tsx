@@ -18,7 +18,7 @@ export function VisibleElementObserver({
   children,
   useWrapperDiv,
   selector,
-  intersectionOptions = {},
+  intersectionOptions,
 }: VisibleElementObserverOptions): React.ReactElement {
   const [visibleElements, { add, remove }] = useSet<Element>();
   const handleIntersect = React.useCallback(

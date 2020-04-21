@@ -6,17 +6,10 @@ import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";
 
 import "./App.css";
 
-const intersectionOptions = {
-  rootMargin: "-100px 0px",
-};
-
 function App() {
   return (
     <div className="App">
-      <TocVisibleSectionObserver
-        intersectionOptions={intersectionOptions}
-        selector="article section"
-      >
+      <TocVisibleSectionObserver>
         <TableOfContents />
         <Article />
       </TocVisibleSectionObserver>

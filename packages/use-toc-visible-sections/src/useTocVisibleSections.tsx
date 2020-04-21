@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  VisibleElementObserverOptions,
   VisibleElementObserver,
   useVisibleElements,
 } from "@altano/use-visible-elements";

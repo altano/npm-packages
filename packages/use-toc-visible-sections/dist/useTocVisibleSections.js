@@ -799,7 +799,7 @@ var useSet_1 = createCommonjsModule(function (module, exports) {
 });
 var useSet = unwrapExports(useSet_1);
 const VisibleElementsContext = React.createContext(null);
-function VisibleElementObserver({ children, useWrapperDiv, selector, intersectionOptions = {}, }) {
+function VisibleElementObserver({ children, useWrapperDiv, selector, intersectionOptions, }) {
     const [visibleElements, { add, remove }] = useSet();
     const handleIntersect = React.useCallback((entries) => {
         entries.forEach((e) => e.isIntersecting ? add(e.target) : remove(e.target));
