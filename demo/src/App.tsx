@@ -1,29 +1,25 @@
 import React from 'react';
-import {useRegardedElement} from 'use-regarded-element';
 
 import Article from './Article';
 import TableOfContents from './TableOfContents';
+import {VisibleElementObserver} from '@altano/use-visible-elements';
 
 import './App.css';
 
+const intersectionOptions = {
+  // rootMargin: '-100px 0px',
+};
+
 function App() {
-  const spyRef = useRegardedElement({
-    rootMargin: '-100px 0px',
-    getElementToSpyFromLinkTarget: (heading: Element) => {
-      const section = heading.nextElementSibling;
-      if (section == null) {
-        throw new Error('Could not get target from heading');
-      }
-      return section;
-    },
-    className: 'demo-active',
-    navigationLinksSelector: 'nav > ul > li > a',
-    // @TODO optional callback that handles selection
-  });
   return (
-    <div className="App" ref={spyRef}>
-      <TableOfContents />
-      <Article />
+    <div className="App">
+      <VisibleElementObserver
+        intersectionOptions={intersectionOptions}
+        useWrapperDiv={true}
+        selector="article section">
+        <TableOfContents />
+        <Article />
+      </VisibleElementObserver>
     </div>
   );
 }

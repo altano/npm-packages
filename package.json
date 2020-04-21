@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "use-visible-elements-monorepo",
+  "workspaces": [
+    "demo",
+    "packages/*"
+  ],
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-use": "^14.1.1"
+  },
+  "scripts": {
+    "demo": "yarn workspace demo start",
+    "start:use-element-observer": "yarn workspace @altano/use-element-observer start",
+    "build:use-element-observer": "yarn workspace @altano/use-element-observer build",
+    "start:use-visible-elements": "yarn workspace @altano/use-visible-elements start",
+    "build:use-visible-elements": "yarn workspace @altano/use-visible-elements build",
+    "start": "concurrently --kill-others-on-fail \"yarn demo\"  \"yarn start:use-element-observer\"  \"yarn start:use-visible-elements\"",
+    "build": "yarn build:use-element-observer && yarn build:use-visible-elements"
+  }
+}

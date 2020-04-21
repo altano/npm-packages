@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "outDir": "./dist/",
     "declaration": true,
     "target": "ES2015",
