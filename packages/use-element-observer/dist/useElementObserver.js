@@ -15,39 +15,6 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var usePrevious_1 = createCommonjsModule(function (module, exports) {
-Object.defineProperty(exports, "__esModule", { value: true });
-
-var usePrevious = function (state) {
-    var ref = React__default.useRef();
-    React__default.useEffect(function () {
-        ref.current = state;
-    });
-    return ref.current;
-};
-exports.default = usePrevious;
-});
-
-var usePrevious = unwrapExports(usePrevious_1);
-
-/**
- * Return everything in setA that is not present in setB
- */
-function setDifference(setA, setB) {
-    const notInB = (i) => setB.has(i) === false;
-    const differences = Array.from(setA).filter(notInB);
-    return new Set(differences);
-}
-/**
- * Return everything that must be added and removed to go from `previous` set to
- * `latest` set
- */
-function delta(previous, latest) {
-    const added = setDifference(latest, previous);
-    const removed = setDifference(previous, latest);
-    return [added, removed];
-}
-
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -440,12 +407,6 @@ function Observer({ children, selector, useWrapperDiv, }) {
     const Component = useWrapperDiv ? ObserveChildWithWrapperDiv : ObserveChild;
     return (React__default.createElement(Component, { onMount: onMount, onUnmount: onUnmount }, children));
 }
-function useSetDelta(set) {
-    const previousSet = usePrevious(set);
-    return previousSet == null
-        ? [new Set(), new Set()]
-        : delta(previousSet, set);
-}
 /**
  * Allows observing mount/unmount of elements that match a given selector in the
  * given React tree. Tree must be static: only the mounting of the tree itself
@@ -464,15 +425,12 @@ function useSetDelta(set) {
  * @returns A tuple of: (1) array of elements and (2) the observed tree to be
  * rendered.
  */
-function useElementObserver({ tree, onMount, onUnmount, selector, useWrapperDiv = true, }) {
+function useElementObserver({ tree, selector, useWrapperDiv = true, }) {
     // @TODO Add mutation observer to catch changes to grandchildren?
     const [mountedElements, methods] = useSet();
-    const [addedElements, removedElements] = useSetDelta(mountedElements);
-    [...addedElements].forEach(onMount);
-    [...removedElements].forEach(onUnmount);
     const observedTree = (React__default.createElement(ElementObserverContext.Provider, { value: { mountedElements, methods } },
         React__default.createElement(Observer, { selector: selector, useWrapperDiv: useWrapperDiv }, tree)));
-    return [observedTree];
+    return [mountedElements, observedTree];
 }
 
 exports.useElementObserver = useElementObserver;

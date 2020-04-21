@@ -2,6 +2,7 @@ import React from "react";
 
 import { useElementObserver } from "@altano/use-element-observer";
 import useSet from "react-use/lib/useSet";
+import useInterval from "react-use/lib/useInterval";
 
 type Context = Set<Element>;
 const VisibleElementsContext = React.createContext<Context | null>(null);
@@ -20,7 +21,6 @@ export function VisibleElementObserver({
   intersectionOptions = {},
 }: VisibleElementObserverOptions): React.ReactElement {
   const [visibleElements, { add, remove }] = useSet<Element>();
-  const intersectionObserver = React.useRef<IntersectionObserver | null>();
   const handleIntersect = React.useCallback(
     (entries: IntersectionObserverEntry[]) => {
       entries.forEach((e) =>
@@ -29,46 +29,22 @@ export function VisibleElementObserver({
     },
     [add, remove],
   );
-  const observe = React.useCallback(
-    (item: Element) => {
-      if (intersectionObserver.current == null) {
-        throw new Error(
-          "Observed element mount with null intersection observer",
-        );
-      }
-      intersectionObserver.current.observe(item);
-    },
-    [intersectionObserver],
-  );
-  const unobserve = React.useCallback(
-    (item: Element) => {
-      if (intersectionObserver.current == null) {
-        throw new Error(
-          "Observed element unmount with null intersection observer",
-        );
-      }
-      intersectionObserver.current.unobserve(item);
-    },
-    [intersectionObserver],
-  );
-  const [observedTree] = useElementObserver({
+  const [mountedElements, observedTree] = useElementObserver({
     tree: children,
     selector,
     useWrapperDiv,
-    onMount: observe,
-    onUnmount: unobserve,
   });
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       handleIntersect,
       intersectionOptions,
     );
-    intersectionObserver.current = observer;
-    return (): void => {
+    mountedElements.forEach((e) => observer.observe(e));
+    return () => {
       observer.disconnect();
-      intersectionObserver.current = null;
     };
-  }, [handleIntersect, intersectionOptions]);
+  }, [mountedElements, handleIntersect, intersectionOptions]);
+
   return (
     <VisibleElementsContext.Provider value={visibleElements}>
       {observedTree}

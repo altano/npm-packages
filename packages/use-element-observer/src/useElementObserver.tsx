@@ -1,7 +1,4 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
-import usePrevious from "react-use/lib/usePrevious";
-import type { Differences } from "./setOperations";
-import { delta } from "./setOperations";
 import type { Actions } from "react-use/lib/useSet";
 import useSet from "react-use/lib/useSet";
 
@@ -86,13 +83,6 @@ function Observer({
   );
 }
 
-function useSetDelta<T>(set: Set<T>): Differences<T> {
-  const previousSet = usePrevious<Set<T>>(set);
-  return previousSet == null
-    ? [new Set<T>(), new Set<T>()]
-    : delta(previousSet, set);
-}
-
 // // @TODO
 // type Options =
 //   | {
@@ -115,11 +105,9 @@ function useSetDelta<T>(set: Set<T>): Differences<T> {
 //     };
 
 interface Options {
+  selector: string;
   tree: React.ReactNode;
   useWrapperDiv?: boolean;
-  onMount: (e: Element) => void;
-  onUnmount: (e: Element) => void;
-  selector: string;
 }
 
 /**
@@ -142,18 +130,11 @@ interface Options {
  */
 export function useElementObserver({
   tree,
-  onMount,
-  onUnmount,
   selector,
   useWrapperDiv = true,
-}: Options): [React.ReactElement] {
+}: Options): [Set<Element>, React.ReactElement] {
   // @TODO Add mutation observer to catch changes to grandchildren?
   const [mountedElements, methods] = useSet<Element>();
-  const [addedElements, removedElements] = useSetDelta<Element>(
-    mountedElements,
-  );
-  [...addedElements].forEach(onMount);
-  [...removedElements].forEach(onUnmount);
   const observedTree = (
     <ElementObserverContext.Provider value={{ mountedElements, methods }}>
       <Observer selector={selector} useWrapperDiv={useWrapperDiv}>
@@ -161,5 +142,5 @@ export function useElementObserver({
       </Observer>
     </ElementObserverContext.Provider>
   );
-  return [observedTree];
+  return [mountedElements, observedTree];
 }

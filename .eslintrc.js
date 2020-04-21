@@ -36,6 +36,12 @@ module.exports = {
     ],
     "@typescript-eslint/indent": [2, 2],
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      1,
+      {
+        allowConciseArrowFunctionExpressionStartingWithVoid: true,
+      },
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/no-use-before-define": "off",
