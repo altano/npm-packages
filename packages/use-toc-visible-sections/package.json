@@ -7,9 +7,9 @@
   "files": [
     "dist/**/*"
   ],
-  "prepublishOnly": "npm run build",
   "scripts": {
     "build": "rollup -c",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "rollup -c --watch"
   },
   "author": {
