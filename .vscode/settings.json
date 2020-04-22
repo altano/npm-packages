@@ -1,3 +1,7 @@
 {
-  "eslint.enable": true
+  "eslint.enable": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
+  }
 }
