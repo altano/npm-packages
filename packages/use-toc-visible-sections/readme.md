@@ -2,9 +2,17 @@
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
 
-React hook to faciliate observing visibility of sections linked to a table of contents. For example:
+React hook to faciliate observing visibility of sections linked to a table of contents.
 
-## App.jsx
+## Installation
+
+`npm i --save @altano/use-toc-visible-sections`
+
+https://www.npmjs.com/package/@altano/use-toc-visible-sections
+
+## Example
+
+### App.jsx
 
 ```jsx
 import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";
@@ -17,7 +25,7 @@ export default () => (
 );
 ```
 
-## TableOfContents.jsx
+### TableOfContents.jsx
 
 ```jsx
 import { useVisibilityOfTarget } from "@altano/use-toc-visible-sections";
@@ -47,7 +55,7 @@ function ListItem({ href, children }) {
 
 ```
 
-## Article.jsx
+### Article.jsx
 
 ```jsx
 export default () => (

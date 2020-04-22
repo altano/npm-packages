@@ -2,9 +2,17 @@
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
 
-React hook to faciliate observing the mount of elements in a React tree, by selector. For example:
+React hook to faciliate observing the mount of elements in a React tree, by selector.
 
-## Component.jsx
+## Installation
+
+`npm i --save @altano/use-element-observer`
+
+https://www.npmjs.com/package/@altano/use-element-observer
+
+## Example
+
+### Component.jsx
 
 ```jsx
 import { useElementObserver } from "@altano/use-element-observer";

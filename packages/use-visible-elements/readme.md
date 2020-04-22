@@ -2,9 +2,17 @@
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
 
-React hook to faciliate observing the visibility of elements in a React tree, by selector. For example:
+React hook to faciliate observing the visibility of elements in a React tree, by selector.
 
-## Component.jsx
+## Installation
+
+`npm i --save @altano/use-visible-elements`
+
+https://www.npmjs.com/package/@altano/use-visible-elements
+
+## Example
+
+### Component.jsx
 
 ```jsx
 import {
