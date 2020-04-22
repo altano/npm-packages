@@ -20,7 +20,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/altano/use-toc-visible-sections"
+    "url": "https://github.com/altano/npm-packages/tree/master/packages/use-visible-elements"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",

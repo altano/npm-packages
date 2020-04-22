@@ -21,7 +21,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/altano/use-toc-visible-sections"
+    "url": "https://github.com/altano/npm-packages/tree/master/packages/use-element-observer"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",

@@ -1,11 +1,10 @@
 {
   "private": true,
-  "name": "use-visible-elements-monorepo",
   "workspaces": [
     "demo",
     "packages/*"
   ],
-  "description": "React hooks to faciliate observing sections linked to a table of contents",
+  "description": "Monorepo for all of Alan Norbauer's npm packages",
   "author": {
     "name": "Alan Norbauer",
     "email": "altano@gmail.com",
@@ -14,7 +13,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/altano/use-toc-visible-sections"
+    "url": "https://github.com/altano/npm-packages"
   },
   "dependencies": {
     "concurrently": "^5.1.0"
