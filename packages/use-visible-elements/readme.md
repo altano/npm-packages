@@ -8,7 +8,7 @@ React hook to faciliate observing the visibility of elements in a React tree, by
 
 `npm i --save @altano/use-visible-elements`
 
-https://www.npmjs.com/package/@altano/use-visible-elements
+<https://www.npmjs.com/package/@altano/use-visible-elements>
 
 ## Example
 

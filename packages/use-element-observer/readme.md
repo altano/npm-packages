@@ -8,7 +8,7 @@ React hook to faciliate observing the mount of elements in a React tree, by sele
 
 `npm i --save @altano/use-element-observer`
 
-https://www.npmjs.com/package/@altano/use-element-observer
+<https://www.npmjs.com/package/@altano/use-element-observer>
 
 ## Example
 

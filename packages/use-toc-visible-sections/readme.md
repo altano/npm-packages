@@ -8,7 +8,7 @@ React hook to faciliate observing visibility of sections linked to a table of co
 
 `npm i --save @altano/use-toc-visible-sections`
 
-https://www.npmjs.com/package/@altano/use-toc-visible-sections
+<https://www.npmjs.com/package/@altano/use-toc-visible-sections>
 
 ## Example
 
