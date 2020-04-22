@@ -2,7 +2,6 @@ import React from "react";
 
 import { useElementObserver } from "@altano/use-element-observer";
 import useSet from "react-use/lib/useSet";
-import useInterval from "react-use/lib/useInterval";
 
 type Context = Set<Element>;
 const VisibleElementsContext = React.createContext<Context | null>(null);
