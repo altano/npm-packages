@@ -41,7 +41,8 @@
     "prettier": "^2.0.1",
     "rollup": "^1.31.0",
     "typescript": "^3.8.3",
-    "react": "^16.12.0",
+    "react": "^16",
+    "react-dom": "^16",
     "react-use": "^13.27.0",
     "@altano/use-element-observer": "*"
   }

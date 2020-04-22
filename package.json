@@ -17,10 +17,7 @@
     "url": "https://github.com/altano/use-toc-visible-sections"
   },
   "dependencies": {
-    "concurrently": "^5.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-use": "^14.1.1"
+    "concurrently": "^5.1.0"
   },
   "scripts": {
     "demo": "yarn workspace demo start",
