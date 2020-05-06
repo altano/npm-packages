@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-element-observer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
   "main": "dist/useElementObserver.js",
   "types": "dist/useElementObserver.d.ts",
