@@ -399,7 +399,7 @@ var useElementObserver_1 = createCommonjsModule(function (module, exports) {
     }
     function ObserveChildWithWrapperDiv({ children, onMount, onUnmount, }) {
         const ref = useMountRef({ onMount, onUnmount });
-        return (React__default.createElement("div", { style: { all: "inherit" }, ref: ref }, children));
+        return (React__default.createElement("div", { style: { display: "inherit" }, ref: ref }, children));
     }
     function ObserveChild({ children, onMount, onUnmount, }) {
         const newRef = useMountRef({ onMount, onUnmount });

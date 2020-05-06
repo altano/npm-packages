@@ -38,7 +38,7 @@ function ObserveChildWithWrapperDiv({
 }: ChildrenAndCallbacks<Element>): React.ReactElement {
   const ref = useMountRef<HTMLDivElement>({ onMount, onUnmount });
   return (
-    <div style={{ all: "inherit" }} ref={ref}>
+    <div style={{ display: "inherit" }} ref={ref}>
       {children}
     </div>
   );
