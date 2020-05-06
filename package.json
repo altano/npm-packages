@@ -1,9 +1,17 @@
 {
+  "name": "altano-npm-packages",
+  "version": "1.0.0",
+  "main": "index.js",
   "private": true,
   "workspaces": [
     "demo",
     "packages/*"
   ],
+  "bolt": {
+    "workspaces": [
+      "packages/*"
+    ]
+  },
   "description": "Monorepo for all of Alan Norbauer's npm packages",
   "author": {
     "name": "Alan Norbauer",
@@ -16,9 +24,11 @@
     "url": "https://github.com/altano/npm-packages"
   },
   "dependencies": {
+    "bolt": "^0.24.5",
     "concurrently": "^5.1.0"
   },
   "scripts": {
+    "build": "bolt ws build",
     "demo": "yarn workspace demo start",
     "start:use-element-observer": "yarn workspace @altano/use-element-observer start",
     "build:use-element-observer": "yarn workspace @altano/use-element-observer build",
@@ -27,7 +37,7 @@
     "start:use-toc-visible-sections": "yarn workspace @altano/use-toc-visible-sections start",
     "build:use-toc-visible-sections": "yarn workspace @altano/use-toc-visible-sections build",
     "start": "concurrently --kill-others-on-fail \"yarn demo\"  \"yarn start:use-element-observer\"  \"yarn start:use-toc-visible-sections\" \"yarn start:use-visible-elements\"",
-    "build": "yarn build:use-element-observer && yarn build:use-visible-elements && yarn build:use-toc-visible-sections",
+    "build:use-toc-visible-sections-and-deps": "yarn build:use-element-observer && yarn build:use-visible-elements && yarn build:use-toc-visible-sections",
     "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,tsx}\""
   }
 }
