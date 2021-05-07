@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@altano/use-element-observer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-element-observer/-/use-element-observer-1.0.0.tgz#8ea9d26abcceee4ef02dfe426b26b21cfea2c8ee"
+  integrity sha512-uXhB8zPbLkLoOQmUnfcomlUjJGmF3vSyKOlls/nRLiX1Cr/ZYMqpKrvqSbDyr2afZTPxHEmRMjlPuOqHz44kbQ==
+
+"@altano/use-toc-visible-sections@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-toc-visible-sections/-/use-toc-visible-sections-1.0.0.tgz#b1987e2b1f1410932b6a85af9d3b3fc70dcdf1b4"
+  integrity sha512-eBngi7BzbFTUtwnflgWDbJL+gh4mheeMZCrjfj7A8eUxDg9sxz1zSvVrIu4gA+c+4t4bgyoD5SqyCdDyys0m8w==
+  dependencies:
+    "@altano/use-visible-elements" "1.0.0"
+
+"@altano/use-visible-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-visible-elements/-/use-visible-elements-1.0.0.tgz#b07141ee68396769d5c429b0c074a945ce36b99e"
+  integrity sha512-d0zvJK3+FvQvQqimTNvVAR8w8+dwY5AX7zZc4KeFhhHSr2b4DmZXcpYG9K6n3po8PjfxZdTpo0lPg8yqhPZKEQ==
+  dependencies:
+    "@altano/use-element-observer" "1.0.0"
+    react-use "^13.27.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -10706,9 +10726,9 @@ typescript@^3.8.3:
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
 ua-parser-js@^0.7.21:
-  version "0.7.21"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
-  integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
