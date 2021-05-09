@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@altano/use-element-observer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-element-observer/-/use-element-observer-1.0.0.tgz#8ea9d26abcceee4ef02dfe426b26b21cfea2c8ee"
+  integrity sha512-uXhB8zPbLkLoOQmUnfcomlUjJGmF3vSyKOlls/nRLiX1Cr/ZYMqpKrvqSbDyr2afZTPxHEmRMjlPuOqHz44kbQ==
+
+"@altano/use-toc-visible-sections@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-toc-visible-sections/-/use-toc-visible-sections-1.0.0.tgz#b1987e2b1f1410932b6a85af9d3b3fc70dcdf1b4"
+  integrity sha512-eBngi7BzbFTUtwnflgWDbJL+gh4mheeMZCrjfj7A8eUxDg9sxz1zSvVrIu4gA+c+4t4bgyoD5SqyCdDyys0m8w==
+  dependencies:
+    "@altano/use-visible-elements" "1.0.0"
+
+"@altano/use-visible-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-visible-elements/-/use-visible-elements-1.0.0.tgz#b07141ee68396769d5c429b0c074a945ce36b99e"
+  integrity sha512-d0zvJK3+FvQvQqimTNvVAR8w8+dwY5AX7zZc4KeFhhHSr2b4DmZXcpYG9K6n3po8PjfxZdTpo0lPg8yqhPZKEQ==
+  dependencies:
+    "@altano/use-element-observer" "1.0.0"
+    react-use "^13.27.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -8879,9 +8899,9 @@ querystring@0.2.0:
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 raf@^3.4.1:
   version "3.4.1"
@@ -10817,9 +10837,9 @@ url-loader@2.3.0:
     schema-utils "^2.5.0"
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
+  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
