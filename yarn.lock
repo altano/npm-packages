@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@altano/use-element-observer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-element-observer/-/use-element-observer-1.0.0.tgz#8ea9d26abcceee4ef02dfe426b26b21cfea2c8ee"
+  integrity sha512-uXhB8zPbLkLoOQmUnfcomlUjJGmF3vSyKOlls/nRLiX1Cr/ZYMqpKrvqSbDyr2afZTPxHEmRMjlPuOqHz44kbQ==
+
+"@altano/use-toc-visible-sections@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-toc-visible-sections/-/use-toc-visible-sections-1.0.0.tgz#b1987e2b1f1410932b6a85af9d3b3fc70dcdf1b4"
+  integrity sha512-eBngi7BzbFTUtwnflgWDbJL+gh4mheeMZCrjfj7A8eUxDg9sxz1zSvVrIu4gA+c+4t4bgyoD5SqyCdDyys0m8w==
+  dependencies:
+    "@altano/use-visible-elements" "1.0.0"
+
+"@altano/use-visible-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-visible-elements/-/use-visible-elements-1.0.0.tgz#b07141ee68396769d5c429b0c074a945ce36b99e"
+  integrity sha512-d0zvJK3+FvQvQqimTNvVAR8w8+dwY5AX7zZc4KeFhhHSr2b4DmZXcpYG9K6n3po8PjfxZdTpo0lPg8yqhPZKEQ==
+  dependencies:
+    "@altano/use-element-observer" "1.0.0"
+    react-use "^13.27.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -6981,9 +7001,9 @@ memory-fs@^0.5.0:
     readable-stream "^2.0.1"
 
 merge-deep@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.2.tgz#f39fa100a4f1bd34ff29f7d2bf4508fbb8d83ad2"
-  integrity sha512-T7qC8kg4Zoti1cFd8Cr0M+qaZfOwjlPDEdZIIPPB2JZctjaPM4fX+i7HOId69tAti2fvO6X5ldfYUONDODsrkA==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.3.tgz#1a2b2ae926da8b2ae93a0ac15d90cd1922766003"
+  integrity sha512-qtmzAS6t6grwEkNrunqTBdn0qKwFgNWvlxUbAV8es9M7Ot1EbyApytCnvE0jALPa46ZpKDUo527kKiaWplmlFA==
   dependencies:
     arr-union "^3.1.0"
     clone-deep "^0.2.4"
