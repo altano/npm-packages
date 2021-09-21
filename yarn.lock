@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@altano/use-element-observer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-element-observer/-/use-element-observer-1.0.0.tgz#8ea9d26abcceee4ef02dfe426b26b21cfea2c8ee"
+  integrity sha512-uXhB8zPbLkLoOQmUnfcomlUjJGmF3vSyKOlls/nRLiX1Cr/ZYMqpKrvqSbDyr2afZTPxHEmRMjlPuOqHz44kbQ==
+
+"@altano/use-toc-visible-sections@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-toc-visible-sections/-/use-toc-visible-sections-1.0.0.tgz#b1987e2b1f1410932b6a85af9d3b3fc70dcdf1b4"
+  integrity sha512-eBngi7BzbFTUtwnflgWDbJL+gh4mheeMZCrjfj7A8eUxDg9sxz1zSvVrIu4gA+c+4t4bgyoD5SqyCdDyys0m8w==
+  dependencies:
+    "@altano/use-visible-elements" "1.0.0"
+
+"@altano/use-visible-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-visible-elements/-/use-visible-elements-1.0.0.tgz#b07141ee68396769d5c429b0c074a945ce36b99e"
+  integrity sha512-d0zvJK3+FvQvQqimTNvVAR8w8+dwY5AX7zZc4KeFhhHSr2b4DmZXcpYG9K6n3po8PjfxZdTpo0lPg8yqhPZKEQ==
+  dependencies:
+    "@altano/use-element-observer" "1.0.0"
+    react-use "^13.27.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -10530,9 +10550,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
