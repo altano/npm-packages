@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@altano/use-element-observer@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-element-observer/-/use-element-observer-1.0.0.tgz#8ea9d26abcceee4ef02dfe426b26b21cfea2c8ee"
+  integrity sha512-uXhB8zPbLkLoOQmUnfcomlUjJGmF3vSyKOlls/nRLiX1Cr/ZYMqpKrvqSbDyr2afZTPxHEmRMjlPuOqHz44kbQ==
+
+"@altano/use-toc-visible-sections@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-toc-visible-sections/-/use-toc-visible-sections-1.0.0.tgz#b1987e2b1f1410932b6a85af9d3b3fc70dcdf1b4"
+  integrity sha512-eBngi7BzbFTUtwnflgWDbJL+gh4mheeMZCrjfj7A8eUxDg9sxz1zSvVrIu4gA+c+4t4bgyoD5SqyCdDyys0m8w==
+  dependencies:
+    "@altano/use-visible-elements" "1.0.0"
+
+"@altano/use-visible-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@altano/use-visible-elements/-/use-visible-elements-1.0.0.tgz#b07141ee68396769d5c429b0c074a945ce36b99e"
+  integrity sha512-d0zvJK3+FvQvQqimTNvVAR8w8+dwY5AX7zZc4KeFhhHSr2b4DmZXcpYG9K6n3po8PjfxZdTpo0lPg8yqhPZKEQ==
+  dependencies:
+    "@altano/use-element-observer" "1.0.0"
+    react-use "^13.27.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -3679,7 +3699,7 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@^3.0.0, debug@^3.1.1, debug@^3.2.5:
+debug@^3.1.1, debug@^3.2.5:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
@@ -4862,11 +4882,9 @@ flush-write-stream@^1.0.0:
     readable-stream "^2.3.6"
 
 follow-redirects@^1.0.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.11.0.tgz#afa14f08ba12a52963140fe43212658897bc0ecb"
-  integrity sha512-KZm0V+ll8PfBrKwMzdo5D13b1bur9Iq9Zd/RMmAoQQcl2PxxFml8cxXPaaPYVbV0RjNjq1CU7zIzAOqtUPudmA==
-  dependencies:
-    debug "^3.0.0"
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
+  integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
 for-in@^0.1.3:
   version "0.1.8"
