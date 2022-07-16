@@ -1,8 +1,11 @@
 {
   "eslint.enable": true,
+  "vitest.enable": true,
+  "jestrunner.disableCodeLens": true,
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true
   },
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules"]
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules"],
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes"
 }

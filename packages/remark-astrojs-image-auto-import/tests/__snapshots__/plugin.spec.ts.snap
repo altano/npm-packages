@@ -1,0 +1,108 @@
+// Vitest Snapshot v1
+
+exports[`remark-astrojs-image-auto-import > [test #0] alt 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+/*optimized image, keeping the original width, height, and image format*/
+/*height will be recalculated to match the original aspect ratio*/
+/*cropping to a specific width and height*/
+/*cropping to a specific aspect ratio and converting to an avif format*/
+/*image imports can also be inlined directly*/
+import { Image } from "@astrojs/image/components";
+import image from "./image.png";
+function _createMdxContent(props) {
+  const _components = Object.assign(
+    {
+      p: "p",
+      img: "img",
+    },
+    props.components,
+  );
+  return (
+    <>
+      <_components.p>
+        <_components.img src="image.png" alt="Alt text" />
+      </_components.p>
+      {"\\n"}
+      <img src={image} />
+      {"\\n"}
+      <Image src={import("./image.png")} />
+      {"\\n"}
+      <Image src={import("./image.png")} />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image src={image} />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image src={image} width={300} />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image src={image} width={300} height={600} />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image src={image} aspectRatio="16:9" format="avif" />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image src={import("./image.png")} />
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-auto-import > [test #1] basic 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  return <Image src={import("./image.png")} />;
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-auto-import > [test #2] data-import-ignore 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  return <Image data-import-ignore src="./image.png" />;
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-auto-import > [test #3] error-imagenotfound 1`] = `"/home/alan/src/npm-packages/packages/remark-astrojs-image-auto-import/tests/__fixtures__/error-imagenotfound/non-existent.png could not be found on disk and the \\"ignoreFileNotFound\\" option is false"`;

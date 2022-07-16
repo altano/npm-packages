@@ -1,5 +1,3 @@
-TODO: Write e2e or unit tests (try vitest for esm support)
 TODO: See if publishing/changesets work
 TODO: Fill out .github action boilerplate
 TODO: Make sure dependencies are correct (e.g. publish relies on passing build/lint/test)
-TODO: Replace use-toc-visible-sections-demo with react storybook

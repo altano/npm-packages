@@ -1,0 +1,64 @@
+{
+  "name": "@altano/remark-astrojs-image-auto-import",
+  "version": "0.0.1",
+  "description": "A Remark plugin for converting the src attribute of @astrojs/image components to inline imports",
+  "type": "module",
+  "sideEffects": false,
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --watch --dts",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-astrojs-image-auto-import"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "astro",
+    "remark",
+    "mdx"
+  ],
+  "dependencies": {
+    "unist-util-is": "^5.1.1",
+    "unist-util-visit": "^4.1.0"
+  },
+  "devDependencies": {
+    "@altano/remark-plugin-test-util": "*",
+    "@altano/tsconfig": "*",
+    "@mdx-js/mdx": "^2.1.2",
+    "@types/node": "^18.0.1",
+    "@types/prettier": "^2.6.3",
+    "@vitest/ui": "^0.18.0",
+    "esbuild": "^0.14.49",
+    "eslint-config-altano": "*",
+    "eslint": "^8.19.0",
+    "mdast-util-mdx-jsx": "^2.0.2",
+    "mdast-util-mdxjs-esm": "^1.2.0",
+    "mdast": "^3.0.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.1.3",
+    "typescript": "^4.7.4",
+    "unified": "^10.1.2",
+    "vfile": "^5.3.4",
+    "vitest": "^0.18.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

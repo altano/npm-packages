@@ -1,0 +1,1 @@
+TODO: Switch from individual plugins to consuming just the astro integration

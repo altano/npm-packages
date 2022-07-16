@@ -14,7 +14,7 @@
     "dev": "tsup src/index.tsx --format esm --watch --dts",
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --write src",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -24,7 +24,8 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/altano/npm-packages/tree/master/packages/use-toc-visible-sections"
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/use-toc-visible-sections"
   },
   "dependencies": {
     "@altano/use-visible-elements": "*"

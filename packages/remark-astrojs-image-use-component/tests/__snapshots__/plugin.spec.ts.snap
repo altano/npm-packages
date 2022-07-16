@@ -1,0 +1,158 @@
+// Vitest Snapshot v1
+
+exports[`remark-astrojs-image-use-component > [test #0] data-component-ignore 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+function _createMdxContent(props) {
+  return (
+    <>
+      <img src="jsx-image.png" data-component-ignore />
+      {"\\n"}
+      <picture src="jsx-picture.png" data-component-ignore />
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-use-component > [test #1] existing-import 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  return (
+    <>
+      <Image src="jsx-image.png" />
+      {"\\n"}
+      <Image src="astro-image.png" />
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-use-component > [test #2] jsx-image 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  return (
+    <>
+      <Image src="jsx-image.png" />
+      {"\\n"}
+      <Image src="jsx-image.png" width={500} height={500} />
+      {"\\n"}
+      <Image src="jsx-image.png" alt="Alt Text" />
+      {"\\n"}
+      <Image src="jsx-image.png" title="Title Text" />
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-use-component > [test #3] jsx-picture 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Picture } from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  return (
+    <>
+      <Picture src="jsx-picture.png" />
+      {"\\n"}
+      <Picture src="jsx-picture.png" width={500} height={500} />
+      {"\\n"}
+      <Picture src="jsx-picture.png" alt="Alt Text" />
+      {"\\n"}
+      <Picture src="jsx-picture.png" title="Title Text" />
+      {"\\n"}
+      <Picture>
+        <source srcset="jsx-picture-2x.png" media="(min-width: 800px)" />
+        <Image src="jsx-picture-1x.png" alt="alt" />
+      </Picture>
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-astrojs-image-use-component > [test #4] markdown 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+import { Image } from "@astrojs/image/components";
+function _createMdxContent(props) {
+  const _components = Object.assign(
+    {
+      p: "p",
+    },
+    props.components,
+  );
+  return (
+    <>
+      <_components.p>
+        <Image src="markdown.png" alt="" />
+      </_components.p>
+      {"\\n"}
+      <_components.p>
+        <Image src="markdown.png" alt="Alt Text" />
+      </_components.p>
+      {"\\n"}
+      <_components.p>
+        <Image src="markdown.png" alt="Alt Text" title="Title Text" />
+      </_components.p>
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;

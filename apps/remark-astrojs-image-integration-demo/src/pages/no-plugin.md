@@ -1,0 +1,8 @@
+---
+setup: |
+  import { Image } from "@astrojs/image/components"
+---
+
+# Hello from Markdown
+
+<Image src="./image.png" width={544} height={184} />

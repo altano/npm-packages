@@ -1,0 +1,8 @@
+{
+  "convertMarkdownImages": true,
+  "convertJsxImages": true,
+  "convertJsxPictures": true,
+  "transformOptions": {
+    "format": "avif"
+  }
+}

@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   extends: [
+    "eslint:recommended",
     "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
     "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     "prettier",
@@ -23,7 +25,12 @@ module.exports = {
       version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-  ignorePatterns: ["dist/", "node_modules/", "rollup.config.js"],
+  ignorePatterns: [
+    "dist/",
+    "node_modules/",
+    "rollup.config.js",
+    "__fixtures__/",
+  ],
   rules: {
     "react/jsx-filename-extension": [
       "error",
@@ -35,5 +42,9 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+    ],
   },
 };

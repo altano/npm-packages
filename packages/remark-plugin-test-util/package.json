@@ -1,0 +1,45 @@
+{
+  "name": "@altano/remark-plugin-test-util",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Testing utilities for remark plugins",
+  "type": "module",
+  "sideEffects": false,
+  "module": "./index.ts",
+  "scripts": {
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-plugin-test-util"
+  },
+  "dependencies": {
+    "@altano/tsconfig": "*",
+    "vfile": "^5.3.4",
+    "@mdx-js/mdx": "^2.1.2",
+    "@types/node": "^18.0.1",
+    "@types/prettier": "^2.6.3",
+    "@vitest/ui": "^0.18.0",
+    "eslint": "^8.19.0",
+    "eslint-config-altano": "*",
+    "mdast": "^3.0.0",
+    "mdast-util-mdxjs-esm": "^1.2.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.1.3",
+    "typescript": "^4.7.4",
+    "unified": "^10.1.2",
+    "vitest": "^0.18.1"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

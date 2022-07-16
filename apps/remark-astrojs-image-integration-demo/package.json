@@ -1,0 +1,28 @@
+{
+  "name": "@altano/remark-astrojs-image-integration-demo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Demos all Remark + @astrojs/image integration plugins",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "astro dev --experimental-integrations",
+    "start": "astro dev --experimental-integrations",
+    "build": "astro build --experimental-integrations",
+    "preview": "astro previe --experimental-integrationsw"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@altano/remark-astrojs-image-auto-import": "*",
+    "@altano/remark-astrojs-image-use-component": "*",
+    "@astrojs/image": "^0.1.2",
+    "@astrojs/react": "^0.4.1",
+    "astro": "^1.0.0-beta.72"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "dependencies": {
+    "astro-auto-import": "^0.1.2"
+  }
+}
