@@ -4,7 +4,7 @@
   "description": "Intersection-Observer-based Scroll Spy React Hook",
   "type": "module",
   "sideEffects": false,
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"

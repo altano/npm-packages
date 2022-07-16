@@ -1,12 +1,11 @@
 import React from "react";
-
 import Article from "./Article";
 import TableOfContents from "./TableOfContents";
 import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";
 
 import "./App.css";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <TocVisibleSectionObserver>
@@ -17,4 +16,4 @@ function App() {
   );
 }
 
-export default React.memo(App);
+export default App;
