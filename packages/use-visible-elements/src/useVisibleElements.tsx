@@ -1,7 +1,6 @@
-import React from "react";
-
 import { useElementObserver } from "@altano/use-element-observer";
-import useSet from "react-use/lib/useSet";
+import React from "react";
+import { useSet } from "react-use";
 
 type Context = Set<Element>;
 const VisibleElementsContext = React.createContext<Context | null>(null);

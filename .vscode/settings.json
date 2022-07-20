@@ -3,5 +3,6 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true
-  }
+  },
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules"]
 }

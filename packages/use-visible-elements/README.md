@@ -1,14 +1,12 @@
 # use-visible-elements
 
-![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
+[![npm](https://badgen.net/npm/v/@altano/use-visible-elements)](https://www.npmjs.com/package/@altano/use-visible-elements) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/use-visible-elements) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
 
 React hook to faciliate observing the visibility of elements in a React tree, by selector.
 
 ## Installation
 
-`npm i --save @altano/use-visible-elements`
-
-<https://www.npmjs.com/package/@altano/use-visible-elements>
+`npm install @altano/use-visible-elements`
 
 ## Example
 

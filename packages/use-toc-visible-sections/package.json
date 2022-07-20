@@ -2,15 +2,19 @@
   "name": "@altano/use-toc-visible-sections",
   "version": "1.0.5",
   "description": "Intersection-Observer-based Table of Contents Scroll Spy React Hook",
-  "main": "dist/useTocVisibleSections.js",
-  "types": "dist/useTocVisibleSections.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist/**"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "rollup -c --watch"
+    "build": "tsup src/index.tsx --format esm --dts",
+    "dev": "tsup src/index.tsx --format esm --watch --dts",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -22,25 +26,21 @@
     "type": "git",
     "url": "https://github.com/altano/npm-packages/tree/master/packages/use-toc-visible-sections"
   },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-typescript": "^3.0.0",
-    "@types/react": "^16.9.19",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "@wessberg/rollup-plugin-ts": "^1.2.16",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-react-app": "^5.2.1",
-    "eslint-plugin-flowtype": "^4.6.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
-    "prettier": "^2.0.1",
-    "rollup": "^1.31.0",
-    "typescript": "^3.8.3",
+  "dependencies": {
     "@altano/use-visible-elements": "*"
+  },
+  "devDependencies": {
+    "@altano/tsconfig": "*",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^8.20.0",
+    "eslint-config-altano": "*",
+    "prettier": "^2.7.1",
+    "react": "^18",
+    "tsup": "^6.1.3",
+    "typescript": "^4.7.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

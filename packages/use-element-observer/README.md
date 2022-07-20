@@ -1,14 +1,12 @@
 # use-element-observer
 
-![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
+[![npm](https://badgen.net/npm/v/@altano/use-element-observer)](https://www.npmjs.com/package/@altano/use-element-observer) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/use-element-observer) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
 
 React hook to faciliate observing the mount of elements in a React tree, by selector.
 
 ## Installation
 
-`npm i --save @altano/use-element-observer`
-
-<https://www.npmjs.com/package/@altano/use-element-observer>
+`npm install @altano/use-element-observer`
 
 ## Example
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
 import type { Actions } from "react-use/lib/useSet";
-import useSet from "react-use/lib/useSet";
+import { useSet } from "react-use";
 
 interface Context {
   mountedElements: Set<Element>;
@@ -112,7 +112,7 @@ export function useElementObserver({
   selector,
   useWrapperDiv = true,
 }: Options): [Set<Element>, React.ReactElement] {
-  // @TODO Add mutation observer to catch changes to grandchildren?
+  // TODO: Re-compute on every render to catch mutations? Add mutation observer to catch changes to grandchildren?
   const [mountedElements, methods] = useSet<Element>();
   const observedTree = (
     <ElementObserverContext.Provider value={{ mountedElements, methods }}>
