@@ -13,16 +13,12 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@altano/remark-astrojs-image-auto-import": "*",
-    "@altano/remark-astrojs-image-use-component": "*",
+    "@altano/remark-astrojs-image": "*",
     "@astrojs/image": "^0.1.2",
-    "@astrojs/react": "^0.4.1",
-    "astro": "^1.0.0-beta.72"
+    "@astrojs/mdx": "^0.3.0",
+    "astro": "^1.0.0-rc.2"
   },
   "publishConfig": {
     "access": "restricted"
-  },
-  "dependencies": {
-    "astro-auto-import": "^0.1.2"
   }
 }

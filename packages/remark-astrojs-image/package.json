@@ -1,0 +1,44 @@
+{
+  "name": "@altano/remark-astrojs-image",
+  "version": "0.0.1-alpha.0",
+  "description": "A remark preset that enhances images in your .mdx files to use @astrojs/image components",
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-astrojs-image"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "astro",
+    "remark",
+    "mdx"
+  ],
+  "devDependencies": {
+    "@altano/remark-astrojs-image-auto-import": "*",
+    "@altano/remark-astrojs-image-use-component": "*",
+    "@altano/tsconfig": "*",
+    "@types/node": "^18.0.1",
+    "unified": "^10.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@altano/remark-astrojs-image-use-component",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "A Remark plugin for converting images in mdx to @astrojs/image components",
   "type": "module",
   "sideEffects": false,

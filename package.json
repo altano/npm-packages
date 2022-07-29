@@ -17,7 +17,7 @@
     "update": "npm exec npm-check-updates --workspaces --  -u"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.23.2",
+    "@changesets/cli": "^2.24.1",
     "eslint": "^8.20.0",
     "eslint-config-altano": "*",
     "npm-check-updates": "^15.3.4",

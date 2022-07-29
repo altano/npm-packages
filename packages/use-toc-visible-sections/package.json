@@ -4,7 +4,7 @@
   "description": "Intersection-Observer-based Table of Contents Scroll Spy React Hook",
   "type": "module",
   "sideEffects": false,
-  "module": "./dist/index.js",
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"

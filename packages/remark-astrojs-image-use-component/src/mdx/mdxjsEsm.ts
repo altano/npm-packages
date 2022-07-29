@@ -118,7 +118,7 @@ export function ensureMdxjsEsmExists(
 
   if (!found) {
     const node = createMdxjsEsmNamedNode(identifierName, url);
-    console.log({ addedImportNode: node });
+    // console.log({ addedImportNode: node });
     tree.children.unshift(node);
   }
 }
