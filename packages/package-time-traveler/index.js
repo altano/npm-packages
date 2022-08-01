@@ -5,6 +5,14 @@ const pacote = require('pacote');
 const {name} = require('./package.json');
 const asyncPool = require('tiny-async-pool');
 
+async function asyncPoolAll(...args) {
+  const results = [];
+  for await (const result of asyncPool(...args)) {
+    results.push(result);
+  }
+  return results;
+}
+
 const [, , packageJsonPath, date] = process.argv;
 
 async function getDepManifest(dependency) {
@@ -27,7 +35,7 @@ async function getNewDeps(dependencies) {
     return {};
   }
   const deps = Object.entries(dependencies);
-  const manifests = await asyncPool(5, deps, getDepManifest);
+  const manifests = await asyncPoolAll(5, deps, getDepManifest);
   const manifestEntries = manifests
     .filter(Boolean)
     .map(manifest => [manifest.name, manifest.version]);
