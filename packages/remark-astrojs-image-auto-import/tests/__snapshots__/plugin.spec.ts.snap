@@ -148,4 +148,4 @@ export default MDXContent;
 
 `;
 
-exports[`remark-astrojs-image-auto-import > [test #3] error-imagenotfound 1`] = `"/home/alan/src/npm-packages/packages/remark-astrojs-image-auto-import/tests/__fixtures__/error-imagenotfound/non-existent.png could not be found on disk and the \\"ignoreFileNotFound\\" option is false"`;
+exports[`remark-astrojs-image-auto-import > [test #3] error-imagenotfound 1`] = `"<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/error-imagenotfound/non-existent.png could not be found on disk and the \\"ignoreFileNotFound\\" option is false"`;
