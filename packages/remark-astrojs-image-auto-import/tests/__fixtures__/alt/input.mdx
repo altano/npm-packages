@@ -1,30 +1,36 @@
 import { Image } from "@astrojs/image/components";
 import image from "./image.png";
 
+{/* IGNORED (only Image components processed) */}
 ![Alt text](image.png)
+
+{/* IGNORED (only Image components processed) */}
 
 <img src={image} />
 
+{/* IGNORED (src is not a string) */}
+
+<Image src={image} />
+{/* IGNORED (src is not a string) */}
+
+<Image src={import("./image.png")} />
+
+{/* TRANSFORMED */}
+
 <Image src="image.png" />
+
+{/* TRANSFORMED */}
 
 <Image src="./image.png" />
 
-{/* optimized image, keeping the original width, height, and image format */}
+{/* TRANSFORMED */}
 
-<Image src={image} />
+<Image src="./image.png" width={300} />
 
-{/* height will be recalculated to match the original aspect ratio */}
+{/* TRANSFORMED */}
 
-<Image src={image} width={300} />
+<Image src="./image.png" width={300} height={600} />
 
-{/* cropping to a specific width and height */}
+{/* TRANSFORMED */}
 
-<Image src={image} width={300} height={600} />
-
-{/* cropping to a specific aspect ratio and converting to an avif format */}
-
-<Image src={image} aspectRatio="16:9" format="avif" />
-
-{/* image imports can also be inlined directly */}
-
-<Image src={import("./image.png")} />
+<Image src="./image.png" aspectRatio="16:9" format="avif" />

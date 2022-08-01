@@ -1,7 +1,7 @@
 import { createMdxJsxImportExpression } from "./createMdxJsxImportExpression";
 import * as fs from "node:fs/promises";
 import { constants } from "node:fs";
-import { resolve, join, isAbsolute } from "node:path";
+import { resolve } from "node:path";
 import { extract } from "../array";
 import { unquoteIfNecessary } from "../string";
 
@@ -71,23 +71,24 @@ export async function stringSrcToImportSrc(
     }
   }
 
+  if (vfile.dirname == null) {
+    throw new Error(`Expected vfile.dirname to be a string`);
+  }
+
+  const absolutePath = resolve(vfile.dirname, src);
+
   if (!ignoreFileNotFound) {
-    if (vfile.dirname == null) {
-      throw new Error(`Null vfile.dirname unexpected`);
-    }
-    const path = resolve(join(vfile.dirname, src));
     try {
-      await fs.access(path, constants.F_OK);
+      await fs.access(absolutePath, constants.F_OK);
       // console.log(`FOUND path: ${path} (${resolve(path)})`);
     } catch {
       throw new Error(
-        `${path} could not be found on disk and the "ignoreFileNotFound" option is false`,
+        `${absolutePath} could not be found on disk and the "ignoreFileNotFound" option is false`,
       );
     }
   }
 
-  const relativePath = isAbsolute(src) ? `./${src}` : src;
-  const srcWithImportAttr = createMdxJsxImportExpression("src", relativePath);
+  const srcWithImportAttr = createMdxJsxImportExpression("src", absolutePath);
   // console.log({ result: srcWithImportAttr });
   return {
     ...element,

@@ -2,11 +2,15 @@
 
 exports[`remark-astrojs-image-auto-import > [test #0] alt 1`] = `
 /*@jsxRuntime automatic @jsxImportSource react*/
-/*optimized image, keeping the original width, height, and image format*/
-/*height will be recalculated to match the original aspect ratio*/
-/*cropping to a specific width and height*/
-/*cropping to a specific aspect ratio and converting to an avif format*/
-/*image imports can also be inlined directly*/
+/*IGNORED (only Image components processed)*/
+/*IGNORED (only Image components processed)*/
+/*IGNORED (src is not a string)*/
+/*IGNORED (src is not a string)*/
+/*TRANSFORMED*/
+/*TRANSFORMED*/
+/*TRANSFORMED*/
+/*TRANSFORMED*/
+/*TRANSFORMED*/
 import { Image } from "@astrojs/image/components";
 import image from "./image.png";
 function _createMdxContent(props) {
@@ -19,15 +23,15 @@ function _createMdxContent(props) {
   );
   return (
     <>
+      {}
+      {"\\n"}
       <_components.p>
         <_components.img src="image.png" alt="Alt text" />
       </_components.p>
       {"\\n"}
+      {}
+      {"\\n"}
       <img src={image} />
-      {"\\n"}
-      <Image src={import("./image.png")} />
-      {"\\n"}
-      <Image src={import("./image.png")} />
       {"\\n"}
       {}
       {"\\n"}
@@ -35,19 +39,52 @@ function _createMdxContent(props) {
       {"\\n"}
       {}
       {"\\n"}
-      <Image src={image} width={300} />
-      {"\\n"}
-      {}
-      {"\\n"}
-      <Image src={image} width={300} height={600} />
-      {"\\n"}
-      {}
-      {"\\n"}
-      <Image src={image} aspectRatio="16:9" format="avif" />
-      {"\\n"}
-      {}
-      {"\\n"}
       <Image src={import("./image.png")} />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image
+        src={import(
+          "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/alt/image.png"
+        )}
+      />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image
+        src={import(
+          "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/alt/image.png"
+        )}
+      />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image
+        width={300}
+        src={import(
+          "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/alt/image.png"
+        )}
+      />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image
+        width={300}
+        height={600}
+        src={import(
+          "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/alt/image.png"
+        )}
+      />
+      {"\\n"}
+      {}
+      {"\\n"}
+      <Image
+        aspectRatio="16:9"
+        format="avif"
+        src={import(
+          "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/alt/image.png"
+        )}
+      />
     </>
   );
 }
@@ -69,7 +106,13 @@ exports[`remark-astrojs-image-auto-import > [test #1] basic 1`] = `
 /*@jsxRuntime automatic @jsxImportSource react*/
 import { Image } from "@astrojs/image/components";
 function _createMdxContent(props) {
-  return <Image src={import("./image.png")} />;
+  return (
+    <Image
+      src={import(
+        "<repo-root>/packages/remark-astrojs-image-auto-import/tests/__fixtures__/basic/image.png"
+      )}
+    />
+  );
 }
 function MDXContent(props = {}) {
   const { wrapper: MDXLayout } = props.components || {};
