@@ -43,7 +43,7 @@
     "@altano/tsconfig": "*",
     "@mdx-js/mdx": "^2.1.2",
     "@types/node": "^18.0.1",
-    "@types/prettier": "^2.6.3",
+    "@types/prettier": "^2.7.0",
     "@vitest/ui": "^0.18.0",
     "esbuild": "^0.14.49",
     "eslint-config-altano": "*",

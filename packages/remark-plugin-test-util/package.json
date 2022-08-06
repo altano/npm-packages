@@ -27,7 +27,7 @@
     "vfile": "^5.3.4",
     "@mdx-js/mdx": "^2.1.2",
     "@types/node": "^18.0.1",
-    "@types/prettier": "^2.6.3",
+    "@types/prettier": "^2.7.0",
     "@vitest/ui": "^0.18.0",
     "eslint": "^8.19.0",
     "eslint-config-altano": "*",
