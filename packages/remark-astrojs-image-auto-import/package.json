@@ -48,7 +48,7 @@
     "esbuild": "^0.14.49",
     "eslint-config-altano": "*",
     "eslint": "^8.19.0",
-    "mdast-util-mdx-jsx": "^2.0.2",
+    "mdast-util-mdx-jsx": "^2.1.0",
     "mdast-util-mdxjs-esm": "^1.2.0",
     "mdast": "^3.0.0",
     "prettier": "^2.7.1",
