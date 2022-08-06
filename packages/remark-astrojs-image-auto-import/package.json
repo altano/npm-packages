@@ -1,6 +1,6 @@
 {
   "name": "@altano/remark-astrojs-image-auto-import",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "A Remark plugin for converting the src attribute of @astrojs/image components to inline imports",
   "type": "module",
   "sideEffects": false,

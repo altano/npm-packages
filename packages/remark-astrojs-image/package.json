@@ -1,6 +1,6 @@
 {
   "name": "@altano/remark-astrojs-image",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "A remark preset that enhances images in your .mdx files to use @astrojs/image components",
   "type": "module",
   "sideEffects": false,
