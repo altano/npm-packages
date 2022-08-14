@@ -7,6 +7,10 @@ module.exports = {
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+  },
   plugins: [
     "eslint-plugin-import",
     "react",
@@ -46,5 +50,6 @@ module.exports = {
       "warn",
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
     ],
+    "@typescript-eslint/no-floating-promises": "error",
   },
 };
