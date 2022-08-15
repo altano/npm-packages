@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.tsx --format esm --dts",
-    "dev": "tsup src/index.tsx --format esm --watch --dts",
+    "dev": "tsup src/index.ts --watch --format esm --dts",
     "lint": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
