@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Base.astro";
+---
+
+<div class="404">
+  <Layout
+    title="That doesn't exist..."
+    description="The requested page could not be found"
+  >
+    <p>The sadness.</p>
+  </Layout>
+</div>
+
+<style>
+  .404 {
+    grid-template-areas:
+      "header"
+      "main";
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import ArticleHeader from "@components/ArticleHeader.astro";
+import ArticleBody from "@components/ArticleBody.astro";
+import ArticleFooter from "@components/ArticleFooter.astro";
+
+import "@styles/constants.css";
+import "@styles/global.css";
+import "@styles/overrides.scss";
+
+import type {MdxLayoutProps} from "./layoutTypes";
+
+const {content} = Astro.props as MdxLayoutProps;
+const {title, description} = content;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <article>
+      <ArticleHeader title={title} />
+      <ArticleBody frontmatter={content}>
+        <slot />
+      </ArticleBody>
+      <ArticleFooter frontmatter={content} />
+    </article>
+    <style lang="scss">
+      :global(.icon.icon-link:after) {
+        content: "#";
+      }
+    </style>
+  </body>
+</html>

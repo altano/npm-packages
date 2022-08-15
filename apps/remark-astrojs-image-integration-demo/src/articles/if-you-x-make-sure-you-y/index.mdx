@@ -1,0 +1,589 @@
+---
+title: "If You X Make Sure You Y: Learning From C++ to Write Better Code"
+layout: ../../../layouts/Article.astro
+dateCreated: "2020-05-07T06:35:02.577Z"
+description: "How symmetry and locality of concerns has inspired better APIs in JavaScript"
+tags: ["javascript"]
+draft: true
+---
+
+My first job out of college was working on a Windows desktop application where I learned a lot about the world of C++ development. I eventually returned to my first love, web development. Almost 10 years later I still feel the relevance of some of those things I learned coding C++.
+
+## Resource Acquisition Is Initialization (RAII)
+
+RAII is an insanely simple concept that demonstrates a blind spot many JavaScript developers have. It stands for "resource acquisition is initialization," a bizarre term for something that is the reason it is easier to write memory-safe C++ than memory-safe C.
+
+### Is There a Problem?
+
+To understand RAII let's first understand what problem it solved. Here is some C code you might write:
+
+```c
+// Allocate enough memory (malloc = memory allocation) to store 100
+// integers and returns a pointer to that memory.
+int* arrayOfIntegers = (int*) malloc(100 * sizeof(int));
+
+// ... do something with the array
+
+// Free the memory we previously allocated
+free(arrayOfIntegers);
+```
+
+And here's the analogous C++ code you _could_ (but wouldn't) write:
+
+```cpp
+// Allocate enough memory (new = memory allocation) to store 100
+// integers and returns a pointer to that memory.
+int* arrayOfIntegers = new int[100];
+
+// ... do something with the array
+
+// Free the memory we previously allocated
+delete [] myArray;
+```
+
+For a sufficiently simple program[^notsimple] it might look impossible to screw up: if you allocate memory make sure to free it when you're done. Here is a similarly-flawed API for manipulating a file in Node.js:
+
+[^notsimple]: If that looks simple you should seriously take a break from programming.
+
+```javascript
+const fsPromises = require("fs").promises;
+async function writeMessage(msg) {
+  // Acquire a writeable handle to the file (lock the file)
+  let filehandle = await fsPromises.open("file.txt", "r+");
+  // Write to the file
+  await fsPromises.writeFile(filehandle, "face");
+  if (filehandle !== undefined) {
+    // Close the file (release the lock, dispose of the file handle)
+    await filehandle.close();
+  }
+}
+```
+
+If you acquire a file handle make sure to close it when you're done. Sound familiar? If you ever read API documentation that says "if you X make sure you Y" you're probably using a dangerous API. In a sufficiently large codebase you will _ALWAYS_ eventually forget to "make sure you Y," and the fact that Microsoft says [70 percent of all security bugs are memory safety issues](https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/) means no one else has magically figured out how to "make sure you Y" either, no matter the stakes. At least not through a sheer act of will.
+
+In case you didn't notice, the JS above doesn't guarantee it closes the file handle. The bug is that if `writeFile` throws an exception (which will happen if the returned Promise is rejected), `writeMessage` would return without ever closing the file handle. The leaked file handle will result in file.txt remaining open and locked for writing until the program terminates.
+
+```javascript
+const fsPromises = require("fs").promises;
+async function writeMessage(msg) {
+  // Acquire a writeable handle to the file (lock the file)
+  let filehandle = await fsPromises.open("file.txt", "r+");
+  // If this call fails ...
+  await fsPromises.writeFile(filehandle, "face"); // 💣💣💣
+  // ... we throw an exception here ...
+  if (filehandle !== undefined) {
+    // ... and never reach here.
+    await filehandle.close(); // 😭
+  }
+  // filehandle is now leaked and file.txt remains locked
+  // until program termination
+}
+```
+
+A subsequent call to `writeMessage` would fail earlier at `open` since we can't reopen the file for write while it is already opened for write by the leaked file handle:
+
+```javascript
+const fsPromises = require("fs").promises;
+async function writeMessage(msg) {
+  // 💣💣💣 file.txt is already open for write so this call fails and throws
+  let filehandle = await fsPromises.open("file.txt", "r+");
+}
+```
+
+In short, this code is dangerous trash and I'm fairly sure that upon reviewing it more JS programmers would dogmatically balk at the use of `let` than the dangerous potential failure to close the file handle. C++ programmers, on the other hand, would likely catch this bug and it's instructive to understand why. Let's get back to that C++ code which suffers from the same issue: something as simple as an exception in the code that manipulates the array of integers might cause the memory to not be freed:
+
+```cpp
+// Allocate enough memory (malloc = memory allocation) to store 100
+// integers and returns a pointer to that memory.
+int* arrayOfIntegers = new int[100];
+
+// highlight-start
+// ... do something with the array that throws an exception ...
+💣💣💣💣
+// highlight-end
+
+// ... and never reach here.
+delete [] myArray; // 😭
+```
+
+Or even more simply we might have an early return in the middle of the function. Or maybe the developer, after writing 3000 lines of code that does something with that memory, just gets careless and forgets to deallocate the memory.
+
+```cpp
+// Allocate enough memory (malloc = memory allocation) to store 100
+// integers and returns a pointer to that memory.
+int* arrayOfIntegers = new int[100];
+
+// ... 3000 lines of nonesense spaghetti code
+
+// Whoops we forgot to:
+// delete [] myArray; // 😭
+```
+
+The more code you squeeze between the memory allocation and deallocation, the more likely you are to fuck up the deallocation.
+
+### C++ Classes
+
+Before we get to the solution, we need a crash course in how classes work in C++. You can hook into both the construction and destruction of a class instance in C++:
+
+```cpp
+class Person
+{
+  Person()
+  {
+    // Do something during construction. This is called the "constructor."
+  }
+  ~Person()
+  {
+    // Do something during destruction. This is called the "destructor."
+  }
+};
+```
+
+C++ does not have garbage collection or any form of automatic memory management. A class instance allocated on the stack[^stack] will be constructed when it comes into scope and destructed as soon as it leaves scope. The object lifetime for a stack-allocated class instance is therefore totally predictable. For example:
+
+[^stack]: In C/C++ memory can be allocated on the stack or on the heap. This isn't important to this article but you can read more at https://en.wikipedia.org/wiki/C_dynamic_memory_allocation#Rationale.
+
+```cpp
+void createPerson() // declaration for a function that returns nothing
+{
+  // Person's constructor runs.
+  auto person = new Person();
+  person.save(); // Made up method.
+
+  // Person's destructor runs as we exit this scope because this function-local
+  // variable is out of scope when the function ends.
+}
+```
+
+And finally, the critical piece that makes the solution possible: a class instance's destructor is _GUARANTEED_ to run. It doesn't matter if you throw an exception or return from the middle of `foo`. The destructor (`Person::~Person()`) _will_ run.
+
+### The Solution
+
+C++ didn't entirely get rid of "if you allocate memory make sure to free it when you're done," but the predictability of class instance lifetime made it made it possible to create abstractions that _actually_ "make sure you Y" (e.g. free the memory, close the file, or whatever). To be "make-sure-you-Y-safe" your API must make it possible to create abstractions that:
+
+- Isolate the concern of performing both X and Y and nothing else (e.g. memory allocation and deallocation)
+- Make it hard to get wrong (e.g. working in the face of exceptions should be built-in and free)
+- Have good concern locality: X should be right next to Y (e.g. memory allocation should be a few lines away from the deallocation)
+
+If your API meets these criteria it is "make-sure-you-Y-safe". RAII isn't the only way to meet these criteria, but it's the goto tool in C++. How would we fix the C++ from earlier to use RAII to meet these criteria? Let's use a fleshed out example to illustrate the answer:
+
+```cpp
+// A function that outputs a string reversed, as inefficiently as possible.
+char* printReversedString(const char* str)
+{
+  // Find length of string.
+  int length = strlen(str);
+  // Create a new string of equal size to the passed one.
+  // Note: the +1 makes room for the null terminator at the end of the string.
+  char* reversedString = new char[length+1];
+  // Copy str into reversedString
+  strcpy(reversedString, str);
+  // and reverse it.
+  reverse(reversedString, reversedString + length);
+  // Print out the reversed string.
+  printf("%s", reversedString);
+  // Oh shoot, we're dumb and forgot to clean up the memory:
+  // delete [] reversedString;
+  // 😭😭😭
+}
+```
+
+Let's rewrite this C++ code using the determinism of C++ classes to meet all the criteria of a "make-sure-you-Y-safe" API. We can isolate memory management of the new string in a separate class:
+
+```cpp
+class SmartString
+{
+  char* str;
+  SmartString(int length)
+  {
+    // Note: the +1 makes room for the null value at the end of the string.
+    str = new char[length+1];
+  }
+  ~SmartString()
+  {
+    delete [] str;
+  }
+};
+```
+
+This meets all our criteria above. By limiting the concern of this class to just memory management and by making the allocation/deallocation pairing be just a few lines apart it makes it nearly impossible to get wrong. This code is also memory safe: because destructors are guaranteed to run you can't construct a `SmartString` that fails to deallocate the memory used for the string.
+
+Here's how you'd use it:
+
+```cpp
+// A function that outputs a string reversed, as inefficiently as possible.
+char* printReversedString(const char* str)
+{
+  // Find length of string.
+  int length = strlen(str);
+  // Create a new string of equal size to the passed one.
+  // highlight-next-line
+  SmartString reversedString(length);
+  // Copy str into reversedString
+  strcpy(reversedString.str, str);
+  // and reverse it.
+  reverse(reversedString.str, reversedString.str + length);
+  // Print out the reversed string.
+  printf("%s", reversedString.str);
+  // When the SmartString instance exits scope here, ~SmartString() will
+  // *AUTOMATICALLY* get called and the memory will be freed. We can't screw
+  // this up.
+  // 🎉🎉🎉
+}
+```
+
+This code might be bad for a million other reasons but it successfully demonstrates better memory allocation and deallocation. This is RAII in action. You acquire a resource (in this case, memory) by initializing a class instance. The memory's lifetime is tied to the class instance which has a well-defined and strict lifetime tied to the function scope. Your memory gets cleaned up in the destructor which is guaranteed to be called when the function exits. You _can't_ get this wrong. For example, let's say you add a return condition and you ridiculously put it after the memory allocation for some reason:
+
+```cpp
+// A function that outputs a string reversed, as inefficiently as possible.
+char* printReversedString(const char* str)
+{
+  // Find length of string.
+  int length = strlen(str);
+  // Create a new string of equal size to the passed one.
+  SmartString reversedString(length);
+  // highlight-start
+  if (str == null || length == 0)
+  {
+    printf("String was empty");
+    return;
+    // Returning early here still results in ~SmartString() being called.
+    // 🎉🎉🎉
+  }
+  // highlight-end
+  // Copy str into reversedString
+  strcpy(reversedString.str, str);
+  // and reverse it.
+  reverse(reversedString.str, reversedString.str + length);
+  // Print out the reversed string.
+  printf("%s", reversedString.str);
+  // When the SmartString instance exits scope here, ~SmartString() will
+  // *AUTOMATICALLY* get called and the memory will be freed. We can't screw
+  // this up.
+  // 🎉🎉🎉
+}
+```
+
+In C++ it is common to call an object "Smart" if it uses RAII to tie resource lifetime to object lifetime in a way that is transparent to the consumer of the smart object. Another example of this might be a file writing API. The naive first approach might look like:
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+void writeToFile(const char* fileName, const char* message)
+{
+  std::ofstream myfile;
+  myfile.open (fileName);
+  myfile << message;
+  myfile.close();
+}
+```
+
+If you open a file make sure you close it when you're done 🤮. Or we could just use a smart file 😎:
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+class SmartFile
+{
+  std::ofstream handle;
+  SmartFile(const char* fileName)
+  {
+    handle.open(fileName);
+  }
+  ~SmartFile()
+  {
+    handle.close();
+  }
+  void write(const char* message)
+  {
+    handle << message;
+  }
+};
+```
+
+Which would be used like so:
+
+```cpp
+void writeToFile(const char* fileName, const char* message)
+{
+  SmartFile file(fileName);
+  file.write(message);
+}
+```
+
+The `SmartFile` consumer cannot screw up closing the file.
+
+So how does any of this RAII malarkey apply to other programming languages?
+
+## RAII in C&#35;
+
+C# has garbage collection which means object lifetime is not something that can be implicitly relied upon, so implementing RAII-like abstractions requires something else. Fortunately the language delivered exactly such a concept: [`IDisposable`/`using`](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/using-objects). Some bad C# that writes to a file might look like this:
+
+```csharp
+StreamWriter writer = new StreamWriter("file.txt");
+writer.WriteLine("Hello");
+writer.close();
+```
+
+If you open a file for write make sure you close it 🤮. C# has an `IDisposable` interface that any object can implement which lets it define what should happen when that object is disposed of. It also has a `using` keyword that lets you define the scope you want to use an object for while guaranteeing that the object is disposed of upon exit of that scope. It's simpler than it sounds:
+
+```csharp
+using (StreamWriter writer = new StreamWriter("file.txt")) {
+  // The writer is initialized in here and we can use it freely.
+  writer.WriteLine("Hello");
+}
+// We've exited the `using` scope and writer is now disposed of (the file is closed).
+```
+
+Using this pattern C# allows us to define "mark-sure-you-Y-safe" APIs that meet all our criteria: `StreamWriter` can implement the `IDispoable` interface, define file open/close logic in a single place, and the `using` operator makes the default behavior work correctly in the face of early returns, exceptions, or whatever.
+
+## RAII-inspired JavaScript
+
+The guardians of JS have considered it a [fundamental design principle](https://w3ctag.github.io/design-principles/#js-gc) to not allow any API to reveal anything about the underlying garbage collection of the JS engine.
+
+One consequence of this is the seemingly-bizarre unhandled-Promise-rejection API[^promiserejection]. Another is that, given the lack of destructors and finalizers[^weakref], we CANNOT build APIs using RAII in JS. But remember that the goal isn't to use RAII: it's to meet our criteria for building "make-sure-you-Y-safe" APIs, and RAII is just one means to that end. If we're inspired by the ideas behind RAII and respect what problem it is solving, we can come up with equally effective solutions.
+
+[^promiserejection]: Two events are fired: (1) "unhandledrejection" when a Promise is rejected but there is no handler for that rejection, and (2) "rejectionhandled" when a Promise's rejection ends up getting handled. The much simpler and obvious API would be to fire an event whenever a Promise is rejected and garbage collected if no handler ever handled the rejection. This would definitively signal a bug because it's only after the Promise is garbage collected that we know it will never have its rejection handled. We can't have this simpler API because it would leak information about when a Promise was garbage collected, and we can't have that.
+[^weakref]: WeakRef is actually [a Stage 3 proposal](https://github.com/tc39/proposal-weakrefs#finalizers)
+
+### File Manipulation
+
+Remember that JS that writes to a file that I mentioned earlier?:
+
+```javascript
+const fsPromises = require("fs").promises;
+async function writeMessage(msg) {
+  // Acquire a writeable handle to the file (lock the file)
+  let filehandle = await fsPromises.open("file.txt", "r+");
+  // Write to the file
+  await fsPromises.writeFile(filehandle, "face");
+  if (filehandle !== undefined) {
+    // Close the file (release the lock, dispose of the file handle)
+    await filehandle.close();
+  }
+}
+```
+
+You could write a file API in JS that made it impossible to forget to close the file:
+
+```javascript
+const fsPromises = require("fs").promises;
+
+async function useFile(fileName, callback) {
+  let filehandle;
+  try {
+    // Acquire a writeable handle to the file (lock the file)
+    filehandle = await fsPromises.open(fileName, "r+");
+    // Let the callback do whatever it wants with the file
+    callback(filehandle);
+  } finally {
+    if (filehandle != null) {
+      await filehandle.close();
+    }
+  }
+}
+```
+
+Which would reduce `writeMessage` down to:
+
+```javascript
+async function writeMessage(msg) {
+  useFile("file.txt", async (filehandle) => {
+    // Write to the file
+    await fsPromises.writeFile(filehandle, "face");
+  });
+}
+```
+
+Here `useFile` only concerns itself with safely opening a file and guaranteeing that the file is eventually closed. It doesn't concern itself with what we do with the file making it harder to get this logic wrong.
+
+### Revealing Constructor Pattern
+
+An example of respecting how hard it is to "make-sure-you-Y" is the Promise API which makes use of the [Revealing Constructor Pattern](https://blog.domenic.me/the-revealing-constructor-pattern/). Before native Promises were part of the JS spec, we had an explosion of libraries that implemented their own version of Promise. Most of these libraries included something called Deferred but this never made it into the final JS implementation of Promise. The history here is extremely relevant.
+
+Here's how you might use jQuery's Deferred API:
+
+```javascript
+function getReturnValueAfterDelay(fn, delayMs) {
+  var deferred = jQuery.Deferred();
+  setTimeout(() => {
+    const result = fn();
+    deferred.resolve(result);
+  }, delayMs);
+  return deferred.Promise;
+}
+```
+
+When you create an instance of Deferred make sure you eventually resolve it 🤮. Sound familiar? This API is _sometimes_ necessary, but it sucks and leads to bugs where you create and wait on Promises that never resolve. Why? Because by disconnecting the creation of the Deferred from the code that resolves it, by allowing `jQuery.Deferred` and `deferred.resolve` to live _anywhere_ in code, it is possible and guaranteed that you'll eventually fuck up and fail to resolve a Deferred somewhere.
+
+Fortunately, someone came up with the Revealing Constructor Pattern that solved the problem of unresolved Deferreds and it immediately caught on as the superior API. That API is now part of the spec and how native Promise works:
+
+```javascript
+function getReturnValueAfterDelay(fn, delayMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const result = fn();
+      resolve(result);
+    }, delayMs);
+  });
+}
+```
+
+Is this really all that much better? YES! The `resolve` function is only available to you for the duration of the construction of the Promise which limits the surface area you can screw up in and the amount of code you have to reason about before discovering a bug (like forgetting to call `resolve`), and that makes all the difference. If a Deferred is a class instance variable the entire class has to be read and understood before you know whether or not it always resolves in all code paths. You can't do that with a Promise because `resolve` is going to be called in the function you pass to the constructor.
+
+It is possible to save the `resolve` away and implement a Deferred on top of a Promise (and open up dangerous possibilities of unresolved Deferreds), and sometimes this is necessary, but 99.99% of the time the revealing constructor pattern is good enough. I've never had to debug a native Promise that never resolves.
+
+### React Hooks
+
+At first glance React's component life cycle methods `componentDidMount` and `componentWillUnmount` look a lot like the safe C++ smart objects we talked about earlier. They are semantically analogous to constructors and destructors but they don't facilitate building or consuming APIs that meet our "make-sure-you-Y-safe" criteria. Let's take a component that listens for clicks and renders information about the tag names of the clicked elements (yeah I know these are getting dumber. I'm running out of steam, sorry):
+
+```javascript
+class EventLog extends React.Component {
+  state = {
+    lastTagName: null,
+  };
+  componentDidMount() {
+    document.addEventListener("mousedown", (evt) => {
+      this.setState({
+        lastTagName: evt.target.tagName,
+      });
+    });
+  }
+  render() {
+    const {lastTagName} = this.state;
+    return lastTagName == null
+      ? "Listening for clicks..."
+      : `mousedown on ${lastTagName}`;
+  }
+}
+```
+
+What's wrong with this code? On mount we add an event listener to the document, but we never remove it. If we unmount and then remount this component, there will be two listeners. That can be fixed:
+
+```javascript
+class EventLog extends React.Component {
+  state = {
+    lastTagName: null,
+  };
+  // highlight-start
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleMouseDown);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleMouseDown);
+  }
+  handleMouseDown = (evt) => {
+    this.setState({
+      lastTagName: evt.target.tagName,
+    });
+  };
+  // highlight-end
+  render() {
+    const {lastTagName} = this.state;
+    return lastTagName == null
+      ? "Listening for clicks..."
+      : `mousedown on ${lastTagName}`;
+  }
+}
+```
+
+So what's wrong with that? Most importantly, event handling is not the only concern of this component. And, as the concerns grow the amount of asymmetrical clutter in `componentDidMount` and `componentWillUnmount` will grow. For example, let's say we need another event listener:
+
+```javascript
+class EventLog extends React.Component {
+  state = {
+    lastTagName: null,
+  };
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleMouseDown);
+    // highlight-next-line
+    document.addEventListener("mouseup", this.handleMouseUp);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleMouseDown);
+    // highlight-next-line
+    document.removeEventListener("mouseup", this.handleMouseUp);
+  }
+  handleMouseDown = (evt) => {
+    this.setState({
+      lastTagName: evt.target.tagName,
+    });
+  };
+  // highlight-start
+  handleMouseUp = (evt) => {
+    this.setState({
+      lastTagName: null,
+    });
+  };
+  // highlight-end
+  render() {
+    const {lastTagName} = this.state;
+    return lastTagName == null
+      ? "Listening for clicks..."
+      : `mousedown on ${lastTagName}`;
+  }
+}
+```
+
+Keeping these two methods symmetrical, or even remembering that symmetry of these methods is important, is something that developers can get wrong. The last application I worked on was an extremely large React codebase that was full to the brim of missing cleanup. Someone created a way of making it easier to get this right: `SubscriptionsHandler` was an object you could use to collect all the subscriptions you had to dispose of (e.g. event listener removal) and then your `componentWillUnmount` method would be as simple as:
+
+```javascript
+  componentDidMount() {
+    this.subscriptionHandler.add(
+      Event.listener("click", this.handleClick),
+      ...
+    )
+  }
+  componentWillUnmount() {
+    this.subscriptionHandler.remove();
+  }
+```
+
+This wasn't good enough. People would forget to call `.remove()`, forget to define `componentWillUnmount`, not add all subscriptions to the handler, forget to add any subscriptions to the handler, etc. Anything that could go wrong went wrong somewhere in the codebase.
+
+The [new React Hooks API](https://reactjs.org/docs/hooks-intro.html) set out to solve many things, but making it easier to cleanup after yourself was one of them. Here's what the above component would look like as a functional component using React Hooks
+
+```javascript
+function EventLog() {
+  const [lastTagName, setLastTagName] = React.useState(null);
+
+  const handleMouseDown = (evt) => setLastTagName(evt.target.tagName);
+  React.useEffect(() => {
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+    };
+  });
+
+  const handleMouseUp = (evt) => setLastTagName(null);
+  React.useEffect(() => {
+    document.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  });
+
+  return lastTagName == null
+    ? "Listening for clicks..."
+    : `mousedown on ${lastTagName}`;
+}
+```
+
+There's a few things that make this more "make-sure-you-Y-safe":
+
+- Whenever you call `js›useEffect` you are by definition executing something with a side effect, and code with side effects almost always needs cleanup. Therefore you almost always want to return a cleanup method. You can even write a lint rule to enforce this. The symmetry here is ingrained in you as you type `useEffect`. There is no such association with `componentDidMount` and in fact most uses might not even require cleanup at all.
+- You can call `useEffect` multiple times and in each call you can group the side effect with its cleanup. This gives you isolation and locality of concerns. You get one `componentDidMount` to do all your initialization and one `componentWillUnmount` to do all your cleanup. Concerns are not isolated.
+- There is less overhead in connecting the side effect and its cleanup. In the class component you have to make sure your click handler is a separate class method, and then you have to make sure it uses an arrow function so that `this` is the correct value. All of this disappears in the functional component. When it is easier to write cleanup code, you will more reliably get cleanup code.
+- If a `useEffect` were sufficiently complicated, it would be far easier to pull out to a separate React Hook than it would be to factor that logic out of a React class component.
+
+React Hooks allow us to meet all our "make-sure-you-Y-safe" criteria. And in practice, that large codebase I referred to that leaked event handlers all over the place does not have the same problem now that it is converted to React Hooks.
+
+The irony is not lost on me that I started this article talking about RAII which used the introduction of classes in C++ (C doesn't have classes) to write more reliable code and now I'm singing the praises of React Hooks which eschew class components in favor of functional components to allow you to write more reliable code. RAII is just the inspiration, not the goal.
+
+---
+
+## Conclusion
+
+Don't ask anyone (including yourself) to make sure you Y. Make it impossible to forget to Y.

@@ -1,0 +1,43 @@
+pre.shiki {
+  border-radius: 0;
+  margin: 0.5em 0;
+  overflow: auto;
+  max-width: 100%;
+
+  .language-id {
+    display: none;
+  }
+
+  /**
+   * Let's us draw ASCII diagrams for binary
+   */
+  [class="language-binary"] + .code-container {
+    line-height: 1;
+  }
+
+  /**
+   * Remove the default PrismJS theme background-color, border-radius, margin,
+   * padding and overflow.
+   * 1. Make the element just wide enough to fit its content.
+   * 2. Always fill the visible space in .gatsby-highlight.
+   * 3. Adjust the position of the line numbers
+   */
+  [class*="language-"] + .code-container {
+    border-radius: 0;
+    margin: 0;
+    overflow: initial;
+    float: left; /* 1 */
+    min-width: 100%; /* 2 */
+    font-size: 80%;
+  }
+
+  /* Mobile browsers only */
+  @media only screen and (max-device-width: 480px) {
+    /**
+     * https://stackoverflow.com/a/5540312
+     * Fixes issue with large (usually wide) code sections getting sized up on
+     * mobile Safari.
+     */
+    -webkit-text-size-adjust: 100%;
+  }
+}
