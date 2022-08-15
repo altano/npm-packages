@@ -4,7 +4,7 @@
   "extends": "./base.json",
   "compilerOptions": {
     "lib": ["ESNext"],
-    "module": "ESNext",
+    "module": "NodeNext",
     "target": "ESNext",
     "resolveJsonModule": true
   }

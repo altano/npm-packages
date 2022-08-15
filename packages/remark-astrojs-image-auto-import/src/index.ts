@@ -1,7 +1,8 @@
 import { is } from "unist-util-is";
-import { visitAndReplace } from "./mdx/visit";
+import { visitAndReplace } from "@altano/remark-plugin-helpers";
 import { stringSrcToImportSrc } from "./mdx/srcStringToImport";
 import { getConfig } from "./config";
+import logger from "./logger";
 
 import type { VFile } from "vfile";
 import type { MdxJsxFlowElement } from "mdast-util-mdx-jsx";
@@ -37,12 +38,16 @@ const transformer = async (
   tree: Root,
   vfile: VFile,
 ): Promise<void> => {
-  await visitAndReplace(tree, async (node) => {
+  const endCompletionLogger = logger.logVFileOperation(vfile);
+
+  await visitAndReplace(tree, undefined, async (node) => {
     if (!isAstroJSImageElement(node) || isIgnoredNode(node)) {
       return;
     }
     return stringSrcToImportSrc(node, vfile, config);
   });
+
+  endCompletionLogger();
 };
 
 /**

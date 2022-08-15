@@ -5,29 +5,41 @@ import {
   isMdxJsxImageElement,
   isMdxJsxPictureElement,
 } from "./types";
-import { visitAndReplace } from "./mdx/visitAndReplace";
+import { visitAndReplace } from "@altano/remark-plugin-helpers";
 import { ensureMdxjsEsmExists } from "./mdx/mdxjsEsm";
+import { hasMdxJsxAttribute } from "./mdx/hasMdxJsxAttribute";
+import logger from "./logger";
 
+import type { VFile } from "vfile";
 import type { Plugin } from "unified";
 import type { Node, Data } from "unist";
 import type { Root } from "mdast";
-import type { RemarkAstroJSImageUseComponentOptions } from "./config";
+import type {
+  RemarkAstroJSImageUseComponentOptions,
+  RemarkAstroJSImageUseComponentConfig,
+} from "./config";
+import type {
+  MdxJsxAttribute,
+  MdxJsxExpressionAttribute,
+} from "mdast-util-mdx-jsx";
 
-/**
- * A Remark plugin for converting images in mdx to @astrojs/image components
- */
-const remarkAstroJSImageUseComponentPlugin: Plugin<
-  [RemarkAstroJSImageUseComponentOptions?],
-  Root
-> = (options) => (tree: Root) => {
-  // console.log(`remarkAstroJSImageUseComponentPlugin running on tree: `, tree);
+function isIgnoredNode<
+  T extends { attributes: (MdxJsxAttribute | MdxJsxExpressionAttribute)[] },
+>(image: T): boolean {
+  return hasMdxJsxAttribute(image, "data-component-ignore");
+}
 
-  const config = getConfig(options ?? {});
+const transformer = async (
+  config: RemarkAstroJSImageUseComponentConfig,
+  tree: Root,
+  vfile: VFile,
+): Promise<void> => {
+  const endCompletionLogger = logger.logVFileOperation(vfile);
   let needToAddImageImport = false;
   let needToAddPictureImport = false;
 
   if (config.convertMarkdownImages) {
-    visitAndReplace(tree, "image", (node: Node<Data>) => {
+    await visitAndReplace(tree, "image", async (node: Node<Data>) => {
       if (!isMarkdownImage(node)) {
         return;
       }
@@ -37,8 +49,8 @@ const remarkAstroJSImageUseComponentPlugin: Plugin<
   }
 
   if (config.convertJsxImages) {
-    visitAndReplace(tree, undefined, (node: Node<Data>) => {
-      if (!isMdxJsxImageElement(node)) {
+    await visitAndReplace(tree, undefined, async (node: Node<Data>) => {
+      if (!isMdxJsxImageElement(node) || isIgnoredNode(node)) {
         return;
       }
       needToAddImageImport = true;
@@ -47,8 +59,8 @@ const remarkAstroJSImageUseComponentPlugin: Plugin<
   }
 
   if (config.convertJsxPictures) {
-    visitAndReplace(tree, undefined, (node: Node<Data>) => {
-      if (!isMdxJsxPictureElement(node)) {
+    await visitAndReplace(tree, undefined, async (node: Node<Data>) => {
+      if (!isMdxJsxPictureElement(node) || isIgnoredNode(node)) {
         return;
       }
       needToAddPictureImport = true;
@@ -63,6 +75,19 @@ const remarkAstroJSImageUseComponentPlugin: Plugin<
   if (needToAddPictureImport) {
     ensureMdxjsEsmExists(tree, "Picture", "@astrojs/image/components");
   }
+
+  endCompletionLogger();
+};
+
+/**
+ * A Remark plugin for converting images in mdx to @astrojs/image components
+ */
+const remarkAstroJSImageUseComponentPlugin: Plugin<
+  [RemarkAstroJSImageUseComponentOptions?],
+  Root
+> = (options) => {
+  const config = getConfig(options ?? {});
+  return transformer.bind(null, config);
 };
 
 export default remarkAstroJSImageUseComponentPlugin;

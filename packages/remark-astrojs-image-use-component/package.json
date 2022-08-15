@@ -4,7 +4,7 @@
   "description": "A Remark plugin for converting images in mdx to @astrojs/image components",
   "type": "module",
   "sideEffects": false,
-  "module": "./dist/index.js",
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
@@ -35,6 +35,7 @@
     "mdx"
   ],
   "dependencies": {
+    "debug": "^4.3.4",
     "mdast-util-mdx-jsx": "^2.1.0",
     "unist-util-inspect": "^7.0.1",
     "unist-util-is": "^5.1.1",
@@ -43,6 +44,7 @@
     "vfile": "^5.3.4"
   },
   "devDependencies": {
+    "@altano/remark-plugin-helpers": "*",
     "@altano/remark-plugin-test-util": "*",
     "@altano/tsconfig": "*",
     "@mdx-js/mdx": "^2.1.2",

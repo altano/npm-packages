@@ -1,7 +1,8 @@
 {
-  "name": "@altano/remark-astrojs-image",
-  "version": "0.0.1-alpha.1",
-  "description": "A remark preset that enhances images in your .mdx files to use @astrojs/image components",
+  "name": "@altano/remark-plugin-helpers",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Utilities for remark plugins",
   "type": "module",
   "sideEffects": false,
   "exports": "./dist/index.js",
@@ -21,26 +22,25 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/remark-astrojs-image"
+    "directory": "packages/remark-plugin-helpers"
   },
   "files": [
     "dist"
   ],
-  "keywords": [
-    "astro",
-    "remark",
-    "mdx"
-  ],
-  "dependencies": {
-    "@altano/remark-astrojs-image-auto-import": "*",
-    "@altano/remark-astrojs-image-use-component": "*"
-  },
   "devDependencies": {
     "@altano/tsconfig": "*",
-    "@types/node": "^18.0.1",
-    "unified": "^10.1.2"
+    "@types/node": "^18.6.4",
+    "@types/prettier": "^2.7.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.1",
+    "typescript": "^4.7.4"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "kleur": "^4.1.5",
+    "unist-util-visit": "^4.1.0"
   }
 }
