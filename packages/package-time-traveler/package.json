@@ -16,7 +16,7 @@
     "directory": "packages/package-time-traveler"
   },
   "dependencies": {
-    "pacote": "^13.6.1",
+    "pacote": "^13.6.2",
     "tiny-async-pool": "^2.1.0"
   }
 }
