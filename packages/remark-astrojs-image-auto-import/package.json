@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "unist-util-is": "^5.1.1",
-    "unist-util-visit": "^4.1.0"
+    "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
     "@altano/remark-plugin-test-util": "*",
