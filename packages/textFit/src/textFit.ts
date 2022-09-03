@@ -24,7 +24,8 @@ export interface Options {
   minFontSize?: number;
   maxFontSize?: number;
   /**
-   * if true, textFit will re-process already-fit nodes. Set to 'false' for better performance
+   * if true, textFit will re-process already-fit nodes. Set to 'false' for
+   * better performance
    */
   reProcess?: boolean;
   /**
@@ -35,6 +36,11 @@ export interface Options {
    * if true, textFit will use flexbox for vertical alignment
    */
   alignVertWithFlexbox?: boolean;
+  /**
+   * Sets the final size to the max multiple of this. Useful when a font
+   * requires the font size to be a multiple of a number for optimal rendering.
+   */
+  sizeMultipleOf?: number;
 }
 
 const defaultSettings: Required<Options> = {
@@ -45,6 +51,7 @@ const defaultSettings: Required<Options> = {
   reProcess: true,
   widthOnly: false,
   alignVertWithFlexbox: false,
+  sizeMultipleOf: 1,
 };
 
 export function textFit(
@@ -171,6 +178,12 @@ function processItem(el: HTMLElement, settings: Required<Options>) {
     }
     // await injection point
   }
+
+  if (settings.sizeMultipleOf > 1) {
+    // Snap the max size down to the nearest multiple of `settings.sizeMultipleOf`
+    size = size % settings.sizeMultipleOf;
+  }
+
   // found, updating font if differs:
   if (innerSpan.style.fontSize != size + "px")
     innerSpan.style.fontSize = size + "px";
