@@ -1,6 +1,6 @@
 {
   "name": "@altano/textfit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A fast, jQuery-free text sizing component that quickly fits single and multi-line text to the width (and optionally height) of its container.",
   "directories": {
     "example": "examples"

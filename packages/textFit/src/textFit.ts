@@ -181,7 +181,7 @@ function processItem(el: HTMLElement, settings: Required<Options>) {
 
   if (settings.sizeMultipleOf > 1) {
     // Snap the max size down to the nearest multiple of `settings.sizeMultipleOf`
-    size = size % settings.sizeMultipleOf;
+    size = size - (size % settings.sizeMultipleOf);
   }
 
   // found, updating font if differs:
