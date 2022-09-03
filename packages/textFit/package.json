@@ -22,7 +22,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/altano/textFit.git"
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/textFit"
   },
   "keywords": [
     "textfit",
@@ -34,12 +35,8 @@
     "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/altano/textFit/issues"
-  },
-  "homepage": "https://github.com/altano/textFit",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "access": "public"
   },
   "devDependencies": {
     "@altano/tsconfig": "*"
