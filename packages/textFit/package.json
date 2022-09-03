@@ -13,7 +13,6 @@
   "exports": "./dist/textFit.js",
   "types": "./dist/textFit.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup src/textFit.ts --format esm --dts",
     "dev": "tsup src/textFit.ts --watch --format esm --dts",
     "format": "prettier --write src",
