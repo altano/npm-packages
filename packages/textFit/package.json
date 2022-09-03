@@ -1,0 +1,47 @@
+{
+  "name": "@altano/textfit",
+  "version": "0.0.1",
+  "description": "A fast, jQuery-free text sizing component that quickly fits single and multi-line text to the width (and optionally height) of its container.",
+  "directories": {
+    "example": "examples"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./dist/textFit.js",
+  "types": "./dist/textFit.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup src/textFit.ts --format esm --dts",
+    "dev": "tsup src/textFit.ts --watch --format esm --dts",
+    "format": "prettier --write src",
+    "build-example": "sh examples/mk-examples.sh",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/textFit.git"
+  },
+  "keywords": [
+    "textfit",
+    "fit",
+    "text"
+  ],
+  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
+  "contributors": [
+    "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altano/textFit/issues"
+  },
+  "homepage": "https://github.com/altano/textFit",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {
+    "@altano/tsconfig": "*"
+  }
+}
