@@ -1,10 +1,11 @@
 {
   "name": "@altano/tiny-async-pool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Run multiple promise-returning & async functions with limited concurrency using native ES9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "sideEffects": false,
   "files": [
     "LICENSE-MIT",
     "dist",
