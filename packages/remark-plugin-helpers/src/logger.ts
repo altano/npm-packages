@@ -18,13 +18,13 @@ export class Logger {
       : `${(buildTime / 1e3).toFixed(2)}s`;
   }
 
+  log(message: string): void {
+    this.#logger(message);
+  }
+
   logVFileOperation(vfile: VFile): () => void {
-    if (vfile.basename == null || vfile.basename === "") {
-      this.#logger(`vfile: ${vfile}`);
-    }
-    const operation = vfile.basename ?? "";
-    // `${dim(vfile.dirname ?? "")}/${cyan(vfile.basename ?? "")}`
-    return this.logOperation(operation);
+    // TODO Consider logging the relative path to the file as well
+    return this.logOperation(vfile.basename ?? "");
   }
 
   logOperation(operation: string): () => void {
@@ -32,7 +32,7 @@ export class Logger {
     return () => {
       const duration = Logger.#getTimeStat(timeStart, performance.now());
       const message = `${operation} ${dim(`(+${duration})`)}`;
-      this.#logger(message);
+      this.log(message);
     };
   }
 }

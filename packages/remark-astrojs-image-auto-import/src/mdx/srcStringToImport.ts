@@ -1,9 +1,12 @@
 import { createMdxJsxImportExpression } from "./createMdxJsxImportExpression";
 import * as fs from "node:fs/promises";
+// import fs from "node:fs";
 import { constants } from "node:fs";
 import { resolve } from "node:path";
 import { extract } from "../array";
 import { unquoteIfNecessary } from "../string";
+import logger from "../logger";
+import { cyan } from "kleur/colors";
 
 import type { RemarkAstroJSImageAutoImportConfig } from "../config";
 import type {
@@ -49,12 +52,17 @@ export async function stringSrcToImportSrc(
   vfile: VFile,
   config: RemarkAstroJSImageAutoImportConfig,
 ): Promise<MdxJsxFlowElement> {
+  const endCompletionLogger = logger.logVFileOperation(vfile);
   const { ignoreFileNotFound, ignoreNonFileUrl } = config;
 
+  const endCompletionLogger2 = logger.logOperation(
+    `${vfile.basename} stringSrcToImportSrc/extract`,
+  );
   const [srcAttr, otherAttributes] = extract(
     element.attributes,
     isMdxJsxStringSrcAttribute,
   );
+  endCompletionLogger2();
   if (srcAttr == null) {
     return element;
   }
@@ -75,12 +83,19 @@ export async function stringSrcToImportSrc(
     throw new Error(`Expected vfile.dirname to be a string`);
   }
 
+  const endCompletionLogger3 = logger.logOperation(
+    `${vfile.basename} stringSrcToImportSrc/resolve`,
+  );
   const absolutePath = resolve(vfile.dirname, src);
+  endCompletionLogger3();
 
   if (!ignoreFileNotFound) {
     try {
+      const endCompletionLogger4 = logger.logOperation(
+        `${vfile.basename} stringSrcToImportSrc/fs.access`,
+      );
       await fs.access(absolutePath, constants.F_OK);
-      // console.log(`FOUND path: ${path} (${resolve(path)})`);
+      endCompletionLogger4();
     } catch {
       throw new Error(
         `${absolutePath} could not be found on disk and the "ignoreFileNotFound" option is false`,
@@ -88,8 +103,12 @@ export async function stringSrcToImportSrc(
     }
   }
 
+  const endCompletionLogger5 = logger.logOperation(
+    `${vfile.basename} stringSrcToImportSrc/createMdxJsxImportExpression`,
+  );
   const srcWithImportAttr = createMdxJsxImportExpression("src", absolutePath);
-  // console.log({ result: srcWithImportAttr });
+  endCompletionLogger5();
+  endCompletionLogger();
   return {
     ...element,
     attributes: [...otherAttributes, srcWithImportAttr],
