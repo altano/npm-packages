@@ -24,6 +24,7 @@
     "url": "https://github.com/altano/npm-packages",
     "directory": "packages/textFit"
   },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/textFit",
   "keywords": [
     "textfit",
     "fit",
@@ -34,10 +35,10 @@
     "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
   ],
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@altano/tsconfig": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

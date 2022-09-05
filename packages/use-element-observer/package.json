@@ -27,6 +27,7 @@
     "url": "https://github.com/altano/npm-packages",
     "directory": "packages/use-element-observer"
   },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-element-observer",
   "dependencies": {
     "react-use": "^17.4.0"
   },

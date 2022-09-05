@@ -26,6 +26,7 @@
     "url": "https://github.com/altano/npm-packages",
     "directory": "packages/remark-astrojs-image-auto-import"
   },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-astrojs-image-auto-import",
   "files": [
     "dist"
   ],
