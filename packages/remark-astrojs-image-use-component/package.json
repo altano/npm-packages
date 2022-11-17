@@ -42,7 +42,7 @@
     "unist-util-is": "^5.1.1",
     "unist-util-select": "^4.0.1",
     "unist-util-visit": "^4.1.1",
-    "vfile": "^5.3.5"
+    "vfile": "^5.3.6"
   },
   "devDependencies": {
     "@altano/remark-plugin-helpers": "*",
