@@ -39,7 +39,7 @@
     "debug": "^4.3.4",
     "mdast-util-mdx-jsx": "^2.1.0",
     "unist-util-inspect": "^7.0.1",
-    "unist-util-is": "^5.1.1",
+    "unist-util-is": "^5.2.0",
     "unist-util-select": "^4.0.1",
     "unist-util-visit": "^4.1.1",
     "vfile": "^5.3.5"
