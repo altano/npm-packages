@@ -1,6 +1,7 @@
 {
   "packages": [
-    "nodejs"
+    "nodejs",
+    "git"
   ],
   "shell": {
     "init_hook": null
