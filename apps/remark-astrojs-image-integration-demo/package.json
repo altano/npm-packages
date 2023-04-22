@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@altano/remark-astrojs-image": "*",
-    "@astrojs/image": "^0.3.4",
-    "@astrojs/mdx": "^0.9.0",
-    "@astrojs/preact": "^1.0.2",
-    "astro": "^1.0.5",
+    "@astrojs/image": "^0.16.6",
+    "@astrojs/mdx": "^0.19.0",
+    "@astrojs/preact": "^2.1.0",
+    "astro": "^2.3.0",
     "nullthrows": "^1.1.1",
-    "sass": "^1.54.4",
+    "sass": "^1.62.0",
     "why-is-node-running": "^2.2.2"
   },
   "publishConfig": {

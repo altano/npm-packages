@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "*",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.15.13",
     "unified": "^10.1.2"
   },
   "publishConfig": {
