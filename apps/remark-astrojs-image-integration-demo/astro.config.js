@@ -8,28 +8,12 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   site: "https://test.example.org",
   integrations: [
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     preact(),
     mdx({
-      remarkPlugins: {
-        extends: [remarkAstrojsImage], // extends: [
-        //   [
-        //     remarkAstrojsImageUseComponent,
-        //     {
-        //       convertMarkdownImages: true,
-        //       convertJsxImages: true,
-        //       convertJsxPictures: true,
-        //     },
-        //   ],
-        //   [
-        //     remarkAstrojsImageAutoImport,
-        //     {
-        //       ignoreFileNotFound: false,
-        //       ignoreNonFileUrl: true,
-        //     },
-        //   ],
-        // ],
-      },
+      remarkPlugins: [remarkAstrojsImage],
     }),
   ],
   markdown: {
