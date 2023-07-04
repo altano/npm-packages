@@ -1,0 +1,51 @@
+{
+  "name": "@altano/remark-mdx-toc-with-slugs",
+  "version": "0.0.1-alpha.1",
+  "description": "A remark plugin to generate a table of contents (including slugs) and convert it into MDX export",
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --watch --format esm --dts",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-mdx-toc-with-slugs"
+  },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-mdx-toc-with-slugs",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "remark",
+    "mdx"
+  ],
+  "dependencies": {
+    "astring": "^1.8.6",
+    "estree-util-value-to-estree": "^3.0.1",
+    "estree-util-visit": "^1.2.1",
+    "github-slugger": "^2.0.0",
+    "mdast-util-mdxjs-esm": "^1.3.1",
+    "remark-mdx-toc": "^0.3.1",
+    "unist-util-visit": "^4.1.2"
+  },
+  "devDependencies": {
+    "@altano/tsconfig": "*",
+    "@types/node": "^18.15.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
