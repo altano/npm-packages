@@ -11,7 +11,7 @@ import type { MdxjsEsm } from "mdast-util-mdxjs-esm";
 import type { Node } from "unist-util-visit/lib";
 import type { ArrayExpression } from "estree";
 
-type TableOfContentsEntry = TocEntry & {
+export type TableOfContentsEntry = TocEntry & {
   slug: string;
   children: TableOfContentsEntry[];
 };
