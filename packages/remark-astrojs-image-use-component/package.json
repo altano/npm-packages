@@ -33,6 +33,7 @@
   "keywords": [
     "astro",
     "remark",
+    "remark-plugin",
     "mdx"
   ],
   "dependencies": {
