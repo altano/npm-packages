@@ -6,7 +6,7 @@ import { remarkMdxToc } from "remark-mdx-toc";
 import { visit } from "unist-util-visit";
 
 import type { RemarkMdxTocOptions, TocEntry } from "remark-mdx-toc";
-import type { Plugin } from "unified";
+import type { Plugin, Processor } from "unified";
 import type { MdxjsEsm } from "mdast-util-mdxjs-esm";
 import type { Node } from "unist-util-visit/lib";
 import type { ArrayExpression } from "estree";
@@ -47,61 +47,64 @@ function assertMdxjsEsmNode(node: Node): asserts node is MdxjsEsm {
  * already, the toc data will be enhanced to have auto-generated slugs for every
  * heading. This uses github-slugger
  */
-const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> = (
-  options = {},
-) => {
-  const name = options.name ?? "toc"; // mirrors remark-mdx-toc
+const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> =
+  function (this: Processor, options = {}) {
+    const mdxTocTransformer = remarkMdxToc.call(this, options);
+    if (mdxTocTransformer == null) {
+      throw new Error(`Couldn't create mdxTocTransformer function`);
+    }
 
-  return function mdxTocWithSlugsTransformer(ast): void {
-    const mdast = ast;
+    const name = options.name ?? "toc"; // mirrors remark-mdx-toc
 
-    // visit all esm nodes in the mdx
-    visit(mdast, ["mdxjsEsm"], (mdxNode) => {
-      assertMdxjsEsmNode(mdxNode);
-      // visit all nodes in the estree
-      const estree = mdxNode.data?.estree;
-      if (estree) {
-        estreeVisit(estree, (esNode) => {
-          if (
-            esNode.type === "VariableDeclarator" &&
-            esNode.id.type === "Identifier" &&
-            esNode.id.name === name &&
-            esNode.init
-          ) {
-            // we found the "toc" variable declarator
+    return function mdxTocWithSlugsTransformer(ast, ...args): void {
+      // Delegate to remark-mdx-toc to create the table of contents
+      const result = mdxTocTransformer(ast, ...args);
+      if (result instanceof Promise) {
+        throw new Error(`Wasn't expected remark-mdx-toc to be an async plugin`);
+      }
 
-            // It's easier to be wasteful and do our transformations in JS,
-            // instead of directly on the tree, and then convert it back to a
-            // tree.
-            const tocExportString = generate(esNode.init);
-            const toc = JSON.parse(tocExportString);
+      const mdast = ast;
 
-            // Add slugs to the toc
-            const tocWithSlugs = sluggifyTocEntries(toc);
+      // visit all esm nodes in the mdx
+      visit(mdast, ["mdxjsEsm"], (mdxNode) => {
+        assertMdxjsEsmNode(mdxNode);
+        // visit all nodes in the estree
+        const estree = mdxNode.data?.estree;
+        if (estree) {
+          estreeVisit(estree, (esNode) => {
+            if (
+              esNode.type === "VariableDeclarator" &&
+              esNode.id.type === "Identifier" &&
+              esNode.id.name === name &&
+              esNode.init
+            ) {
+              // we found the "toc" variable declarator
 
-            // Overwrite the existing toc export with ours
-            const newTree = valueToEstree(tocWithSlugs);
+              // It's easier to be wasteful and do our transformations in JS,
+              // instead of directly on the tree, and then convert it back to a
+              // tree.
+              const tocExportString = generate(esNode.init);
+              const toc = JSON.parse(tocExportString);
 
-            if (newTree.type === "ArrayExpression") {
-              esNode.init = newTree as ArrayExpression; // different versions of @types/estree are screwing with TypeScript
+              // Add slugs to the toc
+              const tocWithSlugs = sluggifyTocEntries(toc);
+
+              // Overwrite the existing toc export with ours
+              const newTree = valueToEstree(tocWithSlugs);
+
+              if (newTree.type === "ArrayExpression") {
+                esNode.init = newTree as ArrayExpression; // different versions of @types/estree are screwing with TypeScript
+              }
+
+              // We out
+              return EXIT;
             }
 
-            // We out
-            return EXIT;
-          }
-
-          return;
-        });
-      }
-    });
+            return;
+          });
+        }
+      });
+    };
   };
-};
 
-// This plugin is a preset that combines remark-mdx-toc and our enhancements
-// plugin. This makes it so that the user doesn't have to separately add the
-// remark-mdx-toc plugin themselves.
-const preset = {
-  plugins: [remarkMdxToc, remarkMdxTocWithSlugs],
-};
-
-export default preset;
+export default remarkMdxTocWithSlugs;
