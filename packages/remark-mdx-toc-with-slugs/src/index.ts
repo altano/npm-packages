@@ -65,25 +65,25 @@ const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> = (
           if (
             esNode.type === "VariableDeclarator" &&
             esNode.id.type === "Identifier" &&
-            esNode.id.name === name
+            esNode.id.name === name &&
+            esNode.init
           ) {
             // we found the "toc" variable declarator
-            if (esNode.init) {
-              // It's easier to be wasteful and do our transformations in JS,
-              // instead of directly on the tree, and then convert it back to a
-              // tree.
-              const tocExportString = generate(esNode.init);
-              const toc = JSON.parse(tocExportString);
 
-              // Add slugs to the toc
-              const tocWithSlugs = sluggifyTocEntries(toc);
+            // It's easier to be wasteful and do our transformations in JS,
+            // instead of directly on the tree, and then convert it back to a
+            // tree.
+            const tocExportString = generate(esNode.init);
+            const toc = JSON.parse(tocExportString);
 
-              // Overwrite the existing toc export with ours
-              const newTree = valueToEstree(tocWithSlugs);
+            // Add slugs to the toc
+            const tocWithSlugs = sluggifyTocEntries(toc);
 
-              if (newTree.type === "ArrayExpression") {
-                esNode.init = newTree as ArrayExpression; // different versions of @types/estree are screwing with TypeScript
-              }
+            // Overwrite the existing toc export with ours
+            const newTree = valueToEstree(tocWithSlugs);
+
+            if (newTree.type === "ArrayExpression") {
+              esNode.init = newTree as ArrayExpression; // different versions of @types/estree are screwing with TypeScript
             }
 
             // We out
