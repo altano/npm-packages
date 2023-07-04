@@ -1,0 +1,139 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`remark-mdx-toc-with-slugs > [test #0] basic 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+export const toc = [
+  {
+    depth: 2,
+    value: "Resource Acquisition Is Initialization (RAII)",
+    attributes: {},
+    children: [
+      {
+        depth: 3,
+        value: "Is There a Problem?",
+        attributes: {},
+        children: [],
+        slug: "is-there-a-problem",
+      },
+      {
+        depth: 3,
+        value: "C++ Classes",
+        attributes: {},
+        children: [],
+        slug: "c-classes",
+      },
+      {
+        depth: 3,
+        value: "The Solution",
+        attributes: {},
+        children: [],
+        slug: "the-solution",
+      },
+    ],
+    slug: "resource-acquisition-is-initialization-raii",
+  },
+];
+function _createMdxContent(props) {
+  const _components = Object.assign(
+    {
+      h2: "h2",
+      h3: "h3",
+    },
+    props.components,
+  );
+  return (
+    <>
+      <_components.h2>
+        {"Resource Acquisition Is Initialization (RAII)"}
+      </_components.h2>
+      {"\\n"}
+      <_components.h3>{"Is There a Problem?"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"C++ Classes"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"The Solution"}</_components.h3>
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
+
+exports[`remark-mdx-toc-with-slugs > [test #1] custom-name 1`] = `
+/*@jsxRuntime automatic @jsxImportSource react*/
+export const tableOfContents = [
+  {
+    depth: 2,
+    value: "Resource Acquisition Is Initialization (RAII)",
+    attributes: {},
+    children: [
+      {
+        depth: 3,
+        value: "Is There a Problem?",
+        attributes: {},
+        children: [],
+        slug: "is-there-a-problem",
+      },
+      {
+        depth: 3,
+        value: "C++ Classes",
+        attributes: {},
+        children: [],
+        slug: "c-classes",
+      },
+      {
+        depth: 3,
+        value: "The Solution",
+        attributes: {},
+        children: [],
+        slug: "the-solution",
+      },
+    ],
+    slug: "resource-acquisition-is-initialization-raii",
+  },
+];
+function _createMdxContent(props) {
+  const _components = Object.assign(
+    {
+      h2: "h2",
+      h3: "h3",
+    },
+    props.components,
+  );
+  return (
+    <>
+      <_components.h2>
+        {"Resource Acquisition Is Initialization (RAII)"}
+      </_components.h2>
+      {"\\n"}
+      <_components.h3>{"Is There a Problem?"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"C++ Classes"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"The Solution"}</_components.h3>
+    </>
+  );
+}
+function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+export default MDXContent;
+
+`;
