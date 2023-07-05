@@ -1,6 +1,6 @@
 {
   "name": "@altano/remark-mdx-toc-with-slugs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A remark plugin to generate a table of contents (including slugs) and convert it into MDX export",
   "type": "module",
   "sideEffects": false,
@@ -20,7 +20,7 @@
     "email": "altano@gmail.com",
     "url": "https://alan.norbauer.com"
   },
-  "license": "ISC",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
