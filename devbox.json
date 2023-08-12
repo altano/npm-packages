@@ -1,5 +1,10 @@
 {
-  "packages": ["nodejs@18.16.0", "git@2.40.1", "git-branchless@0.7.1"],
+  "packages": [
+    "nodejs@18.16.0",
+    "git@2.40.1",
+    "git-branchless@0.7.1",
+    "nodePackages.pnpm@8.6.5"
+  ],
   "shell": {},
   "nixpkgs": {
     "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"

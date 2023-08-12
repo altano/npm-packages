@@ -8,8 +8,7 @@ import { visit } from "unist-util-visit";
 import type { RemarkMdxTocOptions, TocEntry } from "remark-mdx-toc";
 import type { Plugin, Processor } from "unified";
 import type { MdxjsEsm } from "mdast-util-mdxjs-esm";
-import type { Node } from "unist-util-visit/lib";
-import type { ArrayExpression } from "estree";
+import type { Node } from "unist";
 
 export type TableOfContentsEntry = TocEntry & {
   slug: string;
@@ -93,7 +92,7 @@ const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> =
               const newTree = valueToEstree(tocWithSlugs);
 
               if (newTree.type === "ArrayExpression") {
-                esNode.init = newTree as ArrayExpression; // different versions of @types/estree are screwing with TypeScript
+                esNode.init = newTree;
               }
 
               // We out

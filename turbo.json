@@ -1,5 +1,8 @@
 {
   "pipeline": {
+    "prep": {
+      "dependsOn": ["^build", "^lint", "^test"]
+    },
     "build": {
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^lint", "^build"]

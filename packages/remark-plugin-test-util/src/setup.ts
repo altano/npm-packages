@@ -2,23 +2,25 @@ import prettier from "prettier";
 import prettierConfig from "../../../.prettierrc.json";
 import { VFile } from "vfile";
 import { expect } from "vitest";
+import path from "node:path";
 
 import type { Options } from "prettier";
 
 type Serializer = Parameters<typeof expect.addSnapshotSerializer>[0];
 
 function getSourceDir(): string {
-  const sourceDir = process.env["npm_config_local_prefix"];
-  if (sourceDir == null) {
-    throw new Error(`npm_config_local_prefix env variable must be set`);
+  const scriptDir = process.env["PNPM_SCRIPT_SRC_DIR"];
+  if (scriptDir == null) {
+    throw new Error(`PNPM_SCRIPT_SRC_DIR env variable must be set`);
   }
-  return sourceDir;
+  return path.resolve(scriptDir, "../..");
 }
 
 /**
  * Strip absolute paths from the output to make tests portable
  */
 function stripAbsolutePaths(str: string): string {
+  // return str;
   return str.replaceAll(getSourceDir(), "<repo-root>");
 }
 

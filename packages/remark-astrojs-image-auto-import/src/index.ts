@@ -7,8 +7,7 @@ import logger from "./logger";
 import type { VFile } from "vfile";
 import type { MdxJsxFlowElement } from "mdast-util-mdx-jsx";
 import type { Plugin } from "unified";
-import type { Data, Node } from "unist";
-import type { Root } from "mdast";
+import type { Node } from "unist";
 import type {
   RemarkAstroJSImageAutoImportConfig,
   RemarkAstroJSImageAutoImportOptions,
@@ -18,7 +17,7 @@ interface AstroJSImageElement extends MdxJsxFlowElement {
   name: "Image" | "Picture";
 }
 
-function isAstroJSImageElement(node: Node<Data>): node is AstroJSImageElement {
+function isAstroJSImageElement(node: Node): node is AstroJSImageElement {
   return (
     is(node, { type: "mdxJsxFlowElement", name: "Image" }) ||
     is(node, { type: "mdxJsxFlowElement", name: "Picture" })
@@ -35,7 +34,7 @@ function isIgnoredNode(image: AstroJSImageElement): boolean {
 
 const transformer = async (
   config: RemarkAstroJSImageAutoImportConfig,
-  tree: Root,
+  tree: Node,
   vfile: VFile,
 ): Promise<void> => {
   const endCompletionLogger = logger.logVFileOperation(vfile);
@@ -56,7 +55,7 @@ const transformer = async (
  */
 const remarkAstroJSImageAutoImportPlugin: Plugin<
   [RemarkAstroJSImageAutoImportOptions?],
-  Root
+  Node
 > = (options) => {
   const config = getConfig(options ?? {});
   return transformer.bind(null, config);

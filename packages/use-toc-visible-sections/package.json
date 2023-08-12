@@ -29,18 +29,18 @@
   },
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-toc-visible-sections",
   "dependencies": {
-    "@altano/use-visible-elements": "*"
+    "@altano/use-visible-elements": "workspace:*"
   },
   "devDependencies": {
-    "@altano/tsconfig": "*",
+    "@altano/tsconfig": "workspace:*",
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.39.0",
-    "eslint-config-altano": "*",
+    "eslint-config-altano": "workspace:*",
     "prettier": "^2.8.7",
     "react": "^18",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   },
   "publishConfig": {
     "access": "public"

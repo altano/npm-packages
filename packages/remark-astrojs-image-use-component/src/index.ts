@@ -12,8 +12,7 @@ import logger from "./logger";
 
 import type { VFile } from "vfile";
 import type { Plugin } from "unified";
-import type { Node, Data } from "unist";
-import type { Root } from "mdast";
+import type { Node } from "unist";
 import type {
   RemarkAstroJSImageUseComponentOptions,
   RemarkAstroJSImageUseComponentConfig,
@@ -31,7 +30,7 @@ function isIgnoredNode<
 
 const transformer = async (
   config: RemarkAstroJSImageUseComponentConfig,
-  tree: Root,
+  tree: Node,
   vfile: VFile,
 ): Promise<void> => {
   const endCompletionLogger = logger.logVFileOperation(vfile);
@@ -39,7 +38,7 @@ const transformer = async (
   let needToAddPictureImport = false;
 
   if (config.convertMarkdownImages) {
-    await visitAndReplace(tree, "image", async (node: Node<Data>) => {
+    await visitAndReplace(tree, "image", async (node) => {
       if (!isMarkdownImage(node)) {
         return;
       }
@@ -49,7 +48,7 @@ const transformer = async (
   }
 
   if (config.convertJsxImages) {
-    await visitAndReplace(tree, undefined, async (node: Node<Data>) => {
+    await visitAndReplace(tree, undefined, async (node) => {
       if (!isMdxJsxImageElement(node) || isIgnoredNode(node)) {
         return;
       }
@@ -59,7 +58,7 @@ const transformer = async (
   }
 
   if (config.convertJsxPictures) {
-    await visitAndReplace(tree, undefined, async (node: Node<Data>) => {
+    await visitAndReplace(tree, undefined, async (node) => {
       if (!isMdxJsxPictureElement(node) || isIgnoredNode(node)) {
         return;
       }
@@ -84,7 +83,7 @@ const transformer = async (
  */
 const remarkAstroJSImageUseComponentPlugin: Plugin<
   [RemarkAstroJSImageUseComponentOptions?],
-  Root
+  Node
 > = (options) => {
   const config = getConfig(options ?? {});
   return transformer.bind(null, config);

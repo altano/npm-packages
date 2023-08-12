@@ -1,31 +1,26 @@
-import { visit } from "unist-util-visit";
+import { visit, type Test } from "unist-util-visit";
 
-import type { Node, Data } from "unist";
-import type { Parent, Content } from "mdast";
+import type { Node, Parent } from "unist";
 
 export async function visitAndReplace(
-  tree: Node<Data>,
-  selector: string | undefined,
-  getReplacement: (node: Node<Data>) => Promise<Content | undefined>,
+  tree: Node,
+  check: Test,
+  getReplacement: (node: Node) => Promise<Node | undefined>,
 ): Promise<void> {
   const promises: Promise<void>[] = [];
-  visit(
-    tree,
-    selector,
-    (node: Node<Data>, index: number | null, parent: Parent | null) => {
-      if (parent == null || index == null) {
-        // We never transform the root node
-        return;
+  visit(tree, check, (node, index, parent: Parent) => {
+    if (parent == null || index == null) {
+      // We never transform the root node
+      return;
+    }
+    const promise = getReplacement(node).then((replacementNode) => {
+      if (replacementNode != null) {
+        parent.children.splice(index, 1, replacementNode);
       }
-      const promise = getReplacement(node).then((replacementNode) => {
-        if (replacementNode != null) {
-          parent.children.splice(index, 1, replacementNode);
-        }
-        return undefined;
-      });
-      promises.push(promise);
-    },
-  );
+      return undefined;
+    });
+    promises.push(promise);
+  });
 
   // await all operations at the end instead of serially awaiting while visiting.
   await Promise.all(promises);

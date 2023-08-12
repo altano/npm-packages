@@ -18,6 +18,6 @@
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/package-time-traveler",
   "dependencies": {
     "pacote": "^15.1.2",
-    "@altano/tiny-async-pool": "*"
+    "@altano/tiny-async-pool": "workspace:*"
   }
 }

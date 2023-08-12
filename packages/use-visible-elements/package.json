@@ -29,22 +29,22 @@
   },
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-visible-elements",
   "dependencies": {
-    "@altano/use-element-observer": "*",
+    "@altano/use-element-observer": "workspace:*",
     "react-use": "^17.4.0"
   },
   "peerDependencies": {
     "react": "^18"
   },
   "devDependencies": {
-    "@altano/tsconfig": "*",
+    "@altano/tsconfig": "workspace:*",
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.39.0",
-    "eslint-config-altano": "*",
+    "eslint-config-altano": "workspace:*",
     "prettier": "^2.8.7",
     "react": "^18",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   },
   "publishConfig": {
     "access": "public"

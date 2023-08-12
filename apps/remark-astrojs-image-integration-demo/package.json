@@ -13,15 +13,20 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@altano/remark-astrojs-image-use-component": "*"
+    "@altano/remark-astrojs-image-use-component": "workspace:*"
   },
   "devDependencies": {
-    "@altano/remark-astrojs-image": "*",
+    "@altano/remark-astrojs-image": "workspace:*",
     "@astrojs/image": "^0.16.6",
     "@astrojs/mdx": "^0.19.0",
-    "@astrojs/preact": "^2.1.0",
-    "astro": "^2.3.0",
+    "@astrojs/react": "^2.2.1",
+    "@jridgewell/sourcemap-codec": "^1.4.15",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^2.5.0",
     "nullthrows": "^1.1.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "sass": "^1.62.0",
     "sharp": "^0.31.3",
     "why-is-node-running": "^2.2.2"

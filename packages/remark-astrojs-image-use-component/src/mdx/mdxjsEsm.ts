@@ -1,13 +1,12 @@
 import { visit, EXIT } from "unist-util-visit";
 
-import type { Node, Data } from "unist";
+import type { Node } from "unist";
 import type { MdxjsEsm } from "mdast-util-mdxjs-esm";
 import type {
   ImportDeclaration,
   ImportSpecifier,
   ImportDefaultSpecifier,
 } from "estree";
-import type { Root } from "mdast";
 
 function createMdxjsEsmNode(
   url: string,
@@ -58,17 +57,15 @@ export function createMdxjsEsmNamedNode(
   } as ImportSpecifier);
 }
 
-function isMdxjsEsm(node: Node<Data>): node is MdxjsEsm {
+function isMdxjsEsm(node: Node): node is MdxjsEsm {
   return node.type === "mdxjsEsm";
 }
 
-function isImportSpecifier(
-  specifier: Node<Data>,
-): specifier is ImportSpecifier {
+function isImportSpecifier(specifier: Node): specifier is ImportSpecifier {
   return specifier.type === "ImportSpecifier";
 }
 
-function isImportDeclaration(node: Node<Data>): node is ImportDeclaration {
+function isImportDeclaration(node: Node): node is ImportDeclaration {
   return node.type === "ImportDeclaration";
 }
 
@@ -93,7 +90,7 @@ function parseMdxjsEsm(node: MdxjsEsm): null | [string, string] {
 }
 
 export function ensureMdxjsEsmExists(
-  tree: Root,
+  tree: Node,
   identifierName: string,
   url: string,
 ): void {
@@ -119,6 +116,9 @@ export function ensureMdxjsEsmExists(
   if (!found) {
     const node = createMdxjsEsmNamedNode(identifierName, url);
     // console.log({ addedImportNode: node });
+    if (!("children" in tree) || !Array.isArray(tree.children)) {
+      throw new Error(`Expected node to have children`);
+    }
     tree.children.unshift(node);
   }
 }

@@ -42,12 +42,15 @@
     "github-slugger": "^2.0.0",
     "mdast-util-mdxjs-esm": "^1.3.1",
     "remark-mdx-toc": "^0.3.1",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@altano/remark-plugin-test-util": "*",
-    "@altano/tsconfig": "*",
+    "@altano/remark-plugin-test-util": "workspace:*",
+    "@altano/tsconfig": "workspace:*",
     "@types/node": "^18.15.13",
+    "@types/unist": "^3.0.0",
+    "tsup": "^6.7.0",
+    "unified": "^10.1.2",
     "vitest": "^0.30.1"
   },
   "publishConfig": {

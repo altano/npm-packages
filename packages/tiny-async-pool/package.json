@@ -46,7 +46,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@altano/tsconfig": "*",
+    "@altano/tsconfig": "workspace:*",
     "@types/node": "^18.15.13",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
@@ -54,14 +54,14 @@
     "@vitest/ui": "^0.30.1",
     "chai-as-promised": "^7.1.1",
     "chai": "^4.3.7",
-    "eslint-config-altano": "*",
+    "eslint-config-altano": "workspace:*",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint": "^8.39.0",
     "mocha": "^10.2.0",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
+    "typescript": "^5.1.6",
     "vitest": "^0.30.1"
   },
   "publishConfig": {
