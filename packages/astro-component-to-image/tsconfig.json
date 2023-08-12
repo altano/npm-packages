@@ -1,6 +1,5 @@
 {
-  "extends": "@altano/tsconfig/base.json",
-  "lib": ["ES2020"],
+  "extends": "@altano/tsconfig/node.json",
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
