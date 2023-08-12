@@ -9,8 +9,7 @@ The goal of this library is to use the native async iterator (ES9), native async
 `doWorkAndYield` runs multiple promise-returning & async functions in a limited concurrency pool. It rejects immediately as soon as one of the promises rejects. It calls the iterator function as soon as possible (under concurrency limit). It returns an async iterator that yields as soon as a promise completes (under concurrency limit). For example:
 
 ```js
-const timeout = (ms) =>
-  new Promise((resolve) => setTimeout(() => resolve(ms), ms));
+const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve(ms), ms));
 
 for await (const ms of doWorkAndYield(2, [1000, 5000, 3000, 2000], timeout)) {
   console.log(ms);
@@ -73,8 +72,7 @@ Iterator function that takes two arguments: the value of each iteration and the 
 The same as `doWorkAndYield(...)` but just returns a Promise that resolves when all work resolves/rejects, e.g.:
 
 ```js
-const timeout = (ms) =>
-  new Promise((resolve) => setTimeout(() => resolve(ms), ms));
+const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve(ms), ms));
 
 await doWork(2, [1000, 5000, 3000, 2000], timeout);
 ```

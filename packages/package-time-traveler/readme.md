@@ -15,6 +15,7 @@ If you'd like to replicate what `npm i` would have done on 2018-07-31 for the `t
 1. `npm i -g package-time-traveler`
 1. `git clone git@github.com:goodguysoftware/termux-appium.git`
 1. `package-time-traveler termux-appium/package.json 2018-07-31`
+
 ```
 {
   "dependencies": {
@@ -62,4 +63,5 @@ If you'd like to replicate what `npm i` would have done on 2018-07-31 for the `t
   }
 }
 ```
+
 1. Replace the dependencies in termux-appium/package.json with the output above and then `npm i` again.

@@ -17,9 +17,9 @@ NOTE: Sharp does not yet support ESM. I've left it as a peer dependency. This al
 # Setup
 
 1. Create a `middleware.ts` file[^middleware-docs] if you haven't already.
-2. Create a component to convert to an image. It must have a ".<format>.astro" extension, e.g. if you are creating png images your component must end in ".png.astro".
+2. Create a component to convert to an image. It must have a ".format.astro" extension, e.g. if you are creating png images your component must end in ".png.astro".
 
-NOTE: Your Astro component cannot be arbitrary content. It can't be stateful, and it must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx).
+NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css.
 
 # Example Usage
 

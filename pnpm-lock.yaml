@@ -135,7 +135,7 @@ importers:
     dependencies:
       astro:
         specifier: 2.x
-        version: 2.10.7(sharp@0.32.4)
+        version: 2.10.7(sharp@0.31.3)
       mime-types:
         specifier: ^2.1.35
         version: 2.1.35
@@ -146,8 +146,8 @@ importers:
         specifier: ^0.3.2
         version: 0.3.2
       sharp:
-        specifier: ^0.32.4
-        version: 0.32.4
+        specifier: 0.x
+        version: 0.31.3
     devDependencies:
       '@altano/tsconfig':
         specifier: workspace:*
@@ -2905,6 +2905,86 @@ packages:
   /astring@1.8.6:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
+
+  /astro@2.10.7(sharp@0.31.3):
+    resolution: {integrity: sha512-R8aF4yphrsbhxW2UxHZ1DslBn8e8vPQ23+Z/OnajNE1Q4HEZCOZ4CAbHJx2PDwq2p+CRWArNalpr3+rTqyOYBQ==}
+    engines: {node: '>=16.12.0', npm: '>=6.14.0'}
+    hasBin: true
+    peerDependencies:
+      sharp: '>=0.31.0'
+    peerDependenciesMeta:
+      sharp:
+        optional: true
+    dependencies:
+      '@astrojs/compiler': 1.8.1
+      '@astrojs/internal-helpers': 0.1.2
+      '@astrojs/language-server': 1.0.8
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.7)
+      '@astrojs/telemetry': 2.1.1
+      '@astrojs/webapi': 2.2.0
+      '@babel/core': 7.22.10
+      '@babel/generator': 7.22.10
+      '@babel/parser': 7.22.10
+      '@babel/plugin-transform-react-jsx': 7.22.5(@babel/core@7.22.10)
+      '@babel/traverse': 7.22.10
+      '@babel/types': 7.22.10
+      '@types/babel__core': 7.20.1
+      '@types/dom-view-transitions': 1.0.1
+      '@types/yargs-parser': 21.0.0
+      acorn: 8.10.0
+      boxen: 6.2.1
+      chokidar: 3.5.3
+      ci-info: 3.8.0
+      common-ancestor-path: 1.0.1
+      cookie: 0.5.0
+      debug: 4.3.4(supports-color@8.1.1)
+      deepmerge-ts: 4.3.0
+      devalue: 4.3.2
+      diff: 5.1.0
+      es-module-lexer: 1.3.0
+      esbuild: 0.17.19
+      estree-walker: 3.0.0
+      execa: 6.1.0
+      fast-glob: 3.3.1
+      github-slugger: 2.0.0
+      gray-matter: 4.0.3
+      html-escaper: 3.0.3
+      js-yaml: 4.1.0
+      kleur: 4.1.5
+      magic-string: 0.30.2
+      mime: 3.0.0
+      network-information-types: 0.1.1(typescript@5.1.6)
+      ora: 6.3.1
+      p-limit: 4.0.0
+      path-to-regexp: 6.2.1
+      preferred-pm: 3.0.3
+      prompts: 2.4.2
+      rehype: 12.0.1
+      semver: 7.5.4
+      server-destroy: 1.0.1
+      sharp: 0.31.3
+      shiki: 0.14.3
+      string-width: 5.1.2
+      strip-ansi: 7.1.0
+      tsconfig-resolver: 3.0.1
+      typescript: 5.1.6
+      unist-util-visit: 4.1.2
+      vfile: 5.3.7
+      vite: 4.4.9(@types/node@18.15.13)
+      vitefu: 0.2.4(vite@4.4.9)
+      which-pm: 2.0.0
+      yargs-parser: 21.1.1
+      zod: 3.21.4
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: false
 
   /astro@2.10.7(sharp@0.32.4):
     resolution: {integrity: sha512-R8aF4yphrsbhxW2UxHZ1DslBn8e8vPQ23+Z/OnajNE1Q4HEZCOZ4CAbHJx2PDwq2p+CRWArNalpr3+rTqyOYBQ==}
@@ -7045,7 +7125,6 @@ packages:
 
   /node-addon-api@5.1.0:
     resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
-    dev: true
 
   /node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
@@ -8417,7 +8496,6 @@ packages:
       simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
-    dev: true
 
   /sharp@0.32.4:
     resolution: {integrity: sha512-exUnZewqVZC6UXqXuQ8fyJJv0M968feBi04jb9GcUHrWtkRoAKnbJt8IfwT4NJs7FskArbJ14JAFGVuooszoGg==}
