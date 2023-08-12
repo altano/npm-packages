@@ -1,5 +1,5 @@
 {
-  "name": "use-toc-visible-sections-demo",
+  "name": "@altano/use-toc-visible-sections-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,8 +15,8 @@
   "dependencies": {
     "@altano/tsconfig": "workspace:*",
     "@altano/use-toc-visible-sections": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",

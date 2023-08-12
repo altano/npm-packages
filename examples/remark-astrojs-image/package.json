@@ -1,5 +1,5 @@
 {
-  "name": "@altano/remark-astrojs-image-integration-demo",
+  "name": "@altano/remark-astrojs-image-example",
   "version": "0.0.1",
   "private": true,
   "description": "Demos all Remark + @astrojs/image integration plugins",
@@ -25,8 +25,8 @@
     "@types/react-dom": "^18.0.6",
     "astro": "^2.5.0",
     "nullthrows": "^1.1.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18",
+    "react-dom": "^18",
     "sass": "^1.62.0",
     "sharp": "^0.31.3",
     "why-is-node-running": "^2.2.2"

@@ -4,7 +4,7 @@ module.exports = {
   extends: ["altano"],
   settings: {
     next: {
-      rootDir: ["apps/*/"],
+      rootDir: ["examples/*/"],
     },
   },
 };
