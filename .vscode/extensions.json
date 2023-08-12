@@ -1,7 +1,8 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "ZixuanChen.vitest-explorer",
-    "dbaeumer.vscode-eslint"
+    "zixuanchen.vitest-explorer",
+    "dbaeumer.vscode-eslint",
+    "bierner.github-markdown-preview"
   ]
 }

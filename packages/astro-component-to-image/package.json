@@ -1,0 +1,54 @@
+{
+  "name": "@altano/astro-component-to-image",
+  "version": "0.0.1-alpha.1",
+  "description": "Render Astro components to images",
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --watch --format esm --dts",
+    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "format": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/astro-component-to-image"
+  },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-component-to-image",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "astro",
+    "withastro",
+    "middleware"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "mime-types": "^2.1.35",
+    "satori": "^0.10.2",
+    "satori-html": "^0.3.2"
+  },
+  "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
+    "@types/mime-types": "^2.1.1",
+    "tsup": "^6.7.0",
+    "vitest": "^0.30.1"
+  },
+  "peerDependencies": {
+    "astro": "2.x",
+    "sharp": "0.x"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "@altano/tsconfig/base.json",
+  "lib": ["ES2020"],
+  "include": ["src"],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
+  }
+}
