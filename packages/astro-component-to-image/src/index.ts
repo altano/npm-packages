@@ -3,12 +3,13 @@ import { defineMiddleware } from "astro/middleware";
 import sharp, { type Sharp, type FormatEnum as SharpFormatEnum } from "sharp";
 import { html as htmlToVNode } from "satori-html";
 import { contentType } from "mime-types";
+import he from "he";
 
 import type { MiddlewareResponseHandler, APIContext } from "astro";
 import type { SatoriOptions as SatoriOptionsOrig } from "satori";
 
 export type SatoriOptions = SatoriOptionsOrig;
-export type SharpOptions = Parameters<Sharp["toFormat"]>[1];
+export type SharpOptions = NonNullable<Parameters<Sharp["toFormat"]>[1]>;
 export type SharpFormats = keyof SharpFormatEnum;
 
 // TODO Needs lots of tests
@@ -51,7 +52,7 @@ export type Options<Format extends SharpFormats> = {
     context: APIContext,
     response: Response,
     format: Format,
-  ) => Promise<NonNullable<SharpOptions>>;
+  ) => Promise<SharpOptions>;
   /**
    * This function must return true for the given request or the route will not
    * be converted to an image. By default, only components/endpoints that return
@@ -82,10 +83,10 @@ function getContentType<Format extends SharpFormats>(format: Format): string {
   return type === false ? `image/${format}` : type;
 }
 
-function defaultGetFilename<Format extends SharpFormats>(
+async function defaultGetFilename<Format extends SharpFormats>(
   format: Format,
   context: APIContext,
-): string {
+): Promise<string> {
   const requestUrl = context.url.toString();
   new RegExp(String.raw`\.${format}\/?$`).test(requestUrl);
 
@@ -100,7 +101,11 @@ function defaultGetFilename<Format extends SharpFormats>(
   return basename;
 }
 
-export async function defaultShouldReplace<Format extends SharpFormats>(
+async function defaultGetSharpOptions(): Promise<SharpOptions> {
+  return { quality: 100 };
+}
+
+async function defaultShouldReplace<Format extends SharpFormats>(
   context: APIContext,
   response: Response,
   format: Format,
@@ -132,7 +137,6 @@ export function createHtmlToImageMiddleware<Format extends SharpFormats>({
 }: Options<Format>): MiddlewareResponseHandler {
   return defineMiddleware(async (context, next) => {
     const response = await next();
-
     const replace =
       shouldReplace == null
         ? await defaultShouldReplace(context, response, format)
@@ -153,25 +157,30 @@ export function createHtmlToImageMiddleware<Format extends SharpFormats>({
       return response;
     }
 
-    const satoriOptions = await getSatoriOptions(context, response, format);
-    const responseText = await response.text();
-    const svg = await satori(
-      htmlToVNode(responseText) as React.ReactNode,
-      satoriOptions,
-    );
+    const [responseText, satoriOptions, sharpOptions, filename] =
+      await Promise.all([
+        response.text(),
+        getSatoriOptions(context, response, format),
+        getSharpOptions == null
+          ? defaultGetSharpOptions()
+          : getSharpOptions(context, response, format),
+        getFilename == null
+          ? defaultGetFilename(format, context)
+          : getFilename(context, response, format),
+      ]);
 
-    const sharpOptions =
-      getSharpOptions == null
-        ? { quality: 100 }
-        : await getSharpOptions(context, response, format);
+    // html text => vnode
+    const responseTextWithDecodedHtmlEntities = he.decode(responseText);
+    const vnode = htmlToVNode(responseTextWithDecodedHtmlEntities);
 
+    // vnode => svg
+    const svg = await satori(vnode as React.ReactNode, satoriOptions);
+
+    // svg => image
     const imageBuffer = await sharp(Buffer.from(svg))
       .toFormat(format, sharpOptions)
       .toBuffer();
 
-    const filename = getFilename
-      ? await getFilename(context, response, format)
-      : defaultGetFilename(format, context);
     return new Response(imageBuffer, {
       headers: {
         "Content-Type": getContentType(format),

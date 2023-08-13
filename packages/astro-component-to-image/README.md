@@ -8,18 +8,32 @@ This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that 
 
 In your existing Astro project:
 
-- `npm install sharp @altano/astro-component-to-image`
-- `yarn add sharp @altano/astro-component-to-image`
-- `pnpm add sharp @altano/astro-component-to-image`
-
-NOTE: Sharp does not yet support ESM. I've left it as a peer dependency. This allows you to install your own version, which Astro will automatically handle correctly.
+```sh
+# Using NPM
+npm install @altano/astro-component-to-image
+# Using Yarn
+yarn add @altano/astro-component-to-image
+# Using PNPM
+pnpm add @altano/astro-component-to-image
+```
 
 # Setup
 
-1. Create a `middleware.ts` file[^middleware-docs] if you haven't already.
-2. Create a component to convert to an image. It must have a ".format.astro" extension, e.g. if you are creating png images your component must end in ".png.astro".
+Create a `middleware.ts` file[^middleware-docs] if you haven't already. `middleware.ts`:
 
-NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css.
+```ts
+import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+
+export const onRequest = createHtmlToImageMiddleware({ ... });
+```
+
+Create a component to convert to an image. It must have a ".format.astro" extension, e.g. if you are creating png images your component must end in ".png.astro". `image.png.astro`:
+
+```astro
+<html><body>Hello!</body></html>
+```
+
+NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css. The [OG Image Playground](https://og-playground.vercel.app/) is a great place to test your component before copying it into your Astro project.
 
 # Example Usage
 
@@ -97,6 +111,70 @@ See https://github.com/altano/npm-packages/tree/main/examples/astro-component-to
 - `getSatoriOptions`: Options that the vercel/satori library accepts. At the very least, you must specify dimensions and one font to use.
 
 See the TypeScript type-hints and comments for more info.
+
+# Recipes
+
+## Using Custom Fonts
+
+`middleware.ts`:
+
+```ts
+import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+
+export const onRequest = createHtmlToImageMiddleware({
+  format: "png",
+  async getSatoriOptions() {
+    const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
+    const interBoldBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) => res.arrayBuffer());
+    return {
+      width: 800,
+      height: 200,
+      fonts: [
+        {
+          name: "Inter Variable",
+          data: interRegularBuffer,
+          weight: 400,
+          style: "normal",
+        },
+        {
+          name: "Inter Variable",
+          data: interBoldBuffer,
+          weight: 800,
+          style: "normal",
+        },
+      ],
+    };
+  },
+});
+```
+
+## Converting Multiple Image Types
+
+`middleware.ts`:
+
+```ts
+import { sequence } from "astro/middleware";
+import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+
+import type { SatoriOptions } from "@altano/astro-component-to-image";
+
+async function getSatoriOptions(): Promise<SatoriOptions> {
+  // ...
+}
+
+const pngMiddleware = createHtmlToImageMiddleware({
+  format: "png",
+  getSatoriOptions,
+});
+
+const jpgMiddleware = createHtmlToImageMiddleware({
+  format: "jpg",
+  getSharpOptions: async () => ({ quality: 1, effort: 1 }),
+  getSatoriOptions,
+});
+
+export const onRequest = sequence(pngMiddleware, jpgMiddleware);
+```
 
 # How it Works
 
