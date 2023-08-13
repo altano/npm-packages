@@ -1,7 +1,7 @@
 import { sequence } from "astro/middleware";
-import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
-import type { SatoriOptions } from "@altano/astro-component-to-image";
+import type { SatoriOptions } from "@altano/astro-html-to-image";
 
 async function getSatoriOptions(): Promise<SatoriOptions> {
   const interRegularBuffer = await fetch(

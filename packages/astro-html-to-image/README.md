@@ -1,6 +1,6 @@
 > ⚠️ **WORK IN PROGRESS**: This package requires changes[^filename-change] in Astro before it will be useable. Sit tight!
 
-# astro-component-to-image
+# astro-html-to-image
 
 This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images instead of html.
 
@@ -15,11 +15,11 @@ In your existing Astro project:
 
 ```sh
 # Using NPM
-npm install @altano/astro-component-to-image
+npm install @altano/astro-html-to-image
 # Using Yarn
-yarn add @altano/astro-component-to-image
+yarn add @altano/astro-html-to-image
 # Using PNPM
-pnpm add @altano/astro-component-to-image
+pnpm add @altano/astro-html-to-image
 ```
 
 # Setup
@@ -27,7 +27,7 @@ pnpm add @altano/astro-component-to-image
 Create a `middleware.ts` file[^middleware-docs] if you haven't already. `middleware.ts`:
 
 ```ts
-import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
 export const onRequest = createHtmlToImageMiddleware({ ... });
 ```
@@ -57,7 +57,7 @@ NOTE: Your Astro component must be HTML elements and styles [supported by Satori
 `middleware.ts`:
 
 ```ts
-import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
 export const onRequest = createHtmlToImageMiddleware({
   format: "png",
@@ -118,7 +118,7 @@ import "@fontsource-variable/inter";
 </html>
 ```
 
-See https://github.com/altano/npm-packages/tree/main/examples/astro-component-to-image for a slightly more involved example.
+See https://github.com/altano/npm-packages/tree/main/examples/astro-html-to-image for a slightly more involved example.
 
 # Options Reference
 
@@ -136,7 +136,7 @@ See the TypeScript type-hints and comments for more info.
 `middleware.ts`:
 
 ```ts
-import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
 export const onRequest = createHtmlToImageMiddleware({
   format: "png",
@@ -171,9 +171,9 @@ export const onRequest = createHtmlToImageMiddleware({
 
 ```ts
 import { sequence } from "astro/middleware";
-import { createHtmlToImageMiddleware } from "@altano/astro-component-to-image";
+import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
-import type { SatoriOptions } from "@altano/astro-component-to-image";
+import type { SatoriOptions } from "@altano/astro-html-to-image";
 
 async function getSatoriOptions(): Promise<SatoriOptions> {
   // ...
@@ -206,7 +206,7 @@ The pipeline looks like this:
 ```mermaid
 flowchart LR
     S>component.astro] -->|astro| M[fa:fa-code html]
-    M -->|middleware| A[[astro-component-to-image]]
+    M -->|middleware| A[[astro-html-to-image]]
     A -->|satori-html| B[fab:fa-react jsx]
     B -->|vercel/satori| C[fa:fa-image svg]
     C -->|sharp| D>"fa:fa-image image (png/jpg/etc)"]
