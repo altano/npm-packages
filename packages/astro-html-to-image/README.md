@@ -2,7 +2,7 @@
 
 # astro-html-to-image
 
-This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images instead of html.
+This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images.
 
 # Prerequisites
 
@@ -192,6 +192,10 @@ const jpgMiddleware = createHtmlToImageMiddleware({
 
 export const onRequest = sequence(pngMiddleware, jpgMiddleware);
 ```
+
+## Using Frameowork Components (e.g. React or Svelte)
+
+See [the React component example](https://github.com/altano/npm-packages/blob/main/examples/astro-html-to-image/src/pages/react.png.astro).
 
 # How it Works
 
