@@ -4,8 +4,18 @@ import path from "node:path";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 
-import type { SatoriOptions, SharpFormats } from "../../src";
-import type { AstroCookies, APIContext, Params, Props } from "astro";
+import type {
+  Options as MiddlewareOptions,
+  SatoriOptions,
+  SharpFormats,
+} from "../../src";
+import type {
+  AstroCookies,
+  APIContext,
+  Params,
+  Props,
+  EndpointOutput,
+} from "astro";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
@@ -54,8 +64,8 @@ async function getSatoriDefaultOptions(): Promise<SatoriOptions> {
     path.join(__dirname, "../artifacts/fonts/Inter-Bold.ttf"),
   );
   return {
-    width: 800,
-    height: 200,
+    width: 300,
+    height: 300,
     fonts: [
       {
         name: "Inter Variable",
@@ -78,21 +88,27 @@ export function should<Format extends SharpFormats>(
   {
     requestUrl,
     format,
-    extraSatoriOptions,
+    extraSatoriOptions = {},
+    extraMiddlewareOptions = {},
     snapshot = true,
+    componentHtml,
     getComponentResponse,
     testFn,
   }: {
     requestUrl: string;
     format: Format;
-    extraSatoriOptions: Partial<SatoriOptions>;
+    extraSatoriOptions?: Partial<SatoriOptions>;
+    extraMiddlewareOptions?: Partial<MiddlewareOptions<Format>>;
     snapshot?: boolean;
-    getComponentResponse: () => Promise<Response>;
+    componentHtml?: string;
+    getComponentResponse?: () => Promise<Response | EndpointOutput>;
     testFn?: (res: Response) => Promise<void>;
   },
 ): void {
   const middleware = createHtmlToImageMiddleware({
     format,
+    getSharpOptions: extraMiddlewareOptions?.getSharpOptions ?? undefined,
+    shouldReplace: extraMiddlewareOptions?.shouldReplace ?? undefined,
     async getSatoriOptions() {
       const defaults = await getSatoriDefaultOptions();
       return {
@@ -103,10 +119,24 @@ export function should<Format extends SharpFormats>(
   });
 
   async function run(): Promise<void> {
-    const response = await middleware(
-      makeContext(requestUrl),
-      getComponentResponse,
-    );
+    const next = async (): Promise<Response> => {
+      if (componentHtml) {
+        return new Response(componentHtml, {
+          status: 200,
+          headers: {
+            "Content-Type": "text/html",
+          },
+        });
+      } else if (getComponentResponse) {
+        return getComponentResponse();
+      } else {
+        throw new Error(
+          `Must provide either componentHtml or getComponentResponse`,
+        );
+      }
+    };
+
+    const response = await middleware(makeContext(requestUrl), next);
 
     expect(response).toBeDefined();
 
@@ -120,7 +150,7 @@ export function should<Format extends SharpFormats>(
     if (snapshot) {
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      expect(buffer).toMatchImageSnapshot();
+      expect(buffer).toMatchImageSnapshot({ runInProcess: true });
     }
 
     if (testFn) {
