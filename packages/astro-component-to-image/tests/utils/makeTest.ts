@@ -119,7 +119,8 @@ export function should<Format extends SharpFormats>(
   });
 
   async function run(): Promise<void> {
-    const next = async (): Promise<Response> => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const next = async (): Promise<any> => {
       if (componentHtml) {
         return new Response(componentHtml, {
           status: 200,

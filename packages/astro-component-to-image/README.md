@@ -4,6 +4,11 @@
 
 This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images instead of html.
 
+# Prerequisites
+
+- This middleware is for [Astro](https://astro.build).
+- Node.js: [`sharp`](https://github.com/lovell/sharp) is used to convert svg to images and is a hard dependency. Since `sharp` does not run in all edge runtimes, you must be building/serving your Astro site using Node.js. Feel free to open a PR replacing `sharp` with some wasm library that runs everywhere if you can find one.
+
 # Installation
 
 In your existing Astro project:
@@ -31,6 +36,18 @@ Create a component to convert to an image. It must have a ".format.astro" extens
 
 ```astro
 <html><body>Hello!</body></html>
+```
+
+Astro, by default, tries to bundle middleware. Unfortunately, `sharp` (used by this plugin) is not ESM compatible, and trying to bundle it will result in errors. [Disable middleware bundling in your Astro config](https://docs.astro.build/en/reference/configuration-reference/#buildexcludemiddleware) to make this work:
+
+```ts
+// https://astro.build/config
+export default defineConfig({
+  // ...
+  build: {
+    excludeMiddleware: true,
+  },
+});
 ```
 
 NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css. The [OG Image Playground](https://og-playground.vercel.app/) is a great place to test your component before copying it into your Astro project.
