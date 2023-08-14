@@ -2,7 +2,7 @@ module.exports = {
   extends: ["altano"],
   overrides: [
     {
-      files: ["*.ts", "*.tsx"], // Your TypeScript files extension
+      files: ["src/**/*.ts", "src/**/*.tsx"],
       parserOptions: {
         project: ["./tsconfig.json"],
         tsconfigRootDir: __dirname,

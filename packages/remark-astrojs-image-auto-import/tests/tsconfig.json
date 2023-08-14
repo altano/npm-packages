@@ -1,7 +1,7 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["src"],
+  "include": ["."],
   "compilerOptions": {
-    "outDir": "dist"
+    "types": ["vitest/globals"]
   }
 }

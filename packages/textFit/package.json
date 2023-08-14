@@ -6,14 +6,16 @@
     "example": "examples"
   },
   "files": [
-    "dist"
+    "dist/textFit.js",
+    "dist/textFit.d.ts"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": "./dist/textFit.js",
   "types": "./dist/textFit.d.ts",
   "scripts": {
-    "build": "tsup src/textFit.ts --format esm --dts",
+    "build": "tsup src/textFit.ts --format esm --onSuccess \"pnpm build:types\"",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
     "dev": "tsup src/textFit.ts --watch --format esm --dts",
     "format": "prettier --write src",
     "build-example": "sh examples/mk-examples.sh",
@@ -37,7 +39,8 @@
   "license": "MIT",
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
-    "tsup": "^6.7.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6",
     "vitest": "^0.30.1"
   },
   "publishConfig": {

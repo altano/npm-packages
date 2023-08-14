@@ -1,3 +1,5 @@
 TODO: See if publishing/changesets work
 TODO: Fill out .github action boilerplate
 TODO: Make sure dependencies are correct (e.g. publish relies on passing build/lint/test)
+x 2023-08-13 TODO: add declarationMap and make "go to definition" work across monorepo (https://tsup.egoist.dev/#generate-typescript-declaration-maps--d-ts-map)
+x 2023-08-13 TODO: Add type checking as build dependency (tsup/esbuild ignores types)

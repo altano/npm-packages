@@ -1,11 +1,7 @@
 {
   "extends": "@altano/tsconfig/browser.json",
   "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
-    "types": ["vitest/globals"],
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "noUncheckedIndexedAccess": false
+    "outDir": "dist"
   }
 }

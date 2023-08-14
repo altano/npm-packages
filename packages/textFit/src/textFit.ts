@@ -63,9 +63,9 @@ export function textFit(
   const els: HTMLElement[] = Array.isArray(elements) ? elements : [elements];
 
   // Process each el we've passed.
-  for (var i = 0; i < els.length; i++) {
-    processItem(els[i], settings);
-  }
+  els.forEach((el) => {
+    processItem(el, settings);
+  });
 }
 
 /**

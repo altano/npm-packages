@@ -7,12 +7,16 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**"
+    "dist/index.js",
+    "dist/index.d.ts"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm --dts",
-    "dev": "tsup src/index.ts --watch --format esm --dts",
-    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "build": "tsup src/index.tsx --format esm --onSuccess \"pnpm build:types\"",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "dev": "tsup src/index.tsx --watch --format esm",
+    "lint": "eslint src/**/*.ts*",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
   },
@@ -42,7 +46,7 @@
     "eslint-config-altano": "workspace:*",
     "prettier": "^2.8.7",
     "react": "^18",
-    "tsup": "^6.7.0",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6"
   },
   "publishConfig": {

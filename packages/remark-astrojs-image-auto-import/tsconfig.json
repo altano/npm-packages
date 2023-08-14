@@ -1,9 +1,7 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["src", "tests", "vite.config.ts"],
-  "exclude": ["dist", "build", "node_modules"],
+  "include": ["src"],
   "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "outDir": "dist"
   }
 }

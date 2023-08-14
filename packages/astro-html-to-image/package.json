@@ -7,9 +7,12 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts",
+    "build": "tsup src/index.ts --format esm --onSuccess \"pnpm build:types\"",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
     "dev": "tsup src/index.ts --watch --format esm --dts",
-    "lint": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint": "eslint src/**/*.ts*",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "test": "vitest --run",
@@ -28,7 +31,8 @@
   },
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-html-to-image",
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/index.d.ts"
   ],
   "keywords": [
     "astro",
@@ -52,7 +56,8 @@
     "@types/mime-types": "^2.1.1",
     "@vitest/ui": "^0.30.1",
     "jest-image-snapshot": "^6.2.0",
-    "tsup": "^6.7.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6",
     "vitest": "^0.30.1"
   },
   "peerDependencies": {
