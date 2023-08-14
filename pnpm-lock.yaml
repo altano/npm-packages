@@ -66,34 +66,12 @@ importers:
       '@altano/astro-opengraph-image':
         specifier: workspace:*
         version: link:../../packages/astro-opengraph-image
-      '@astrojs/react':
-        specifier: ^2.2.1
-        version: 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
-      '@astrojs/svelte':
-        specifier: ^3.1.0
-        version: 3.1.0(astro@2.10.7)(svelte@4.2.0)(typescript@5.1.6)(vite@4.4.9)
       '@fontsource-variable/inter':
         specifier: ^5.0.8
         version: 5.0.8
       astro:
         specifier: ^2.10.7
         version: 2.10.7(sharp@0.32.4)
-      react:
-        specifier: ^18
-        version: 18.2.0
-      react-dom:
-        specifier: ^18
-        version: 18.2.0(react@18.2.0)
-      svelte:
-        specifier: ^4.2.0
-        version: 4.2.0
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.20
-        version: 18.2.20
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.2.7
 
   examples/remark-astrojs-image:
     dependencies:
@@ -2204,7 +2182,7 @@ packages:
       rollup: '>=2'
     dependencies:
       '@mdx-js/mdx': 2.3.0
-      '@rollup/pluginutils': 5.0.2(rollup@3.28.0)
+      '@rollup/pluginutils': 5.0.3(rollup@3.28.0)
       rollup: 3.28.0
       source-map: 0.7.4
       vfile: 5.3.7
@@ -2329,8 +2307,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@rollup/pluginutils@5.0.2(rollup@3.28.0):
-    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
+  /@rollup/pluginutils@5.0.3(rollup@3.28.0):
+    resolution: {integrity: sha512-hfllNN4a80rwNQ9QCxhxuHCGHMAvabXqxNdaChUSSadMre7t4iEUI6fFAhBOn/eIYTgYVhBv7vCLsAJ4u3lf3g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0

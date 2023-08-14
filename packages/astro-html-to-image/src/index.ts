@@ -83,7 +83,7 @@ function getContentType<Format extends SharpFormats>(format: Format): string {
   return type === false ? `image/${format}` : type;
 }
 
-async function defaultGetFilename<Format extends SharpFormats>(
+export async function defaultGetFilename<Format extends SharpFormats>(
   format: Format,
   context: APIContext,
 ): Promise<string> {
@@ -101,11 +101,11 @@ async function defaultGetFilename<Format extends SharpFormats>(
   return basename;
 }
 
-async function defaultGetSharpOptions(): Promise<SharpOptions> {
+export async function defaultGetSharpOptions(): Promise<SharpOptions> {
   return { quality: 100 };
 }
 
-async function defaultShouldReplace<Format extends SharpFormats>(
+export async function defaultShouldReplace<Format extends SharpFormats>(
   context: APIContext,
   response: Response,
   format: Format,

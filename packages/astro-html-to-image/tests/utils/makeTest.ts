@@ -3,19 +3,14 @@ import { readFile } from "fs/promises";
 import path from "node:path";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
+import { createContext } from "astro/middleware";
 
 import type {
   Options as MiddlewareOptions,
   SatoriOptions,
   SharpFormats,
 } from "../../src";
-import type {
-  AstroCookies,
-  APIContext,
-  Params,
-  Props,
-  EndpointOutput,
-} from "astro";
+import type { APIContext, EndpointOutput } from "astro";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
@@ -26,34 +21,7 @@ declare module "vitest" {
 }
 
 export function makeContext(url: string): APIContext {
-  return {
-    url: new URL(url),
-    generator: "Astro v2.10.7",
-    get site(): URL {
-      throw new Error(`Not implemented`);
-    },
-    redirect: (): never => {
-      throw new Error(`Not implemented`);
-    },
-    get locals(): Record<string, unknown> {
-      throw new Error(`Not implemented`);
-    },
-    get request(): Request {
-      throw new Error(`Not implemented`);
-    },
-    get clientAddress(): string {
-      throw new Error(`Not implemented`);
-    },
-    get cookies(): AstroCookies {
-      throw new Error(`Not implemented`);
-    },
-    get params(): Params {
-      throw new Error(`Not implemented`);
-    },
-    get props(): Props {
-      throw new Error(`Not implemented`);
-    },
-  };
+  return createContext({ request: new Request(url) });
 }
 
 async function getSatoriDefaultOptions(): Promise<SatoriOptions> {
