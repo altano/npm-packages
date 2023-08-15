@@ -1,16 +1,20 @@
 import satori from "satori";
 import { defineMiddleware } from "astro/middleware";
-import sharp, { type Sharp, type FormatEnum as SharpFormatEnum } from "sharp";
 import { html as htmlToVNode } from "satori-html";
-import { contentType } from "mime-types";
+import mime from "mime/lite.js";
 import he from "he";
 
 import type { MiddlewareResponseHandler, APIContext } from "astro";
 import type { SatoriOptions as SatoriOptionsOrig } from "satori";
+import createImage from "./createImage";
 
 export type SatoriOptions = SatoriOptionsOrig;
-export type SharpOptions = NonNullable<Parameters<Sharp["toFormat"]>[1]>;
-export type SharpFormats = keyof SharpFormatEnum;
+// export type SharpOptions = NonNullable<Parameters<Sharp["toFormat"]>[1]>;
+export type SharpOptions = {
+  format: SharpFormats;
+};
+// export type SharpFormats = keyof SharpFormatEnum;
+export type SharpFormats = "png" | "jpg" | "gif";
 
 // TODO Needs lots of tests
 
@@ -79,8 +83,7 @@ export type Options<Format extends SharpFormats> = {
 };
 
 function getContentType<Format extends SharpFormats>(format: Format): string {
-  const type = contentType(format);
-  return type === false ? `image/${format}` : type;
+  mime.getType(format) ?? `image/${format}`;
 }
 
 export async function defaultGetFilename<Format extends SharpFormats>(
@@ -175,18 +178,23 @@ export function createHtmlToImageMiddleware<Format extends SharpFormats>({
 
     // vnode => svg
     const svg = await satori(vnode as React.ReactNode, satoriOptions);
+    const svgBuffer = Buffer.from(svg);
 
     // svg => image
-    const imageBuffer = await sharp(Buffer.from(svg))
-      .toFormat(format, sharpOptions)
-      .toBuffer();
+    debugger;
+    return createImage(svgBuffer, context.request);
 
-    return new Response(imageBuffer, {
-      headers: {
-        "Content-Type": getContentType(format),
-        "Content-Disposition": `inline; filename="${filename}"`,
-      },
-    });
+    // // svg => image
+    // const imageBuffer = await sharp(Buffer.from(svg))
+    //   .toFormat(format, sharpOptions)
+    //   .toBuffer();
+
+    // return new Response(imageBuffer, {
+    //   headers: {
+    //     "Content-Type": getContentType(format),
+    //     "Content-Disposition": `inline; filename="${filename}"`,
+    //   },
+    // });
   });
 }
 
