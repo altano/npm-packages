@@ -7,9 +7,9 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm --onSuccess \"pnpm build:types\"",
+    "build": "tsup src/index.ts --external \"astro:assets\" --format esm --onSuccess \"pnpm build:types\"",
     "build:types": "tsc --emitDeclarationOnly --declaration",
-    "dev": "tsup src/index.ts --watch --format esm --dts",
+    "dev": "tsup src/index.ts --external \"astro:assets\" --watch --format esm --dts",
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
@@ -43,8 +43,9 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/mime": "^3.0.1",
     "he": "^1.2.0",
-    "mime-types": "^2.1.35",
+    "mime": "^3.0.0",
     "satori": "^0.10.3",
     "satori-html": "^0.3.2",
     "sharp": "^0.32.4"
@@ -53,7 +54,6 @@
     "@altano/tsconfig": "workspace:*",
     "@types/he": "^1.2.0",
     "@types/jest-image-snapshot": "^6.2.0",
-    "@types/mime-types": "^2.1.1",
     "@vitest/ui": "^0.30.1",
     "jest-image-snapshot": "^6.2.0",
     "tsup": "^7.2.0",

@@ -5,4 +5,7 @@ export default defineConfig({
   build: {
     excludeMiddleware: true,
   },
+  experimental: {
+    assets: true,
+  },
 });

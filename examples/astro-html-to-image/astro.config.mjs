@@ -8,4 +8,15 @@ export default defineConfig({
   build: {
     excludeMiddleware: true,
   },
+  experimental: {
+    assets: true,
+  },
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp", // 'astro/assets/services/squoosh' | 'astro/assets/services/sharp' | string,
+      config: {
+        // ... service-specific config. Optional.
+      },
+    },
+  },
 });
