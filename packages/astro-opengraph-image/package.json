@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-opengraph-image",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "Render Open Graph Images from Astro Components",
   "type": "module",
   "sideEffects": false,
