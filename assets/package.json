@@ -1,0 +1,11 @@
+{
+  "name": "@altano/assets",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js",
+    "./fonts/*": "./fonts/*"
+  }
+}

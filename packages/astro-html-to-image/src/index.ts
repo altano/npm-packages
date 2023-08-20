@@ -1,32 +1,54 @@
 import satori from "satori";
 import { defineMiddleware } from "astro/middleware";
-import sharp, { type Sharp, type FormatEnum as SharpFormatEnum } from "sharp";
+import { Resvg } from "@resvg/resvg-wasm";
 import { html as htmlToVNode } from "satori-html";
 import { contentType } from "mime-types";
 import he from "he";
 
 import type { MiddlewareResponseHandler, APIContext } from "astro";
-import type { SatoriOptions as SatoriOptionsOrig } from "satori";
+import type { SatoriOptions } from "satori";
+import type { ResvgRenderOptions } from "@resvg/resvg-wasm";
 
-export type SatoriOptions = SatoriOptionsOrig;
-export type SharpOptions = NonNullable<Parameters<Sharp["toFormat"]>[1]>;
-export type SharpFormats = keyof SharpFormatEnum;
+export type SvgOptions = SatoriOptions;
+export type ImageRenderOptions = ResvgRenderOptions;
+export type ImageFormat = "png";
 
 // TODO Needs lots of tests
 
-export type ImageOptions<Format extends SharpFormats> = {
+export type ImageOptions<Format extends ImageFormat> = {
   format: Format;
-  options?: SharpOptions;
+  options?: ImageRenderOptions;
 };
 
-type Filename<Format extends SharpFormats> = `${string}.${Format}`;
+type Filename<Format extends ImageFormat> = `${string}.${Format}`;
 
-export type Options<Format extends SharpFormats> = {
+export type Runtime = "nodejs";
+
+export async function initialize({
+  runtime,
+}: {
+  runtime: Runtime;
+}): Promise<void> {
+  switch (runtime) {
+    case "nodejs":
+      {
+        const initialize = await import("./initializeResvg-Nodejs");
+        await initialize.default();
+      }
+      break;
+    default:
+      runtime satisfies never;
+  }
+}
+
+export type Options<Format extends ImageFormat> = {
   /**
-   * Any output format that the sharp library accepts, as a string.
-   * e.g. "avif", "jpg", "png", "webp", "gif", etc.
-   *
-   * API documentation: https://sharp.pixelplumbing.com/api-output
+   * Your JavaScript runtime, e.g. "nodejs"
+   */
+  runtime: Runtime;
+  /**
+   * Any output format that @resvg/resvg-wasm library accepts, as a string.
+   * Currently only "png"
    */
   format: Format;
   /**
@@ -36,23 +58,23 @@ export type Options<Format extends SharpFormats> = {
    * API documentation:
    * https://github.com/vercel/satori/blob/0a258931fe2291bdd461103780ac01e3c700b845/src/satori.ts#L18-L40
    */
-  getSatoriOptions(
+  getSvgOptions(
     context: APIContext,
     response: Response,
     format: Format,
-  ): Promise<SatoriOptions>;
+  ): Promise<SvgOptions>;
   /**
-   * Any output options that the sharp library accepts, e.g.:
+   * Any output options that the @resvg/resvg-js library accepts, e.g.:
    *
-   *   { quality: 50 }
+   *   { background: "rgba(255,255,255, 0.8)" }
    *
-   * API documentation: https://sharp.pixelplumbing.com/api-output#toformat
+   * API documentation: https://github.com/yisibl/resvg-js/blob/main/index.d.ts#L3
    */
-  getSharpOptions?: (
+  getImageOptions?: (
     context: APIContext,
     response: Response,
     format: Format,
-  ) => Promise<SharpOptions>;
+  ) => Promise<ImageRenderOptions>;
   /**
    * This function must return true for the given request or the route will not
    * be converted to an image. By default, only components/endpoints that return
@@ -78,12 +100,12 @@ export type Options<Format extends SharpFormats> = {
   ) => Promise<Filename<Format>>;
 };
 
-function getContentType<Format extends SharpFormats>(format: Format): string {
+function getContentType<Format extends ImageFormat>(format: Format): string {
   const type = contentType(format);
   return type === false ? `image/${format}` : type;
 }
 
-export async function defaultGetFilename<Format extends SharpFormats>(
+export async function defaultGetFilename<Format extends ImageFormat>(
   format: Format,
   context: APIContext,
 ): Promise<string> {
@@ -101,11 +123,14 @@ export async function defaultGetFilename<Format extends SharpFormats>(
   return basename;
 }
 
-export async function defaultGetSharpOptions(): Promise<SharpOptions> {
-  return { quality: 100 };
+export async function defaultGetImageOptions(): Promise<ImageRenderOptions> {
+  return {
+    textRendering: 1, // optimizeLegibility
+    imageRendering: 0, // optimizeQuality
+  };
 }
 
-export async function defaultShouldReplace<Format extends SharpFormats>(
+export async function defaultShouldReplace<Format extends ImageFormat>(
   context: APIContext,
   response: Response,
   format: Format,
@@ -128,14 +153,35 @@ export async function defaultShouldReplace<Format extends SharpFormats>(
   );
 }
 
-export function createHtmlToImageMiddleware<Format extends SharpFormats>({
+let isWasmInitialized = false;
+
+export function createHtmlToImageMiddleware<Format extends ImageFormat>({
+  runtime,
   format,
-  getSharpOptions,
+  getImageOptions,
   shouldReplace,
   getFilename,
-  getSatoriOptions,
+  getSvgOptions,
 }: Options<Format>): MiddlewareResponseHandler {
   return defineMiddleware(async (context, next) => {
+    if (!isWasmInitialized) {
+      isWasmInitialized = true;
+      try {
+        await initialize({ runtime });
+      } catch (err) {
+        // Restarting the dev server causes us to unnecessarily initialize the
+        // wasm module twice. Let's just ignore the error (since we can't
+        // prevent it).
+        const shouldIgnore =
+          err instanceof Error &&
+          err.message?.startsWith("Already initialized");
+        if (!shouldIgnore) {
+          // re-throw all other errors
+          throw err;
+        }
+      }
+    }
+
     const response = await next();
     const replace =
       shouldReplace == null
@@ -157,13 +203,13 @@ export function createHtmlToImageMiddleware<Format extends SharpFormats>({
       return response;
     }
 
-    const [responseText, satoriOptions, sharpOptions, filename] =
+    const [responseText, svgOptions, imageOptions, filename] =
       await Promise.all([
         response.text(),
-        getSatoriOptions(context, response, format),
-        getSharpOptions == null
-          ? defaultGetSharpOptions()
-          : getSharpOptions(context, response, format),
+        getSvgOptions(context, response, format),
+        getImageOptions == null
+          ? defaultGetImageOptions()
+          : getImageOptions(context, response, format),
         getFilename == null
           ? defaultGetFilename(format, context)
           : getFilename(context, response, format),
@@ -174,12 +220,11 @@ export function createHtmlToImageMiddleware<Format extends SharpFormats>({
     const vnode = htmlToVNode(responseTextWithDecodedHtmlEntities);
 
     // vnode => svg
-    const svg = await satori(vnode as React.ReactNode, satoriOptions);
+    const svg = await satori(vnode as React.ReactNode, svgOptions);
 
     // svg => image
-    const imageBuffer = await sharp(Buffer.from(svg))
-      .toFormat(format, sharpOptions)
-      .toBuffer();
+    const imageResvgArr = new Resvg(svg, imageOptions).render().asPng();
+    const imageBuffer = Buffer.from(imageResvgArr);
 
     return new Response(imageBuffer, {
       headers: {

@@ -1,9 +1,8 @@
-import { sequence } from "astro/middleware";
 import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 
-import type { SatoriOptions } from "@altano/astro-html-to-image";
+import type { SvgOptions } from "@altano/astro-html-to-image";
 
-async function getSatoriOptions(): Promise<SatoriOptions> {
+async function getSvgOptions(): Promise<SvgOptions> {
   const interRegularBuffer = await fetch(
     `https://rsms.me/inter/font-files/Inter-Regular.woff`,
   ).then((res) => res.arrayBuffer());
@@ -30,15 +29,8 @@ async function getSatoriOptions(): Promise<SatoriOptions> {
   };
 }
 
-const pngMiddleware = createHtmlToImageMiddleware({
+export const onRequest = createHtmlToImageMiddleware({
+  runtime: "nodejs",
   format: "png",
-  getSatoriOptions,
+  getSvgOptions,
 });
-
-const jpgMiddleware = createHtmlToImageMiddleware({
-  format: "jpg",
-  getSharpOptions: async () => ({ quality: 1, effort: 1 }),
-  getSatoriOptions,
-});
-
-export const onRequest = sequence(pngMiddleware, jpgMiddleware);

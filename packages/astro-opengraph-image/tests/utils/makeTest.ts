@@ -1,41 +1,24 @@
 import { createOpenGraphImageMiddleware } from "../../src";
 import { readFile } from "fs/promises";
-import path from "node:path";
+import { getFontPath } from "@altano/assets";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { createContext } from "astro/middleware";
 
-import type { SatoriOptions } from "@altano/astro-html-to-image";
+import type { SvgOptions } from "@altano/astro-html-to-image";
 import type { APIContext, EndpointOutput } from "astro";
 import type { ImageFormat } from "../../src/createImageMiddleware";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
-declare module "vitest" {
-  interface Assertion<T> {
-    toMatchImageSnapshot(): T;
-  }
-}
 
 export function makeContext(url: string): APIContext {
   return createContext({ request: new Request(url) });
 }
 
-async function getSatoriDefaultOptions(): Promise<
-  Pick<SatoriOptions, "fonts">
-> {
-  const interRegularBuffer = await readFile(
-    path.join(
-      __dirname,
-      "../../../astro-html-to-image/tests/artifacts/fonts/Inter-Regular.ttf",
-    ),
-  );
-  const interBoldBuffer = await readFile(
-    path.join(
-      __dirname,
-      "../../../astro-html-to-image/tests/artifacts/fonts/Inter-Bold.ttf",
-    ),
-  );
+async function getSvgDefaultOptions(): Promise<Pick<SvgOptions, "fonts">> {
+  const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
+  const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
   return {
     fonts: [
       {
@@ -59,7 +42,7 @@ export function should<Format extends ImageFormat>(
   testName: string,
   {
     requestUrl,
-    extraSatoriOptions = {},
+    extraSvgOptions = {},
     snapshot = true,
     componentHtml,
     getComponentResponse,
@@ -67,7 +50,7 @@ export function should<Format extends ImageFormat>(
   }: {
     requestUrl: string;
     format: Format;
-    extraSatoriOptions?: Partial<SatoriOptions>;
+    extraSvgOptions?: Partial<SvgOptions>;
     snapshot?: boolean;
     componentHtml?: string;
     getComponentResponse?: () => Promise<Response | EndpointOutput>;
@@ -75,11 +58,12 @@ export function should<Format extends ImageFormat>(
   },
 ): void {
   const middleware = createOpenGraphImageMiddleware({
-    async getSatoriOptions() {
-      const defaults = await getSatoriDefaultOptions();
+    runtime: "nodejs",
+    async getSvgOptions() {
+      const defaults = await getSvgDefaultOptions();
       return {
         ...defaults,
-        ...extraSatoriOptions,
+        ...extraSvgOptions,
       };
     },
   });

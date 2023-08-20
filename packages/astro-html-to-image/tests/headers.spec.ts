@@ -13,7 +13,7 @@ describe("headers", async () => {
   middleware.should("return correct header values", {
     requestUrl: `http://example.com/face.png`,
     format: "png",
-    extraSatoriOptions: {
+    extraSvgOptions: {
       width: 300,
       height: 300,
     },

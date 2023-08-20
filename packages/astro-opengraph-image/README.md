@@ -7,7 +7,7 @@ This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that 
 # Prerequisites
 
 - This middleware is for [Astro](https://astro.build).
-- Node.js: [`sharp`](https://github.com/lovell/sharp) is used to convert svg to images and is a hard dependency. Since `sharp` does not run in all edge runtimes, you must be building/serving your Astro site using Node.js. Feel free to open a PR replacing `sharp` with some wasm library that runs everywhere if you can find one.
+- Node.js: The [@resvg/resvg-wasm](https://www.npmjs.com/package/@resvg/resvg-wasm) module must be initialized in a runtime-specific manner. I have only added support for Node.js. Other runtimes such as [Deno](https://deno.land/) or [Bun](https://bun.sh/) can be trivially added with an adapter. Please feel free to submit a pull request.
 
 # Installation
 
@@ -32,11 +32,13 @@ import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 export const onRequest = createOpenGraphImageMiddleware({ ... });
 ```
 
-Create an image component to be used as your Open Graph image. It must be named "opengraph-image.format.astro" where "format" can be png, gif, or jpg. You probably want to use `opengraph-image.png.astro`:
+Create a component to convert to an image. It must have a `.png.astro` extension, e.g. `image.png.astro`:
 
 ```astro
 <html><body>Hello!</body></html>
 ```
+
+NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css. The [OG Image Playground](https://og-playground.vercel.app/) is a great place to test your component before copying it into your Astro project.
 
 Lastly, in any pages/layouts that have a `opengraph-image.png.astro` in that route, you need to add the `<OpenGraphMeta />` component to generate opengraph meta tags in your head, e.g.:
 
@@ -55,20 +57,6 @@ import OpenGraphMeta from "@altano/astro-opengraph-image/components/meta.astro";
 </html>
 ```
 
-Astro, by default, tries to bundle middleware. Unfortunately, `sharp` (used by this plugin) is not ESM compatible, and trying to bundle it will result in errors. [Disable middleware bundling in your Astro config](https://docs.astro.build/en/reference/configuration-reference/#buildexcludemiddleware) to make this work:
-
-```ts
-// https://astro.build/config
-export default defineConfig({
-  // ...
-  build: {
-    excludeMiddleware: true,
-  },
-});
-```
-
-NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css. The [OG Image Playground](https://og-playground.vercel.app/) is a great place to test your component before copying it into your Astro project.
-
 # Simple Example
 
 `src/middleware.ts`:
@@ -77,7 +65,8 @@ NOTE: Your Astro component must be HTML elements and styles [supported by Satori
 import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 
 export const onRequest = createOpenGraphImageMiddleware({
-  async getSatoriOptions() {
+  runtime: "nodejs",
+  async getSvgOptions() {
     const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
     return {
       fonts: [
@@ -152,8 +141,9 @@ See https://github.com/altano/npm-packages/tree/main/examples/astro-opengraph-im
 
 `createOpenGraphImageMiddleware` requires the following options:
 
-- `format`: Any output format that the sharp library accepts, as a string, e.g. "avif", "jpg", "png", "webp", "gif", etc.
-- `getSatoriOptions`: Options that the vercel/satori library accepts. At the very least, you must specify dimensions and one font to use.
+- `runtime`: currently only "nodejs".
+- `format`: Any output format that the [@resvg/resvg-wasm](https://www.npmjs.com/package/@resvg/resvg-wasm) library accepts, which is currently only "png".
+- `getSvgOptions`: [Options that the vercel/satori](https://github.com/vercel/satori/blob/main/src/satori.ts#L18) library accepts. You must at least specify dimensions and one font.
 
 See the TypeScript type-hints and comments for more info.
 
@@ -167,7 +157,7 @@ See the TypeScript type-hints and comments for more info.
 import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 
 export const onRequest = createOpenGraphImageMiddleware({
-  async getSatoriOptions() {
+  async getSvgOptions() {
     const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
     const interBoldBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) => res.arrayBuffer());
     return {

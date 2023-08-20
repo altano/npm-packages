@@ -12,14 +12,4 @@ describe("format", async () => {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     },
   });
-
-  middleware.should("convert jpg", {
-    requestUrl: `http://example.com/opengraph-image.jpg`,
-    format: "jpg",
-    componentHtml: basicHtml,
-    snapshot: false, // jest-image-snapshot does not support jpeg
-    async testFn(response) {
-      expect(response.headers.get("Content-Type")).toEqual("image/jpeg");
-    },
-  });
 });

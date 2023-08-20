@@ -1,36 +1,27 @@
+import { getFontPath } from "@altano/assets";
 import { createHtmlToImageMiddleware } from "../../src";
 import { readFile } from "fs/promises";
-import path from "node:path";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { createContext } from "astro/middleware";
 
 import type {
   Options as MiddlewareOptions,
-  SatoriOptions,
-  SharpFormats,
+  SvgOptions,
+  ImageFormat,
 } from "../../src";
 import type { APIContext, EndpointOutput } from "astro";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
-declare module "vitest" {
-  interface Assertion<T> {
-    toMatchImageSnapshot(): T;
-  }
-}
 
 export function makeContext(url: string): APIContext {
   return createContext({ request: new Request(url) });
 }
 
-async function getSatoriDefaultOptions(): Promise<SatoriOptions> {
-  const interRegularBuffer = await readFile(
-    path.join(__dirname, "../artifacts/fonts/Inter-Regular.ttf"),
-  );
-  const interBoldBuffer = await readFile(
-    path.join(__dirname, "../artifacts/fonts/Inter-Bold.ttf"),
-  );
+async function getSvgDefaultOptions(): Promise<SvgOptions> {
+  const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
+  const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
   return {
     width: 300,
     height: 300,
@@ -51,12 +42,12 @@ async function getSatoriDefaultOptions(): Promise<SatoriOptions> {
   };
 }
 
-export function should<Format extends SharpFormats>(
+export function should<Format extends ImageFormat>(
   testName: string,
   {
     requestUrl,
     format,
-    extraSatoriOptions = {},
+    extraSvgOptions = {},
     extraMiddlewareOptions = {},
     snapshot = true,
     componentHtml,
@@ -65,7 +56,7 @@ export function should<Format extends SharpFormats>(
   }: {
     requestUrl: string;
     format: Format;
-    extraSatoriOptions?: Partial<SatoriOptions>;
+    extraSvgOptions?: Partial<SvgOptions>;
     extraMiddlewareOptions?: Partial<MiddlewareOptions<Format>>;
     snapshot?: boolean;
     componentHtml?: string;
@@ -74,14 +65,15 @@ export function should<Format extends SharpFormats>(
   },
 ): void {
   const middleware = createHtmlToImageMiddleware({
+    runtime: "nodejs",
     format,
-    getSharpOptions: extraMiddlewareOptions?.getSharpOptions ?? undefined,
+    getImageOptions: extraMiddlewareOptions?.getImageOptions ?? undefined,
     shouldReplace: extraMiddlewareOptions?.shouldReplace ?? undefined,
-    async getSatoriOptions() {
-      const defaults = await getSatoriDefaultOptions();
+    async getSvgOptions() {
+      const defaults = await getSvgDefaultOptions();
       return {
         ...defaults,
-        ...extraSatoriOptions,
+        ...extraSvgOptions,
       };
     },
   });

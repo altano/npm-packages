@@ -1,7 +1,7 @@
 {
   "name": "@altano/use-toc-visible-sections-example",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,7 +25,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "jsdom": "^21.1.1",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vitest": "^0.30.1"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.2"
   }
 }

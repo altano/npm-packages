@@ -51,12 +51,13 @@
   "devDependencies": {
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@types/node": "^18.15.13",
+    "@types/node": "^18.17.6",
     "@types/unist": "^3.0.0",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "unified": "^10.1.2",
-    "vitest": "^0.30.1"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.2"
   },
   "publishConfig": {
     "access": "public"

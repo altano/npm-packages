@@ -51,5 +51,6 @@ module.exports = {
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
     ],
     "@typescript-eslint/no-floating-promises": "error",
+    "no-console": "error",
   },
 };

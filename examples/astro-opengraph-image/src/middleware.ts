@@ -1,22 +1,14 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { readFile } from "node:fs/promises";
 import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 
 export const onRequest = createOpenGraphImageMiddleware({
-  async getSatoriOptions() {
-    const interRegularBuffer = await readFile(
-      path.join(
-        fileURLToPath(import.meta.url),
-        "../../../../packages/astro-html-to-image/tests/artifacts/fonts/Inter-Regular.ttf",
-      ),
-    );
-    const interBoldBuffer = await readFile(
-      path.join(
-        fileURLToPath(import.meta.url),
-        "../../../../packages/astro-html-to-image/tests/artifacts/fonts/Inter-Bold.ttf",
-      ),
-    );
+  runtime: "nodejs",
+  async getSvgOptions() {
+    const interRegularBuffer = await fetch(
+      `https://rsms.me/inter/font-files/Inter-Regular.woff`,
+    ).then((res) => res.arrayBuffer());
+    const interBoldBuffer = await fetch(
+      `https://rsms.me/inter/font-files/Inter-Bold.woff`,
+    ).then((res) => res.arrayBuffer());
     return {
       fonts: [
         {

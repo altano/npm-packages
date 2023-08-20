@@ -42,7 +42,7 @@
     "astro",
     "withastro",
     "middleware",
-    "ui"
+    "astro-integration"
   ],
   "publishConfig": {
     "access": "public"
@@ -51,13 +51,15 @@
     "@altano/astro-html-to-image": "workspace:*"
   },
   "devDependencies": {
+    "@altano/assets": "workspace:^",
     "@altano/tsconfig": "workspace:*",
     "@types/jest-image-snapshot": "^6.2.0",
     "@vitest/ui": "^0.30.1",
     "jest-image-snapshot": "^6.2.0",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
-    "vitest": "^0.30.1"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.2"
   },
   "peerDependencies": {
     "astro": "2.x"

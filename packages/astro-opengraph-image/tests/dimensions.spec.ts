@@ -14,7 +14,7 @@ describe("dimensions", async () => {
   middleware.should("allow custom dimensions", {
     requestUrl: `http://example.com/opengraph-image.png`,
     format: "png",
-    extraSatoriOptions: {
+    extraSvgOptions: {
       width: 300,
       height: 500,
     },
