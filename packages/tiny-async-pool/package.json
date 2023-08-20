@@ -8,8 +8,8 @@
   "sideEffects": false,
   "files": [
     "LICENSE-MIT",
-    "dist/index.js",
-    "dist/index.d.ts",
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
     "README.md"
   ],
   "scripts": {

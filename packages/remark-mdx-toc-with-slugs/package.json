@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-mdx-toc-with-slugs",
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "keywords": [
     "remark",

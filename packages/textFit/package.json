@@ -6,8 +6,8 @@
     "example": "examples"
   },
   "files": [
-    "dist/textFit.js",
-    "dist/textFit.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "type": "module",
   "sideEffects": false,
