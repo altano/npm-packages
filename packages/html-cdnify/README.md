@@ -1,6 +1,6 @@
 ![logo](./assets/logo.png)
 
-[![npm](https://badgen.net/npm/v/html-cdnify)](https://www.npmjs.com/package/html-cdnify) ![Typed with TypeScript](https://badgen.net/npm/types/html-cdnify) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
+[![npm](https://badgen.net/npm/v/@altano/html-cdnify)](https://www.npmjs.com/package/@altano/html-cdnify) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/html-cdnify) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
 
 Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.
 
