@@ -1,6 +1,10 @@
 {
   "name": "html-cdnify",
-  "version": "0.1.5",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "sideEffects": false,
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
   "keywords": [
     "cdn",
@@ -8,46 +12,60 @@
     "cdnify",
     "cdnification"
   ],
-  "main": "./dist/cdnify.js",
   "files": [
+    "assets/logo.png",
     "dist/**/*.js",
     "dist/**/*.d.ts",
     "README.md"
   ],
   "scripts": {
-    "pretest": "tsc -P test/",
-    "test": "cd test/dist && istanbul cover ../../node_modules/mocha/bin/_mocha -- -R dot",
-    "start": "npm run test",
-    "build": "tsc",
-    "is-git-clean": "node bin/is-git-clean",
-    "validate": "npm-run-all build test is-git-clean",
-    "preversion": "npm run validate",
-    "prepublish": "npm run validate"
+    "build": "tsup",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "dev": "tsup --watch",
+    "format": "prettier --write src",
+    "lint": "eslint src/**/*.ts*",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "test": "vitest --run"
   },
-  "repository": "bitbucket:altano/html-cdnify",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/html-cdnify"
+  },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/html-cdnify",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "license": "ISC",
   "dependencies": {
-    "glob": "^7.0.3",
-    "lodash": "^4.11.1",
-    "safe-write-stream": "^1.0.4",
-    "stream-to-promise": "^1.1.0",
+    "glob": "^10.3.3",
+    "lodash": "^4.17.21",
+    "stream-to-promise": "^3.0.0",
     "streamifier": "^0.1.1",
     "trumpet": "^1.7.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "is-git-clean": "^1.0.0",
-    "istanbul": "^0.4.3",
-    "jscs": "^2.11.0",
-    "mocha": "^2.4.5",
-    "npm-run-all": "^1.7.0",
-    "should": "^8.3.0",
-    "tslint": "^3.7.4",
-    "typescript": "^1.8.10"
+    "@altano/tsconfig": "workspace:*",
+    "@types/glob": "^8.1.0",
+    "@types/lodash": "^4.14.197",
+    "@types/node": "^20.5.3",
+    "@types/stream-to-promise": "^2.2.1",
+    "@types/streamifier": "^0.1.0",
+    "eslint": "^8.47.0",
+    "eslint-config-altano": "workspace:*",
+    "prettier": "^3.0.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.2"
   },
   "engines": {
     "node": ">=5.10.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

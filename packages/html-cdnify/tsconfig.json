@@ -1,21 +1,8 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "noEmitOnError": true,
-        "noImplicitAny": true,
-        "outDir": "dist",
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "pretty": true,
-        "declaration": true
-    },
-    "exclude": [
-        "node_modules",
-        "typings/browser",
-        "typings/browser.d.ts",
-        "test",
-        "dist",
-        "src/cmd.ts"
-    ]
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": ["./types/trumpet.d.ts"]
+  }
 }

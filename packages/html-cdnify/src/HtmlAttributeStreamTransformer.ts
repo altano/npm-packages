@@ -1,7 +1,5 @@
-import * as path from "path";
-import * as _ from "lodash";
+import { groupBy } from "lodash";
 import HtmlTransformer from "./HtmlTransformer";
-import urlConverter from "./urlConverter";
 
 export interface HtmlAttributeStreamTransformerOptions {
   transformDefinitions: TransformDefinition[];
@@ -12,7 +10,10 @@ export interface HtmlAttributeStreamTransformerOptions {
 export interface TransformDefinition {
   selector: string;
   attribute: string;
-  attributeParser?: (oldAttribute: string, transformFunction: TransformFunction) => string;
+  attributeParser?: (
+    oldAttribute: string,
+    transformFunction: TransformFunction,
+  ) => string;
 }
 
 export type TransformFunction = (oldAttribute: string) => string;
@@ -32,7 +33,7 @@ export interface AttributeParsers {
  * use the given CDN URL.
  */
 export class HtmlAttributeStreamTransformer extends HtmlTransformer {
-  public condensedTransformOptions: TransformDefinition[];
+  public condensedTransformOptions: TransformDefinition[] = [];
 
   constructor(public options: HtmlAttributeStreamTransformerOptions) {
     super();
@@ -43,23 +44,24 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
   }
 
   static attributeParsers: AttributeParsers = {
-    default: (attr, transformFunction) => transformFunction(attr)
+    default: (attr, transformFunction) => transformFunction(attr),
   };
 
-  protected applyTransforms() {
-    this.condensedTransformOptions.forEach(settings => {
-      let selector = settings.selector;
-      let attribute = settings.attribute;
-      let parser = settings.attributeParser;
+  protected applyTransforms(): void {
+    this.condensedTransformOptions.forEach((settings) => {
+      const selector = settings.selector;
+      const attribute = settings.attribute;
+      const parser = settings.attributeParser;
 
-      this.stream.selectAll(selector, elem => {
-        let oldAttributeValue = elem.getAttribute(attribute);
+      this.stream.selectAll(selector, (elem) => {
+        const oldAttributeValue = elem.getAttribute(attribute);
 
         // Check that the attribute is set (which should always be the case) and the
         // typeof=string, which will be false in the case of empty attributes (which
         // cause getAttribute() to return the boolean true)
         if (typeof oldAttributeValue === "string") {
-          let newAttributeValue = parser(oldAttributeValue, this.options.transformFunction);
+          const newAttributeValue =
+            parser && parser(oldAttributeValue, this.options.transformFunction);
           if (newAttributeValue && newAttributeValue !== oldAttributeValue) {
             elem.setAttribute(attribute, newAttributeValue);
           }
@@ -68,17 +70,22 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
     });
 
     // Run cleanup transform last
-    if (this.options.attributeToMarkElementToBeIgnored) {
-      this.stream.selectAll(`[${this.options.attributeToMarkElementToBeIgnored}]`, elem => {
-        elem.removeAttribute(this.options.attributeToMarkElementToBeIgnored);
-      });
+    const { attributeToMarkElementToBeIgnored } = this.options;
+    if (attributeToMarkElementToBeIgnored) {
+      this.stream.selectAll(
+        `[${attributeToMarkElementToBeIgnored}]`,
+        (elem) => {
+          elem.removeAttribute(attributeToMarkElementToBeIgnored);
+        },
+      );
     }
   }
 
-  private processTransforms() {
-    this.options.transformDefinitions.forEach(option => {
+  private processTransforms(): void {
+    this.options.transformDefinitions.forEach((option) => {
       if (!option.attributeParser) {
-        option.attributeParser = HtmlAttributeStreamTransformer.attributeParsers["default"];
+        option.attributeParser =
+          HtmlAttributeStreamTransformer.attributeParsers["default"];
       }
 
       if (typeof option.selector !== "string") {
@@ -99,22 +106,30 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
      * selectors with the same attribute and attributeParser can be combined into a single,
      * comma-delimited CSS selector.
      */
-    let groupedTransformOptions = _.groupBy(this.options.transformDefinitions, obj => {
-      return [obj.attribute, obj.attributeParser];
-    });
+    const groupedTransformOptions = groupBy(
+      this.options.transformDefinitions,
+      (obj) => {
+        return [obj.attribute, obj.attributeParser];
+      },
+    );
 
-    this.condensedTransformOptions = Object.keys(groupedTransformOptions).map(key => {
-      let likeTransformOptions = groupedTransformOptions[key];
-      let attribute = likeTransformOptions[0].attribute;
-      let attributeParser = likeTransformOptions[0].attributeParser;
+    this.condensedTransformOptions = Object.keys(groupedTransformOptions).map(
+      (key) => {
+        const likeTransformOptions = groupedTransformOptions[key];
+        if (likeTransformOptions == null || likeTransformOptions[0] == null) {
+          throw new Error(`No likeTransformOptions`);
+        }
+        const attribute = likeTransformOptions[0].attribute;
+        const attributeParser = likeTransformOptions[0].attributeParser;
 
-      return {
-        attribute,
-        attributeParser,
-        selector: likeTransformOptions
-                    .map(likeTransformOption => likeTransformOption.selector)
-                    .join(", ")
-      };
-    });
+        return {
+          attribute,
+          attributeParser,
+          selector: likeTransformOptions
+            .map((likeTransformOption) => likeTransformOption.selector)
+            .join(", "),
+        };
+      },
+    );
   }
-};
+}

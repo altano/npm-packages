@@ -1,11 +1,13 @@
-import * as path from "path";
-import * as _ from "lodash";
-import HtmlTransformer from "./HtmlTransformer";
+import { unionBy, merge, mergeWith, type MergeWithCustomizer } from "lodash";
 import urlConverter from "./urlConverter";
 
 import * as HtmlAttributeStreamTransformer from "./HtmlAttributeStreamTransformer";
 
-export type CDNTransformFunction = (cdnUrl: string, oldUrl: string, bufferPath: string) => string;
+export type CDNTransformFunction = (
+  cdnUrl: string,
+  oldUrl: string,
+  bufferPath: string,
+) => string;
 
 export interface CDNTransformerOptions {
   cdnUrl: string;
@@ -19,33 +21,61 @@ export interface CDNTransformerOptions {
  * Handles merging objects that have TransformDefinition arrays
  */
 class OptionsMerger {
-  static isTransformDefinition(a: any): a is HtmlAttributeStreamTransformer.TransformDefinition {
-    return typeof(a.selector) === "string" && typeof(a.attribute) === "string";
+  static isTransformDefinition(
+    a: unknown,
+  ): a is HtmlAttributeStreamTransformer.TransformDefinition {
+    return (
+      a != null &&
+      typeof a === "object" &&
+      "selector" in a &&
+      "attribute" in a &&
+      typeof a.selector === "string" &&
+      typeof a.selector === "string" &&
+      typeof a.attribute === "string"
+    );
   }
 
-  static isTransformDefinitions(a: any): a is HtmlAttributeStreamTransformer.TransformDefinition[] {
-    return Array.isArray(a) && a.length > 0 && OptionsMerger.isTransformDefinition(a[0]);
+  static isTransformDefinitions(
+    a: unknown,
+  ): a is HtmlAttributeStreamTransformer.TransformDefinition[] {
+    return (
+      Array.isArray(a) &&
+      a.length > 0 &&
+      OptionsMerger.isTransformDefinition(a[0])
+    );
   }
 
-  static mergeCustomizer: _.MergeWithCustomizer = (objValue, srcValue) => {
-
-    if (OptionsMerger.isTransformDefinitions(objValue)
-          || OptionsMerger.isTransformDefinitions(srcValue)) {
-      let result = _.unionBy(
-        srcValue, objValue, // reverse order to allow srcValue to take precedence
+  static mergeCustomizer: MergeWithCustomizer = (objValue, srcValue) => {
+    if (
+      OptionsMerger.isTransformDefinitions(objValue) ||
+      OptionsMerger.isTransformDefinitions(srcValue)
+    ) {
+      const result = unionBy(
+        srcValue,
+        objValue, // reverse order to allow srcValue to take precedence
         (value: HtmlAttributeStreamTransformer.TransformDefinition) =>
-          `${value.selector} / ${value.attribute}`
+          `${value.selector} / ${value.attribute}`,
       );
 
       return result;
-    }
-    else {
-      return <any>undefined;
+    } else {
+      return undefined;
     }
   };
 
-  static merge<T, U, V, W>(target: T, source1: U, source2: V, source3: W): T & U & V & W {
-    return _.mergeWith(target, source1, source2, source3, OptionsMerger.mergeCustomizer);
+  static merge<T, U, V, W>(
+    target: T,
+    source1: U,
+    source2: V,
+    source3: W,
+  ): T & U & V & W {
+    return mergeWith(
+      target,
+      source1,
+      source2,
+      source3,
+      OptionsMerger.mergeCustomizer,
+    );
   }
 }
 
@@ -56,49 +86,54 @@ class OptionsMerger {
  * use the given CDN URL.
  */
 export class CDNTransformer extends HtmlAttributeStreamTransformer.HtmlAttributeStreamTransformer {
-  public cdnOptions: CDNTransformerOptions;
+  public cdnOptions: Required<CDNTransformerOptions>;
 
   constructor(cdnOptions: CDNTransformerOptions) {
     super(
       OptionsMerger.merge(
         {},
-        CDNTransformer.defaultHtmlAttributeStreamTransformerOptions,
+        CDNTransformer.#defaultHtmlAttributeStreamTransformerOptions,
         {
           transformDefinitions: [],
-          transformFunction: (attribute: string) => this.cdnifyAttribute(attribute)
+          transformFunction: (attribute: string) =>
+            this.#cdnifyAttribute(attribute),
         },
         {
-          transformDefinitions: cdnOptions.transformDefinitions
-        }
-      )
+          transformDefinitions: cdnOptions.transformDefinitions,
+        },
+      ),
     );
 
-    this.cdnOptions = _.merge({}, CDNTransformer.defaultCdnOptions, cdnOptions);
+    this.cdnOptions = merge(
+      {
+        transformDefinitions: [],
+      },
+      CDNTransformer.#defaultCdnOptions,
+      cdnOptions,
+    );
 
     if (typeof this.cdnOptions.cdnUrl !== "string") {
       throw new Error(`Invalid cdnUrl "${this.cdnOptions.cdnUrl}" specified.`);
     }
   }
 
-  private cdnifyAttribute(oldUrl: string) {
+  #cdnifyAttribute(oldUrl: string): string {
     return this.cdnOptions.transformFunction(
       this.cdnOptions.cdnUrl,
       oldUrl,
-      this.cdnOptions.bufferPath
+      this.cdnOptions.bufferPath,
     );
   }
 
-  private static defaultCdnOptions: CDNTransformerOptions = {
-    cdnUrl: undefined,
+  static #defaultCdnOptions = {
     bufferPath: ".",
     transformFunction: urlConverter,
-  }
+  } as const;
 
-  public static defaultTransformFunction = CDNTransformer.defaultCdnOptions.transformFunction;
+  public static defaultTransformFunction =
+    CDNTransformer.#defaultCdnOptions.transformFunction;
 
-  private static defaultHtmlAttributeStreamTransformerOptions: HtmlAttributeStreamTransformer.HtmlAttributeStreamTransformerOptions = {
-    transformFunction: undefined,
-
+  static #defaultHtmlAttributeStreamTransformerOptions = {
     attributeToMarkElementToBeIgnored: "data-cdn-ignore",
 
     // inspired by https://github.com/callumlocke/grunt-cdnify/blob/master/tasks/cdnify.js#L31
@@ -142,12 +177,16 @@ export class CDNTransformer extends HtmlAttributeStreamTransformer.HtmlAttribute
       {
         selector: `img[srcset]:not([data-cdn-ignore])`,
         attribute: "srcset",
-        attributeParser: (attr, transformFunction) => {
-          return attr.split(",")
-            .map(imgInfo => imgInfo.replace(/([^ ]+)/, transformFunction))
+        attributeParser(
+          attr: string,
+          transformFunction: HtmlAttributeStreamTransformer.TransformFunction,
+        ): string {
+          return attr
+            .split(",")
+            .map((imgInfo) => imgInfo.replace(/([^ ]+)/, transformFunction))
             .join(",");
-        }
+        },
       },
     ],
-  };
-};
+  } as const;
+}

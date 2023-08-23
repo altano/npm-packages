@@ -1,55 +1,48 @@
-// jscs:disable maximumLineLength
+import { describe, it, expect } from "vitest";
+import { HtmlAttributeStreamTransformer } from "../src/HtmlAttributeStreamTransformer";
 
-/// <reference path="../typings/main.d.ts" />
+import streamifier from "streamifier";
 
-import {HtmlAttributeStreamTransformer} from "../src/HtmlAttributeStreamTransformer";
-
-let streamifier = require("streamifier");
-
-import * as chai from "chai";
-chai.should();
-
-import * as chaiAsPromised from "chai-as-promised";
-chai.use(chaiAsPromised);
-
-describe("HtmlAttributeStreamTransformer", function() {
-  it("should let me uppcase all src attributes", function() {
+describe("HtmlAttributeStreamTransformer", function () {
+  it("should let me uppcase all src attributes", async function () {
     let cdnTransformer = new HtmlAttributeStreamTransformer({
       transformDefinitions: [
         {
           selector: "[src]",
           attribute: "src",
-        }
+        },
       ],
-      transformFunction: (attribute: string) => attribute.toUpperCase()
+      transformFunction: (attribute: string) => attribute.toUpperCase(),
     });
 
     streamifier
       .createReadStream(`<html><img src="hello"></html>`)
       .pipe(cdnTransformer.stream);
 
-    return cdnTransformer.outputBufferPromise
-             .then(buffer => buffer.toString())
-             .should.eventually.equal(`<html><img src="HELLO"></html>`);
+    const result = cdnTransformer.outputBufferPromise.then((buffer) =>
+      buffer.toString(),
+    );
+    await expect(result).resolves.toEqual(`<html><img src="HELLO"></html>`);
   });
 
-  it("should skip over matched elements that don't have attribute values", function() {
+  it("should skip over matched elements that don't have attribute values", async function () {
     let cdnTransformer = new HtmlAttributeStreamTransformer({
       transformDefinitions: [
         {
           selector: "[src]",
           attribute: "src",
-        }
+        },
       ],
-      transformFunction: (attribute: string) => attribute.toUpperCase()
+      transformFunction: (attribute: string) => attribute.toUpperCase(),
     });
 
     streamifier
       .createReadStream(`<html><img src></html>`)
       .pipe(cdnTransformer.stream);
 
-    return cdnTransformer.outputBufferPromise
-             .then(buffer => buffer.toString())
-             .should.eventually.equal(`<html><img src></html>`);
+    const result = cdnTransformer.outputBufferPromise.then((buffer) =>
+      buffer.toString(),
+    );
+    await expect(result).resolves.toEqual(`<html><img src></html>`);
   });
 });

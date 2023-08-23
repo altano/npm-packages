@@ -1,25 +1,19 @@
-// jscs:disable maximumLineLength
+import { describe, it, expect } from "vitest";
+import { cdnify, CdnifyOptions } from "../src/cdnify";
 
-/// <reference path="../typings/main.d.ts" />
-
-import {cdnify, CdnifyOptions} from "../src/cdnify";
-
-import * as chai from "chai";
-chai.should();
-
-import * as chaiAsPromised from "chai-as-promised";
-chai.use(chaiAsPromised);
-
-describe("cdnify", function() {
-  it("should conveniently wrap CDNTransformer", function() {
+describe("cdnify", function () {
+  it("should conveniently wrap CDNTransformer", async function () {
     let cdnifyOptions: CdnifyOptions = {
       cdnUrl: "//cdn.alan.norbauer.com/cdn/",
       bufferPath: "test.html",
-      buffer: new Buffer(`<html><img src="/face.png" data-cdn-ignore><img src="/face.png"></html>`),
+      buffer: Buffer.from(
+        `<html><img src="/face.png" data-cdn-ignore><img src="/face.png"></html>`,
+      ),
     };
 
-    return cdnify(cdnifyOptions)
-      .then(buffer => buffer.toString())
-      .should.eventually.equal(`<html><img src="/face.png"><img src="//cdn.alan.norbauer.com/cdn/face.png"></html>`);
+    const result = cdnify(cdnifyOptions).then((buffer) => buffer.toString());
+    await expect(result).resolves.toEqual(
+      `<html><img src="/face.png"><img src="//cdn.alan.norbauer.com/cdn/face.png"></html>`,
+    );
   });
 });

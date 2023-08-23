@@ -1,15 +1,8 @@
-import * as stream from "stream";
-import * as fs from "fs";
-import * as path from "path";
-
-let trumpet = require("trumpet");
-let safeWriteStream = require("safe-write-stream");
-let streamToPromise = require("stream-to-promise");
+import trumpet, { type Trumpet } from "trumpet";
+import streamToPromise from "stream-to-promise";
 
 // @TODO Move...
-export class TrumpetTransformStream extends stream.Transform {
-  selectAll: (selector: string, callback: (elem: HTMLElement) => void) => void;
-}
+export interface TrumpetTransformStream extends Trumpet {}
 
 export default class HtmlTransformer {
   private transformStream: TrumpetTransformStream;
@@ -21,7 +14,7 @@ export default class HtmlTransformer {
   /**
    * Get the underlying transform stream
    */
-  get stream() {
+  get stream(): Trumpet {
     return this.transformStream;
   }
 
@@ -31,4 +24,4 @@ export default class HtmlTransformer {
   get outputBufferPromise(): Promise<Buffer> {
     return streamToPromise(this.stream);
   }
-};
+}

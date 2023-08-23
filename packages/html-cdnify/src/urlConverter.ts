@@ -1,31 +1,36 @@
-import * as url from "url";
-import * as path from "path";
+import url from "node:url";
+import path from "node:path";
 
-function isLocalPath(filePath: string) {
-  return typeof filePath === "string" &&
-    filePath.length &&
+function isLocalPath(filePath: string): boolean {
+  return (
+    typeof filePath === "string" &&
+    filePath.length > 0 &&
     filePath.indexOf("//") === -1 &&
-    filePath.indexOf("data:") !== 0;
+    filePath.indexOf("data:") !== 0
+  );
 }
 
 /**
  * Resolve oldUrl against pathOldUrlIsRelativeTo, and then prepend newUrlBase
  */
-export default (newUrlBase: string, oldUrl: string, pathOldUrlIsRelativeTo?: string) => {
+export default (
+  newUrlBase: string,
+  oldUrl: string,
+  pathOldUrlIsRelativeTo?: string,
+): string => {
   if (!isLocalPath(oldUrl)) {
     return oldUrl;
-  }
-  else {
+  } else {
     oldUrl = oldUrl.trim();
     let relativePath = ".";
 
     if (pathOldUrlIsRelativeTo) {
-      let isDirAlready = pathOldUrlIsRelativeTo.endsWith("/");
-      let fileDirName = isDirAlready ?
-          pathOldUrlIsRelativeTo : path.dirname(pathOldUrlIsRelativeTo) + "/";
+      const isDirAlready = pathOldUrlIsRelativeTo.endsWith("/");
+      const fileDirName = isDirAlready
+        ? pathOldUrlIsRelativeTo
+        : path.dirname(pathOldUrlIsRelativeTo) + "/";
       relativePath = url.resolve(fileDirName, oldUrl);
-    }
-    else {
+    } else {
       relativePath = oldUrl;
     }
 

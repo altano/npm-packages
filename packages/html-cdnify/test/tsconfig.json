@@ -1,12 +1,7 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "noEmitOnError": true,
-        "noImplicitAny": true,
-        "outDir": "dist"
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "extends": "@altano/tsconfig/node.json",
+  "include": [".", "vite.config.ts"],
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  }
 }
