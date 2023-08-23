@@ -746,9 +746,9 @@ importers:
 
   packages/use-element-observer:
     dependencies:
-      react-use:
-        specifier: ^17.4.0
-        version: 17.4.0(react-dom@18.2.0)(react@18.2.0)
+      '@uidotdev/usehooks':
+        specifier: ^2.1.1
+        version: 2.1.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@altano/tsconfig':
         specifier: workspace:*
@@ -2953,6 +2953,17 @@ packages:
       '@typescript-eslint/types': 6.3.0
       eslint-visitor-keys: 3.4.3
     dev: true
+
+  /@uidotdev/usehooks@2.1.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-sVJ1jXU62Edh22dREEa3mHcHnH2MUgokuzLw9guNS30ADCkdhYASNZxg2V8iB83iwY5H+jSeSxjqGaFvsRrNBQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@vitejs/plugin-react@4.0.0(vite@4.4.9):
     resolution: {integrity: sha512-HX0XzMjL3hhOYm+0s95pb0Z7F8O81G7joUHgfDd/9J/ZZf5k4xX6QAMFkKsHFxaHlf6X7GD7+XuaZ66ULiJuhQ==}

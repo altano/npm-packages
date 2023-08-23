@@ -1,10 +1,8 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
-import type { Actions } from "react-use/lib/useSet";
-import { useSet } from "react-use";
+import { useSet } from "@uidotdev/usehooks";
 
 interface Context {
   mountedElements: Set<Element>;
-  methods: Actions<Element>;
 }
 
 interface Callbacks<T> {
@@ -66,15 +64,19 @@ function Observer({
   if (context == null) {
     throw new Error("Observer context was null");
   }
-  const { methods } = context;
-  const { add, reset } = methods;
+  const { mountedElements } = context;
   const onMount = useCallback(
     (ref: Element) => {
-      Array.from(ref.querySelectorAll(selector)).forEach(add);
+      Array.from(ref.querySelectorAll(selector)).forEach((e) =>
+        mountedElements.add(e),
+      );
     },
-    [selector, add],
+    [selector, mountedElements],
   );
-  const onUnmount = useCallback(() => reset, [reset]);
+  const onUnmount = useCallback(
+    () => mountedElements.clear(),
+    [mountedElements],
+  );
   const Component = useWrapperDiv ? ObserveChildWithWrapperDiv : ObserveChild;
   return (
     <Component onMount={onMount} onUnmount={onUnmount}>
@@ -104,7 +106,7 @@ interface Options {
  * @param useWrapperDiv If `true`, a 'div' will wrap the observed children. If
  * `false`, `children` must be a single child element that can take a ref (which
  * will be overwritten).
- * @returns A tuple of: (1) array of elements and (2) the observed tree to be
+ * @returns A tuple of: (1) set of elements and (2) the observed tree to be
  * rendered.
  */
 export function useElementObserver({
@@ -112,10 +114,11 @@ export function useElementObserver({
   selector,
   useWrapperDiv = true,
 }: Options): [Set<Element>, React.ReactElement] {
-  // TODO: Re-compute on every render to catch mutations? Add mutation observer to catch changes to grandchildren?
-  const [mountedElements, methods] = useSet<Element>();
+  // TODO: Re-compute on every render to catch mutations? Add mutation observer
+  // to catch changes to grandchildren?
+  const mountedElements = useSet<Element>();
   const observedTree = (
-    <ElementObserverContext.Provider value={{ mountedElements, methods }}>
+    <ElementObserverContext.Provider value={{ mountedElements }}>
       <Observer selector={selector} useWrapperDiv={useWrapperDiv}>
         {tree}
       </Observer>
