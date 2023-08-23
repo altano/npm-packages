@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-toc-visible-sections",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Intersection-Observer-based Table of Contents Scroll Spy React Hook",
   "type": "module",
   "sideEffects": false,
@@ -34,6 +34,9 @@
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-toc-visible-sections",
   "dependencies": {
     "@altano/use-visible-elements": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18"
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
