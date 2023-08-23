@@ -1,0 +1,9 @@
+☐ Investigate soup and grunt-cdnify:
+    https://www.npmjs.com/package/soup
+    https://www.npmjs.com/package/grunt-cdnify
+☐ Investigate rewriting URLs in CSS
+☐ Add support for a custom function that transforms the URL
+☐ add parameter to specify custom transform URL
+☐ Add "attribute transformer" layer of indirection
+☐ convert to TS
+☐ Finish cmd.js

@@ -1,0 +1,53 @@
+{
+  "name": "html-cdnify",
+  "version": "0.1.5",
+  "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
+  "keywords": [
+    "cdn",
+    "html",
+    "cdnify",
+    "cdnification"
+  ],
+  "main": "./dist/cdnify.js",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "README.md"
+  ],
+  "scripts": {
+    "pretest": "tsc -P test/",
+    "test": "cd test/dist && istanbul cover ../../node_modules/mocha/bin/_mocha -- -R dot",
+    "start": "npm run test",
+    "build": "tsc",
+    "is-git-clean": "node bin/is-git-clean",
+    "validate": "npm-run-all build test is-git-clean",
+    "preversion": "npm run validate",
+    "prepublish": "npm run validate"
+  },
+  "repository": "bitbucket:altano/html-cdnify",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.0.3",
+    "lodash": "^4.11.1",
+    "safe-write-stream": "^1.0.4",
+    "stream-to-promise": "^1.1.0",
+    "streamifier": "^0.1.1",
+    "trumpet": "^1.7.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "is-git-clean": "^1.0.0",
+    "istanbul": "^0.4.3",
+    "jscs": "^2.11.0",
+    "mocha": "^2.4.5",
+    "npm-run-all": "^1.7.0",
+    "should": "^8.3.0",
+    "tslint": "^3.7.4",
+    "typescript": "^1.8.10"
+  },
+  "engines": {
+    "node": ">=5.10.1"
+  }
+}
