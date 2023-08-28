@@ -17,10 +17,11 @@
       "source": "devbox-search",
       "version": "8.6.5"
     },
-    "nodejs@18.16.0": {
-      "last_modified": "2023-05-25T03:54:59Z",
-      "resolved": "github:NixOS/nixpkgs/8d4d822bc0efa9de6eddc79cb0d82897a9baa750#nodejs_18",
-      "version": "18.16.0"
+    "nodejs@18.17.1": {
+      "last_modified": "2023-08-23T16:29:29Z",
+      "resolved": "github:NixOS/nixpkgs/9201b5ff357e781bf014d0330d18555695df7ba8#nodejs_18",
+      "source": "devbox-search",
+      "version": "18.17.1"
     }
   }
 }

@@ -50,7 +50,7 @@
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",
-    "@types/node": "^18.16.0",
+    "@types/node": "^18.17.1",
     "@types/prettier": "^2.7.2",
     "@types/unist": "^3.0.0",
     "@vitest/ui": "^0.30.1",

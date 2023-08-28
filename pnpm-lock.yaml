@@ -378,7 +378,7 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       tsup:
         specifier: ^7.2.0
@@ -418,7 +418,7 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       '@types/prettier':
         specifier: ^2.7.2
@@ -506,7 +506,7 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       '@types/prettier':
         specifier: ^2.7.2
@@ -616,7 +616,7 @@ importers:
         specifier: ^4.1.8
         version: 4.1.8
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       '@types/prettier':
         specifier: ^2.7.2
@@ -649,7 +649,7 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       '@types/prettier':
         specifier: ^2.7.2
@@ -706,7 +706,7 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@types/node':
-        specifier: ^18.16.0
+        specifier: ^18.17.1
         version: 18.17.6
       '@types/prettier':
         specifier: ^2.7.2
