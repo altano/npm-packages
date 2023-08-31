@@ -1,0 +1,7 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "jsx": "react"
+  }
+}

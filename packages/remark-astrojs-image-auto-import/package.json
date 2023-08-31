@@ -64,7 +64,7 @@
     "typescript": "^5.1.6",
     "unified": "^10.1.2",
     "vfile": "^5.3.7",
-    "vitest": "^0.34.2"
+    "vitest": "^0.34.3"
   },
   "publishConfig": {
     "access": "public"
