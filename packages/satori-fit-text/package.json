@@ -1,7 +1,7 @@
 {
-  "name": "@altano/astro-html-to-image",
-  "version": "0.0.1-alpha.3",
-  "description": "Render Astro components to images",
+  "name": "@altano/satori-fit-text",
+  "version": "0.0.1-alpha.0",
+  "description": "Fit text to a bounding box in Node or the browser",
   "type": "module",
   "sideEffects": false,
   "exports": "./dist/index.js",
@@ -15,8 +15,10 @@
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
-    "test": "vitest --run",
-    "test:watch": "vitest"
+    "test": "run-s test:unit test:benchmark",
+    "test:unit": "vitest --run",
+    "test:benchmark": "vitest --run bench",
+    "test:watch": "vitest tests/"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -27,43 +29,40 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/astro-html-to-image"
+    "directory": "packages/satori-fit-text"
   },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-html-to-image",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/satori-fit-text",
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts"
-  ],
-  "keywords": [
-    "astro",
-    "withastro",
-    "middleware"
   ],
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@resvg/resvg-wasm": "^2.4.1",
+    "@svgdotjs/svg.js": "^3.2.0",
     "he": "^1.2.0",
-    "mime-types": "^2.1.35",
     "satori": "^0.10.3",
     "satori-html": "^0.3.2",
-    "sharp": "^0.32.4"
+    "svgdom": "^0.1.14"
   },
   "devDependencies": {
     "@altano/assets": "workspace:^",
     "@altano/tsconfig": "workspace:*",
+    "@resvg/resvg-js": "^2.4.1",
     "@types/he": "^1.2.0",
     "@types/jest-image-snapshot": "^6.2.0",
-    "@types/mime-types": "^2.1.1",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@vitest/coverage-v8": "^0.34.3",
     "@vitest/ui": "^0.30.1",
     "jest-image-snapshot": "^6.2.0",
+    "npm-run-all": "^4.1.5",
+    "react": "^18",
+    "react-dom": "^18",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vitest": "^0.34.3"
-  },
-  "peerDependencies": {
-    "astro": "2.x"
   }
 }

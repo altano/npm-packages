@@ -43,7 +43,7 @@
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vfile": "^5.3.7",
-    "vitest": "^0.34.2"
+    "vitest": "^0.34.3"
   },
   "dependencies": {
     "debug": "^4.3.4",
