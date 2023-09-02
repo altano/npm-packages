@@ -39,6 +39,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "typography",
+    "satori",
+    "opengraph",
+    "fit-text"
+  ],
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
     "he": "^1.2.0",
