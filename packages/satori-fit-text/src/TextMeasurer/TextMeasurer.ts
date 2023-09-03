@@ -1,37 +1,20 @@
-import { SVG, registerWindow, type Svg } from "@svgdotjs/svg.js";
 import satori from "satori";
-import getSatoriFriendlyVNode from "./getSatoriFriendlyVNode";
-import { createSVGWindow } from "svgdom";
+import getSatoriFriendlyVNode from "../getSatoriFriendlyVNode";
 
 import type React from "react";
-import type { Font } from "./types";
+import type { Font } from "../types";
 
-export class TextMeasurer {
-  #canvas: Svg;
-
+export abstract class TextMeasurer {
   constructor(
-    private text: string,
-    private font: Font,
-    private maxWidth: number,
-    private maxHeight: number,
-    private lineHeight: number | "normal",
-  ) {
-    // register window and document
-    const window = createSVGWindow();
-    const document = window.document;
-    registerWindow(window, document);
+    protected text: string,
+    protected font: Font,
+    protected maxWidth: number,
+    protected maxHeight: number,
+    protected lineHeight: number | "normal",
+  ) {}
+  abstract doesSizeFit(fontSize: number): Promise<boolean>;
 
-    // create canvas
-    this.#canvas = SVG<SVGSVGElement>(document.documentElement);
-  }
-
-  async doesSizeFit(fontSize: number): Promise<boolean> {
-    await this.#setFontSize(fontSize);
-    const { width, height } = this.#canvas.bbox();
-    return width <= this.maxWidth && height <= this.maxHeight;
-  }
-
-  async #generateSvg(fontSize: number): Promise<string> {
+  protected async generateSvg(fontSize: number): Promise<string> {
     // We render a border so that we measure the true dimensions of the text.
     // Without one, the bounding box might not include significant whitespace.
     // For example, if the last line of text has no descenders, the bounding box
@@ -65,11 +48,5 @@ export class TextMeasurer {
       width: this.maxWidth * 2,
       height: this.maxHeight * 2,
     });
-  }
-
-  async #setFontSize(fontSize: number): Promise<void> {
-    const svgText = await this.#generateSvg(fontSize);
-    this.#canvas.clear();
-    this.#canvas.svg(svgText);
   }
 }
