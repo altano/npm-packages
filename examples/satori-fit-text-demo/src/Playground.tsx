@@ -8,6 +8,7 @@ export default function Playground() {
   const [lineHeight, setLineHeight] = useState(1.1);
   const [width, setWidth] = useState(1706);
   const [height, setHeight] = useState(500);
+  const [weight, setWeight] = useState(600);
 
   return (
     <div className="wrapper">
@@ -57,12 +58,23 @@ export default function Playground() {
           onChange={(el) => setLineHeight(Number(el.target.value))}
         />
         {lineHeight}
+        <label style={{ textAlign: "right" }}>Font Weight:</label>
+        <input
+          type="range"
+          min={100}
+          max={900}
+          step={100}
+          value={weight}
+          onChange={(el) => setWeight(Number(el.target.value))}
+        />
+        {weight}
       </div>
       <FitText
         lineHeight={lineHeight}
         height={height}
         width={width}
         text={text}
+        weight={weight}
         background="skyblue"
       />
     </div>

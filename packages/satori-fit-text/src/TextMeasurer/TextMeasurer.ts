@@ -1,5 +1,4 @@
 import satori from "satori";
-import getSatoriFriendlyVNode from "../getSatoriFriendlyVNode";
 
 import type React from "react";
 import type { Font } from "../types";
@@ -29,31 +28,50 @@ export abstract class TextMeasurer {
   }
 
   protected async generateSvg(fontSize: number): Promise<string> {
-    // We render a border so that we measure the true dimensions of the text.
-    // Without one, the bounding box might not include significant whitespace.
-    // For example, if the last line of text has no descenders, the bounding box
-    // would only extend to the baseline of the last line. With a border, the
-    // bounding box will include all the whitespace between the baseline and the
-    // descent of the text.
-    const html = `
-      <div style="
-        margin: 0;
-        padding: 0;
-        font-size: ${fontSize}px;
-        max-width: ${this.maxWidth}px;
-        line-height: ${this.lineHeight};
-        box-sizing: border-box;
-        border: solid red 1px;
-      ">
-        ${this.text}
-      </div>
-    `.trim();
+    const node = {
+      type: "div",
+      props: {
+        style: {
+          all: "initial",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+          margin: 0,
+          padding: 0,
+        },
+        children: [
+          {
+            type: "div",
+            props: {
+              style: {
+                // Static styles
+                margin: 0,
+                padding: 0,
+                boxSizing: "border-box",
+                // We render a border so that we measure the true dimensions of the text.
+                // Without one, the bounding box might not include significant whitespace.
+                // For example, if the last line of text has no descenders, the bounding box
+                // would only extend to the baseline of the last line. With a border, the
+                // bounding box will include all the whitespace between the baseline and the
+                // descent of the text.
+                border: "solid red 1px",
 
-    // html text => vnode
-    const vnode = getSatoriFriendlyVNode(html);
+                // Dynamic styles based on input
+                fontSize,
+                fontFamily: this.font.name,
+                maxWidth: this.maxWidth,
+                lineHeight: this.lineHeight,
+              },
+              children: this.text,
+            },
+          },
+        ],
+      },
+    } as const;
 
     // vnode => svg
-    return satori(vnode as React.ReactNode, {
+    return satori(node as React.ReactNode, {
       fonts: this.#fonts,
       width: this.maxWidth * 2,
       height: this.maxHeight * 2,

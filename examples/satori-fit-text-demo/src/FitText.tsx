@@ -1,6 +1,6 @@
-import { findLargestUsableFontSize } from "@altano/satori-fit-text";
+import { type Font, findLargestUsableFontSize } from "@altano/satori-fit-text";
 import { useState, useLayoutEffect } from "react";
-import { getInterSemiBold } from "./font";
+import { getInter } from "./font";
 
 export type Props = {
   text: string;
@@ -8,6 +8,7 @@ export type Props = {
   width: number;
   height: number;
   background?: string;
+  weight?: number;
 };
 
 export default function FitText({
@@ -16,6 +17,7 @@ export default function FitText({
   width,
   height,
   background = "orangered",
+  weight = 600,
 }: Props): React.ReactElement {
   const [fontSize, setFontSize] = useState(0);
   const [timeToComputeMs, setTimeToComputeMs] = useState(0);
@@ -25,7 +27,7 @@ export default function FitText({
       performance.mark("findLargestUsableFontSize-start");
       const largestUsableFontSize = await findLargestUsableFontSize({
         lineHeight: lineHeight,
-        font: await getInterSemiBold(),
+        font: await getInter(weight as NonNullable<Font["weight"]>),
         text,
         maxWidth: width,
         maxHeight: height,
@@ -50,7 +52,7 @@ export default function FitText({
     }
 
     findFontSize();
-  }, [height, lineHeight, text, width]);
+  }, [height, lineHeight, text, weight, width]);
 
   const style = {
     marginBlock: "1rem",
@@ -70,7 +72,7 @@ export default function FitText({
         ...style,
         border: "solid 3px black",
         position: "relative",
-        fontWeight: 600,
+        fontWeight: weight,
         transition: "font-size 500ms ease-out",
         fontSize,
       }}
