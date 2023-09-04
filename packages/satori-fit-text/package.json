@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/satori-fit-text",
   "files": [
+    "assets/",
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
@@ -47,19 +48,23 @@
   ],
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
+    "debug": "^4.3.4",
     "he": "^1.2.0",
     "satori": "^0.10.3",
     "satori-html": "^0.3.2",
     "svgdom": "^0.1.14"
   },
   "devDependencies": {
-    "@altano/assets": "workspace:^",
+    "@altano/assets": "workspace:*",
     "@altano/tsconfig": "workspace:*",
+    "@altano/tiny-async-pool": "workspace:*",
     "@resvg/resvg-js": "^2.4.1",
+    "@types/debug": "^4.1.8",
     "@types/he": "^1.2.0",
     "@types/jest-image-snapshot": "^6.2.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@types/svgdom": "^0.1.0",
     "@vitest/coverage-v8": "^0.34.3",
     "@vitest/ui": "^0.30.1",
     "jest-image-snapshot": "^6.2.0",

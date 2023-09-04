@@ -5,6 +5,8 @@ import { describe, it, expect } from "vitest";
 import should from "./utils/makeTest";
 import { getFont } from "./utils/getFont";
 import { findLargestUsableFontSize } from "../src";
+import { doWorkAndYield } from "@altano/tiny-async-pool";
+import os from "node:os";
 
 describe("findLargestUsableFontSize", () => {
   describe("screenshots", async () => {
@@ -126,7 +128,6 @@ describe("findLargestUsableFontSize", () => {
               margin: 0,
               padding: 0,
               fontSize,
-              fontWeight: 700 /* Bold */,
             }}
           >
             {children}
@@ -154,13 +155,96 @@ describe("findLargestUsableFontSize", () => {
               margin: 0,
               padding: 0,
               fontSize,
-              fontWeight: 700 /* Bold */,
             }}
           >
             {children}
           </div>
         );
       },
+    });
+
+    should("handle text that has a negative x in svg bbox", {
+      findOptions: {
+        text: "asdofi ajsdofi ajpsdofi japsodif japsoid fjapoisd jfpaoisdj fpaoisd jfpoais djfpoia sdjfpoisadf",
+        font,
+        lineHeight: 1.1,
+        maxWidth: 1706,
+        maxHeight: 506,
+      },
+      width: 1706,
+      height: 506,
+      Component({ fontSize, children }) {
+        return (
+          <div
+            style={{
+              background: "skyblue",
+              lineHeight: 1.1,
+              margin: 0,
+              padding: 0,
+              fontSize,
+            }}
+          >
+            {children}
+          </div>
+        );
+      },
+    });
+
+    it("should always return >= font sizes as width increases", async () => {
+      const text =
+        "asdofi ajsdofi ajpsdofi japsodif japsoid fjapoisd jfpaoisdj fpaoisd jfpoais djfpoia sdjfpoisadf";
+      const lineHeight = 1.1;
+      const maxHeight = 506;
+
+      const widthToFontSize: Map<number, number> = new Map();
+
+      async function testWidth(width: number): Promise<[number, number]> {
+        const fontSize = await findLargestUsableFontSize({
+          text,
+          font,
+          lineHeight,
+          maxHeight,
+          maxWidth: width,
+        });
+        return [width, fontSize];
+      }
+
+      for await (const [width, fontSize] of doWorkAndYield(
+        os.cpus().length,
+        [
+          10, 100, 250, 500, 750, 1000, 1500, 1706, 1800, 1900, 2000, 2500,
+          3000, 5000,
+        ],
+        testWidth,
+      )) {
+        widthToFontSize.set(width, fontSize);
+      }
+
+      const widthToFontSizeSorted = new Map(
+        [...widthToFontSize].sort(([aWidth], [bWidth]) => {
+          return aWidth < bWidth ? -1 : 0;
+        }),
+      );
+
+      // Eyeball the monotonicity: every value in this map should be increasing
+      expect(widthToFontSizeSorted).toMatchInlineSnapshot(`
+        Map {
+          10 => 1,
+          100 => 18,
+          250 => 41,
+          500 => 62,
+          750 => 75,
+          1000 => 90,
+          1500 => 113,
+          1706 => 113,
+          1800 => 113,
+          1900 => 119,
+          2000 => 125,
+          2500 => 151,
+          3000 => 151,
+          5000 => 220,
+        }
+        `);
     });
 
     it("should error when maxTries = 1", async () => {

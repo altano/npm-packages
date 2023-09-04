@@ -1,4 +1,4 @@
-import { TextMeasurer } from "./TextMeasurer";
+import { getTextMeasurer } from "./TextMeasurer/getTextMeasurer";
 
 import type { Font } from "./types";
 
@@ -57,7 +57,7 @@ export async function findLargestUsableFontSize({
     throw new Error("`maxTries` must be >= 2");
   }
 
-  const textMeasurer = new TextMeasurer(
+  const textMeasurer = await getTextMeasurer(
     text,
     font,
     maxWidth,

@@ -1,37 +1,34 @@
-import { SVG, registerWindow, type Svg } from "@svgdotjs/svg.js";
 import satori from "satori";
-import getSatoriFriendlyVNode from "./getSatoriFriendlyVNode";
-import { createSVGWindow } from "svgdom";
+import getSatoriFriendlyVNode from "../getSatoriFriendlyVNode";
 
 import type React from "react";
-import type { Font } from "./types";
+import type { Font } from "../types";
 
-export class TextMeasurer {
-  #canvas: Svg;
+export type Dimensions = Pick<DOMRect, "width" | "height">;
 
+export abstract class TextMeasurer {
+  #fonts: Font[];
   constructor(
-    private text: string,
-    private font: Font,
-    private maxWidth: number,
-    private maxHeight: number,
-    private lineHeight: number | "normal",
+    protected text: string,
+    protected font: Font,
+    protected maxWidth: number,
+    protected maxHeight: number,
+    protected lineHeight: number | "normal",
   ) {
-    // register window and document
-    const window = createSVGWindow();
-    const document = window.document;
-    registerWindow(window, document);
-
-    // create canvas
-    this.#canvas = SVG<SVGSVGElement>(document.documentElement);
+    // Satori keeps a WeakMap of fonts arrays. Adding a new font is very
+    // expensive, so let's make sure we always return the (referentially) same
+    // array if the font is the same, to improve performance.
+    this.#fonts = [this.font];
   }
 
+  abstract getDimensions(fontSize: number): Promise<Dimensions>;
+
   async doesSizeFit(fontSize: number): Promise<boolean> {
-    await this.#setFontSize(fontSize);
-    const { width, height } = this.#canvas.bbox();
+    const { width, height } = await this.getDimensions(fontSize);
     return width <= this.maxWidth && height <= this.maxHeight;
   }
 
-  async #generateSvg(fontSize: number): Promise<string> {
+  protected async generateSvg(fontSize: number): Promise<string> {
     // We render a border so that we measure the true dimensions of the text.
     // Without one, the bounding box might not include significant whitespace.
     // For example, if the last line of text has no descenders, the bounding box
@@ -45,6 +42,7 @@ export class TextMeasurer {
         font-size: ${fontSize}px;
         max-width: ${this.maxWidth}px;
         line-height: ${this.lineHeight};
+        box-sizing: border-box;
         border: solid red 1px;
       ">
         ${this.text}
@@ -56,20 +54,9 @@ export class TextMeasurer {
 
     // vnode => svg
     return satori(vnode as React.ReactNode, {
-      fonts: [
-        {
-          name: this.font.name,
-          data: this.font.data,
-        },
-      ],
+      fonts: this.#fonts,
       width: this.maxWidth * 2,
       height: this.maxHeight * 2,
     });
-  }
-
-  async #setFontSize(fontSize: number): Promise<void> {
-    const svgText = await this.#generateSvg(fontSize);
-    this.#canvas.clear();
-    this.#canvas.svg(svgText);
   }
 }

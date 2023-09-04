@@ -1,6 +1,8 @@
 # satori-fit-text
 
-Uses [Satori](https://github.com/vercel/satori) to calculate the largest text font size that will fit a bounding box.
+Calculate the largest text font size that will fit a bounding box, without a web browser. Works anywhere [Satori](https://github.com/vercel/satori) does, e.g. Node.js, web browser, Vercel edge runtime, etc.
+
+![Demo](./assets/demo.gif)
 
 ## Installation
 
@@ -45,8 +47,10 @@ Because this measures the maximum font size using Satori, the ideal use of this 
 
 ## Implementation
 
-The library tries various font sizes until it finds the ideal one that works. Each iteration is tested by generating an SVG with Satori. The SVG dimensions are found using [SVG.js])(https://svgjs.dev/docs/3.0/).
+The library tries various font sizes until it finds the ideal one that works. Each iteration is tested by generating an SVG with Satori and calculating the bounding box of the SVG.
 
 ## Performance
 
-The font size search is a binary search between 1 and 1000 with `O(log maxFontSize-minFontSize)` runtime, or a default of `O(log 1000)`. You can restrict the search space (by reducing the difference between `minFontSize` or `maxFontSize`) to reduce the number of guesses and improve performance.
+The font size search is a binary search between 1 and 1000 with `O(log maxFontSize-minFontSize)` runtime, or a default of `O(log 1000)`. You can improve performance by restricting the search space by reducing the difference between `minFontSize` and `maxFontSize`, which reduces the number of guesses.
+
+If you're doing something like producing Open Graph cards then you probably don't need to worry about performance.
