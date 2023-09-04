@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { doWorkAndYield } from "../src";
 
 const timeout = (i: number) =>
-  new Promise((resolve) =>
+  new Promise<number>((resolve) =>
     setTimeout(() => {
       resolve(i);
     }, i),
@@ -10,11 +10,11 @@ const timeout = (i: number) =>
 
 describe("doWorkAndYield", function () {
   it("only runs as many promises in parallel as given by the pool limit", async function () {
-    const gen = doWorkAndYield(2, [10, 50, 30, 20], timeout);
+    const gen = doWorkAndYield(2, [10, 80, 30, 15], timeout);
     expect((await gen.next()).value).to.equal(10);
     expect((await gen.next()).value).to.equal(30);
-    expect((await gen.next()).value).to.equal(50);
-    expect((await gen.next()).value).to.equal(20);
+    expect((await gen.next()).value).to.equal(15);
+    expect((await gen.next()).value).to.equal(80);
   });
 
   it("runs all promises in parallel when the pool is bigger than needed", async function () {
