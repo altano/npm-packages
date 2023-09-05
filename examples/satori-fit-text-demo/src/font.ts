@@ -33,7 +33,7 @@ export async function getInter(weight: Weight): Promise<Font> {
   const font = {
     name: "Inter",
     data: buffer,
-    weight: 600,
+    weight,
   } as const;
 
   fontCache.set(weight, font);

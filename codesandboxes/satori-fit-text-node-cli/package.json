@@ -10,7 +10,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@altano/satori-fit-text": "0.0.1"
+    "@altano/satori-fit-text": "0.1.1"
   },
   "engines": {
     "node": ">= 18.17.1"
