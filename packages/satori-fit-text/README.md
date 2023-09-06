@@ -15,7 +15,7 @@ yarn add @altano/satori-fit-text
 pnpm add @altano/satori-fit-text
 ```
 
-## Example Usage
+## Basic Example
 
 ```ts
 import { findLargestUsableFontSize, type Font } from "@altano/satori-fit-text";
@@ -41,9 +41,12 @@ const largestUsableFontSize = await findLargestUsableFontSize({
 console.log(largestUsableFontSize);
 ```
 
-## Potential Uses
+## Example Uses
 
-Because this measures the maximum font size using Satori, the ideal use of this library is to determine the largest possible font size in something like an [Open Graph card](https://ogp.me/). If you dynamically generate Open Graph cards with text (e.g. the title of your blog post) you may want the text to fill the card's area as best as possible without overflowing. This library can help you achieve that.
+- [React Component (sandbox)](https://codesandbox.io/s/altano-satori-fit-text-browser-example-j2gvk6)
+- [Next.js Open Graph Card - Simple (codesandbox)](https://codesandbox.io/p/sandbox/altano-satori-fit-text-next-js-demo-sv4flc)
+- [Next.js Open Graph Card - Complex](https://github.com/altano/alan.norbauer.com/blob/main/src/components/opengraph/image.tsx#L29-L35)
+- [Node.js CLI App (codesandbox)](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/codesandboxes/satori-fit-text-node-cli?file=%2Fpackage.json%3A1%2C1)
 
 ## Implementation
 
