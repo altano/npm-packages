@@ -1,8 +1,9 @@
 {
   "packages": [
-    "nodejs@18.17.1",
-    "git@2.40.1",
+    "difftastic@0.51.1",
     "git-branchless@0.8.0",
+    "git@2.40.1",
+    "nodejs@18.17.1",
     "nodePackages.pnpm@8.6.5"
   ],
   "shell": {},

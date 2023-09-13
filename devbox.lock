@@ -1,6 +1,12 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "difftastic@0.51.1": {
+      "last_modified": "2023-09-10T10:53:27Z",
+      "resolved": "github:NixOS/nixpkgs/78058d810644f5ed276804ce7ea9e82d92bee293#difftastic",
+      "source": "devbox-search",
+      "version": "0.51.1"
+    },
     "git-branchless@0.8.0": {
       "last_modified": "2023-08-30T00:25:28Z",
       "resolved": "github:NixOS/nixpkgs/a63a64b593dcf2fe05f7c5d666eb395950f36bc9#git-branchless",

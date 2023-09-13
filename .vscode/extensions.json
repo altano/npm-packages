@@ -3,6 +3,7 @@
     "esbenp.prettier-vscode",
     "zixuanchen.vitest-explorer",
     "dbaeumer.vscode-eslint",
-    "bierner.github-markdown-preview"
+    "bierner.github-markdown-preview",
+    "github.vscode-github-actions"
   ]
 }
