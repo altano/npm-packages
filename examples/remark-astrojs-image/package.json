@@ -28,7 +28,7 @@
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.62.0",
-    "sharp": "^0.31.3",
+    "sharp": "^0.32.6",
     "why-is-node-running": "^2.2.2"
   },
   "publishConfig": {

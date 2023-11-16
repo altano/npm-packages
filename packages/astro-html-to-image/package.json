@@ -48,7 +48,7 @@
     "mime-types": "^2.1.35",
     "satori": "^0.10.3",
     "satori-html": "^0.3.2",
-    "sharp": "^0.32.4"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@altano/assets": "workspace:^",
