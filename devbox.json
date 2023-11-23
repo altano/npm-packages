@@ -1,10 +1,10 @@
 {
   "packages": [
-    "difftastic@0.51.1",
+    "difftastic@0.52.0",
     "git-branchless@0.8.0",
-    "git@2.40.1",
-    "nodejs@18.17.1",
-    "nodePackages.pnpm@8.6.5"
+    "git@2.42.0",
+    "nodejs@20.9.0",
+    "nodePackages.pnpm@8.10.2"
   ],
   "shell": {},
   "nixpkgs": {

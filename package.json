@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "eslint": "^8.47.0",
+    "eslint": "^8.54.0",
     "eslint-config-altano": "workspace:*",
-    "npm-check-updates": "^16.10.18",
+    "npm-check-updates": "^16.14.11",
     "prettier": "^2.8.8",
-    "turbo": "^1.10.12"
+    "turbo": "^1.10.16"
   }
 }
