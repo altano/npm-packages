@@ -1,2 +1,0 @@
-TODO: create integration that adds all the remark plugins, in correct order.
-TODO: consider whether @astrojs/image should be added? can it be detected?

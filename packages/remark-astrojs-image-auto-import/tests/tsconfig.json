@@ -1,7 +1,0 @@
-{
-  "extends": "@altano/tsconfig/node.json",
-  "include": ["."],
-  "compilerOptions": {
-    "types": ["vitest/globals"]
-  }
-}

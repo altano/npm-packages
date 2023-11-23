@@ -1,8 +1,0 @@
-:root {
-  --main-width: 800px;
-  --nav-width: 300px;
-  --nav-margin: 50px;
-  --mobile-breakpoint-width: calc(
-    var(--main-width) + var(--nav-width) + var(--nav-margin)
-  );
-}
