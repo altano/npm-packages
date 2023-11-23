@@ -1,14 +1,12 @@
+import { readFile } from "node:fs/promises";
 import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
+import { getFontPath } from "@altano/assets";
 
 export const onRequest = createOpenGraphImageMiddleware({
   runtime: "nodejs",
   async getSvgOptions() {
-    const interRegularBuffer = await fetch(
-      `https://rsms.me/inter/font-files/Inter-Regular.woff`,
-    ).then((res) => res.arrayBuffer());
-    const interBoldBuffer = await fetch(
-      `https://rsms.me/inter/font-files/Inter-Bold.woff`,
-    ).then((res) => res.arrayBuffer());
+    const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
+    const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
     return {
       fonts: [
         {

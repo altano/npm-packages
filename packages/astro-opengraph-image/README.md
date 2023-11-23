@@ -67,7 +67,7 @@ import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 export const onRequest = createOpenGraphImageMiddleware({
   runtime: "nodejs",
   async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
+    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
     return {
       fonts: [
         {
@@ -158,8 +158,8 @@ import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
 
 export const onRequest = createOpenGraphImageMiddleware({
   async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
-    const interBoldBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) => res.arrayBuffer());
+    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
+    const interBoldBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Bold.otf`).then((res) => res.arrayBuffer());
     return {
       fonts: [
         {

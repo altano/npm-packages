@@ -1,14 +1,12 @@
+import { readFile } from "node:fs/promises";
 import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
+import { getFontPath } from "@altano/assets";
 
 import type { SvgOptions } from "@altano/astro-html-to-image";
 
 async function getSvgOptions(): Promise<SvgOptions> {
-  const interRegularBuffer = await fetch(
-    `https://rsms.me/inter/font-files/Inter-Regular.woff`,
-  ).then((res) => res.arrayBuffer());
-  const interBoldBuffer = await fetch(
-    `https://rsms.me/inter/font-files/Inter-Bold.woff`,
-  ).then((res) => res.arrayBuffer());
+  const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
+  const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
   return {
     width: 800,
     height: 200,

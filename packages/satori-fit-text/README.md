@@ -21,7 +21,7 @@ pnpm add @altano/satori-fit-text
 import { findLargestUsableFontSize, type Font } from "@altano/satori-fit-text";
 
 async function getInter(): Promise<Font> {
-  const interSemiBoldBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-SemiBold.woff`).then((res) => res.arrayBuffer());
+  const interSemiBoldBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-SemiBold.otf`).then((res) => res.arrayBuffer());
 
   const font = {
     name: "Inter",

@@ -3,7 +3,7 @@ import { findLargestUsableFontSize } from "@altano/satori-fit-text";
 
 async function getInter() {
   const interSemiBoldBuffer = await fetch(
-    `https://rsms.me/inter/font-files/Inter-SemiBold.woff`,
+    `https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-SemiBold.otf`,
   ).then((res) => res.arrayBuffer());
 
   return {

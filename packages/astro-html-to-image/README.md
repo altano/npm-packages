@@ -51,7 +51,7 @@ export const onRequest = createHtmlToImageMiddleware({
   runtime: "nodejs",
   format: "png",
   async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
+    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
     return {
       width: 800,
       height: 200,
@@ -131,8 +131,8 @@ import { createHtmlToImageMiddleware } from "@altano/astro-html-to-image";
 export const onRequest = createHtmlToImageMiddleware({
   format: "png",
   async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) => res.arrayBuffer());
-    const interBoldBuffer = await fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) => res.arrayBuffer());
+    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
+    const interBoldBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
     return {
       width: 800,
       height: 200,

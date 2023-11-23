@@ -1,15 +1,15 @@
 import type { Font } from "@altano/satori-fit-text";
 
 const urlMap = {
-  100: "https://rsms.me/inter/font-files/Inter-Thin.woff",
-  200: "https://rsms.me/inter/font-files/Inter-ExtraLight.woff",
-  300: "https://rsms.me/inter/font-files/Inter-Light.woff",
-  400: "https://rsms.me/inter/font-files/Inter-Regular.woff",
-  500: "https://rsms.me/inter/font-files/Inter-Medium.woff",
-  600: "https://rsms.me/inter/font-files/Inter-SemiBold.woff",
-  700: "https://rsms.me/inter/font-files/Inter-Bold.woff",
-  800: "https://rsms.me/inter/font-files/Inter-ExtraBold.woff",
-  900: "https://rsms.me/inter/font-files/Inter-Black.woff",
+  100: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Thin.otf",
+  200: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-ExtraLight.otf",
+  300: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Light.otf",
+  400: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf",
+  500: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Medium.otf",
+  600: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-SemiBold.otf",
+  700: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Bold.otf",
+  800: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-ExtraBold.otf",
+  900: "https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Black.otf",
 } as const;
 
 type Weight = NonNullable<Font["weight"]>;
