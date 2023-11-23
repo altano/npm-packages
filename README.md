@@ -1,6 +1,15 @@
 # alan's npm package monorepo
 
-Published to [npm](https://www.npmjs.com/~altano)
+![npm Badge](https://img.shields.io/badge/npm-gray?logo=npm)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/altano/npm-packages/test.yml) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/altano/npm-packages)
+
+## Development Environment
+
+[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
+
+This repository has a `devbox.json` which means you can trivially create a development environment for it.
+
+Read the [Devbox quickstart](https://jetpack.io/devbox/docs/contributor-quickstart/) or read more about why Devbox is fantastic [on my website](https://alan.norbauer.com/articles/devbox-intro).
 
 ## Contributing
 
