@@ -2,7 +2,7 @@ import {
   createHtmlToImageMiddleware,
   defaultShouldReplace,
 } from "@altano/astro-html-to-image";
-import type { APIContext, MiddlewareEndpointHandler } from "astro";
+import type { APIContext, MiddlewareHandler } from "astro";
 import { deserializeVirtualConfig } from "./config";
 
 export type ImageFormat = "png";
@@ -18,7 +18,7 @@ const SvgDefaults = {
 
 function createOpenGraphImageMiddlewareForFormat({
   format,
-}: ImageMiddlewareOptions): MiddlewareEndpointHandler {
+}: ImageMiddlewareOptions): MiddlewareHandler {
   return createHtmlToImageMiddleware({
     format,
     async shouldReplace(
@@ -55,7 +55,7 @@ function createOpenGraphImageMiddlewareForFormat({
   });
 }
 
-export function createOpenGraphImageMiddleware(): MiddlewareEndpointHandler {
+export function createOpenGraphImageMiddleware(): MiddlewareHandler {
   return createOpenGraphImageMiddlewareForFormat({
     format: "png",
   });

@@ -5,4 +5,4 @@
 "@altano/astro-html-to-image": patch
 ---
 
-support astro v3
+Update for Astro 3

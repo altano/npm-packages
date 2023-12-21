@@ -1,5 +1,6 @@
-import { type SvgOptions } from "@altano/astro-html-to-image";
-import type { AstroIntegration, AstroUserConfig } from "astro";
+import type { SvgOptions } from "@altano/astro-html-to-image";
+import type { AstroConfig, AstroIntegration } from "astro";
+import type { DeepPartial } from "astro/dist/type-utils";
 import { vitePluginOpengraphImageUserConfig } from "./virtual-user-config";
 
 export type FontWithBuffer = SvgOptions["fonts"][0];
@@ -47,7 +48,7 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
       const configSerializable: OpengraphImageConfigSerializable = {
         svgOptions,
       };
-      const newConfig: AstroUserConfig = {
+      const newConfig: DeepPartial<AstroConfig> = {
         vite: {
           // Shove the serializable config into the virtual module for later
           // retrieval in the middleware
