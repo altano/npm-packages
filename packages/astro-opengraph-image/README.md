@@ -2,12 +2,16 @@
 
 # astro-opengraph-image
 
-This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images.
+This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that lets you turn any Astro component (or framework component) into an Open Graph image for your Astro site.
+
+Unlike existing Astro integrations for Open Graph images, this one:
+
+- Doesn't require any out-of-band screenshotting. It's all Astro native, so to speak.
+- Can turn ANY component into an Open Graph image. You're in full control of the html/css.
 
 # Prerequisites
 
-- This middleware is for [Astro](https://astro.build).
-- Node.js: The [@resvg/resvg-wasm](https://www.npmjs.com/package/@resvg/resvg-wasm) module must be initialized in a runtime-specific manner. I have only added support for Node.js. Other runtimes such as [Deno](https://deno.land/) or [Bun](https://bun.sh/) can be trivially added with an adapter. Please feel free to submit a pull request.
+- This integration is for [Astro](https://astro.build).
 
 # Installation
 
@@ -15,21 +19,29 @@ In your existing Astro project:
 
 ```sh
 # Using NPM
-npm install @altano/astro-opengraph-image
+npx astro add @altano/astro-opengraph-image
 # Using Yarn
-yarn add @altano/astro-opengraph-image
+yarn astro add @altano/astro-opengraph-image
 # Using PNPM
-pnpm add @altano/astro-opengraph-image
+pnpm astro add @altano/astro-opengraph-image
 ```
 
-# Setup
+# Configuration
 
-Create a `middleware.ts` file[^middleware-docs] if you haven't already. `middleware.ts`:
+You'll need to configure the integration in your Astro config. At the very least, you must provide some fonts to use (as there are no defaults).
 
 ```ts
-import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
-
-export const onRequest = createOpenGraphImageMiddleware({ ... });
+export default defineConfig({
+  integrations: [
+    opengraphImage({
+      async getSvgOptions() {
+        return {
+          fonts: [...],
+        };
+      },
+    }),
+  ],
+});
 ```
 
 Create a component to convert to an image. It must have a `.png.astro` extension, e.g. `image.png.astro`:
@@ -57,28 +69,51 @@ import OpenGraphMeta from "@altano/astro-opengraph-image/components/meta.astro";
 </html>
 ```
 
-# Simple Example
+# Options Reference
 
-`src/middleware.ts`:
+The integration requires the following options:
+
+- `getSvgOptions.fonts`: an array of fonts that will be used in your image component. Each font requires:
+  - `name`: This is whatever you reference in your css, e.g. `Inter`
+  - `path`: A string path to your font file. Can be in your node_modules folder, e.g. `"node_modules/@fontsource/inter/files/inter-latin-400-normal.woff"`
+  - `weight`: A weight, from 100 to 900. You can provide different fonts for different weights.
+
+See the TypeScript type-hints and comments for more info.
+
+# Examples
+
+## Using custom fonts
+
+`astro.config.mts`:
 
 ```ts
-import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
+import { defineConfig } from "astro/config";
+import opengraphImage from "@altano/astro-opengraph-image";
 
-export const onRequest = createOpenGraphImageMiddleware({
-  runtime: "nodejs",
-  async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
-    return {
-      fonts: [
-        {
-          name: "Inter Variable",
-          data: interRegularBuffer,
-          weight: 400,
-          style: "normal",
-        },
-      ],
-    };
-  },
+// https://astro.build/config
+export default defineConfig({
+  integrations: [
+    opengraphImage({
+      async getSvgOptions() {
+        return {
+          fonts: [
+            {
+              name: "Inter",
+              path: "node_modules/@fontsource/inter/files/inter-latin-400-normal.woff",
+              weight: 400,
+              style: "normal",
+            },
+            {
+              name: "Inter",
+              path: "node_modules/@fontsource/inter/files/inter-latin-800-normal.woff",
+              weight: 800,
+              style: "normal",
+            },
+          ],
+        };
+      },
+    }),
+  ],
 });
 ```
 
@@ -136,49 +171,6 @@ import "@fontsource-variable/inter";
 ```
 
 See https://github.com/altano/npm-packages/tree/main/examples/astro-opengraph-image for a slightly more involved example.
-
-# Options Reference
-
-`createOpenGraphImageMiddleware` requires the following options:
-
-- `runtime`: currently only "nodejs".
-- `format`: Any output format that the [@resvg/resvg-wasm](https://www.npmjs.com/package/@resvg/resvg-wasm) library accepts, which is currently only "png".
-- `getSvgOptions`: [Options that the vercel/satori](https://github.com/vercel/satori/blob/main/src/satori.ts#L18) library accepts. You must at least specify dimensions and one font.
-
-See the TypeScript type-hints and comments for more info.
-
-# Recipes
-
-## Using Custom Fonts
-
-`middleware.ts`:
-
-```ts
-import { createOpenGraphImageMiddleware } from "@altano/astro-opengraph-image";
-
-export const onRequest = createOpenGraphImageMiddleware({
-  async getSvgOptions() {
-    const interRegularBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Regular.otf`).then((res) => res.arrayBuffer());
-    const interBoldBuffer = await fetch(`https://files.terriblefish.com/fonts/Inter/v4/extras/otf/Inter-Bold.otf`).then((res) => res.arrayBuffer());
-    return {
-      fonts: [
-        {
-          name: "Inter Variable",
-          data: interRegularBuffer,
-          weight: 400,
-          style: "normal",
-        },
-        {
-          name: "Inter Variable",
-          data: interBoldBuffer,
-          weight: 800,
-          style: "normal",
-        },
-      ],
-    };
-  },
-});
-```
 
 ## Serving another opengraph-image
 

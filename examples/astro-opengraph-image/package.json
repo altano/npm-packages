@@ -12,13 +12,12 @@
   },
   "dependencies": {
     "@altano/astro-opengraph-image": "workspace:*",
-    "@fontsource-variable/inter": "^5.0.8",
-    "astro": "^3.0.13"
+    "@fontsource-variable/inter": "^5.0.15",
+    "@fontsource/inter": "^5.0.15",
+    "astro": "^3.6.0",
+    "sharp": "^0.33.1"
   },
   "publishConfig": {
     "access": "restricted"
-  },
-  "devDependencies": {
-    "@altano/assets": "workspace:^"
   }
 }

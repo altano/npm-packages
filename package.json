@@ -21,5 +21,17 @@
     "npm-check-updates": "^16.14.11",
     "prettier": "^2.8.8",
     "turbo": "^1.10.16"
+  },
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": [
+        "current",
+        "linux"
+      ],
+      "cpu": [
+        "current",
+        "x64"
+      ]
+    }
   }
 }

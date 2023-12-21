@@ -7,8 +7,12 @@
  */
 import "@fontsource-variable/inter";
 
-import { getStaticPaths as gsp } from "./index.astro";
-export const getStaticPaths = gsp;
+export function getStaticPaths() {
+  return [
+    { params: { slug: "hello-world" } },
+    { params: { slug: "bye-cruel-world" } },
+  ];
+}
 
 const { slug } = Astro.params;
 ---

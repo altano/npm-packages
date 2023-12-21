@@ -5,7 +5,9 @@ export default defineConfig({
     coverage: {
       enabled: true,
       skipFull: true,
-      "100": true,
+      thresholds: {
+        "100": true,
+      },
       reportsDirectory: ".coverage",
     },
   },

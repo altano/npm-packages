@@ -1,54 +1,28 @@
-import satori from "satori";
 import { defineMiddleware } from "astro/middleware";
-import { Resvg } from "@resvg/resvg-wasm";
+import satori from "satori";
 import { html as htmlToVNode } from "satori-html";
 import { contentType } from "mime-types";
 import he from "he";
+import { transformImage } from "./transformImage";
 
-import type { MiddlewareResponseHandler, APIContext } from "astro";
+import type {
+  MiddlewareEndpointHandler,
+  APIContext,
+  EndpointOutput,
+} from "astro";
 import type { SatoriOptions } from "satori";
-import type { ResvgRenderOptions } from "@resvg/resvg-wasm";
 
 export type SvgOptions = SatoriOptions;
-export type ImageRenderOptions = ResvgRenderOptions;
 export type ImageFormat = "png";
-
-// TODO Needs lots of tests
-
 export type ImageOptions<Format extends ImageFormat> = {
   format: Format;
-  options?: ImageRenderOptions;
 };
 
 type Filename<Format extends ImageFormat> = `${string}.${Format}`;
 
-export type Runtime = "nodejs";
-
-export async function initialize({
-  runtime,
-}: {
-  runtime: Runtime;
-}): Promise<void> {
-  switch (runtime) {
-    case "nodejs":
-      {
-        const initialize = await import("./initializeResvg-Nodejs");
-        await initialize.default();
-      }
-      break;
-    default:
-      runtime satisfies never;
-  }
-}
-
 export type Options<Format extends ImageFormat> = {
   /**
-   * Your JavaScript runtime, e.g. "nodejs"
-   */
-  runtime: Runtime;
-  /**
-   * Any output format that @resvg/resvg-wasm library accepts, as a string.
-   * Currently only "png"
+   * Any output format that your configured image service accepts.
    */
   format: Format;
   /**
@@ -63,18 +37,6 @@ export type Options<Format extends ImageFormat> = {
     response: Response,
     format: Format,
   ): Promise<SvgOptions>;
-  /**
-   * Any output options that the @resvg/resvg-js library accepts, e.g.:
-   *
-   *   { background: "rgba(255,255,255, 0.8)" }
-   *
-   * API documentation: https://github.com/yisibl/resvg-js/blob/main/index.d.ts#L3
-   */
-  getImageOptions?: (
-    context: APIContext,
-    response: Response,
-    format: Format,
-  ) => Promise<ImageRenderOptions>;
   /**
    * This function must return true for the given request or the route will not
    * be converted to an image. By default, only components/endpoints that return
@@ -123,13 +85,6 @@ export async function defaultGetFilename<Format extends ImageFormat>(
   return basename;
 }
 
-export async function defaultGetImageOptions(): Promise<ImageRenderOptions> {
-  return {
-    textRendering: 1, // optimizeLegibility
-    imageRendering: 0, // optimizeQuality
-  };
-}
-
 export async function defaultShouldReplace<Format extends ImageFormat>(
   context: APIContext,
   response: Response,
@@ -153,36 +108,23 @@ export async function defaultShouldReplace<Format extends ImageFormat>(
   );
 }
 
-let isWasmInitialized = false;
-
 export function createHtmlToImageMiddleware<Format extends ImageFormat>({
-  runtime,
   format,
-  getImageOptions,
   shouldReplace,
   getFilename,
   getSvgOptions,
-}: Options<Format>): MiddlewareResponseHandler {
+}: Options<Format>): MiddlewareEndpointHandler {
   return defineMiddleware(async (context, next) => {
-    if (!isWasmInitialized) {
-      isWasmInitialized = true;
-      try {
-        await initialize({ runtime });
-      } catch (err) {
-        // Restarting the dev server causes us to unnecessarily initialize the
-        // wasm module twice. Let's just ignore the error (since we can't
-        // prevent it).
-        const shouldIgnore =
-          err instanceof Error &&
-          err.message?.startsWith("Already initialized");
-        if (!shouldIgnore) {
-          // re-throw all other errors
-          throw err;
-        }
-      }
+    const response = await next();
+
+    // TODO This is handling a deprecated case (simple objects being returned
+    // from endpoints). Once it is removed from Astro and we enforce that with a
+    // peer dependency, remove this. See
+    // https://github.com/withastro/astro/issues/8045 for more info.
+    if (isEndpointOutput(response)) {
+      return response;
     }
 
-    const response = await next();
     const replace =
       shouldReplace == null
         ? await defaultShouldReplace(context, response, format)
@@ -190,30 +132,16 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
 
     if (!replace) {
       // This request isn't relevant to us. Don't modify the response.
-
-      // TODO Remove when issue is fixed in astro
-      // https://github.com/withastro/astro/issues/8045
-      if (isEndpointOutput(response)) {
-        return new Response(response.body, {
-          status: 200,
-          headers: response.headers,
-        });
-      }
-
       return response;
     }
 
-    const [responseText, svgOptions, imageOptions, filename] =
-      await Promise.all([
-        response.text(),
-        getSvgOptions(context, response, format),
-        getImageOptions == null
-          ? defaultGetImageOptions()
-          : getImageOptions(context, response, format),
-        getFilename == null
-          ? defaultGetFilename(format, context)
-          : getFilename(context, response, format),
-      ]);
+    const [responseText, svgOptions, filename] = await Promise.all([
+      response.text(),
+      getSvgOptions(context, response, format),
+      getFilename == null
+        ? defaultGetFilename(format, context)
+        : getFilename(context, response, format),
+    ]);
 
     // html text => vnode
     const responseTextWithDecodedHtmlEntities = he.decode(responseText);
@@ -223,10 +151,10 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
     const svg = await satori(vnode as React.ReactNode, svgOptions);
 
     // svg => image
-    const imageResvgArr = new Resvg(svg, imageOptions).render().asPng();
-    const imageBuffer = Buffer.from(imageResvgArr);
+    const fileBuffer = Buffer.from(svg, "utf-8");
+    const image = await transformImage(fileBuffer, format);
 
-    return new Response(imageBuffer, {
+    return new Response(image.data, {
       headers: {
         "Content-Type": getContentType(format),
         "Content-Disposition": `inline; filename="${filename}"`,
@@ -235,12 +163,12 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
   });
 }
 
-function isEndpointOutput(endpointResult: unknown): boolean {
+function isEndpointOutput(response: unknown): response is EndpointOutput {
   return (
-    endpointResult != null &&
-    !(endpointResult instanceof Response) &&
-    typeof endpointResult === "object" &&
-    "body" in endpointResult &&
-    typeof endpointResult.body === "string"
+    response != null &&
+    !(response instanceof Response) &&
+    typeof response === "object" &&
+    "body" in response &&
+    typeof response.body === "string"
   );
 }

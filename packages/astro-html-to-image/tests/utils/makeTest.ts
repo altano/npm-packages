@@ -1,6 +1,6 @@
 import { getFontPath } from "@altano/assets";
 import { createHtmlToImageMiddleware } from "../../src";
-import { readFile } from "fs/promises";
+import { readFile } from "node:fs/promises";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { createContext } from "astro/middleware";
@@ -27,13 +27,13 @@ async function getSvgDefaultOptions(): Promise<SvgOptions> {
     height: 300,
     fonts: [
       {
-        name: "Inter Variable",
+        name: "Inter",
         data: interRegularBuffer,
         weight: 400,
         style: "normal",
       },
       {
-        name: "Inter Variable",
+        name: "Inter",
         data: interBoldBuffer,
         weight: 800,
         style: "normal",
@@ -53,6 +53,7 @@ export function should<Format extends ImageFormat>(
     componentHtml,
     getComponentResponse,
     testFn,
+    testResponseFn,
   }: {
     requestUrl: string;
     format: Format;
@@ -61,13 +62,12 @@ export function should<Format extends ImageFormat>(
     snapshot?: boolean;
     componentHtml?: string;
     getComponentResponse?: () => Promise<Response | EndpointOutput>;
-    testFn?: (res: Response) => Promise<void>;
+    testFn?: (res: Response | EndpointOutput) => Promise<void>;
+    testResponseFn?: (res: Response) => Promise<void>;
   },
 ): void {
   const middleware = createHtmlToImageMiddleware({
-    runtime: "nodejs",
     format,
-    getImageOptions: extraMiddlewareOptions?.getImageOptions ?? undefined,
     shouldReplace: extraMiddlewareOptions?.shouldReplace ?? undefined,
     async getSvgOptions() {
       const defaults = await getSvgDefaultOptions();
@@ -105,17 +105,23 @@ export function should<Format extends ImageFormat>(
       throw new Error(`${response} was undefined`);
     }
 
-    expect(response.status).equal(200);
-    expect(response.ok).toBeTruthy();
+    if (!(response instanceof Response)) {
+      if (testFn) {
+        await testFn(response);
+      }
+    } else {
+      expect(response.status).equal(200);
+      expect(response.ok).toBeTruthy();
 
-    if (snapshot) {
-      const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      expect(buffer).toMatchImageSnapshot({ runInProcess: true });
-    }
+      if (snapshot) {
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        expect(buffer).toMatchImageSnapshot({ runInProcess: true });
+      }
 
-    if (testFn) {
-      await testFn(response);
+      if (testResponseFn) {
+        await testResponseFn(response);
+      }
     }
   }
 

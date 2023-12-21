@@ -57,7 +57,7 @@
     "typescript": "^5.1.6",
     "unified": "^10.1.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.3"
+    "vitest": "^1.0.4"
   },
   "publishConfig": {
     "access": "public"

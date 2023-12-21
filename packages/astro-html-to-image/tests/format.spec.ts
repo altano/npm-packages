@@ -7,7 +7,7 @@ describe("format", async () => {
     requestUrl: `http://example.com/test.png`,
     format: "png",
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     },
   });

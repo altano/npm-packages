@@ -2,12 +2,11 @@
 
 # astro-html-to-image
 
-This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images.
+This is an [Astro middleware](https://docs.astro.build/guides/middleware/) that allows you to easily render Astro components to images. This provides the foundation for Astro integrations like [@altano/astro-opengraph-image](https://www.npmjs.com/package/@altano/astro-opengraph-image).
 
 # Prerequisites
 
 - This middleware is for [Astro](https://astro.build).
-- Node.js: The [@resvg/resvg-wasm](https://www.npmjs.com/package/@resvg/resvg-wasm) module must be initialized in a runtime-specific manner. I have only added support for Node.js. Other runtimes such as [Deno](https://deno.land/) or [Bun](https://bun.sh/) can be trivially added with an adapter. Please feel free to submit a pull request.
 
 # Installation
 
@@ -42,6 +41,8 @@ NOTE: Your Astro component must be HTML elements and styles [supported by Satori
 
 # Example Usage
 
+# TODO Update this readme
+
 `middleware.ts`:
 
 ```ts
@@ -57,7 +58,7 @@ export const onRequest = createHtmlToImageMiddleware({
       height: 200,
       fonts: [
         {
-          name: "Inter Variable",
+          name: "Inter",
           data: interRegularBuffer,
           weight: 400,
           style: "normal",
@@ -138,13 +139,13 @@ export const onRequest = createHtmlToImageMiddleware({
       height: 200,
       fonts: [
         {
-          name: "Inter Variable",
+          name: "Inter",
           data: interRegularBuffer,
           weight: 400,
           style: "normal",
         },
         {
-          name: "Inter Variable",
+          name: "Inter",
           data: interBoldBuffer,
           weight: 800,
           style: "normal",
