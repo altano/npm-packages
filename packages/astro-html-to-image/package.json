@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-html-to-image",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.5",
   "description": "Render Astro components to images",
   "type": "module",
   "sideEffects": false,

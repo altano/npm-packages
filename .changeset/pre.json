@@ -28,6 +28,8 @@
     "@altano/use-visible-elements": "1.0.6"
   },
   "changesets": [
+    "big-teachers-hear",
+    "breezy-months-yawn",
     "bright-melons-pump"
   ]
 }
