@@ -1,5 +1,5 @@
 ---
-import type { ImageFormat } from "../src/createImageMiddleware";
+import type { ImageFormat } from "../src/createOpenGraphImageMiddleware";
 
 export type Props = {
   /**
@@ -50,10 +50,6 @@ function getMimeType(format: ImageFormat): string {
   switch (format) {
     case "png":
       return "image/png";
-    case "gif":
-      return "image/gif";
-    case "jpg":
-      return "image/jpeg";
   }
 }
 

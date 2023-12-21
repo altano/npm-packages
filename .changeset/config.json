@@ -5,11 +5,6 @@
   "fixed": [],
   "linked": [
     [
-      "@altano/remark-astrojs-image-auto-import",
-      "@altano/remark-astrojs-image-use-component",
-      "@altano/remark-astrojs-image"
-    ],
-    [
       "@altano/use-element-observer",
       "@altano/use-toc-visible-sections",
       "@altano/use-visible-elements"

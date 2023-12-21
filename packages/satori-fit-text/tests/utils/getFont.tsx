@@ -1,5 +1,5 @@
 import { getFontPath } from "@altano/assets";
-import { readFile } from "fs/promises";
+import { readFile } from "node:fs/promises";
 
 import type { Font } from "../../src/types";
 

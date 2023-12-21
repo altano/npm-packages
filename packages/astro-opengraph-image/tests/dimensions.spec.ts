@@ -7,7 +7,7 @@ describe("dimensions", async () => {
     requestUrl: `http://example.com/opengraph-image.png`,
     format: "png",
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     },
   });
@@ -19,7 +19,7 @@ describe("dimensions", async () => {
       height: 500,
     },
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     },
   });

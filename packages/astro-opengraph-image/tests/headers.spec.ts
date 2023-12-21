@@ -8,7 +8,7 @@ describe("headers", async () => {
     format: "png",
     snapshot: false,
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
       expect(response.headers.get("Content-Disposition")).toEqual(
         `inline; filename="opengraph-image.png"`,

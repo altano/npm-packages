@@ -22,7 +22,7 @@ describe("shouldReplace", async () => {
           "Content-Type": "text/plain",
         },
       }),
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("text/plain");
       expect(response.headers.get("Content-Disposition")).toBeNull();
     },
@@ -33,7 +33,7 @@ describe("shouldReplace", async () => {
     format: "png",
     snapshot: false,
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       const body = await response.text();
       expect(body).toEqual(basicHtml);
       expect(response.headers.get("Content-Type")).toEqual("text/html");
@@ -42,11 +42,11 @@ describe("shouldReplace", async () => {
   });
 
   middleware.should("NOT convert other image formats", {
-    requestUrl: `http://example.com/test.png`,
-    format: "jpg",
+    requestUrl: `http://example.com/test.jpg`,
+    format: "png",
     componentHtml: basicHtml,
     snapshot: false,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("text/html");
       expect(response.headers.get("Content-Disposition")).toBeNull();
     },
@@ -57,7 +57,7 @@ describe("shouldReplace", async () => {
     format: "png",
     componentHtml: basicHtml,
     snapshot: false,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
       expect(response.headers.get("Content-Disposition")).toBeDefined();
     },
@@ -77,7 +77,7 @@ describe("shouldReplace", async () => {
       componentHtml: basicHtml,
       snapshot: false,
       extraMiddlewareOptions,
-      async testFn(response) {
+      async testResponseFn(response) {
         expect(response.headers.get("Content-Type")).toEqual("image/png");
         expect(response.headers.get("Content-Disposition")).toBeDefined();
       },
@@ -89,7 +89,7 @@ describe("shouldReplace", async () => {
       componentHtml: basicHtml,
       snapshot: false,
       extraMiddlewareOptions,
-      async testFn(response) {
+      async testResponseFn(response) {
         expect(response.headers.get("Content-Type")).toEqual("text/html");
         expect(response.headers.get("Content-Disposition")).toBeNull();
       },

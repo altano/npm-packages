@@ -256,7 +256,7 @@ describe("findLargestUsableFontSize", () => {
           maxHeight: 100,
           maxTries: 1,
         }),
-      ).rejects.toThrowErrorMatchingInlineSnapshot('"`maxTries` must be >= 2"');
+      ).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: \`maxTries\` must be >= 2]`);
     });
 
     it("should error after 1 try when maxTries = 2", async () => {
@@ -268,9 +268,7 @@ describe("findLargestUsableFontSize", () => {
           maxHeight: 100,
           maxTries: 2,
         }),
-      ).rejects.toThrowErrorMatchingInlineSnapshot(
-        '"Could not find a valid font size in 1 attempts. Giving up. Please try again after constraining the search space, e.g. by restricting the min/max font size difference."',
-      );
+      ).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: Could not find a valid font size in 1 attempts. Giving up. Please try again after constraining the search space, e.g. by restricting the min/max font size difference.]`);
     });
   });
 });

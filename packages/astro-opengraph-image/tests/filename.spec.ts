@@ -8,7 +8,7 @@ describe("filename", async () => {
     format: "png",
     snapshot: false,
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     },
   });
@@ -18,7 +18,7 @@ describe("filename", async () => {
     format: "png",
     snapshot: false,
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("text/html");
       expect(response.headers.get("Content-Disposition")).toBeNull();
     },

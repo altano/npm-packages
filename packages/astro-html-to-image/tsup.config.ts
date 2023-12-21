@@ -6,4 +6,5 @@ export default defineConfig({
   onSuccess: "pnpm build:types",
   dts: true,
   clean: true,
+  external: ["astro:middleware", "astro:assets"],
 });

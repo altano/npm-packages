@@ -1,13 +1,11 @@
-import { createOpenGraphImageMiddleware } from "../../src";
-import { readFile } from "fs/promises";
-import { getFontPath } from "@altano/assets";
-import { expect, test } from "vitest";
-import { toMatchImageSnapshot } from "jest-image-snapshot";
-import { createContext } from "astro/middleware";
-
-import type { SvgOptions } from "@altano/astro-html-to-image";
 import type { APIContext, EndpointOutput } from "astro";
-import type { ImageFormat } from "../../src/createImageMiddleware";
+import { createContext } from "astro/middleware";
+import { toMatchImageSnapshot } from "jest-image-snapshot";
+import { expect, test, vi } from "vitest";
+import type { ImageFormat } from "../../src/createOpenGraphImageMiddleware";
+import { createOpenGraphImageMiddleware } from "../../src/createOpenGraphImageMiddleware";
+import type { OpengraphImageConfigSerializable } from "../../src/integration";
+import { getDefaultSvgOptions } from "./setup";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
@@ -16,28 +14,32 @@ export function makeContext(url: string): APIContext {
   return createContext({ request: new Request(url) });
 }
 
-async function getSvgDefaultOptions(): Promise<Pick<SvgOptions, "fonts">> {
-  const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
-  const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
-  return {
-    fonts: [
-      {
-        name: "Inter Variable",
-        data: interRegularBuffer,
-        weight: 400,
-        style: "normal",
-      },
-      {
-        name: "Inter Variable",
-        data: interBoldBuffer,
-        weight: 800,
-        style: "normal",
-      },
-    ],
+const userConfigMock = vi.hoisted(() => ({
+  default: vi.fn(),
+}));
+
+function mockUserConfig(
+  svgOptionsOverrides?: Partial<OpengraphImageConfigSerializable["svgOptions"]>,
+): void {
+  const defaultSvgOptions = getDefaultSvgOptions();
+  const svgOptions = {
+    ...defaultSvgOptions,
+    ...(svgOptionsOverrides ?? {}),
   };
+  userConfigMock.default.mockReturnValueOnce({
+    svgOptions: {
+      ...svgOptions,
+    },
+  } satisfies OpengraphImageConfigSerializable);
 }
 
-// TODO Maybe de-dup with other makeTest.ts?
+vi.mock("virtual:opengraph-image/user-config", async () => {
+  return {
+    default: userConfigMock.default,
+  };
+});
+
+// TODO de-dup with other makeTest.ts
 export function should<Format extends ImageFormat>(
   testName: string,
   {
@@ -47,26 +49,23 @@ export function should<Format extends ImageFormat>(
     componentHtml,
     getComponentResponse,
     testFn,
+    testResponseFn,
   }: {
     requestUrl: string;
     format: Format;
-    extraSvgOptions?: Partial<SvgOptions>;
+    extraSvgOptions?: Parameters<typeof mockUserConfig>[0];
     snapshot?: boolean;
     componentHtml?: string;
     getComponentResponse?: () => Promise<Response | EndpointOutput>;
-    testFn?: (res: Response) => Promise<void>;
+    testFn?: (res: Response | EndpointOutput) => Promise<void>;
+    testResponseFn?: (res: Response) => Promise<void>;
   },
 ): void {
-  const middleware = createOpenGraphImageMiddleware({
-    runtime: "nodejs",
-    async getSvgOptions() {
-      const defaults = await getSvgDefaultOptions();
-      return {
-        ...defaults,
-        ...extraSvgOptions,
-      };
-    },
-  });
+  // Mock the virtual module for each test
+  mockUserConfig(extraSvgOptions);
+
+  // Create the middleware (that uses the user config above)
+  const middleware = createOpenGraphImageMiddleware();
 
   async function run(): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,17 +94,23 @@ export function should<Format extends ImageFormat>(
       throw new Error(`${response} was undefined`);
     }
 
-    expect(response.status).equal(200);
-    expect(response.ok).toBeTruthy();
+    if (!(response instanceof Response)) {
+      if (testFn) {
+        await testFn(response);
+      }
+    } else {
+      expect(response.status).equal(200);
+      expect(response.ok).toBeTruthy();
 
-    if (snapshot) {
-      const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      expect(buffer).toMatchImageSnapshot({ runInProcess: true });
-    }
+      if (snapshot) {
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        expect(buffer).toMatchImageSnapshot({ runInProcess: true });
+      }
 
-    if (testFn) {
-      await testFn(response);
+      if (testResponseFn) {
+        await testResponseFn(response);
+      }
     }
   }
 

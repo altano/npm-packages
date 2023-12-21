@@ -28,7 +28,6 @@ async function getSvgOptions(): Promise<SvgOptions> {
 }
 
 export const onRequest = createHtmlToImageMiddleware({
-  runtime: "nodejs",
   format: "png",
   getSvgOptions,
 });

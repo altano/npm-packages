@@ -1,3 +1,4 @@
+/* v8 ignore start */
 import log from "../log";
 import { TextMeasurer, type Dimensions } from "./TextMeasurer";
 import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed";
@@ -38,3 +39,4 @@ export default class BrowserTextMeasurer extends TextMeasurer {
     }
   }
 }
+/* v8 ignore stop */

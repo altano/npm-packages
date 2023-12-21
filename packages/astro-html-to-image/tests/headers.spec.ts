@@ -19,7 +19,7 @@ describe("headers", async () => {
     },
     snapshot: false,
     componentHtml: basicHtml,
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
       expect(response.headers.get("Content-Disposition")).toEqual(
         `inline; filename="face.png"`,

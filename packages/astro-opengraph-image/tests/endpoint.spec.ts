@@ -9,7 +9,7 @@ describe("endpoint", async () => {
     getComponentResponse: async () => ({
       body: `<?xml version="1.0" encoding="UTF-8"?><rss />`,
     }),
-    async testFn(response) {
+    async testResponseFn(response) {
       expect(response.headers.get("Content-Type")).toEqual(
         "text/plain;charset=UTF-8",
       );

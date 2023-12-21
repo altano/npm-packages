@@ -2,35 +2,24 @@ import {
   createHtmlToImageMiddleware,
   defaultShouldReplace,
 } from "@altano/astro-html-to-image";
-
-import type { Runtime, SvgOptions } from "@altano/astro-html-to-image";
-import type { APIContext, MiddlewareResponseHandler } from "astro";
+import type { APIContext, MiddlewareEndpointHandler } from "astro";
+import { deserializeVirtualConfig } from "./config";
 
 export type ImageFormat = "png";
 
 export type ImageMiddlewareOptions = {
-  runtime: Runtime;
   format: ImageFormat;
-  getSvgOptions: (
-    context: APIContext,
-    response: Response,
-    image: ImageFormat,
-  ) => Promise<Partial<SvgOptions>>;
 };
 
 const SvgDefaults = {
   width: 1200,
   height: 630,
-  fonts: [],
 } as const;
 
-function createImageMiddlewareForFormat({
-  runtime,
+function createOpenGraphImageMiddlewareForFormat({
   format,
-  getSvgOptions: providedOptions,
-}: ImageMiddlewareOptions): MiddlewareResponseHandler {
+}: ImageMiddlewareOptions): MiddlewareEndpointHandler {
   return createHtmlToImageMiddleware({
-    runtime,
     format,
     async shouldReplace(
       context: APIContext,
@@ -55,18 +44,19 @@ function createImageMiddlewareForFormat({
         requestUrl.endsWith(`opengraph-image.${format}/`)
       );
     },
-    async getSvgOptions(context, response, image) {
-      const options = await providedOptions(context, response, image);
-      return Object.assign(SvgDefaults, options);
+    async getSvgOptions() {
+      // Grab the virtual module that holds the integration's user config
+      const module = await import("virtual:opengraph-image/user-config");
+      const lazyConfig = module.default;
+      const resolvedConfig = await deserializeVirtualConfig(lazyConfig);
+      const { svgOptions } = resolvedConfig;
+      return Object.assign(SvgDefaults, svgOptions);
     },
   });
 }
 
-export function createImageMiddleware(
-  options: Omit<ImageMiddlewareOptions, "format">,
-): MiddlewareResponseHandler {
-  return createImageMiddlewareForFormat({
-    ...options,
+export function createOpenGraphImageMiddleware(): MiddlewareEndpointHandler {
+  return createOpenGraphImageMiddlewareForFormat({
     format: "png",
   });
 }
