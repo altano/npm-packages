@@ -5,11 +5,7 @@ import { contentType } from "mime-types";
 import he from "he";
 import { transformImage } from "./transformImage";
 
-import type {
-  MiddlewareEndpointHandler,
-  APIContext,
-  EndpointOutput,
-} from "astro";
+import type { MiddlewareHandler, APIContext } from "astro";
 import type { SatoriOptions } from "satori";
 
 export type SvgOptions = SatoriOptions;
@@ -113,17 +109,9 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
   shouldReplace,
   getFilename,
   getSvgOptions,
-}: Options<Format>): MiddlewareEndpointHandler {
+}: Options<Format>): MiddlewareHandler {
   return defineMiddleware(async (context, next) => {
     const response = await next();
-
-    // TODO This is handling a deprecated case (simple objects being returned
-    // from endpoints). Once it is removed from Astro and we enforce that with a
-    // peer dependency, remove this. See
-    // https://github.com/withastro/astro/issues/8045 for more info.
-    if (isEndpointOutput(response)) {
-      return response;
-    }
 
     const replace =
       shouldReplace == null
@@ -161,14 +149,4 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
       },
     });
   });
-}
-
-function isEndpointOutput(response: unknown): response is EndpointOutput {
-  return (
-    response != null &&
-    !(response instanceof Response) &&
-    typeof response === "object" &&
-    "body" in response &&
-    typeof response.body === "string"
-  );
 }

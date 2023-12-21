@@ -63,7 +63,7 @@
     "vitest": "^1.0.4"
   },
   "peerDependencies": {
-    "astro": ">= 3.6",
+    "astro": ">= 4.0",
     "sharp": ">= 0.32"
   }
 }

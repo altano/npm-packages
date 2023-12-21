@@ -15,7 +15,7 @@
     "@astrojs/react": "^3.0.2",
     "@astrojs/svelte": "^4.0.2",
     "@fontsource-variable/inter": "^5.0.8",
-    "astro": "^3.6.0",
+    "astro": "^4.0.7",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.32.6",

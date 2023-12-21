@@ -1,8 +1,7 @@
-import type { MiddlewareEndpointHandler } from "astro";
+import type { MiddlewareHandler } from "astro";
 import { createOpenGraphImageMiddleware } from "./createOpenGraphImageMiddleware";
 
 /**
  * The middleware
  */
-export const onRequest: MiddlewareEndpointHandler =
-  createOpenGraphImageMiddleware();
+export const onRequest: MiddlewareHandler = createOpenGraphImageMiddleware();
