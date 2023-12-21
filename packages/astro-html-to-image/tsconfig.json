@@ -3,7 +3,6 @@
   "include": ["src"],
   "compilerOptions": {
     "types": ["astro/client"],
-    "module": "ES2022",
     "outDir": "dist"
   }
 }
