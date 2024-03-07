@@ -4,4 +4,5 @@ import { createOpenGraphImageMiddleware } from "./createOpenGraphImageMiddleware
 /**
  * The middleware
  */
-export const onRequest: MiddlewareHandler = createOpenGraphImageMiddleware();
+export const onRequest: MiddlewareHandler =
+  await createOpenGraphImageMiddleware();

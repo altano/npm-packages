@@ -1,15 +1,24 @@
 import { defineMiddleware } from "astro/middleware";
 import satori from "satori";
 import { html as htmlToVNode } from "satori-html";
-import { contentType } from "mime-types";
 import he from "he";
 import { transformImage } from "./transformImage";
+import { getMimeType } from "./getMimeType";
 
 import type { MiddlewareHandler, APIContext } from "astro";
 import type { SatoriOptions } from "satori";
 
+export * from "./getMimeType";
 export type SvgOptions = SatoriOptions;
-export type ImageFormat = "png";
+
+/**
+ * Any output format that your Astro image service accepts, as a string.
+ *
+ * Astro's default image service, sharp, supports "avif", "jpg", "png", "webp",
+ * "gif", etc. API documentation: https://sharp.pixelplumbing.com/api-output
+ */
+export type ImageFormat = string;
+
 export type ImageOptions<Format extends ImageFormat> = {
   format: Format;
 };
@@ -57,11 +66,6 @@ export type Options<Format extends ImageFormat> = {
     format: Format,
   ) => Promise<Filename<Format>>;
 };
-
-function getContentType<Format extends ImageFormat>(format: Format): string {
-  const type = contentType(format);
-  return type === false ? `image/${format}` : type;
-}
 
 export async function defaultGetFilename<Format extends ImageFormat>(
   format: Format,
@@ -144,7 +148,7 @@ export function createHtmlToImageMiddleware<Format extends ImageFormat>({
 
     return new Response(image.data, {
       headers: {
-        "Content-Type": getContentType(format),
+        "Content-Type": getMimeType(format),
         "Content-Disposition": `inline; filename="${filename}"`,
       },
     });

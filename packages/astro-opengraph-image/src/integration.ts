@@ -1,4 +1,4 @@
-import type { SvgOptions } from "@altano/astro-html-to-image";
+import type { SvgOptions, ImageFormat } from "@altano/astro-html-to-image";
 import type { AstroIntegration } from "astro";
 import { vitePluginOpengraphImageUserConfig } from "./virtual-user-config";
 
@@ -18,13 +18,22 @@ export type SvgOptionsWithFontBuffers = SvgOptionsBase & {
 };
 
 export type OpengraphImageConfig = {
-  getSvgOptions(): Promise<SvgOptionsWithFontPaths>;
+  /**
+   * An image format to use for the output image. Defaults to "png"
+   */
+  imageFormat?: ImageFormat;
+  /**
+   * Options to use for the svg file that is generated. Most importantly, fonts
+   * must be provided.
+   */
+  getSvgOptions(): Promise<Partial<SvgOptionsWithFontPaths>>;
 };
 
 /**
  * This must remain JSON-serializable!
  */
 export type OpengraphImageConfigSerializable = {
+  imageFormat: ImageFormat;
   svgOptions: SvgOptionsWithFontPaths;
 };
 
@@ -33,6 +42,7 @@ export type OpengraphImageConfigSerializableMaybeMocked =
   | (() => OpengraphImageConfigSerializable);
 
 export type OpengraphImageConfigResolved = {
+  imageFormat: ImageFormat;
   svgOptions: SvgOptionsWithFontBuffers;
 };
 
@@ -45,6 +55,7 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
     async "astro:config:setup"({ addMiddleware, updateConfig }): Promise<void> {
       const [svgOptions] = await Promise.all([config.getSvgOptions()]);
       const configSerializable: OpengraphImageConfigSerializable = {
+        imageFormat: config.imageFormat,
         svgOptions,
       };
       updateConfig({
