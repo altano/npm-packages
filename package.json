@@ -20,7 +20,7 @@
     "eslint-config-altano": "workspace:*",
     "npm-check-updates": "^16.14.11",
     "prettier": "^2.8.8",
-    "turbo": "^1.10.16"
+    "turbo": "^1.12.5"
   },
   "pnpm": {
     "supportedArchitectures": {
