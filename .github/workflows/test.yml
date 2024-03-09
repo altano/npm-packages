@@ -10,20 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: ["lts/*", "current"]
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.8.0
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - run: pnpm install
-      - run: pnpm build
-      - run: pnpm test
+          enable-cache: true
+          devbox-version: 0.9.1
+
+      - run: devbox run pnpm install
+      - run: devbox run pnpm build
+      - run: devbox run pnpm test
