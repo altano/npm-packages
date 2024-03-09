@@ -20,6 +20,9 @@ jobs:
           enable-cache: true
           devbox-version: 0.9.1
 
-      - run: devbox run pnpm install
-      - run: devbox run pnpm build
-      - run: devbox run pnpm test
+      - name: Install packages
+        run: devbox run pnpm install
+      - name: Build
+        run: devbox run pnpm build
+      - name: Test
+        run: devbox run pnpm test
