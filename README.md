@@ -1,13 +1,13 @@
 # alan's npm package monorepo
 
-![npm Badge](https://img.shields.io/badge/npm-gray?logo=npm)
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/altano/npm-packages/test.yml) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/altano/npm-packages)
+[![npm Badge](https://img.shields.io/badge/npm-gray?logo=npm)](https://www.npmjs.com/~altano?activeTab=packages)
+[![GitHub test action status](https://github.com/altano/npm-packages/actions/workflows/test.yml/badge.svg)](https://github.com/altano/npm-packages/actions/workflows/test.yml) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/altano/npm-packages)](https://github.com/altano/npm-packages/commits)
 
 ## Development Environment
 
 [![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
 
-This repository has a `devbox.json` which means you can trivially create a development environment for it.
+This repository has a `devbox.json` which means you can trivially create a development environment for it. That environment is also used in GitHub action workflows.
 
 Read the [Devbox quickstart](https://jetpack.io/devbox/docs/contributor-quickstart/) or read more about why Devbox is fantastic [on my website](https://alan.norbauer.com/articles/devbox-intro).
 
@@ -19,16 +19,8 @@ When submitting a pull request that should result in a version bump of a package
 
 ## Publishing Packages Process
 
-When creating a PR:
+When creating a Pull Request, add a changeset with:
 
 ```bash
 pnpm changeset
-```
-
-When releasing/publishing packages:
-
-```bash
-pnpm changeset version # Review generated changes manually
-pnpm changeset publish # Publishes packages to npm
-git push --follow-tags # Push generated tags to github
 ```

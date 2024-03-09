@@ -11,7 +11,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish",
+    "release": "turbo run build && changeset publish",
     "update": "npm exec npm-check-updates --workspaces --  -u"
   },
   "devDependencies": {

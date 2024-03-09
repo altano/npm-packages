@@ -1,12 +1,14 @@
 {
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["CI"],
   "pipeline": {
     "build": {
       "outputs": ["dist/**", ".next/**"],
-      "dependsOn": ["^lint", "^build"]
+      "dependsOn": ["lint", "^build"]
     },
     "test": {
       "outputs": ["coverage/**"],
-      "dependsOn": ["^build", "^test"]
+      "dependsOn": ["build", "^test"]
     },
     "lint": {
       "outputs": []
