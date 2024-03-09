@@ -1,9 +1,10 @@
-TODO: See if publishing/changesets work
-TODO: Make changeset publishing automatic
-TODO: Fill out .github action boilerplate
-TODO: Make sure dependencies are correct (e.g. publish relies on passing build/lint/test)
+x 2024-03-09 TODO: See if publishing/changesets work
+x 2024-03-09 TODO: Make changeset publishing automatic
+x 2024-03-09 TODO: Fill out .github action boilerplate
+x 2024-03-09 TODO: Make sure task dependencies are correct (e.g. publish should rely on passing build/lint/test)
 TODO: Investigate replacing tsup to speed up build (slow .d.ts)
 TODO: Upgrade turborepo
-TODO: Switch to devbox github action
+TODO: Investigate turborepo remote caching
+x 2024-03-09 TODO: Switch to devbox github action
 x 2023-08-13 TODO: add declarationMap and make "go to definition" work across monorepo (https://tsup.egoist.dev/#generate-typescript-declaration-maps--d-ts-map)
 x 2023-08-13 TODO: Add type checking as build dependency (tsup/esbuild ignores types)
