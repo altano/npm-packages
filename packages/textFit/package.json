@@ -17,7 +17,8 @@
     "build": "tsup src/textFit.ts --format esm --onSuccess \"pnpm build:types\"",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "dev": "tsup src/textFit.ts --watch --format esm --dts",
-    "format": "prettier --write src",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
     "build-example": "sh examples/mk-examples.sh",
     "prepublish": "pnpm build"
   },

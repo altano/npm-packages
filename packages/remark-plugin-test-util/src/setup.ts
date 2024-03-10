@@ -1,4 +1,4 @@
-import prettier from "prettier";
+import prettier from "@prettier/sync";
 import prettierConfig from "../../../.prettierrc.json";
 import { VFile } from "vfile";
 import { expect } from "vitest";

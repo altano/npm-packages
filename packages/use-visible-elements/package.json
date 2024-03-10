@@ -17,8 +17,9 @@
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "format": "prettier --write src",
-    "clean": "rm -rf  && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -45,7 +46,7 @@
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.39.0",
     "eslint-config-altano": "workspace:*",
-    "prettier": "^2.8.7",
+    "prettier": "^3.2.5",
     "react": "^18",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"
