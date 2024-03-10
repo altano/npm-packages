@@ -12,13 +12,16 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish",
-    "update": "npm exec npm-check-updates --workspaces --  -u"
+    "update": "pnpm update --latest --interactive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages.git"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
-    "npm-check-updates": "^16.14.15",
     "prettier": "^3.2.5",
     "turbo": "^1.12.5"
   },
