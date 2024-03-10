@@ -41,14 +41,14 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
-    "eslint": "^8.39.0",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
     "prettier": "^3.2.5",
-    "react": "^18",
-    "tsup": "^7.2.0",
-    "typescript": "^5.1.6"
+    "react": "^18.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2"
   },
   "publishConfig": {
     "access": "public"
