@@ -16,7 +16,8 @@
     "build": "tsup src/index.ts --format esm --onSuccess \"pnpm build:types\"",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "dev": "tsup src/index.ts --watch --format esm --dts",
-    "format": "prettier --write src",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
@@ -59,7 +60,7 @@
     "eslint-config-altano": "workspace:*",
     "eslint": "^8.39.0",
     "mocha": "^10.2.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vitest": "^1.0.4"

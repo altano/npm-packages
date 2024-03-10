@@ -22,7 +22,5 @@ jobs:
 
       - name: Install dependencies
         run: devbox run pnpm install
-      - name: Build
-        run: devbox run pnpm build
-      - name: Test
-        run: devbox run pnpm test
+      - name: Test and Validate
+        run: devbox run pnpm turbo format lint build test

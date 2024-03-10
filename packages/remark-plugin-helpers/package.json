@@ -14,7 +14,8 @@
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "format": "prettier --write src",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
   },
   "author": {
@@ -39,7 +40,7 @@
     "@types/node": "^18.17.1",
     "@types/prettier": "^2.7.2",
     "@types/unist": "^3.0.0",
-    "prettier": "^2.8.7",
+    "prettier": "^3.2.5",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vfile": "^5.3.7",

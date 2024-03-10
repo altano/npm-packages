@@ -8,7 +8,7 @@
     "test": "turbo run test",
     "prep": "turbo run build test lint",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "turbo run format",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish",
@@ -19,7 +19,7 @@
     "eslint": "^8.54.0",
     "eslint-config-altano": "workspace:*",
     "npm-check-updates": "^16.14.11",
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "turbo": "^1.12.5"
   },
   "pnpm": {

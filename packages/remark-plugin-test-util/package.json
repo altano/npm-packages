@@ -10,7 +10,8 @@
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "format": "prettier --write src",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
   },
   "author": {
@@ -35,7 +36,8 @@
     "eslint": "^8.39.0",
     "eslint-config-altano": "workspace:*",
     "mdast-util-mdxjs-esm": "^1.3.1",
-    "prettier": "^2.8.7",
+    "prettier": "^3.2.5",
+    "@prettier/sync": "^0.5.1",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "unified": "^10.1.2",
