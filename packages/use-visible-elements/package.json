@@ -35,7 +35,7 @@
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-visible-elements",
   "dependencies": {
     "@altano/use-element-observer": "workspace:*",
-    "react-use": "^17.4.0"
+    "react-use": "^17.5.0"
   },
   "peerDependencies": {
     "react": "^18"
