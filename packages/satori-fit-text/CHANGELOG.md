@@ -1,5 +1,11 @@
 # @altano/satori-fit-text
 
+## 0.1.2
+
+### Patch Changes
+
+- 5fc1078: update dependencies
+
 ## 0.1.1
 
 ### Patch Changes
