@@ -1,4 +1,4 @@
-import trumpet, { type Trumpet } from "trumpet";
+import trumpet, { type Trumpet } from "@gofunky/trumpet";
 import streamToPromise from "stream-to-promise";
 
 // @TODO Move...

@@ -1,4 +1,4 @@
-declare module "trumpet" {
+declare module "@gofunky/trumpet" {
   import type { Transform } from "node:stream";
   export type Options = {
     outer: boolean;
