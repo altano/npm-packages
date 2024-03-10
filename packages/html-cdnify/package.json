@@ -43,11 +43,11 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@gofunky/trumpet": "^3.0.3",
     "glob": "^10.3.10",
     "lodash": "^4.17.21",
     "stream-to-promise": "^3.0.0",
-    "streamifier": "^0.1.1",
-    "trumpet": "^1.7.2"
+    "streamifier": "^0.1.1"
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
