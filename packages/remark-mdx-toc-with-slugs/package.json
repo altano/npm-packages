@@ -42,24 +42,25 @@
   ],
   "dependencies": {
     "astring": "^1.8.6",
+    "build": "^0.1.4",
     "estree-util-value-to-estree": "^3.0.1",
-    "estree-util-visit": "^1.2.1",
+    "estree-util-visit": "^2.0.0",
     "github-slugger": "^2.0.0",
-    "mdast-util-mdxjs-esm": "^1.3.1",
+    "mdast-util-mdxjs-esm": "^2.0.1",
     "remark-mdx-toc": "^0.3.1",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@types/node": "^18.17.6",
-    "@types/unist": "^3.0.0",
+    "@types/node": "^20.11.25",
+    "@types/unist": "^3.0.2",
     "prettier": "^3.2.5",
-    "tsup": "^7.2.0",
-    "typescript": "^5.1.6",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
     "unified": "^10.1.2",
-    "vite": "^4.4.9",
-    "vitest": "^1.0.4"
+    "vite": "^5.1.5",
+    "vitest": "^1.3.1"
   },
   "publishConfig": {
     "access": "public"

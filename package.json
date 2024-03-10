@@ -6,7 +6,7 @@
     "dev": "turbo run dev --no-cache --parallel --continue",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "prep": "turbo run build test lint",
+    "prep": "turbo run build test lint format",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "turbo run format",
     "changeset": "changeset",
@@ -15,10 +15,10 @@
     "update": "npm exec npm-check-updates --workspaces --  -u"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
-    "eslint": "^8.54.0",
+    "@changesets/cli": "^2.27.1",
+    "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
-    "npm-check-updates": "^16.14.11",
+    "npm-check-updates": "^16.14.15",
     "prettier": "^3.2.5",
     "turbo": "^1.12.5"
   },
