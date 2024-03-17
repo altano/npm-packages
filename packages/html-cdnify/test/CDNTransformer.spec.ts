@@ -5,7 +5,7 @@ import {
   CDNTransformerOptions,
   cdnify,
   CdnifyOptions,
-} from "../src/cdnify";
+} from "@altano/html-cdnify";
 
 import streamifier from "streamifier";
 import streamToPromise from "stream-to-promise";

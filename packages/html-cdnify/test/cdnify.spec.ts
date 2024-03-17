@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { cdnify, CdnifyOptions } from "../src/cdnify";
+import { cdnify, CdnifyOptions } from "@altano/html-cdnify";
 
 describe("cdnify", function () {
   it("should conveniently wrap CDNTransformer", async function () {

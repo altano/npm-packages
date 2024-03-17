@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": "./dist/index.js",
   "type": "module",
   "sideEffects": false,
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
+    "@altano/vite-plugin-alias-exports": "workspace:*",
     "@types/glob": "^8.1.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.25",
@@ -61,7 +63,7 @@
     "prettier": "^3.2.5",
     "tsup": "^8.0.2",
     "typescript": "^5.4.2",
-    "vitest": "^1.3.1"
+    "vitest": "^1.4.0"
   },
   "engines": {
     "node": ">=5.10.1"

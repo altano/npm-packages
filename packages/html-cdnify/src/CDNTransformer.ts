@@ -1,5 +1,5 @@
 import { unionBy, merge, mergeWith, type MergeWithCustomizer } from "lodash";
-import urlConverter from "./urlConverter";
+import { urlConverter } from "./urlConverter";
 
 import * as HtmlAttributeStreamTransformer from "./HtmlAttributeStreamTransformer";
 

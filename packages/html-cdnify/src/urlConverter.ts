@@ -13,11 +13,11 @@ function isLocalPath(filePath: string): boolean {
 /**
  * Resolve oldUrl against pathOldUrlIsRelativeTo, and then prepend newUrlBase
  */
-export default (
+export function urlConverter(
   newUrlBase: string,
   oldUrl: string,
   pathOldUrlIsRelativeTo?: string,
-): string => {
+): string {
   if (!isLocalPath(oldUrl)) {
     return oldUrl;
   } else {
@@ -50,4 +50,4 @@ export default (
 
     return url.resolve(newUrlBase, relativePath);
   }
-};
+}
