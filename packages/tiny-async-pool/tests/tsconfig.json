@@ -1,6 +1,6 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": [".", "vite.config.ts"],
+  "include": [".", "vite.config.ts", "tests"],
   "compilerOptions": {
     "types": ["vitest/globals"]
   }
