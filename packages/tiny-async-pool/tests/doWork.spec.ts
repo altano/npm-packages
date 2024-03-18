@@ -2,9 +2,9 @@ import { describe, expect, it, vi } from "vitest";
 import { doWork } from "../src";
 
 const timeout = (i: number) =>
-  new Promise((resolve) =>
+  new Promise<void>((resolve) =>
     setTimeout(() => {
-      resolve(i);
+      resolve();
     }, i),
   );
 
@@ -13,6 +13,7 @@ describe("doWork", function () {
     const timeoutSpy = vi.fn(timeout);
     const items = [10, 50, 30, 20];
     await doWork(2, items, timeoutSpy);
+
     expect(timeoutSpy).toHaveBeenCalledTimes(4);
     expect(timeoutSpy).toHaveBeenCalledWith(10, items);
     expect(timeoutSpy).toHaveBeenCalledWith(50, items);
@@ -27,14 +28,25 @@ describe("doWork", function () {
 
   it("rejects on error (but does not leave unhandled rejections) (2/2)", async function () {
     const iteratorFn = (i: number, a: number[]) =>
-      i < a.length - 1 ? Promise.resolve(i) : Promise.reject(i);
+      i < a.length - 1 ? Promise.resolve() : Promise.reject();
     const iteratorFnSpy = vi.fn(iteratorFn);
     const items = [0, 1, 2];
 
-    await expect(doWork(2, items, iteratorFnSpy)).rejects.toEqual(2);
+    // Rejects with 'undefined'
+    await expect(doWork(2, items, iteratorFnSpy)).rejects.toBeUndefined();
+
     expect(iteratorFnSpy).toHaveBeenCalledTimes(3);
     expect(iteratorFnSpy).toHaveBeenCalledWith(0, items);
     expect(iteratorFnSpy).toHaveBeenCalledWith(1, items);
     expect(iteratorFnSpy).toHaveBeenCalledWith(2, items);
+  });
+
+  it("should be a type error to use an iteratorFn that resolves to a value", async () => {
+    typeof doWork(
+      2,
+      [1, 2, 3],
+      // @ts-expect-error
+      () => Promise.resolve(1),
+    );
   });
 });

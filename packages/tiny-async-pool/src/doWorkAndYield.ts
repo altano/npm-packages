@@ -1,5 +1,5 @@
 type ExecutingPromise<TOut> = Promise<[ExecutingPromise<TOut>, TOut]>;
-type IterableItem<T> = T extends Iterable<infer R> ? R : never;
+export type IterableItem<T> = T extends Iterable<infer R> ? R : never;
 
 /**
  * Process items from `iterable` in batches and yield the result of each call to

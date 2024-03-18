@@ -1,5 +1,7 @@
 # tiny-async-pool
 
+This is an ESM + TypeScript rewrite of [tiny-async-pool](https://www.npmjs.com/package/tiny-async-pool) by Rafael Xavier de Souza.
+
 ## Why?
 
 The goal of this library is to use the native async iterator (ES9), native async functions, and native Promise to implement concurrent/batched work.
@@ -69,17 +71,16 @@ Iterator function that takes two arguments: the value of each iteration and the 
 
 ### `doWork(concurrency, iterable, iteratorFn)`
 
-The same as `doWorkAndYield(...)` but just returns a Promise that resolves when all work resolves/rejects, e.g.:
+Like `doWorkAndYield(...)` but returns a Promise that resolves when all work resolves (or rejects immediately when any Promise rejects). Useful when you don't care about the return of `iteratorFn`, such as a worker pool where you do batch file proccessing and the workers produce a side effect instead of returning a value. For example, a batch file eraser:
 
 ```js
-const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve(ms), ms));
-
-await doWork(2, [1000, 5000, 3000, 2000], timeout);
+const eraseFile = (path) => fs.unlink(path);
+const eraseFiles = async (files) => doWork(4, files, eraseFile);
 ```
 
-## License
+It will be enforced that `iteratorFn` returns `Promise<void>` when using TypeScript.
 
-This project is a fork of `async-pool` by Rafael Xavier de Souza. It modernizes (as of 2022) the library by being a first-class TypeScript and ESM module.
+## License
 
 MIT © [Rafael Xavier de Souza](http://rafael.xavier.blog.br)
 MIT © [Alan Norbauer](https://alan.norbauer.com)
