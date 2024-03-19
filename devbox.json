@@ -4,9 +4,11 @@
     "git-branchless@latest",
     "git@latest",
     "nodejs@20.11.1",
-    "nodePackages.pnpm@latest",
     "gh@latest"
   ],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true"
+  },
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
     "scripts": {
