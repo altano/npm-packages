@@ -81,26 +81,6 @@
         }
       }
     },
-    "nodePackages.pnpm@latest": {
-      "last_modified": "2024-02-24T23:06:34Z",
-      "resolved": "github:NixOS/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0#nodePackages.pnpm",
-      "source": "devbox-search",
-      "version": "8.15.3",
-      "systems": {
-        "aarch64-darwin": {
-          "store_path": "/nix/store/5r4f8l7man6wafyzxd39pbndkw7hklh6-pnpm-8.15.3"
-        },
-        "aarch64-linux": {
-          "store_path": "/nix/store/p6qla4nnfhfqj8gm7609bnynx1vfcfpb-pnpm-8.15.3"
-        },
-        "x86_64-darwin": {
-          "store_path": "/nix/store/7zxfp8n1987076069vd6rqxvcd3hrv4n-pnpm-8.15.3"
-        },
-        "x86_64-linux": {
-          "store_path": "/nix/store/jxyv7qildiy960h194h4ca3wharbbpks-pnpm-8.15.3"
-        }
-      }
-    },
     "nodejs@20.11.1": {
       "last_modified": "2024-02-24T23:06:34Z",
       "plugin_version": "0.0.2",

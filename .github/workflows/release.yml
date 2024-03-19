@@ -28,7 +28,7 @@ jobs:
         uses: jetpack-io/devbox-install-action@v0.8.0
         with:
           enable-cache: true
-          devbox-version: 0.9.1
+          devbox-version: 0.10.1
 
       - name: Install dependencies
         run: devbox run pnpm install
@@ -37,7 +37,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: devbox run pnpm release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

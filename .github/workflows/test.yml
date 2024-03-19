@@ -18,9 +18,9 @@ jobs:
         uses: jetpack-io/devbox-install-action@v0.8.0
         with:
           enable-cache: true
-          devbox-version: 0.9.1
+          devbox-version: 0.10.1
 
       - name: Install dependencies
         run: devbox run pnpm install
-      - name: Test and Validate
+      - name: Validate and Build
         run: devbox run pnpm turbo format lint build test
