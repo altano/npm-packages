@@ -1,0 +1,26 @@
+{
+  "name": "@altano/vite-plugin-alias-exports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.5"
+  }
+}

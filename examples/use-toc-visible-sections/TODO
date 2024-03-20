@@ -1,0 +1,3 @@
+Consider replacing this with a codesandbox OR somehow re-using the page from the test.
+
+Or use something like storybook/ladle to create stories that are playwright testable?
