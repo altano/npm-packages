@@ -29,11 +29,14 @@ jobs:
           echo "Playwright: `devbox run pnpm exec playwright --version`"
           echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
           echo "nixpkgs#playwright-driver.browsers paths:"
-          find `nix path-info nixpkgs#playwright-driver.browsers` -maxdepth 3 -exec ls -ld "{}" \;
+          find `nix --extra-experimental-features 'nix-command flakes' build --print-out-paths nixpkgs#playwright-driver.browsers` -maxdepth 3 -exec ls -ld "{}" \;
 
       - name: Validate and Build
         run: |
           eval "$(devbox shellenv)"
+          export PLAYWRIGHT_BROWSERS_PATH=$(nix --extra-experimental-features 'nix-command flakes' build --print-out-paths nixpkgs#playwright-driver.browsers)
+          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+          echo "Playwright: `devbox run pnpm exec playwright --version`"
           devbox run pnpm turbo format lint build test
 
       - uses: actions/upload-artifact@v4

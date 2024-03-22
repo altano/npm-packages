@@ -12,7 +12,7 @@
   },
   "shell": {
     "init_hook": [
-      "export PLAYWRIGHT_BROWSERS_PATH=$(nix path-info nixpkgs#playwright-driver.browsers)"
+      "export PLAYWRIGHT_BROWSERS_PATH=$(nix --extra-experimental-features 'nix-command flakes' build --print-out-paths nixpkgs#playwright-driver.browsers)"
     ],
     "scripts": {
       "test": ["echo \"Error: no test specified\" && exit 1"]
