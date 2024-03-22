@@ -15,5 +15,6 @@
       "args": []
     }
   },
-  "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell"
+  "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs"
 }
