@@ -1,8 +1,6 @@
-import * as React from "react";
-
 import "./Article.css";
 
-export default () => (
+const Article = (): JSX.Element => (
   // ((h1[id="$"]>lorem5)+p>lorem100)*20
   <article>
     <section>
@@ -609,3 +607,5 @@ export default () => (
     </section>
   </article>
 );
+
+export default Article;

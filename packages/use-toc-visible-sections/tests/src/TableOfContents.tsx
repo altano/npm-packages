@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { useVisibilityOfTarget } from "@altano/use-toc-visible-sections";
 
@@ -10,20 +10,21 @@ function ListItem({
 }: {
   href: string;
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   const isVisible = useVisibilityOfTarget(href);
   return (
     <li
       style={{
         borderLeft: isVisible ? "3px solid black" : "3px solid transparent",
       }}
+      aria-current={isVisible ? "true" : undefined}
     >
       <a href={href}>{children}</a>
     </li>
   );
 }
 
-export default () => {
+const TableOfContents = (): JSX.Element => {
   return (
     <nav>
       <ul>
@@ -80,3 +81,5 @@ export default () => {
     </nav>
   );
 };
+
+export default TableOfContents;
