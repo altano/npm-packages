@@ -11,15 +11,17 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm --onSuccess \"pnpm build:types\"",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build": "tsup src/index.tsx --format esm --dts --clean",
     "dev": "tsup src/index.tsx --watch --format esm",
     "lint": "eslint src/**/*.ts*",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:server": "vite --strictPort --port 4727 ./tests"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -41,14 +43,17 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
+    "@playwright/test": "1.40.0",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "vite": "^5.2.2"
   },
   "publishConfig": {
     "access": "public"

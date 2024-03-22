@@ -1,4 +1,3 @@
-import React from "react";
 import Article from "./Article";
 import TableOfContents from "./TableOfContents";
 import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";

@@ -13,3 +13,9 @@ public/dist
 .turbo
 .coverage
 tsconfig.tsbuildinfo
+
+# playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
