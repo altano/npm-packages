@@ -1,9 +1,4 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"],
-  "compilerOptions": {
-    "types": ["vitest/globals"],
-    "incremental": true
-  }
+  "include": ["src"]
 }

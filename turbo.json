@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "experimentalUI": true,
   "globalEnv": ["CI", "NODE_ENV"],
   "pipeline": {
     "build": {
@@ -10,12 +11,22 @@
       "cache": false
     },
     "test": {
+      "dependsOn": ["build", "test:unit", "test:e2e"]
+    },
+    "test:unit": {
       "outputs": ["coverage/**"],
+      "dependsOn": ["build"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"]
+    },
+    "typecheck": {
       "dependsOn": ["build"]
     },
     "lint": {
       "outputs": []
     },
+    "lint:fix": {},
     "dev": {
       "cache": false
     },

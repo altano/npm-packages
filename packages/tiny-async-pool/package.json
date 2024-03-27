@@ -2,28 +2,27 @@
   "name": "@altano/tiny-async-pool",
   "version": "2.0.0",
   "description": "Run multiple promise-returning & async functions with limited concurrency using native ES9",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "type": "module",
   "sideEffects": false,
   "files": [
-    "LICENSE-MIT",
     "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "README.md"
+    "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --onSuccess \"pnpm build:types\"",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
-    "dev": "tsup src/index.ts --watch --format esm --dts",
+    "build": "tsup --config build-config/tsup.config.node.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "lint": "eslint src/**/*.ts*",
-    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
-    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
-    "test": "vitest --run",
-    "test:watch": "vitest"
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -53,6 +52,7 @@
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@types/node": "^20.11.25",
+    "@vitest/coverage-v8": "^1.4.0",
     "@vitest/ui": "^1.3.1",
     "chai": "^4.4.1",
     "chai-as-promised": "^7.1.1",
@@ -60,9 +60,8 @@
     "eslint-config-altano": "workspace:*",
     "mocha": "^10.3.0",
     "prettier": "^3.2.5",
-    "tsup": "^8.0.2",
     "typescript": "^5.4.2",
-    "vitest": "^1.3.1"
+    "vitest": "^1.4.0"
   },
   "publishConfig": {
     "access": "public"

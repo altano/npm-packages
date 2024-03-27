@@ -11,22 +11,26 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm --onSuccess \"pnpm build:types\"",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
-    "dev": "tsup src/index.tsx --watch --format esm",
-    "lint": "eslint src/**/*.ts*",
-    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
-    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "build": "tsup --config build-config/tsup.config.browser.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist"
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "test:e2e": "playwright test",
+    "test:e2e:server": "vite --strictPort --port 3820 ./tests/e2e",
+    "test:e2e:ui": "playwright test --ui",
+    "typecheck": "tsc --noEmit"
   },
   "author": {
     "name": "Alan Norbauer",
     "email": "altano@gmail.com",
     "url": "https://alan.norbauer.com"
   },
-  "license": "UNLICENSED",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
@@ -42,14 +46,17 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
+    "@playwright/test": "1.40.0",
+    "@types/node": "^20.11.25",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.2"
+    "react-dom": "^18.2.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.2.4"
   },
   "publishConfig": {
     "access": "public"

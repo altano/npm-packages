@@ -16,5 +16,9 @@
     }
   },
   "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
-  "prettier.prettierPath": "./node_modules/prettier/index.cjs"
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "files.associations": {
+    "turbo.json": "jsonc"
+  },
+  "turbo.path": "./node_modules/.bin/turbo"
 }

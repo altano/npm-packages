@@ -1,7 +1,8 @@
 {
-  "extends": "@altano/tsconfig/node.json",
+  "extends": "../tsconfig.json",
+  "include": ["."],
   "compilerOptions": {
-    "types": ["vitest/globals"],
-    "jsx": "react"
+    "rootDir": "..",
+    "jsx": "react-jsx"
   }
 }

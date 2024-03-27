@@ -3,7 +3,7 @@ import { doWorkAndYield, type IterableItem } from "./doWorkAndYield";
 /**
  * Process items from `iterable` in batches.
  */
-export async function doWork<TIn, TOut, TIterable extends Iterable<TIn>>(
+export async function doWork<TIn, TIterable extends Iterable<TIn>>(
   /**
    * The size of the batch of work, or, how many times `iteratorFn` will be
    * called in parallel.
