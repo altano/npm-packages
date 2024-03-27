@@ -1,0 +1,52 @@
+{
+  "name": "@altano/textfit",
+  "version": "0.0.3",
+  "description": "A fast, jQuery-free text sizing component that quickly fits single and multi-line text to the width (and optionally height) of its container.",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --config build-config/tsup.config.browser.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "test:e2e": "playwright test",
+    "test:e2e:server": "vite --strictPort --port 8173 ./tests/e2e",
+    "test:e2e:ui": "playwright test --ui",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/textfit"
+  },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/textfit",
+  "keywords": [
+    "textfit",
+    "fit",
+    "text"
+  ],
+  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
+  "contributors": [
+    "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
+    "@playwright/test": "1.40.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

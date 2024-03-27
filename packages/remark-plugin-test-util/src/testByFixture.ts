@@ -35,20 +35,12 @@ export async function testByFixtures(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plugin: Plugin<any, any>,
 ): Promise<void> {
-  const fixtures = await fs.readdir("tests/__fixtures__");
+  const fixturesDir = join("tests", "unit", "__fixtures__");
+  const fixtures = await fs.readdir(fixturesDir);
   fixtures.filter(isTodo).forEach((f) => test.todo(f));
   const rest = fixtures.filter((f) => !isTodo(f));
   test.each(rest)("[test #%#] %s", async (fixture) => {
-    const fixtureDir = join("tests", "__fixtures__", fixture);
-    const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
-    const inputMdxPath = join(fixtureDir, `input.mdx`);
-    const options = await getJSONContents(join(fixtureDir, "options.json"));
-    const compileWithPlugin = async (): Promise<VFile> =>
-      compile(new VFile({ path: inputMdxPath, value: inputMdx }), {
-        format: "mdx",
-        remarkPlugins: [[plugin, options]],
-        jsx: true,
-      });
+    const compileWithPlugin = await getFixtureCompiler(plugin, fixture);
     if (isError(fixture)) {
       await expect(compileWithPlugin).rejects.toThrowErrorMatchingSnapshot();
     } else {
@@ -56,4 +48,23 @@ export async function testByFixtures(
       expect(vfile).toMatchSnapshot();
     }
   });
+}
+
+export async function getFixtureCompiler(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  plugin: Plugin<any, any>,
+  fixture: string,
+): Promise<() => Promise<VFile>> {
+  const fixturesDir = join("tests", "unit", "__fixtures__");
+  const fixtureDir = join(fixturesDir, fixture);
+  const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
+  const inputMdxPath = join(fixtureDir, `input.mdx`);
+  const options = await getJSONContents(join(fixtureDir, "options.json"));
+  const compileWithPlugin = async (): Promise<VFile> =>
+    compile(new VFile({ path: inputMdxPath, value: inputMdx }), {
+      format: "mdx",
+      remarkPlugins: [[plugin, options]],
+      jsx: true,
+    });
+  return compileWithPlugin;
 }

@@ -7,7 +7,7 @@ import { defineConfig, devices } from "@playwright/test";
 // require('dotenv').config();
 
 const baseURL = "http://localhost:4727";
-const isCI = !!process.env.CI;
+const isCI = !!process.env["CI"];
 
 const projects = {
   chromium: {
@@ -44,6 +44,7 @@ const projects = {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // TODO: Move tests into /tests/e2e subfolder
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -92,7 +93,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "pnpm run test:server",
+    command: "pnpm run test:e2e:server",
     url: baseURL,
     reuseExistingServer: false,
   },

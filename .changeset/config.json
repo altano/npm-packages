@@ -8,8 +8,7 @@
       "@altano/use-element-observer",
       "@altano/use-toc-visible-sections",
       "@altano/use-visible-elements"
-    ],
-    ["satori-fit-text-demo", "@altano/satori-fit-text"]
+    ]
   ],
   "access": "public",
   "baseBranch": "main",

@@ -1,0 +1,26 @@
+diff --git a/lib/rules/valid-repository-directory.js b/lib/rules/valid-repository-directory.js
+index fce748b8e3342a8cb25462b4fe0c38ac4563c6f3..bef85a79e7bb1cb8512aec893d9b16b8f973028b 100644
+--- a/lib/rules/valid-repository-directory.js
++++ b/lib/rules/valid-repository-directory.js
+@@ -47,7 +47,7 @@ const rule = (0, import_createRule.createRule)({
+         }
+         const directoryValue = directoryProperty.value.value;
+         const expected = path.normalize(path.dirname(context.filename));
+-        if (path.normalize(directoryValue) !== expected) {
++        if (!expected.endsWith(path.normalize(directoryValue))) {
+           context.report({
+             messageId: "mismatched",
+             node: directoryProperty.value,
+diff --git a/lib/rules/valid-repository-directory.mjs b/lib/rules/valid-repository-directory.mjs
+index b2b29ff7d2763d493a5cfb7e6e2918252d04130d..85dca84f55eaa2e95b94a89bb52033fcdf2f98c7 100644
+--- a/lib/rules/valid-repository-directory.mjs
++++ b/lib/rules/valid-repository-directory.mjs
+@@ -14,7 +14,7 @@ const rule = createRule({
+         }
+         const directoryValue = directoryProperty.value.value;
+         const expected = path.normalize(path.dirname(context.filename));
+-        if (path.normalize(directoryValue) !== expected) {
++        if (!expected.endsWith(path.normalize(directoryValue))) {
+           context.report({
+             messageId: "mismatched",
+             node: directoryProperty.value,

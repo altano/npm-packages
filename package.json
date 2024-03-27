@@ -1,29 +1,34 @@
 {
+  "name": "@altano/npm-packages",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "prep": "turbo run build test lint format",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "format": "turbo run format",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "format": "turbo run format",
+    "lint": "pnpm eslint package.json *.ts && turbo run lint",
+    "preinstall": "npx only-allow pnpm",
+    "prep": "turbo run build test lint format typecheck",
     "release": "turbo run build && changeset publish",
-    "update": "pnpm update --latest --interactive"
+    "test": "turbo run test",
+    "update": "pnpm update --latest --interactive",
+    "version-packages": "changeset version"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages.git"
   },
   "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
     "@changesets/cli": "^2.27.1",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
+    "eslint-plugin-package-json": "^0.12.0",
+    "jsonc-eslint-parser": "^2.4.0",
     "prettier": "^3.2.5",
-    "turbo": "^1.12.5"
+    "tsup": "^8.0.2",
+    "turbo": "^1.13.0"
   },
   "pnpm": {
     "supportedArchitectures": {
@@ -35,6 +40,9 @@
         "current",
         "x64"
       ]
+    },
+    "patchedDependencies": {
+      "eslint-plugin-package-json@0.12.0": "patches/eslint-plugin-package-json@0.12.0.patch"
     }
   },
   "packageManager": "pnpm@8.15.5"

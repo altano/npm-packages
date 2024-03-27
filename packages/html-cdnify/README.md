@@ -15,7 +15,7 @@ Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, imag
 # Simplest usage
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 cdnify({
   cdnUrl: "//cdn.com",
@@ -66,7 +66,7 @@ Adding the `data-cdn-ignore` attribute to any element will cause the element to 
 You can specify `bufferPath`, the relative path to the buffer being processed. If this isn't specified, all resources with relative paths will be assumed to be at the root of the domain before being cdnified.
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var input = `
 <img src="figure1.png">
@@ -100,7 +100,7 @@ _Without_ `bufferPath`, the output would be:
 If your CDN has a path specified, it is assumed that both relative URLs AND root-relative URLs in your HTML are relative to the CDN directory. In other words, the CDN subdirectory will always be in the final URL. For example:
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var input = `
 <img src="figure1.png">
@@ -129,8 +129,8 @@ It should usually be the expectation that a CDN subdir is always present in the 
 If you are dealing with large files or network IO and would like to use the underlying NodeJS Transform Stream rather than buffering all of the input and output, feel free:
 
 ```js
-var streamifier = require("streamifier");
-var CDNTransformer = require("html-cdnify").CDNTransformer;
+import streamifier from "streamifier";
+import { CDNTransformer } from "@altano/html-cdnify");
 
 var transformer = new CDNTransformer({
   cdnUrl: "http://cdn.com",
@@ -155,7 +155,7 @@ outputStream.pipe(process.stdout);
 ## Specifying a transform defintion to add `<custom-element src="____">` to the list of attributes to be cdnified
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var outputPromise = cdnify({
   cdnUrl: "//cdn.com/cdn/",
@@ -177,7 +177,7 @@ outputPromise.then((output) => console.log(output));
 ## Specifying a custom transform function
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var outputPromise = cdnify({
   cdnUrl: "//cdn.com",
@@ -198,8 +198,7 @@ outputPromise.then((output) => console.log(output));
 If your assets are on different CDNs, you might need to write something like:
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
-var CDNTransformer = require("html-cdnify").CDNTransformer;
+import { cdnify, CDNTransformer } from "@altano/html-cdnify");
 
 var outputPromise = cdnify({
   cdnUrl: "//cdn.com",
@@ -225,7 +224,7 @@ outputPromise.then((output) => console.log(output));
 A custom attributeParser is like a custom transformFunction, but is scoped to just one selector rather than being applied to every attribute transformation. For example, to uppercase only PNG image names before cdnifying:
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var outputPromise = cdnify({
   cdnUrl: "//cdn.com",
@@ -303,7 +302,7 @@ The default transformDefinitions array is:
 If you'd like to ovverride any of these, specify the same selector and attribute but a different attributeParser. For example:
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 var noopFn = (oldAttribute) => oldAttribute;
 
@@ -330,7 +329,7 @@ outputPromise.then((output) => console.log(output));
 ## Promise-based API (recommended for simplicity)
 
 ```js
-var cdnify = require("html-cdnify").cdnify;
+import { cdnify } from "@altano/html-cdnify");
 
 cdnify({ ... Options ...}) => Promise<Buffer>
 ```
@@ -348,7 +347,7 @@ Same options as stream-based API (see below), plus:
 use the stream-based API when you are dealing with large files or network IO and would like to use the underlying NodeJS Transform Stream rather than buffering all of the input and output. The Promisebased API is simpler but the input/output must be completely buffered, which is obviously fine most of the time.
 
 ```js
-var CDNTransformer = require("html-cdnify").CDNTransformer;
+import { CDNTransformer } from "@altano/html-cdnify");
 
 var transformer = new CDNTransformer({ ... Options ... }) => CDNTransformer
 transformer.stream => NodeJS TransformStream

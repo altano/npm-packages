@@ -37,7 +37,7 @@ jobs:
           export PLAYWRIGHT_BROWSERS_PATH=$(nix --extra-experimental-features 'nix-command flakes' build --print-out-paths nixpkgs#playwright-driver.browsers)
           echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
           echo "Playwright: `devbox run pnpm exec playwright --version`"
-          devbox run pnpm turbo format lint build test
+          devbox run pnpm prep
 
       - uses: actions/upload-artifact@v4
         if: always()

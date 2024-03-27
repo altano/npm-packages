@@ -1,9 +1,7 @@
 {
   "extends": "@altano/tsconfig/react-library.json",
-  "include": ["src"],
+  "include": ["src", "*.config.ts"],
   "compilerOptions": {
-    "rootDir": ".",
-    "moduleResolution": "Bundler",
-    "noEmit": true
+    "outDir": "dist"
   }
 }

@@ -1,6 +1,6 @@
 # tiny-async-pool
 
-This is an ESM + TypeScript rewrite of [tiny-async-pool](https://www.npmjs.com/package/tiny-async-pool) by Rafael Xavier de Souza.
+This is an ESM + TypeScript fork of [tiny-async-pool](https://www.npmjs.com/package/tiny-async-pool) by Rafael Xavier de Souza, with some added functionality.
 
 ## Why?
 
@@ -71,7 +71,9 @@ Iterator function that takes two arguments: the value of each iteration and the 
 
 ### `doWork(concurrency, iterable, iteratorFn)`
 
-Like `doWorkAndYield(...)` but returns a Promise that resolves when all work resolves (or rejects immediately when any Promise rejects). Useful when you don't care about the return of `iteratorFn`, such as a worker pool where you do batch file proccessing and the workers produce a side effect instead of returning a value. For example, a batch file eraser:
+Like `doWorkAndYield(...)` but with a simpler API. Useful when you don't care about the return value of `iteratorFn`, such as a worker pool where you do batch file proccessing and the workers produce a side effect instead of returning a value.
+
+For example, a batch file eraser is as simple as:
 
 ```js
 const eraseFile = (path) => fs.unlink(path);

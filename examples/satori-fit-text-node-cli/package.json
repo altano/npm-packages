@@ -1,0 +1,21 @@
+{
+  "name": "satori-fit-text-node-cli",
+  "private": true,
+  "type": "module",
+  "description": "Demo of @altano/satori-fit-text",
+  "main": "cli.mjs",
+  "scripts": {
+    "start": "node cli.mjs --width 500 --height 100 --text hello"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@altano/satori-fit-text": "0.1.2",
+    "@fontsource/inter": "^5.0.17"
+  },
+  "engines": {
+    "node": ">= 18.17.1"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
