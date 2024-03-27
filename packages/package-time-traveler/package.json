@@ -9,7 +9,7 @@
     "email": "altano@gmail.com",
     "url": "https://alan.norbauer.com"
   },
-  "license": "UNLICENSED",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",

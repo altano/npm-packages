@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node",
+  "display": "@altano/tsconfig/node",
   "extends": "./base.json",
   "lib": ["ESNext"],
   "compilerOptions": {
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "module": "ES2022",
     "target": "ESNext",
     "resolveJsonModule": true

@@ -1,8 +1,7 @@
 {
   "name": "@altano/tsconfig",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "index.js",
+  "license": "ISC",
+  "type": "module",
   "private": true,
   "files": [
     "base.json",

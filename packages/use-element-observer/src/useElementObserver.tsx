@@ -1,91 +1,14 @@
-import React, { useCallback, useContext, useEffect, useRef } from "react";
+import React from "react";
 import { useSet } from "@uidotdev/usehooks";
+import { Observer } from "./Observer";
 
 interface Context {
   mountedElements: Set<Element>;
 }
 
-interface Callbacks<T> {
-  onMount: (e: T) => void;
-  onUnmount: (e: T) => void;
-}
+export const ElementObserverContext = React.createContext<Context | null>(null);
 
-interface ChildrenAndCallbacks<T> extends Callbacks<T> {
-  children: React.ReactNode;
-}
-
-const ElementObserverContext = React.createContext<Context | null>(null);
-
-function useMountRef<T>({ onMount, onUnmount }: Callbacks<T>): React.Ref<T> {
-  const newRef = useRef<T>(null);
-  useEffect(() => {
-    const ref = newRef.current;
-    if (ref == null) {
-      return (): void => {};
-    }
-    onMount(ref);
-    return (): void => onUnmount(ref);
-  }, [newRef, onMount, onUnmount]);
-  return newRef;
-}
-
-function ObserveChildWithWrapperDiv({
-  children,
-  onMount,
-  onUnmount,
-}: ChildrenAndCallbacks<Element>): React.ReactElement {
-  const ref = useMountRef<HTMLDivElement>({ onMount, onUnmount });
-  return (
-    <div style={{ display: "inherit" }} ref={ref}>
-      {children}
-    </div>
-  );
-}
-function ObserveChild({
-  children,
-  onMount,
-  onUnmount,
-}: ChildrenAndCallbacks<Element>): React.ReactElement {
-  const newRef = useMountRef({ onMount, onUnmount });
-  const child = React.Children.only(children);
-  return React.cloneElement(child as React.ReactElement, { ref: newRef });
-}
-
-function Observer({
-  children,
-  selector,
-  useWrapperDiv,
-}: {
-  children: React.ReactNode;
-  selector: string;
-  useWrapperDiv: boolean;
-}): React.ReactElement {
-  const context = useContext(ElementObserverContext);
-  if (context == null) {
-    throw new Error("Observer context was null");
-  }
-  const { mountedElements } = context;
-  const onMount = useCallback(
-    (ref: Element) => {
-      Array.from(ref.querySelectorAll(selector)).forEach((e) =>
-        mountedElements.add(e),
-      );
-    },
-    [selector, mountedElements],
-  );
-  const onUnmount = useCallback(
-    () => mountedElements.clear(),
-    [mountedElements],
-  );
-  const Component = useWrapperDiv ? ObserveChildWithWrapperDiv : ObserveChild;
-  return (
-    <Component onMount={onMount} onUnmount={onUnmount}>
-      {children}
-    </Component>
-  );
-}
-
-interface Options {
+export interface Options {
   selector: string;
   tree: React.ReactNode;
   useWrapperDiv?: boolean;

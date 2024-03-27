@@ -1,10 +1,11 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "zixuanchen.vitest-explorer",
     "dbaeumer.vscode-eslint",
     "bierner.github-markdown-preview",
     "github.vscode-github-actions",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "vercel.turbo-vsc"
   ]
 }

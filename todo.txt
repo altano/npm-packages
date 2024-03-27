@@ -1,2 +1,60 @@
-TODO: Investigate replacing tsup to speed up build (slow .d.ts)
-TODO: Investigate turborepo remote caching
+TODO: fix tests/e2e react ts errors, figure out why they aren't typechecking
+x 2024-03-24 TODO: Investigate turborepo remote caching
+x 2024-03-24 TODO: remove unnecessary react imports
+x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
+TODO: Look into npm Provenance w/ github actions
+
+vitest:
+x 2024-03-24 TODO: switch tests to use public package interface as appropriate (when new vitest >1.4.0 released)
+TODO: get vitest vscode extension working in monorepo
+TODO: factor out vitest config
+TODO: add code coverage to all projects its missing from
+TODO: Investigate using restoreMocks everywhere
+
+tsup/tsconfig:
+TODO: Revisit module/moduleResolution in all tsconfigs
+TODO: check all test tsconfigs
+TODO: Investigate replacing tsup to speed up build (slow .d.ts). maybe vite?
+TODO: see if we can get tests typechecked too
+TODO: ... or factor out tsup configuration to one place and make consistent
+TODO: make sure all packages have declaration map
+TODO: make sure all packages are typechecked
+TODO: add `noEmit` to base tsconfig, make work with declaration map generation. maybe `emitDeclarationOnly`?
+TODO: "moduleResolution": "bundler", in base config?
+TODO: Base tsconfig: "jsx": "react-jsx" ?
+TODO: Consolidate tsconfigs, remove unused ones
+TODO: remove extraneous fields from package.json in private packages
+
+lint:
+TODO: Look into eslint flat config to see if we can reduce config repetition
+TODO: make sure every project has a lint that points at src/tests
+
+satori-fit-text:
+TODO: satori-fit-text: codesandbox (share with test somehow?)
+TODO: woff files look at little off in screenshots: letters are leaving bounding box (including canvas) by a pixel or two.
+TODO: what's up with test lint config
+TODO: can vitest browser mode allow us to test browser text measurer?
+x 2024-03-22 TODO: satori-fit-text: get unit test coverage working again
+x 2024-03-23 TODO: satori-fit-text: revisit firefox 126 segmenter support and errors
+
+html-cdnify:
+TODO: update README examples
+
+textfit:
+TODO: move example to codesandbox/stackblitz, up to examples dir
+TODO: update readme
+x 2024-03-24 TODO: add an e2e test
+
+tests:
+TODO: unit => tests/unit
+TODO: e2e => tests/e2e
+TODO: playwright: factor out playwright config
+TODO: switch playwright tests to component tests (https://playwright.dev/docs/test-components#example)
+TODO: cleanup all the extraneous css
+
+use-element-observer:
+x 2024-03-25 TODO: add tests
+
+use-visible-elements:
+x 2024-03-25 TODO: add tests
+TODO: fix broken readme example (hook must be used in tree)
