@@ -2,21 +2,18 @@
   "name": "@altano/assets",
   "private": true,
   "type": "module",
-  "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
     "dev": "pnpm run build --watch",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format:fix": "prettier --write . --ignore-path ../../.gitignore",
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "typecheck": "tsc --noEmit"
-  },
-  "publishConfig": {
-    "access": "restricted"
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.17"
@@ -25,5 +22,8 @@
     "@altano/tsconfig": "workspace:^",
     "@types/node": "^20.11.25",
     "typescript": "^5.4.2"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }

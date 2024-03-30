@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  eslint-plugin-package-json@0.12.0:
-    hash: gn5bfpzr3wzegyh5feayqzmjpm
-    path: patches/eslint-plugin-package-json@0.12.0.patch
+  eslint-plugin-package-json@0.12.1:
+    hash: pwygserj4gcmrl2hg3x4dt63su
+    path: patches/eslint-plugin-package-json@0.12.1.patch
 
 importers:
 
@@ -26,14 +26,17 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-config-altano
       eslint-plugin-package-json:
-        specifier: ^0.12.0
-        version: 0.12.0(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
+        specifier: ^0.12.1
+        version: 0.12.1(patch_hash=pwygserj4gcmrl2hg3x4dt63su)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
+      prettier-plugin-packagejson:
+        specifier: ^2.4.13
+        version: 2.4.13(prettier@3.2.5)
       tsup:
         specifier: ^8.0.2
         version: 8.0.2
@@ -101,8 +104,8 @@ importers:
         specifier: ^6.8.0
         version: 6.8.0(eslint@8.57.0)
       eslint-plugin-package-json:
-        specifier: ^0.12.0
-        version: 0.12.0(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
+        specifier: ^0.12.1
+        version: 0.12.1(patch_hash=pwygserj4gcmrl2hg3x4dt63su)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
       eslint-plugin-prettier:
         specifier: ^5.1.3
         version: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5)
@@ -3613,9 +3616,19 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /detect-indent@7.0.1:
+    resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
+    engines: {node: '>=12.20'}
+    dev: true
+
   /detect-newline@3.1.0:
     resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
     engines: {node: '>=8'}
+    dev: true
+
+  /detect-newline@4.0.1:
+    resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
   /devlop@1.1.0:
@@ -4247,8 +4260,8 @@ packages:
       object.fromentries: 2.0.7
     dev: true
 
-  /eslint-plugin-package-json@0.12.0(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0):
-    resolution: {integrity: sha512-BtzhiA/7x7hqY+0fLXcgiN8wXGFyABJS93q/gns6MsAAPrbGFH3N7MYuCrNUEP60NPHQ4kAW04sPQarQBvJqHg==}
+  /eslint-plugin-package-json@0.12.1(patch_hash=pwygserj4gcmrl2hg3x4dt63su)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0):
+    resolution: {integrity: sha512-Z70ddt7tvZrdLZv4V1OkoDqGnnFakVRmAAeP+y/18ZvpgoPJXkqa+JRJNh+tWQ2PMZU4CqleZ6tZOEoq47AY2g==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -4782,6 +4795,11 @@ packages:
     engines: {node: '>=0.12.0'}
     dev: true
 
+  /get-stdin@9.0.0:
+    resolution: {integrity: sha512-dVKBjfWisLAicarI2Sf+JuBE/DghV4UzNAVe9yhEJuzeREd3JhOTE9cUaJTeSa77fsbQUK3pcOpJfM59+VKZaA==}
+    engines: {node: '>=12'}
+    dev: true
+
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
@@ -4809,6 +4827,10 @@ packages:
 
   /git-hooks-list@1.0.3:
     resolution: {integrity: sha512-Y7wLWcrLUXwk2noSka166byGCvhMtDRpgHdzCno1UQv/n/Hegp++a2xBWJL1lJarnKD3SWaljD+0z1ztqxuKyQ==}
+    dev: true
+
+  /git-hooks-list@3.1.0:
+    resolution: {integrity: sha512-LF8VeHeR7v+wAbXqfgRlTSX/1BJR9Q1vEMR8JAz1cEg6GX07+zyj3sAdDvYjj/xnlIfVuGgj4qBei1K3hKH+PA==}
     dev: true
 
   /github-slugger@2.0.0:
@@ -4905,6 +4927,17 @@ packages:
       ignore: 5.3.1
       merge2: 1.4.1
       slash: 3.0.0
+    dev: true
+
+  /globby@13.2.2:
+    resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      dir-glob: 3.0.1
+      fast-glob: 3.3.2
+      ignore: 5.3.1
+      merge2: 1.4.1
+      slash: 4.0.0
     dev: true
 
   /glur@1.1.2:
@@ -7465,6 +7498,19 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
+  /prettier-plugin-packagejson@2.4.13(prettier@3.2.5):
+    resolution: {integrity: sha512-n64Y3E1iEese0RN0EmxM6E7dAiy47UPJOFyAjMNfZWPKQ1exwaaMTXEhK7vKIrbXLSmf2J9y4H5rnE1VII1vRg==}
+    peerDependencies:
+      prettier: '>= 1.16.0'
+    peerDependenciesMeta:
+      prettier:
+        optional: true
+    dependencies:
+      prettier: 3.2.5
+      sort-package-json: 2.9.0
+      synckit: 0.9.0
+    dev: true
+
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -8148,6 +8194,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /slash@4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
+    dev: true
+
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
@@ -8198,6 +8249,19 @@ packages:
       git-hooks-list: 1.0.3
       globby: 10.0.0
       is-plain-obj: 2.1.0
+      sort-object-keys: 1.1.3
+    dev: true
+
+  /sort-package-json@2.9.0:
+    resolution: {integrity: sha512-vlEd6i57Eb9+ruta1+hID+emmAmGzWKraEX1kk5LAQ0k1glgDHOENeieqzfir0m8MHcebzDH4FEwqjPnMEjy2g==}
+    hasBin: true
+    dependencies:
+      detect-indent: 7.0.1
+      detect-newline: 4.0.1
+      get-stdin: 9.0.0
+      git-hooks-list: 3.1.0
+      globby: 13.2.2
+      is-plain-obj: 4.1.0
       sort-object-keys: 1.1.3
     dev: true
 
@@ -8561,6 +8625,14 @@ packages:
 
   /synckit@0.8.8:
     resolution: {integrity: sha512-HwOKAP7Wc5aRGYdKH+dw0PRRpbO841v2DENBtjnR5HFWoiNByAl7vrx3p0G/rCyYXQsrxqtX48TImFtPcIHSpQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    dependencies:
+      '@pkgr/core': 0.1.1
+      tslib: 2.6.2
+    dev: true
+
+  /synckit@0.9.0:
+    resolution: {integrity: sha512-7RnqIMq572L8PeEzKeBINYEJDDxpcH8JEgLwUqBd3TkofhFRbkq4QLR0u+36avGAhCRbk2nnmjcW9SE531hPDg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/core': 0.1.1

@@ -28,6 +28,7 @@ TODO: remove extraneous fields from package.json in private packages
 lint:
 TODO: Look into eslint flat config to see if we can reduce config repetition
 TODO: make sure every project has a lint that points at src/tests
+TODO: investigate new flat config
 
 satori-fit-text:
 TODO: satori-fit-text: codesandbox (share with test somehow?)

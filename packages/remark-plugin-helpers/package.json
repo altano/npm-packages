@@ -2,38 +2,43 @@
   "name": "@altano/remark-plugin-helpers",
   "private": true,
   "description": "Utilities for remark plugins",
-  "type": "module",
-  "sideEffects": false,
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup --config build-config/tsup.config.node.ts",
-    "build:types": "tsc --project tsconfig.declarations.json",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
-    "dev": "pnpm run build --watch",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src",
-    "lint": "eslint package.json src/**/*.ts*",
-    "lint:fix": "TIMING=1 pnpm lint --fix",
-    "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck": "tsc --noEmit"
-  },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-plugin-helpers",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
     "directory": "packages/remark-plugin-helpers"
   },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-plugin-helpers",
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "build": "tsup --config build-config/tsup.config.node.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format:fix": "prettier --write . --ignore-path ../../.gitignore",
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "kleur": "^4.1.5",
+    "unist-util-visit": "^5.0.0"
+  },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@types/debug": "^4.1.12",
@@ -43,11 +48,6 @@
     "typescript": "^5.4.2",
     "vfile": "^6.0.1",
     "vitest": "^1.4.0"
-  },
-  "dependencies": {
-    "debug": "^4.3.4",
-    "kleur": "^4.1.5",
-    "unist-util-visit": "^5.0.0"
   },
   "publishConfig": {
     "access": "restricted"

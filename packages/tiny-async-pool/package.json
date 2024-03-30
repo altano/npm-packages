@@ -2,34 +2,6 @@
   "name": "@altano/tiny-async-pool",
   "version": "2.0.0",
   "description": "Run multiple promise-returning & async functions with limited concurrency using native ES9",
-  "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
-  "type": "module",
-  "sideEffects": false,
-  "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
-  ],
-  "scripts": {
-    "build": "tsup --config build-config/tsup.config.node.ts",
-    "build:types": "tsc --project tsconfig.declarations.json",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
-    "dev": "pnpm run build --watch",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src",
-    "lint": "eslint package.json src/**/*.ts*",
-    "lint:fix": "TIMING=1 pnpm lint --fix",
-    "lint:timing": "TIMING=1 pnpm lint",
-    "test:unit": "vitest --run",
-    "test:unit:watch": "vitest",
-    "typecheck": "tsc --noEmit"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/tiny-async-pool"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/tiny-async-pool",
   "keywords": [
     "race",
     "concurrency",
@@ -40,6 +12,13 @@
     "async generator",
     "es9"
   ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/tiny-async-pool",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/tiny-async-pool"
+  },
+  "license": "MIT",
   "author": {
     "name": "Alan Norbauer",
     "email": "altano@gmail.com",
@@ -48,7 +27,28 @@
   "contributors": [
     "Rafael Xavier de Souza"
   ],
-  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup --config build-config/tsup.config.node.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format:fix": "prettier --write . --ignore-path ../../.gitignore",
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@types/node": "^20.11.25",

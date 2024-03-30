@@ -1,8 +1,16 @@
 diff --git a/lib/rules/valid-repository-directory.js b/lib/rules/valid-repository-directory.js
-index fce748b8e3342a8cb25462b4fe0c38ac4563c6f3..bef85a79e7bb1cb8512aec893d9b16b8f973028b 100644
+index fce748b8e3342a8cb25462b4fe0c38ac4563c6f3..3c2888a8ccc224b903c91a20349c8e88f17b1240 100644
 --- a/lib/rules/valid-repository-directory.js
 +++ b/lib/rules/valid-repository-directory.js
-@@ -47,7 +47,7 @@ const rule = (0, import_createRule.createRule)({
+@@ -32,6 +32,7 @@ __export(valid_repository_directory_exports, {
+ });
+ module.exports = __toCommonJS(valid_repository_directory_exports);
+ var path = __toESM(require("node:path"));
++var process = __toESM(require("node:process"));
+ var import_createRule = require("../createRule.js");
+ var import_findPropertyWithKeyValue = require("../utils/findPropertyWithKeyValue.js");
+ const rule = (0, import_createRule.createRule)({
+@@ -47,7 +48,7 @@ const rule = (0, import_createRule.createRule)({
          }
          const directoryValue = directoryProperty.value.value;
          const expected = path.normalize(path.dirname(context.filename));

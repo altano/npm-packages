@@ -75,8 +75,7 @@ module.exports = {
       parser: "jsonc-eslint-parser",
       plugins: ["package-json"],
       rules: {
-        "package-json/valid-version": "off",
-        "package-json/valid-package-def": "off",
+        "package-json/valid-package-def": "off"
       },
     },
   ],
