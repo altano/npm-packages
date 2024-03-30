@@ -32,15 +32,20 @@ function isError(fixture: string): boolean {
 }
 
 export async function testByFixtures(
+  dirname: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plugin: Plugin<any, any>,
 ): Promise<void> {
-  const fixturesDir = join("tests", "unit", "__fixtures__");
+  const fixturesDir = join(dirname, "__fixtures__");
   const fixtures = await fs.readdir(fixturesDir);
   fixtures.filter(isTodo).forEach((f) => test.todo(f));
   const rest = fixtures.filter((f) => !isTodo(f));
   test.each(rest)("[test #%#] %s", async (fixture) => {
-    const compileWithPlugin = await getFixtureCompiler(plugin, fixture);
+    const compileWithPlugin = await getFixtureCompiler(
+      dirname,
+      plugin,
+      fixture,
+    );
     if (isError(fixture)) {
       await expect(compileWithPlugin).rejects.toThrowErrorMatchingSnapshot();
     } else {
@@ -51,11 +56,12 @@ export async function testByFixtures(
 }
 
 export async function getFixtureCompiler(
+  dirname: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plugin: Plugin<any, any>,
   fixture: string,
 ): Promise<() => Promise<VFile>> {
-  const fixturesDir = join("tests", "unit", "__fixtures__");
+  const fixturesDir = join(dirname, "__fixtures__");
   const fixtureDir = join(fixturesDir, fixture);
   const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
   const inputMdxPath = join(fixtureDir, `input.mdx`);

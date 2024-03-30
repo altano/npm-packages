@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import { Observer } from "../../src/Observer";
+import { expect, describe, it, vi } from "vitest";
 
 describe("Observer", async () => {
   it("should complain if context isn't used", async () => {

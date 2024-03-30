@@ -3,6 +3,7 @@ import { defineProject } from "vitest/config";
 export default defineProject({
   test: {
     dir: "tests/unit",
+    face: 1,
     coverage: {
       enabled: true,
 

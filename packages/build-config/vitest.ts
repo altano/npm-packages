@@ -1,14 +1,12 @@
-import { defineProject } from "vitest/config";
-import react from "@vitejs/plugin-react";
+import {
+  defineProject,
+  mergeConfig,
+  type UserProjectConfigExport,
+} from "vitest/config";
+import configShared from "../vitest.shared.js";
 
-export default defineProject({
-  plugins: [react()],
+const sharedConfig: UserProjectConfigExport = {
   test: {
-    globals: true, // required by testing-library setup
-    environment: "jsdom",
-    setupFiles: ["@testing-library/jest-dom/vitest"],
-    restoreMocks: true,
-
     dir: "tests/unit",
     coverage: {
       enabled: true,
@@ -28,4 +26,13 @@ export default defineProject({
       reportsDirectory: ".coverage",
     },
   },
-});
+};
+
+export default mergeConfig(
+  sharedConfig,
+  defineProject({
+    test: {
+      environment: "jsdom",
+    },
+  }),
+);

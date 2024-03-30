@@ -1,18 +1,11 @@
-import { defineProject } from "vitest/config";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from "vitest/config";
 
-export default defineProject({
-  plugins: [react()],
+export default defineConfig({
   test: {
-    globals: true, // required by testing-library setup
-    environment: "jsdom",
-    setupFiles: ["@testing-library/jest-dom/vitest"],
-    restoreMocks: true,
-
-    dir: "tests/unit",
     coverage: {
       enabled: true,
 
+      include: ["**/src/**/*.{ts,tsx}"],
       exclude: [
         "tests/e2e",
         "playwright.config.ts",

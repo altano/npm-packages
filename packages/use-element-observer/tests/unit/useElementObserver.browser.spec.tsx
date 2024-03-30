@@ -1,6 +1,7 @@
 import { render } from "@testing-library/react";
 import { useElementObserver, type Options } from "../../src";
 import React from "react";
+import { expect, describe, it, vi } from "vitest";
 
 function Component({
   handleMount,

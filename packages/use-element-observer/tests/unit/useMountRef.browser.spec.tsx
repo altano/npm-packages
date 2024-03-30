@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import { useMountRef, type Callbacks } from "../../src/useMountRef";
+import { expect, describe, it, vi } from "vitest";
 
 function BadComponent({
   onMount,

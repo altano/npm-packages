@@ -42,6 +42,7 @@ describe("remark-mdx-toc-with-slugs", async () => {
 
       const { default: remarkMdxTocWithSlugs } = await import("../../src");
       const compileWithPlugin = await getFixtureCompiler(
+        import.meta.dirname,
         remarkMdxTocWithSlugs,
         "basic",
       );
@@ -72,6 +73,7 @@ describe("remark-mdx-toc-with-slugs", async () => {
 
       const { default: remarkMdxTocWithSlugs } = await import("../../src");
       const compileWithPlugin = await getFixtureCompiler(
+        import.meta.dirname,
         remarkMdxTocWithSlugs,
         "basic",
       );
