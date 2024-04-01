@@ -2,8 +2,8 @@ import { defineProject } from "vitest/config";
 
 export default defineProject({
   test: {
-    setupFiles: "@altano/remark-plugin-test-util/setup",
     dir: "tests/unit",
+    setupFiles: ["@altano/vitest-plugins/serializers"],
     coverage: {
       enabled: true,
 

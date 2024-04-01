@@ -1,7 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`remark-mdx-toc-with-slugs > [test #0] basic 1`] = `
-/*@jsxRuntime automatic @jsxImportSource react*/
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/basic/input.mdx",
+    "tests/unit/__fixtures__/basic/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic @jsxImportSource react*/
 export const toc = [
   {
     depth: 2,
@@ -65,12 +74,21 @@ function MDXContent(props = {}) {
     _createMdxContent(props)
   );
 }
-export default MDXContent;
-
+export default MDXContent;",
+}
 `;
 
 exports[`remark-mdx-toc-with-slugs > [test #1] custom-name 1`] = `
-/*@jsxRuntime automatic @jsxImportSource react*/
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/custom-name/input.mdx",
+    "tests/unit/__fixtures__/custom-name/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic @jsxImportSource react*/
 export const tableOfContents = [
   {
     depth: 2,
@@ -134,12 +152,21 @@ function MDXContent(props = {}) {
     _createMdxContent(props)
   );
 }
-export default MDXContent;
-
+export default MDXContent;",
+}
 `;
 
 exports[`remark-mdx-toc-with-slugs > [test #2] use-default-name 1`] = `
-/*@jsxRuntime automatic @jsxImportSource react*/
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/use-default-name/input.mdx",
+    "tests/unit/__fixtures__/use-default-name/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic @jsxImportSource react*/
 export const toc = [
   {
     depth: 2,
@@ -203,6 +230,6 @@ function MDXContent(props = {}) {
     _createMdxContent(props)
   );
 }
-export default MDXContent;
-
+export default MDXContent;",
+}
 `;

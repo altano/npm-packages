@@ -1,0 +1,4 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["src", "*.config.ts"]
+}

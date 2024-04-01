@@ -1,0 +1,115 @@
+# vitest-plugins
+
+[![npm](https://badgen.net/npm/v/@altano/vitest-plugins)](https://www.npmjs.com/package/@altano/vitest-plugins) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/vitest-plugins) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
+
+Custom matchers and snapshot serializers to enhance vitest.
+
+# Installation
+
+```
+npm install -D @altano/vitest-plugins
+```
+
+## To install the custom matchers
+
+Modify vite.config.ts / vitest.config.ts:
+
+```ts
+export default defineConfig({
+  test: {
+    setupFiles: [
+      "@altano/vitest-plugins/matchers",
+      // ...
+    ],
+    // ...
+  },
+});
+```
+
+Add matcher types to your tsconfig.json (if using TypeScript):
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@altano/vitest-plugins/matchers"]
+  }
+}
+```
+
+## To install the snapshot serializers
+
+Modify vite.config.ts / vitest.config.ts:
+
+```ts
+export default defineConfig({
+  test: {
+    setupFiles: [
+      "@altano/vitest-plugins/serializers",
+      // ...
+    ],
+    // ...
+  },
+});
+```
+
+NOTE: You can pick and choose what to install: the matchers and serializers don't depend on each other.
+
+# Details
+
+## Snapshot Serializers
+
+### VFile
+
+Will format the contents of a [vfile](https://unifiedjs.com/explore/package/vfile/) using Prettier (auto-detecting the type from the vfile's filename), e.g.
+
+```snap
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/basic/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "function face() { }"
+}
+```
+
+### Absolute Paths
+
+Will replace any instances of `process.cwd()` with `<cwd>` in the snapshot. Useful when serializing strings that contain absolute paths, since those will be different on other machines running the tests.
+
+## Matchers
+
+Vitest's error matchers let you match against the error message, but not the rest of the Error object:
+
+- `toThrow(error?)` - error is thrown ([docs](https://jestjs.io/docs/expect#tothrowerror))
+- `toThrowErrorMatching[Inline]Snapshot` - an error _exactly_ matches a snapshot ([docs](https://jestjs.io/docs/expect#tothrowerrormatchingsnapshothint))
+
+If you want to assert anything more complicated (e.g. an error contains some substring in the stack) then you'll need these custom matchers:
+
+### toMatchError
+
+Assert on any part of an error object (e.g. the stack):
+
+```ts
+expect(new Error("face")).toMatchError(
+  expect.objectContaining({
+    stack: expect.stringContaining("readme.spec.ts"),
+  }),
+);
+```
+
+### toThrowErrorMatching
+
+Assert on any part of a _thrown_ error object (e.g. the stack):
+
+```ts
+expect(() => {
+  throw new Error("face");
+}).toThrowErrorMatching(
+  expect.objectContaining({
+    stack: expect.stringContaining("readme.spec.ts"),
+  }),
+);
+```
