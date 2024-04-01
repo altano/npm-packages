@@ -1,5 +1,21 @@
 # package-time-traveler
 
+## 3.0.0
+
+### Major Changes
+
+- b8bc683: build/test overhaul
+
+  - license change
+  - consolidate on module exports
+  - better build orchestration
+  - more extensive testing (both unit and browser testing)
+
+### Patch Changes
+
+- Updated dependencies [b8bc683]
+  - @altano/tiny-async-pool@3.0.0
+
 ## 2.0.2
 
 ### Patch Changes
