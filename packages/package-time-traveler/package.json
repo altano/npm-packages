@@ -1,6 +1,6 @@
 {
   "name": "package-time-traveler",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Simulate an npm install on a specific day (for better re-use of npm packages preadating package-lock.json)",
   "main": "index.js",
   "bin": "index.js",

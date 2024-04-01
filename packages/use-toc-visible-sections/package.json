@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-toc-visible-sections",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "Intersection-Observer-based Table of Contents Scroll Spy React Hook",
   "type": "module",
   "sideEffects": false,

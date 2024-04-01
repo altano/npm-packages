@@ -1,5 +1,15 @@
 # @altano/satori-fit-text
 
+## 0.1.3
+
+### Patch Changes
+
+- b8bc683: build/test overhaul
+
+  - consolidate on module exports
+  - better build orchestration
+  - more extensive testing (both unit and browser testing)
+
 ## 0.1.2
 
 ### Patch Changes

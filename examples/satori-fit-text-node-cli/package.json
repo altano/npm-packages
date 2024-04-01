@@ -9,7 +9,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@altano/satori-fit-text": "0.1.2",
+    "@altano/satori-fit-text": "0.1.3",
     "@fontsource/inter": "^5.0.17"
   },
   "engines": {
@@ -17,5 +17,6 @@
   },
   "publishConfig": {
     "access": "restricted"
-  }
+  },
+  "version": null
 }
