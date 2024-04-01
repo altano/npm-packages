@@ -1,4 +1,4 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["."]
+  "include": [".", "../types"]
 }

@@ -15,11 +15,11 @@ tsup/tsconfig:
 TODO: Revisit module/moduleResolution in all tsconfigs
 TODO: check all test tsconfigs
 TODO: Investigate replacing tsup to speed up build (slow .d.ts). maybe vite?
-TODO: see if we can get tests typechecked too
+x 2024-03-31 TODO: see if we can get tests typechecked too
 TODO: ... or factor out tsup configuration to one place and make consistent
 TODO: make sure all packages have declaration map
 TODO: make sure all packages are typechecked
-TODO: add `noEmit` to base tsconfig, make work with declaration map generation. maybe `emitDeclarationOnly`?
+x 2024-03-31 TODO: add `noEmit` to base tsconfig, make work with declaration map generation. maybe `emitDeclarationOnly`?
 TODO: "moduleResolution": "bundler", in base config?
 TODO: Base tsconfig: "jsx": "react-jsx" ?
 TODO: Consolidate tsconfigs, remove unused ones
@@ -28,6 +28,7 @@ TODO: remove extraneous fields from package.json in private packages
 lint:
 TODO: Look into eslint flat config to see if we can reduce config repetition
 TODO: make sure every project has a lint that points at src/tests
+TODO: Look into markdown linting
 
 satori-fit-text:
 TODO: satori-fit-text: codesandbox (share with test somehow?)

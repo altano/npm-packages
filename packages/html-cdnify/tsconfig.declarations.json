@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src"],
+  "include": ["src", "types"],
   "compilerOptions": {
     "emitDeclarationOnly": true,
     "declaration": true,

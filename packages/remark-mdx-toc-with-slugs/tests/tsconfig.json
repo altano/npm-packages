@@ -1,4 +1,7 @@
 {
-  "extends": "@altano/tsconfig/node.json",
-  "include": ["."]
+  "extends": "../tsconfig.json",
+  "include": ["."],
+  "compilerOptions": {
+    "noEmit": true
+  }
 }

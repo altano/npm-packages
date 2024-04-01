@@ -1,3 +1,5 @@
+# html-cdnify
+
 ![logo](./assets/logo.png)
 
 [![npm](https://badgen.net/npm/v/@altano/html-cdnify)](https://www.npmjs.com/package/@altano/html-cdnify) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/html-cdnify) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)

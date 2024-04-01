@@ -13,7 +13,7 @@
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit"
   },
   "publishConfig": {
     "access": "restricted"
@@ -22,7 +22,7 @@
     "@fontsource/inter": "^5.0.17"
   },
   "devDependencies": {
-    "@altano/tsconfig": "workspace:^",
+    "@altano/tsconfig": "workspace:*",
     "@types/node": "^20.11.25",
     "typescript": "^5.4.2"
   }

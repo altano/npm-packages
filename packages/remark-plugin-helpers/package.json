@@ -16,7 +16,7 @@
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit"
   },
   "author": {
     "name": "Alan Norbauer",

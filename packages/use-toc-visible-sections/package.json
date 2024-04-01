@@ -23,7 +23,8 @@
     "test:e2e": "playwright test",
     "test:e2e:server": "vite --strictPort --port 4727 ./tests/e2e",
     "test:e2e:ui": "playwright test --ui",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
   "author": {
     "name": "Alan Norbauer",
