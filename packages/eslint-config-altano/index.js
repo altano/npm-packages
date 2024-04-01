@@ -11,6 +11,10 @@ module.exports = {
       version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+  },
   ignorePatterns: [
     "dist/",
     ".eslintrc.cjs",
@@ -68,6 +72,10 @@ module.exports = {
         ],
         "@typescript-eslint/no-floating-promises": "error",
       },
+    },
+    {
+      files: ["**/*.d.ts"],
+      extends: ["plugin:@typescript-eslint/disable-type-checked"],
     },
     {
       files: ["package.json"],

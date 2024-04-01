@@ -23,7 +23,8 @@
     "test:unit:benchmark": "vitest --run bench",
     "test:unit:run": "vitest --run",
     "test:unit:watch": "vitest tests/unit/",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
   "author": {
     "name": "Alan Norbauer",

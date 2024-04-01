@@ -6,4 +6,4 @@ I make no claims to support any package out of this repository, including suppor
 
 ## Reporting a Vulnerability
 
-You may report vulnerabilities to altano@gmail.com and, while I make no support promises, I may respond to the vulnerability report.
+You may report vulnerabilities to <altano@gmail.com> and, while I offer no guarantees, I may respond to and/or handle the vulnerability report.

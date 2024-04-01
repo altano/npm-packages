@@ -57,7 +57,7 @@ importers:
         version: 5.0.17
     devDependencies:
       '@altano/tsconfig':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../tsconfig
       '@types/node':
         specifier: ^20.11.25

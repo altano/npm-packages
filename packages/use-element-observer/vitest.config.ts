@@ -6,7 +6,7 @@ export default defineProject({
   test: {
     globals: true, // required by testing-library setup
     environment: "jsdom",
-    setupFiles: ["./tests/unit/vitest-setup.js"],
+    setupFiles: ["@testing-library/jest-dom/vitest"],
     restoreMocks: true,
 
     dir: "tests/unit",

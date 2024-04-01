@@ -20,8 +20,14 @@
     "test:e2e": {
       "dependsOn": ["build"]
     },
-    "typecheck": {
+    "typecheck:test": {
       "dependsOn": ["build"]
+    },
+    "typecheck:src": {
+      "dependsOn": ["build"]
+    },
+    "typecheck": {
+      "dependsOn": ["typecheck:src", "typecheck:test"]
     },
     "lint": {
       "outputs": []

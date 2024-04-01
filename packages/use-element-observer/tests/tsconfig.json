@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "include": ["."],
   "compilerOptions": {
+    "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vitest/globals"]
+    "types": ["@testing-library/jest-dom/vitest"]
   }
 }

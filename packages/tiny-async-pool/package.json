@@ -22,7 +22,8 @@
     "lint:timing": "TIMING=1 pnpm lint",
     "test:unit": "vitest --run",
     "test:unit:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
   "repository": {
     "type": "git",
