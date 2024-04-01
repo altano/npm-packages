@@ -55,6 +55,7 @@
   "devDependencies": {
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/tsconfig": "workspace:*",
+    "@altano/vitest-plugins": "workspace:*",
     "@types/node": "^20.11.25",
     "@types/unist": "^3.0.2",
     "@vitest/coverage-v8": "^1.4.0",

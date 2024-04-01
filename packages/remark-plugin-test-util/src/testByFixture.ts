@@ -60,11 +60,20 @@ export async function getFixtureCompiler(
   const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
   const inputMdxPath = join(fixtureDir, `input.mdx`);
   const options = await getJSONContents(join(fixtureDir, "options.json"));
-  const compileWithPlugin = async (): Promise<VFile> =>
-    compile(new VFile({ path: inputMdxPath, value: inputMdx }), {
-      format: "mdx",
-      remarkPlugins: [[plugin, options]],
-      jsx: true,
-    });
+  const compileWithPlugin = async (): Promise<VFile> => {
+    const result = await compile(
+      new VFile({ path: inputMdxPath, value: inputMdx }),
+      {
+        format: "mdx",
+        remarkPlugins: [[plugin, options]],
+        jsx: true,
+      },
+    );
+    // The mdx compiler doesn't change the vfile path extension so let's fix
+    // that. See https://github.com/mdx-js/mdx/issues/2462
+    result.path = result.path.replace(/.mdx$/, ".js");
+    return result;
+  };
+
   return compileWithPlugin;
 }

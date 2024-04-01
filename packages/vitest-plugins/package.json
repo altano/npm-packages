@@ -1,12 +1,17 @@
 {
-  "name": "@altano/remark-plugin-test-util",
-  "private": true,
-  "description": "Testing utilities for remark plugins",
+  "name": "@altano/vitest-plugins",
+  "version": "0.0.1",
+  "description": "Custom matchers and snapshot serializers to enhance vitest",
   "type": "module",
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
   "exports": {
-    "./*": "./src/*.ts"
+    "./matchers": {
+      "default": "./src/matchers/setup.ts",
+      "types": "./src/matchers/types.d.ts"
+    },
+    "./matchers/*": "./src/matchers/*.ts",
+    "./serializers": "./src/serializers/setup.ts",
+    "./serializers/*": "./src/serializers/*.ts"
   },
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
@@ -15,7 +20,11 @@
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck:src": "tsc --noEmit"
+    "test:typecheck": "tsc --project ./tests/tsconfig.json --noEmit",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest",
+    "typecheck:src": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
   "author": {
     "name": "Alan Norbauer",
@@ -26,15 +35,17 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/remark-plugin-test-util"
+    "directory": "packages/vitest-plugins"
   },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-plugin-test-util",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/vitest-plugins",
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",
     "@prettier/sync": "^0.5.1",
     "@types/node": "^20.11.25",
-    "@vitest/ui": "^1.3.1",
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/expect": "^1.4.0",
+    "@vitest/ui": "^1.4.0",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
     "mdast-util-mdxjs-esm": "^2.0.1",
@@ -45,6 +56,9 @@
     "vitest": "^1.4.0"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
+  },
+  "dependencies": {
+    "serialize-error": "^11.0.3"
   }
 }

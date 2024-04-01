@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["."],
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "..",
+    "types": ["../src/matchers/types"]
+  }
+}
