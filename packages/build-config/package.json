@@ -2,6 +2,7 @@
   "name": "@altano/build-config",
   "license": "ISC",
   "type": "module",
+  "version": "0.0.0",
   "private": true,
   "files": [
     "tsup.config.ts",

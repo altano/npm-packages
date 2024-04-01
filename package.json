@@ -1,5 +1,6 @@
 {
   "name": "@altano/npm-packages",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -7,7 +8,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "format": "turbo run format",
-    "lint": "pnpm eslint package.json *.ts && turbo run lint",
+    "lint": "eslint package.json *.ts && turbo run lint",
     "preinstall": "npx only-allow pnpm",
     "prep": "turbo run build test lint format typecheck",
     "release": "turbo run build && changeset publish",
@@ -24,7 +25,7 @@
     "@changesets/cli": "^2.27.1",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
-    "eslint-plugin-package-json": "^0.12.0",
+    "eslint-plugin-package-json": "^0.12.1",
     "jsonc-eslint-parser": "^2.4.0",
     "prettier": "^3.2.5",
     "tsup": "^8.0.2",

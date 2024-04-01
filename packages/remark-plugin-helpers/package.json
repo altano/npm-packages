@@ -1,5 +1,6 @@
 {
   "name": "@altano/remark-plugin-helpers",
+  "version": "0.0.0",
   "private": true,
   "description": "Utilities for remark plugins",
   "type": "module",
