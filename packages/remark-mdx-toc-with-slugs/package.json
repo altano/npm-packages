@@ -61,7 +61,7 @@
     "@vitest/coverage-v8": "^1.4.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.2",
-    "vite": "^5.2.4",
+    "vite": "^5.2.6",
     "vitest": "^1.4.0"
   },
   "publishConfig": {

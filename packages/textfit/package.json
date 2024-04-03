@@ -45,7 +45,7 @@
     "@altano/tsconfig": "workspace:*",
     "@playwright/test": "1.40.0",
     "typescript": "^5.4.2",
-    "vite": "^5.2.4"
+    "vite": "^5.2.6"
   },
   "publishConfig": {
     "access": "public"
