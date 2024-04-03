@@ -163,7 +163,7 @@ importers:
         version: 5.4.2
       vitest:
         specifier: ^1.4.0
-        version: 1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)
+        version: 1.4.0(@types/node@20.11.25)
 
   packages/package-time-traveler:
     dependencies:
@@ -226,11 +226,11 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^5.2.4
-        version: 5.2.4(@types/node@20.11.25)
+        specifier: ^5.2.6
+        version: 5.2.6(@types/node@20.11.25)
       vitest:
         specifier: ^1.4.0
-        version: 1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)
+        version: 1.4.0(@types/node@20.11.25)
 
   packages/remark-plugin-helpers:
     dependencies:
@@ -267,7 +267,7 @@ importers:
         version: 6.0.1
       vitest:
         specifier: ^1.4.0
-        version: 1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)
+        version: 1.4.0(@types/node@20.11.25)
 
   packages/remark-plugin-test-util:
     devDependencies:
@@ -396,8 +396,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^5.2.4
-        version: 5.2.4(@types/node@20.11.25)
+        specifier: ^5.2.6
+        version: 5.2.6(@types/node@20.11.25)
       vitest:
         specifier: ^1.4.0
         version: 1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)
@@ -414,8 +414,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^5.2.4
-        version: 5.2.4(@types/node@20.11.25)
+        specifier: ^5.2.6
+        version: 5.2.6(@types/node@20.11.25)
 
   packages/tiny-async-pool:
     devDependencies:
@@ -481,7 +481,7 @@ importers:
         version: 18.2.21
       '@vitejs/plugin-react':
         specifier: ^4.2.1
-        version: 4.2.1(vite@5.2.4)
+        version: 4.2.1(vite@5.2.6)
       '@vitest/coverage-v8':
         specifier: ^1.4.0
         version: 1.4.0(vitest@1.4.0)
@@ -547,8 +547,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^5.2.4
-        version: 5.2.4(@types/node@20.11.25)
+        specifier: ^5.2.6
+        version: 5.2.6(@types/node@20.11.25)
 
   packages/use-visible-elements:
     dependencies:
@@ -593,8 +593,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite:
-        specifier: ^5.2.4
-        version: 5.2.4(@types/node@20.11.25)
+        specifier: ^5.2.6
+        version: 5.2.6(@types/node@20.11.25)
 
   packages/vitest-plugins:
     dependencies:
@@ -2682,7 +2682,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vitejs/plugin-react@4.2.1(vite@5.2.4):
+  /@vitejs/plugin-react@4.2.1(vite@5.2.6):
     resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2693,7 +2693,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.24.3)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.2.4(@types/node@20.11.25)
+      vite: 5.2.6(@types/node@20.11.25)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2717,7 +2717,7 @@ packages:
       strip-literal: 2.0.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)
+      vitest: 1.4.0(@types/node@20.11.25)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9283,7 +9283,7 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.4(@types/node@20.11.25)
+      vite: 5.2.6(@types/node@20.11.25)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -9331,6 +9331,98 @@ packages:
       fsevents: 2.3.3
     dev: true
 
+  /vite@5.2.6(@types/node@20.11.25):
+    resolution: {integrity: sha512-FPtnxFlSIKYjZ2eosBQamz4CbyrTizbZ3hnGJlh/wMtCrlp1Hah6AzBLjGI5I2urTfNnpovpHdrL6YRuBOPnCA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 20.11.25
+      esbuild: 0.20.2
+      postcss: 8.4.38
+      rollup: 4.13.0
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
+  /vitest@1.4.0(@types/node@20.11.25):
+    resolution: {integrity: sha512-gujzn0g7fmwf83/WzrDTnncZt2UiXP41mHuFYFrdwaLRVQ6JYQEiME2IfEjU3vcFL3VKa75XhI3lFgn+hfVsQw==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@types/node': ^18.0.0 || >=20.0.0
+      '@vitest/browser': 1.4.0
+      '@vitest/ui': 1.4.0
+      happy-dom: '*'
+      jsdom: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@types/node':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+    dependencies:
+      '@types/node': 20.11.25
+      '@vitest/expect': 1.4.0
+      '@vitest/runner': 1.4.0
+      '@vitest/snapshot': 1.4.0
+      '@vitest/spy': 1.4.0
+      '@vitest/utils': 1.4.0
+      acorn-walk: 8.3.2
+      chai: 4.4.1
+      debug: 4.3.4(supports-color@8.1.1)
+      execa: 8.0.1
+      local-pkg: 0.5.0
+      magic-string: 0.30.8
+      pathe: 1.1.2
+      picocolors: 1.0.0
+      std-env: 3.7.0
+      strip-literal: 2.0.0
+      tinybench: 2.6.0
+      tinypool: 0.8.2
+      vite: 5.2.4(@types/node@20.11.25)
+      vite-node: 1.4.0(@types/node@20.11.25)
+      why-is-node-running: 2.2.2
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /vitest@1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0):
     resolution: {integrity: sha512-gujzn0g7fmwf83/WzrDTnncZt2UiXP41mHuFYFrdwaLRVQ6JYQEiME2IfEjU3vcFL3VKa75XhI3lFgn+hfVsQw==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -9375,7 +9467,7 @@ packages:
       strip-literal: 2.0.0
       tinybench: 2.6.0
       tinypool: 0.8.2
-      vite: 5.2.4(@types/node@20.11.25)
+      vite: 5.2.6(@types/node@20.11.25)
       vite-node: 1.4.0(@types/node@20.11.25)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
@@ -9431,7 +9523,7 @@ packages:
       strip-literal: 2.0.0
       tinybench: 2.6.0
       tinypool: 0.8.2
-      vite: 5.2.4(@types/node@20.11.25)
+      vite: 5.2.6(@types/node@20.11.25)
       vite-node: 1.4.0(@types/node@20.11.25)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
