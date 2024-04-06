@@ -4,18 +4,12 @@
     "git-branchless@latest",
     "git@latest",
     "nodejs@20.11.1",
-    "playwright-driver@1.40.0"
+    "playwright-driver@1.40.0",
+    "playwright-driver.browsers"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
-    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
-  },
-  "shell": {
-    "init_hook": [
-      "export PLAYWRIGHT_BROWSERS_PATH=$(nix --extra-experimental-features 'nix-command flakes' build --print-out-paths nixpkgs#playwright-driver.browsers)"
-    ],
-    "scripts": {
-      "test": ["echo \"Error: no test specified\" && exit 1"]
-    }
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
+    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR"
   }
 }
