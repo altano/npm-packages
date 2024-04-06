@@ -1,6 +1,5 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "experimentalUI": true,
   "globalEnv": ["CI", "NODE_ENV"],
   "pipeline": {
     "build": {

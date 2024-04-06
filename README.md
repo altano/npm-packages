@@ -11,6 +11,13 @@ This repository has a `devbox.json` which means you can trivially create a devel
 
 Read the [Devbox quickstart](https://jetpack.io/devbox/docs/contributor-quickstart/) or read more about why Devbox is fantastic [on my website](https://alan.norbauer.com/articles/devbox-intro).
 
+### Playwright
+
+The Playwright setup in this repository is a little finicky. When updating the version:
+
+- The version of `@playwright/test` in any package.json must be kept in sync with `playwright-driver` in `devbox.json`. Both should be precisely hard-coded (no semver ranges or `'latest'`).
+- The nixpkgs hash in `devbox.lock` for `playwright-driver.browsers` must be manually changed to match the hash for the `playwright-driver` entry or the browsers will be the wrong version and tests will fail.
+
 ## Contributing
 
 I don't expect any contributions to this repository but I will accept pull requests.
