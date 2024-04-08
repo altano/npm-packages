@@ -9,7 +9,10 @@ test("works in a real browser", async ({ page }) => {
   // wait for everything to finish loading
   await expect(
     page.getByText("Computing largest possible font size..."),
-  ).toHaveCount(0);
+  ).toHaveCount(
+    0,
+    { timeout: 15_000 } /* CI is slow and this might take a bit to run */,
+  );
 
   await expect(
     page
