@@ -35,6 +35,10 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["**/*.d.ts"],
+      extends: ["plugin:@typescript-eslint/disable-type-checked"],
+    },
+    {
       // Rules that only apply to ts files
       files: ["**/*.{ts,tsx}"],
       extends: [
@@ -72,10 +76,6 @@ module.exports = {
         ],
         "@typescript-eslint/no-floating-promises": "error",
       },
-    },
-    {
-      files: ["**/*.d.ts"],
-      extends: ["plugin:@typescript-eslint/disable-type-checked"],
     },
     {
       files: ["package.json"],

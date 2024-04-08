@@ -3,6 +3,13 @@
 import type { Assertion, AsymmetricMatchersContaining } from "vitest";
 
 interface CustomMatchers<R = unknown> {
+  /**
+   * compare the realpath (canonical path) of expected/received
+   */
+  toBePath(expected: string): R;
+  toBeFile(): R;
+  toBeDirectory(): R;
+  toEqualFile(pathOfFileWithExpectedContents: string): R;
   toMatchError(expected: unknown): R;
   toThrowErrorMatching(expected: unknown): R;
 }

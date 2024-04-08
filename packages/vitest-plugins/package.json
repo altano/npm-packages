@@ -53,6 +53,7 @@
     "typescript": "^5.4.2",
     "unified": "^10.1.2",
     "vfile": "^5.3.7",
+    "vite": "^5.2.8",
     "vitest": "^1.4.0"
   },
   "publishConfig": {

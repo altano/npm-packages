@@ -90,7 +90,7 @@ If you want to assert anything more complicated (e.g. an error contains some sub
 
 ### toMatchError
 
-Assert on any part of an error object (e.g. the stack):
+Verify any part of an error object (e.g. the stack):
 
 ```ts
 expect(new Error("face")).toMatchError(
@@ -102,7 +102,7 @@ expect(new Error("face")).toMatchError(
 
 ### toThrowErrorMatching
 
-Assert on any part of a _thrown_ error object (e.g. the stack):
+Verify any part of a _thrown_ error object (e.g. the stack):
 
 ```ts
 expect(() => {
@@ -112,4 +112,36 @@ expect(() => {
     stack: expect.stringContaining("readme.spec.ts"),
   }),
 );
+```
+
+### toBePath
+
+Verify the realpath (canonical path) of expected. More lenient than a string check when dealing with logical paths, symlinks, etc.
+
+```ts
+expect("/private/some/path").toBePath("/some/path");
+```
+
+### toBeFile
+
+Verify a file exists
+
+```ts
+expect(import.meta.filename).toBeFile();
+```
+
+### toBeDirectory
+
+Verify a directory exists
+
+```ts
+expect("/").toBeDirectory();
+```
+
+### toEqualFile
+
+Verify that the given path matches the contents of another file
+
+```ts
+expect("/some/file.txt").toEqualFile("/other/file.txt");
 ```

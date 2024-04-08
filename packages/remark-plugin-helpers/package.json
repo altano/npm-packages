@@ -43,6 +43,7 @@
     "prettier": "^3.2.5",
     "typescript": "^5.4.2",
     "vfile": "^6.0.1",
+    "vite": "^5.2.8",
     "vitest": "^1.4.0"
   },
   "dependencies": {
