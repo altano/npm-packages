@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 0.1.0
+
+### Minor Changes
+
+- f2dda42: new filesystem matchers
+
 ## 0.0.2
 
 ### Patch Changes
