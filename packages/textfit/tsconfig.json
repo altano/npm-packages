@@ -1,6 +1,6 @@
 {
   "extends": "@altano/tsconfig/browser.json",
-  "include": ["src"],
+  "include": ["src", "*.config.ts"],
   "compilerOptions": {
     "outDir": "dist"
   }

@@ -169,6 +169,54 @@
         }
       }
     },
+    "mercurialFull@latest": {
+      "last_modified": "2024-03-22T11:26:23Z",
+      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#mercurialFull",
+      "source": "devbox-search",
+      "version": "6.6.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/j7cbmb2g5ddjkdz9lbrysysk84cwkfln-mercurial-full-6.6.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/j7cbmb2g5ddjkdz9lbrysysk84cwkfln-mercurial-full-6.6.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dpbflzbh0nmzx8j7w2lwz0wy6gr4ps6d-mercurial-full-6.6.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dpbflzbh0nmzx8j7w2lwz0wy6gr4ps6d-mercurial-full-6.6.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4m3bpry6grq615bn6zhhj8mwx7i21x2k-mercurial-full-6.6.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4m3bpry6grq615bn6zhhj8mwx7i21x2k-mercurial-full-6.6.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cd4lr7d5amdh6b3gay2cx9b28ncwv8ik-mercurial-full-6.6.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/cd4lr7d5amdh6b3gay2cx9b28ncwv8ik-mercurial-full-6.6.3"
+        }
+      }
+    },
     "nodejs@20.11.1": {
       "last_modified": "2024-03-22T11:26:23Z",
       "plugin_version": "0.0.2",
@@ -283,6 +331,202 @@
             }
           ],
           "store_path": "/nix/store/ys9a03dxl5rsnh7nbwmhw76mfr4lwrsz-playwright-driver-1.40.0"
+        }
+      }
+    },
+    "sapling@latest": {
+      "last_modified": "2024-03-22T11:26:23Z",
+      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#sapling",
+      "source": "devbox-search",
+      "version": "0.2.20240116-133042+8acecb66",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9rd69mk49wk1aagja75693n8a7gis862-sapling-0.2.20240116-133042+8acecb66",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/kcz0kpkbj0mbiyvaa8wj8dw21cc010sr-sapling-0.2.20240116-133042+8acecb66-dist"
+            }
+          ],
+          "store_path": "/nix/store/9rd69mk49wk1aagja75693n8a7gis862-sapling-0.2.20240116-133042+8acecb66"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ia5li5jyh9z6g5zs4507n0585j26cphl-sapling-0.2.20240116-133042+8acecb66",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/mda1d5pfax1lxm1hhw505zf7cwnpvgyg-sapling-0.2.20240116-133042+8acecb66-dist"
+            }
+          ],
+          "store_path": "/nix/store/ia5li5jyh9z6g5zs4507n0585j26cphl-sapling-0.2.20240116-133042+8acecb66"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/phbfcg7m4cvd24g2bsn6v1qsg5ma1fp0-sapling-0.2.20240116-133042+8acecb66",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/17di9b64ba93gdwwsz6rssl3rkrz5zqp-sapling-0.2.20240116-133042+8acecb66-dist"
+            }
+          ],
+          "store_path": "/nix/store/phbfcg7m4cvd24g2bsn6v1qsg5ma1fp0-sapling-0.2.20240116-133042+8acecb66"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/whgnj368himidpcswp167k5p792my6rp-sapling-0.2.20240116-133042+8acecb66",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/1y0iqnz281c4i452mawwrn1ad3gfsav4-sapling-0.2.20240116-133042+8acecb66-dist"
+            }
+          ],
+          "store_path": "/nix/store/whgnj368himidpcswp167k5p792my6rp-sapling-0.2.20240116-133042+8acecb66"
+        }
+      }
+    },
+    "subversion@latest": {
+      "last_modified": "2024-03-22T11:26:23Z",
+      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#subversion",
+      "source": "devbox-search",
+      "version": "1.14.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mxb9pw22h8v18b16sin8f8icvhhf67rx-subversion-1.14.3",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/dfnsl8li0zyxjqd6vsyzxbxhvw1m6ili-subversion-1.14.3-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/62wjsm49hq9hh73g6a1h2mj9l7j9ksl5-subversion-1.14.3-dev"
+            }
+          ],
+          "store_path": "/nix/store/mxb9pw22h8v18b16sin8f8icvhhf67rx-subversion-1.14.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6fg8l4x3d8c0qd81gqrjmczrrk2h23il-subversion-1.14.3",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/q92mrmqlglp9g5n54hy69dqyz6clcdg6-subversion-1.14.3-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/jh2xb7hiihdq5yxb08vgnj1w3a729ybw-subversion-1.14.3-dev"
+            }
+          ],
+          "store_path": "/nix/store/6fg8l4x3d8c0qd81gqrjmczrrk2h23il-subversion-1.14.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/n9hmn56zajrr8rbzf1fq4x4wh5xq838h-subversion-1.14.3",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/mh0wrbk9c0f8x02la1zgq6l3rap4hmgl-subversion-1.14.3-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/hrbcvjf34rirmlyfkfjrflll7kbvgm3f-subversion-1.14.3-dev"
+            }
+          ],
+          "store_path": "/nix/store/n9hmn56zajrr8rbzf1fq4x4wh5xq838h-subversion-1.14.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/crmzci5bis28rbr15pjv0xbi033cg1j7-subversion-1.14.3",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/h4dqq7hp4n8v2lr3nyf0b7m5hkxbgxxx-subversion-1.14.3-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/9cf0wnkl5n3bbg3kjgfcd59jy2yca4gh-subversion-1.14.3-dev"
+            }
+          ],
+          "store_path": "/nix/store/crmzci5bis28rbr15pjv0xbi033cg1j7-subversion-1.14.3"
+        }
+      }
+    },
+    "tree@latest": {
+      "last_modified": "2024-03-22T11:26:23Z",
+      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#tree",
+      "source": "devbox-search",
+      "version": "2.1.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lrcdarik8ii3gm82yxh50ccg231r7mw8-tree-2.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lrcdarik8ii3gm82yxh50ccg231r7mw8-tree-2.1.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fk41zbvjjz8yi3z80sjbvisfyxzscab1-tree-2.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fk41zbvjjz8yi3z80sjbvisfyxzscab1-tree-2.1.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hj8g1nxjdqa11npdxy5f3bwrc2d0rn0v-tree-2.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hj8g1nxjdqa11npdxy5f3bwrc2d0rn0v-tree-2.1.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fra7vi3xnka1yq146l38fnjf9q64j57l-tree-2.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fra7vi3xnka1yq146l38fnjf9q64j57l-tree-2.1.1"
         }
       }
     }

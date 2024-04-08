@@ -1,0 +1,70 @@
+{
+  "name": "@altano/repository-tools",
+  "version": "0.0.1",
+  "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup --config build-config/tsup.config.node.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint package.json src/**/*.ts*",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint",
+    "test:build": "./tests/scripts/createRepositoryBundles.ts",
+    "test:unit": "run-s test:unit:run test:unit:benchmark",
+    "test:unit:benchmark": "vitest --run bench",
+    "test:unit:run": "vitest --run",
+    "test:unit:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/repository-tools"
+  },
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/repository-tools",
+  "keywords": [
+    "repository",
+    "root",
+    "git",
+    "mercurial",
+    "sapling"
+  ],
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
+    "@altano/vitest-plugins": "workspace:*",
+    "@types/node": "^20.11.25",
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/expect": "^1.4.0",
+    "@vitest/ui": "^1.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-altano": "workspace:*",
+    "find-cache-dir": "^5.0.0",
+    "memize": "^2.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.5",
+    "ts-assert-unreachable": "^0.0.9",
+    "typescript": "^5.4.2",
+    "vite": "^5.2.8",
+    "vitest": "^1.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

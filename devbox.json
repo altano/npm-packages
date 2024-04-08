@@ -3,9 +3,13 @@
     "difftastic@latest",
     "git-branchless@latest",
     "git@latest",
+    "mercurialFull@latest",
     "nodejs@20.11.1",
+    "playwright-driver.browsers",
     "playwright-driver@1.40.0",
-    "playwright-driver.browsers"
+    "sapling@latest",
+    "subversion@latest",
+    "tree@latest"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",

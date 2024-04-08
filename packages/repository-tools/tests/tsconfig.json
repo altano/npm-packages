@@ -1,0 +1,9 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["."],
+  "compilerOptions": {
+    "types": ["@altano/vitest-plugins/matchers/types"],
+    "target": "ESNext",
+    "module": "ESNext"
+  }
+}
