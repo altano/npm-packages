@@ -1,6 +1,6 @@
 {
   "name": "@altano/repository-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
