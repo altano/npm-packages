@@ -1,2 +1,2 @@
-export * from "./findRoot";
-export * from "./findRootSync";
+export * from "./findRoot.js";
+export * from "./findRootSync.js";
