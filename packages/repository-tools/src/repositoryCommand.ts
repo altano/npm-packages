@@ -1,4 +1,4 @@
-import { execFileAsync, execFileSync } from "./exec";
+import { execFileAsync, execFileSync } from "./exec.js";
 import {} from "child_process";
 
 type RepositoryCommand = "git" | "hg" | "sl" | "svn" | "svnadmin" | "svnrdump";

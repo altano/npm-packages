@@ -1,4 +1,4 @@
-import { repositoryExecSync } from "./repositoryCommand";
+import { repositoryExecSync } from "./repositoryCommand.js";
 
 function findGitRoot(cwd: string): string {
   return repositoryExecSync(cwd, "git", [
