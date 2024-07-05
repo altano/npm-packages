@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 3.0.1
+
+### Patch Changes
+
+- 2266961: fix import extensions for node libraries
+
 ## 3.0.0
 
 ### Major Changes

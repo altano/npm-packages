@@ -1,6 +1,6 @@
 {
   "name": "satori-fit-text-node-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "description": "Demo of @altano/satori-fit-text",
@@ -10,7 +10,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@altano/satori-fit-text": "0.1.3",
+    "@altano/satori-fit-text": "0.1.4",
     "@fontsource/inter": "^5.0.17"
   },
   "engines": {

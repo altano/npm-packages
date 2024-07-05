@@ -1,5 +1,11 @@
 # @altano/satori-fit-text
 
+## 0.1.4
+
+### Patch Changes
+
+- 2266961: fix import extensions for node libraries
+
 ## 0.1.3
 
 ### Patch Changes
