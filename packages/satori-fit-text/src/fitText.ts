@@ -1,6 +1,6 @@
-import { getTextMeasurer } from "./TextMeasurer/getTextMeasurer";
+import { getTextMeasurer } from "./TextMeasurer/getTextMeasurer.js";
 
-import type { Font } from "./types";
+import type { Font } from "./types.js";
 
 export type FindOptions = {
   /**

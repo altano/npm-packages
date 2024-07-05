@@ -1,5 +1,5 @@
-import FitText from "./FitText";
-import Playground from "./Playground";
+import FitText from "./FitText.js";
+import Playground from "./Playground.js";
 
 export default function App(): React.ReactElement {
   return (

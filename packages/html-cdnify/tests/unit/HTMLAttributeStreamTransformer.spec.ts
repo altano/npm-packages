@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { HtmlAttributeStreamTransformer } from "../../src/HtmlAttributeStreamTransformer";
+import { HtmlAttributeStreamTransformer } from "../../src/HtmlAttributeStreamTransformer.js";
 
 import streamifier from "streamifier";
 

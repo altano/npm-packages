@@ -1,6 +1,6 @@
 import { type Font, findLargestUsableFontSize } from "@altano/satori-fit-text";
 import { useState, useLayoutEffect } from "react";
-import { getInter } from "./font";
+import { getInter } from "./font.js";
 
 export type Props = {
   text: string;
@@ -23,7 +23,7 @@ export default function FitText({
   const [timeToComputeMs, setTimeToComputeMs] = useState(0);
 
   useLayoutEffect(() => {
-    async function findFontSize() {
+    async function findFontSize(): Promise<void> {
       performance.mark("findLargestUsableFontSize-start");
       const largestUsableFontSize = await findLargestUsableFontSize({
         lineHeight: lineHeight,
@@ -41,6 +41,7 @@ export default function FitText({
       setTimeToComputeMs(measure.duration);
       setFontSize(largestUsableFontSize);
 
+      // eslint-disable-next-line no-console
       console.log(
         `Largest font-size you can use for the text "${text.substring(
           0,
@@ -51,7 +52,7 @@ export default function FitText({
       );
     }
 
-    findFontSize();
+    void findFontSize();
   }, [height, lineHeight, text, weight, width]);
 
   const style = {

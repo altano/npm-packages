@@ -1,7 +1,7 @@
 /* v8 ignore start */
-import log from "../log";
-import { TextMeasurer, type Dimensions } from "./TextMeasurer";
-import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed";
+import log from "../log.js";
+import { TextMeasurer, type Dimensions } from "./TextMeasurer.js";
+import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed.js";
 
 export default class BrowserTextMeasurer extends TextMeasurer {
   #getSvgElement(svgText: string): SVGSVGElement {

@@ -1,2 +1,2 @@
-export * from "./doWork";
-export * from "./doWorkAndYield";
+export * from "./doWork.js";
+export * from "./doWorkAndYield.js";

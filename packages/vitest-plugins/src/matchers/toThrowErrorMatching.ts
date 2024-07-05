@@ -1,5 +1,5 @@
-import toMatchError from "./toMatchError";
-import type { Matcher } from "./matcher";
+import toMatchError from "./toMatchError.js";
+import type { Matcher } from "./matcher.js";
 
 const toThrowErrorMatching: Matcher = function (
   received: () => never,

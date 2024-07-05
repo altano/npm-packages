@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import absolutePathSerializer from "../../../src/serializers/absolutePath";
+import absolutePathSerializer from "../../../src/serializers/absolutePath.js";
 expect.addSnapshotSerializer(absolutePathSerializer);
 
 describe("serializers", () => {

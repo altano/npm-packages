@@ -1,7 +1,7 @@
 import { unionBy, merge, mergeWith, type MergeWithCustomizer } from "lodash";
-import urlConverter from "./urlConverter";
+import urlConverter from "./urlConverter.js";
 
-import * as HtmlAttributeStreamTransformer from "./HtmlAttributeStreamTransformer";
+import * as HtmlAttributeStreamTransformer from "./HtmlAttributeStreamTransformer.js";
 
 export type CDNTransformFunction = (
   cdnUrl: string,

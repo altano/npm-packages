@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { doWorkAndYield } from "../../src";
+import { doWorkAndYield } from "../../src/index.js";
 
 const timeout = (i: number): Promise<number> =>
   new Promise<number>((resolve) =>

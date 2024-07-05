@@ -1,7 +1,7 @@
 import satori from "satori";
 
 import type React from "react";
-import type { Font } from "../types";
+import type { Font } from "../types.js";
 
 export type Dimensions = Pick<DOMRect, "width" | "height">;
 

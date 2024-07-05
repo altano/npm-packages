@@ -1,4 +1,4 @@
-import { doWorkAndYield, type IterableItem } from "./doWorkAndYield";
+import { doWorkAndYield, type IterableItem } from "./doWorkAndYield.js";
 
 /**
  * Process items from `iterable` in batches.

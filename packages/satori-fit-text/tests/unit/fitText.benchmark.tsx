@@ -1,5 +1,5 @@
 import { describe, expect, bench } from "vitest";
-import { getFont } from "./utils/getFont";
+import { getFont } from "./utils/getFont.js";
 import { findLargestUsableFontSize } from "@altano/satori-fit-text";
 
 describe("findLargestUsableFontSize", async () => {
