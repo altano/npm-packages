@@ -1,5 +1,11 @@
 # @altano/repository-tools
 
+## 0.0.4
+
+### Patch Changes
+
+- 2266961: fix import extensions for node libraries
+
 ## 0.0.3
 
 ### Patch Changes

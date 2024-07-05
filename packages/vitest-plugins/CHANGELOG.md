@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 0.1.1
+
+### Patch Changes
+
+- 2266961: fix import extensions for node libraries
+
 ## 0.1.0
 
 ### Minor Changes
