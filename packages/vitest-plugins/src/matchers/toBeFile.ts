@@ -1,4 +1,4 @@
-import type { Matcher } from "./matcher";
+import type { Matcher } from "./matcher.js";
 import fs from "node:fs";
 
 function fileExists(path: string): boolean {

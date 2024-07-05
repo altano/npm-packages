@@ -1,2 +1,2 @@
-export * from "./fitText";
-export * from "./types";
+export * from "./fitText.js";
+export * from "./types.js";

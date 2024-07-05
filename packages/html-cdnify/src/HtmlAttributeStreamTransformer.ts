@@ -1,5 +1,5 @@
 import { groupBy } from "lodash";
-import HtmlTransformer from "./HtmlTransformer";
+import HtmlTransformer from "./HtmlTransformer.js";
 
 export interface HtmlAttributeStreamTransformerOptions {
   transformDefinitions: TransformDefinition[];

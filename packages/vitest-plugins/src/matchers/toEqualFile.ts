@@ -1,4 +1,4 @@
-import type { Matcher } from "./matcher";
+import type { Matcher } from "./matcher.js";
 import fs from "node:fs";
 import crypto from "node:crypto";
 

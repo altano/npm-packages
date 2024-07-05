@@ -1,9 +1,9 @@
 import { SVG, registerWindow, type Svg } from "@svgdotjs/svg.js";
 import { createSVGWindow } from "svgdom";
-import log from "../log";
-import type { Font } from "../types";
-import { TextMeasurer, type Dimensions } from "./TextMeasurer";
-import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed";
+import log from "../log.js";
+import type { Font } from "../types.js";
+import { TextMeasurer, type Dimensions } from "./TextMeasurer.js";
+import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed.js";
 
 export default class HeadlessTextMeasurer extends TextMeasurer {
   #canvas: Svg;

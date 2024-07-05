@@ -1,2 +1,2 @@
-export * from "./visitAndReplace";
-export * from "./logger";
+export * from "./visitAndReplace.js";
+export * from "./logger.js";

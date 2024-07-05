@@ -1,5 +1,5 @@
 import { serializeError } from "serialize-error";
-import type { Matcher } from "./matcher";
+import type { Matcher } from "./matcher.js";
 
 const toMatchError: Matcher = function (received: Error, expected: unknown) {
   // If we don't serialize the error before passing it to vitest, vitest will

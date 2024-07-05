@@ -1,4 +1,4 @@
-import type { Matcher } from "./matcher";
+import type { Matcher } from "./matcher.js";
 import { realpathSync } from "node:fs";
 
 function getRealpath(path: string): string | null {

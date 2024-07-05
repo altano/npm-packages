@@ -1,2 +1,2 @@
-export * from "./cdnify";
-export * from "./CDNTransformer";
+export * from "./cdnify.js";
+export * from "./CDNTransformer.js";

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { describe, it, expect } from "vitest";
-import should from "./utils/makeTest";
-import { getFont } from "./utils/getFont";
-import { findLargestUsableFontSize } from "../../src";
+import should from "./utils/makeTest.js";
+import { getFont } from "./utils/getFont.js";
+import { findLargestUsableFontSize } from "../../src/index.js";
 import { doWorkAndYield } from "@altano/tiny-async-pool";
 import os from "node:os";
 

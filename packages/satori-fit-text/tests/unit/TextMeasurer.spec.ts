@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { getTextMeasurer } from "../../src/TextMeasurer/getTextMeasurer";
-import { getFont } from "./utils/getFont";
+import { getTextMeasurer } from "../../src/TextMeasurer/getTextMeasurer.js";
+import { getFont } from "./utils/getFont.js";
 
 describe("getTextMeasurer", () => {
   describe(".doesSizeFit", () => {

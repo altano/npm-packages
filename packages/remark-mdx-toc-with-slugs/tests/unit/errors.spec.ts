@@ -22,7 +22,9 @@ describe("remark-mdx-toc-with-slugs", async () => {
         };
       });
 
-      const { default: remarkMdxTocWithSlugs } = await import("../../src");
+      const { default: remarkMdxTocWithSlugs } = await import(
+        "../../src/index.js"
+      );
       expect(() => {
         // @ts-expect-error testing error path
         remarkMdxTocWithSlugs.call(null, {});
@@ -40,7 +42,9 @@ describe("remark-mdx-toc-with-slugs", async () => {
         };
       });
 
-      const { default: remarkMdxTocWithSlugs } = await import("../../src");
+      const { default: remarkMdxTocWithSlugs } = await import(
+        "../../src/index.js"
+      );
       const compileWithPlugin = await getFixtureCompiler(
         remarkMdxTocWithSlugs,
         "basic",
@@ -70,7 +74,9 @@ describe("remark-mdx-toc-with-slugs", async () => {
         };
       });
 
-      const { default: remarkMdxTocWithSlugs } = await import("../../src");
+      const { default: remarkMdxTocWithSlugs } = await import(
+        "../../src/index.js"
+      );
       const compileWithPlugin = await getFixtureCompiler(
         remarkMdxTocWithSlugs,
         "basic",

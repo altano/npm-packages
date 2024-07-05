@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import urlConverter from "../../src/urlConverter";
+import urlConverter from "../../src/urlConverter.js";
 
 describe("urlConverter", function () {
   it("should not convert absolute paths", function () {

@@ -1,4 +1,4 @@
-import { repositoryExec } from "./repositoryCommand";
+import { repositoryExec } from "./repositoryCommand.js";
 
 async function findGitRoot(directory: string): Promise<string> {
   return repositoryExec(directory, "git", [

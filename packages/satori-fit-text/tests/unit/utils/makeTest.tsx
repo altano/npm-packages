@@ -1,5 +1,8 @@
 import React from "react";
-import { type FindOptions, findLargestUsableFontSize } from "../../../src";
+import {
+  type FindOptions,
+  findLargestUsableFontSize,
+} from "../../../src/index.js";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import satori from "satori";

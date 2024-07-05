@@ -1,11 +1,11 @@
 import { expect } from "vitest";
 
-import toBePath from "./toBePath";
-import toBeFile from "./toBeFile";
-import toBeDirectory from "./toBeDirectory";
-import toEqualFile from "./toEqualFile";
-import toMatchError from "./toMatchError";
-import toThrowErrorMatching from "./toThrowErrorMatching";
+import toBePath from "./toBePath.js";
+import toBeFile from "./toBeFile.js";
+import toBeDirectory from "./toBeDirectory.js";
+import toEqualFile from "./toEqualFile.js";
+import toMatchError from "./toMatchError.js";
+import toThrowErrorMatching from "./toThrowErrorMatching.js";
 
 expect.extend({
   toBePath,
