@@ -1,5 +1,12 @@
 # @altano/repository-tools
 
+## 0.1.0
+
+### Minor Changes
+
+- e8ee7a9: publish hybrid cjs/esm package
+- 8f876e2: Enable importing specific functions
+
 ## 0.0.4
 
 ### Patch Changes
