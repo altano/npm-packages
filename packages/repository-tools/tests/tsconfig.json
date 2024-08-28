@@ -3,6 +3,7 @@
   "include": ["."],
   "compilerOptions": {
     "types": ["@altano/vitest-plugins/matchers/types"],
+    "moduleResolution": "Bundler",
     "target": "ESNext",
     "module": "ESNext"
   }
