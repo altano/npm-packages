@@ -2,28 +2,30 @@
   "name": "@altano/repository-tools",
   "version": "0.1.0",
   "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
-    "./*": {
-      "import": "./dist/esm/*.js",
-      "require": "./dist/cjs/*.js"
+    "./*.js": {
+      "import": "./dist/*.js"
+    },
+    "./*.cjs": {
+      "require": "./dist/*.cjs"
     }
   },
   "type": "module",
   "sideEffects": false,
   "files": [
     "dist/**/*.js",
-    "dist/**/*.d.ts"
+    "dist/**/*.cjs",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.cts"
   ],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node-hybrid.ts",
-    "build:types:cjs": "tsc --project tsconfig.declarations-cjs.json",
-    "build:types:esm": "tsc --project tsconfig.declarations-esm.json",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
