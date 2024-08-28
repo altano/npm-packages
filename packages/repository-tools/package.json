@@ -5,8 +5,14 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js"
+    }
   },
   "type": "module",
   "sideEffects": false,
@@ -26,11 +32,12 @@
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "test:build": "./tests/scripts/createRepositoryBundles.ts",
-    "test:unit": "run-s test:unit:run test:unit:benchmark",
+    "test:unit": "run-s test:unit:run",
     "test:unit:benchmark": "vitest --run bench",
     "test:unit:run": "vitest --run",
     "test:unit:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck:src": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
   "repository": {
     "type": "git",

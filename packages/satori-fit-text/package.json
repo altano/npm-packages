@@ -19,7 +19,7 @@
     "test:e2e": "playwright test",
     "test:e2e:server": "vite --strictPort --port 3717 ./tests/e2e",
     "test:e2e:ui": "playwright test --ui",
-    "test:unit": "run-s test:unit:run test:unit:benchmark",
+    "test:unit": "run-s test:unit:run",
     "test:unit:benchmark": "vitest --run bench",
     "test:unit:run": "vitest --run",
     "test:unit:watch": "vitest",
