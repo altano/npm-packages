@@ -6,7 +6,6 @@ export default defineConfig({
   onSuccess: "pnpm build:types",
   dts: false,
   clean: true,
-
   platform: "node",
   bundle: false,
   minify: false,

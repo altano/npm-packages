@@ -11,5 +11,8 @@
   ],
   "publishConfig": {
     "access": "restricted"
+  },
+  "devDependencies": {
+    "tsup": "^8.2.4"
   }
 }
