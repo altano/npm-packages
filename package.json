@@ -28,7 +28,7 @@
     "eslint-plugin-package-json": "0.12.1",
     "jsonc-eslint-parser": "^2.4.0",
     "prettier": "^3.2.5",
-    "tsup": "^8.0.2",
+    "tsup": "^8.2.4",
     "turbo": "^1.13.0"
   },
   "pnpm": {
