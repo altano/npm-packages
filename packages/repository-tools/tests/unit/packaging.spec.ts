@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { findRoot } from "@altano/repository-tools/findRoot";
-import { findRootSync } from "@altano/repository-tools/findRootSync";
+import { findRoot } from "@altano/repository-tools/findRoot.js";
+import { findRootSync } from "@altano/repository-tools/findRootSync.js";
 
 // Test sub-path exports separately by importing using the package name. This
 // has to be separate from other tests because vitest test coverage analysis
