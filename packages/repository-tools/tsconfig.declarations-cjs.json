@@ -2,6 +2,10 @@
   "extends": "./tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "./dist/cjs",
+    "moduleResolution": "Node10",
+    "module": "CommonJS",
     "emitDeclarationOnly": true,
     "declaration": true,
     "declarationMap": true

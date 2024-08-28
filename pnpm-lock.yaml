@@ -66,7 +66,11 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
 
-  packages/build-config: {}
+  packages/build-config:
+    devDependencies:
+      tsup:
+        specifier: ^8.2.4
+        version: 8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.1)
 
   packages/eslint-config-altano:
     devDependencies:
