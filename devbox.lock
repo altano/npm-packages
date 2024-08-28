@@ -335,66 +335,66 @@
       }
     },
     "sapling@latest": {
-      "last_modified": "2024-03-22T11:26:23Z",
-      "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#sapling",
+      "last_modified": "2024-08-14T11:41:26Z",
+      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#sapling",
       "source": "devbox-search",
-      "version": "0.2.20240116-133042+8acecb66",
+      "version": "0.2.20240718-145624+f4e9df48",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/9rd69mk49wk1aagja75693n8a7gis862-sapling-0.2.20240116-133042+8acecb66",
+              "path": "/nix/store/07xrf8hjnwara9manxkpgb9pjyavpnq9-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/kcz0kpkbj0mbiyvaa8wj8dw21cc010sr-sapling-0.2.20240116-133042+8acecb66-dist"
+              "path": "/nix/store/m4yyv0wwgzy14vh8a3waw2nzjs01vj4i-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/9rd69mk49wk1aagja75693n8a7gis862-sapling-0.2.20240116-133042+8acecb66"
+          "store_path": "/nix/store/07xrf8hjnwara9manxkpgb9pjyavpnq9-sapling-0.2.20240718-145624+f4e9df48"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ia5li5jyh9z6g5zs4507n0585j26cphl-sapling-0.2.20240116-133042+8acecb66",
+              "path": "/nix/store/yyd5npy6b62856w8h61xdx28p4ryp4k1-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/mda1d5pfax1lxm1hhw505zf7cwnpvgyg-sapling-0.2.20240116-133042+8acecb66-dist"
+              "path": "/nix/store/vv66p88759r9rj4lbb6gyajb77wmjin1-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/ia5li5jyh9z6g5zs4507n0585j26cphl-sapling-0.2.20240116-133042+8acecb66"
+          "store_path": "/nix/store/yyd5npy6b62856w8h61xdx28p4ryp4k1-sapling-0.2.20240718-145624+f4e9df48"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/phbfcg7m4cvd24g2bsn6v1qsg5ma1fp0-sapling-0.2.20240116-133042+8acecb66",
+              "path": "/nix/store/zsnc49hh43imbcxy51w4nbqd00a0q6nx-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/17di9b64ba93gdwwsz6rssl3rkrz5zqp-sapling-0.2.20240116-133042+8acecb66-dist"
+              "path": "/nix/store/2rkcgiimhxhnff6dznccs0kwfhwkws7c-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/phbfcg7m4cvd24g2bsn6v1qsg5ma1fp0-sapling-0.2.20240116-133042+8acecb66"
+          "store_path": "/nix/store/zsnc49hh43imbcxy51w4nbqd00a0q6nx-sapling-0.2.20240718-145624+f4e9df48"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/whgnj368himidpcswp167k5p792my6rp-sapling-0.2.20240116-133042+8acecb66",
+              "path": "/nix/store/nlnaav8v3q06ykzyw5a2gx4qx4dwd74d-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/1y0iqnz281c4i452mawwrn1ad3gfsav4-sapling-0.2.20240116-133042+8acecb66-dist"
+              "path": "/nix/store/rd48l04270g0sjpbpy659rh2ashyzc98-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/whgnj368himidpcswp167k5p792my6rp-sapling-0.2.20240116-133042+8acecb66"
+          "store_path": "/nix/store/nlnaav8v3q06ykzyw5a2gx4qx4dwd74d-sapling-0.2.20240718-145624+f4e9df48"
         }
       }
     },
