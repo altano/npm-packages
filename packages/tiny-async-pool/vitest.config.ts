@@ -11,7 +11,7 @@ export default defineProject({
         "tests/e2e",
         "playwright.config.ts",
         ".eslintrc.cjs",
-        "tests/unit/**/*.benchmark.tsx",
+        "tests/unit/**/*.benchmark.{ts,tsx}",
       ],
 
       provider: "v8",

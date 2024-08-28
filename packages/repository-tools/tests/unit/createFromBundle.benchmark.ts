@@ -1,8 +1,8 @@
 import { describe, expect, bench } from "vitest";
 import path from "node:path";
-import { getDisposableDirectory } from "../utils/getDisposableDirectory";
-import { createFromBundle } from "../utils/createFromBundle";
-import { repositoryTypes } from "../../src/types";
+import { getDisposableDirectory } from "../utils/getDisposableDirectory.js";
+import { createFromBundle } from "../utils/createFromBundle.js";
+import { repositoryTypes } from "../../src/types.js";
 import "@altano/vitest-plugins/matchers";
 
 describe("createFromBundle", async () => {
