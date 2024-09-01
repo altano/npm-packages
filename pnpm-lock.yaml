@@ -56,6 +56,9 @@ importers:
         specifier: ^5.0.17
         version: 5.0.17
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -138,6 +141,9 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -214,6 +220,9 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/remark-plugin-test-util':
         specifier: workspace:*
         version: link:../remark-plugin-test-util
@@ -260,6 +269,9 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -338,6 +350,9 @@ importers:
 
   packages/repository-tools:
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -411,6 +426,9 @@ importers:
       '@altano/assets':
         specifier: workspace:*
         version: link:../assets
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tiny-async-pool':
         specifier: workspace:*
         version: link:../tiny-async-pool
@@ -486,6 +504,9 @@ importers:
 
   packages/textfit:
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -510,6 +531,9 @@ importers:
 
   packages/tiny-async-pool:
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -561,6 +585,9 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -616,6 +643,9 @@ importers:
         specifier: workspace:*
         version: link:../use-visible-elements
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -668,6 +698,9 @@ importers:
         specifier: ^17.5.0
         version: 17.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
+      '@altano/build-config':
+        specifier: workspace:*
+        version: link:../build-config
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

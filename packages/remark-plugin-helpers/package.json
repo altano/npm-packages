@@ -37,6 +37,7 @@
     "dist/**/*.d.ts"
   ],
   "devDependencies": {
+    "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
     "@types/debug": "^4.1.12",

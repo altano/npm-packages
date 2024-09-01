@@ -60,6 +60,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",

@@ -53,6 +53,7 @@
     "streamifier": "^0.1.1"
   },
   "devDependencies": {
+    "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
     "@types/glob": "^8.1.0",

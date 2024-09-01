@@ -54,6 +54,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@altano/build-config": "workspace:*",
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
