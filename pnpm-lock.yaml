@@ -543,6 +543,9 @@ importers:
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@arethetypeswrong/cli':
+        specifier: ^0.15.4
+        version: 0.15.4
       '@testing-library/jest-dom':
         specifier: ^6.4.2
         version: 6.4.2(@types/jest@29.5.12)(vitest@1.4.0(@types/node@20.11.25)(@vitest/ui@1.4.0)(jsdom@24.0.0))
@@ -595,6 +598,9 @@ importers:
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@arethetypeswrong/cli':
+        specifier: ^0.15.4
+        version: 0.15.4
       '@playwright/test':
         specifier: 1.40.0
         version: 1.40.0
@@ -644,6 +650,9 @@ importers:
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@arethetypeswrong/cli':
+        specifier: ^0.15.4
+        version: 0.15.4
       '@playwright/test':
         specifier: 1.40.0
         version: 1.40.0
