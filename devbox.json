@@ -9,7 +9,8 @@
     "playwright-driver@1.40.0",
     "sapling@latest",
     "subversion@latest",
-    "tree@latest"
+    "tree@latest",
+    "graphite-cli@latest"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
