@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "description": "Custom matchers and snapshot serializers to enhance vitest",
   "type": "module",
-  "sideEffects": false,
   "exports": {
     "./matchers": {
       "default": "./src/matchers/setup.ts",
