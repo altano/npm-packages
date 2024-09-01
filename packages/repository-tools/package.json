@@ -24,6 +24,7 @@
   ],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node-hybrid.ts",
+    "check-exports": "attw --pack .",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
@@ -61,6 +62,7 @@
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
+    "@arethetypeswrong/cli": "^0.15.4",
     "@types/node": "^20.11.25",
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/expect": "^1.4.0",

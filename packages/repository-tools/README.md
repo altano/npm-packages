@@ -37,7 +37,3 @@ This is a dual ESM/CJS package, and publishes both a top-level module with all e
 | ESM               | Yes                    | `import { findRoot } from "@altano/repository-tools/findRoot.js";`      |
 | CJS               | No                     | `const { findRoot } = require("@altano/repository-tools")`              |
 | CJS               | Yes                    | `const { findRoot } = require("@altano/repository-tools/findSync.cjs")` |
-
-## Contributing
-
-This is a dual ESM/CJS package which is really hard to get right. Manually run `pnpm build && pnpm dlx @arethetypeswrong/cli --pack` before making any changes that would affect the build, packaging, or publishing.
