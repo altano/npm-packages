@@ -169,6 +169,54 @@
         }
       }
     },
+    "graphite-cli@latest": {
+      "last_modified": "2024-08-27T08:49:48Z",
+      "resolved": "github:NixOS/nixpkgs/a6292e34000dc93d43bccf78338770c1c5ec8a99#graphite-cli",
+      "source": "devbox-search",
+      "version": "1.4.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mmgx1al4vrv4i7xmsb42qzsmirby7ysy-graphite-cli-1.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mmgx1al4vrv4i7xmsb42qzsmirby7ysy-graphite-cli-1.4.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9k86l04r92n5dxi5sfbmr1hvnkwwyvk8-graphite-cli-1.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9k86l04r92n5dxi5sfbmr1hvnkwwyvk8-graphite-cli-1.4.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y5kd5i5pc9z7ida8g58a2zpgy72idgih-graphite-cli-1.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y5kd5i5pc9z7ida8g58a2zpgy72idgih-graphite-cli-1.4.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/i4diamvsg64my0z7sxr20bz1dxlll1dl-graphite-cli-1.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/i4diamvsg64my0z7sxr20bz1dxlll1dl-graphite-cli-1.4.3"
+        }
+      }
+    },
     "mercurialFull@latest": {
       "last_modified": "2024-03-22T11:26:23Z",
       "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#mercurialFull",

@@ -1,10 +1,18 @@
 name: test
 
+# As recommended by Graphite
+# (https://graphite.dev/docs/github-configuration-guidelines#github-actions)
 on:
+  pull_request:
+    types: [opened, synchronize, reopened]
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+
+# Cancel in-progress jobs for the same work
+# (https://graphite.dev/docs/troubleshooting#why-are-my-actions-running-twice)
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || ''}}
+  cancel-in-progress: true
 
 jobs:
   test:
