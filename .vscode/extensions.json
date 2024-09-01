@@ -6,6 +6,7 @@
     "github.vscode-github-actions",
     "ms-playwright.playwright",
     "vitest.explorer",
-    "vercel.turbo-vsc"
+    "vercel.turbo-vsc",
+    "graphite.gti-vscode"
   ]
 }
