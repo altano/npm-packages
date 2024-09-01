@@ -6,6 +6,9 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["lint", "^build"]
     },
+    "check-exports": {
+      "dependsOn": ["build"]
+    },
     "format": {
       "cache": false
     },
