@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
+    "@arethetypeswrong/cli": "^0.15.4",
     "@types/glob": "^8.1.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.25",
