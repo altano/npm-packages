@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
@@ -63,6 +64,7 @@
     "@altano/assets": "workspace:*",
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
+    "@arethetypeswrong/cli": "^0.15.4",
     "@fontsource-variable/inter": "^5.0.17",
     "@fontsource/inter": "^5.0.17",
     "@playwright/test": "1.40.0",
