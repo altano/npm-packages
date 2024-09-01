@@ -26,8 +26,4 @@ When submitting a pull request that should result in a version bump of a package
 
 ## Publishing Packages Process
 
-When creating a Pull Request, add a changeset with:
-
-```bash
-pnpm changeset
-```
+A GitHub release action will automatically create a PR to release new versions of packages based on changesets merged into the `main` branch.
