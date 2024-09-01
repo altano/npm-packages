@@ -45,6 +45,7 @@
     "react": "^18"
   },
   "devDependencies": {
+    "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
     "@playwright/test": "1.40.0",

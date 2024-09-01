@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
+    "@altano/build-config": "workspace:*",
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
