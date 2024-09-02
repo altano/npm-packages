@@ -1,6 +1,6 @@
 {
   "name": "@altano/vitest-plugins",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Custom matchers and snapshot serializers to enhance vitest",
   "type": "module",
   "exports": {

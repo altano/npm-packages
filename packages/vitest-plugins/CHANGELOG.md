@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 0.2.0
+
+### Minor Changes
+
+- e936f78: removed sideEffects:true from package.json
+
 ## 0.1.1
 
 ### Patch Changes
