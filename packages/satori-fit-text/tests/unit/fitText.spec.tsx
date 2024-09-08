@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { describe, it, expect } from "vitest";
 import should from "./utils/makeTest.js";
 import { getFont } from "./utils/getFont.js";

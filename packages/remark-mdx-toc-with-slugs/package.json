@@ -3,9 +3,9 @@
   "version": "2.0.1",
   "description": "A remark plugin to generate a table of contents (including slugs) and convert it into MDX export",
   "keywords": [
+    "mdx",
     "remark",
-    "remark-plugin",
-    "mdx"
+    "remark-plugin"
   ],
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-mdx-toc-with-slugs",
   "repository": {
@@ -37,7 +37,7 @@
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "lint": "eslint package.json src/**/*.ts*",
+    "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "test:unit": "vitest --run",

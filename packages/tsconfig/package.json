@@ -1,15 +1,26 @@
 {
   "name": "@altano/tsconfig",
-  "license": "ISC",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
+  "license": "ISC",
+  "type": "module",
   "files": [
     "base.json",
     "node.json",
     "nextjs.json",
     "react-library.json"
   ],
+  "scripts": {
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint"
+  },
+  "devDependencies": {
+    "eslint": "^9.13.0",
+    "prettier": "^3.2.5"
+  },
   "publishConfig": {
     "access": "restricted"
   }

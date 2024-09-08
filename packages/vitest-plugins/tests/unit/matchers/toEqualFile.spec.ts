@@ -20,7 +20,9 @@ describe("matchers", () => {
     it("should fail when given a non-existent file", async () => {
       expect(() => {
         expect("faaaaaaaaaace").toEqualFile("khaaaaaaaaan");
-      }).toThrowErrorMatchingInlineSnapshot(`[Error: ENOENT: no such file or directory, open 'faaaaaaaaaace']`);
+      }).toThrowErrorMatchingInlineSnapshot(
+        `[Error: ENOENT: no such file or directory, open 'faaaaaaaaaace']`,
+      );
     });
   });
 });

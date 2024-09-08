@@ -30,6 +30,7 @@ export const testWithRepository: TestAPI<RepositoryFixture> = test.extend({
     );
     await using tempDir = await getDisposableDirectory("test-repository-");
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(async (options: RepositoryOptions) => {
       await createFromBundle(options.type, templateDirectory, tempDir.path);
 
