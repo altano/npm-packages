@@ -18,6 +18,7 @@ module.exports = {
   ignorePatterns: [
     "dist/",
     ".eslintrc.cjs",
+    ".tsup",
     "node_modules/",
     "rollup.config.js",
     "__fixtures__/",
@@ -72,7 +73,11 @@ module.exports = {
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
-          { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+          {
+            argsIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+            caughtErrors: "none",
+          },
         ],
         "@typescript-eslint/no-floating-promises": "error",
       },

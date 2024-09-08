@@ -2,7 +2,7 @@ import trumpet, { type Trumpet } from "@gofunky/trumpet";
 import streamToPromise from "stream-to-promise";
 
 // @TODO Move...
-export interface TrumpetTransformStream extends Trumpet {}
+export type TrumpetTransformStream = Trumpet;
 
 export default class HtmlTransformer {
   private transformStream: TrumpetTransformStream;
