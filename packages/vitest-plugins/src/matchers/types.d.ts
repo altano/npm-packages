@@ -14,6 +14,7 @@ interface CustomMatchers<R = unknown> {
   toThrowErrorMatching(expected: unknown): R;
 }
 
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 declare module "vitest" {
   interface Assertion<T> extends CustomMatchers<T> {}
   interface AsymmetricMatchersContaining extends CustomMatchers {}
