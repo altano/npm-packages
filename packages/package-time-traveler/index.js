@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const pacote = require('pacote');
-const {name} = require('./package.json');
-const asyncPool = require('tiny-async-pool');
+/* eslint-disable */
+
+const fs = require("fs");
+const pacote = require("pacote");
+const { name } = require("./package.json");
+const asyncPool = require("tiny-async-pool");
 
 async function asyncPoolAll(...args) {
   const results = [];
@@ -38,7 +40,7 @@ async function getNewDeps(dependencies) {
   const manifests = await asyncPoolAll(5, deps, getDepManifest);
   const manifestEntries = manifests
     .filter(Boolean)
-    .map(manifest => [manifest.name, manifest.version]);
+    .map((manifest) => [manifest.name, manifest.version]);
   return Object.fromEntries(manifestEntries);
 }
 
@@ -58,4 +60,4 @@ Usage: ${name} </path/to/package.json> <date>
   }
 }
 
-main().catch(err => console.error(err));
+main().catch((err) => console.error(err));

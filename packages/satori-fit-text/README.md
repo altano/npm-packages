@@ -21,7 +21,9 @@ pnpm add @altano/satori-fit-text
 import { findLargestUsableFontSize, type Font } from "@altano/satori-fit-text";
 
 async function getInter(): Promise<Font> {
-  const interSemiBoldBuffer = await fetch(`https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-600-normal.woff`).then((res) => res.arrayBuffer());
+  const interSemiBoldBuffer = await fetch(
+    `https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-600-normal.woff`,
+  ).then((res) => res.arrayBuffer());
 
   const font = {
     name: "Inter",
@@ -46,7 +48,7 @@ console.log(largestUsableFontSize);
 - [React Component (sandbox)](https://codesandbox.io/s/altano-satori-fit-text-browser-example-j2gvk6)
 - [Next.js Open Graph Card - Simple (codesandbox)](https://codesandbox.io/p/sandbox/altano-satori-fit-text-next-js-demo-sv4flc)
 - [Next.js Open Graph Card - Complex](https://github.com/altano/alan.norbauer.com/blob/main/src/components/opengraph/image.tsx#L29-L35)
-- [Node.js CLI App (codesandbox)](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/codesandboxes/satori-fit-text-node-cli?file=%2Fpackage.json%3A1%2C1)
+- [Node.js CLI App (codesandbox)](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/examples/satori-fit-text-node-cli?file=%2Fpackage.json%3A1%2C1)
 
 ## Implementation
 

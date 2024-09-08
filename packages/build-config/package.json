@@ -1,18 +1,18 @@
 {
   "name": "@altano/build-config",
-  "license": "ISC",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
+  "license": "ISC",
+  "type": "module",
   "files": [
     "tsup.config.ts",
     "tsup.config.node.ts",
     "tsup.config.browser.ts"
   ],
-  "publishConfig": {
-    "access": "restricted"
-  },
   "devDependencies": {
     "tsup": "^8.2.4"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }

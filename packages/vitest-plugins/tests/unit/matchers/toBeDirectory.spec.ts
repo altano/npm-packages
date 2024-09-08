@@ -25,7 +25,9 @@ describe("matchers", () => {
     it("should throw an error when not a directory", () => {
       expect(() => {
         expect("face").toBeDirectory();
-      }).toThrowErrorMatchingInlineSnapshot(`[Error: Received is not a directory (or cannot be accessed by the current user)]`);
+      }).toThrowErrorMatchingInlineSnapshot(
+        `[Error: Received is not a directory (or cannot be accessed by the current user)]`,
+      );
     });
   });
 });

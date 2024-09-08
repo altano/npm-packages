@@ -2,22 +2,33 @@
   "name": "package-time-traveler",
   "version": "3.0.1",
   "description": "Simulate an npm install on a specific day (for better re-use of npm packages preadating package-lock.json)",
-  "main": "index.js",
-  "bin": "index.js",
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/package-time-traveler",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
     "directory": "packages/package-time-traveler"
   },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/package-time-traveler",
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint"
+  },
   "dependencies": {
     "@altano/tiny-async-pool": "workspace:*",
     "pacote": "^17.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^9.13.0",
+    "prettier": "^3.2.5"
   }
 }

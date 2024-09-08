@@ -16,7 +16,9 @@ describe("matchers", () => {
       const wrongPath = path.join(import.meta.dirname, "..");
       expect(() => {
         expect(import.meta.dirname).toBePath(wrongPath);
-      }).toThrowErrorMatchingInlineSnapshot(`[Error: The realpath of the received path did not match the expected one]`);
+      }).toThrowErrorMatchingInlineSnapshot(
+        `[Error: The realpath of the received path did not match the expected one]`,
+      );
     });
     it("should throw an error for a path that isn't accessible", () => {
       const nonExistentPath = path.join(import.meta.dirname, "face");

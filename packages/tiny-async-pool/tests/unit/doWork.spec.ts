@@ -42,7 +42,7 @@ describe("doWork", function () {
   });
 
   it("should be a type error to use an iteratorFn that resolves to a value", async () => {
-    typeof doWork(
+    await doWork(
       2,
       [1, 2, 3],
       // @ts-expect-error testing error path

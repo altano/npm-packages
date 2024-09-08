@@ -32,7 +32,7 @@
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "lint": "eslint package.json src/**/*.ts*",
+    "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint"
   },

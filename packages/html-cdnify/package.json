@@ -4,9 +4,9 @@
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
   "keywords": [
     "cdn",
-    "html",
+    "cdnification",
     "cdnify",
-    "cdnification"
+    "html"
   ],
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/html-cdnify",
   "repository": {
@@ -39,7 +39,7 @@
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
-    "lint": "eslint package.json src/**/*.ts*",
+    "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "test:unit": "vitest --run",
@@ -61,8 +61,7 @@
     "@types/node": "^20.16.5",
     "@types/stream-to-promise": "^2.2.4",
     "@types/streamifier": "^0.1.2",
-    "eslint": "^8.57.0",
-    "eslint-config-altano": "workspace:*",
+    "eslint": "^9.13.0",
     "prettier": "^3.2.5",
     "typescript": "^5.6.2",
     "vite": "^5.2.8",
