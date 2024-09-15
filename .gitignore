@@ -13,6 +13,7 @@ public/dist
 .turbo
 .coverage
 tsconfig.tsbuildinfo
+.devbox/
 
 # playwright
 test-results/

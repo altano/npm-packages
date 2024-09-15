@@ -1,12 +1,11 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
     "bierner.github-markdown-preview",
     "github.vscode-github-actions",
     "ms-playwright.playwright",
     "vitest.explorer",
     "vercel.turbo-vsc",
-    "graphite.gti-vscode"
+    "graphite.gti-vscode",
+    "biomejs.biome"
   ]
 }

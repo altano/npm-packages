@@ -2,12 +2,7 @@
   "name": "@altano/html-cdnify",
   "version": "3.0.1",
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
-  "keywords": [
-    "cdn",
-    "html",
-    "cdnify",
-    "cdnification"
-  ],
+  "keywords": ["cdn", "html", "cdnify", "cdnification"],
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/html-cdnify",
   "repository": {
     "type": "git",
@@ -24,11 +19,7 @@
   "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "assets/logo.png",
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
-  ],
+  "files": ["assets/logo.png", "dist/**/*.js", "dist/**/*.d.ts"],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",

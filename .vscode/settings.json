@@ -1,5 +1,8 @@
 {
-  "eslint.enable": true,
+  "eslint.enable": false,
+  "prettier.enable": false,
+  "biome.enabled": true,
+  "editor.defaultFormatter": "biomejs.biome",
   "vitest.enable": true,
   "jestrunner.disableCodeLens": true,
   "search.exclude": {
@@ -16,10 +19,8 @@
     }
   },
   "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
-  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
   "files.associations": {
     "turbo.json": "jsonc"
   },
-  "turbo.path": "./node_modules/.bin/turbo",
-  "biome.enabled": false
+  "turbo.path": "./node_modules/.bin/turbo"
 }
