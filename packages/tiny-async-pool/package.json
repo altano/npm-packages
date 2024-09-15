@@ -2,10 +2,35 @@
   "name": "@altano/tiny-async-pool",
   "version": "3.0.1",
   "description": "Run multiple promise-returning & async functions with limited concurrency using native ES9",
-  "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
-  "type": "module",
+  "keywords": [
+    "race",
+    "concurrency",
+    "promise",
+    "async",
+    "async iterator",
+    "async iteration",
+    "async generator",
+    "es9"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/tiny-async-pool",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/tiny-async-pool"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "contributors": [
+    "Rafael Xavier de Souza"
+  ],
   "sideEffects": false,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts"
@@ -26,31 +51,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/tiny-async-pool"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/tiny-async-pool",
-  "keywords": [
-    "race",
-    "concurrency",
-    "promise",
-    "async",
-    "async iterator",
-    "async iteration",
-    "async generator",
-    "es9"
-  ],
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "contributors": [
-    "Rafael Xavier de Souza"
-  ],
-  "license": "MIT",
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",

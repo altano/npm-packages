@@ -2,14 +2,30 @@
   "name": "@altano/textfit",
   "version": "0.0.4",
   "description": "A fast, jQuery-free text sizing component that quickly fits single and multi-line text to the width (and optionally height) of its container.",
+  "keywords": [
+    "textfit",
+    "fit",
+    "text"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/textfit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/textfit"
+  },
+  "license": "MIT",
+  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
+  "contributors": [
+    "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
-  "type": "module",
-  "sideEffects": false,
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup --config build-config/tsup.config.browser.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
@@ -26,22 +42,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/textfit"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/textfit",
-  "keywords": [
-    "textfit",
-    "fit",
-    "text"
-  ],
-  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
-  "contributors": [
-    "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
-  ],
-  "license": "MIT",
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",

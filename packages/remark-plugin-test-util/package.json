@@ -3,12 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "description": "Testing utilities for remark plugins",
-  "type": "module",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-plugin-test-util",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-plugin-test-util"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "sideEffects": false,
-  "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     "./*": "./src/*.ts"
   },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "format": "prettier --check src",
@@ -18,18 +30,6 @@
     "lint:timing": "TIMING=1 pnpm lint",
     "typecheck:src": "tsc --noEmit"
   },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/remark-plugin-test-util"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-plugin-test-util",
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",

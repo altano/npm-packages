@@ -2,8 +2,27 @@
   "name": "@altano/repository-tools",
   "version": "0.1.1",
   "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "keywords": [
+    "repository",
+    "root",
+    "git",
+    "mercurial",
+    "sapling"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/repository-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/repository-tools"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -14,8 +33,8 @@
       "require": "./dist/*"
     }
   },
-  "type": "module",
-  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "files": [
     "dist/**/*.js",
     "dist/**/*.cjs",
@@ -40,25 +59,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/repository-tools"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/repository-tools",
-  "keywords": [
-    "repository",
-    "root",
-    "git",
-    "mercurial",
-    "sapling"
-  ],
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",

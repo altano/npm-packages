@@ -87,10 +87,6 @@ module.exports = {
       extends: ["plugin:package-json/recommended"],
       parser: "jsonc-eslint-parser",
       plugins: ["package-json"],
-      rules: {
-        "package-json/valid-package-def": "off",
-        "package-json/valid-repository-directory": "off",
-      },
     },
   ],
 };

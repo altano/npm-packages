@@ -2,6 +2,18 @@
   "name": "@altano/vitest-plugins",
   "version": "0.1.1",
   "description": "Custom matchers and snapshot serializers to enhance vitest",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/vitest-plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/vitest-plugins"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "type": "module",
   "exports": {
     "./matchers": {
@@ -25,18 +37,9 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
+  "dependencies": {
+    "serialize-error": "^11.0.3"
   },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/vitest-plugins"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/vitest-plugins",
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@mdx-js/mdx": "^2.3.0",
@@ -57,8 +60,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "serialize-error": "^11.0.3"
   }
 }

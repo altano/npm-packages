@@ -20,5 +20,6 @@
   "files.associations": {
     "turbo.json": "jsonc"
   },
-  "turbo.path": "./node_modules/.bin/turbo"
+  "turbo.path": "./node_modules/.bin/turbo",
+  "biome.enabled": false
 }

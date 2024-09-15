@@ -2,8 +2,8 @@
   "name": "eslint-config-altano",
   "version": "0.0.0",
   "private": true,
-  "main": "index.js",
   "license": "ISC",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint package.json",
     "lint:fix": "TIMING=1 pnpm lint --fix",

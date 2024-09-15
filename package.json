@@ -25,10 +25,11 @@
     "@changesets/cli": "^2.27.1",
     "eslint": "^8.57.0",
     "eslint-config-altano": "workspace:*",
-    "eslint-plugin-package-json": "0.12.1",
+    "eslint-plugin-package-json": "0.15.3",
     "jsonc-eslint-parser": "^2.4.0",
     "prettier": "^3.2.5",
     "tsup": "^8.2.4",
+    "yaml": "2.4.2",
     "turbo": "^1.13.0"
   },
   "pnpm": {
@@ -41,9 +42,6 @@
         "current",
         "x64"
       ]
-    },
-    "patchedDependencies": {
-      "eslint-plugin-package-json@0.12.1": "patches/eslint-plugin-package-json@0.12.1.patch"
     }
   },
   "packageManager": "pnpm@9.0.6"
