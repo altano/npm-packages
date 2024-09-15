@@ -170,50 +170,50 @@
       }
     },
     "graphite-cli@latest": {
-      "last_modified": "2024-08-27T08:49:48Z",
-      "resolved": "github:NixOS/nixpkgs/a6292e34000dc93d43bccf78338770c1c5ec8a99#graphite-cli",
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#graphite-cli",
       "source": "devbox-search",
-      "version": "1.4.3",
+      "version": "1.4.4",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/mmgx1al4vrv4i7xmsb42qzsmirby7ysy-graphite-cli-1.4.3",
+              "path": "/nix/store/navxd51a4w55b0h31wkb2mvvqbgbl148-graphite-cli-1.4.4",
               "default": true
             }
           ],
-          "store_path": "/nix/store/mmgx1al4vrv4i7xmsb42qzsmirby7ysy-graphite-cli-1.4.3"
+          "store_path": "/nix/store/navxd51a4w55b0h31wkb2mvvqbgbl148-graphite-cli-1.4.4"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/9k86l04r92n5dxi5sfbmr1hvnkwwyvk8-graphite-cli-1.4.3",
+              "path": "/nix/store/rj3ghli9mi1nhsb4k37vg55i7fikq7i1-graphite-cli-1.4.4",
               "default": true
             }
           ],
-          "store_path": "/nix/store/9k86l04r92n5dxi5sfbmr1hvnkwwyvk8-graphite-cli-1.4.3"
+          "store_path": "/nix/store/rj3ghli9mi1nhsb4k37vg55i7fikq7i1-graphite-cli-1.4.4"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/y5kd5i5pc9z7ida8g58a2zpgy72idgih-graphite-cli-1.4.3",
+              "path": "/nix/store/f682ng4iq67blgiz8jwdj0viq7lq88gx-graphite-cli-1.4.4",
               "default": true
             }
           ],
-          "store_path": "/nix/store/y5kd5i5pc9z7ida8g58a2zpgy72idgih-graphite-cli-1.4.3"
+          "store_path": "/nix/store/f682ng4iq67blgiz8jwdj0viq7lq88gx-graphite-cli-1.4.4"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/i4diamvsg64my0z7sxr20bz1dxlll1dl-graphite-cli-1.4.3",
+              "path": "/nix/store/51968hsd8iqi89kw9aj76sbcmrrx8c18-graphite-cli-1.4.4",
               "default": true
             }
           ],
-          "store_path": "/nix/store/i4diamvsg64my0z7sxr20bz1dxlll1dl-graphite-cli-1.4.3"
+          "store_path": "/nix/store/51968hsd8iqi89kw9aj76sbcmrrx8c18-graphite-cli-1.4.4"
         }
       }
     },
@@ -332,7 +332,17 @@
     },
     "playwright-driver.browsers": {
       "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#playwright-driver.browsers",
-      "source": "nixpkg"
+      "source": "nixpkg",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "path": "/nix/store/mnh1k2slp9ra7fmmyb9ygkbb5hw3wisr-playwright-browsers-1.40.0",
+              "default": true
+            }
+          ]
+        }
+      }
     },
     "playwright-driver@1.40.0": {
       "last_modified": "2024-03-22T11:26:23Z",
