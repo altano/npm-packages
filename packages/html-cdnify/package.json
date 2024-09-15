@@ -1,10 +1,6 @@
 {
   "name": "@altano/html-cdnify",
   "version": "3.0.1",
-  "type": "module",
-  "sideEffects": false,
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
   "keywords": [
     "cdn",
@@ -12,6 +8,22 @@
     "cdnify",
     "cdnification"
   ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/html-cdnify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/html-cdnify"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "assets/logo.png",
     "dist/**/*.js",
@@ -33,18 +45,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/html-cdnify"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/html-cdnify",
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
   "dependencies": {
     "@gofunky/trumpet": "^3.0.3",
     "glob": "^10.3.10",

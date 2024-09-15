@@ -2,10 +2,33 @@
   "name": "@altano/satori-fit-text",
   "version": "0.1.4",
   "description": "Fit text to a bounding box in Node or the browser",
-  "type": "module",
+  "keywords": [
+    "typography",
+    "satori",
+    "opengraph",
+    "fit-text"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/satori-fit-text",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/satori-fit-text"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "sideEffects": false,
+  "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "assets/",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
@@ -27,32 +50,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/satori-fit-text"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/satori-fit-text",
-  "files": [
-    "assets/",
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "typography",
-    "satori",
-    "opengraph",
-    "fit-text"
-  ],
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
     "debug": "^4.3.4",
@@ -87,5 +84,8 @@
     "typescript": "^5.4.2",
     "vite": "^5.2.8",
     "vitest": "^1.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

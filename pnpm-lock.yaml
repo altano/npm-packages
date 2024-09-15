@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  eslint-plugin-package-json@0.12.1:
-    hash: gn5bfpzr3wzegyh5feayqzmjpm
-    path: patches/eslint-plugin-package-json@0.12.1.patch
-
 importers:
 
   .:
@@ -26,8 +21,8 @@ importers:
         specifier: workspace:*
         version: link:packages/eslint-config-altano
       eslint-plugin-package-json:
-        specifier: 0.12.1
-        version: 0.12.1(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
+        specifier: 0.15.3
+        version: 0.15.3(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
@@ -36,10 +31,13 @@ importers:
         version: 3.2.5
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.1)
+        version: 8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.2)
       turbo:
         specifier: ^1.13.0
         version: 1.13.4
+      yaml:
+        specifier: 2.4.2
+        version: 2.4.2
 
   examples/satori-fit-text-node-cli:
     dependencies:
@@ -76,7 +74,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.1)
+        version: 8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.2)
 
   packages/eslint-config-altano:
     devDependencies:
@@ -112,7 +110,7 @@ importers:
         version: 6.8.0(eslint@8.57.0)
       eslint-plugin-package-json:
         specifier: ^0.12.0
-        version: 0.12.1(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
+        version: 0.12.1(eslint@8.57.0)(jsonc-eslint-parser@2.4.0)
       eslint-plugin-prettier:
         specifier: ^5.1.3
         version: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)
@@ -807,6 +805,9 @@ packages:
 
   '@adobe/css-tools@4.3.3':
     resolution: {integrity: sha512-rE0Pygv0sEZ4vBWHlAgJLGDU7Pm8xoO6p3wsEceb7GYAjScrOHpEo8KK/eVkAcnSM+slAEtXjA2JpdjLp4fJQQ==}
+
+  '@altano/repository-tools@0.1.1':
+    resolution: {integrity: sha512-5vbUs2A98CC3g1AlOBdkBE0BMukkLjLIsMHAtuxg6Pt9dQXxYWdLKOf66v6c/vIqtNcgTMv0oGtddLdMuH9X6w==}
 
   '@altano/satori-fit-text@0.1.3':
     resolution: {integrity: sha512-E5auznHKRxC6rIVPvW57Y7bGl7qz8xxRgBHVSYAuaENOXzp0XJlJBJqDXyFsZk5gOUhF0QeI7yL+KUA0XaigLg==}
@@ -2791,6 +2792,13 @@ packages:
       eslint: '>=8.0.0'
       jsonc-eslint-parser: ^2.0.0
 
+  eslint-plugin-package-json@0.15.3:
+    resolution: {integrity: sha512-NRUh+f5orM2/SynPjZqqNqSahdG3qzG5nf8s2S5nEwkhRbEE78S6sSMVGoSmrrtbhcbvZmLVHguVds4lY3Cwkw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=8.0.0'
+      jsonc-eslint-parser: ^2.0.0
+
   eslint-plugin-prettier@5.1.3:
     resolution: {integrity: sha512-C9GCVAs4Eq7ZC/XFQHITLiHJxQngdtraXaM+LoUFoFp/lHNl2Zn8f3WQbe9HvTBBQ9YnKFB0/2Ajdqwo5D1EAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -4297,6 +4305,10 @@ packages:
     resolution: {integrity: sha512-juKiFboV4UKUvWQ+OSxstnyukhuluyuEoFmgZw1Rx21XzmwlgDWLcbl3qzjA3789IRORYhVFs7cmAO0YFGwHCg==}
     hasBin: true
 
+  package-json-validator@0.6.5:
+    resolution: {integrity: sha512-fEG8kM+EfX0j7TbTWAv6/0NRkid0fUHm2afJx35en3+IlrJ6dRQfKUCpuUl/bGM6MvQ0MxAlpaXkJtYVMp0F4A==}
+    hasBin: true
+
   pacote@17.0.6:
     resolution: {integrity: sha512-cJKrW21VRE8vVTRskJo78c/RCvwJCn1f4qgfxL4w77SOWrTCRcmfkYHlHtS0gqpgjv3zhXflRtgsrUCX5xwNnQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
@@ -5662,8 +5674,8 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
-  yaml@2.4.1:
-    resolution: {integrity: sha512-pIXzoImaqmfOrL7teGUBt/T7ZDnyeGBWyXQBvOVhLkWLN37GXv8NMLK406UY6dS51JfcQHsmcW5cJ441bHg6Lg==}
+  yaml@2.4.2:
+    resolution: {integrity: sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -5714,6 +5726,8 @@ snapshots:
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
   '@adobe/css-tools@4.3.3': {}
+
+  '@altano/repository-tools@0.1.1': {}
 
   '@altano/satori-fit-text@0.1.3':
     dependencies:
@@ -7999,12 +8013,25 @@ snapshots:
       object.entries: 1.1.7
       object.fromentries: 2.0.7
 
-  eslint-plugin-package-json@0.12.1(patch_hash=gn5bfpzr3wzegyh5feayqzmjpm)(eslint@8.57.0)(jsonc-eslint-parser@2.4.0):
+  eslint-plugin-package-json@0.12.1(eslint@8.57.0)(jsonc-eslint-parser@2.4.0):
     dependencies:
       eslint: 8.57.0
       jsonc-eslint-parser: 2.4.0
       package-json-validator: 0.6.3
       semver: 7.6.0
+      sort-package-json: 1.57.0
+      validate-npm-package-name: 5.0.0
+
+  eslint-plugin-package-json@0.15.3(eslint@8.57.0)(jsonc-eslint-parser@2.4.0):
+    dependencies:
+      '@altano/repository-tools': 0.1.1
+      detect-indent: 6.1.0
+      detect-newline: 3.1.0
+      eslint: 8.57.0
+      jsonc-eslint-parser: 2.4.0
+      package-json-validator: 0.6.5
+      semver: 7.6.0
+      sort-object-keys: 1.1.3
       sort-package-json: 1.57.0
       validate-npm-package-name: 5.0.0
 
@@ -9981,6 +10008,10 @@ snapshots:
     dependencies:
       optimist: 0.6.1
 
+  package-json-validator@0.6.5:
+    dependencies:
+      optimist: 0.6.1
+
   pacote@17.0.6:
     dependencies:
       '@npmcli/git': 5.0.4
@@ -10132,13 +10163,13 @@ snapshots:
 
   possible-typed-array-names@1.0.0: {}
 
-  postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.4.1):
+  postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.4.2):
     dependencies:
       lilconfig: 3.1.2
     optionalDependencies:
       jiti: 1.21.6
       postcss: 8.4.41
-      yaml: 2.4.1
+      yaml: 2.4.2
 
   postcss-value-parser@4.2.0: {}
 
@@ -11016,7 +11047,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsup@8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.1):
+  tsup@8.2.4(jiti@1.21.6)(postcss@8.4.41)(typescript@5.4.2)(yaml@2.4.2):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
       cac: 6.7.14
@@ -11028,7 +11059,7 @@ snapshots:
       globby: 11.1.0
       joycon: 3.1.1
       picocolors: 1.0.1
-      postcss-load-config: 6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.4.1)
+      postcss-load-config: 6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.4.2)
       resolve-from: 5.0.0
       rollup: 4.21.1
       source-map: 0.8.0-beta.0
@@ -11516,8 +11547,7 @@ snapshots:
 
   yallist@4.0.0: {}
 
-  yaml@2.4.1:
-    optional: true
+  yaml@2.4.2: {}
 
   yargs-parser@18.1.3:
     dependencies:

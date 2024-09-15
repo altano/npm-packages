@@ -2,8 +2,20 @@
   "name": "@altano/use-element-observer",
   "version": "2.0.0",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
-  "type": "module",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-element-observer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/use-element-observer"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "sideEffects": false,
+  "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -25,23 +37,8 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/use-element-observer"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-element-observer",
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1"
-  },
-  "peerDependencies": {
-    "react": "^18"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
@@ -61,6 +58,9 @@
     "typescript": "^5.4.2",
     "vite": "^5.2.8",
     "vitest": "^1.4.0"
+  },
+  "peerDependencies": {
+    "react": "^18"
   },
   "publishConfig": {
     "access": "public"

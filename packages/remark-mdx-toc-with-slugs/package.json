@@ -2,10 +2,31 @@
   "name": "@altano/remark-mdx-toc-with-slugs",
   "version": "2.0.1",
   "description": "A remark plugin to generate a table of contents (including slugs) and convert it into MDX export",
-  "type": "module",
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "mdx"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-mdx-toc-with-slugs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/remark-mdx-toc-with-slugs"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
   "sideEffects": false,
+  "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
@@ -22,27 +43,6 @@
     "typecheck:src": "tsc --noEmit",
     "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
   },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/remark-mdx-toc-with-slugs"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/remark-mdx-toc-with-slugs",
-  "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
-  ],
-  "keywords": [
-    "remark",
-    "remark-plugin",
-    "mdx"
-  ],
   "dependencies": {
     "astring": "^1.8.6",
     "estree-util-value-to-estree": "^3.0.1",
