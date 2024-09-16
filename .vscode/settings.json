@@ -1,6 +1,9 @@
 {
   "eslint.enable": true,
   "vitest.enable": true,
+  "prettier.enable": true,
+  "biome.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "jestrunner.disableCodeLens": true,
   "search.exclude": {
     "**/.turbo": true,
@@ -20,6 +23,5 @@
   "files.associations": {
     "turbo.json": "jsonc"
   },
-  "turbo.path": "./node_modules/.bin/turbo",
-  "biome.enabled": false
+  "turbo.path": "./node_modules/.bin/turbo"
 }
