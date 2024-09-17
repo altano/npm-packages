@@ -59,11 +59,11 @@
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
-    "@types/node": "^20.11.25",
+    "@types/node": "^20.16.5",
     "@types/unist": "^3.0.2",
     "@vitest/coverage-v8": "^1.4.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2",
+    "typescript": "^5.6.2",
     "vite": "^5.2.8",
     "vitest": "^1.4.0"
   },

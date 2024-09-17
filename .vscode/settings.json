@@ -23,5 +23,7 @@
   "files.associations": {
     "turbo.json": "jsonc"
   },
-  "turbo.path": "./node_modules/.bin/turbo"
+  "turbo.path": "./node_modules/.bin/turbo",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
