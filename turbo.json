@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["CI", "NODE_ENV"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^build"]
@@ -25,11 +25,12 @@
       "dependsOn": ["test:unit", "test:e2e"]
     },
     "test:unit": {
-      "outputs": ["coverage/**"],
+      "outputs": [".coverage/**"],
       "dependsOn": ["build"]
     },
     "test:e2e": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "env": ["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "PLAYWRIGHT_BROWSERS_PATH"]
     },
     "lint": {
       "cache": false,
@@ -38,7 +39,6 @@
     "lint:fix": {
       "cache": false
     },
-    // run lint on root package.json
     "//#lint": {
       "cache": false
     },
