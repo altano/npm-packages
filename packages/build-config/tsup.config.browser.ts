@@ -1,6 +1,11 @@
-import { defineConfig } from "tsup";
+import { defineConfig, type Options } from "tsup";
 
-export default defineConfig({
+const config:
+  | Options
+  | Options[]
+  | ((
+      overrideOptions: Options,
+    ) => Options | Options[] | Promise<Options | Options[]>) = defineConfig({
   // since we're bundling, index is the only entry
   entry: ["./src/index.ts"],
   format: "esm",
@@ -16,3 +21,5 @@ export default defineConfig({
   platform: "browser",
   bundle: true,
 });
+
+export default config;

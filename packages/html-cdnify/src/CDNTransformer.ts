@@ -130,7 +130,7 @@ export class CDNTransformer extends HtmlAttributeStreamTransformer.HtmlAttribute
     transformFunction: urlConverter,
   } as const;
 
-  public static defaultTransformFunction =
+  public static defaultTransformFunction: CDNTransformFunction =
     CDNTransformer.#defaultCdnOptions.transformFunction;
 
   static #defaultHtmlAttributeStreamTransformerOptions = {

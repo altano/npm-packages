@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@altano/tsconfig/node",
+  "extends": "./base.json",
+  "lib": ["ESNext"],
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ESNext",
+    "resolveJsonModule": true,
+    // We don't build tests, so isolatedDeclarations seem like a waste of time
+    "isolatedDeclarations": false
+  }
+}

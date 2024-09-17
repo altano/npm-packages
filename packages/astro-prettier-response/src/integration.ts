@@ -5,8 +5,12 @@ import {
   defineIntegration,
 } from "astro-integration-kit";
 import { ConfigSchema } from "./config.js";
+import type { AstroIntegration } from "astro";
 
-export default defineIntegration({
+const integration: (options?: {
+  disableMinifiers?: boolean | undefined;
+  formatXml?: boolean | undefined;
+}) => AstroIntegration & {} = defineIntegration({
   name: "astro-prettier-response",
   optionsSchema: ConfigSchema,
   setup({ options, name }) {
@@ -74,3 +78,5 @@ export default defineIntegration({
     };
   },
 });
+
+export default integration;

@@ -6,7 +6,8 @@ import React from "react";
 import { useSet } from "react-use";
 
 type Context = Set<Element>;
-export const VisibleElementsContext = React.createContext<Context | null>(null);
+export const VisibleElementsContext: React.Context<Context | null> =
+  React.createContext<Context | null>(null);
 
 export type VisibleElementObserverOptions = ChildOptions & {
   selector: string;

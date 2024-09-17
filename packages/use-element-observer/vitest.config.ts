@@ -1,3 +1,5 @@
-import { deriveReactLibraryConfig } from "@altano/testing";
+import { deriveReactLibraryConfig, type TestingConfig } from "@altano/testing";
 
-export default deriveReactLibraryConfig({});
+const config: TestingConfig = deriveReactLibraryConfig({});
+
+export default config;

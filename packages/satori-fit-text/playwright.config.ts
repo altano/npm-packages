@@ -1,4 +1,8 @@
-import { defineConfig, devices } from "@playwright/test";
+import {
+  defineConfig,
+  devices,
+  type PlaywrightTestConfig,
+} from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -43,7 +47,7 @@ const projects = {
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+const config: PlaywrightTestConfig = defineConfig({
   testDir: "./tests/e2e",
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -90,3 +94,5 @@ export default defineConfig({
     reuseExistingServer: false,
   },
 });
+
+export default config;

@@ -1,5 +1,5 @@
 import debug from "debug";
 
-const log = debug("satori-text-fit");
+const log: debug.Debugger = debug("satori-text-fit");
 
 export default log;

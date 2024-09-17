@@ -182,4 +182,7 @@ const remarkMdxToc: RequiredReturn<PluginType> =
     mdast.children.unshift(tocExport);
   };
 
-export default remarkMdxToc satisfies PluginType;
+// just a type assertion
+remarkMdxToc satisfies PluginType;
+
+export default remarkMdxToc;
