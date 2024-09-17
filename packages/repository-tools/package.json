@@ -64,7 +64,7 @@
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
-    "@types/node": "^20.11.25",
+    "@types/node": "^20.16.5",
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/expect": "^1.4.0",
     "@vitest/ui": "^1.3.1",
@@ -75,7 +75,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "ts-assert-unreachable": "^0.0.9",
-    "typescript": "^5.4.2",
+    "typescript": "^5.6.2",
     "vite": "^5.2.8",
     "vitest": "^1.4.0"
   },

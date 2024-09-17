@@ -24,8 +24,8 @@
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
-    "@types/node": "^20.11.25",
-    "typescript": "^5.4.2"
+    "@types/node": "^20.16.5",
+    "typescript": "^5.6.2"
   },
   "publishConfig": {
     "access": "restricted"
