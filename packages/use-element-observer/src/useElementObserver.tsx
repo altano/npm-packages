@@ -8,7 +8,8 @@ interface Context {
   mountedElements: Set<Element>;
 }
 
-export const ElementObserverContext = React.createContext<Context | null>(null);
+export const ElementObserverContext: React.Context<Context | null> =
+  React.createContext<Context | null>(null);
 
 export type Options = ChildOptions & {
   selector: string;

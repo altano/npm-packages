@@ -1,6 +1,11 @@
-import { defineConfig } from "tsup";
+import { defineConfig, type Options } from "tsup";
 
-export default defineConfig({
+const config:
+  | Options
+  | Options[]
+  | ((
+      overrideOptions: Options,
+    ) => Options | Options[] | Promise<Options | Options[]>) = defineConfig({
   entry: ["./src/**/*.ts"],
   format: "esm",
   onSuccess: "pnpm build:types",
@@ -10,3 +15,5 @@ export default defineConfig({
   bundle: false,
   minify: false,
 });
+
+export default config;

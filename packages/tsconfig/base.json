@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
+    "isolatedDeclarations": true,
     "isolatedModules": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,

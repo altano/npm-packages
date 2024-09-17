@@ -1,7 +1,12 @@
-import { deriveConfigWithoutPlugins } from "@altano/testing";
+import {
+  deriveConfigWithoutPlugins,
+  type TestingConfig,
+} from "@altano/testing";
 
-export default deriveConfigWithoutPlugins({
+const config: TestingConfig = deriveConfigWithoutPlugins({
   test: {
     setupFiles: ["./tests/unit/utils/setup.ts"],
   },
 });
+
+export default config;

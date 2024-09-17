@@ -1,8 +1,10 @@
-import { deriveConfig } from "@altano/testing";
+import { deriveConfig, type TestingConfig } from "@altano/testing";
 
-export default deriveConfig({
+const config: TestingConfig = deriveConfig({
   test: {
     testTimeout: 15_000,
     globalSetup: ["./tests/utils/globalSetup.ts"],
   },
 });
+
+export default config;

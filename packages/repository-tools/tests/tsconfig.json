@@ -1,5 +1,5 @@
 {
-  "extends": "@altano/tsconfig/node.json",
+  "extends": "@altano/tsconfig/tests.json",
   "include": ["."],
   "compilerOptions": {
     "types": ["@altano/testing/types"],

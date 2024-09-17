@@ -114,6 +114,9 @@ export const bundleSupportingRepositoryTypes = [
   // clone still expects the hg-style bundle."
   //
   // "sapling"
-] as const satisfies RepositoryType[];
+] as const;
+
+bundleSupportingRepositoryTypes satisfies readonly RepositoryType[];
+
 export type BundleSupportingRepositoryType =
   (typeof bundleSupportingRepositoryTypes)[number];

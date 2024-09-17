@@ -1,7 +1,9 @@
-import { deriveConfig } from "@altano/testing";
+import { deriveConfig, type TestingConfig } from "@altano/testing";
 
-export default deriveConfig({
+const config: TestingConfig = deriveConfig({
   test: {
     testTimeout: 120_000, // these tests are slow af in github actions
   },
 });
+
+export default config;

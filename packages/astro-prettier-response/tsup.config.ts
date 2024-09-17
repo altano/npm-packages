@@ -1,6 +1,11 @@
-import { defineConfig } from "tsup";
+import { defineConfig, type Options } from "tsup";
 
-export default defineConfig({
+const config:
+  | Options
+  | Options[]
+  | ((
+      overrideOptions: Options,
+    ) => Options | Options[] | Promise<Options | Options[]>) = defineConfig({
   entry: [
     // this can only export things that are safe to use from an astro config
     "src/index.ts",
@@ -22,3 +27,5 @@ export default defineConfig({
     "@vitejs/plugin-react",
   ],
 });
+
+export default config;

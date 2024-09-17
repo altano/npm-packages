@@ -1,6 +1,25 @@
 import { z } from "astro/zod";
 
-export const ConfigSchema = z
+export const ConfigSchema: z.ZodDefault<
+  z.ZodOptional<
+    z.ZodObject<
+      {
+        disableMinifiers: z.ZodDefault<z.ZodBoolean>;
+        formatXml: z.ZodDefault<z.ZodBoolean>;
+      },
+      "strict",
+      z.ZodTypeAny,
+      {
+        disableMinifiers: boolean;
+        formatXml: boolean;
+      },
+      {
+        disableMinifiers?: boolean | undefined;
+        formatXml?: boolean | undefined;
+      }
+    >
+  >
+> = z
   .object({
     /**
      * Astro/Vite will minify your HTML/JS/CSS by default. Astro lightly
