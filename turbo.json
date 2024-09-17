@@ -35,7 +35,13 @@
       "cache": false,
       "outputs": []
     },
-    "lint:fix": {},
+    "lint:fix": {
+      "cache": false
+    },
+    // run lint on root package.json
+    "//#lint": {
+      "cache": false
+    },
     "dev": {
       "cache": false
     },
