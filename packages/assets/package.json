@@ -8,14 +8,14 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:types:src": "tsc --noEmit",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
-    "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck:src": "tsc --noEmit"
+    "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.17"

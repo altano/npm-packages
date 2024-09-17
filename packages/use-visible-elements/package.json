@@ -24,7 +24,9 @@
   ],
   "scripts": {
     "build": "tsup --config build-config/tsup.config.browser.ts",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:types:src": "tsc --noEmit",
+    "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
@@ -34,9 +36,7 @@
     "lint:timing": "TIMING=1 pnpm lint",
     "test:e2e": "playwright test",
     "test:e2e:server": "vite --strictPort --port 3820 ./tests/e2e",
-    "test:e2e:ui": "playwright test --ui",
-    "typecheck:src": "tsc --noEmit",
-    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@altano/use-element-observer": "workspace:*",

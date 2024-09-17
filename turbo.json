@@ -6,7 +6,16 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["lint", "^build"]
     },
-    "check-exports": {
+    "check:exports": {
+      "dependsOn": ["build"]
+    },
+    "check:types": {
+      "dependsOn": ["check:types:src", "check:types:test"]
+    },
+    "check:types:test": {
+      "dependsOn": ["build"]
+    },
+    "check:types:src": {
       "dependsOn": ["build"]
     },
     "format": {
@@ -21,15 +30,6 @@
     },
     "test:e2e": {
       "dependsOn": ["build"]
-    },
-    "typecheck:test": {
-      "dependsOn": ["build"]
-    },
-    "typecheck:src": {
-      "dependsOn": ["build"]
-    },
-    "typecheck": {
-      "dependsOn": ["typecheck:src", "typecheck:test"]
     },
     "lint": {
       "cache": false,
