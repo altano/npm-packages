@@ -17,10 +17,12 @@
   },
   "devDependencies": {
     "eslint": "catalog:",
+    "typescript": "catalog:",
+    "@swc/core": "^1.7.26",
+    "oxc-transform": "^0.29.0",
+    "rollup": "^4.21.3",
+    "rollup-plugin-dts": "^6.1.1",
     "tsup": "catalog:",
-    "typescript": "catalog:"
-  },
-  "publishConfig": {
-    "access": "restricted"
+    "unplugin-isolated-decl": "^0.6.3"
   }
 }

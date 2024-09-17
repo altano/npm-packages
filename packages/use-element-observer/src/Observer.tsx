@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import { useMountRef, type Callbacks } from "./useMountRef";
-import { ElementObserverContext } from "./useElementObserver";
+import { ElementObserverContext } from "./context";
 import type { ReactElementWithRef } from "./types";
 
 interface ChildrenAndCallbacks<T, ChildType> extends Callbacks<T> {

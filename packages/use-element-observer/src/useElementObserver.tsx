@@ -1,15 +1,9 @@
 import React from "react";
 import { useSet } from "@uidotdev/usehooks";
 import { Observer } from "./Observer";
+import { ElementObserverContext } from "./context";
 import type { ReactElementWithRef } from "./types";
 export { ReactElementWithRef };
-
-interface Context {
-  mountedElements: Set<Element>;
-}
-
-export const ElementObserverContext: React.Context<Context | null> =
-  React.createContext<Context | null>(null);
 
 export type Options = ChildOptions & {
   selector: string;

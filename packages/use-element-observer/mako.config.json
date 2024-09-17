@@ -1,0 +1,8 @@
+{
+  "entry": {
+    "index": "./src/index.ts"
+  },
+  "output": {
+    "path": "dist/mako"
+  }
+}
