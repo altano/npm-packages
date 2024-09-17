@@ -22,13 +22,13 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
+    "check:types:src": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
-    "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck:src": "tsc --noEmit"
+    "lint:timing": "TIMING=1 pnpm lint"
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",

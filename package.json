@@ -14,7 +14,7 @@
     "format": "turbo run format",
     "lint": "eslint package.json *.ts",
     "preinstall": "npx only-allow pnpm",
-    "prep": "turbo run build test lint format typecheck check-exports",
+    "prep": "turbo run build test lint format check:types check:exports",
     "release": "turbo run build && changeset publish",
     "test": "turbo run test",
     "update": "pnpm update --latest --interactive",

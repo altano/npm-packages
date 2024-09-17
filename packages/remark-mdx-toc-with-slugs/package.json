@@ -30,7 +30,9 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:types:src": "tsc --noEmit",
+    "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
@@ -39,9 +41,7 @@
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "test:unit": "vitest --run",
-    "test:unit:watch": "vitest",
-    "typecheck:src": "tsc --noEmit",
-    "typecheck:test": "tsc --noEmit --project ./tests/tsconfig.json"
+    "test:unit:watch": "vitest"
   },
   "dependencies": {
     "astring": "^1.8.6",

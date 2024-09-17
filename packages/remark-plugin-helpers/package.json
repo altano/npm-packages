@@ -26,15 +26,15 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:types:src": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint package.json src/**/*.ts*",
     "lint:fix": "TIMING=1 pnpm lint --fix",
-    "lint:timing": "TIMING=1 pnpm lint",
-    "typecheck:src": "tsc --noEmit"
+    "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
     "debug": "^4.3.4",
