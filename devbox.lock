@@ -170,50 +170,50 @@
       }
     },
     "graphite-cli@latest": {
-      "last_modified": "2024-09-10T15:01:03Z",
-      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#graphite-cli",
+      "last_modified": "2024-10-13T23:44:06Z",
+      "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#graphite-cli",
       "source": "devbox-search",
-      "version": "1.4.4",
+      "version": "1.4.6",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/navxd51a4w55b0h31wkb2mvvqbgbl148-graphite-cli-1.4.4",
+              "path": "/nix/store/p8ahywhrpa56g106bvjlnh8nag993lqv-graphite-cli-1.4.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/navxd51a4w55b0h31wkb2mvvqbgbl148-graphite-cli-1.4.4"
+          "store_path": "/nix/store/p8ahywhrpa56g106bvjlnh8nag993lqv-graphite-cli-1.4.6"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/rj3ghli9mi1nhsb4k37vg55i7fikq7i1-graphite-cli-1.4.4",
+              "path": "/nix/store/ga09cr7kljz4wp0h6yc6k5h9qw0yls15-graphite-cli-1.4.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/rj3ghli9mi1nhsb4k37vg55i7fikq7i1-graphite-cli-1.4.4"
+          "store_path": "/nix/store/ga09cr7kljz4wp0h6yc6k5h9qw0yls15-graphite-cli-1.4.6"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/f682ng4iq67blgiz8jwdj0viq7lq88gx-graphite-cli-1.4.4",
+              "path": "/nix/store/m2jc9m679vxz2jy063d2z3dm0nsgw3i2-graphite-cli-1.4.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/f682ng4iq67blgiz8jwdj0viq7lq88gx-graphite-cli-1.4.4"
+          "store_path": "/nix/store/m2jc9m679vxz2jy063d2z3dm0nsgw3i2-graphite-cli-1.4.6"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/51968hsd8iqi89kw9aj76sbcmrrx8c18-graphite-cli-1.4.4",
+              "path": "/nix/store/p5vvhrg9if58jcqnd0hwnl3zxr0958j6-graphite-cli-1.4.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/51968hsd8iqi89kw9aj76sbcmrrx8c18-graphite-cli-1.4.4"
+          "store_path": "/nix/store/p5vvhrg9if58jcqnd0hwnl3zxr0958j6-graphite-cli-1.4.6"
         }
       }
     },
