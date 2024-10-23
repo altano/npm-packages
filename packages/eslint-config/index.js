@@ -47,7 +47,15 @@ export default {
         },
       },
 
-      // react-hooks
+      // react compiler
+      ...compat.config({
+        plugins: ["react-compiler"],
+        rules: {
+          "react-compiler/react-compiler": "error",
+        },
+      }),
+
+      // react hooks
       // https://github.com/facebook/react/issues/28313
       ...compat.config({
         extends: ["plugin:react-hooks/recommended"],
