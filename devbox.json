@@ -6,7 +6,7 @@
     "mercurialFull@latest",
     "nodejs@20.11.1",
     "playwright-driver.browsers",
-    "playwright-driver@1.40.0",
+    "playwright-driver@1.47.0",
     "sapling@latest",
     "subversion@latest",
     "tree@latest",
