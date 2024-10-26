@@ -28,7 +28,13 @@ export default {
 
       packageJson,
 
-      prettier,
+      {
+        ...prettier,
+        rules: {
+          ...prettier.rules,
+          "prettier/prettier": "off",
+        },
+      },
 
       // react
       {
@@ -50,9 +56,26 @@ export default {
         },
       }),
 
-      // import
+      // import: must declare deps
       {
         ...importPlugin.flatConfigs.recommended,
+        rules: {
+          "import/no-unresolved": "off",
+          "import/no-extraneous-dependencies": [
+            "error",
+            { devDependencies: false },
+          ],
+        },
+      },
+
+      // import: must declare dev deps (dev-only files/dirs)
+      {
+        ...importPlugin.flatConfigs.recommended,
+        files: [
+          "eslint.config.{js,mjs,cjs}",
+          "packages/*/*.config.ts",
+          "packages/*/tests/**/*",
+        ],
         rules: {
           "import/no-unresolved": "off",
           "import/no-extraneous-dependencies": [
