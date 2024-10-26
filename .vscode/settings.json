@@ -22,6 +22,7 @@
   "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
   "prettier.prettierPath": "./node_modules/prettier/index.cjs",
   "files.associations": {
+    "devbox.json": "jsonc",
     "turbo.json": "jsonc"
   },
   "turbo.path": "./node_modules/.bin/turbo",
