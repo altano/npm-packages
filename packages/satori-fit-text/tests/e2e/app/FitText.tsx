@@ -74,7 +74,7 @@ export default function FitText({
         border: "solid 3px black",
         position: "relative",
         fontWeight: weight,
-        transition: "font-size 500ms ease-out",
+        // transition: "font-size 500ms ease-out",
         fontSize,
       }}
     >
