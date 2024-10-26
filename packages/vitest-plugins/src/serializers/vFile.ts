@@ -1,5 +1,5 @@
 import prettier from "@prettier/sync";
-import prettierConfig from "../../../../.prettierrc.json";
+import prettierConfig from "./.prettierrc.json";
 import { VFile, type Value as VFileValue } from "vfile";
 import type { Options } from "prettier";
 import type { SnapshotSerializer } from "vitest";
