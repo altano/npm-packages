@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a [remark](https://remark.js.org/) plugin that exports a table of contents. It is similar to the [remark-mdx-toc](https://github.com/DCsunset/remark-mdx-toc) plugin but has an additional `slug` property.
+This is a [remark](https://remark.js.org/) plugin that exports a table of contents. It is similar to the [@altano/remark-mdx-toc](https://www.npmjs.com/package/@altano/remark-mdx-toc) plugin but has an additional `slug` property.
 
 Given this mdx:
 
@@ -58,5 +58,5 @@ export const toc = [
 
 ## Misc
 
-- If you don't need the slug, consider using [remark-mdx-toc](https://github.com/DCsunset/remark-mdx-toc).
+- If you don't need the slug, consider using [@altano/remark-mdx-toc](https://www.npmjs.com/package/@altano/remark-mdx-toc).
 - Slugs are generated using [`github-slugger`](https://www.npmjs.com/package/github-slugger) and should therefore match the [`rehype-slug`](https://www.npmjs.com/package/rehype-slug) package

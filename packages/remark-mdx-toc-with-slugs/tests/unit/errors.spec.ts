@@ -2,43 +2,21 @@ import { getFixtureCompiler } from "@altano/remark-plugin-test-util/testByFixtur
 import { describe, vi, it, expect, beforeEach, afterEach } from "vitest";
 
 describe("remark-mdx-toc-with-slugs", async () => {
-  describe("misbehaving remark-mdx-toc plugin", async () => {
+  describe("misbehaving @altano/remark-mdx-toc", async () => {
     beforeEach(() => {
       vi.resetModules();
     });
 
     afterEach(() => {
-      vi.doUnmock("remark-mdx-toc");
+      vi.doUnmock("@altano/remark-mdx-toc");
       vi.doUnmock("unist-util-visit");
       vi.resetAllMocks();
     });
 
-    it("should error when initializes to nothing", async () => {
-      vi.doMock("remark-mdx-toc", async (importOriginal) => {
-        const mod = await importOriginal<typeof import("remark-mdx-toc")>();
-        return {
-          default: mod,
-          remarkMdxToc: () => {},
-        };
-      });
-
-      const { default: remarkMdxTocWithSlugs } = await import(
-        "../../src/index.js"
-      );
-      expect(() => {
-        // @ts-expect-error testing error path
-        remarkMdxTocWithSlugs.call(null, {});
-      }).toThrowErrorMatchingInlineSnapshot(
-        `[Error: Couldn't create mdxTocTransformer function]`,
-      );
-    });
-
     it("should error when remarkMdxToc's transform gives back garbage", async () => {
-      vi.doMock("remark-mdx-toc", async (importOriginal) => {
-        const mod = await importOriginal<typeof import("remark-mdx-toc")>();
+      vi.doMock("@altano/remark-mdx-toc", async () => {
         return {
-          default: mod,
-          remarkMdxToc: () => () => Promise.resolve(1),
+          default: () => () => Promise.resolve(1),
         };
       });
 
@@ -58,6 +36,9 @@ describe("remark-mdx-toc-with-slugs", async () => {
     });
 
     it("should error when visit gives back non-mdx nodes", async () => {
+      // load this first so that it uses the normal visit() internally
+      await import("@altano/remark-mdx-toc");
+
       vi.doMock("unist-util-visit", async (importOriginal) => {
         const mod = await importOriginal<typeof import("unist-util-visit")>();
         return {
@@ -74,6 +55,7 @@ describe("remark-mdx-toc-with-slugs", async () => {
         };
       });
 
+      // load this after the mocking so it sees the mock
       const { default: remarkMdxTocWithSlugs } = await import(
         "../../src/index.js"
       );

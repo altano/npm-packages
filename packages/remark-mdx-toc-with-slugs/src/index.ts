@@ -2,10 +2,10 @@ import { generate } from "astring";
 import { valueToEstree } from "estree-util-value-to-estree";
 import { EXIT, visit as estreeVisit } from "estree-util-visit";
 import GithubSlugger from "github-slugger";
-import { remarkMdxToc } from "remark-mdx-toc";
+import remarkMdxToc from "@altano/remark-mdx-toc";
 import { visit } from "unist-util-visit";
 
-import type { RemarkMdxTocOptions, TocEntry } from "remark-mdx-toc";
+import type { RemarkMdxTocOptions, TocEntry } from "@altano/remark-mdx-toc";
 import type { Plugin, Processor } from "unified";
 import type { MdxjsEsm } from "mdast-util-mdxjs-esm";
 import type { Node } from "unist";
@@ -49,9 +49,6 @@ function assertMdxjsEsmNode(node: Node): asserts node is MdxjsEsm {
 const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> =
   function (this: Processor, options = {}) {
     const mdxTocTransformer = remarkMdxToc.call(this, options);
-    if (mdxTocTransformer == null) {
-      throw new Error(`Couldn't create mdxTocTransformer function`);
-    }
 
     const name = options.name ?? "toc"; // mirrors remark-mdx-toc
 
