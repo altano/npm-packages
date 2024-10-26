@@ -22,7 +22,7 @@
       "cache": false
     },
     "test": {
-      "dependsOn": ["build", "test:unit", "test:e2e"]
+      "dependsOn": ["test:unit", "test:e2e"]
     },
     "test:unit": {
       "outputs": ["coverage/**"],
@@ -42,6 +42,8 @@
     "//#lint": {
       "cache": false
     },
+    "//#check:dependencies": {},
+    "//#check:dependencies:fix": {},
     "dev": {
       "cache": false
     },
