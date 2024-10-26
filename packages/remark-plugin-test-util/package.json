@@ -39,7 +39,7 @@
     "@altano/tsconfig": "workspace:*",
     "@prettier/sync": "^0.5.1",
     "@types/node": "^20.16.5",
-    "@vitest/ui": "^1.3.1",
+    "@vitest/ui": "^1.4.0",
     "eslint": "^9.13.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
     "prettier": "^3.2.5",
