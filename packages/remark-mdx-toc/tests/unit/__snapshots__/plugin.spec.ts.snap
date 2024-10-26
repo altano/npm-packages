@@ -1,0 +1,364 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`remark-mdx-toc > [test #0] basic 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/basic/input.mdx",
+    "tests/unit/__fixtures__/basic/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [
+  {
+    depth: 1,
+    value: "Hello, world",
+    attributes: {},
+    children: [
+      {
+        depth: 2,
+        value: "Title 1",
+        attributes: {},
+        children: [
+          {
+            depth: 3,
+            value: "Subtitle 1",
+            attributes: {},
+            children: [],
+          },
+        ],
+      },
+      {
+        depth: 2,
+        value: "Title 2",
+        attributes: {},
+        children: [],
+      },
+    ],
+  },
+  {
+    depth: 1,
+    value: "Heading with html",
+    attributes: {
+      id: "h1",
+    },
+    children: [],
+  },
+];
+function _createMdxContent(props) {
+  const _components = {
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    p: "p",
+    ...props.components,
+  };
+  return (
+    <>
+      <_components.h1>{"Hello, world"}</_components.h1>
+      {"\\n"}
+      <_components.h2>{"Title 1"}</_components.h2>
+      {"\\n"}
+      <_components.p>{"Content 1"}</_components.p>
+      {"\\n"}
+      <_components.h3>{"Subtitle 1"}</_components.h3>
+      {"\\n"}
+      <_components.p>{"Sub Content 1"}</_components.p>
+      {"\\n"}
+      <_components.h2>{"Title 2"}</_components.h2>
+      {"\\n"}
+      <_components.p>{"Content 2"}</_components.p>
+      {"\\n"}
+      <h1 id="h1">{"Heading with html"}</h1>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}",
+}
+`;
+
+exports[`remark-mdx-toc > [test #1] custom-component 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/custom-component/input.mdx",
+    "tests/unit/__fixtures__/custom-component/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [
+  {
+    depth: 1,
+    value: "Heading with html",
+    attributes: {
+      id: "h1",
+    },
+    children: [
+      {
+        depth: 2,
+        value: "Parented to HTML Heading Correctly",
+        attributes: {},
+        children: [],
+      },
+    ],
+  },
+  {
+    depth: 1,
+    value: "Heading with custom component",
+    attributes: {},
+    children: [
+      {
+        depth: 2,
+        value: "Parented to Custom Component Heading Correctly",
+        attributes: {},
+        children: [],
+      },
+      {
+        depth: 2,
+        value: "Custom Sub-Heading",
+        attributes: {},
+        children: [],
+      },
+    ],
+  },
+];
+function _createMdxContent(props) {
+  const _components = {
+      h2: "h2",
+      p: "p",
+      ...props.components,
+    },
+    { H1, H2 } = _components;
+  if (!H1) _missingMdxReference("H1", true);
+  if (!H2) _missingMdxReference("H2", true);
+  return (
+    <>
+      <_components.p>
+        {"const H2 = ("}
+        {children}
+        {") => "}
+        <h2>{children}</h2>
+      </_components.p>
+      {"\\n"}
+      <h1 id="h1">{"Heading with html"}</h1>
+      {"\\n"}
+      <_components.h2>{"Parented to HTML Heading Correctly"}</_components.h2>
+      {"\\n"}
+      <H1>{"Heading with custom component"}</H1>
+      {"\\n"}
+      <_components.h2>
+        {"Parented to Custom Component Heading Correctly"}
+      </_components.h2>
+      {"\\n"}
+      <H2>{"Custom Sub-Heading"}</H2>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}
+function _missingMdxReference(id, component) {
+  throw new Error(
+    "Expected " +
+      (component ? "component" : "object") +
+      " \`" +
+      id +
+      "\` to be defined: you likely forgot to import, pass, or provide it.",
+  );
+}",
+}
+`;
+
+exports[`remark-mdx-toc > [test #2] error-invalid-identifier 1`] = `[Error: Invalid name for an identifier: 1-invalid-identifier-starting-with-number]`;
+
+exports[`remark-mdx-toc > [test #3] fragment 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/fragment/input.mdx",
+    "tests/unit/__fixtures__/fragment/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [
+  {
+    depth: 1,
+    value: "Hello, world",
+    attributes: {},
+    children: [],
+  },
+  {
+    depth: 1,
+    value: "Goodbye, world",
+    attributes: {},
+    children: [],
+  },
+];
+function _createMdxContent(props) {
+  const _components = {
+    h1: "h1",
+    ...props.components,
+  };
+  return (
+    <>
+      <_components.h1>{"Hello, world"}</_components.h1>
+      {"\\n"}
+      <>{"Some fragment"}</>
+      {"\\n"}
+      <_components.h1>{"Goodbye, world"}</_components.h1>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}",
+}
+`;
+
+exports[`remark-mdx-toc > [test #4] non-heading-flow-element 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/non-heading-flow-element/input.mdx",
+    "tests/unit/__fixtures__/non-heading-flow-element/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [];
+function _createMdxContent(props) {
+  const _components = {
+    em: "em",
+    p: "p",
+    ...props.components,
+  };
+  return (
+    <>
+      <em>{"I'm in a non-heading, mdx flow element"}</em>
+      {"\\n"}
+      <_components.p>
+        <_components.em>
+          {"I'm in a non-heading, markdown flow element"}
+        </_components.em>
+      </_components.p>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}",
+}
+`;
+
+exports[`remark-mdx-toc > [test #5] use-default-name 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/use-default-name/input.mdx",
+    "tests/unit/__fixtures__/use-default-name/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [
+  {
+    depth: 2,
+    value: "Resource Acquisition Is Initialization (RAII)",
+    attributes: {},
+    children: [
+      {
+        depth: 3,
+        value: "Is There a Problem?",
+        attributes: {},
+        children: [],
+      },
+      {
+        depth: 3,
+        value: "C++ Classes",
+        attributes: {},
+        children: [],
+      },
+      {
+        depth: 3,
+        value: "The Solution",
+        attributes: {},
+        children: [],
+      },
+    ],
+  },
+];
+function _createMdxContent(props) {
+  const _components = {
+    h2: "h2",
+    h3: "h3",
+    ...props.components,
+  };
+  return (
+    <>
+      <_components.h2>
+        {"Resource Acquisition Is Initialization (RAII)"}
+      </_components.h2>
+      {"\\n"}
+      <_components.h3>{"Is There a Problem?"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"C++ Classes"}</_components.h3>
+      {"\\n"}
+      <_components.h3>{"The Solution"}</_components.h3>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}",
+}
+`;

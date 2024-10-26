@@ -14,9 +14,9 @@
     "directory": "packages/textfit"
   },
   "license": "MIT",
-  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
+  "author": "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)",
   "contributors": [
-    "Alan Norbauer <altano@gmail.com> (https://alan.norbauer.com/)"
+    "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)"
   ],
   "sideEffects": false,
   "type": "module",
