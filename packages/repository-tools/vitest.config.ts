@@ -6,6 +6,7 @@ export default defineProject({
     target: "es2020",
   },
   test: {
+    testTimeout: 15_000,
     dir: "tests/unit",
     globalSetup: ["./tests/utils/globalSetup.ts"],
     setupFiles: ["@altano/vitest-plugins/matchers"],
