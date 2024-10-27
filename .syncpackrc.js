@@ -13,6 +13,11 @@ const config = {
       isIgnored: true,
     },
     {
+      dependencyTypes: ["peer"],
+      packages: ["@altano/**"],
+      range: ".x",
+    },
+    {
       label: "Examples w/ exact versions",
       packages: ["!@altano/**"],
       dependencies: ["**"],
