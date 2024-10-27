@@ -1,8 +1,10 @@
 import { describe, it, expect } from "vitest";
+
+// test the public interface
 import { cdnify, type CdnifyOptions } from "@altano/html-cdnify";
 
 describe("cdnify", function () {
-  it("should conveniently wrap CDNTransformer", async function () {
+  it("should conveniently wrap CDNTransformer", async () => {
     const cdnifyOptions: CdnifyOptions = {
       cdnUrl: "//cdn.alan.norbauer.com/cdn/",
       bufferPath: "test.html",

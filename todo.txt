@@ -6,10 +6,11 @@ TODO: Look into npm Provenance w/ github actions
 
 vitest:
 x 2024-03-24 TODO: switch tests to use public package interface as appropriate (when new vitest >1.4.0 released)
-TODO: get vitest vscode extension working in monorepo
-TODO: factor out vitest config
+x 2024-10-26 TODO: factor out vitest config
+TODO: get vitest vscode extension working in monorepo (vitest workspaces conflict with turbo! can't have both atm.)
 TODO: add code coverage to all projects its missing from
 TODO: Investigate using restoreMocks everywhere
+TODO: once https://github.com/pnpm/pnpm/issues/8706 is fixed, consolidate vitest dependencies into test config project
 
 tsup/tsconfig:
 TODO: Revisit module/moduleResolution in all tsconfigs
@@ -29,6 +30,7 @@ lint:
 TODO: Look into eslint flat config to see if we can reduce config repetition
 TODO: make sure every project has a lint that points at src/tests
 TODO: Look into markdown linting
+TODO: prettier plugin for import order/sorting
 
 satori-fit-text:
 TODO: satori-fit-text: codesandbox (share with test somehow?)

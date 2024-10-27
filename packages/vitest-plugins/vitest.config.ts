@@ -1,19 +1,11 @@
-import { defineProject } from "vitest/config";
+import { defineConfig } from "vitest/config";
 
-export default defineProject({
+export default defineConfig({
   test: {
     dir: "tests/unit",
     coverage: {
       enabled: true,
-
-      exclude: [
-        "tests/e2e",
-        "playwright.config.ts",
-        ".eslintrc.cjs",
-        ".tsup",
-        "tests/unit/**/*.benchmark.{ts,tsx}",
-      ],
-
+      include: ["src"],
       provider: "v8",
       all: true,
       clean: true,

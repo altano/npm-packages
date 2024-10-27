@@ -42,21 +42,22 @@
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
+    "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
+    "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
-    "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/coverage-v8": "^2.1.3",
     "eslint": "^9.13.0",
     "jsdom": "^24.0.0",
     "prettier": "^3.3.3",
     "react": "^18.2.0",
     "typescript": "^5.6.3",
-    "vite": "^5.2.8",
-    "vitest": "^1.4.0"
+    "vite": "^5.4.10",
+    "vitest": "^2.1.3"
   },
   "peerDependencies": {
     "react": "^18.2.0"
