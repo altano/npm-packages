@@ -1,6 +1,6 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["src", "types"],
+  "include": ["src", "types", "*.config.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "types": ["./types/trumpet.d.ts"]

@@ -1,4 +1,4 @@
-import { test, type TestAPI } from "vitest";
+import { test } from "vitest";
 import { getDisposableDirectory } from "../../utils/getDisposableDirectory";
 import { createFromBundle } from "../../utils/createFromBundle";
 import path from "node:path";
@@ -18,7 +18,7 @@ type RepositoryFixture = {
 /**
  * test with a temporary, version-controlled repository
  */
-export const testWithRepository: TestAPI<RepositoryFixture> = test.extend({
+export const testWithRepository = test.extend<RepositoryFixture>({
   // eslint-disable-next-line no-empty-pattern
   async repository({}, use) {
     // The files we create the repository with

@@ -113,14 +113,10 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
       },
     );
 
-    this.condensedTransformOptions = Object.keys(groupedTransformOptions).map(
-      (key) => {
-        const likeTransformOptions = groupedTransformOptions[key];
-        if (likeTransformOptions == null || likeTransformOptions[0] == null) {
-          throw new Error(`No likeTransformOptions`);
-        }
-        const attribute = likeTransformOptions[0].attribute;
-        const attributeParser = likeTransformOptions[0].attributeParser;
+    this.condensedTransformOptions = Object.values(groupedTransformOptions).map(
+      (likeTransformOptions) => {
+        const attribute = likeTransformOptions[0]!.attribute;
+        const attributeParser = likeTransformOptions[0]!.attributeParser;
 
         return {
           attribute,

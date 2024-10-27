@@ -1,33 +1,8 @@
-import { defineProject } from "vitest/config";
+import { deriveConfig } from "@altano/testing";
 
-export default defineProject({
-  // So we can use `using` in ts (https://github.com/vitejs/vite/issues/15464#issuecomment-1872485703)
-  esbuild: {
-    target: "es2020",
-  },
+export default deriveConfig({
   test: {
     testTimeout: 15_000,
-    dir: "tests/unit",
     globalSetup: ["./tests/utils/globalSetup.ts"],
-    setupFiles: ["@altano/vitest-plugins/matchers"],
-    coverage: {
-      enabled: true,
-
-      exclude: [
-        "tests/e2e",
-        "playwright.config.ts",
-        ".eslintrc.cjs",
-        ".tsup",
-        "tests/unit/**/*.benchmark.{ts,tsx}",
-        "tests/utils/**/*",
-      ],
-
-      provider: "v8",
-      all: true,
-      clean: true,
-      skipFull: true,
-      thresholds: { "100": true },
-      reportsDirectory: ".coverage",
-    },
   },
 });

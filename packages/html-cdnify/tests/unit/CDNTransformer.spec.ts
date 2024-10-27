@@ -1,12 +1,6 @@
 import { describe, expect, it } from "vitest";
-
-import {
-  CDNTransformer,
-  cdnify,
-  type CDNTransformerOptions,
-  type CdnifyOptions,
-} from "@altano/html-cdnify";
-
+import { CDNTransformer, cdnify } from "../../src/index.js";
+import type { CDNTransformerOptions, CdnifyOptions } from "../../src/index.js";
 import * as stream from "node:stream";
 import streamToPromise from "stream-to-promise";
 import streamifier from "streamifier";
