@@ -1,5 +1,12 @@
 # @altano/use-toc-visible-sections
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [e872ffd]
+  - @altano/use-visible-elements@2.0.1
+
 ## 2.0.0
 
 ### Major Changes

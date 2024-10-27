@@ -1,5 +1,16 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 3.0.0
+
+### Major Changes
+
+- f649866: use fork of remark-mdx-toc (`remark-mdx-toc` => `@altano/remark-mdx-toc`) and upgrade all unified.js/mdx packages.
+
+### Patch Changes
+
+- Updated dependencies [f649866]
+  - @altano/remark-mdx-toc@0.0.1
+
 ## 2.0.1
 
 ### Patch Changes

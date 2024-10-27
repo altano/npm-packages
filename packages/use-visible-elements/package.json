@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-visible-elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-visible-elements",
   "repository": {

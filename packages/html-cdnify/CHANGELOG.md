@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 3.0.2
+
+### Patch Changes
+
+- 6a7f8c8: minor change to improve code test coverage
+
 ## 3.0.1
 
 ### Patch Changes
