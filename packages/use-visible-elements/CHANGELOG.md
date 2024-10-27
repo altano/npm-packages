@@ -1,5 +1,12 @@
 # @altano/use-visible-elements
 
+## 2.0.1
+
+### Patch Changes
+
+- e872ffd: upgrading dependencies
+  - @altano/use-element-observer@2.0.0
+
 ## 2.0.0
 
 ### Major Changes
