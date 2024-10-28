@@ -1,7 +1,0 @@
-{
-  "extends": "@altano/tsconfig/node.json",
-  "include": ["*.ts"],
-  "compilerOptions": {
-    "outDir": "dist"
-  }
-}

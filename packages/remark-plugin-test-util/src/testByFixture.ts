@@ -6,6 +6,23 @@ import { VFile } from "vfile";
 
 import type { Plugin } from "unified";
 
+type FixtureOptions = Record<string, unknown>;
+type FixtureOptionsExport = {
+  default: FixtureOptions;
+};
+
+function assertFixtureOptions(
+  value: unknown,
+): asserts value is FixtureOptionsExport {
+  if (value == null) {
+    throw new Error(`options.js is null`);
+  } else if (typeof value !== "object") {
+    throw new Error(`options.js doesn't export object`);
+  } else if (!("default" in value)) {
+    throw new Error(`options.js doesn't have default export`);
+  }
+}
+
 function isTodo(fixture: string): boolean {
   return fixture.startsWith("todo-");
 }
@@ -39,7 +56,9 @@ export async function getFixtureCompiler(
   const fixtureDir = join(fixturesDir, fixture);
   const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
   const inputMdxPath = join(fixtureDir, `input.mdx`);
-  const fixtureOptions = (await import(join(fixtureDir, "options.js"))).default;
+  const optionsImport: unknown = await import(join(fixtureDir, "options.js"));
+  assertFixtureOptions(optionsImport);
+  const fixtureOptions = optionsImport.default;
   const options = {
     ...fixtureOptions,
     ...optionOverrides,

@@ -80,7 +80,7 @@ const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> =
               // instead of directly on the tree, and then convert it back to a
               // tree.
               const tocExportString = generate(esNode.init);
-              const toc = JSON.parse(tocExportString);
+              const toc = JSON.parse(tocExportString) as TocEntry[];
 
               // Add slugs to the toc
               const tocWithSlugs = sluggifyTocEntries(toc);

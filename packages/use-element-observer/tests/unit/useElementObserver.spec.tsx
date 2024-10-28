@@ -35,7 +35,7 @@ describe("useElementObserver", async () => {
 
     expect(handleMount).toHaveBeenCalledTimes(1);
     const firstCall = handleMount.mock.calls[0]!;
-    const params = firstCall[0]!;
+    const params = firstCall[0];
     const [firstEl, secondEl] = params.values();
 
     expect(firstEl).toHaveProperty("tagName", "LI");

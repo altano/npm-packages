@@ -34,10 +34,12 @@
     },
     "lint": {
       "cache": false,
+      "dependsOn": ["build"],
       "outputs": []
     },
     "lint:fix": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["build"]
     },
     "//#lint": {
       "cache": false

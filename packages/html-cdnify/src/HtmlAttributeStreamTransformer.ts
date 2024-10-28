@@ -89,11 +89,11 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
       }
 
       if (typeof option.selector !== "string") {
-        throw new Error(`Invalid selector "${option.selector}" specified.`);
+        throw new Error(`Invalid selector specified.`);
       }
 
       if (typeof option.attribute !== "string") {
-        throw new Error(`Invalid attribute "${option.attribute}" specified.`);
+        throw new Error(`Invalid attribute specified.`);
       }
 
       if (!(option.attributeParser instanceof Function)) {

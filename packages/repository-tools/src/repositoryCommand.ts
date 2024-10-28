@@ -51,7 +51,7 @@ export async function repositoryExec(
     },
   }).then(({ stdout, stderr }) => {
     // console.timeEnd(msg);
-    return stderr ? Promise.reject(stderr.trim()) : stdout.trim();
+    return stderr ? Promise.reject(new Error(stderr.trim())) : stdout.trim();
   });
 }
 

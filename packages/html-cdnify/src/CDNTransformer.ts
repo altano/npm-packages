@@ -47,7 +47,7 @@ class OptionsMerger {
 
   static mergeCustomizer: MergeWithCustomizer = (objValue, srcValue) => {
     if (
-      OptionsMerger.isTransformDefinitions(objValue) ||
+      OptionsMerger.isTransformDefinitions(objValue) &&
       OptionsMerger.isTransformDefinitions(srcValue)
     ) {
       const result = unionBy(
@@ -113,7 +113,7 @@ export class CDNTransformer extends HtmlAttributeStreamTransformer.HtmlAttribute
     );
 
     if (typeof this.cdnOptions.cdnUrl !== "string") {
-      throw new Error(`Invalid cdnUrl "${this.cdnOptions.cdnUrl}" specified.`);
+      throw new Error(`Invalid cdnUrl specified.`);
     }
   }
 

@@ -12,6 +12,7 @@
  * the text is bleeding outside the left or right and trust that Satori isn't
  * both letting the text bleed AND filling too much space.
  */
+type getBBoxFn = SVGGraphicsElement["getBBox"];
 export default function getWidthAdjustedForInlineBleed(
   svg: SVGSVGElement,
   svgWidth: number,
@@ -21,7 +22,7 @@ export default function getWidthAdjustedForInlineBleed(
 
   for (const child of svg.children) {
     if ("getBBox" in child && typeof child["getBBox"] === "function") {
-      const { x, y } = child.getBBox();
+      const { x, y } = (child.getBBox as getBBoxFn)();
       smallestXValue = Math.min(smallestXValue, x);
       largestYValue = Math.max(largestYValue, y);
     }

@@ -18,7 +18,17 @@ export default {
   configs: {
     all: tseslint.config(
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
+
+      // typescript-eslint
+      ...tseslint.configs.recommendedTypeChecked,
+      {
+        languageOptions: {
+          parserOptions: {
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
+      },
 
       // ignore everything in the gitignore
       includeIgnoreFile(gitignorePath),
@@ -101,13 +111,9 @@ export default {
 
       // typescript-eslint customization
       {
-        files: ["**/*.{ts,tsx,mts,cts}"],
-        languageOptions: {
-          parserOptions: {
-            projectService: true,
-          },
-        },
+        // typescript-eslint global rule overrides
         rules: {
+          "@typescript-eslint/prefer-promise-reject-errors": "off",
           "@typescript-eslint/no-empty-function": "off",
           "@typescript-eslint/explicit-function-return-type": [
             "warn",
@@ -129,8 +135,15 @@ export default {
         },
       },
       {
-        // disable type-aware linting on .d.ts files
-        files: ["**/*.d.ts"],
+        // typescript-eslint rule overrides for tests
+        files: ["packages/*/tests/**/*"],
+        rules: {
+          "@typescript-eslint/require-await": "off",
+        },
+      },
+      {
+        // disable type-aware linting on some files
+        files: ["**/*.{js,mjs,json,d.ts}"],
         ...tseslint.configs.disableTypeChecked,
       },
 
