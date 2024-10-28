@@ -5,7 +5,7 @@ describe("readme", () => {
   it("should describe toMatchError", () => {
     expect(new Error("face")).toMatchError(
       expect.objectContaining({
-        stack: expect.stringContaining("readme.spec.ts"),
+        stack: expect.stringContaining("readme.spec.ts") as unknown,
       }),
     );
   });
@@ -14,7 +14,7 @@ describe("readme", () => {
       throw new Error("face");
     }).toThrowErrorMatching(
       expect.objectContaining({
-        stack: expect.stringContaining("readme.spec.ts"),
+        stack: expect.stringContaining("readme.spec.ts") as unknown,
       }),
     );
   });

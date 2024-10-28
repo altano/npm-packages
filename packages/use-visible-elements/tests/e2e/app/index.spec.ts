@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("useVisibleElements", async () => {
+test.describe("useVisibleElements", () => {
   test("simple scrolling into view", async ({ page }) => {
     await page.goto("/");
 

@@ -8,14 +8,14 @@ describe("matchers", () => {
         expect.objectContaining({
           message: "face",
           name: "Error",
-          stack: expect.any(String),
+          stack: expect.any(String) as unknown,
         }),
       );
     });
     it("should match an error by substring", () => {
       expect(new Error("your stupid face")).toMatchError(
         expect.objectContaining({
-          message: expect.stringContaining("stupid"),
+          message: expect.stringContaining("stupid") as unknown,
         }),
       );
     });

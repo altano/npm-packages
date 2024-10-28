@@ -20,7 +20,7 @@ export class Logger {
 
   logVFileOperation(vfile: VFile): () => void {
     if (vfile.basename == null || vfile.basename === "") {
-      this.#logger(`vfile: ${vfile}`);
+      this.#logger(`vfile: ${vfile.path}`);
     }
     const operation = vfile.basename ?? "";
     // `${dim(vfile.dirname ?? "")}/${cyan(vfile.basename ?? "")}`
