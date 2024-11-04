@@ -1,5 +1,12 @@
 # @altano/html-cdnify
 
+## 3.0.3
+
+### Patch Changes
+
+- 2750b66: - only merge transformDefinitions in options if both values are transformDefinition, not just one of the values
+  - fix error messages for invalid options
+
 ## 3.0.2
 
 ### Patch Changes
