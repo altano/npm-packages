@@ -124,14 +124,14 @@
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/3549532663732bfd89993204d40543e9edaec4f2?lastModified=1742272065&narHash=sha256-ud8vcSzJsZ%2FCK%2Br8%2Fv0lyf4yUntVmDq6Z0A41ODfWbE%3D"
     },
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver": {
-      "resolved": "github:pietdevries94/playwright-web-flake/868121dfe42a05f46f4abcdee6dae72316e9f920?lastModified=1725582087&narHash=sha256-1kby2k0%2BOaoNmf2oTj24oP10%2BoLsxNJFotIQt137dbs%3D#playwright-driver"
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-driver": {
+      "resolved": "github:pietdevries94/playwright-web-flake/4f188a8fb7c9eaf1993a0f552f363f09863f236e?lastModified=1742461952&narHash=sha256-hA3OAiPQ9lwUbpIyraJptSjQM2uZTvOHZdpBUC41KtY%3D#playwright-driver"
     },
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver.browsers": {
-      "resolved": "github:pietdevries94/playwright-web-flake/868121dfe42a05f46f4abcdee6dae72316e9f920?lastModified=1725582087&narHash=sha256-1kby2k0%2BOaoNmf2oTj24oP10%2BoLsxNJFotIQt137dbs%3D#playwright-driver.browsers"
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-driver.browsers": {
+      "resolved": "github:pietdevries94/playwright-web-flake/4f188a8fb7c9eaf1993a0f552f363f09863f236e?lastModified=1742461952&narHash=sha256-hA3OAiPQ9lwUbpIyraJptSjQM2uZTvOHZdpBUC41KtY%3D#playwright-driver.browsers"
     },
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-test": {
-      "resolved": "github:pietdevries94/playwright-web-flake/868121dfe42a05f46f4abcdee6dae72316e9f920?lastModified=1725582087&narHash=sha256-1kby2k0%2BOaoNmf2oTj24oP10%2BoLsxNJFotIQt137dbs%3D#playwright-test"
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-test": {
+      "resolved": "github:pietdevries94/playwright-web-flake/4f188a8fb7c9eaf1993a0f552f363f09863f236e?lastModified=1742461952&narHash=sha256-hA3OAiPQ9lwUbpIyraJptSjQM2uZTvOHZdpBUC41KtY%3D#playwright-test"
     },
     "graphite-cli@latest": {
       "last_modified": "2025-03-11T17:52:14Z",

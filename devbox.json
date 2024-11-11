@@ -8,9 +8,9 @@
     "subversion@latest",
     "tree@latest",
     "graphite-cli@latest",
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver",
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver.browsers",
-    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-test"
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-driver",
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-driver.browsers",
+    "github:pietdevries94/playwright-web-flake/1.51.1#playwright-test"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
