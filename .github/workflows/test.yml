@@ -23,23 +23,34 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.11.0
+        uses: jetpack-io/devbox-install-action@v0.12.0
         with:
           enable-cache: true
-          devbox-version: 0.13.6
+          devbox-version: 0.14.0
 
       - name: Install dependencies
         run: devbox run pnpm install
 
-      - name: Dump Playwright Information
+      - name: Dump Playwright Information (pnpm)
+        run: devbox run pnpm exec playwright --version
+
+      - name: Dump Playwright Information (devbox)
+        run: devbox run playwright --version
+
+      - name: Dump Playwright Information (browsers)
         run: |
           eval "$(devbox shellenv)"
-          echo "Playwright: `devbox run pnpm exec playwright --version`"
           echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+          echo "Browsers: `devbox run tree -L 1 $PLAYWRIGHT_BROWSERS_PATH`"
+
+      # # NOTE: This doesn't work either. Webkit starts but crashes/closes immediately.
+      # # this shouldn't be necessary as all deps should be installed by
+      # # devbox/nix, but that isn't working
+      # - name: Install Playwright dependencies
+      #   run: devbox run pnpm exec playwright install-deps
 
       - name: Validate and Build
-        run: |
-          devbox run pnpm prep
+        run: devbox run pnpm prep
 
       - uses: actions/upload-artifact@v4
         if: always()
