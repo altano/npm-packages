@@ -5,16 +5,18 @@
     "git@latest",
     "mercurialFull@latest",
     "nodejs@20.11.1",
-    "playwright-driver.browsers",
-    "playwright-driver@1.47.0",
     "sapling@latest",
     "subversion@latest",
     "tree@latest",
-    "graphite-cli@latest"
+    "graphite-cli@latest",
+    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver",
+    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-driver.browsers",
+    "github:pietdevries94/playwright-web-flake/1.47.0#playwright-test"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
+    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR",
     "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
-    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR"
+    "PLAYWRIGHT_SKIP_BROWSER_GC": "1"
   }
 }
