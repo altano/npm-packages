@@ -15,7 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  test-misc:
+    # All non-E2E tests/validations. Runs inside Devbox.
+    name: Unit tests, linting, etc
     runs-on: ubuntu-latest
 
     steps:
@@ -31,18 +33,46 @@ jobs:
       - name: Install dependencies
         run: devbox run pnpm install
 
-      - name: Dump Playwright Information
-        run: |
-          eval "$(devbox shellenv)"
-          echo "Playwright: `devbox run pnpm exec playwright --version`"
-          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
-
       - name: Validate and Build
-        run: |
-          devbox run pnpm prep
+        run: devbox run pnpm exec turbo run build test:unit lint format check:dependencies check:types check:exports
 
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: "**/playwright-report/"
+          retention-days: 30
+
+  test-e2e:
+    # These run outside of Devbox, since Devbox doesn't play well with Playwright
+    name: End-to-end Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          # no version specified (uses version in packageManager field in
+          # package.json)
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.1
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Validate and Build
+        run: pnpm exec turbo run test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: "**/playwright-report/"

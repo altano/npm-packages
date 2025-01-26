@@ -46,7 +46,7 @@
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
-    "@playwright/test": "1.47.0",
+    "@playwright/test": "1.48.2",
     "@types/node": "^20.16.5",
     "typescript": "^5.6.3",
     "vite": "^5.4.12",

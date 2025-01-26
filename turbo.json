@@ -29,8 +29,12 @@
       "dependsOn": ["build"]
     },
     "test:e2e": {
-      "dependsOn": ["build"],
-      "env": ["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "PLAYWRIGHT_BROWSERS_PATH"]
+      "dependsOn": ["build", "//#install:playwright"],
+      "env": ["PLAYWRIGHT_*"]
+    },
+    "//#install:playwright": {
+      "inputs": ["./package.json"],
+      "env": ["PLAYWRIGHT_*"]
     },
     "lint": {
       "cache": false,
