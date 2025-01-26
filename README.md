@@ -16,7 +16,7 @@ Read the [Devbox quickstart](https://jetpack.io/devbox/docs/contributor-quicksta
 The Playwright setup in this repository is a little finicky. When updating the version:
 
 - The version of `@playwright/test` in any package.json must be kept in sync with `playwright-driver` in `devbox.json`. Both should be precisely hard-coded (no semver ranges or `'latest'`).
-- The nixpkgs hash in `devbox.lock` for `playwright-driver.browsers` must be manually changed to match the hash for the `playwright-driver` entry or the browsers will be the wrong version and tests will fail.
+- The browser's path in `devbox.lock` for `playwright-driver.browsers` must be manually changed to match the hash for the `playwright-driver` entry (for the given platform). You can get the path with `ls /nix/store | grep 'playwright' | sort -k2 -t '-'`.
 
 ## Contributing
 

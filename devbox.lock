@@ -341,6 +341,14 @@
               "default": true
             }
           ]
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "path": "/nix/store/3436ry676mz5yb6zfbkgmwkgj4xiyl5s-playwright-browsers",
+              "default": true
+            }
+          ]
         }
       }
     },

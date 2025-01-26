@@ -30,7 +30,7 @@
     },
     "test:e2e": {
       "dependsOn": ["build"],
-      "env": ["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "PLAYWRIGHT_BROWSERS_PATH"]
+      "env": ["DEVBOX_*", "LD_LIBRARY_PATH", "PLAYWRIGHT_*"]
     },
     "lint": {
       "cache": false,
