@@ -31,11 +31,17 @@ jobs:
       - name: Install dependencies
         run: devbox run pnpm install
 
-      - name: Dump Playwright Information
-        run: |
-          eval "$(devbox shellenv)"
-          echo "Playwright: `devbox run pnpm exec playwright --version`"
-          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+      # - name: Dump Playwright Information
+      #   run: |
+      #     echo -------------------------------------------------------
+      #     devbox shellenv | grep PLAYWRIGHT
+      #     echo -------------------------------------------------------
+      #     echo "playwright version:"
+      #     devbox run playwright --version
+      #     echo -------------------------------------------------------
+      #     echo "@playwright/test version:"
+      #     devbox run pnpm ls -r @playwright/test
+      #     echo -------------------------------------------------------
 
       - name: Validate and Build
         run: |
