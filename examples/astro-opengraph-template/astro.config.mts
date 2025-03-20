@@ -1,6 +1,8 @@
 import { defineConfig } from "astro/config";
 import opengraphImage from "@altano/astro-opengraph-template";
 
+import metaTags from "astro-meta-tags";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -25,5 +27,6 @@ export default defineConfig({
         };
       },
     }),
+    metaTags(),
   ],
 });
