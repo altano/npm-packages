@@ -53,8 +53,8 @@ TODO: update readme
 x 2024-03-24 TODO: add an e2e test
 
 tests:
-TODO: unit => tests/unit
-TODO: e2e => tests/e2e
+x 2025-03-20 TODO: unit => tests/unit
+x 2025-03-20 TODO: e2e => tests/e2e
 TODO: playwright: factor out playwright config
 TODO: switch playwright tests to component tests (https://playwright.dev/docs/test-components#example)
 TODO: get linux into `playwright-driver.browsers` in devbox.lock, enable firefox/safari in playwright in CI
@@ -68,23 +68,24 @@ x 2024-03-25 TODO: add tests
 TODO: fix broken readme example (hook must be used in tree)
 
 astro-opengraph-template todo:
-TODO: add tests for alternate image formats back in
-TODO: give instructions on using https://github.com/patrick91/astro-meta-tags#readme to debug tags/image
-TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)
+TODO: add tests for alternate image formats back in OR
+TODO: strip out all the image format customization stuff for now, it's just noise.
+x 2025-03-19 TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)
 TODO: update satori
-TODO: documentation
-TODO: document as "experimental", like container apis
-TODO: switch from inline style attr to astro `<style>` in templates once that is supported by container api
+TODO: documentation redo
+TODO: document needing to enable experimental container apis
+TODO: document using https://github.com/patrick91/astro-meta-tags#readme to debug tags/image
+TODO: document CSS limitations in .astro file (e.g. no style tags, no style imports)
 TODO: tests for component
 TODO: document a catch-all opengraph at root
 TODO: make component's default image location configurable?
 TODO: rename `svgOptions` to `satoriOptions` everywhere (or `imageOptions`)
-TODO: strip out all the image format customization stuff for now, it's just noise.
 TODO: move "opengraph.png" default to config file (and allow customization?)
 TODO: Rename to just Astro-opengraph?
 TODO: Config for default opengraph, route can be injected
 x 2025-03-18 TODO: Config for default meta tags like title/description
 TODO: `import OpenGraphmeta from "@altano/astro/component/meta.astro"` => `import {OpenGraphMeta} from "@altano/astro/components"`
 astro-opengraph-template abandoned:
+x 2025-03-19 TODO: switch from inline style attr to astro `<style>` in templates once that is supported by container api (NM: will never be supported in Satori)
 x 2025-03-18 TODO: add developer toolbar preview of opengraph image on page that uses it
 x 2025-03-18 TODO: add developer toolbar preview of opengraph image on template's html page (in dev)

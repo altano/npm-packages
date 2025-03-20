@@ -28,6 +28,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      prettier-plugin-jsdoc:
+        specifier: ^1.3.2
+        version: 1.3.2(prettier@3.3.3)
       syncpack:
         specifier: ^13.0.0
         version: 13.0.0(typescript@5.8.2)
@@ -55,6 +58,9 @@ importers:
       astro:
         specifier: ^5.4.0
         version: 5.5.3(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.31.0)(typescript@5.8.2)(yaml@2.4.2)
+      astro-meta-tags:
+        specifier: ^0.3.1
+        version: 0.3.1(astro@5.5.3(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.31.0)(typescript@5.8.2)(yaml@2.4.2))
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -102,8 +108,8 @@ importers:
         specifier: ^2.1.35
         version: 2.1.35
       satori:
-        specifier: ^0.10.13
-        version: 0.10.13
+        specifier: ^0.12.1
+        version: 0.12.1
       satori-html:
         specifier: ^0.3.2
         version: 0.3.2
@@ -604,8 +610,8 @@ importers:
         specifier: ^4.3.4
         version: 4.3.4(supports-color@8.1.1)
       satori:
-        specifier: ^0.10.13
-        version: 0.10.13
+        specifier: ^0.12.1
+        version: 0.12.1
       satori-html:
         specifier: ^0.3.2
         version: 0.3.2
@@ -2756,6 +2762,11 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
+  astro-meta-tags@0.3.1:
+    resolution: {integrity: sha512-6g/SfAVTV7BsGlfWU+s/Kvo6atyn9DpfI7Dq3fE/ck3ppfg30aoeT2Uxu7UH4yla3QXAUWaJIher7fGjewf0ew==}
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0-beta.0
+
   astro@5.5.3:
     resolution: {integrity: sha512-FvqIo5jkunP5R6FkY5vuFYElTOqjnazuiN0x/yf1F+nvedsGDemm5K7mS6RTmFVB291mE9WWn1AbuJsFWEcHgg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
@@ -2799,6 +2810,9 @@ packages:
   binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
+
+  binary-searching@2.0.5:
+    resolution: {integrity: sha512-v4N2l3RxL+m4zDxyxz3Ne2aTmiPn8ZUpKFpdPtO+ItW1NcTCXA7JeHG5GMBSvoKSkQZ9ycS+EouDVxYB9ufKWA==}
 
   boxen@8.0.1:
     resolution: {integrity: sha512-F3PH5k5juxom4xktynS7MoFY+NUWH5LC4CnH11YB8NPew+HLpmBLCybSAEyb2F+4pRXhuhWqFesoQd6DAyc2hw==}
@@ -3051,6 +3065,10 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
+  comment-parser@1.4.1:
+    resolution: {integrity: sha512-buhp5kePrmda3vhc5B9t7pUQXAb2Tnd0qgpkIhPhkHXxJpiPJ11H0ZEU0oBpJ2QztSbzG/ZxMj/CHsYJqRHmyg==}
+    engines: {node: '>= 12.0.0'}
+
   common-ancestor-path@1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
 
@@ -3116,6 +3134,10 @@ packages:
   css-color-keywords@1.0.0:
     resolution: {integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==}
     engines: {node: '>=4'}
+
+  css-gradient-parser@0.0.16:
+    resolution: {integrity: sha512-3O5QdqgFRUbXvK1x5INf1YkBz1UKSWqrd63vWsum8MNHDBYD5urm3QtxZbKU259OrEXNM26lP/MPY3d1IGkBgA==}
+    engines: {node: '>=16'}
 
   css-in-js-utils@3.1.0:
     resolution: {integrity: sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==}
@@ -5522,6 +5544,12 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
+  prettier-plugin-jsdoc@1.3.2:
+    resolution: {integrity: sha512-LNi9eq0TjyZn/PUNf/SYQxxUvGg5FLK4alEbi3i/S+2JbMyTu790c/puFueXzx09KP44oWCJ+TaHRyM/a0rKJQ==}
+    engines: {node: '>=14.13.1 || >=16.0.0'}
+    peerDependencies:
+      prettier: ^3.0.0
+
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -5881,6 +5909,10 @@ packages:
 
   satori@0.10.13:
     resolution: {integrity: sha512-klCwkVYMQ/ZN5inJLHzrUmGwoRfsdP7idB5hfpJ1jfiJk1ErDitK8Hkc6Kll1+Ox2WtqEuGecSZLnmup3CGzvQ==}
+    engines: {node: '>=16'}
+
+  satori@0.12.1:
+    resolution: {integrity: sha512-0SbjchvDrDbeXeQgxWVtSWxww7qcFgk3DtSE2/blHOSlLsSHwIqO2fCrtVa/EudJ7Eqno8A33QNx56rUyGbLuw==}
     engines: {node: '>=16'}
 
   sax@1.3.0:
@@ -8913,6 +8945,10 @@ snapshots:
 
   astring@1.9.0: {}
 
+  astro-meta-tags@0.3.1(astro@5.5.3(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.31.0)(typescript@5.8.2)(yaml@2.4.2)):
+    dependencies:
+      astro: 5.5.3(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.31.0)(typescript@5.8.2)(yaml@2.4.2)
+
   astro@5.5.3(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.31.0)(typescript@5.8.2)(yaml@2.4.2):
     dependencies:
       '@astrojs/compiler': 2.11.0
@@ -9034,6 +9070,8 @@ snapshots:
       is-windows: 1.0.2
 
   binary-extensions@2.2.0: {}
+
+  binary-searching@2.0.5: {}
 
   boxen@8.0.1:
     dependencies:
@@ -9307,6 +9345,8 @@ snapshots:
 
   commander@4.1.1: {}
 
+  comment-parser@1.4.1: {}
+
   common-ancestor-path@1.0.1: {}
 
   common-path-prefix@3.0.0: {}
@@ -9371,6 +9411,8 @@ snapshots:
   css-box-shadow@1.0.0-3: {}
 
   css-color-keywords@1.0.0: {}
+
+  css-gradient-parser@0.0.16: {}
 
   css-in-js-utils@3.1.0:
     dependencies:
@@ -12509,6 +12551,15 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
+  prettier-plugin-jsdoc@1.3.2(prettier@3.3.3):
+    dependencies:
+      binary-searching: 2.0.5
+      comment-parser: 1.4.1
+      mdast-util-from-markdown: 2.0.0
+      prettier: 3.3.3
+    transitivePeerDependencies:
+      - supports-color
+
   prettier@2.8.8: {}
 
   prettier@3.3.3: {}
@@ -13060,6 +13111,20 @@ snapshots:
       '@shuding/opentype.js': 1.4.0-beta.0
       css-background-parser: 0.1.0
       css-box-shadow: 1.0.0-3
+      css-to-react-native: 3.2.0
+      emoji-regex: 10.3.0
+      escape-html: 1.0.3
+      linebreak: 1.1.0
+      parse-css-color: 0.2.1
+      postcss-value-parser: 4.2.0
+      yoga-wasm-web: 0.3.3
+
+  satori@0.12.1:
+    dependencies:
+      '@shuding/opentype.js': 1.4.0-beta.0
+      css-background-parser: 0.1.0
+      css-box-shadow: 1.0.0-3
+      css-gradient-parser: 0.0.16
       css-to-react-native: 3.2.0
       emoji-regex: 10.3.0
       escape-html: 1.0.3
