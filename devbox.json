@@ -1,8 +1,7 @@
 {
   "packages": [
     "difftastic@latest",
-    "git-branchless@latest",
-    "git@latest",
+    "git@2.44.1",
     "mercurialFull@latest",
     "nodejs@20.11.1",
     "playwright-driver.browsers",
