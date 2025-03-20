@@ -4,6 +4,9 @@ x 2024-03-24 TODO: remove unnecessary react imports
 x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
 TODO: Look into npm Provenance w/ github actions
 
+turbo:
+TODO: experiment with `turbo boundaries`
+
 vitest:
 x 2024-03-24 TODO: switch tests to use public package interface as appropriate (when new vitest >1.4.0 released)
 x 2024-10-26 TODO: factor out vitest config
