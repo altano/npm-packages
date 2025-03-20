@@ -9,6 +9,7 @@ import { ImageDefaults } from "./config.js";
 import path from "node:path";
 import url from "node:url";
 import fg from "fast-glob";
+import { createRequire } from "node:module";
 
 /**
  * The integration
@@ -51,9 +52,23 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
           "_opengraph.png.astro",
           `opengraph-image.${imageFormat}`,
         );
+        // const req = createRequire(import.meta.url);
+        // const endpointPath = req.resolve(
+        //   "@altano/astro-opengraph-template/endpoint-image",
+        // );
+        const endpointPath = import.meta.resolve(
+          "@altano/astro-opengraph-template/endpoint-image",
+        );
+        const endpointURL = new URL(endpointPath);
+        endpointURL.searchParams.set("face", "1");
+        console.log({
+          routePattern,
+          endpointPath,
+          endpointURL: endpointURL.toString(),
+        });
         injectRoute({
           pattern: routePattern,
-          entrypoint: "@altano/astro-opengraph-template/endpoint-image",
+          entrypoint: endpointURL,
         });
         // TODO need to injectRoute a dynamic/ssr version of endpoint-image that
         // doesn't implement getStaticPaths

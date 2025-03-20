@@ -199,6 +199,8 @@ type ParamsEntry = {
 // _opengraph.png.astro exports it. Otherwise it has to be dynamic and support
 // fully dynamic loads.
 export function getStaticPaths(): ParamsEntry[] {
+  console.log(`[getStaticPaths]`, import.meta.url);
+
   // return [
   //   { params: { slug: undefined, path: undefined } },
   //   { params: { slug: "hello-world", path: "posts" } },
