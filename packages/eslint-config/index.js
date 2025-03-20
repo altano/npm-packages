@@ -11,6 +11,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { includeIgnoreFile } from "@eslint/compat";
 import gitignorePath from "./gitignorePath.js";
+import turboConfig from "eslint-config-turbo/flat";
 
 const compat = new FlatCompat();
 
@@ -18,6 +19,9 @@ export default {
   configs: {
     all: tseslint.config(
       eslint.configs.recommended,
+
+      // @ts-expect-error the turbo types for severity are just 'string' so they don't line up
+      ...turboConfig,
 
       // typescript-eslint
       ...tseslint.configs.recommendedTypeChecked,

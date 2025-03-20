@@ -5,7 +5,7 @@
 const fs = require("fs");
 const pacote = require("pacote");
 const { name } = require("./package.json");
-const asyncPool = require("tiny-async-pool");
+const asyncPool = require("@altano/tiny-async-pool");
 
 async function asyncPoolAll(...args) {
   const results = [];
