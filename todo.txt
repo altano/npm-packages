@@ -68,3 +68,4 @@ TODO: fix broken readme example (hook must be used in tree)
 
 astro-opengraph-image:
 TODO: add tests for alternate image formats back in
+TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)
