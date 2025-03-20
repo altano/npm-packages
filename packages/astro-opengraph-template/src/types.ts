@@ -37,6 +37,16 @@ export type SvgOptionsWithFontBuffersResolved = SvgOptionsBaseResolved & {
   fonts: FontWithBuffer[];
 };
 
+export type ComponentMetaTagFallbacks = {
+  "og:title"?: string;
+  "og:description"?: string;
+  "og:image"?: string;
+};
+
+export type MetaTagDefaults = {
+  "og:image": string;
+};
+
 export type OpengraphImageConfig = {
   /**
    * An image format to use for the output image. Defaults to "png"
@@ -47,18 +57,24 @@ export type OpengraphImageConfig = {
    * must be provided.
    */
   getSvgOptions(): Promise<SvgOptionsWithFontPaths>;
+  /**
+   * Defaults to use in the component for tags you don't manually set.
+   */
+  componentMetaTagFallbacks?: ComponentMetaTagFallbacks;
 };
-/**
- * This must remain JSON-serializable!
- */
 
 type AstroConfigSetupHookOptions = Parameters<
   Astro.IntegrationHooks["astro:config:setup"]
 >[0];
 type Command = AstroConfigSetupHookOptions["command"];
+
+/**
+ * This must remain JSON-serializable!
+ */
 export type OpengraphImageConfigSerializable = {
   imageFormat?: ImageFormat | undefined;
   svgOptions: SvgOptionsWithFontPaths;
+  componentMetaTagFallbacks?: ComponentMetaTagFallbacks;
   command: Command;
 };
 
@@ -69,11 +85,13 @@ export type OpengraphImageConfigSerializableMaybeMocked =
 export type OpengraphImageConfigDeserialized = {
   imageFormat?: ImageFormat | undefined;
   svgOptions: SvgOptionsWithFontBuffers;
+  componentMetaTagFallbacks?: ComponentMetaTagFallbacks | undefined;
   command: Command;
 };
 
 export type OpengraphImageConfigResolved = {
   imageFormat: ImageFormat;
   svgOptions: SvgOptionsWithFontBuffersResolved;
+  componentMetaTagFallbacks: ComponentMetaTagFallbacks & MetaTagDefaults;
   command: Command;
 };

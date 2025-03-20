@@ -5,15 +5,11 @@ import type {
   OpengraphImageConfigSerializable,
 } from "./types.js";
 
-/**
- * The integration
- */
+/** The integration */
 export default (config: OpengraphImageConfig): AstroIntegration => ({
   name: "astro-opengraph-template",
   hooks: {
     async "astro:config:setup"({ updateConfig, command }): Promise<void> {
-      // console.log(`[astro:config:setup]`);
-
       const [svgOptions] = await Promise.all([config.getSvgOptions()]);
       const configSerializable: OpengraphImageConfigSerializable = {
         imageFormat: config.imageFormat,

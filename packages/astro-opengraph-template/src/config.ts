@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 
 import type {
   FontWithBuffer,
+  MetaTagDefaults,
   OpengraphImageConfigDeserialized,
   OpengraphImageConfigResolved,
   OpengraphImageConfigSerializableMaybeMocked,
@@ -33,14 +34,18 @@ export async function deserializeVirtualConfig(
   };
 }
 
-export const ImageDefaults = {
+export const imageDefaults = {
   format: "png",
 } as const;
 
-const SvgDefaults = {
+const svgDefaults = {
   width: 1200,
   height: 630,
 } as const;
+
+const metaTagDefaults: MetaTagDefaults = {
+  "og:image": `./opengraph.${imageDefaults.format}`,
+};
 
 export async function getResolvedConfig(): Promise<OpengraphImageConfigResolved> {
   // Grab the virtual module that holds the integration's user config
@@ -49,10 +54,14 @@ export async function getResolvedConfig(): Promise<OpengraphImageConfigResolved>
   const deserialized = await deserializeVirtualConfig(lazyConfig);
   return {
     ...deserialized,
-    imageFormat: deserialized.imageFormat ?? ImageDefaults.format,
+    imageFormat: deserialized.imageFormat ?? imageDefaults.format,
     svgOptions: {
-      ...SvgDefaults,
+      ...svgDefaults,
       ...deserialized.svgOptions,
+    },
+    componentMetaTagFallbacks: {
+      ...deserialized.componentMetaTagFallbacks,
+      ...metaTagDefaults,
     },
   };
 }
