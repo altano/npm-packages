@@ -1,6 +1,6 @@
 import type { ViteUserConfig } from "astro";
 
-import type { OpengraphImageConfigSerializable } from "./integration.js";
+import type { OpengraphImageConfigSerializable } from "./types.js";
 
 function resolveVirtualModuleId<T extends string>(id: T): `\0${T}` {
   return `\0${id}`;

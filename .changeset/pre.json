@@ -3,13 +3,10 @@
   "tag": "alpha",
   "initialVersions": {
     "@altano/assets": "0.0.0",
-    "@altano/astro-html-to-image-example": "0.0.1",
     "@altano/astro-opengraph-image-example": "0.0.1",
     "@altano/remark-astrojs-image-example": "0.0.1",
     "satori-fit-text-demo": "0.1.1",
     "@altano/use-toc-visible-sections-example": "0.0.0",
-    "@altano/astro-html-to-image": "0.0.1-alpha.3",
-    "@altano/astro-opengraph-image": "0.0.1-alpha.3",
     "eslint-config-altano": "0.0.0",
     "@altano/html-cdnify": "1.0.1",
     "package-time-traveler": "2.0.0",

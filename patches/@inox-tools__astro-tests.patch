@@ -1,0 +1,119 @@
+diff --git a/dist/astroFixture.d.ts b/dist/astroFixture.d.ts
+index bd4908d39f5f5d5f41d36d8965efbd9cf6ee920b..95744cf39dffc736d7bfb4ef7785cb87a8dde9c6 100644
+--- a/dist/astroFixture.d.ts
++++ b/dist/astroFixture.d.ts
+@@ -2,6 +2,7 @@ import * as node_http from 'node:http';
+ import { request } from 'undici';
+ import { dev, preview, AstroInlineConfig, AstroConfig, build, sync } from 'astro';
+ import { App } from 'astro/app';
++import type { readFile } from 'node:fs/promises';
+ 
+ type InlineConfig = Omit<AstroInlineConfig, 'root'> & {
+     root: string | URL;
+@@ -74,18 +75,33 @@ type Fixture = {
+      * Checks whether the given path exists on the build output.
+      */
+     pathExists: (path: string) => boolean;
+-    /**
+-     * Read a file from the build.
+-     *
+-     * Returns null if the file doesn't exist.
+-     */
+-    readFile: (path: string) => Promise<string | null>;
+-    /**
+-     * Read a file from the project.
+-     *
+-     * Returns null if the file doesn't exist.
+-     */
+-    readSrcFile: (path: string) => Promise<string | null>;
++	/**
++	 * Read a file (as a string) from the build. Do NOT use this for binary files (e.g. images).
++	 *
++	 * Returns null if the file doesn't exist.
++	 */
++	readFile: (path: string, encoding?: BufferEncoding) => Promise<string | null>;
++	/**
++	 * Read a file (as a buffer) from the build. DO use this for binary files (e.g. images).
++	 *
++	 * Returns null if the file doesn't exist.
++	 */
++	readFileAsBuffer: (path: string) => Promise<Buffer | null>;
++	/**
++	 * Read a file (as a string) from the project. Do NOT use this for binary files (e.g. images).
++	 *
++	 * Returns null if the file doesn't exist.
++	 */
++	readSrcFile: (path: string, encoding?: BufferEncoding) => Promise<string | null>;
++	/**
++	 * Read a file (as a buffer) from the project. DO use this for binary files (e.g. images).
++	 *
++	 * Returns null if the file doesn't exist.
++	 */
++	readSrcFileAsBuffer: (
++		path: string,
++		options?: Parameters<typeof readFile>[1]
++	) => Promise<Buffer | null>;
+     /**
+      * Edit a file in the fixture.
+      *
+diff --git a/dist/astroFixture.js b/dist/astroFixture.js
+index aa854fba88582f732fcfcf05aaf208eb0b97ba04..3b64b445ef1ddc32a6adcb0793022e0007a4ef31 100644
+--- a/dist/astroFixture.js
++++ b/dist/astroFixture.js
+@@ -186,20 +186,42 @@ async function loadFixture({ root, ...remaining }) {
+       }
+     },
+     pathExists: (p) => fs.existsSync(resolveOutPath(p)),
+-    readFile: async (filePath) => {
+-      const path2 = resolveOutPath(filePath);
+-      if (!fs.existsSync(path2)) {
+-        return null;
+-      }
+-      return fs.promises.readFile(path2, "utf8");
+-    },
+-    readSrcFile: async (filePath) => {
+-      const path2 = resolveProjectPath(filePath);
+-      if (!fs.existsSync(path2)) {
+-        return null;
+-      }
+-      return fs.promises.readFile(path2, "utf8");
+-    },
++		readFile: async (filePath, encoding = 'utf8') => {
++			const path = resolveOutPath(filePath);
++
++			if (!fs.existsSync(path)) {
++				return null;
++			}
++
++			return fs.promises.readFile(path, encoding);
++		},
++		readFileAsBuffer: async (filePath) => {
++			const path = resolveOutPath(filePath);
++
++			if (!fs.existsSync(path)) {
++				return null;
++			}
++
++			return fs.promises.readFile(path);
++		},
++		readSrcFile: async (filePath, encoding = 'utf8') => {
++			const path = resolveProjectPath(filePath);
++
++			if (!fs.existsSync(path)) {
++				return null;
++			}
++
++			return fs.promises.readFile(path, encoding);
++		},
++		readSrcFileAsBuffer: async (filePath) => {
++			const path = resolveProjectPath(filePath);
++
++			if (!fs.existsSync(path)) {
++				return null;
++			}
++
++			return fs.promises.readFile(path);
++		},
+     editFile: async (filePath, newContentsOrCallback) => {
+       const fileUrl = resolveProjectPath(filePath);
+       const contents = fs.existsSync(fileUrl) ? await fs.promises.readFile(fileUrl, "utf-8") : null;

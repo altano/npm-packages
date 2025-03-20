@@ -11,10 +11,10 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@altano/astro-opengraph-image": "workspace:*",
+    "@altano/astro-opengraph-image-endpoint": "workspace:*",
     "@fontsource-variable/inter": "^5.0.17",
     "@fontsource/inter": "^5.0.17",
-    "astro": "^4.5.5",
+    "astro": "^5.4.0",
     "sharp": "^0.33.1"
   },
   "publishConfig": {

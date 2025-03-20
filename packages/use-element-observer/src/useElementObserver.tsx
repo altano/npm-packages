@@ -11,7 +11,7 @@ export const ElementObserverContext = React.createContext<Context | null>(null);
 export interface Options {
   selector: string;
   tree: React.ReactNode;
-  useWrapperDiv?: boolean;
+  useWrapperDiv?: boolean | undefined;
 }
 
 /**

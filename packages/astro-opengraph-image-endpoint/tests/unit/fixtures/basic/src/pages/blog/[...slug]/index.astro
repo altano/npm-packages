@@ -1,5 +1,5 @@
 ---
-import OpenGraphMeta from "@altano/astro-opengraph-image-endpoint/components/meta.astro";
+// import OpenGraphMeta from "@altano/astro-opengraph-image-endpoint/components/meta.astro";
 
 export function getStaticPaths() {
   return [
@@ -17,10 +17,11 @@ if (slug == null) {
 <html>
   <head>
     <title>Post: {slug}</title>
+    <!--
     <OpenGraphMeta
       title={slug.replace("-", " ").toUpperCase()}
       description="An article with a description"
-    />
+    /> -->
   </head>
   <body>
     This is a post with the slug {slug}

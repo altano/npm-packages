@@ -2,7 +2,7 @@ import { deriveConfig } from "@altano/testing";
 
 export default deriveConfig({
   test: {
-    // @TODO remove this
+    // TODO remove this (enable coverage)
     coverage: {
       enabled: false,
     },

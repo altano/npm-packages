@@ -1,3 +1,9 @@
+TODO Fill this out
+TODO Fill this out
+TODO Fill this out
+TODO Fill this out
+TODO Fill this out
+
 > ⚠️ **WORK IN PROGRESS**: This package requires changes[^filename-change] in Astro before it will be useable. Sit tight!
 
 # astro-opengraph-image-endpoint
@@ -218,7 +224,7 @@ export const getStaticPaths = gsp;
 
 # How it Works
 
-This library is a tiny wrapper around [@altano/astro-html-to-image](https://github.com/altano/npm-packages/tree/main/packages/astro-html-to-image) which can convert any html response in Astro into an image.
+TBD
 
 [^filename-change]: https://github.com/withastro/roadmap/discussions/643
 

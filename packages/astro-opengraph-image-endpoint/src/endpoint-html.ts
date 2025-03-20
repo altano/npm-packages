@@ -5,22 +5,22 @@ import { renderTemplate } from "./endpoint-image.js";
 // set of paths.
 export { getStaticPaths } from "./endpoint-image.js";
 
-export const GET: APIRoute = async ({ params, url, routePattern, request }) => {
-  try {
-    const renderedTemplate = await renderTemplate(
-      params,
-      url,
-      routePattern,
-      request,
-    );
+export const GET: APIRoute = async ({
+  params,
+  url,
+  // routePattern,
+  // request
+}) => {
+  const renderedTemplate = await renderTemplate(
+    params,
+    url,
+    // routePattern,
+    // request,
+  );
 
-    return new Response(renderedTemplate, {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    });
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
+  return new Response(renderedTemplate, {
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
 };

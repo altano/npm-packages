@@ -1,6 +1,7 @@
 // Have to import these to get declaration merging.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { Assertion, AsymmetricMatchersContaining } from "vitest";
+import type { Input } from "./toHaveExifProperty.ts";
 
 interface CustomMatchers<R = unknown> {
   /**
@@ -10,6 +11,7 @@ interface CustomMatchers<R = unknown> {
   toBeFile(): R;
   toBeDirectory(): R;
   toEqualFile(pathOfFileWithExpectedContents: string): R;
+  toHaveExifProperty(property: Input, value?: string | number): Promise<R>;
   toMatchError(expected: unknown): R;
   toThrowErrorMatching(expected: unknown): R;
 }

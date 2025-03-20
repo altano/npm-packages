@@ -6,12 +6,14 @@ import toBeDirectory from "./toBeDirectory.js";
 import toEqualFile from "./toEqualFile.js";
 import toMatchError from "./toMatchError.js";
 import toThrowErrorMatching from "./toThrowErrorMatching.js";
+import toHaveExifProperty from "./toHaveExifProperty.js";
 
 expect.extend({
-  toBePath,
-  toBeFile,
   toBeDirectory,
+  toBeFile,
+  toBePath,
   toEqualFile,
+  toHaveExifProperty,
   toMatchError,
   toThrowErrorMatching,
 });

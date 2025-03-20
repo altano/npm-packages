@@ -4,9 +4,8 @@
   "description": "Render Open Graph Images from Astro Components",
   "keywords": [
     "astro",
-    "withastro",
-    "middleware",
-    "astro-integration"
+    "astro-integration",
+    "opengraph"
   ],
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image-endpoint",
   "repository": {
@@ -25,18 +24,16 @@
   "exports": {
     ".": "./dist/index.js",
     "./components/meta.astro": "./components/meta.astro",
-    "./endpoint-image": "./dist/endpoint-image.js",
     "./endpoint-html": "./dist/endpoint-html.js",
-    "./middleware": "./dist/middleware.js"
+    "./endpoint-image": "./dist/endpoint-image.js"
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "components",
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup --config build-config/tsup.config.astro-middleware.ts",
+    "build": "tsup --config ./tsup.config.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -50,7 +47,7 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "@altano/astro-html-to-image": "workspace:*",
+    "fast-glob": "^3.3.3",
     "he": "^1.2.0",
     "mime-types": "^2.1.35",
     "satori": "^0.10.13",
@@ -67,9 +64,8 @@
     "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.0",
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.10",
     "@vitest/coverage-v8": "^3.0.8",
-    "arktype": "^2.1.0",
     "astro": "^5.4.0",
     "jest-image-snapshot": "^6.4.0",
     "sharp": "^0.33.1",

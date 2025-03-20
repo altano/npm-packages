@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src", "components", "types/virtual.d.ts", "*.config.ts"],
+  "include": ["src", "components"],
   "compilerOptions": {
     "emitDeclarationOnly": true,
     "declaration": true,

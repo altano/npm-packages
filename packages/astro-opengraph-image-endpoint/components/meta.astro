@@ -1,6 +1,5 @@
 ---
-// import {getMimeType} from "@altano/astro-html-to-image"
-import {getResolvedConfig} from "../src/config";
+import { getResolvedConfig } from "../src/config";
 
 export type Props = {
   /**
@@ -22,13 +21,9 @@ export type Props = {
   directory?: string;
 };
 
-const {imageFormat, svgOptions} = await getResolvedConfig();
+const { imageFormat, svgOptions } = await getResolvedConfig();
 
-const {
-  title,
-  description,
-  directory = "./",
-} = Astro.props;
+const { title, description, directory = "./" } = Astro.props;
 
 const urlStr = Astro.url.toString();
 const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
@@ -37,7 +32,7 @@ const opengraphImageUrl = new URL(
   urlWithTrailingSlash,
 );
 // const mimeType = getMimeType(imageFormat);
-const mimeType = "image/png"
+const mimeType = "image/png";
 ---
 
 {title && <meta property="og:title" content={title} />}

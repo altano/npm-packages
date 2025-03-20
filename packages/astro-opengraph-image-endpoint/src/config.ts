@@ -5,7 +5,7 @@ import type {
   OpengraphImageConfigDeserialized,
   OpengraphImageConfigResolved,
   OpengraphImageConfigSerializableMaybeMocked,
-} from "./integration.js";
+} from "./types.js";
 
 export async function deserializeVirtualConfig(
   configMaybeMocked: OpengraphImageConfigSerializableMaybeMocked,
@@ -15,7 +15,6 @@ export async function deserializeVirtualConfig(
       ? configMaybeMocked() // We're running in vitest which is only capable of mocking functions
       : configMaybeMocked;
   const fontsWithBuffers: FontWithBuffer[] = await Promise.all(
-    // @TODO Why is `config` undefined
     config.svgOptions.fonts.map(async (font) => {
       const data = await readFile(font.path);
       return {
@@ -34,7 +33,7 @@ export async function deserializeVirtualConfig(
   };
 }
 
-const ImageDefaults = {
+export const ImageDefaults = {
   format: "png",
 } as const;
 

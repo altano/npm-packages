@@ -7,6 +7,8 @@ const config: AstroUserConfig = defineConfig({
   integrations: [
     astroOpengraphImageEndpoint({
       getSvgOptions: async () => ({
+        width: 307,
+        height: 421,
         fonts: [
           {
             name: "Inter",

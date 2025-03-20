@@ -1,63 +1,14 @@
-import type { SvgOptions, ImageFormat } from "@altano/astro-html-to-image";
-import type { AstroIntegration } from "astro";
+import type { AstroConfig, AstroIntegration } from "astro";
 import { vitePluginOpengraphImageUserConfig } from "./virtual-user-config.js";
-
-export type FontWithBuffer = SvgOptions["fonts"][0];
-export type FontWithPath = Omit<FontWithBuffer, "data"> & { path: string };
-
-type SvgOptionsBase = {
-  width?: number;
-  height?: number;
-  debug?: boolean;
-};
-type SvgOptionsBaseResolved = {
-  width: number;
-  height: number;
-  debug?: boolean;
-};
-export type SvgOptionsWithFontPaths = SvgOptionsBase & {
-  fonts: FontWithPath[];
-};
-export type SvgOptionsWithFontBuffers = SvgOptionsBase & {
-  fonts: FontWithBuffer[];
-};
-export type SvgOptionsWithFontBuffersResolved = SvgOptionsBaseResolved & {
-  fonts: FontWithBuffer[];
-};
-
-export type OpengraphImageConfig = {
-  /**
-   * An image format to use for the output image. Defaults to "png"
-   */
-  imageFormat?: ImageFormat;
-  /**
-   * Options to use for the svg file that is generated. Most importantly, fonts
-   * must be provided.
-   */
-  getSvgOptions(): Promise<SvgOptionsWithFontPaths>;
-};
-
-/**
- * This must remain JSON-serializable!
- */
-export type OpengraphImageConfigSerializable = {
-  imageFormat?: ImageFormat | undefined;
-  svgOptions: SvgOptionsWithFontPaths;
-};
-
-export type OpengraphImageConfigSerializableMaybeMocked =
-  | OpengraphImageConfigSerializable
-  | (() => OpengraphImageConfigSerializable);
-
-export type OpengraphImageConfigDeserialized = {
-  imageFormat?: ImageFormat | undefined;
-  svgOptions: SvgOptionsWithFontBuffers;
-};
-
-export type OpengraphImageConfigResolved = {
-  imageFormat: ImageFormat;
-  svgOptions: SvgOptionsWithFontBuffersResolved;
-};
+import type {
+  OpengraphImageConfig,
+  OpengraphImageConfigSerializable,
+} from "./types.js";
+// import { getOpengraphTemplates } from "./getOpengraphTemplates.js";
+import { ImageDefaults } from "./config.js";
+import path from "node:path";
+import url from "node:url";
+import fg from "fast-glob";
 
 /**
  * The integration
@@ -65,18 +16,18 @@ export type OpengraphImageConfigResolved = {
 export default (config: OpengraphImageConfig): AstroIntegration => ({
   name: "astro-opengraph-image-endpoint",
   hooks: {
-    async "astro:route:setup"({ route, logger }) {},
+    // "astro:routes:resolved"({ routes, logger: _logger }) {
+    //   console.log(`[astro:routes:resolved]`, { routes });
+    // },
     async "astro:config:setup"({
-      config: setupConfig,
-      addMiddleware,
+      config: astroConfig,
       command,
       updateConfig,
       injectRoute,
+      logger,
     }): Promise<void> {
-      // setupConfig.
-      console.log(
-        `[astro-opengraph-image-endpoint => integration]: astro:config:setup START`,
-      );
+      console.log(`[astro:config:setup]`);
+
       const [svgOptions] = await Promise.all([config.getSvgOptions()]);
       const configSerializable: OpengraphImageConfigSerializable = {
         imageFormat: config.imageFormat,
@@ -86,42 +37,101 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
         vite: {
           // Shove the serializable config into the virtual module for later
           // retrieval in the middleware
-          // @ts-ignore
           plugins: [vitePluginOpengraphImageUserConfig(configSerializable)],
         },
       });
 
-      injectRoute({
-        pattern: `/[...path]/opengraph-image.${config.imageFormat ?? "png"}`,
-        entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
-      });
-      if (command === "dev") {
-        injectRoute({
-          pattern: "/[...path]/opengraph-image.html",
-          entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-html",
-        });
-      }
-      // injectRoute({
-      //   pattern: "/_test.json",
-      //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint",
-      // });
-      // injectRoute({
-      //   pattern: "/json-test.json.ts",
-      //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint",
-      // });
-      // injectRoute({
-      //   pattern: "/json-test2.json",
-      //   entrypoint: "@altano/astro-opengraph-image-endpoint/json2-entrypoint",
-      // });
+      const imageFormat = config.imageFormat ?? ImageDefaults.format;
 
-      // addMiddleware({
-      //   order: "post",
-      //   // entrypoint: "@altano/astro-opengraph-image-endpoint/middleware",
-      //   entrypoint: new URL("middleware", import.meta.url),
+      // TODO Make opengraph-image.png/html filename configurable
+
+      const templatePaths = await getOpengraphTemplatePaths(astroConfig);
+      templatePaths.forEach((templatePath) => {
+        const routePattern = templatePath.replace(
+          "_opengraph.png.astro",
+          `opengraph-image.${imageFormat}`,
+        );
+        injectRoute({
+          pattern: routePattern,
+          entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
+        });
+        // TODO need to injectRoute a dynamic/ssr version of endpoint-image that
+        // doesn't implement getStaticPaths
+        // injectRoute({
+        //   pattern: routePattern,
+        //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
+        //   // TODO is this enough? Will it override the existence of the getstaticpaths fn?
+        //   prerender: false,
+        // });
+        logger.info(`Added "${routePattern}" route`);
+
+        // TODO add this back in
+        // if (shouldInjectDevRoute(command)) {
+        //   const devRoutePattern = templatePath.replace(
+        //     "_opengraph.png.astro",
+        //     `opengraph-image.html`,
+        //   );
+        //   injectRoute({
+        //     pattern: devRoutePattern,
+        //     entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-html",
+        //   });
+        //   logger.info(`Added "${devRoutePattern}" dev-only route`);
+        // }
+      });
+
+      // const routePattern = `/[...path]/opengraph-image.${imageFormat}`;
+      // injectRoute({
+      //   pattern: routePattern,
+      //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
       // });
-      console.log(
-        `[astro-opengraph-image-endpoint => integration]: astro:config:setup END`,
-      );
+      // logger.info(`Added "${routePattern}" route`);
+      // if (shouldInjectDevRoute(command)) {
+      //   const devRoutePattern = "/[...path]/opengraph-image.html";
+      //   injectRoute({
+      //     pattern: devRoutePattern,
+      //     entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-html",
+      //   });
+      //   logger.info(`Added "${devRoutePattern}" dev-only route`);
+      // }
     },
   },
 });
+
+type AstroConfigSetupHook = NonNullable<
+  AstroIntegration["hooks"]["astro:config:setup"]
+>;
+type Command = Parameters<AstroConfigSetupHook>[0]["command"];
+
+function shouldInjectDevRoute(command: Command): boolean {
+  switch (command) {
+    case "dev":
+      return true;
+    case "build":
+    case "preview":
+      return false;
+    case "sync":
+      // TODO What the heck is 'sync'?
+      return false;
+  }
+}
+
+async function getOpengraphTemplatePaths(
+  astroConfig: AstroConfig,
+): Promise<string[]> {
+  const srcDirPath = url.fileURLToPath(astroConfig.srcDir);
+  const pagesDir = path.join(srcDirPath, "pages");
+  const results = await fg("**/_opengraph.png.astro", { cwd: pagesDir });
+
+  if (results.length) {
+    console.log(
+      `[getOpengraphTemplatePaths, cwd=${pagesDir}] templates found:`,
+      results,
+    );
+  } else {
+    console.log(
+      `[getOpengraphTemplatePaths, cwd=${pagesDir}] NO templates found`,
+    );
+  }
+
+  return results;
+}

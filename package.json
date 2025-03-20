@@ -46,6 +46,9 @@
         "current",
         "x64"
       ]
+    },
+    "patchedDependencies": {
+      "@inox-tools/astro-tests": "patches/@inox-tools__astro-tests.patch"
     }
   }
 }

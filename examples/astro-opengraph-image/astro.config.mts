@@ -1,10 +1,11 @@
 import { defineConfig } from "astro/config";
-import opengraphImage from "@altano/astro-opengraph-image";
+import opengraphImage from "@altano/astro-opengraph-image-endpoint";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     opengraphImage({
+      // eslint-disable-next-line @typescript-eslint/require-await
       async getSvgOptions() {
         return {
           fonts: [
