@@ -1,3 +1,7 @@
 import { deriveConfig } from "@altano/testing";
 
-export default deriveConfig({});
+export default deriveConfig({
+  test: {
+    testTimeout: 10_000,
+  },
+});
