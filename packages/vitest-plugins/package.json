@@ -46,13 +46,13 @@
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@mdx-js/mdx": "^3.1.0",
-    "@types/node": "^20.16.5",
+    "@types/node": "^22.13.10",
     "@vitest/coverage-v8": "^3.0.9",
     "@vitest/expect": "^3.0.9",
-    "eslint": "^9.13.0",
+    "eslint": "^9.22.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.3",
+    "typescript": "^5.8.2",
     "unified": "^11.0.5",
     "vite": "^6.2.1",
     "vitest": "^3.0.9"

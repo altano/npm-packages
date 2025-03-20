@@ -3,7 +3,7 @@
     "difftastic@latest",
     "git@2.44.1",
     "mercurialFull@latest",
-    "nodejs@20.11.1",
+    "nodejs@22.14.0",
     "playwright-driver.browsers",
     "playwright-driver@1.47.0",
     "sapling@latest",

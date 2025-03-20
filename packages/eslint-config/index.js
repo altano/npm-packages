@@ -1,12 +1,12 @@
 // @ts-check
 
 import reactPlugin from "eslint-plugin-react";
-import importPlugin from "eslint-plugin-import";
+import * as importPlugin from "eslint-plugin-import";
 import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier/recommended";
-import packageJson from "eslint-plugin-package-json/configs/recommended";
+import packageJson from "eslint-plugin-package-json";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { includeIgnoreFile } from "@eslint/compat";
@@ -36,7 +36,7 @@ export default {
       ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
       ...eslintPluginJsonc.configs["flat/prettier"],
 
-      packageJson,
+      packageJson.configs.recommended,
 
       {
         ...prettier,
@@ -76,7 +76,7 @@ export default {
 
       // import: must declare deps
       {
-        ...importPlugin.flatConfigs.recommended,
+        ...importPlugin.flatConfigs?.recommended,
         rules: {
           "import/no-unresolved": "off",
           "import/no-extraneous-dependencies": [
@@ -86,9 +86,17 @@ export default {
         },
       },
 
+      // disabled rules for dev-only packages
+      {
+        files: ["packages/build-config/**/*"],
+        rules: {
+          "import/no-extraneous-dependencies": "off",
+        },
+      },
+
       // import: must declare dev deps (dev-only files/dirs)
       {
-        ...importPlugin.flatConfigs.recommended,
+        ...importPlugin.flatConfigs?.recommended,
         files: [
           "eslint.config.{js,mjs,cjs}",
           "packages/*/*.config.ts",
