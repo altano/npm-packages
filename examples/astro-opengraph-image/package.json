@@ -1,0 +1,23 @@
+{
+  "name": "@altano/astro-opengraph-image-example",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@altano/astro-opengraph-image": "workspace:*",
+    "@fontsource-variable/inter": "^5.0.15",
+    "@fontsource/inter": "^5.0.15",
+    "astro": "^4.0.7",
+    "sharp": "^0.33.1"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
