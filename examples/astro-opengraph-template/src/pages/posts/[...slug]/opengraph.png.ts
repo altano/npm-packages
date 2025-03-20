@@ -1,5 +1,5 @@
 import opengraphTemplate from "./_opengraph.png.astro";
-import { makeOpengraphEndpoint } from "../../../../../../../../src/endpoint.ts";
+import { makeOpengraphEndpoint } from "@altano/astro-opengraph-template/endpoint";
 
 export { getStaticPaths } from "./index.astro";
 

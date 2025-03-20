@@ -75,3 +75,7 @@ TODO: update satori
 TODO: documentation
 TODO: document as "experimental", like container apis
 TODO: switch from inline style attr to astro `<style>` in templates once that is supported by container api
+TODO: tests for component
+TODO: document a catch-all opengraph at root
+TODO: consider a middleware that injects a configured-default metatag into any html that doesn't provide one?
+TODO: make component's default image location configurable?

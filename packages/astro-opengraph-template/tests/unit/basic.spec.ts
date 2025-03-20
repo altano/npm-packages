@@ -19,7 +19,6 @@ describe("Opengraph Routes", () => {
         root: "./fixtures/basic/",
         output: "static",
       });
-      await fixture.clean();
       await fixture.build({});
     });
 
@@ -27,7 +26,7 @@ describe("Opengraph Routes", () => {
       const indexAstroContents = await fixture.readFile("/index.html");
       expect(indexAstroContents).toBeTruthy();
       expect(indexAstroContents).toMatchInlineSnapshot(
-        `"<!DOCTYPE html><html> <head><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
+        `"<!DOCTYPE html><html> <head><meta property="og:image" content="http://localhost:25865/opengraph.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
       );
     });
 
@@ -95,7 +94,6 @@ describe("Opengraph Routes", () => {
         root: "./fixtures/basic/",
         output: "server",
       });
-      await fixture.clean();
       devServer = await fixture.startDevServer({});
     });
 
@@ -137,7 +135,6 @@ describe("Opengraph Routes", () => {
         output: "server",
         adapter: testAdapter(),
       });
-      await fixture.clean();
       await fixture.build({});
       app = await fixture.loadTestAdapterApp();
     });
@@ -149,7 +146,7 @@ describe("Opengraph Routes", () => {
       expect(response).toHaveProperty("status", 200);
       const indexAstroContents = await response.text();
       expect(indexAstroContents).toMatchInlineSnapshot(
-        `"<!DOCTYPE html><html> <head><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
+        `"<!DOCTYPE html><html> <head><meta property="og:image" content="https://example.com/opengraph.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
       );
     });
 

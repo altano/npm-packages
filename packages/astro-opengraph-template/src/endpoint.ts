@@ -3,9 +3,9 @@ import { experimental_AstroContainer } from "astro/container";
 import satori, { type SatoriOptions } from "satori";
 import { html as htmlToVNode } from "satori-html";
 import he from "he";
+import { isAstroComponentFactory } from "astro/runtime/server/render/astro/factory.js";
 import { getMimeType, transformImage } from "./util.js";
 import { getResolvedConfig } from "./config.js";
-import { isAstroComponentFactory } from "astro/runtime/server/render/astro/factory.js";
 import type { SvgOptions } from "./types.js";
 
 type Options = {
@@ -16,7 +16,6 @@ type Options = {
   svgOptionOverrides?: Partial<SvgOptions>;
 };
 
-// export async function makeOpengraphDevEndpoint({ template }: Options): Promise<APIRoute> {
 export function makeOpengraphDevEndpoint({ template }: Options): APIRoute {
   return async ({ locals, params, props, request }) => {
     const config = await getResolvedConfig();

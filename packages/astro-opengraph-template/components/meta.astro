@@ -1,5 +1,6 @@
 ---
 import { getResolvedConfig } from "../src/config";
+import { getMimeType } from "../src/util";
 
 export type Props = {
   /**
@@ -13,26 +14,22 @@ export type Props = {
    */
   description?: string;
   /**
-   * The default is to use opengraph.png.astro from the same directory.
-   * If you would like to use a different one pass the directory (relative
-   * to the current request) that it can be found. e.g. directory="/" would
-   * use "/opengraph.png" (at the root) as the opengraph image.
+   * The default is to ./opengraph.png (from the same directory).
+   * If you named your endpoint something else, provide the path
+   * to the resulting image here.
    */
-  directory?: string;
+  image?: string;
 };
 
 const { imageFormat, svgOptions } = await getResolvedConfig();
 
-const { title, description, directory = "./" } = Astro.props;
+const { title, description, image = "./opengraph.png" } = Astro.props;
 
 const urlStr = Astro.url.toString();
 const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
-const opengraphImageUrl = new URL(
-  `${directory}opengraph.png`,
-  urlWithTrailingSlash,
-);
-// const mimeType = getMimeType(imageFormat);
-const mimeType = "image/png";
+const opengraphImageUrl = new URL(  image,  urlWithTrailingSlash,);
+const mimeType = getMimeType(imageFormat);
+// const mimeType = "image/png";
 ---
 
 {title && <meta property="og:title" content={title} />}

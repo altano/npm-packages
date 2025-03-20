@@ -14,7 +14,6 @@ describe("Custom Dimensions", () => {
       root: "./fixtures/custom-dimensions/",
       output: "static",
     });
-    await fixture.clean();
     await fixture.build({});
   });
 
