@@ -19,22 +19,44 @@ export type Props = {
    * to the resulting image here.
    */
   image?: string;
+  /**
+   * Override the width, which otherwise defaults to:
+   *   - the width passed into the integration config in astro.config.ts, if set
+   *   - or the integration default of 1200
+   * If you customize the width by passing an override to `makeOpengraphEndpoint`,
+   * you must pass that in here to have it reflected in your html.
+   */
+  width?: number;
+  /**
+   * Override the height, which otherwise defaults to:
+   *   - the height passed into the integration config in astro.config.ts, if set
+   *   - or the integration default of 630
+   * If you customize the height by passing an override to `makeOpengraphEndpoint`,
+   * you must pass that in here to have it reflected in your html.
+   */
+  height?: number;
 };
 
 const { imageFormat, svgOptions } = await getResolvedConfig();
 
-const { title, description, image = "./opengraph.png" } = Astro.props;
+const {
+  title,
+  description,
+  image = "./opengraph.png",
+  width = svgOptions.width,
+  height = svgOptions.height,
+} = Astro.props;
 
 const urlStr = Astro.url.toString();
 const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
-const opengraphImageUrl = new URL(  image,  urlWithTrailingSlash,);
+const opengraphImageUrl = new URL(image, urlWithTrailingSlash);
+// TODO Allow overriding the mimetype
 const mimeType = getMimeType(imageFormat);
-// const mimeType = "image/png";
 ---
 
 {title && <meta property="og:title" content={title} />}
 {title && <meta property="og:description" content={description} />}
 <meta property="og:image" content={opengraphImageUrl.toString()} />
 <meta property="og:image:type" content={mimeType} />
-<meta property="og:image:width" content={svgOptions.width?.toString()} />
-<meta property="og:image:height" content={svgOptions.height?.toString()} />
+<meta property="og:image:width" content={width.toString()} />
+<meta property="og:image:height" content={height.toString()} />

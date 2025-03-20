@@ -3,6 +3,7 @@ import { loadFixture } from "@inox-tools/astro-tests/astroFixture";
 import type { Fixture } from "./utils/types.js";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import "@altano/vitest-plugins/matchers";
+import {} from "./basic.spec.js";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -31,5 +32,24 @@ describe("Custom Dimensions", () => {
     expect(opengraphImagePng).toBeDefined();
     await expect(opengraphImagePng).toHaveExifProperty("ImageWidth", 200);
     await expect(opengraphImagePng).toHaveExifProperty("ImageHeight", 200);
+  });
+
+  describe("Component", () => {
+    it("should reflect the custom dimensions", async () => {
+      const html = await fixture.readFile("/component-uses/default/index.html");
+      expect(html).toBeTruthy();
+      expect(html).toContain(`<meta property="og:image:width" content="307">`);
+      expect(html).toContain(`<meta property="og:image:height" content="421">`);
+    });
+
+    it("should give preference to dimensions passed as props", async () => {
+      const html = await fixture.readFile(
+        "/component-uses/prop-overrides/index.html",
+      );
+      expect(html).toBeTruthy();
+
+      expect(html).toContain(`<meta property="og:image:width" content="78">`);
+      expect(html).toContain(`<meta property="og:image:height" content="911">`);
+    });
   });
 });

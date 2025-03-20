@@ -2,8 +2,9 @@ import { deriveConfig } from "@altano/testing";
 
 export default deriveConfig({
   test: {
-    // TODO remove this (enable coverage)
+    // environment: "happy-dom",
     coverage: {
+      // TODO remove this (enable coverage)
       enabled: false,
     },
     setupFiles: ["./tests/unit/utils/setup.ts"],

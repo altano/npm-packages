@@ -3,6 +3,7 @@
   "include": [".", "../vite.config.ts", "../../types/virtual.d.ts"],
   "compilerOptions": {
     "types": [
+      "vitest/jsdom",
       "astro/client",
       "vitest/globals",
       "@altano/vitest-plugins/matchers"

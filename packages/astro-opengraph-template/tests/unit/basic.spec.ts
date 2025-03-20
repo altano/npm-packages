@@ -23,17 +23,33 @@ describe("Opengraph Routes", () => {
     });
 
     it("index.astro page should have unmodified contents", async () => {
-      const indexAstroContents = await fixture.readFile("/index.html");
-      expect(indexAstroContents).toBeTruthy();
-      expect(indexAstroContents).toMatchInlineSnapshot(
-        `"<!DOCTYPE html><html> <head><meta property="og:image" content="http://localhost:25865/opengraph.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
+      const contents = await fixture.readFile("/index.html");
+      expect(contents).toBeTruthy();
+      expect(contents).toMatchInlineSnapshot(
+        `
+        "<!-- Formatted HTML -->
+        <!doctype html>
+        <html>
+          <head>
+            <meta property="og:image" content="http://localhost/opengraph.png" />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <title>Basic Example</title>
+          </head>
+          <body>
+            <h1>A Heading</h1>
+            <p>Hello!</p>
+          </body>
+        </html>"
+      `,
       );
     });
 
     it("about.json.ts endpoint should have unmodified contents", async () => {
-      const aboutJsonContents = await fixture.readFile("/about.json");
-      expect(aboutJsonContents).toBeTruthy();
-      const aboutJson = JSON.parse(aboutJsonContents!) as unknown;
+      const contents = await fixture.readFile("/about.json");
+      expect(contents).toBeTruthy();
+      const aboutJson = JSON.parse(contents!) as unknown;
       expect(aboutJson).toBeTruthy();
       expect(aboutJson).toBeTypeOf("object");
       expect(aboutJson).toHaveProperty("name", "Astro");
@@ -41,47 +57,113 @@ describe("Opengraph Routes", () => {
     });
 
     it("root opengraph.png endpoint should have image", async () => {
-      const opengraphImagePng =
-        await fixture.readFileAsBuffer("/opengraph.png");
-      expect(opengraphImagePng).toBeTruthy();
-      expect(opengraphImagePng).toMatchImageSnapshot();
+      const image = await fixture.readFileAsBuffer("/opengraph.png");
+      expect(image).toBeTruthy();
+      expect(image).toMatchImageSnapshot();
     });
 
-    // TODO fix this test
-    it.todo(
-      "nested opengraph.png with a static path endpoint should have image",
-      async () => {
-        const opengraphImagePng = await fixture.readFileAsBuffer(
-          "/blog/hard-coded-article/opengraph.png",
-        );
-        expect(opengraphImagePng).toBeTruthy();
-        expect(opengraphImagePng).toMatchImageSnapshot();
-      },
-    );
+    it("if not specified, there should be no opengraph image", async () => {
+      expect(fixture.pathExists("/no-opengraph/opengraph.png")).toStrictEqual(
+        false,
+      );
+    });
+
+    it("should let the endpoint use the root template", async () => {
+      const image = await fixture.readFileAsBuffer(
+        "/root-from-endpoint/opengraph.png",
+      );
+      expect(image).toBeTruthy();
+      expect(image).toMatchImageSnapshot();
+    });
+
+    it("should let the component use the root opengraph image", async () => {
+      const contents = await fixture.readFile(
+        "/root-from-component/index.html",
+      );
+      expect(contents).toBeTruthy();
+      expect(contents).toMatch(
+        new RegExp(
+          String.raw`<meta property="og:image" content="http://.*/opengraph.png">`,
+        ),
+      );
+    });
+
+    it("nested opengraph.png with a static path endpoint should have image", async () => {
+      const image = await fixture.readFileAsBuffer(
+        "/blog/hard-coded-article/opengraph.png",
+      );
+      expect(image).toBeTruthy();
+      expect(image).toMatchImageSnapshot();
+    });
 
     it("nested opengraph.png with dynamic path and getStaticPaths should have an opengraph image", async () => {
-      const opengraphImagePng = await fixture.readFileAsBuffer(
+      const image = await fixture.readFileAsBuffer(
         "/blog/hello-world/opengraph.png",
       );
-      expect(opengraphImagePng).toBeTruthy();
-      expect(opengraphImagePng).toMatchImageSnapshot();
+      expect(image).toBeTruthy();
+      expect(image).toMatchImageSnapshot();
     });
-
-    it.todo(
-      "nested page without opengraph image should use root opengraph image",
-    );
 
     it("opengraph image dimensions should default to 1200x630", async () => {
-      const opengraphImagePng =
-        await fixture.readFileAsBuffer("/opengraph.png");
-      await expect(opengraphImagePng).toHaveExifProperty("ImageWidth", 1200);
-      await expect(opengraphImagePng).toHaveExifProperty("ImageHeight", 630);
+      const image = await fixture.readFileAsBuffer("/opengraph.png");
+      await expect(image).toHaveExifProperty("ImageWidth", 1200);
+      await expect(image).toHaveExifProperty("ImageHeight", 630);
     });
-
-    it.todo("page should have opengraph meta tags");
 
     it("should not have html from dev route in ssg", async () => {
       expect(fixture.pathExists("/opengraph.html")).toStrictEqual(false);
+    });
+
+    describe("Component", () => {
+      it("should have a default", async () => {
+        const html = await fixture.readFile(
+          "/component-uses/default/index.html",
+        );
+        expect(html).toBeTruthy();
+        expect(html).toMatch(
+          new RegExp(
+            String.raw`<meta property="og:image" content="http://.*/component-uses/default/opengraph.png">`,
+          ),
+        );
+        expect(html).toContain(
+          `<meta property="og:image:type" content="image/png">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:image:width" content="1200">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:image:height" content="630">`,
+        );
+        expect(html).not.toContain(`og:image:title`);
+        expect(html).not.toContain(`og:image:description`);
+      });
+
+      it("should allow customizing the component props", async () => {
+        const html = await fixture.readFile(
+          "/component-uses/custom-props/index.html",
+        );
+        expect(html).toBeTruthy();
+        expect(html).toMatch(
+          new RegExp(
+            String.raw`<meta property="og:image" content="http://.*/component-uses/custom-props/face.png">`,
+          ),
+        );
+        expect(html).toContain(
+          `<meta property="og:image:type" content="image/png">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:image:width" content="101">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:image:height" content="901">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:title" content="I'm a computer">`,
+        );
+        expect(html).toContain(
+          `<meta property="og:description" content="stop all the downloadin">`,
+        );
+      });
     });
   });
 
@@ -107,21 +189,27 @@ describe("Opengraph Routes", () => {
       expect(response).toHaveProperty("status", 200);
       const opengraphImageHtml = await response.text();
       expect(opengraphImageHtml).toMatchInlineSnapshot(`
-        "<!DOCTYPE html><html> <body style="font-family: &#34;Inter Variable&#34;;
+        "<!-- Formatted HTML -->
+        <!doctype html>
+        <html>
+          <body
+            style="font-family: &#34;Inter Variable&#34;;
                    background: white;
                    height: 100vh;
                    width: 100vw;
                    display: flex;
                    flex-direction: column;
                    align-items: center;
-                   justify-content: center;"> <h1 style="font-weight: 800;
-                     font-size: 5rem;
-                     margin: 0;">
-        Kurt's Website!
-        </h1> <p style="font-weight: 400;
-                      font-size: 2rem;">
-        This is rendered as a PNG image.
-        </p> </body></html>"
+                   justify-content: center;"
+          >
+            <h1 style="font-weight: 800; font-size: 5rem; margin: 0">
+              Kurt's Website!
+            </h1>
+            <p style="font-weight: 400; font-size: 2rem">
+              This is rendered as a PNG image.
+            </p>
+          </body>
+        </html>"
       `);
     });
   });
@@ -146,7 +234,23 @@ describe("Opengraph Routes", () => {
       expect(response).toHaveProperty("status", 200);
       const indexAstroContents = await response.text();
       expect(indexAstroContents).toMatchInlineSnapshot(
-        `"<!DOCTYPE html><html> <head><meta property="og:image" content="https://example.com/opengraph.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><title>Basic Example</title></head> <body> <h1>A Heading</h1> <p>Hello!</p> </body></html>"`,
+        `
+        "<!-- Formatted HTML -->
+        <!doctype html>
+        <html>
+          <head>
+            <meta property="og:image" content="https://example.com/opengraph.png" />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <title>Basic Example</title>
+          </head>
+          <body>
+            <h1>A Heading</h1>
+            <p>Hello!</p>
+          </body>
+        </html>"
+      `,
       );
     });
 
@@ -167,10 +271,10 @@ describe("Opengraph Routes", () => {
         new Request(new URL("https://example.com/opengraph.png"), {}),
       );
       expect(response).toHaveProperty("status", 200);
-      const opengraphImagePngArrayBuffer = await response.arrayBuffer();
-      expect(opengraphImagePngArrayBuffer).toBeTruthy();
-      const opengraphImagePngBuffer = Buffer.from(opengraphImagePngArrayBuffer);
-      expect(opengraphImagePngBuffer).toMatchImageSnapshot();
+      const imageArrayBuffer = await response.arrayBuffer();
+      expect(imageArrayBuffer).toBeTruthy();
+      const imageBuffer = Buffer.from(imageArrayBuffer);
+      expect(imageBuffer).toMatchImageSnapshot();
     });
 
     it("root opengraph.png should have the correct headers", async () => {
@@ -180,7 +284,6 @@ describe("Opengraph Routes", () => {
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     });
 
-    // TODO Fix this test
     it("nested opengraph.png with a static path should be an image", async () => {
       const response = await app.render(
         new Request(
@@ -188,18 +291,10 @@ describe("Opengraph Routes", () => {
         ),
       );
       expect(response).toHaveProperty("status", 200);
-      const opengraphImagePngArrayBuffer = await response.arrayBuffer();
-      expect(opengraphImagePngArrayBuffer).toBeTruthy();
-      const opengraphImagePngBuffer = Buffer.from(opengraphImagePngArrayBuffer);
-      expect(opengraphImagePngBuffer).toMatchImageSnapshot();
+      const imageArrayBuffer = await response.arrayBuffer();
+      expect(imageArrayBuffer).toBeTruthy();
+      const imageBuffer = Buffer.from(imageArrayBuffer);
+      expect(imageBuffer).toMatchImageSnapshot();
     });
-
-    it.todo(
-      "nested opengraph.png with dynamic path and getStaticPaths should have an opengraph image",
-    );
-
-    it.todo(
-      "nested opengraph.png with dynamic path and no getStaticPaths should have an opengraph image",
-    );
   });
 });
