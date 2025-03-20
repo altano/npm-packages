@@ -34,8 +34,8 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build": "tsup --config build-config/tsup.config.astro-middleware.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
+    "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",

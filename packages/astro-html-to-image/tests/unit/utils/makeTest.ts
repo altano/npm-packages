@@ -6,7 +6,7 @@ import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { createContext } from "astro/middleware";
 
 import type {
-  Options as MiddlewareOptions,
+  MiddlewareOptions,
   SvgOptions,
   ImageFormat,
 } from "../../../src/index.js";

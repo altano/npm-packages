@@ -4,7 +4,8 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: "esm",
   onSuccess: "pnpm build:types",
-  dts: true,
+  dts: false,
   clean: true,
-  external: ["astro:middleware", "astro:assets"],
+  platform: "node",
+  external: ["astro:assets"],
 });

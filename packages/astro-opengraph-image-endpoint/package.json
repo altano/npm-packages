@@ -1,17 +1,18 @@
 {
-  "name": "@altano/astro-html-to-image",
-  "version": "0.0.1-alpha.5",
-  "description": "Render Astro components to images",
+  "name": "@altano/astro-opengraph-image-endpoint",
+  "version": "0.0.1-alpha.1",
+  "description": "Render Open Graph Images from Astro Components",
   "keywords": [
     "astro",
     "withastro",
-    "middleware"
+    "middleware",
+    "astro-integration"
   ],
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-html-to-image",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image-endpoint",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/astro-html-to-image"
+    "directory": "packages/astro-opengraph-image-endpoint"
   },
   "license": "ISC",
   "author": {
@@ -21,14 +22,19 @@
   },
   "sideEffects": false,
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components/meta.astro": "./components/meta.astro",
+    "./middleware": "./dist/middleware.js"
+  },
   "types": "./dist/index.d.ts",
   "files": [
+    "components",
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup --config build-config/tsup.config.astro.ts",
+    "build": "tsup --config build-config/tsup.config.astro-middleware.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -42,10 +48,7 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "he": "^1.2.0",
-    "mime-types": "^2.1.35",
-    "satori": "^0.10.13",
-    "satori-html": "^0.3.2"
+    "@altano/astro-html-to-image": "workspace:*"
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
@@ -53,21 +56,18 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
-    "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.0",
-    "@types/mime-types": "^2.1.1",
     "@vitest/coverage-v8": "^3.0.8",
     "astro": "^4.5.5",
     "jest-image-snapshot": "^6.4.0",
-    "sharp": "^0.33.1",
     "tsup": "^8.3.5",
     "typescript": "^5.8.2",
+    "utility-types": "^3.10.0",
     "vite": "^5.4.11",
     "vitest": "^3.0.8"
   },
   "peerDependencies": {
-    "astro": "4.x.x",
-    "sharp": "0.x.x"
+    "astro": "4.x.x"
   },
   "publishConfig": {
     "access": "public"

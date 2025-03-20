@@ -1,0 +1,18 @@
+import { describe, expect } from "vitest";
+import { middleware } from "./utils/makeTest.js";
+
+describe("endpoint", async () => {
+  middleware.should("gracefully ignore endpoint responses", {
+    requestUrl: `http://example.com/rss.xml`,
+    format: "png",
+    snapshot: false,
+    getComponentResponse: async () =>
+      new Response(`<?xml version="1.0" encoding="UTF-8"?><rss />`),
+    async testResponseFn(response) {
+      expect(response.headers.get("Content-Type")).toEqual(
+        "text/plain;charset=UTF-8",
+      );
+      expect(response.headers.get("Content-Disposition")).toBeNull();
+    },
+  });
+});

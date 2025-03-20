@@ -1,0 +1,48 @@
+---
+// import {getMimeType} from "@altano/astro-html-to-image"
+import {getResolvedConfig} from "../src/config";
+
+export type Props = {
+  /**
+   * Optional title. If provided,
+   * <meta property="og:title" ... /> will be emitted.
+   */
+  title?: string;
+  /**
+   * Optional description. If provided,
+   * <meta property="og:description" ... /> will be emitted.
+   */
+  description?: string;
+  /**
+   * The default is to use opengraph-image.png.astro from the same directory.
+   * If you would like to use a different one pass the directory (relative
+   * to the current request) that it can be found. e.g. directory="/" would
+   * use "/opengraph-image.png" (at the root) as the opengraph image.
+   */
+  directory?: string;
+};
+
+const {imageFormat, svgOptions} = await getResolvedConfig();
+
+const {
+  title,
+  description,
+  directory = "./",
+} = Astro.props;
+
+const urlStr = Astro.url.toString();
+const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
+const opengraphImageUrl = new URL(
+  `${directory}opengraph-image.png`,
+  urlWithTrailingSlash,
+);
+// const mimeType = getMimeType(imageFormat);
+const mimeType = "image/png"
+---
+
+{title && <meta property="og:title" content={title} />}
+{title && <meta property="og:description" content={description} />}
+<meta property="og:image" content={opengraphImageUrl.toString()} />
+<meta property="og:image:type" content={mimeType} />
+<meta property="og:image:width" content={svgOptions.width?.toString()} />
+<meta property="og:image:height" content={svgOptions.height?.toString()} />
