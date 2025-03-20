@@ -34,6 +34,7 @@ TODO: Look into eslint flat config to see if we can reduce config repetition
 TODO: make sure every project has a lint that points at src/tests
 TODO: Look into markdown linting
 TODO: prettier plugin for import order/sorting
+TODO: enable prettier-plugin-jsdoc
 
 satori-fit-text:
 TODO: satori-fit-text: codesandbox (share with test somehow?)
