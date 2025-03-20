@@ -1,5 +1,5 @@
 import { describe, expect } from "vitest";
-import { middleware } from "./utils/makeTest";
+import { middleware } from "./utils/makeTest.js";
 
 describe("endpoint", async () => {
   const body = `<?xml version="1.0" encoding="UTF-8"?><rss />`;
@@ -7,9 +7,7 @@ describe("endpoint", async () => {
     requestUrl: `http://example.com/rss.xml`,
     format: "png",
     snapshot: false,
-    getComponentResponse: async () => ({
-      body: body,
-    }),
+    getComponentResponse: async () => new Response(body),
     async testFn(response) {
       expect(response).not.instanceOf(Response);
       expect(response.body).toEqual(body);

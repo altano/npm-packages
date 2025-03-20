@@ -4,7 +4,7 @@ import {
   type ImageFormat,
 } from "@altano/astro-html-to-image";
 import type { APIContext, MiddlewareHandler } from "astro";
-import { getResolvedConfig } from "./config";
+import { getResolvedConfig } from "./config.js";
 
 export type ImageMiddlewareOptions = {
   format: ImageFormat;

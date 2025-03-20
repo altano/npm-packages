@@ -1,12 +1,12 @@
-import { getFontPath } from "@altano/assets";
+import { getInterPath } from "@altano/assets";
 import { vitest } from "vitest";
 // TODO Move somewhere shared?
-import { MockImageService } from "../../../astro-html-to-image/tests/utils/mockImageService";
-import type { OpengraphImageConfigSerializable } from "../../src/integration";
+import { MockImageService } from "../../../../astro-html-to-image/tests/unit/utils/mockImageService.js";
+import type { OpengraphImageConfigSerializable } from "../../../src/integration.js";
 
 export function getDefaultSvgOptions(): OpengraphImageConfigSerializable["svgOptions"] {
-  const interRegularPath = getFontPath("Inter-Regular.ttf");
-  const interBoldPath = getFontPath("Inter-Bold.ttf");
+  const interRegularPath = getInterPath(400);
+  const interBoldPath = getInterPath(700);
   return {
     fonts: [
       {

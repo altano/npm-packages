@@ -1,5 +1,5 @@
 import type { MiddlewareHandler } from "astro";
-import { createOpenGraphImageMiddleware } from "./createOpenGraphImageMiddleware";
+import { createOpenGraphImageMiddleware } from "./createOpenGraphImageMiddleware.js";
 
 /**
  * The middleware

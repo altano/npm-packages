@@ -1,2 +1,2 @@
-export { default } from "./integration";
-export * from "./integration";
+export { default } from "./integration.js";
+export * from "./integration.js";

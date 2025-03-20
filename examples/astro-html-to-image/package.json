@@ -4,28 +4,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
     "build": "astro build",
+    "dev": "astro dev",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "@altano/astro-html-to-image": "workspace:*",
     "@astrojs/react": "^3.0.10",
     "@astrojs/svelte": "^5.2.0",
-    "@fontsource-variable/inter": "^5.0.8",
-    "astro": "^4.4.15",
-    "react": "^18",
-    "react-dom": "^18",
-    "sharp": "^0.32.6",
+    "@fontsource-variable/inter": "^5.0.17",
+    "astro": "^4.5.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.33.1",
     "svelte": "^4.2.12",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@altano/assets": "workspace:^",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7"
+    "@altano/assets": "workspace:*",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21"
   },
   "publishConfig": {
     "access": "restricted"

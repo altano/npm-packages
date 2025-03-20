@@ -2,18 +2,20 @@ import { readFile } from "node:fs/promises";
 
 import type {
   FontWithBuffer,
+  OpengraphImageConfigDeserialized,
   OpengraphImageConfigResolved,
   OpengraphImageConfigSerializableMaybeMocked,
-} from "./integration";
+} from "./integration.js";
 
 export async function deserializeVirtualConfig(
   configMaybeMocked: OpengraphImageConfigSerializableMaybeMocked,
-): Promise<OpengraphImageConfigResolved> {
+): Promise<OpengraphImageConfigDeserialized> {
   const config =
     typeof configMaybeMocked === "function"
       ? configMaybeMocked() // We're running in vitest which is only capable of mocking functions
       : configMaybeMocked;
   const fontsWithBuffers: FontWithBuffer[] = await Promise.all(
+    // @TODO Why is `config` undefined
     config.svgOptions.fonts.map(async (font) => {
       const data = await readFile(font.path);
       return {
@@ -47,8 +49,8 @@ export async function getResolvedConfig(): Promise<OpengraphImageConfigResolved>
   const lazyConfig = module.default;
   const deserialized = await deserializeVirtualConfig(lazyConfig);
   return {
-    ...ImageDefaults,
     ...deserialized,
+    imageFormat: deserialized.imageFormat ?? ImageDefaults.format,
     svgOptions: {
       ...SvgDefaults,
       ...deserialized.svgOptions,

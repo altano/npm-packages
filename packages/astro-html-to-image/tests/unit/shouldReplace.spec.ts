@@ -1,6 +1,6 @@
 import { describe, expect } from "vitest";
-import { middleware } from "./utils/makeTest";
-import { APIContext } from "astro";
+import { middleware } from "./utils/makeTest.js";
+import type { APIContext } from "astro";
 
 describe("shouldReplace", async () => {
   const basicHtml = `

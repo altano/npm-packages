@@ -2,69 +2,73 @@
   "name": "@altano/astro-opengraph-image",
   "version": "0.0.1-alpha.5",
   "description": "Render Open Graph Images from Astro Components",
-  "type": "module",
-  "sideEffects": false,
-  "exports": {
-    ".": "./dist/index.js",
-    "./middleware": "./dist/middleware.js",
-    "./components/meta.astro": "./components/meta.astro"
-  },
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
-    "dev": "tsup --watch",
-    "lint": "eslint src/**/*.ts*",
-    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
-    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "format": "prettier --write src",
-    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
-    "test": "vitest --run",
-    "test:watch": "vitest"
-  },
-  "author": {
-    "name": "Alan Norbauer",
-    "email": "altano@gmail.com",
-    "url": "https://alan.norbauer.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/astro-opengraph-image"
-  },
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image",
-  "files": [
-    "components",
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
-  ],
   "keywords": [
     "astro",
     "withastro",
     "middleware",
     "astro-integration"
   ],
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/astro-opengraph-image"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components/meta.astro": "./components/meta.astro",
+    "./middleware": "./dist/middleware.js"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "components",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "check:types:src": "tsc --noEmit",
+    "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsup --watch",
+    "format": "prettier --write src",
+    "lint": "eslint src/**/*.ts*",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest"
   },
   "dependencies": {
     "@altano/astro-html-to-image": "workspace:*"
   },
   "devDependencies": {
-    "@altano/assets": "workspace:^",
+    "@altano/assets": "workspace:*",
+    "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@types/jest-image-snapshot": "^6.2.0",
-    "@vitest/ui": "^1.0.4",
+    "@altano/vitest-plugins": "workspace:*",
+    "@types/jest-image-snapshot": "^6.4.0",
+    "@vitest/coverage-v8": "^3.0.8",
     "astro": "^4.5.5",
-    "jest-image-snapshot": "^6.2.0",
-    "tsup": "^7.2.0",
+    "jest-image-snapshot": "^6.4.0",
+    "tsup": "^8.3.5",
     "typescript": "^5.8.2",
     "utility-types": "^3.10.0",
-    "vite": "^4.4.9",
-    "vitest": "^1.0.4"
+    "vite": "^5.4.11",
+    "vitest": "^3.0.8"
   },
   "peerDependencies": {
-    "astro": ">= 4.0"
+    "astro": "4.x.x"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

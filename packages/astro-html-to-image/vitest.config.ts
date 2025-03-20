@@ -1,7 +1,11 @@
-import { defineConfig } from "vitest/config";
+import { deriveConfig } from "@altano/testing";
 
-export default defineConfig({
+export default deriveConfig({
   test: {
-    setupFiles: ["./tests/utils/setup.ts"],
+    // @TODO remove this
+    coverage: {
+      enabled: false,
+    },
+    setupFiles: ["./tests/unit/utils/setup.ts"],
   },
 });

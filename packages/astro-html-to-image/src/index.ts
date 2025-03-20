@@ -2,13 +2,13 @@ import { defineMiddleware } from "astro/middleware";
 import satori from "satori";
 import { html as htmlToVNode } from "satori-html";
 import he from "he";
-import { transformImage } from "./transformImage";
-import { getMimeType } from "./getMimeType";
+import { transformImage } from "./transformImage.js";
+import { getMimeType } from "./getMimeType.js";
 
 import type { MiddlewareHandler, APIContext } from "astro";
 import type { SatoriOptions } from "satori";
 
-export * from "./getMimeType";
+export * from "./getMimeType.js";
 export type SvgOptions = SatoriOptions;
 
 /**
@@ -37,11 +37,11 @@ export type Options<Format extends ImageFormat> = {
    * API documentation:
    * https://github.com/vercel/satori/blob/0a258931fe2291bdd461103780ac01e3c700b845/src/satori.ts#L18-L40
    */
-  getSvgOptions(
+  getSvgOptions: (
     context: APIContext,
     response: Response,
     format: Format,
-  ): Promise<SvgOptions>;
+  ) => Promise<SvgOptions>;
   /**
    * This function must return true for the given request or the route will not
    * be converted to an image. By default, only components/endpoints that return
@@ -67,7 +67,7 @@ export type Options<Format extends ImageFormat> = {
   ) => Promise<Filename<Format>>;
 };
 
-export async function defaultGetFilename<Format extends ImageFormat>(
+export function defaultGetFilename<Format extends ImageFormat>(
   format: Format,
   context: APIContext,
 ): Promise<string> {
@@ -82,10 +82,10 @@ export async function defaultGetFilename<Format extends ImageFormat>(
     );
   }
 
-  return basename;
+  return Promise.resolve(basename);
 }
 
-export async function defaultShouldReplace<Format extends ImageFormat>(
+export function defaultShouldReplace<Format extends ImageFormat>(
   context: APIContext,
   response: Response,
   format: Format,
@@ -99,12 +99,12 @@ export async function defaultShouldReplace<Format extends ImageFormat>(
     requestUrl,
   );
 
-  return (
+  return Promise.resolve(
     isImageOfType &&
-    // Don't rewrite other things like Endpoints. Only interested in components.
-    response instanceof Response &&
-    // Don't rewrite anything that isn't html.
-    contentType === "text/html"
+      // Don't rewrite other things like Endpoints. Only interested in components.
+      response instanceof Response &&
+      // Don't rewrite anything that isn't html.
+      contentType === "text/html",
   );
 }
 

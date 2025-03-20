@@ -1,5 +1,5 @@
 import { contentType } from "mime-types";
-import { ImageFormat } from ".";
+import type { ImageFormat } from "./index.js";
 
 export function getMimeType<Format extends ImageFormat>(
   format: Format,

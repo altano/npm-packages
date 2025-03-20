@@ -9,6 +9,7 @@ export const MockImageService = {
         transform,
         _imageConfig,
       ): Promise<{ data: Buffer; format: "png" }> {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const format = transform["format"];
         if (format !== "png") {
           throw new Error(`Unsupported image format: ${transform["format"]}`);

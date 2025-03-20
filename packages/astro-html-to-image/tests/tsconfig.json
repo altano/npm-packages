@@ -2,6 +2,6 @@
   "extends": "@altano/tsconfig/node.json",
   "include": [".", "vite.config.ts"],
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    "types": ["astro/client", "vitest/globals"]
   }
 }

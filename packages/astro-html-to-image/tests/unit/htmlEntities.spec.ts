@@ -1,5 +1,5 @@
 import { describe } from "vitest";
-import { middleware } from "./utils/makeTest";
+import { middleware } from "./utils/makeTest.js";
 
 describe("html entities", async () => {
   const html = `

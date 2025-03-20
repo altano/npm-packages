@@ -1,5 +1,5 @@
-import { getFontPath } from "@altano/assets";
-import { createHtmlToImageMiddleware } from "../../src";
+import { getInterPath } from "@altano/assets";
+import { createHtmlToImageMiddleware } from "../../../src/index.js";
 import { readFile } from "node:fs/promises";
 import { expect, test } from "vitest";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
@@ -9,19 +9,22 @@ import type {
   Options as MiddlewareOptions,
   SvgOptions,
   ImageFormat,
-} from "../../src";
-import type { APIContext, EndpointOutput } from "astro";
+} from "../../../src/index.js";
+import type { APIContext } from "astro";
 
 // Add image snapshot matcher to vitest
 expect.extend({ toMatchImageSnapshot });
 
 export function makeContext(url: string): APIContext {
-  return createContext({ request: new Request(url) });
+  return createContext({
+    request: new Request(url),
+    defaultLocale: "en",
+  });
 }
 
 async function getSvgDefaultOptions(): Promise<SvgOptions> {
-  const interRegularBuffer = await readFile(getFontPath("Inter-Regular.ttf"));
-  const interBoldBuffer = await readFile(getFontPath("Inter-Bold.ttf"));
+  const interRegularBuffer = await readFile(getInterPath(400));
+  const interBoldBuffer = await readFile(getInterPath(700));
   return {
     width: 300,
     height: 300,
@@ -61,8 +64,8 @@ export function should<Format extends ImageFormat>(
     extraMiddlewareOptions?: Partial<MiddlewareOptions<Format>>;
     snapshot?: boolean;
     componentHtml?: string;
-    getComponentResponse?: () => Promise<Response | EndpointOutput>;
-    testFn?: (res: Response | EndpointOutput) => Promise<void>;
+    getComponentResponse?: () => Promise<Response>;
+    testFn?: (res: Response) => Promise<void>;
     testResponseFn?: (res: Response) => Promise<void>;
   },
 ): void {
@@ -102,7 +105,7 @@ export function should<Format extends ImageFormat>(
     expect(response).toBeDefined();
 
     if (response == null) {
-      throw new Error(`${response} was undefined`);
+      throw new Error(`Response was unexpectedly nullish`);
     }
 
     if (!(response instanceof Response)) {

@@ -1,6 +1,6 @@
 import { describe, expect } from "vitest";
-import { middleware } from "./utils/makeTest";
-import { basicHtml } from "./utils/basicHtml";
+import { middleware } from "./utils/makeTest.js";
+import { basicHtml } from "./utils/basicHtml.js";
 
 describe("format", async () => {
   middleware.should("convert png", {

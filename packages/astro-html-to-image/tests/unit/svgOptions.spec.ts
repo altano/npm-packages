@@ -1,5 +1,5 @@
 import { describe, expect } from "vitest";
-import { middleware } from "./utils/makeTest";
+import { middleware } from "./utils/makeTest.js";
 
 describe("svgOptions", async () => {
   const basicHtml = (content: string, background = ""): string =>
