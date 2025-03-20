@@ -11,7 +11,7 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@altano/astro-opengraph-image-endpoint": "workspace:*",
+    "@altano/astro-opengraph-template": "workspace:*",
     "@fontsource-variable/inter": "^5.0.17",
     "@fontsource/inter": "^5.0.17",
     "astro": "^5.4.0",

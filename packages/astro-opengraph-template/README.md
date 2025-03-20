@@ -6,7 +6,7 @@ TODO Fill this out
 
 > ⚠️ **WORK IN PROGRESS**: This package requires changes[^filename-change] in Astro before it will be useable. Sit tight!
 
-# astro-opengraph-image-endpoint
+# astro-opengraph-template
 
 This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that lets you turn any Astro component (or framework component) into an Open Graph image for your Astro site.
 
@@ -25,11 +25,11 @@ In your existing Astro project:
 
 ```sh
 # Using NPM
-npx astro add @altano/astro-opengraph-image-endpoint
+npx astro add @altano/astro-opengraph-template
 # Using Yarn
-yarn astro add @altano/astro-opengraph-image-endpoint
+yarn astro add @altano/astro-opengraph-template
 # Using PNPM
-pnpm astro add @altano/astro-opengraph-image-endpoint
+pnpm astro add @altano/astro-opengraph-template
 ```
 
 # Configuration
@@ -62,7 +62,7 @@ Lastly, in any pages/layouts that have a `opengraph-image.png.astro` in that rou
 
 ```astro
 ---
-import OpenGraphMeta from "@altano/astro-opengraph-image-endpoint/components/meta.astro";
+import OpenGraphMeta from "@altano/astro-opengraph-template/components/meta.astro";
 ---
 
 <html>
@@ -94,7 +94,7 @@ See the TypeScript type-hints and comments for more info.
 
 ```ts
 import { defineConfig } from "astro/config";
-import opengraphImage from "@altano/astro-opengraph-image-endpoint";
+import opengraphImage from "@altano/astro-opengraph-template";
 
 // https://astro.build/config
 export default defineConfig({
@@ -176,7 +176,7 @@ import "@fontsource-variable/inter";
 </html>
 ```
 
-See https://github.com/altano/npm-packages/tree/main/examples/astro-opengraph-image-endpoint for a slightly more involved example.
+See https://github.com/altano/npm-packages/tree/main/examples/astro-opengraph-template for a slightly more involved example.
 
 ## Serving another opengraph-image
 

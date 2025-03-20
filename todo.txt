@@ -66,6 +66,6 @@ use-visible-elements:
 x 2024-03-25 TODO: add tests
 TODO: fix broken readme example (hook must be used in tree)
 
-astro-opengraph-image-endpoint
+astro-opengraph-template
 TODO: add tests for alternate image formats back in
 TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)

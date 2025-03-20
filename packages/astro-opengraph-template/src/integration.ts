@@ -14,7 +14,7 @@ import fg from "fast-glob";
  * The integration
  */
 export default (config: OpengraphImageConfig): AstroIntegration => ({
-  name: "astro-opengraph-image-endpoint",
+  name: "astro-opengraph-template",
   hooks: {
     // "astro:routes:resolved"({ routes, logger: _logger }) {
     //   console.log(`[astro:routes:resolved]`, { routes });
@@ -53,13 +53,13 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
         );
         injectRoute({
           pattern: routePattern,
-          entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
+          entrypoint: "@altano/astro-opengraph-template/endpoint-image",
         });
         // TODO need to injectRoute a dynamic/ssr version of endpoint-image that
         // doesn't implement getStaticPaths
         // injectRoute({
         //   pattern: routePattern,
-        //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
+        //   entrypoint: "@altano/astro-opengraph-template/endpoint-image",
         //   // TODO is this enough? Will it override the existence of the getstaticpaths fn?
         //   prerender: false,
         // });
@@ -73,7 +73,7 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
         //   );
         //   injectRoute({
         //     pattern: devRoutePattern,
-        //     entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-html",
+        //     entrypoint: "@altano/astro-opengraph-template/endpoint-html",
         //   });
         //   logger.info(`Added "${devRoutePattern}" dev-only route`);
         // }
@@ -82,14 +82,14 @@ export default (config: OpengraphImageConfig): AstroIntegration => ({
       // const routePattern = `/[...path]/opengraph-image.${imageFormat}`;
       // injectRoute({
       //   pattern: routePattern,
-      //   entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-image",
+      //   entrypoint: "@altano/astro-opengraph-template/endpoint-image",
       // });
       // logger.info(`Added "${routePattern}" route`);
       // if (shouldInjectDevRoute(command)) {
       //   const devRoutePattern = "/[...path]/opengraph-image.html";
       //   injectRoute({
       //     pattern: devRoutePattern,
-      //     entrypoint: "@altano/astro-opengraph-image-endpoint/endpoint-html",
+      //     entrypoint: "@altano/astro-opengraph-template/endpoint-html",
       //   });
       //   logger.info(`Added "${devRoutePattern}" dev-only route`);
       // }

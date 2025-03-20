@@ -1,5 +1,5 @@
 {
-  "name": "@altano/astro-opengraph-image-endpoint",
+  "name": "@altano/astro-opengraph-template",
   "version": "0.0.1-alpha.1",
   "description": "Render Open Graph Images from Astro Components",
   "keywords": [
@@ -7,11 +7,11 @@
     "astro-integration",
     "opengraph"
   ],
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-image-endpoint",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph-template",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/astro-opengraph-image-endpoint"
+    "directory": "packages/astro-opengraph-template"
   },
   "license": "ISC",
   "author": {

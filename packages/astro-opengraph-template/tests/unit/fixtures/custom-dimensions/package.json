@@ -7,7 +7,7 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "@altano/astro-opengraph-image-endpoint": "workspace:",
+    "@altano/astro-opengraph-template": "workspace:",
     "astro": "catalog:"
   }
 }

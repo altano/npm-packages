@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import opengraphImage from "@altano/astro-opengraph-image-endpoint";
+import opengraphImage from "@altano/astro-opengraph-template";
 
 // https://astro.build/config
 export default defineConfig({

@@ -5,7 +5,7 @@
  * @type {() => import('astro').AstroIntegration}
  */
 export default () => ({
-  name: "astro-opengraph-image-endpoint",
+  name: "astro-opengraph-template",
   hooks: {
     "astro:config:setup": ({ addMiddleware }) => {
       addMiddleware({
