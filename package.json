@@ -28,14 +28,14 @@
     "@altano/eslint-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@changesets/cli": "^2.27.9",
-    "eslint": "^9.13.0",
+    "eslint": "^9.22.0",
     "prettier": "^3.3.3",
     "syncpack": "^13.0.0",
     "tsup": "^8.3.5",
     "turbo": "^2.2.3",
-    "typescript": "^5.6.3"
+    "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@10.6.3",
   "pnpm": {
     "supportedArchitectures": {
       "os": [

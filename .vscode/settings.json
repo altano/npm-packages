@@ -27,6 +27,5 @@
   "turbo.path": "./node_modules/.bin/turbo",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "vitest.disableWorkspaceWarning": true,
-  "search.followSymlinks": false
+  "vitest.disableWorkspaceWarning": true
 }
