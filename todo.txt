@@ -68,4 +68,10 @@ TODO: fix broken readme example (hook must be used in tree)
 
 astro-opengraph-template
 TODO: add tests for alternate image formats back in
+TODO: add developer toolbar preview of opengraph image on page that uses it
+TODO: add developer toolbar preview of opengraph image on template's html page (in dev)
 TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)
+TODO: update satori
+TODO: documentation
+TODO: document as "experimental", like container apis
+TODO: switch from inline style attr to astro `<style>` in templates once that is supported by container api

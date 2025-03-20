@@ -24,7 +24,7 @@ export function vitePluginOpengraphImageUserConfig(
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   /** Map of virtual module names to their code contents as strings. */
   const modules = {
-    "virtual:opengraph-image/user-config": `export default ${JSON.stringify(
+    "virtual:astro-opengraph-template/user-config": `export default ${JSON.stringify(
       config,
     )}`,
   } satisfies Record<string, string>;
@@ -38,7 +38,7 @@ export function vitePluginOpengraphImageUserConfig(
   );
 
   return {
-    name: "vite-plugin-opengraph-image-user-config",
+    name: "vite-plugin-astro-opengraph-template-user-config",
     resolveId(id): string | void {
       if (id in modules) return resolveVirtualModuleId(id);
     },

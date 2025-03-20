@@ -44,7 +44,7 @@ const SvgDefaults = {
 
 export async function getResolvedConfig(): Promise<OpengraphImageConfigResolved> {
   // Grab the virtual module that holds the integration's user config
-  const module = await import("virtual:opengraph-image/user-config");
+  const module = await import("virtual:astro-opengraph-template/user-config");
   const lazyConfig = module.default;
   const deserialized = await deserializeVirtualConfig(lazyConfig);
   return {

@@ -52,9 +52,14 @@ export type OpengraphImageConfig = {
  * This must remain JSON-serializable!
  */
 
+type AstroConfigSetupHookOptions = Parameters<
+  Astro.IntegrationHooks["astro:config:setup"]
+>[0];
+type Command = AstroConfigSetupHookOptions["command"];
 export type OpengraphImageConfigSerializable = {
   imageFormat?: ImageFormat | undefined;
   svgOptions: SvgOptionsWithFontPaths;
+  command: Command;
 };
 
 export type OpengraphImageConfigSerializableMaybeMocked =
@@ -64,9 +69,11 @@ export type OpengraphImageConfigSerializableMaybeMocked =
 export type OpengraphImageConfigDeserialized = {
   imageFormat?: ImageFormat | undefined;
   svgOptions: SvgOptionsWithFontBuffers;
+  command: Command;
 };
 
 export type OpengraphImageConfigResolved = {
   imageFormat: ImageFormat;
   svgOptions: SvgOptionsWithFontBuffersResolved;
+  command: Command;
 };

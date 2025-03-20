@@ -19,11 +19,18 @@ describe("Custom Dimensions", () => {
   });
 
   it("opengraph image dimensions should be custom dimensions from config", async () => {
-    const opengraphImagePng = await fixture.readFileAsBuffer(
-      "/opengraph-image.png",
-    );
+    const opengraphImagePng = await fixture.readFileAsBuffer("/opengraph.png");
     expect(opengraphImagePng).toBeDefined();
     await expect(opengraphImagePng).toHaveExifProperty("ImageWidth", 307);
     await expect(opengraphImagePng).toHaveExifProperty("ImageHeight", 421);
+  });
+
+  it("opengraph image dimensions should be overrides from opengraph-small.png.ts endpoint", async () => {
+    const opengraphImagePng = await fixture.readFileAsBuffer(
+      "/opengraph-small.png",
+    );
+    expect(opengraphImagePng).toBeDefined();
+    await expect(opengraphImagePng).toHaveExifProperty("ImageWidth", 200);
+    await expect(opengraphImagePng).toHaveExifProperty("ImageHeight", 200);
   });
 });

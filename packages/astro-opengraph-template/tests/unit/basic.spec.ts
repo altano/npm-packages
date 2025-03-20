@@ -41,29 +41,28 @@ describe("Opengraph Routes", () => {
       expect(aboutJson).toHaveProperty("url", "https://astro.build/");
     });
 
-    it("root opengraph-image.png endpoint should have image", async () => {
-      const opengraphImagePng = await fixture.readFileAsBuffer(
-        "/opengraph-image.png",
-      );
+    it("root opengraph.png endpoint should have image", async () => {
+      const opengraphImagePng =
+        await fixture.readFileAsBuffer("/opengraph.png");
       expect(opengraphImagePng).toBeTruthy();
       expect(opengraphImagePng).toMatchImageSnapshot();
     });
 
     // TODO fix this test
     it.todo(
-      "nested opengraph-image.png with a static path endpoint should have image",
+      "nested opengraph.png with a static path endpoint should have image",
       async () => {
         const opengraphImagePng = await fixture.readFileAsBuffer(
-          "/blog/hard-coded-article/opengraph-image.png",
+          "/blog/hard-coded-article/opengraph.png",
         );
         expect(opengraphImagePng).toBeTruthy();
         expect(opengraphImagePng).toMatchImageSnapshot();
       },
     );
 
-    it("nested opengraph-image.png with dynamic path and getStaticPaths should have an opengraph image", async () => {
+    it("nested opengraph.png with dynamic path and getStaticPaths should have an opengraph image", async () => {
       const opengraphImagePng = await fixture.readFileAsBuffer(
-        "/blog/hello-world/opengraph-image.png",
+        "/blog/hello-world/opengraph.png",
       );
       expect(opengraphImagePng).toBeTruthy();
       expect(opengraphImagePng).toMatchImageSnapshot();
@@ -74,14 +73,17 @@ describe("Opengraph Routes", () => {
     );
 
     it("opengraph image dimensions should default to 1200x630", async () => {
-      const opengraphImagePng = await fixture.readFileAsBuffer(
-        "/opengraph-image.png",
-      );
+      const opengraphImagePng =
+        await fixture.readFileAsBuffer("/opengraph.png");
       await expect(opengraphImagePng).toHaveExifProperty("ImageWidth", 1200);
       await expect(opengraphImagePng).toHaveExifProperty("ImageHeight", 630);
     });
 
     it.todo("page should have opengraph meta tags");
+
+    it("should not have html from dev route in ssg", async () => {
+      expect(fixture.pathExists("/opengraph.html")).toStrictEqual(false);
+    });
   });
 
   describe("DEV", async () => {
@@ -101,13 +103,13 @@ describe("Opengraph Routes", () => {
       await devServer.stop();
     });
 
-    it("root astro template should have a dev route (for html debuggability)", async () => {
+    it("root should have an explicit dev html route (for html debuggability)", async () => {
       // console.log(`glob = `, await fixture.glob("*"));
-      const response = await fixture.fetch("/opengraph-image.html");
+      const response = await fixture.fetch("/opengraph.html");
       expect(response).toHaveProperty("status", 200);
       const opengraphImageHtml = await response.text();
       expect(opengraphImageHtml).toMatchInlineSnapshot(`
-        "<html> <body style="font-family: &#34;Inter Variable&#34;;
+        "<!DOCTYPE html><html> <body style="font-family: &#34;Inter Variable&#34;;
                    background: white;
                    height: 100vh;
                    width: 100vw;
@@ -124,36 +126,6 @@ describe("Opengraph Routes", () => {
         </p> </body></html>"
       `);
     });
-
-    // TODO Fix this test
-    it.todo(
-      "nested astro template with a static path should have a dev route (for html debuggability)",
-      async () => {
-        // console.log(`glob = `, await fixture.glob("*"));
-        const response = await fixture.fetch(
-          "/blog/hard-coded-article/opengraph-image.html",
-        );
-        expect(response).toHaveProperty("status", 200);
-        const opengraphImageHtml = await response.text();
-        expect(opengraphImageHtml).toMatchInlineSnapshot(`
-        "<html> <body style="font-family: &#34;Inter Variable&#34;;
-                   background: white;
-                   height: 100vh;
-                   width: 100vw;
-                   display: flex;
-                   flex-direction: column;
-                   align-items: center;
-                   justify-content: center;"> <h1 style="font-weight: 800;
-                     font-size: 5rem;
-                     margin: 0;">
-        ze blog ARTICLE
-        </h1> <article style="font-weight: 400;
-                      font-size: 2rem;">
-        words words words bloviating words
-        </article> </body></html>"
-      `);
-      },
-    );
   });
 
   describe("SSR", async () => {
@@ -193,9 +165,9 @@ describe("Opengraph Routes", () => {
       expect(aboutJson).toHaveProperty("url", "https://astro.build/");
     });
 
-    it("root opengraph-image.png should be an image", async () => {
+    it("root opengraph.png should be an image", async () => {
       const response = await app.render(
-        new Request(new URL("https://example.com/opengraph-image.png"), {}),
+        new Request(new URL("https://example.com/opengraph.png"), {}),
       );
       expect(response).toHaveProperty("status", 200);
       const opengraphImagePngArrayBuffer = await response.arrayBuffer();
@@ -204,20 +176,18 @@ describe("Opengraph Routes", () => {
       expect(opengraphImagePngBuffer).toMatchImageSnapshot();
     });
 
-    it("root opengraph-image.png should have the correct headers", async () => {
+    it("root opengraph.png should have the correct headers", async () => {
       const response = await app.render(
-        new Request(new URL("https://example.com/opengraph-image.png"), {}),
+        new Request(new URL("https://example.com/opengraph.png"), {}),
       );
       expect(response.headers.get("Content-Type")).toEqual("image/png");
     });
 
     // TODO Fix this test
-    it.skip("nested opengraph-image.png with a static path should be an image", async () => {
+    it("nested opengraph.png with a static path should be an image", async () => {
       const response = await app.render(
         new Request(
-          new URL(
-            "https://example.com/blog/hard-coded-article/opengraph-image.png",
-          ),
+          new URL("https://example.com/blog/hard-coded-article/opengraph.png"),
         ),
       );
       expect(response).toHaveProperty("status", 200);
@@ -228,11 +198,11 @@ describe("Opengraph Routes", () => {
     });
 
     it.todo(
-      "nested opengraph-image.png with dynamic path and getStaticPaths should have an opengraph image",
+      "nested opengraph.png with dynamic path and getStaticPaths should have an opengraph image",
     );
 
     it.todo(
-      "nested opengraph-image.png with dynamic path and no getStaticPaths should have an opengraph image",
+      "nested opengraph.png with dynamic path and no getStaticPaths should have an opengraph image",
     );
   });
 });

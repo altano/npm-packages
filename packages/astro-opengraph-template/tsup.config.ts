@@ -1,7 +1,12 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/endpoint-image.ts", "src/endpoint-html.ts"],
+  entry: [
+    // this can only export things that are safe to use from an astro config
+    "src/index.ts",
+    // this can import/export anything, e.g. `astro:assets`
+    "src/endpoint.ts",
+  ],
   format: "esm",
   onSuccess: "pnpm build:types",
   dts: false,
@@ -10,7 +15,6 @@ export default defineConfig({
   external: [
     "astro:middleware",
     "astro:assets",
-    // TODO move this out, rename to opengraph-image-endpoint?
-    "virtual:opengraph-image/user-config",
+    "virtual:astro-opengraph-template/user-config",
   ],
 });

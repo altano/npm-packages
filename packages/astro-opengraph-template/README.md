@@ -58,7 +58,7 @@ Create a component to convert to an image. It must have a `.png.astro` extension
 
 NOTE: Your Astro component must be HTML elements and styles [supported by Satori](https://github.com/vercel/satori#jsx), e.g. it can't be stateful or use `calc()` in css. The [OG Image Playground](https://og-playground.vercel.app/) is a great place to test your component before copying it into your Astro project.
 
-Lastly, in any pages/layouts that have a `opengraph-image.png.astro` in that route, you need to add the `<OpenGraphMeta />` component to generate opengraph meta tags in your head, e.g.:
+Lastly, in any pages/layouts that have a `opengraph.png.astro` in that route, you need to add the `<OpenGraphMeta />` component to generate opengraph meta tags in your head, e.g.:
 
 ```astro
 ---
@@ -70,7 +70,7 @@ import OpenGraphMeta from "@altano/astro-opengraph-template/components/meta.astr
     <OpenGraphMeta />
   </head>
   <body>
-    <p>My opengraph-image should be the root one!</p>
+    <p>My opengraph should be the root one!</p>
   </body>
 </html>
 ```
@@ -123,15 +123,14 @@ export default defineConfig({
 });
 ```
 
-`src/pages/opengraph-image.png.astro`:
+`src/pages/opengraph.png.astro`:
 
 ```astro
 ---
 /**
  * This is not used during image generation. It is only here
  * to make the fonts consistent between the generated image
- * and how the component is rendered if the image generation
- * middleware is disabled.
+ * and how the component is rendered in a dev html endpoint.
  */
 import "@fontsource-variable/inter";
 ---
@@ -178,9 +177,9 @@ import "@fontsource-variable/inter";
 
 See https://github.com/altano/npm-packages/tree/main/examples/astro-opengraph-template for a slightly more involved example.
 
-## Serving another opengraph-image
+## Serving another opengraph
 
-If your `opengraph-image.png.astro` is somewhere else, you can specify a directory relative to the current request URL, e.g. to point at an `opengraph-image.png.astro` file you've put at the root of your site:
+If your `opengraph.png.astro` is somewhere else, you can specify a directory relative to the current request URL, e.g. to point at an `opengraph.png.astro` file you've put at the root of your site:
 
 ```astro
 <html>
@@ -203,17 +202,17 @@ Lastly, for convenience, you can optionally pass in `title` and/or `description`
 
 If you have a dynamic route such as `./src/pages/[...slug].astro`, convert it to `./src/pages/[...slug]/index.astro`
 
-Along-side your dynamic route (e.g. `./src/pages/[...slug]/index.astro`) add `./src/pages/[...slug]/opengraph-image.png.astro`:
+Along-side your dynamic route (e.g. `./src/pages/[...slug]/index.astro`) add `./src/pages/[...slug]/opengraph.png.astro`:
 
 ```
 src/
 ├─ pages/
 │  ├─ [...slug]/
 │  │  ├─ index.astro
-│  │  ├─ opengraph-image.png.astro
+│  │  ├─ opengraph.png.astro
 ```
 
-Within `opengraph-image.png.astro` you can either duplicate your implementation of `getStaticPaths` or you can re-export the same one used in `index.astro`:
+Within `opengraph.png.astro` you can either duplicate your implementation of `getStaticPaths` or you can re-export the same one used in `index.astro`:
 
 ```astro
 ---

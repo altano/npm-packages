@@ -13,10 +13,10 @@ export type Props = {
    */
   description?: string;
   /**
-   * The default is to use opengraph-image.png.astro from the same directory.
+   * The default is to use opengraph.png.astro from the same directory.
    * If you would like to use a different one pass the directory (relative
    * to the current request) that it can be found. e.g. directory="/" would
-   * use "/opengraph-image.png" (at the root) as the opengraph image.
+   * use "/opengraph.png" (at the root) as the opengraph image.
    */
   directory?: string;
 };
@@ -28,7 +28,7 @@ const { title, description, directory = "./" } = Astro.props;
 const urlStr = Astro.url.toString();
 const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
 const opengraphImageUrl = new URL(
-  `${directory}opengraph-image.png`,
+  `${directory}opengraph.png`,
   urlWithTrailingSlash,
 );
 // const mimeType = getMimeType(imageFormat);

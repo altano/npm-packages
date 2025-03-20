@@ -3,7 +3,7 @@
   "tag": "alpha",
   "initialVersions": {
     "@altano/assets": "0.0.0",
-    "@altano/astro-opengraph-image-example": "0.0.1",
+    "@altano/astro-opengraph-template-example": "0.0.1",
     "@altano/remark-astrojs-image-example": "0.0.1",
     "satori-fit-text-demo": "0.1.1",
     "@altano/use-toc-visible-sections-example": "0.0.0",
