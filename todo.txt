@@ -65,3 +65,6 @@ x 2024-03-25 TODO: add tests
 use-visible-elements:
 x 2024-03-25 TODO: add tests
 TODO: fix broken readme example (hook must be used in tree)
+
+astro-opengraph-image:
+TODO: add tests for alternate image formats back in

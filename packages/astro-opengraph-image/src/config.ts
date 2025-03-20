@@ -31,3 +31,27 @@ export async function deserializeVirtualConfig(
     },
   };
 }
+
+const ImageDefaults = {
+  format: "png",
+} as const;
+
+const SvgDefaults = {
+  width: 1200,
+  height: 630,
+} as const;
+
+export async function getResolvedConfig(): Promise<OpengraphImageConfigResolved> {
+  // Grab the virtual module that holds the integration's user config
+  const module = await import("virtual:opengraph-image/user-config");
+  const lazyConfig = module.default;
+  const deserialized = await deserializeVirtualConfig(lazyConfig);
+  return {
+    ...ImageDefaults,
+    ...deserialized,
+    svgOptions: {
+      ...SvgDefaults,
+      ...deserialized.svgOptions,
+    },
+  };
+}

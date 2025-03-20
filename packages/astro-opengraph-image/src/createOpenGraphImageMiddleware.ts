@@ -1,20 +1,14 @@
 import {
   createHtmlToImageMiddleware,
   defaultShouldReplace,
+  type ImageFormat,
 } from "@altano/astro-html-to-image";
 import type { APIContext, MiddlewareHandler } from "astro";
-import { deserializeVirtualConfig } from "./config";
-
-export type ImageFormat = "png";
+import { getResolvedConfig } from "./config";
 
 export type ImageMiddlewareOptions = {
   format: ImageFormat;
 };
-
-const SvgDefaults = {
-  width: 1200,
-  height: 630,
-} as const;
 
 function createOpenGraphImageMiddlewareForFormat({
   format,
@@ -45,18 +39,15 @@ function createOpenGraphImageMiddlewareForFormat({
       );
     },
     async getSvgOptions() {
-      // Grab the virtual module that holds the integration's user config
-      const module = await import("virtual:opengraph-image/user-config");
-      const lazyConfig = module.default;
-      const resolvedConfig = await deserializeVirtualConfig(lazyConfig);
-      const { svgOptions } = resolvedConfig;
-      return Object.assign(SvgDefaults, svgOptions);
+      const { svgOptions } = await getResolvedConfig();
+      return svgOptions;
     },
   });
 }
 
-export function createOpenGraphImageMiddleware(): MiddlewareHandler {
+export async function createOpenGraphImageMiddleware(): Promise<MiddlewareHandler> {
+  const { imageFormat } = await getResolvedConfig();
   return createOpenGraphImageMiddlewareForFormat({
-    format: "png",
+    format: imageFormat,
   });
 }

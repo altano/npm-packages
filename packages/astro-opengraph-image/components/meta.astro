@@ -1,5 +1,6 @@
 ---
-import type { ImageFormat } from "../src/createOpenGraphImageMiddleware";
+import {getMimeType} from "@altano/astro-html-to-image"
+import {getUserConfig} from "../src/config";
 
 export type Props = {
   /**
@@ -13,45 +14,21 @@ export type Props = {
    */
   description?: string;
   /**
-   * Specify what image format you're using. For example,
-   * if you're using opengraph-image.jpg.ts to generate your
-   * opengraph image then pass "jpg" in here.
-   */
-  imageFormat?: ImageFormat;
-  /**
-   * The opengraph image width. Only required if you customized the width you
-   * passed to `createOpenGraphImageMiddleware`.
-   */
-  width?: string;
-  /**
-   * The opengraph image height. Only required if you customized the height you
-   * passed to `createOpenGraphImageMiddleware`.
-   */
-  height?: string;
-  /**
-   * The default is to using the opengraph-image.png.astro from the same
-   * directory. If you would like to use a different one pass the directory
-   * (relative to the current request) that it can be found. e.g. directory="/"
-   * would use "/opengraph-image.png" (at the root) as the opengraph image.
+   * The default is to use opengraph-image.png.astro from the same directory.
+   * If you would like to use a different one pass the directory (relative
+   * to the current request) that it can be found. e.g. directory="/" would
+   * use "/opengraph-image.png" (at the root) as the opengraph image.
    */
   directory?: string;
 };
 
+const {imageFormat, svgOptions} = await getUserConfig();
+
 const {
   title,
   description,
-  imageFormat = "png",
-  width = "1200",
-  height = "630",
   directory = "./",
 } = Astro.props;
-
-function getMimeType(format: ImageFormat): string {
-  switch (format) {
-    case "png":
-      return "image/png";
-  }
-}
 
 const urlStr = Astro.url.toString();
 const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
@@ -66,5 +43,5 @@ const mimeType = getMimeType(imageFormat);
 {title && <meta property="og:description" content={description} />}
 <meta property="og:image" content={opengraphImageUrl.toString()} />
 <meta property="og:image:type" content={mimeType} />
-<meta property="og:image:width" content={width} />
-<meta property="og:image:height" content={height} />
+<meta property="og:image:width" content={svgOptions.width} />
+<meta property="og:image:height" content={svgOptions.height} />
