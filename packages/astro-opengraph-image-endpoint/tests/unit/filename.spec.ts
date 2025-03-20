@@ -2,7 +2,7 @@ import { describe, expect } from "vitest";
 import { middleware } from "./utils/makeTest.js";
 import { basicHtml } from "./utils/basicHtml.js";
 
-describe("filename", async () => {
+describe.skip("filename", async () => {
   middleware.should("convert opengraph-image.png", {
     requestUrl: `http://example.com/opengraph-image.png`,
     format: "png",

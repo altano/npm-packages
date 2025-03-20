@@ -1,7 +1,13 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/middleware.ts"],
+  entry: [
+    "src/index.ts",
+    // "src/middleware.ts",
+    "src/endpoint-image.ts",
+    "src/endpoint-html.ts",
+    // "src/json2-entrypoint.json.ts",
+  ],
   format: "esm",
   onSuccess: "pnpm build:types",
   dts: false,

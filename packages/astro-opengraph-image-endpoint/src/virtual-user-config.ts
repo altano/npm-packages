@@ -6,6 +6,18 @@ function resolveVirtualModuleId<T extends string>(id: T): `\0${T}` {
   return `\0${id}`;
 }
 
+// export function astroConfig(
+//   configSerializable: OpengraphImageConfigSerializable,
+// ) {
+//   return {
+//     vite: {
+//       // Shove the serializable config into the virtual module for later
+//       // retrieval in the middleware
+//       plugins: [vitePluginOpengraphImageUserConfig(configSerializable)],
+//     },
+//   };
+// }
+
 /** Vite plugin that exposes OpengraphImage user config and project context via virtual modules. */
 export function vitePluginOpengraphImageUserConfig(
   config: OpengraphImageConfigSerializable,

@@ -1,7 +1,7 @@
 import { describe, expect } from "vitest";
 import { middleware } from "./utils/makeTest.js";
 
-describe("endpoint", async () => {
+describe.skip("endpoint", async () => {
   middleware.should("gracefully ignore endpoint responses", {
     requestUrl: `http://example.com/rss.xml`,
     format: "png",

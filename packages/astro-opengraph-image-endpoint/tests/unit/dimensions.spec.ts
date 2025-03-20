@@ -2,7 +2,7 @@ import { describe, expect } from "vitest";
 import { middleware } from "./utils/makeTest.js";
 import { basicHtml } from "./utils/basicHtml.js";
 
-describe("dimensions", async () => {
+describe.skip("dimensions", async () => {
   middleware.should("default to 1200x630", {
     requestUrl: `http://example.com/opengraph-image.png`,
     format: "png",

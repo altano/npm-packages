@@ -19,7 +19,8 @@
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true
   },
   "exclude": ["node_modules"]
 }
