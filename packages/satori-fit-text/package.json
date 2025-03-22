@@ -53,7 +53,7 @@
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
     "debug": "^4.3.4",
-    "satori": "^0.12.1",
+    "satori": "^0.10.13",
     "satori-html": "^0.3.2",
     "svgdom": "^0.1.19"
   },

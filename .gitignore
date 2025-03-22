@@ -22,5 +22,5 @@ playwright-report/
 blob-report/
 playwright/.cache/
 
-**/tests/unit/fixtures/**/.astro/
-**/tests/unit/fixtures/**/dist/
+**/tests/fixtures/**/.astro/
+**/tests/fixtures/**/dist/

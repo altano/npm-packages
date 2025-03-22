@@ -31,10 +31,12 @@
     "eslint": "^9.22.0",
     "prettier": "^3.3.3",
     "prettier-plugin-jsdoc": "^1.3.2",
+    "semver": "^7.7.1",
     "syncpack": "^13.0.0",
     "tsup": "^8.3.5",
     "turbo": "^2.4.4",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "yaml": "^2.7.0"
   },
   "packageManager": "pnpm@10.6.3",
   "pnpm": {

@@ -3,7 +3,6 @@ import { loadFixture } from "@inox-tools/astro-tests/astroFixture";
 import type { Fixture } from "./utils/types.js";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import "@altano/vitest-plugins/matchers";
-import {} from "./basic.spec.js";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -12,7 +11,7 @@ describe("Custom Dimensions", () => {
 
   beforeAll(async () => {
     fixture = await loadFixture({
-      root: "./fixtures/custom-dimensions/",
+      root: "../fixtures/custom-dimensions/",
       output: "static",
     });
     await fixture.build({});

@@ -1,10 +1,10 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": [".", "../vite.config.ts", "../../types/virtual.d.ts"],
+  "include": ["unit", "../src/virtual.d.ts"],
   "compilerOptions": {
     "types": [
-      "vitest/jsdom",
       "astro/client",
+      "vitest/jsdom",
       "vitest/globals",
       "@altano/vitest-plugins/matchers"
     ]

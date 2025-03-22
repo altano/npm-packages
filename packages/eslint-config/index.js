@@ -92,7 +92,7 @@ export default {
 
       // disabled rules for dev-only packages
       {
-        files: ["packages/build-config/**/*"],
+        files: ["packages/build-config/**/*", ".syncpackrc.js"],
         rules: {
           "import/no-extraneous-dependencies": "off",
         },
