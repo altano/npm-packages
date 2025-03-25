@@ -67,7 +67,7 @@
     "prettier": "^3.3.3",
     "remark-custom-heading-id": "^1.0.0",
     "typescript": "^5.8.2",
-    "vite": "^6.2.1",
+    "vite": "^6.2.3",
     "vitest": "^3.0.9"
   },
   "publishConfig": {
