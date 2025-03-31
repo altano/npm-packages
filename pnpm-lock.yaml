@@ -141,9 +141,15 @@ importers:
 
   packages/build-config:
     devDependencies:
+      eslint:
+        specifier: 'catalog:'
+        version: 9.23.0(jiti@1.21.6)
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(jiti@1.21.6)(postcss@8.5.3)(typescript@5.8.2)(yaml@2.7.0)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.2
 
   packages/eslint-config:
     dependencies:
