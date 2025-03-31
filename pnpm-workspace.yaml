@@ -2,23 +2,23 @@ packages:
   - "examples/*"
   - "packages/*"
 catalog:
-  "@arethetypeswrong/cli": ^0.15.4
-  "@fontsource-variable/inter": ^5.0.17
-  "@fontsource/inter": ^5.0.17
+  "@arethetypeswrong/cli": ^0.17.4
+  "@fontsource-variable/inter": ^5.2.5
+  "@fontsource/inter": ^5.2.5
   "@playwright/test": 1.47.0
   "@types/node": ^22.13.10
   "@types/react-dom": ^18.2.21
   "@types/react": ^18.2.64
-  "@vitest/coverage-v8": ^3.0.9
-  "@vitest/expect": "^3.0.9"
-  "astro": ^5.4.0
-  "depcheck": "^1.4.7"
-  "eslint": ^9.22.0
-  "prettier": ^3.3.3
+  "@vitest/coverage-v8": ^3.1.1
+  "@vitest/expect": ^3.1.1
+  "astro": ^5.5.6
+  "depcheck": ^1.4.7
+  "eslint": ^9.23.0
+  "prettier": ^3.5.3
   "react-dom": ^18.2.0
   "react": ^18.3.1
   "satori": ^0.12.2
   "tsup": ^8.4.0
   "typescript": ^5.8.2
-  "vite": ^6.2.3
-  "vitest": ^3.0.9
+  "vite": ^6.2.4
+  "vitest": ^3.1.1

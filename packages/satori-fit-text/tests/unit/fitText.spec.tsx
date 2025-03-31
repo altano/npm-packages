@@ -258,7 +258,7 @@ describe("findLargestUsableFontSize", async () => {
         font: await getFont(100),
       });
 
-      expect(fontSize).toBe(74);
+      expect(fontSize).toBe(75);
     });
 
     it("fit smaller text with a heavy weight", async () => {
