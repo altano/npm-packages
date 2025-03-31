@@ -61,14 +61,14 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
-    "@arethetypeswrong/cli": "^0.15.4",
-    "@types/node": "^22.13.10",
+    "@arethetypeswrong/cli": "catalog:",
+    "@types/node": "catalog:",
     "@types/unist": "^3.0.2",
-    "@vitest/coverage-v8": "^3.0.9",
-    "prettier": "^3.3.3",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.3",
-    "vitest": "^3.0.9"
+    "@vitest/coverage-v8": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "publishConfig": {
     "access": "public"

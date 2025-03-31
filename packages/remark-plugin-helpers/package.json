@@ -44,15 +44,15 @@
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@arethetypeswrong/cli": "^0.15.4",
+    "@arethetypeswrong/cli": "catalog:",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.13.10",
+    "@types/node": "catalog:",
     "@types/unist": "^3.0.2",
-    "prettier": "^3.3.3",
-    "typescript": "^5.8.2",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
     "vfile": "^6.0.3",
-    "vite": "^6.2.3",
-    "vitest": "^3.0.9"
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "publishConfig": {
     "access": "restricted"
