@@ -1,5 +1,7 @@
-import { CDNTransformer, CDNTransformerOptions } from "./CDNTransformer.js";
-export * from "./CDNTransformer.js";
+import {
+  CDNTransformer,
+  type CDNTransformerOptions,
+} from "./CDNTransformer.js";
 
 import streamifier from "streamifier";
 

@@ -1,8 +1,9 @@
 // @ts-check
 
 import reactPlugin from "eslint-plugin-react";
-import * as importPlugin from "eslint-plugin-import";
-import { FlatCompat } from "@eslint/eslintrc";
+import reactCompiler from "eslint-plugin-react-compiler";
+import reactHooks from "eslint-plugin-react-hooks";
+import importX from "eslint-plugin-import-x";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier/recommended";
@@ -12,8 +13,6 @@ import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { includeIgnoreFile } from "@eslint/compat";
 import gitignorePath from "./gitignorePath.js";
 import turboConfig from "eslint-config-turbo/flat";
-
-const compat = new FlatCompat();
 
 export default {
   configs: {
@@ -62,30 +61,46 @@ export default {
       },
 
       // react compiler
-      ...compat.config({
-        plugins: ["react-compiler"],
-        rules: {
-          "react-compiler/react-compiler": "error",
-        },
-      }),
+      reactCompiler.configs.recommended,
 
       // react hooks
-      // https://github.com/facebook/react/issues/28313
-      ...compat.config({
-        extends: ["plugin:react-hooks/recommended"],
+      reactHooks.configs["recommended-latest"],
+
+      {
         rules: {
           "react-hooks/exhaustive-deps": "error",
         },
-      }),
+      },
 
       // import: must declare deps
+      importX.flatConfigs.recommended,
+      importX.flatConfigs.typescript,
       {
-        ...importPlugin.flatConfigs?.recommended,
+        files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+        ignores: ["eslint.config.js"],
         rules: {
-          "import/no-unresolved": "off",
-          "import/no-extraneous-dependencies": [
+          "import-x/default": "off",
+          "import-x/no-unresolved": "off",
+          "import-x/no-named-as-default-member": "off",
+          "import-x/no-extraneous-dependencies": [
             "error",
             { devDependencies: false },
+          ],
+        },
+      },
+
+      // import: must declare dev deps (dev-only files/dirs)
+      {
+        files: [
+          "eslint.config.{js,mjs,cjs}",
+          "packages/*/*.config.ts",
+          "packages/*/tests/**/*",
+        ],
+        rules: {
+          "import-x/no-unresolved": "off",
+          "import-x/no-extraneous-dependencies": [
+            "error",
+            { devDependencies: true },
           ],
         },
       },
@@ -94,24 +109,7 @@ export default {
       {
         files: ["packages/build-config/**/*"],
         rules: {
-          "import/no-extraneous-dependencies": "off",
-        },
-      },
-
-      // import: must declare dev deps (dev-only files/dirs)
-      {
-        ...importPlugin.flatConfigs?.recommended,
-        files: [
-          "eslint.config.{js,mjs,cjs}",
-          "packages/*/*.config.ts",
-          "packages/*/tests/**/*",
-        ],
-        rules: {
-          "import/no-unresolved": "off",
-          "import/no-extraneous-dependencies": [
-            "error",
-            { devDependencies: true },
-          ],
+          "import-x/no-extraneous-dependencies": "off",
         },
       },
 
