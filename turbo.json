@@ -32,6 +32,9 @@
     "format": {
       "cache": false
     },
+    "format:fix": {
+      "cache": false
+    },
     "test": {
       "dependsOn": ["test:unit", "test:e2e"]
     },

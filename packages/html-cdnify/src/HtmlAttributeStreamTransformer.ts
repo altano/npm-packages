@@ -26,10 +26,9 @@ export interface AttributeParsers {
 }
 
 /**
- * Wraps a node-trumpet Transform stream, w/ HTML as input and
- * HTML as output. The output will have all non-absolute-URL
- * attributes that identify CDN-able resources converted to
- * use the given CDN URL.
+ * Wraps a node-trumpet Transform stream, w/ HTML as input and HTML as output.
+ * The output will have all non-absolute-URL attributes that identify CDN-able
+ * resources converted to use the given CDN URL.
  */
 export class HtmlAttributeStreamTransformer extends HtmlTransformer {
   public condensedTransformOptions: TransformDefinition[] = [];
@@ -101,9 +100,10 @@ export class HtmlAttributeStreamTransformer extends HtmlTransformer {
     });
 
     /**
-     * As a performance enhancement, we can condense the list of transformDefinitions such that
-     * selectors with the same attribute and attributeParser can be combined into a single,
-     * comma-delimited CSS selector.
+     * As a performance enhancement, we can condense the list of
+     * transformDefinitions such that selectors with the same attribute and
+     * attributeParser can be combined into a single, comma-delimited CSS
+     * selector.
      */
     const groupedTransformOptions = groupBy(
       this.options.transformDefinitions,

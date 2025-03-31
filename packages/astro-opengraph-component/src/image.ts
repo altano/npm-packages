@@ -5,9 +5,7 @@ import he from "he";
 
 import type { LocalImageService } from "astro";
 
-/**
- * Convert an html string to an image
- */
+/** Convert an html string to an image */
 export async function htmlToPNG(
   html: string,
   satoriOptions: SatoriOptions,
@@ -31,9 +29,7 @@ export async function htmlToPNG(
   return bufferToTransformedPNG(uint8Array);
 }
 
-/**
- * Convert a buffer to an image using the astro local image service
- */
+/** Convert a buffer to an image using the astro local image service */
 async function bufferToTransformedPNG(
   imageBuffer: Uint8Array,
 ): ReturnType<LocalImageService["transform"]> {

@@ -31,12 +31,10 @@ const findMethods = [
 /**
  * Find the root path of the repository containing the given directory.
  *
- * @returns null if not found or the path of the repository root as a string
+ * @returns Null if not found or the path of the repository root as a string
  */
 export function findRootSync(
-  /**
-   * The directory path of anything in a version-controlled repository
-   */
+  /** The directory path of anything in a version-controlled repository */
   directory: string,
 ): string | null {
   for (const method of findMethods) {

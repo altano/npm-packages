@@ -25,14 +25,9 @@ export type CustomTag = {
 };
 
 export interface RemarkMdxTocOptions {
-  /**
-   * If specified, export toc using the name.
-   * Otherwise, use `toc` as the name.
-   */
+  /** If specified, export toc using the name. Otherwise, use `toc` as the name. */
   name?: string;
-  /**
-   * Add custom tag to toc
-   */
+  /** Add custom tag to toc */
   customTags?: CustomTag[];
 }
 

@@ -9,10 +9,24 @@ interface Context {
 export const ElementObserverContext = React.createContext<Context | null>(null);
 
 export interface Options {
+  /** The css selector used to select which elements are observed. */
   selector: string;
+  /** The React tree to observe. */
   tree: React.ReactNode;
+  /**
+   * If `true`, a 'div' will wrap the observed children. If `false`, `children`
+   * must be a single child element that can take a ref (which will be
+   * overwritten).
+   */
   useWrapperDiv?: boolean | undefined;
 }
+
+type Result = [
+  /** The elements that are currently mounted */
+  mountedElements: Set<Element>,
+  /** The React tree that should be rendered by the caller */
+  treeToRender: React.ReactElement,
+];
 
 /**
  * Allows observing mount/unmount of elements that match a given selector in the
@@ -20,23 +34,14 @@ export interface Options {
  * is monitored. If the tree's DOM is dynamically changed those mounts and
  * unmounts will not be detected.
  *
- * @param tree The React tree to observe.
- * @param onMount The callback that will be passed any elements in the tree that
- * match the given selector, as they mount.
- * @param onUnmount The callback that will be passed any elements in the tree
- * that match the given selector, as they unmount.
- * @param selector The css selector used to select which elements are observed.
- * @param useWrapperDiv If `true`, a 'div' will wrap the observed children. If
- * `false`, `children` must be a single child element that can take a ref (which
- * will be overwritten).
  * @returns A tuple of: (1) set of elements and (2) the observed tree to be
- * rendered.
+ *   rendered.
  */
 export function useElementObserver({
   tree,
   selector,
   useWrapperDiv = true,
-}: Options): [Set<Element>, React.ReactElement] {
+}: Options): Result {
   // TODO: Re-compute on every render to catch mutations? Add mutation observer
   // to catch changes to grandchildren?
   const mountedElements = useSet<Element>();

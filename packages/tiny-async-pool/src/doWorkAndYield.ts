@@ -15,9 +15,7 @@ export async function* doWorkAndYield<
    * called in parallel.
    */
   concurrentCount: number,
-  /**
-   * An iterable that contains the items that should be passed to `iteratorFn`.
-   */
+  /** An iterable that contains the items that should be passed to `iteratorFn`. */
   iterable: TIterable,
   /**
    * The async callback function that does the work. Will be passed items from

@@ -11,15 +11,14 @@ export default class HtmlTransformer {
     this.transformStream = trumpet();
   }
 
-  /**
-   * Get the underlying transform stream
-   */
+  /** Get the underlying transform stream */
   get stream(): Trumpet {
     return this.transformStream;
   }
 
   /**
-   * Get a promise to the complete output Buffer (alternative API to dealing with stream)
+   * Get a promise to the complete output Buffer (alternative API to dealing
+   * with stream)
    */
   get outputBufferPromise(): Promise<Buffer> {
     return streamToPromise(this.stream);

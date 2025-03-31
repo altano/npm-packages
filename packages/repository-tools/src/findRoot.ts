@@ -31,12 +31,10 @@ const findMethods = [
 /**
  * Find the root path of the repository containing the given directory.
  *
- * @returns null if not found or the path of the repository root as a string
+ * @returns Null if not found or the path of the repository root as a string
  */
 export async function findRoot(
-  /**
-   * The directory path of anything in a version-controlled repository
-   */
+  /** The directory path of anything in a version-controlled repository */
   directory: string,
 ): Promise<string | null> {
   for (const method of findMethods) {

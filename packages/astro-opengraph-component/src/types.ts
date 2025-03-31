@@ -36,13 +36,11 @@ export type MetaTagDefaults = {
 
 export type OpengraphImageConfig = {
   /**
-   * Options to use for the image file that is generated. Most importantly, fonts
-   * must be provided.
+   * Options to use for the image file that is generated. Most importantly,
+   * fonts must be provided.
    */
   getImageOptions(): Promise<ImageOptionsWithFontPaths>;
-  /**
-   * Defaults to use in the component for tags you don't manually set.
-   */
+  /** Defaults to use in the component for tags you don't manually set. */
   componentMetaTagFallbacks?: ComponentMetaTagFallbacks;
 };
 
@@ -51,9 +49,7 @@ type AstroConfigSetupHookOptions = Parameters<
 >[0];
 type Command = AstroConfigSetupHookOptions["command"];
 
-/**
- * This must remain JSON-serializable!
- */
+/** This must remain JSON-serializable! */
 export type OpengraphImageConfigSerializable = {
   imageOptions: ImageOptionsWithFontPaths;
   componentMetaTagFallbacks?: ComponentMetaTagFallbacks;

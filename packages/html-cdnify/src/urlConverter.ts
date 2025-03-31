@@ -10,9 +10,7 @@ function isLocalPath(filePath: string): boolean {
   );
 }
 
-/**
- * Resolve oldUrl against pathOldUrlIsRelativeTo, and then prepend newUrlBase
- */
+/** Resolve oldUrl against pathOldUrlIsRelativeTo, and then prepend newUrlBase */
 export default (
   newUrlBase: string,
   oldUrl: string,

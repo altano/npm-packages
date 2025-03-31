@@ -3,9 +3,7 @@ import { getTextMeasurer } from "./TextMeasurer/getTextMeasurer.js";
 import type { Font } from "./types.js";
 
 export type FindOptions = {
-  /**
-   * The text you want to fit
-   */
+  /** The text you want to fit */
   text: string;
   /**
    * The font of your text. Options are the same as [those taken by
@@ -13,29 +11,17 @@ export type FindOptions = {
    * an array of fonts is accepted here.
    */
   font: Font;
-  /**
-   * The max width the text must be contained in
-   */
+  /** The max width the text must be contained in */
   maxWidth: number;
-  /**
-   * The max height the text must be contained in
-   */
+  /** The max height the text must be contained in */
   maxHeight: number;
-  /**
-   * Optional: the CSS line height factor to use, e.g. 1.1
-   */
+  /** Optional: the CSS line height factor to use, e.g. 1.1 */
   lineHeight?: number | "normal";
-  /**
-   * The minimum font size that should be returned, even if smaller fonts fit
-   */
+  /** The minimum font size that should be returned, even if smaller fonts fit */
   minFontSize?: number;
-  /**
-   * The maximum font size that should be returned, even if larger fonts fit
-   */
+  /** The maximum font size that should be returned, even if larger fonts fit */
   maxFontSize?: number;
-  /**
-   * The maximum number of font sizes to try before giving up. Defaults to 1000.
-   */
+  /** The maximum number of font sizes to try before giving up. Defaults to 1000. */
   maxTries?: number;
 };
 

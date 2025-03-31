@@ -10,9 +10,7 @@ type Options = {
   // hard to get right and simply importing a .astro file doesn't give you
   // something typed as a factory.
   template: unknown;
-  /**
-   * Custom "Content-Type" header, only used in SSR. Defaults to "image/png"
-   */
+  /** Custom "Content-Type" header, only used in SSR. Defaults to "image/png" */
   contentType?: string;
   imageOptionOverrides?: Partial<ImageOptions>;
 };

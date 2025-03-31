@@ -10,7 +10,8 @@ export interface CdnifyOptions extends CDNTransformerOptions {
 }
 
 /**
- * Alternative wrapper for simple Promise-based use of library (as opposed to transform stream)
+ * Alternative wrapper for simple Promise-based use of library (as opposed to
+ * transform stream)
  */
 export function cdnify(options: CdnifyOptions): Promise<Buffer> {
   if (typeof options.buffer !== "string") {

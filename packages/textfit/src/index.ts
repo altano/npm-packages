@@ -1,40 +1,29 @@
 /**
- * textFit v2.3.1
- * Previously known as jQuery.textFit
- * 11/2014 by STRML (strml.github.com)
- * MIT License
+ * TextFit v2.3.1 Previously known as jQuery.textFit 11/2014 by STRML
+ * (strml.github.com) MIT License
  *
  * To use: textFit(document.getElementById('target-div'), options);
  *
- * Will make the *text* content inside a container scale to fit the container
- * The container is required to have a set width and height
- * Uses binary search to fit text with minimal layout calls.
- * Version 2.0 does not use jQuery.
+ * Will make the _text_ content inside a container scale to fit the container
+ * The container is required to have a set width and height Uses binary search
+ * to fit text with minimal layout calls. Version 2.0 does not use jQuery.
  */
 
 export interface Options {
-  /**
-   * if true, textFit will not set white-space: no-wrap
-   */
+  /** If true, textFit will not set white-space: no-wrap */
   multiLine?: boolean;
-  /**
-   * disable to turn off automatic multi-line sensing
-   */
+  /** Disable to turn off automatic multi-line sensing */
   detectMultiLine?: boolean;
   minFontSize?: number;
   maxFontSize?: number;
   /**
-   * if true, textFit will re-process already-fit nodes. Set to 'false' for
+   * If true, textFit will re-process already-fit nodes. Set to 'false' for
    * better performance
    */
   reProcess?: boolean;
-  /**
-   * if true, textFit will fit text to element width, regardless of text height
-   */
+  /** If true, textFit will fit text to element width, regardless of text height */
   widthOnly?: boolean;
-  /**
-   * if true, textFit will use flexbox for vertical alignment
-   */
+  /** If true, textFit will use flexbox for vertical alignment */
   alignVertWithFlexbox?: boolean;
   /**
    * Sets the final size to the max multiple of this. Useful when a font
@@ -70,8 +59,9 @@ export function textFit(
 
 /**
  * The meat. Given an el, make the text inside it fit its parent.
- * @param  {DOMElement} el       Child el.
- * @param  {Object} settings     Options for fit.
+ *
+ * @param {DOMElement} el Child el.
+ * @param {Object} settings Options for fit.
  */
 function processItem(el: HTMLElement, settings: Required<Options>): void {
   if (

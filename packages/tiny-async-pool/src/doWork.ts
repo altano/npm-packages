@@ -1,17 +1,13 @@
 import { doWorkAndYield, type IterableItem } from "./doWorkAndYield.js";
 
-/**
- * Process items from `iterable` in batches.
- */
+/** Process items from `iterable` in batches. */
 export async function doWork<TIn, TIterable extends Iterable<TIn>>(
   /**
    * The size of the batch of work, or, how many times `iteratorFn` will be
    * called in parallel.
    */
   concurrentCount: number,
-  /**
-   * An iterable that contains the items that should be passed to `iteratorFn`.
-   */
+  /** An iterable that contains the items that should be passed to `iteratorFn`. */
   iterable: TIterable,
   /**
    * The async callback function that does the work. Will be passed items from
