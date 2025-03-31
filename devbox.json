@@ -3,9 +3,7 @@
     "difftastic@latest",
     "git@2.44.1",
     "mercurialFull@latest",
-    "nodejs@22.14.0",
-    "playwright-driver.browsers",
-    "playwright-driver@1.47.0",
+    "nodejs@22.14.0", // keep in sync with test.yml
     "sapling@latest",
     "subversion@latest",
     "tree@latest",
@@ -13,7 +11,6 @@
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
-    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
-    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR"
+    "PLAYWRIGHT_BROWSERS_PATH": "0"
   }
 }

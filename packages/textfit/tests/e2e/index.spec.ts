@@ -17,7 +17,7 @@ test("should have correct font sizes", async ({ page, browserName }) => {
 
   await expect(page.getByText("Centered Text", { exact: true })).toHaveCSS(
     "font-size",
-    "32px",
+    /(31|32)px/, // 31px on linux, 32px on mac
   );
 
   await expect(page.getByText("Multiline Text", { exact: true })).toHaveCSS(
@@ -27,11 +27,17 @@ test("should have correct font sizes", async ({ page, browserName }) => {
 
   await expect(
     page.getByText("Vertically Centered Text", { exact: true }),
-  ).toHaveCSS("font-size", "48px");
+  ).toHaveCSS(
+    "font-size",
+    /(48|49)px/, // 49px on linux, 48px on mac
+  );
 
   await expect(
     page.getByText("Centered Multiline Text", { exact: true }),
-  ).toHaveCSS("font-size", "48px");
+  ).toHaveCSS(
+    "font-size",
+    /(48|49)px/, // 49px on linux, 48px on mac
+  );
 
   await expect(
     page.getByText("Set a Maximum Font Size", { exact: true }),
@@ -51,7 +57,10 @@ test("should have correct font sizes", async ({ page, browserName }) => {
 
   await expect(
     page.getByText("Use Any Custom Padding", { exact: true }),
-  ).toHaveCSS("font-size", "37px");
+  ).toHaveCSS(
+    "font-size",
+    /(36|37)px/, // 36px on linux, 37px on mac
+  );
 
   await expect(
     page.getByText("Use Padding With Flexbox For Custom Vert Alignment!", {
