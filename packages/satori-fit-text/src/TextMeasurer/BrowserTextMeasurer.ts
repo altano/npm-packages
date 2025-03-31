@@ -1,7 +1,7 @@
 /* v8 ignore start */
 import log from "../log.js";
-import { TextMeasurer, type Dimensions } from "./TextMeasurer.js";
-import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed.js";
+import { TextMeasurer } from "./TextMeasurer.js";
+import type { Dimensions } from "../types.js";
 
 export default class BrowserTextMeasurer extends TextMeasurer {
   #getSvgElement(svgText: string): SVGSVGElement {
@@ -21,19 +21,18 @@ export default class BrowserTextMeasurer extends TextMeasurer {
 
     try {
       document.body.appendChild(svg);
-      const { width, height } = svg.getBBox();
-      const widthAdjusted = getWidthAdjustedForInlineBleed(svg, width);
+      const dimensions = svg.getBBox();
+      const { width, height } = dimensions;
 
       log({
         fontSize,
-        width,
-        widthAdjusted,
-        height,
-        widthFits: widthAdjusted <= this.maxWidth,
-        heightFits: height <= this.maxHeight,
+        width: `${width}px`,
+        height: `${height}px`,
+        widthFits: `${width}px ${width <= this.maxWidth ? "DOES" : "does NOT"} fit in ${this.maxWidth}`,
+        heightFits: `${height}px ${height <= this.maxHeight ? "DOES" : "does NOT"} fit in ${this.maxHeight}`,
       });
 
-      return { width: widthAdjusted, height };
+      return dimensions;
     } finally {
       svg.parentElement?.removeChild?.(svg);
     }
