@@ -22,11 +22,19 @@ type TestOptions = {
   Component: TestComponent;
   width: number;
   height: number;
+  only?: boolean;
 };
 
 export default function should(
   testName: string,
-  { snapshot = true, Component, width, height, findOptions }: TestOptions,
+  {
+    snapshot = true,
+    Component,
+    width,
+    height,
+    findOptions,
+    only = false,
+  }: TestOptions,
 ): void {
   async function run(): Promise<void> {
     const fontSize = await findLargestUsableFontSize(findOptions);
@@ -57,5 +65,5 @@ export default function should(
     }
   }
 
-  test(testName, run);
+  test(testName, { only }, run);
 }

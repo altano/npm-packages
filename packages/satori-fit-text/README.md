@@ -25,7 +25,7 @@ async function getInter(): Promise<Font> {
     `https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-600-normal.woff`,
   ).then((res) => res.arrayBuffer());
 
-  const font = {
+  return {
     name: "Inter",
     data: interSemiBoldBuffer,
     weight: 600,
@@ -34,7 +34,7 @@ async function getInter(): Promise<Font> {
 
 const largestUsableFontSize = await findLargestUsableFontSize({
   lineHeight: 1,
-  font: await getFont(),
+  font: await getInter(),
   text: "Some text I want to be as big as possible",
   maxWidth: 1136,
   maxHeight: 429,

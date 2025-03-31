@@ -1,9 +1,7 @@
 import satori from "satori";
 
 import type React from "react";
-import type { Font } from "../types.js";
-
-export type Dimensions = Pick<DOMRect, "width" | "height">;
+import type { Dimensions, Font } from "../types.js";
 
 export abstract class TextMeasurer {
   #fonts: Font[];
@@ -49,13 +47,6 @@ export abstract class TextMeasurer {
                 margin: 0,
                 padding: 0,
                 boxSizing: "border-box",
-                // We render a border so that we measure the true dimensions of the text.
-                // Without one, the bounding box might not include significant whitespace.
-                // For example, if the last line of text has no descenders, the bounding box
-                // would only extend to the baseline of the last line. With a border, the
-                // bounding box will include all the whitespace between the baseline and the
-                // descent of the text.
-                border: "solid red 1px",
 
                 // Dynamic styles based on input
                 fontSize,

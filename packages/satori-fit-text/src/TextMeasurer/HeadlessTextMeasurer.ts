@@ -2,8 +2,8 @@ import { SVG, registerWindow, type Svg } from "@svgdotjs/svg.js";
 import { createSVGWindow } from "svgdom";
 import log from "../log.js";
 import type { Font } from "../types.js";
-import { TextMeasurer, type Dimensions } from "./TextMeasurer.js";
-import getWidthAdjustedForInlineBleed from "./getWidthAdjustedForInlineBleed.js";
+import { TextMeasurer } from "./TextMeasurer.js";
+import { Dimensions } from "../types.js";
 
 export default class HeadlessTextMeasurer extends TextMeasurer {
   #canvas: Svg;
@@ -28,22 +28,18 @@ export default class HeadlessTextMeasurer extends TextMeasurer {
 
   async getDimensions(fontSize: number): Promise<Dimensions> {
     await this.#setFontSize(fontSize);
-    const { width, height } = this.#canvas.bbox();
-    const widthAdjusted = getWidthAdjustedForInlineBleed(
-      this.#canvas.node,
-      width,
-    );
+    const dimensions = this.#canvas.bbox();
+    const { width, height } = dimensions;
 
     log({
       fontSize,
-      width,
-      widthAdjusted,
-      height,
-      widthFits: widthAdjusted <= this.maxWidth,
-      heightFits: height <= this.maxHeight,
+      width: `${width}px`,
+      height: `${height}px`,
+      widthFits: `${width}px ${width <= this.maxWidth ? "DOES" : "does NOT"} fit in ${this.maxWidth}`,
+      heightFits: `${height}px ${height <= this.maxHeight ? "DOES" : "does NOT"} fit in ${this.maxHeight}`,
     });
 
-    return { width: widthAdjusted, height };
+    return dimensions;
   }
 
   async #setFontSize(fontSize: number): Promise<void> {

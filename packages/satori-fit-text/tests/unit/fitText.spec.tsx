@@ -234,23 +234,23 @@ describe(
 
         // Eyeball the monotonicity: every value in this map should be increasing
         expect(widthToFontSizeSorted).toMatchInlineSnapshot(`
-        Map {
-          10 => 1,
-          100 => 18,
-          250 => 41,
-          500 => 62,
-          750 => 75,
-          1000 => 90,
-          1500 => 112,
-          1706 => 112,
-          1800 => 113,
-          1900 => 119,
-          2000 => 125,
-          2500 => 150,
-          3000 => 150,
-          5000 => 220,
-        }
-      `);
+          Map {
+            10 => 1,
+            100 => 18,
+            250 => 41,
+            500 => 62,
+            750 => 76,
+            1000 => 91,
+            1500 => 114,
+            1706 => 114,
+            1800 => 114,
+            1900 => 119,
+            2000 => 125,
+            2500 => 152,
+            3000 => 152,
+            5000 => 220,
+          }
+        `);
       });
 
       it("should error when maxTries = 1", async () => {
@@ -300,7 +300,7 @@ describe(
           font: await getFont(100),
         });
 
-        expect(fontSize).toBe(73);
+        expect(fontSize).toBe(74);
       });
 
       it("fit smaller text with a heavy weight", async () => {
@@ -314,7 +314,7 @@ describe(
           font: await getFont(900),
         });
 
-        expect(fontSize).toBe(65);
+        expect(fontSize).toBe(66);
       });
     });
   },
