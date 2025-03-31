@@ -1,5 +1,15 @@
 # @altano/satori-fit-text
 
+## 1.0.0
+
+### Major Changes
+
+- 7f7a26c: Update satori, includes major font-handling changes
+
+### Patch Changes
+
+- 4c2162f: remove unused dependencies
+
 ## 0.1.4
 
 ### Patch Changes

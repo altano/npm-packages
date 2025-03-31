@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc
 
+## 0.0.2
+
+### Patch Changes
+
+- 4c2162f: remove unused dependencies
+
 ## 0.0.1
 
 ### Patch Changes

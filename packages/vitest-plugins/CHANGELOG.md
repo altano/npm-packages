@@ -1,5 +1,15 @@
 # @altano/vitest-plugins
 
+## 1.0.0
+
+### Major Changes
+
+- 989abbb: added snapshot serializers and a matcher
+
+### Patch Changes
+
+- 4c2162f: remove unused dependencies
+
 ## 0.2.0
 
 ### Minor Changes

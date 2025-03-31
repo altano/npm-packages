@@ -1,5 +1,11 @@
 # @altano/tiny-async-pool
 
+## 3.0.2
+
+### Patch Changes
+
+- 4c2162f: remove unused dependencies
+
 ## 3.0.1
 
 ### Patch Changes

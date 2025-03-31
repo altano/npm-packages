@@ -1,5 +1,12 @@
 # @altano/html-cdnify
 
+## 3.0.4
+
+### Patch Changes
+
+- 1cdc0fe: make types compatible with typescript's exactOptionalPropertyTypes
+- 4c2162f: remove unused dependencies
+
 ## 3.0.3
 
 ### Patch Changes

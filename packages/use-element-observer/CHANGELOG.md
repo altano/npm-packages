@@ -1,5 +1,11 @@
 # @altano/use-element-observer
 
+## 2.0.2
+
+### Patch Changes
+
+- 1cdc0fe: make types compatible with typescript's exactOptionalPropertyTypes
+
 ## 2.0.0
 
 ### Major Changes
