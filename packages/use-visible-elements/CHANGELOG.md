@@ -1,5 +1,12 @@
 # @altano/use-visible-elements
 
+## 2.0.2
+
+### Patch Changes
+
+- Updated dependencies [1cdc0fe]
+  - @altano/use-element-observer@2.0.2
+
 ## 2.0.1
 
 ### Patch Changes

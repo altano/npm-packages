@@ -1,5 +1,11 @@
 # @altano/use-toc-visible-sections
 
+## 2.0.2
+
+### Patch Changes
+
+- @altano/use-visible-elements@2.0.2
+
 ## 2.0.1
 
 ### Patch Changes

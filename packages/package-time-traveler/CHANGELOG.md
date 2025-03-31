@@ -1,5 +1,12 @@
 # package-time-traveler
 
+## 3.0.2
+
+### Patch Changes
+
+- Updated dependencies [4c2162f]
+  - @altano/tiny-async-pool@3.0.2
+
 ## 3.0.1
 
 ### Patch Changes

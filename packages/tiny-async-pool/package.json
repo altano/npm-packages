@@ -1,6 +1,6 @@
 {
   "name": "@altano/tiny-async-pool",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Run multiple promise-returning & async functions with limited concurrency using native ES9",
   "keywords": [
     "race",
