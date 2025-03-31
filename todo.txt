@@ -3,6 +3,10 @@ x 2024-03-24 TODO: Investigate turborepo remote caching
 x 2024-03-24 TODO: remove unnecessary react imports
 x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
 TODO: Look into npm Provenance w/ github actions
+TODO: figure out a better way to handle examples. currently can jam up releases. can maybe move into the projects themselves? have live example in readme?
+
+repository-tools:
+TODO: investigate going esm-only with require(esm) now landed
 
 turbo:
 TODO: experiment with `turbo boundaries`
