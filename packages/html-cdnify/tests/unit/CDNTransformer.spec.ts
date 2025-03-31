@@ -507,7 +507,7 @@ describe("CDNTransformer", function () {
           // transformFunction: transformFunction,
 
           // These transform definitions allow us to capture attributes of ignored
-          // elements and still fingerprint them. @TODO Move to separate plugin?
+          // elements and still fingerprint them.
           transformDefinitions: [
             {
               selector: `video[poster][data-cdn-ignore]`,

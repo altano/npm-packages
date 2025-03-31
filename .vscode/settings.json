@@ -5,7 +5,6 @@
   "biome.enabled": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "jestrunner.disableCodeLens": true,
-  "explorer.excludeGitIgnore": true,
   "search.exclude": {
     "**/.turbo": true,
     "**/dist": true,
