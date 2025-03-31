@@ -9,8 +9,16 @@
     "tsup.config.node.ts",
     "tsup.config.browser.ts"
   ],
+  "scripts": {
+    "check:types": "tsc --noEmit",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 pnpm lint --fix",
+    "lint:timing": "TIMING=1 pnpm lint"
+  },
   "devDependencies": {
-    "tsup": "catalog:"
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "restricted"

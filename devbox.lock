@@ -122,7 +122,7 @@
       }
     },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
-      "resolved": "github:NixOS/nixpkgs/3549532663732bfd89993204d40543e9edaec4f2?lastModified=1742272065&narHash=sha256-ud8vcSzJsZ%2FCK%2Br8%2Fv0lyf4yUntVmDq6Z0A41ODfWbE%3D"
+      "resolved": "github:NixOS/nixpkgs/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f?lastModified=1743259260&narHash=sha256-ArWLUgRm1tKHiqlhnymyVqi5kLNCK5ghvm06mfCl4QY%3D"
     },
     "graphite-cli@latest": {
       "last_modified": "2025-03-11T17:52:14Z",
@@ -348,8 +348,8 @@
       }
     },
     "sapling@latest": {
-      "last_modified": "2025-02-23T09:42:26Z",
-      "resolved": "github:NixOS/nixpkgs/2d068ae5c6516b2d04562de50a58c682540de9bf#sapling",
+      "last_modified": "2025-03-21T17:37:26Z",
+      "resolved": "github:NixOS/nixpkgs/94c4dbe77c0740ebba36c173672ca15a7926c993#sapling",
       "source": "devbox-search",
       "version": "0.2.20240718-145624+f4e9df48",
       "systems": {
@@ -357,15 +357,15 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/m7q5s89p5j18lckr8w8zldq3khqkhmz7-sapling-0.2.20240718-145624+f4e9df48",
+              "path": "/nix/store/qlyvkkamc85ca0fgh81r9gdd81l82wfx-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/4igkqnh0rbhgwclcx24y4wv8b5d428yq-sapling-0.2.20240718-145624+f4e9df48-dist"
+              "path": "/nix/store/4mwlk4mypw2fh5wmm0d4v5b1m8kzccnz-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/m7q5s89p5j18lckr8w8zldq3khqkhmz7-sapling-0.2.20240718-145624+f4e9df48"
+          "store_path": "/nix/store/qlyvkkamc85ca0fgh81r9gdd81l82wfx-sapling-0.2.20240718-145624+f4e9df48"
         },
         "aarch64-linux": {
           "outputs": [
@@ -385,15 +385,15 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/cyrl49z9ljdhkjq5pjcsnyqk5dr48f6i-sapling-0.2.20240718-145624+f4e9df48",
+              "path": "/nix/store/8a73wmn913qhm0p2q0j3g49fhcxsmbym-sapling-0.2.20240718-145624+f4e9df48",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/fqiyw9yjqnihgxn3l3zzcd8j3yfcakv1-sapling-0.2.20240718-145624+f4e9df48-dist"
+              "path": "/nix/store/i1k5afrlpaf76mln0c2i0mgsxhq5jinc-sapling-0.2.20240718-145624+f4e9df48-dist"
             }
           ],
-          "store_path": "/nix/store/cyrl49z9ljdhkjq5pjcsnyqk5dr48f6i-sapling-0.2.20240718-145624+f4e9df48"
+          "store_path": "/nix/store/8a73wmn913qhm0p2q0j3g49fhcxsmbym-sapling-0.2.20240718-145624+f4e9df48"
         },
         "x86_64-linux": {
           "outputs": [
