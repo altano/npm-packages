@@ -1,3 +1,5 @@
+/_ eslint-disable @typescript-eslint/no-empty-object-type _/
+
 # vitest-plugins
 
 [![npm](https://badgen.net/npm/v/@altano/vitest-plugins)](https://www.npmjs.com/package/@altano/vitest-plugins) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/vitest-plugins) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
@@ -79,6 +81,14 @@ FormattedVFile {
 
 Will replace any instances of `process.cwd()` with `<cwd>` in the snapshot. Useful when serializing strings that contain absolute paths, since those will be different on other machines running the tests.
 
+### URLs
+
+Canonicalizes parts of a URL that might not be deterministic in tests. Tries to be conservative, so at the moment, this only strips the port from localhost urls, e.g. `http://localhost:1234` is converted to `http://localhost`.
+
+### HTML
+
+HTML is prettier formatted. Only works on well-formed HTML that starts with `<html` or `<!doctype`. To avoid infinitely reformatting the HTML, it is preprended with `<!-- Formatted HTML -->`.
+
 ## Matchers
 
 Vitest's error matchers let you match against the error message, but not the rest of the Error object:
@@ -124,7 +134,7 @@ expect("/private/some/path").toBePath("/some/path");
 
 ### toBeFile
 
-Verify a file exists
+Verify a file exists (on the filesystem)
 
 ```ts
 expect(import.meta.filename).toBeFile();
@@ -132,7 +142,7 @@ expect(import.meta.filename).toBeFile();
 
 ### toBeDirectory
 
-Verify a directory exists
+Verify a directory exists (on the filesystem)
 
 ```ts
 expect("/").toBeDirectory();
@@ -140,8 +150,20 @@ expect("/").toBeDirectory();
 
 ### toEqualFile
 
-Verify that the given path matches the contents of another file
+Verify that the contents of a file at a given path match the contents of a file at a another path
 
 ```ts
 expect("/some/file.txt").toEqualFile("/other/file.txt");
 ```
+
+### toHaveExifProperty
+
+Similar to the `toHaveProperty` matcher, but checks exif properties on the given buffer (or any object parseable by the `exifr` library).
+
+### toHaveHeader (on Response objects)
+
+Verify that Response has an expected header and optional value
+
+### toHaveStatus (on Response objects)
+
+Verify that a Response has an expected status code
