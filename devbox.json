@@ -2,18 +2,20 @@
   "packages": [
     "difftastic@latest",
     "git@2.44.1",
+    "github:NixOS/nixpkgs/1e5c9a1262182659eb2b7a81612558acf9761536#ffmpeg",
+    "github:NixOS/nixpkgs/1e5c9a1262182659eb2b7a81612558acf9761536#playwright-driver.browsers",
+    "github:NixOS/nixpkgs/1e5c9a1262182659eb2b7a81612558acf9761536#playwright-driver",
+    "github:NixOS/nixpkgs/1e5c9a1262182659eb2b7a81612558acf9761536#playwright-test",
     "mercurialFull@latest",
     "nodejs@22.14.0",
-    "playwright-driver.browsers",
-    "playwright-driver@1.47.0",
     "sapling@latest",
     "subversion@latest",
-    "tree@latest",
-    "graphite-cli@latest"
+    "tree@latest"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
+    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR",
     "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
-    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR"
+    "PLAYWRIGHT_SKIP_BROWSER_GC": "1"
   }
 }
