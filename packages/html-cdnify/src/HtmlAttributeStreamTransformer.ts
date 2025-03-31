@@ -10,10 +10,9 @@ export interface HtmlAttributeStreamTransformerOptions {
 export interface TransformDefinition {
   selector: string;
   attribute: string;
-  attributeParser?: (
-    oldAttribute: string,
-    transformFunction: TransformFunction,
-  ) => string;
+  attributeParser?:
+    | undefined
+    | ((oldAttribute: string, transformFunction: TransformFunction) => string);
 }
 
 export type TransformFunction = (oldAttribute: string) => string;
