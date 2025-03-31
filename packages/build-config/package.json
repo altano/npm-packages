@@ -10,7 +10,7 @@
     "tsup.config.browser.ts"
   ],
   "devDependencies": {
-    "tsup": "^8.3.5"
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "restricted"

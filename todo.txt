@@ -28,6 +28,9 @@ TODO: "moduleResolution": "bundler", in base config?
 TODO: Base tsconfig: "jsx": "react-jsx" ?
 TODO: Consolidate tsconfigs, remove unused ones
 TODO: remove extraneous fields from package.json in private packages
+TODO: investigate going esm-only with require(esm) now landed
+TODO: investigate tsup alternatives, e.g. vite 7 or parcel
+TODO: investigate --isolated-decl and --erasable-syntax-only
 
 lint:
 TODO: Look into eslint flat config to see if we can reduce config repetition

@@ -55,17 +55,17 @@
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@arethetypeswrong/cli": "^0.15.4",
-    "@types/node": "^22.13.10",
-    "@vitest/coverage-v8": "^3.0.9",
+    "@arethetypeswrong/cli": "catalog:",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "chai": "^4.4.1",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^9.22.0",
+    "eslint": "catalog:",
     "mocha": "^10.3.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.3",
-    "vitest": "^3.0.9"
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "publishConfig": {
     "access": "public"

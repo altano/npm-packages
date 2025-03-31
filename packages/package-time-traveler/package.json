@@ -28,7 +28,7 @@
     "pacote": "^17.0.6"
   },
   "devDependencies": {
-    "eslint": "^9.22.0",
+    "eslint": "catalog:",
     "prettier": "^3.3.3"
   }
 }

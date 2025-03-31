@@ -45,18 +45,18 @@
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@arethetypeswrong/cli": "^0.15.4",
-    "@playwright/test": "1.47.0",
-    "@types/node": "^22.13.10",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
-    "eslint": "^9.22.0",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.3",
-    "vitest": "^3.0.9"
+    "@arethetypeswrong/cli": "catalog:",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "react": "18.x.x"
