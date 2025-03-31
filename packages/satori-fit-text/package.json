@@ -60,7 +60,6 @@
     "@altano/assets": "workspace:*",
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
-    "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",

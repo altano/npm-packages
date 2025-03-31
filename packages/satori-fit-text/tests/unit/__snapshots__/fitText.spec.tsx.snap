@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=10 1`] = `1`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=100 1`] = `18`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=250 1`] = `41`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=500 1`] = `62`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=750 1`] = `76`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=1000 1`] = `91`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=1500 1`] = `114`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=1706 1`] = `114`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=1800 1`] = `114`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=1900 1`] = `119`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=2000 1`] = `125`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=2500 1`] = `152`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=3000 1`] = `152`;
+
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=5000 1`] = `220`;
