@@ -27,6 +27,7 @@
   "scripts": {
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
+    "check:unused-dependencies": "depcheck",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
@@ -45,15 +46,13 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
-    "@mdx-js/mdx": "^3.1.0",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/expect": "catalog:",
+    "depcheck": "catalog:",
     "eslint": "catalog:",
-    "mdast-util-mdxjs-esm": "^2.0.1",
     "prettier": "catalog:",
     "typescript": "catalog:",
-    "unified": "^11.0.5",
     "vite": "catalog:",
     "vitest": "catalog:"
   },

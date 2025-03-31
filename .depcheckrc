@@ -1,0 +1,12 @@
+ignores:
+  - "@altano/assets"
+  - "@altano/build-config"
+  - "@altano/testing"
+  - "@altano/vitest-plugins" # depcheck can't see vitest.config.ts setupFiles config array
+  - "@fontsource-variable/inter" # depcheck won't parse astro files
+  - "@fontsource/inter" # we dynamically resolve the path, depcheck can't detect
+  - "@types/*"
+  - "@vitest/*"
+  - "vite"
+  - "vitest"
+skip-missing: true
