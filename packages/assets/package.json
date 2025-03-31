@@ -10,6 +10,7 @@
     "build:types": "tsc --project tsconfig.declarations.json",
     "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "check:types:src": "tsc --noEmit",
+    "check:unused-dependencies": "depcheck",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
@@ -25,6 +26,7 @@
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
+    "depcheck": "catalog:",
     "typescript": "catalog:"
   },
   "publishConfig": {

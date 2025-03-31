@@ -32,6 +32,7 @@
     "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
+    "check:unused-dependencies": "depcheck",
     "dev": "pnpm run build --watch",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
@@ -48,6 +49,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
+    "depcheck": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
