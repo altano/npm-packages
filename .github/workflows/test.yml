@@ -23,10 +23,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.11.0
+        uses: jetpack-io/devbox-install-action@v0.12.0
         with:
           enable-cache: true
-          devbox-version: 0.13.6
+          devbox-version: 0.14.0
 
       - name: Install dependencies
         run: devbox run pnpm install
@@ -34,8 +34,10 @@ jobs:
       - name: Dump Playwright Information
         run: |
           eval "$(devbox shellenv)"
-          echo "Playwright: `devbox run pnpm exec playwright --version`"
           echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+          echo "Browsers: `devbox run tree -L 1 $PLAYWRIGHT_BROWSERS_PATH`"
+          echo "Playwright (pnpm): `devbox run pnpm exec playwright --version`"
+          echo "Playwright (devbox): `devbox run playwright --version`"
 
       - name: Validate and Build
         run: |

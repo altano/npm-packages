@@ -45,7 +45,7 @@
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "^0.15.4",
-    "@playwright/test": "1.47.0",
+    "@playwright/test": "1.51.1",
     "@types/node": "^22.13.10",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
