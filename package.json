@@ -27,7 +27,7 @@
   "devDependencies": {
     "@altano/eslint-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@changesets/cli": "^2.27.9",
+    "@changesets/cli": "^2.28.1",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "semver": "^7.7.1",
