@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 3.0.5
+
+### Patch Changes
+
+- 8743821: stop double exporting
+
 ## 3.0.4
 
 ### Patch Changes

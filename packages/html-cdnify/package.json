@@ -1,6 +1,6 @@
 {
   "name": "@altano/html-cdnify",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.",
   "keywords": [
     "cdn",
