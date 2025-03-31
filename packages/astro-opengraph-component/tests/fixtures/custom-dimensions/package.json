@@ -1,0 +1,13 @@
+{
+  "name": "custom-dimensions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "@altano/astro-opengraph-component": "workspace:",
+    "astro": "catalog:"
+  }
+}

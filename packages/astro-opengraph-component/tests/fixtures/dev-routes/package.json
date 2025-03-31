@@ -1,0 +1,14 @@
+{
+  "name": "dev-routes",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "astro check",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "@altano/astro-opengraph-component": "workspace:",
+    "astro": "catalog:"
+  }
+}
