@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export const deriveConfig = (overrides: ViteUserConfig): ViteUserConfig =>
   mergeConfig(baseConfig, overrides);
 
-export const derviceReactLibraryConfig = (
+export const deriveReactLibraryConfig = (
   overrides: ViteUserConfig,
 ): ViteUserConfig => mergeConfig(reactBaseConfig, overrides);
 
@@ -15,10 +15,7 @@ const baseConfig = defineConfig({
   },
   test: {
     dir: "tests/unit",
-    setupFiles: [
-      "@altano/vitest-plugins/serializers",
-      "@altano/vitest-plugins/matchers",
-    ],
+    setupFiles: ["@altano/testing/setup"],
     coverage: {
       enabled: true,
       include: ["src"],
@@ -42,7 +39,7 @@ const reactBaseConfig = mergeConfig(
     test: {
       globals: true, // required by testing-library setup
       environment: "jsdom",
-      setupFiles: ["@testing-library/jest-dom/vitest"],
+      setupFiles: ["@altano/testing/setup-dom"],
       restoreMocks: true,
     },
   }),

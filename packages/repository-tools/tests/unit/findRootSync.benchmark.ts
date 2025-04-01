@@ -3,7 +3,6 @@ import path from "node:path";
 import { getDisposableDirectory } from "../utils/getDisposableDirectory.js";
 import { createFromBundle } from "../utils/createFromBundle.js";
 import { repositoryTypes } from "../../src/types.js";
-import "@altano/vitest-plugins/matchers";
 import { findRootSync } from "../../src/findRootSync.js";
 
 describe("findRootSync", async () => {

@@ -61,7 +61,6 @@
     "@altano/remark-plugin-test-util": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
     "@types/unist": "^3.0.2",
