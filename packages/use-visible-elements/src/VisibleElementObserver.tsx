@@ -1,16 +1,31 @@
-import { useElementObserver } from "@altano/use-element-observer";
+import {
+  useElementObserver,
+  type ReactElementWithRef,
+} from "@altano/use-element-observer";
 import React from "react";
 import { useSet } from "react-use";
 
 type Context = Set<Element>;
 export const VisibleElementsContext = React.createContext<Context | null>(null);
 
-export interface VisibleElementObserverOptions {
-  children: React.ReactNode;
-  useWrapperDiv?: boolean;
+export type VisibleElementObserverOptions = ChildOptions & {
   selector: string;
   intersectionOptions?: IntersectionObserverInit;
-}
+};
+
+export type ChildOptions =
+  | {
+      useWrapperDiv: false;
+      children: ReactElementWithRef;
+    }
+  | {
+      useWrapperDiv: true;
+      children: React.ReactNode;
+    }
+  | {
+      useWrapperDiv?: undefined;
+      children: React.ReactNode;
+    };
 
 export function VisibleElementObserver({
   children,
@@ -27,11 +42,19 @@ export function VisibleElementObserver({
     },
     [add, remove],
   );
-  const [mountedElements, observedTree] = useElementObserver({
-    tree: children,
-    selector,
-    useWrapperDiv,
-  });
+  const [mountedElements, observedTree] = useElementObserver(
+    useWrapperDiv == null || useWrapperDiv === true
+      ? {
+          tree: children,
+          selector,
+          useWrapperDiv: true,
+        }
+      : {
+          tree: children,
+          selector,
+          useWrapperDiv: false,
+        },
+  );
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       handleIntersect,

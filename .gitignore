@@ -16,6 +16,9 @@ public/dist
 tsconfig.tsbuildinfo
 .devbox
 
+# used in vitest typecheck run, don't want lint/format/etc tasks to see it
+tsconfig.vitest-temp.json
+
 # playwright
 test-results/
 playwright-report/

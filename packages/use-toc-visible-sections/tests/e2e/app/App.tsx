@@ -4,7 +4,7 @@ import { TocVisibleSectionObserver } from "@altano/use-toc-visible-sections";
 
 import "./App.css";
 
-function App(): JSX.Element {
+function App(): React.ReactElement {
   return (
     <div className="App">
       <TocVisibleSectionObserver>

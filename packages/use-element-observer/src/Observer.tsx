@@ -1,16 +1,17 @@
 import React, { useCallback, useContext } from "react";
 import { useMountRef, type Callbacks } from "./useMountRef";
 import { ElementObserverContext } from "./useElementObserver";
+import type { ReactElementWithRef } from "./types";
 
-interface ChildrenAndCallbacks<T> extends Callbacks<T> {
-  children: React.ReactNode;
+interface ChildrenAndCallbacks<T, ChildType> extends Callbacks<T> {
+  children: ChildType;
 }
 
 function ObserveChildWithWrapperDiv({
   children,
   onMount,
   onUnmount,
-}: ChildrenAndCallbacks<Element>): React.ReactElement {
+}: ChildrenAndCallbacks<Element, React.ReactNode>): React.ReactElement {
   const ref = useMountRef<HTMLDivElement>({ onMount, onUnmount });
   return (
     <div style={{ display: "inherit" }} ref={ref}>
@@ -23,21 +24,32 @@ function ObserveChild({
   children,
   onMount,
   onUnmount,
-}: ChildrenAndCallbacks<Element>): React.ReactElement {
+}: ChildrenAndCallbacks<Element, ReactElementWithRef>): React.ReactElement {
   const newRef = useMountRef({ onMount, onUnmount });
-  const child = React.Children.only(children);
-  return React.cloneElement(child as React.ReactElement, { ref: newRef });
+  return React.cloneElement(children, { ref: newRef });
 }
+
+type Options =
+  | {
+      // If we're using a wrapper div...
+      useWrapperDiv: true;
+      // ... the children can be any ReactNode
+      children: React.ReactNode;
+      selector: string;
+    }
+  | {
+      // But if we're not using a wrapper div...
+      useWrapperDiv: false;
+      // The child must be a single ReactElement that takes a ref
+      children: ReactElementWithRef;
+      selector: string;
+    };
 
 export function Observer({
   children,
   selector,
   useWrapperDiv,
-}: {
-  children: React.ReactNode;
-  selector: string;
-  useWrapperDiv: boolean;
-}): React.ReactElement {
+}: Options): React.ReactElement {
   const context = useContext(ElementObserverContext);
   if (context == null) {
     throw new Error("Observer context was null");
@@ -55,10 +67,13 @@ export function Observer({
     () => mountedElements.clear(),
     [mountedElements],
   );
-  const Component = useWrapperDiv ? ObserveChildWithWrapperDiv : ObserveChild;
-  return (
-    <Component onMount={onMount} onUnmount={onUnmount}>
+  return useWrapperDiv ? (
+    <ObserveChildWithWrapperDiv onMount={onMount} onUnmount={onUnmount}>
       {children}
-    </Component>
+    </ObserveChildWithWrapperDiv>
+  ) : (
+    <ObserveChild onMount={onMount} onUnmount={onUnmount}>
+      {children}
+    </ObserveChild>
   );
 }

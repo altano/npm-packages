@@ -10,7 +10,7 @@ function ListItem({
 }: {
   href: string;
   children: React.ReactNode;
-}): JSX.Element {
+}): React.ReactElement {
   const isVisible = useVisibilityOfTarget(href);
   return (
     <li
@@ -24,7 +24,7 @@ function ListItem({
   );
 }
 
-const TableOfContents = (): JSX.Element => {
+const TableOfContents = (): React.ReactElement => {
   return (
     <nav>
       <ul>

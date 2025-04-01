@@ -28,6 +28,10 @@ const baseConfig = defineConfig({
       thresholds: { "100": true },
       reportsDirectory: ".coverage",
     },
+    typecheck: {
+      tsconfig: "tests/tsconfig.json",
+      enabled: true,
+    },
   },
 });
 

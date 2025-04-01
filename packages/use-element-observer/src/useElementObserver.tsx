@@ -1,6 +1,8 @@
 import React from "react";
 import { useSet } from "@uidotdev/usehooks";
 import { Observer } from "./Observer";
+import type { ReactElementWithRef } from "./types";
+export { ReactElementWithRef };
 
 interface Context {
   mountedElements: Set<Element>;
@@ -8,11 +10,23 @@ interface Context {
 
 export const ElementObserverContext = React.createContext<Context | null>(null);
 
-export interface Options {
+export type Options = ChildOptions & {
   selector: string;
-  tree: React.ReactNode;
-  useWrapperDiv?: boolean | undefined;
-}
+};
+
+export type ChildOptions =
+  | {
+      useWrapperDiv: false;
+      tree: ReactElementWithRef;
+    }
+  | {
+      useWrapperDiv: true;
+      tree: React.ReactNode;
+    }
+  | {
+      useWrapperDiv?: undefined;
+      tree: React.ReactNode;
+    };
 
 /**
  * Allows observing mount/unmount of elements that match a given selector in the
@@ -35,16 +49,22 @@ export interface Options {
 export function useElementObserver({
   tree,
   selector,
-  useWrapperDiv = true,
+  useWrapperDiv,
 }: Options): [Set<Element>, React.ReactElement] {
   // TODO: Re-compute on every render to catch mutations? Add mutation observer
   // to catch changes to grandchildren?
   const mountedElements = useSet<Element>();
   const observedTree = (
     <ElementObserverContext.Provider value={{ mountedElements }}>
-      <Observer selector={selector} useWrapperDiv={useWrapperDiv}>
-        {tree}
-      </Observer>
+      {useWrapperDiv == null || useWrapperDiv === true ? (
+        <Observer selector={selector} useWrapperDiv={true}>
+          {tree}
+        </Observer>
+      ) : (
+        <Observer selector={selector} useWrapperDiv={false}>
+          {tree}
+        </Observer>
+      )}
     </ElementObserverContext.Provider>
   );
   return [mountedElements, observedTree];
