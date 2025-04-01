@@ -56,7 +56,6 @@
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/lodash": "^4.14.202",
     "@types/node": "catalog:",

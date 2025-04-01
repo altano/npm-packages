@@ -61,7 +61,6 @@
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@altano/vitest-plugins": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@fontsource-variable/inter": "catalog:",
     "@fontsource/inter": "catalog:",

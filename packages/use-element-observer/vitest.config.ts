@@ -1,3 +1,3 @@
-import { derviceReactLibraryConfig } from "@altano/testing";
+import { deriveReactLibraryConfig } from "@altano/testing";
 
-export default derviceReactLibraryConfig({});
+export default deriveReactLibraryConfig({});
