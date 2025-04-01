@@ -60,7 +60,7 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "react": "18.x.x"
+    "react": "19.x.x"
   },
   "publishConfig": {
     "access": "public"

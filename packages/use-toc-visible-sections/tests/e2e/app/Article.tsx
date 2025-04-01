@@ -1,6 +1,6 @@
 import "./Article.css";
 
-const Article = (): JSX.Element => (
+const Article = (): React.ReactElement => (
   // ((h1[id="$"]>lorem5)+p>lorem100)*20
   <article>
     <section>

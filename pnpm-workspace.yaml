@@ -7,16 +7,16 @@ catalog:
   "@fontsource/inter": ^5.2.5
   "@playwright/test": 1.47.0
   "@types/node": ^22.13.10
-  "@types/react-dom": ^18.2.21
-  "@types/react": ^18.2.64
+  "@types/react-dom": ^19.0.4
+  "@types/react": ^19.0.12
   "@vitest/coverage-v8": ^3.1.1
   "@vitest/expect": ^3.1.1
   "astro": ^5.5.6
   "depcheck": ^1.4.7
   "eslint": ^9.23.0
   "prettier": ^3.5.3
-  "react-dom": ^18.2.0
-  "react": ^18.3.1
+  "react-dom": ^19.1.0
+  "react": ^19.1.0
   "satori": ^0.12.2
   "tsup": ^8.4.0
   "typescript": ^5.8.2
