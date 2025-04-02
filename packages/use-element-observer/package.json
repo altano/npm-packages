@@ -1,6 +1,6 @@
 {
   "name": "@altano/use-element-observer",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Intersection-Observer-based Scroll Spy React Hook",
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/use-element-observer",
   "repository": {
