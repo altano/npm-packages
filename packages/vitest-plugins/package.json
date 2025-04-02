@@ -21,6 +21,7 @@
       "types": "./src/matchers/types.d.ts"
     },
     "./matchers/*": "./src/matchers/*.ts",
+    "./matchers/types": "./src/matchers/types.d.ts",
     "./serializers": "./src/serializers/setup.ts",
     "./serializers/*": "./src/serializers/*.ts"
   },
