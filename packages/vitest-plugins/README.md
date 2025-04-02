@@ -83,7 +83,7 @@ Will replace any instances of `process.cwd()` with `<cwd>` in the snapshot. Usef
 
 ### URLs
 
-Canonicalizes parts of a URL that might not be deterministic in tests. Tries to be conservative, so at the moment, this only strips the port from localhost urls, e.g. `http://localhost:1234` is converted to `http://localhost`.
+Will replace any instances of `http://localhost:1234` with `http://localhost` in the snapshot. Useful when dealing with test servers that use random ports.
 
 ### HTML
 
