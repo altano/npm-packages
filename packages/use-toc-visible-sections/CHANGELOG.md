@@ -1,5 +1,16 @@
 # @altano/use-toc-visible-sections
 
+## 3.0.0
+
+### Major Changes
+
+- b32e544: move to react 19
+
+### Patch Changes
+
+- Updated dependencies [b32e544]
+  - @altano/use-visible-elements@3.0.0
+
 ## 2.0.2
 
 ### Patch Changes

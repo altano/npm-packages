@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 1.1.0
+
+### Minor Changes
+
+- e07daa2: add explicit types export for matchers
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @altano/use-element-observer
 
+## 3.0.0
+
+### Major Changes
+
+- b32e544: move to react 19
+
 ## 2.0.2
 
 ### Patch Changes
