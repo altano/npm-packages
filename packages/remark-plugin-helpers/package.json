@@ -38,7 +38,7 @@
     "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
-    "debug": "^4.3.4",
+    "debug": "catalog:",
     "kleur": "^4.1.5",
     "unist-util-visit": "^5.0.0"
   },
