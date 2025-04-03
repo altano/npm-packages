@@ -5,11 +5,11 @@
 const fs = require("fs");
 const pacote = require("pacote");
 const { name } = require("./package.json");
-const asyncPool = require("@altano/tiny-async-pool");
+const { doWorkAndYield } = require("@altano/tiny-async-pool");
 
 async function asyncPoolAll(...args) {
   const results = [];
-  for await (const result of asyncPool(...args)) {
+  for await (const result of doWorkAndYield(...args)) {
     results.push(result);
   }
   return results;
