@@ -1,6 +1,6 @@
 {
   "name": "package-time-traveler",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Simulate an npm install on a specific day (for better re-use of npm packages preadating package-lock.json)",
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/package-time-traveler",
   "repository": {

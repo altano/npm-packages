@@ -1,6 +1,6 @@
 {
   "name": "@altano/satori-fit-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fit text to a bounding box in Node or the browser",
   "keywords": [
     "fit-text",

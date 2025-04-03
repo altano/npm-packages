@@ -1,5 +1,13 @@
 # @altano/satori-fit-text
 
+## 1.0.1
+
+### Patch Changes
+
+- 093d296: update packages
+
+  Addresses https://github.com/altano/npm-packages/security/dependabot/142
+
 ## 1.0.0
 
 ### Major Changes
