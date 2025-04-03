@@ -12,6 +12,7 @@ catalog:
   "@vitest/coverage-v8": ^3.1.1
   "@vitest/expect": ^3.1.1
   "astro": ^5.5.6
+  "debug": ^4.4.0
   "depcheck": ^1.4.7
   "eslint": ^9.23.0
   "prettier": ^3.5.3

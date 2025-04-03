@@ -51,10 +51,10 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.0",
-    "debug": "^4.3.4",
+    "@svgdotjs/svg.js": "^3.2.4",
+    "debug": "catalog:",
     "satori": "catalog:",
-    "svgdom": "^0.1.19"
+    "svgdom": "^0.1.21"
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
@@ -65,7 +65,7 @@
     "@fontsource-variable/inter": "catalog:",
     "@fontsource/inter": "catalog:",
     "@playwright/test": "catalog:",
-    "@resvg/resvg-js": "^2.6.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/debug": "^4.1.12",
     "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.0",
