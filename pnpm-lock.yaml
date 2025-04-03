@@ -108,8 +108,8 @@ importers:
   examples/satori-fit-text-node-cli:
     dependencies:
       '@altano/satori-fit-text':
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 'workspace:'
+        version: link:../../packages/satori-fit-text
       '@fontsource/inter':
         specifier: 5.0.17
         version: 5.0.17
@@ -972,9 +972,6 @@ packages:
   '@altano/repository-tools@0.1.1':
     resolution: {integrity: sha512-5vbUs2A98CC3g1AlOBdkBE0BMukkLjLIsMHAtuxg6Pt9dQXxYWdLKOf66v6c/vIqtNcgTMv0oGtddLdMuH9X6w==}
 
-  '@altano/satori-fit-text@1.0.0':
-    resolution: {integrity: sha512-+WEQ1J5GCL7joVOQYlds5zO0bLc2eZyYtTcE58lp/9IubYmfZ/XPcU5X+cA4kSJUZlO/ivSIVDDqM/bXQvWSeg==}
-
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
@@ -1811,17 +1808,8 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@svgdotjs/svg.js@3.2.0':
-    resolution: {integrity: sha512-Tr8p+QVP7y+QT1GBlq1Tt57IvedVH8zCPoYxdHLX0Oof3a/PqnC/tXAkVufv1JQJfsDHlH/UrjcDfgxSofqSNA==}
-
   '@svgdotjs/svg.js@3.2.4':
     resolution: {integrity: sha512-BjJ/7vWNowlX3Z8O4ywT58DqbNRyYlkk6Yz/D13aB7hGmfQTvGX4Tkgtm/ApYlu9M7lCQi15xUEidqMUmdMYwg==}
-
-  '@swc/helpers@0.4.14':
-    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
-
-  '@swc/helpers@0.4.36':
-    resolution: {integrity: sha512-5lxnyLEYFskErRPenYItLRSge5DjrJngYKdVjRSrWfza9G6KkgHEXi0vUZiyUeMU5JfXH1YnvXZzSp8ul88o2Q==}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -3259,9 +3247,6 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  fontkit@2.0.2:
-    resolution: {integrity: sha512-jc4k5Yr8iov8QfS6u8w2CnHWVmbOGtdBtOXMze5Y+QD966Rx6PEVWXSEGwXlsDlKtu1G12cJjcsybnqhSk/+LA==}
-
   fontkit@2.0.4:
     resolution: {integrity: sha512-syetQadaUEDNdxdugga9CpEYVaQIxOwk7GlwZWWZ19//qW4zE5bknOKeMBDYAASwnpaSHKJITRLMF9m1fp3s6g==}
 
@@ -3556,11 +3541,6 @@ packages:
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
-
-  image-size@1.1.1:
-    resolution: {integrity: sha512-541xKlUw6jr/6gGuk92F+mYM5zaFAc5ahphvkqvNe2bQ6gVBkd6bfrmVJ2t4KDAfikAYZyIqTnktX3i6/aQDrQ==}
-    engines: {node: '>=16.x'}
-    hasBin: true
 
   image-size@1.2.1:
     resolution: {integrity: sha512-rH+46sQJ2dlwfjfhCyNx5thzrv+dtmBIhPHk0zgRUukHzZ/kRueTJXoYYsclBaKcSMBWuGbOFXtioLpzTb5euw==}
@@ -4930,9 +4910,6 @@ packages:
     resolution: {integrity: sha512-3C/laIeE6UUe9A+iQ0A48ywPVCCMKCNSTU5Os101Vhgsjd3AAxGNjyq0uAA8kulMPK5n0csn8JlxPN9riXEjLA==}
     engines: {node: '>=16'}
 
-  sax@1.3.0:
-    resolution: {integrity: sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==}
-
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
 
@@ -5263,9 +5240,6 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  svgdom@0.1.19:
-    resolution: {integrity: sha512-gBvlZ74RECaG9VyPrj9OdakOarEKKvaXh5NVkbx9oWfAo4XnQehk75b14iOW2UjFHyZThczZ1NrPV9rDrecOVg==}
 
   svgdom@0.1.21:
     resolution: {integrity: sha512-PrMx2aEzjRgyK9nbff6/NOzNmGcRnkjwO9p3JnHISmqPTMGtBPi4uFp59fVhI9PqRp8rVEWgmXFbkgYRsTnapg==}
@@ -5887,15 +5861,6 @@ snapshots:
   '@adobe/css-tools@4.4.2': {}
 
   '@altano/repository-tools@0.1.1': {}
-
-  '@altano/satori-fit-text@1.0.0':
-    dependencies:
-      '@svgdotjs/svg.js': 3.2.0
-      debug: 4.4.0
-      satori: 0.12.2
-      svgdom: 0.1.19
-    transitivePeerDependencies:
-      - supports-color
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6798,18 +6763,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@svgdotjs/svg.js@3.2.0': {}
-
   '@svgdotjs/svg.js@3.2.4': {}
-
-  '@swc/helpers@0.4.14':
-    dependencies:
-      tslib: 2.8.1
-
-  '@swc/helpers@0.4.36':
-    dependencies:
-      legacy-swc-helpers: '@swc/helpers@0.4.14'
-      tslib: 2.6.2
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -8570,18 +8524,6 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  fontkit@2.0.2:
-    dependencies:
-      '@swc/helpers': 0.4.36
-      brotli: 1.3.3
-      clone: 2.1.2
-      dfa: 1.2.0
-      fast-deep-equal: 3.1.3
-      restructure: 3.0.1
-      tiny-inflate: 1.0.3
-      unicode-properties: 1.4.1
-      unicode-trie: 2.0.0
-
   fontkit@2.0.4:
     dependencies:
       '@swc/helpers': 0.5.15
@@ -8957,10 +8899,6 @@ snapshots:
       minimatch: 9.0.5
 
   ignore@5.3.2: {}
-
-  image-size@1.1.1:
-    dependencies:
-      queue: 6.0.2
 
   image-size@1.2.1:
     dependencies:
@@ -10669,8 +10607,6 @@ snapshots:
       postcss-value-parser: 4.2.0
       yoga-wasm-web: 0.3.3
 
-  sax@1.3.0: {}
-
   sax@1.4.1: {}
 
   saxes@6.0.0:
@@ -11052,12 +10988,6 @@ snapshots:
       supports-color: 7.2.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
-
-  svgdom@0.1.19:
-    dependencies:
-      fontkit: 2.0.2
-      image-size: 1.1.1
-      sax: 1.3.0
 
   svgdom@0.1.21:
     dependencies:

@@ -57,13 +57,6 @@ const config = {
       packages: ["@altano/**"],
       range: ".x",
     },
-    {
-      label: "Examples w/ exact versions",
-      packages: ["*-example"],
-      dependencies: ["**"],
-      dependencyTypes: ["!local"],
-      range: "",
-    },
   ],
   versionGroups: [
     {
