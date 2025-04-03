@@ -1,5 +1,11 @@
 # @altano/repository-tools
 
+## 1.0.1
+
+### Patch Changes
+
+- c754dc5: add types to package.json
+
 ## 1.0.0
 
 ### Major Changes

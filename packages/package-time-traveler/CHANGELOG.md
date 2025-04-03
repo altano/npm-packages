@@ -1,5 +1,11 @@
 # package-time-traveler
 
+## 3.0.3
+
+### Patch Changes
+
+- 82a3ead: update dependencies + fix package
+
 ## 3.0.2
 
 ### Patch Changes
