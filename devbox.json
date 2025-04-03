@@ -1,0 +1,19 @@
+{
+  "packages": [
+    "difftastic@latest",
+    "git@2.44.1",
+    "mercurialFull@latest",
+    "nodejs@23.11.0",
+    "playwright-driver.browsers",
+    "playwright-driver@1.47.0",
+    "sapling@latest",
+    "subversion@latest",
+    "tree@latest",
+    "graphite-cli@latest"
+  ],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true",
+    "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1",
+    "PLAYWRIGHT_BROWSERS_PATH": "$DEVBOX_PACKAGES_DIR"
+  }
+}

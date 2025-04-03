@@ -51,6 +51,7 @@ const largestUsableFontSize = await findLargestUsableFontSize({
   maxHeight: Number(height),
 });
 
+// eslint-disable-next-line no-console
 console.log(
   `Largest font-size you can use for the text "${text}" while fitting in ${width}x${height}px is ${largestUsableFontSize}px`,
 );
