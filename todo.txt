@@ -5,9 +5,6 @@ x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
 TODO: Look into npm Provenance w/ github actions
 TODO: figure out a better way to handle examples. currently can jam up releases. can maybe move into the projects themselves? have live example in readme?
 
-repository-tools:
-TODO: investigate going esm-only with require(esm) now landed
-
 turbo:
 TODO: experiment with `turbo boundaries`
 
@@ -32,7 +29,6 @@ TODO: "moduleResolution": "bundler", in base config?
 TODO: Base tsconfig: "jsx": "react-jsx" ?
 TODO: Consolidate tsconfigs, remove unused ones
 TODO: remove extraneous fields from package.json in private packages
-TODO: investigate going esm-only with require(esm) now landed
 TODO: investigate tsup alternatives, e.g. vite 7 or parcel
 TODO: investigate --isolated-decl and --erasable-syntax-only
 

@@ -24,26 +24,19 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./*": {
-      "import": "./dist/*",
-      "require": "./dist/*"
-    }
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "files": [
     "dist/**/*.js",
-    "dist/**/*.cjs",
-    "dist/**/*.d.ts",
-    "dist/**/*.d.cts"
+    "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup --config build-config/tsup.config.node-hybrid.ts",
-    "check:exports": "attw --pack .",
+    "build": "tsup --config build-config/tsup.config.node.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "check:exports": "attw --pack . --profile esm-only",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "check:unused-dependencies": "depcheck",
