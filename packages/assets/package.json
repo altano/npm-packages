@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.node.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "check:exports": "attw --pack . --profile esm-only",
     "check:types:src": "tsc --noEmit",
     "check:unused-dependencies": "depcheck",
     "dev": "pnpm run build --watch",
