@@ -107,7 +107,7 @@ export default {
 
       // disabled rules for dev-only packages
       {
-        files: ["packages/build-config/**/*"],
+        files: ["packages/build-config/**/*", ".syncpackrc.js"],
         rules: {
           "import-x/no-extraneous-dependencies": "off",
         },
@@ -152,9 +152,18 @@ export default {
         },
       },
       {
-        // disable type-aware linting on some files
-        files: ["**/*.{js,mjs,json,d.ts}"],
+        // in js files ...
+        files: ["**/*.{js,mjs,json}"],
+        // ... disable type-aware linting
         ...tseslint.configs.disableTypeChecked,
+        // ... disable type-syntax-requiring rules
+        rules: {
+          ...tseslint.configs.disableTypeChecked.rules,
+          // https://github.com/typescript-eslint/typescript-eslint/issues/8955
+          "@typescript-eslint/explicit-function-return-type": "off",
+          "@typescript-eslint/explicit-module-boundary-types": "off",
+          "@typescript-eslint/parameter-properties": "off",
+        },
       },
 
       {
