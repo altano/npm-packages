@@ -1,0 +1,109 @@
+name: "Summarize Turborepo Output"
+description: "Summarize Turborepo output for GitHub Actions"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      name: "Summarize Turborepo Output"
+      run: |
+        latest_json=$(ls -t .turbo/runs/*.json | head -1)
+
+        if [ -z "$latest_json" ]; then
+          echo "No summary found, make sure you add the \`turbo-summarize\` step after your \`turbo\` step."
+        else
+          # Read the file
+          json_content=$(cat "$latest_json")
+
+          # Define formatting functions
+          formatted_duration() {
+            local duration_in_milliseconds=$1
+            local duration_in_seconds=$((duration_in_milliseconds / 1000))
+            local minutes=$((duration_in_seconds / 60))
+            local seconds=$((duration_in_seconds % 60))
+            local milliseconds=$((duration_in_milliseconds % 1000))
+            echo "${minutes}m ${seconds}.${milliseconds}s"
+          }
+
+          formatted_timestamp() {
+            local timestamp_in_milliseconds=$1
+            local timestamp_seconds=$((timestamp_in_milliseconds / 1000))
+            local milliseconds=$((timestamp_milliseconds % 1000))
+            local formatted_date=$(date -u -d "@$timestamp_seconds" +"%Y-%m-%d %H:%M:%S.$milliseconds")
+            echo "$formatted_date"
+          }
+
+          # Extract run details
+          run_command=$(echo "$json_content" | jq -r '.execution.command')
+          run_id=$(echo "$json_content" | jq -r '.id')
+          turbo_version=$(echo "$json_content" | jq -r '.turboVersion')
+          monorepo=$(echo "$json_content" | jq -r '.monorepo')
+          global_cache_enabled=$(echo "$json_content" | jq -r '.globalCacheInputs != null')
+          packages=$(echo "$json_content" | jq -r '.packages | join(", ")')
+          repository_sha=$(echo "$json_content" | jq -r '.scm.sha')
+          repository_branch=$(echo "$json_content" | jq -r '.scm.branch')
+          repository_type=$(echo "$json_content" | jq -r '.scm.type')
+          run_status=$(echo "$json_content" | jq -r '.execution.exitCode | if . == 0 then "Success" else "Failure" end')
+          total_run_duration=$((($(echo "$json_content" | jq -r '.execution.endTime') - $(echo "$json_content" | jq -r '.execution.startTime'))))
+          execution_attempts=$(echo "$json_content" | jq -r '.execution.attempted')
+          cached_count=$(echo "$json_content" | jq -r '.execution.cached')
+          success_count=$(echo "$json_content" | jq -r '.execution.successful')
+          ## If full cached, is full turbo
+          is_full_turbo=$(if [ "$cached_count" = "$execution_attempts" ]; then echo "true"; else echo "false"; fi)
+
+          markdown_content+="# Turbo summary: \`$run_command\` - $(if [ "$run_status" = "Success" ]; then echo ":white_check_mark: Success"; else echo ":x: Failure"; fi)\n"
+          markdown_content+="*Id: $run_id*\n\n"
+            markdown_content+=" - **Tasks:**    $cached_count successful / $execution_attempts total\n"
+            markdown_content+=" - **Cached:**   $cached_count cached / $execution_attempts total\n"
+            markdown_content+=" - **Time:**     $(formatted_duration $total_run_duration)$(if [ "$is_full_turbo" = "true" ]; then echo " **>> FULL TURBO :rocket:**"; fi)\n\n\n"
+
+          markdown_content+="\n"
+
+          markdown_content+="| Task ID | Status  | Duration       | Cache      | Time Saved | Started At          | Completed At        |\n"
+          markdown_content+="|---------|---------|----------------|------------|------------|---------------------|---------------------|\n"
+
+          # Extract task information and format as Markdown
+          tasks=$(echo "$json_content" | jq -c '.tasks[]')
+          while IFS= read -r task; do
+            task_id=$(echo "$task" | jq -r '.taskId')
+            status=$(echo "$task" | jq -r '.execution.exitCode | if . == 0 then ":white_check_mark: Success" else ":x: Failure" end')
+            start_time=$(echo "$task" | jq -r '.execution.startTime')
+            end_time=$(echo "$task" | jq -r '.execution.endTime')
+            duration=$((end_time - start_time))
+            cache_status=$(echo "$task" | jq -r '.cache.status')
+            cache_type=$(echo "$task" | jq -r '.cache.remote | if . then "Remote" else "Local" end')
+            time_saved=$(echo "$task" | jq -r '.cache.timeSaved')
+
+            formatted_duration=$(formatted_duration "$duration")
+            formatted_time_saved=$(formatted_duration "$time_saved")
+            formatted_start_time=$(formatted_timestamp "$start_time")
+            formatted_end_time=$(formatted_timestamp "$end_time")
+
+            markdown_content+="| $task_id | $status | $formatted_duration | $cache_status ($cache_type) | $formatted_time_saved | $formatted_start_time | $formatted_end_time |\n"
+          done <<< "$tasks"
+
+
+          markdown_content+="\n"
+
+          markdown_content+="<details>\n<summary>\n<b>Run details</b>\n</summary>\n\n"
+            markdown_content+=" - **ID:** $run_id\n"
+          markdown_content+=" - **Packages used:** $packages\n"
+          markdown_content+=" - **Turbo version**: $turbo_version\n"
+          markdown_content+=" - **Monorepo**: $(if [ "$monorepo" = "true" ]; then echo "Yes"; else echo "No"; fi)\n"
+          markdown_content+=" - **Global cache enabled:** $(if [ "$global_cache_enabled" = "true" ]; then echo "Yes"; else echo "No"; fi)\n"
+          markdown_content+=" - **Repository:** SHA: $repository_sha, Branch: $repository_branch, Type: $repository_type\n"
+          markdown_content+="\n"
+          markdown_content+="</details>\n"
+
+          markdown_content+="\n<details>\n<summary>\n<b>Full Summary JSON Output</b>\n</summary>\n\n"
+          markdown_content+="\`\`\`json\n$json_content\n\`\`\`\n\n"
+          markdown_content+="</details>\n"
+          markdown_content+="\n"
+        fi
+
+        markdown_content+="---\n"
+        markdown_content+="\n"
+        markdown_content+="[Turbo](https://turbo.build) - The build system that makes ship happen\n"
+        markdown_content+="\n"
+
+        # Write markdown content to the summary file
+        echo -e "$markdown_content" >> $GITHUB_STEP_SUMMARY
