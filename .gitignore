@@ -10,11 +10,14 @@ dist-ssr
 .cache
 server/dist
 public/dist
-.tsup
 .turbo
 .coverage
 tsconfig.tsbuildinfo
 .devbox
+
+# tsup config and temporary files
+.tsup
+packages/build-config/*.mjs
 
 # used in vitest typecheck run, don't want lint/format/etc tasks to see it
 tsconfig.vitest-temp.json
