@@ -13,6 +13,7 @@ import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { includeIgnoreFile } from "@eslint/compat";
 import gitignorePath from "./gitignorePath.js";
 import turboConfig from "eslint-config-turbo/flat";
+import playwright from "eslint-plugin-playwright";
 
 export default {
   configs: {
@@ -169,6 +170,16 @@ export default {
       {
         files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
         ...jsxA11y.flatConfigs.recommended,
+      },
+
+      {
+        ...playwright.configs["flat/recommended"],
+        files: ["packages/*/tests/e2e/**/*"],
+        rules: {
+          ...playwright.configs["flat/recommended"].rules,
+          // Customize Playwright rules
+          // ...
+        },
       },
     ),
   },

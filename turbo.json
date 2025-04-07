@@ -29,9 +29,7 @@
     "check:unused-dependencies": {
       "dependsOn": []
     },
-    "format": {
-      "cache": false
-    },
+    "format": {},
     "test": {
       "dependsOn": ["test:unit", "test:e2e"]
     },
@@ -44,17 +42,13 @@
       "env": ["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "PLAYWRIGHT_BROWSERS_PATH"]
     },
     "lint": {
-      "cache": false,
       "dependsOn": ["build"],
       "outputs": []
     },
     "lint:fix": {
-      "cache": false,
       "dependsOn": ["build"]
     },
-    "//#lint": {
-      "cache": false
-    },
+    "//#lint": {},
     "//#check:dependencies": {},
     "//#check:dependencies:fix": {},
     "dev": {
