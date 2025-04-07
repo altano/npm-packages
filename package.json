@@ -33,7 +33,7 @@
     "semver": "^7.7.1",
     "syncpack": "^13.0.0",
     "tsup": "catalog:",
-    "turbo": "^2.4.4",
+    "turbo": "^2.5.0",
     "typescript": "catalog:",
     "yaml": "^2.7.0"
   },
