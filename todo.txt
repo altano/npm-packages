@@ -22,6 +22,8 @@ TODO: Look into eslint flat config to see if we can reduce config repetition
 TODO: make sure every project has a lint that points at src/tests
 TODO: Look into markdown linting
 TODO: prettier plugin for import order/sorting
+TODO: enable prettier-plugin-jsdoc
+TODO: modify syncpack to disallow "workspace:*" in examples/ dir
 
 satori-fit-text:
 TODO: satori-fit-text: codesandbox (share with test somehow?)
@@ -40,8 +42,8 @@ web-components:
 TODO: add direct tests (currently only indirectly tested through astro-table-of-contents)
 
 tests:
-TODO: unit => tests/unit
-TODO: e2e => tests/e2e
+x 2025-03-20 TODO: unit => tests/unit
+x 2025-03-20 TODO: e2e => tests/e2e
 TODO: playwright: factor out playwright config
 TODO: switch playwright tests to component tests (https://playwright.dev/docs/test-components#example)
 TODO: cleanup all the extraneous css
@@ -50,3 +52,37 @@ use-element-observer:
 
 use-visible-elements:
 TODO: fix broken readme example (hook must be used in tree)
+
+repository-tools:
+TODO: investigate going esm-only with require(esm) now landed
+
+astro-opengraph todo:
+TODO: Add tests for `componentMetaTagFallbacks` config
+TODO: look into injecting types automatically (either https://docs.astro.build/en/reference/integrations-reference/#injecttypes-options or https://astro-integration-kit.netlify.app)
+TODO: Run `astro check` on fixture directories (for typechecking etc)
+TODO: add a toolbar like the one in https://github.com/tombl/astro-opengraph-image (separate package?). document in readme.
+TODO: experiment with `<style is:inline />` (https://docs.astro.build/en/guides/styling/#raw-css-imports)
+x 2025-03-29 TODO: add tests (and documentation) for alternate image formats back in OR
+x 2025-03-29 TODO: strip out all the image format customization stuff for now, it's just noise.
+x 2025-03-29 TODO: consider splitting integration out into `astro-template-to-image` and `astro-opengraph`
+x 2025-03-19 TODO: test with `<style>` tags in astro template (as opposed to inline style attributes)
+x 2025-03-28 TODO: update satori
+x 2025-03-30 TODO: documentation redo
+x 2025-03-28 TODO: document use of experimental container apis
+x 2025-03-28 TODO: document using https://github.com/patrick91/astro-meta-tags#readme to debug tags/image
+x 2025-03-28 TODO: document CSS limitations in .astro file (e.g. no style tags, no style imports)
+x 2025-03-28 TODO: tests for component
+x 2025-03-30 TODO: document (and test) a catch-all opengraph at root
+x 2025-03-28 TODO: make component's default image location configurable?
+x 2025-03-28 TODO: rename `svgOptions` to `satoriOptions` everywhere (or `imageOptions`)
+x 2025-03-28 TODO: make "opengraph.png" configurable component prop and test
+x 2025-03-18 TODO: Config for default meta tags like title/description
+x 2025-03-28 TODO: delete .eslintrc, move to shared config
+TODO: deprecate abandoned experiments (astro-html-to-image and astro-opengraph-image)
+astro-opengraph abandoned:
+x 2025-03-30 TODO: `import OpenGraphmeta from "@altano/astro/component/meta.astro"` => `import {OpenGraphMeta} from "@altano/astro/components"`
+x 2025-03-30 TODO: Config for default opengraph? route can be injected
+x 2025-03-19 TODO: switch from inline style attr to astro `<style>` in templates once that is supported by container api (NM: will never be supported in Satori)
+x 2025-03-18 TODO: add developer toolbar preview of opengraph image on page that uses it
+x 2025-03-18 TODO: add developer toolbar preview of opengraph image on template's html page (in dev)
+x 2025-03-28 TODO: Rename to just `@altano/astro-opengraph`?

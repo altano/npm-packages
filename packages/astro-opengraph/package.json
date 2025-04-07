@@ -1,0 +1,69 @@
+{
+  "name": "@altano/astro-opengraph",
+  "version": "0.0.1-alpha.0",
+  "description": "Open Graph Tools for Astro",
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "opengraph"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/astro-opengraph"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components/meta.astro": "./components/meta.astro",
+    "./endpoint": "./dist/endpoint.js"
+  },
+  "files": [
+    "components",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "check:types:src": "tsc --noEmit",
+    "check:unused-dependencies": "depcheck",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsdown --watch",
+    "format": "prettier --write src",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*"
+  },
+  "dependencies": {
+    "he": "^1.2.0",
+    "satori": "catalog:",
+    "satori-html": "^0.3.2"
+  },
+  "devDependencies": {
+    "@altano/assets": "workspace:*",
+    "@altano/build-config": "workspace:*",
+    "@altano/tsconfig": "workspace:*",
+    "@types/he": "^1.2.3",
+    "@types/node": "catalog:",
+    "astro": "catalog:",
+    "depcheck": "catalog:",
+    "sharp": "^0.33.1",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "astro": "5.x.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
