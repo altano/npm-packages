@@ -1,0 +1,8 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["src", "components", "src/virtual.d.ts", "*.config.ts"],
+  "compilerOptions": {
+    "types": ["astro/client"],
+    "outDir": "dist"
+  }
+}
