@@ -29,7 +29,7 @@
   "scripts": {
     "build": "tsup --config build-config/tsup.config.browser.ts",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "check:exports": "attw --pack . --profile esm-only",
+    "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "check:unused-dependencies": "depcheck",
