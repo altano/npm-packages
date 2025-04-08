@@ -5,7 +5,8 @@
   "keywords": [
     "astro",
     "astro-integration",
-    "opengraph"
+    "opengraph",
+    "devtools"
   ],
   "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-opengraph",
   "repository": {
@@ -24,7 +25,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./components/meta.astro": "./components/meta.astro",
-    "./endpoint": "./dist/endpoint.js"
+    "./endpoint": "./dist/endpoint.js",
+    "./toolbar": "./dist/toolbar/index.js"
   },
   "files": [
     "components",
@@ -42,6 +44,9 @@
     "lint": "eslint",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "test:e2e": "playwright test",
+    "test:e2e:server": "astro --root tests/fixtures/ssg --port 3913 dev",
+    "test:e2e:ui": "playwright test --ui",
     "test:unit": "vitest --run",
     "test:unit:watch": "vitest"
   },
@@ -57,13 +62,18 @@
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
     "@inox-tools/astro-tests": "0.5.1",
+    "@playwright/test": "catalog:",
     "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.0",
     "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "astro": "catalog:",
     "depcheck": "catalog:",
     "jest-image-snapshot": "^6.4.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "sharp": "^0.33.1",
     "tsdown": "catalog:",
     "typescript": "catalog:",
@@ -71,7 +81,11 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "astro": "5.x.x"
+    "@types/react": ">=18",
+    "@types/react-dom": ">=18",
+    "astro": "5.x.x",
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "publishConfig": {
     "access": "public"

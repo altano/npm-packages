@@ -2,6 +2,7 @@
   "extends": "@altano/tsconfig/node.json",
   "include": ["src", "components", "src/virtual.d.ts", "*.config.ts"],
   "compilerOptions": {
+    "jsx": "react-jsx",
     "types": ["astro/client"],
     "outDir": "dist"
   }
