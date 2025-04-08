@@ -34,13 +34,16 @@
   "scripts": {
     "build": "tsdown",
     "check:types:src": "tsc --noEmit",
+    "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "check:unused-dependencies": "depcheck",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "tsdown --watch",
     "format": "prettier --write src",
     "lint": "eslint",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
-    "lint:timing": "TIMING=1 eslint src/**/*.ts*"
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest"
   },
   "dependencies": {
     "he": "^1.2.0",
@@ -50,15 +53,22 @@
   "devDependencies": {
     "@altano/assets": "workspace:*",
     "@altano/build-config": "workspace:*",
+    "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
+    "@altano/vitest-plugins": "workspace:*",
+    "@inox-tools/astro-tests": "0.5.1",
     "@types/he": "^1.2.3",
+    "@types/jest-image-snapshot": "^6.4.0",
     "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "astro": "catalog:",
     "depcheck": "catalog:",
+    "jest-image-snapshot": "^6.4.0",
     "sharp": "^0.33.1",
     "tsdown": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "astro": "5.x.x"

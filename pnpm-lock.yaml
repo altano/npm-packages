@@ -191,21 +191,39 @@ importers:
       '@altano/build-config':
         specifier: workspace:*
         version: link:../build-config
+      '@altano/testing':
+        specifier: workspace:*
+        version: link:../testing
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@altano/vitest-plugins':
+        specifier: workspace:*
+        version: link:../vitest-plugins
+      '@inox-tools/astro-tests':
+        specifier: 0.5.1
+        version: 0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       '@types/he':
         specifier: ^1.2.3
         version: 1.2.3
+      '@types/jest-image-snapshot':
+        specifier: ^6.4.0
+        version: 6.4.0
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
       astro:
         specifier: 'catalog:'
         version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       depcheck:
         specifier: 'catalog:'
         version: 1.4.7
+      jest-image-snapshot:
+        specifier: ^6.4.0
+        version: 6.4.0
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -218,6 +236,9 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
+      vitest:
+        specifier: 'catalog:'
+        version: 3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0)
 
   packages/astro-prettier-response:
     dependencies:
