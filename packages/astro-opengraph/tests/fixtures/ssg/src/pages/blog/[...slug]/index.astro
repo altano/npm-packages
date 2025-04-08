@@ -1,0 +1,29 @@
+---
+// import OpenGraphMeta from "@altano/astro-opengraph/components/meta.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "hello-world" } },
+    { params: { slug: "bye-cruel-world" } },
+  ];
+}
+
+const { slug } = Astro.params;
+if (slug == null) {
+  throw new Error(`Could not find slug param`);
+}
+---
+
+<html>
+  <head>
+    <title>Post: {slug}</title>
+    <!--
+    <OpenGraphMeta
+      title={slug.replace("-", " ").toUpperCase()}
+      description="An article with a description"
+    /> -->
+  </head>
+  <body>
+    This is a post with the slug {slug}
+  </body>
+</html>
