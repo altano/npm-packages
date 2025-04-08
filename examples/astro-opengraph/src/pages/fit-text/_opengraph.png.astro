@@ -1,0 +1,58 @@
+---
+export const meta = {
+  face: true,
+  url: Astro.url,
+  site: Astro.site,
+};
+
+import { findLargestUsableFontSize } from "@altano/satori-fit-text";
+import { getInterBuffer } from "@altano/assets";
+
+const text = "This text should fill the red boxy box";
+const width = 1050;
+const height = 480;
+const lineHeight = 1;
+const fontWeight = 400;
+const fontSize = await findLargestUsableFontSize({
+  lineHeight,
+  font: {
+    name: "Inter",
+    data: await getInterBuffer(fontWeight),
+    weight: 400,
+    style: "normal",
+  },
+  text,
+  maxWidth: width,
+  maxHeight: height,
+});
+---
+
+<html>
+  <body
+    style={{
+      fontFamily: "Inter Variable",
+      background: "white",
+      width: 1200,
+      height: 630,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <div
+      style={{
+        display: "block",
+        border: "solid red 1px",
+        margin: "auto",
+        width,
+        height,
+        lineHeight,
+        fontWeight,
+        fontSize,
+      }}
+    >
+      {text}
+    </div>
+  </body>
+</html>
