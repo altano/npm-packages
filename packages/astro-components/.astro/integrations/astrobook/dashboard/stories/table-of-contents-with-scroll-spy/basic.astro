@@ -1,0 +1,15 @@
+---
+import StoryPage from 'astrobook/pages/story.astro'
+import { isAstroStory } from 'astrobook/client'
+import * as m from '/Volumes/sourcecode/npm-packages/packages/astro-components/stories/TableOfContentsWithScrollSpy.stories.js'
+
+const isAstro = isAstroStory(m)
+---
+
+<StoryPage story={'stories/table-of-contents-with-scroll-spy/basic'} hasSidebar={true}>
+  {
+    isAstro
+      ? (<m.default.component { ...m['Basic']?.args } />)
+      : (<m.default.component { ...m['Basic']?.args } client:load />)
+  }
+</StoryPage>

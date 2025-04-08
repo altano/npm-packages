@@ -1,0 +1,15 @@
+---
+import StoryPage from 'astrobook/pages/story.astro'
+import { isAstroStory } from 'astrobook/client'
+import * as m from '/Volumes/sourcecode/npm-packages/packages/astro-components/stories/TableOfContents.stories.js'
+
+const isAstro = isAstroStory(m)
+---
+
+<StoryPage story={'stories/table-of-contents/from-depth-to-depth'} hasSidebar={false}>
+  {
+    isAstro
+      ? (<m.default.component { ...m['FromDepthToDepth']?.args } />)
+      : (<m.default.component { ...m['FromDepthToDepth']?.args } client:load />)
+  }
+</StoryPage>

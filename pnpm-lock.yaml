@@ -108,6 +108,30 @@ importers:
         specifier: ^2.8.0
         version: 2.8.0
 
+  examples/astro-opengraph:
+    dependencies:
+      '@altano/assets':
+        specifier: 'workspace:'
+        version: link:../../packages/assets
+      '@altano/astro-opengraph':
+        specifier: 'workspace:'
+        version: link:../../packages/astro-opengraph
+      '@altano/satori-fit-text':
+        specifier: 'workspace:'
+        version: link:../../packages/satori-fit-text
+      '@fontsource/inter':
+        specifier: 'catalog:'
+        version: 5.2.6
+      astro:
+        specifier: 'catalog:'
+        version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro-meta-tags:
+        specifier: 0.3.1
+        version: 0.3.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      sharp:
+        specifier: ^0.33.1
+        version: 0.33.5
+
   examples/satori-fit-text-node-cli:
     dependencies:
       '@altano/satori-fit-text':
@@ -3042,6 +3066,11 @@ packages:
     resolution: {integrity: sha512-Z0QW5IQjosuKQDEGYYkvUX6EhEtrmE4/oViqWz23QveV8U7AuyFsTdg00WRNPevWZl/5a4lLUeDpv4bCRynRRg==}
     peerDependencies:
       astro: ^4.12.0 || ^5.0.0
+
+  astro-meta-tags@0.3.1:
+    resolution: {integrity: sha512-6g/SfAVTV7BsGlfWU+s/Kvo6atyn9DpfI7Dq3fE/ck3ppfg30aoeT2Uxu7UH4yla3QXAUWaJIher7fGjewf0ew==}
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0-beta.0
 
   astro-theme-toggle@0.6.0:
     resolution: {integrity: sha512-Pe2DTeckxJaspMXNWbHzhn3fQq6K4JTEZ/Gutehgty6qzfLWehsGPFtsKOhsS0r2EOK18MaUnONliE5+sDBLYw==}
@@ -7352,9 +7381,6 @@ packages:
     peerDependencies:
       zod: ^3.18.0
 
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
-
   zod@3.24.3:
     resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
 
@@ -7482,7 +7508,7 @@ snapshots:
       rehype-stringify: 10.0.1
       remark-gfm: 4.0.1
       remark-parse: 11.0.0
-      remark-rehype: 11.1.1
+      remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
       shiki: 1.29.2
       unified: 11.0.5
@@ -8204,12 +8230,12 @@ snapshots:
       '@astrojs/markdown-remark': 5.3.0
       '@inox-tools/utils': 0.3.1
       astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
-      debug: 4.4.0
-      fast-glob: 3.3.2
+      debug: 4.4.1
+      fast-glob: 3.3.3
       shiki: 1.29.2
       strip-ansi: 7.1.0
       undici: 6.21.2
-      zod: 3.23.8
+      zod: 3.24.3
     transitivePeerDependencies:
       - supports-color
 
@@ -9434,6 +9460,10 @@ snapshots:
       astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       pathe: 1.1.2
       recast: 0.23.11
+
+  astro-meta-tags@0.3.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
+    dependencies:
+      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
 
   astro-theme-toggle@0.6.0: {}
 
@@ -14880,8 +14910,6 @@ snapshots:
   zod-validation-error@3.4.0(zod@3.24.3):
     dependencies:
       zod: 3.24.3
-
-  zod@3.23.8: {}
 
   zod@3.24.3: {}
 

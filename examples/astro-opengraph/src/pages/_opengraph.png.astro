@@ -1,0 +1,40 @@
+---
+export const meta = {
+  face: true,
+  url: Astro.url,
+  site: Astro.site,
+};
+---
+
+<html>
+  <body
+    style={{
+      fontFamily: "Inter Variable",
+      background: "white",
+      height: "100vh",
+      width: "100vw",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <h1
+      style={{
+        fontWeight: 800,
+        fontSize: " 5rem",
+        margin: 0,
+      }}
+    >
+      Root Image
+    </h1>
+    <p
+      style={{
+        fontWeight: 400,
+        fontSize: " 2rem",
+      }}
+    >
+      Homepage.
+    </p>
+  </body>
+</html>
