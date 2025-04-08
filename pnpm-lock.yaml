@@ -125,9 +125,6 @@ importers:
       astro:
         specifier: 'catalog:'
         version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
-      astro-meta-tags:
-        specifier: 0.3.1
-        version: 0.3.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -227,6 +224,9 @@ importers:
       '@inox-tools/astro-tests':
         specifier: 0.5.1
         version: 0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      '@playwright/test':
+        specifier: 'catalog:'
+        version: 1.51.1
       '@types/he':
         specifier: ^1.2.3
         version: 1.2.3
@@ -236,6 +236,12 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.0.12
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.0.4(@types/react@19.0.12)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
@@ -248,6 +254,12 @@ importers:
       jest-image-snapshot:
         specifier: ^6.4.0
         version: 6.4.0
+      react:
+        specifier: 'catalog:'
+        version: 19.1.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.1.0(react@19.1.0)
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -3066,11 +3078,6 @@ packages:
     resolution: {integrity: sha512-Z0QW5IQjosuKQDEGYYkvUX6EhEtrmE4/oViqWz23QveV8U7AuyFsTdg00WRNPevWZl/5a4lLUeDpv4bCRynRRg==}
     peerDependencies:
       astro: ^4.12.0 || ^5.0.0
-
-  astro-meta-tags@0.3.1:
-    resolution: {integrity: sha512-6g/SfAVTV7BsGlfWU+s/Kvo6atyn9DpfI7Dq3fE/ck3ppfg30aoeT2Uxu7UH4yla3QXAUWaJIher7fGjewf0ew==}
-    peerDependencies:
-      astro: ^4.0.0 || ^5.0.0-beta.0
 
   astro-theme-toggle@0.6.0:
     resolution: {integrity: sha512-Pe2DTeckxJaspMXNWbHzhn3fQq6K4JTEZ/Gutehgty6qzfLWehsGPFtsKOhsS0r2EOK18MaUnONliE5+sDBLYw==}
@@ -9460,10 +9467,6 @@ snapshots:
       astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       pathe: 1.1.2
       recast: 0.23.11
-
-  astro-meta-tags@0.3.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
-    dependencies:
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
 
   astro-theme-toggle@0.6.0: {}
 

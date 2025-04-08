@@ -6,6 +6,8 @@ const config: UserConfig | UserConfigFn = defineConfig({
     "src/index.ts",
     // this can import/export anything, e.g. `astro:assets`
     "src/endpoint.ts",
+    // this can import/export, but be careful: this is loaded in the user's site!
+    "src/toolbar/index.tsx",
   ],
   dts: true,
   clean: true,
@@ -13,6 +15,7 @@ const config: UserConfig | UserConfigFn = defineConfig({
   external: [
     "astro:middleware",
     "astro:assets",
+    "astro/toolbar",
     "virtual:astro-opengraph/user-config",
   ],
 });
