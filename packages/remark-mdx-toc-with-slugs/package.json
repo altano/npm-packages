@@ -49,7 +49,7 @@
   "dependencies": {
     "@altano/remark-mdx-toc": "workspace:*",
     "astring": "^1.9.0",
-    "estree-util-value-to-estree": "^3.1.2",
+    "estree-util-value-to-estree": "^3.3.3",
     "estree-util-visit": "^2.0.0",
     "github-slugger": "^2.0.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
