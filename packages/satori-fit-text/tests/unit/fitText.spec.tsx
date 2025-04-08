@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterEach } from "vitest";
 import should from "./utils/makeTest.js";
 import { getFont } from "./utils/getFont.js";
 import { findLargestUsableFontSize } from "../../src/index.js";
@@ -6,6 +6,11 @@ import { findLargestUsableFontSize } from "../../src/index.js";
 describe("findLargestUsableFontSize", async () => {
   const font = await getFont();
   const lineHeight = 1;
+
+  afterEach(async () => {
+    // https://github.com/vitest-dev/vitest/issues/4497#issuecomment-1887757764
+    await new Promise((res) => setImmediate(res));
+  });
 
   describe("screenshots", async () => {
     should("render some normal text", {
