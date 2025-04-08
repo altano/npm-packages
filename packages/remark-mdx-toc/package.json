@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "estree-util-is-identifier-name": "^3.0.0",
-    "estree-util-value-to-estree": "^3.1.2",
+    "estree-util-value-to-estree": "^3.3.3",
     "mdast-util-mdx": "^3.0.0",
     "mdast-util-to-string": "^4.0.0",
     "unified": "^11.0.5",
