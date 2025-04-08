@@ -16,7 +16,6 @@
     "@altano/satori-fit-text": "workspace:",
     "@fontsource/inter": "5.0.17",
     "astro": "5.4.0",
-    "astro-meta-tags": "0.3.1",
     "sharp": "^0.33.1"
   },
   "publishConfig": {

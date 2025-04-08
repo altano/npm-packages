@@ -7,6 +7,7 @@
     "ms-playwright.playwright",
     "vitest.explorer",
     "vercel.turbo-vsc",
-    "graphite.gti-vscode"
+    "graphite.gti-vscode",
+    "bierner.comment-tagged-templates"
   ]
 }
