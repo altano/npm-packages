@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-opengraph",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "Open Graph Tools for Astro",
   "keywords": [
     "astro",
@@ -29,6 +29,7 @@
     "./toolbar": "./dist/toolbar/index.js"
   },
   "files": [
+    "assets",
     "components",
     "dist/**/*.js",
     "dist/**/*.d.ts"
