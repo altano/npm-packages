@@ -399,7 +399,7 @@ This integration makes use of the [experimental container APIs](https://docs.ast
 
 While in `astro dev` mode, you can use the included Astro dev toolbar app installed by this integration. It include a preview of the opengraph image as well as the `og:` meta tags on the page:
 
-![Screenshot of the Astro developer toolbar showing an Open Graph image](./readme-assets/dev-toolbar.png)
+![Screenshot of the Astro developer toolbar showing an Open Graph image](./assets/dev-toolbar.png)
 
 Once your site is live, you can use a tool like [opengraph.xyz](https://www.opengraph.xyz/) to preview the opengraph image/tags.
 

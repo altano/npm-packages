@@ -26,6 +26,7 @@
     "@altano/astro-opengraph": "0.0.1-alpha.0"
   },
   "changesets": [
-    "grumpy-boxes-send"
+    "grumpy-boxes-send",
+    "slick-wombats-cut"
   ]
 }
