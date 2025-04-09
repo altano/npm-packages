@@ -2,10 +2,11 @@ import { createRoot } from "react-dom/client";
 
 import { defineToolbarApp } from "astro/toolbar";
 import { ToolbarAppWindow } from "./components/ToolbarAppWindow.js";
+import type { DevToolbarApp } from "astro";
 
 const SESSION_KEY_OPEN = "@altano/astro-opengraph/toolbar:is-open";
 
-export default defineToolbarApp({
+const app: DevToolbarApp = defineToolbarApp({
   init(canvas, app) {
     const root = createRoot(canvas);
 
@@ -28,3 +29,5 @@ export default defineToolbarApp({
     }
   },
 });
+
+export default app;
