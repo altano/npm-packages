@@ -46,6 +46,9 @@ export class PlaywrightDevPage {
   }
 
   async openToolbar(): Promise<void> {
+    // hover first, since that immediately moves the button
+    await this.appToolbarButton.hover();
+    // then click it
     await this.appToolbarButton.click();
     await expect(
       this.opengraphImage.or(this.noOpenGraphErrorText),

@@ -21,7 +21,11 @@
     "@altano/use-element-observer": "2.0.2",
     "@altano/use-toc-visible-sections": "2.0.2",
     "@altano/use-visible-elements": "2.0.2",
-    "@altano/vitest-plugins": "1.0.0"
+    "@altano/vitest-plugins": "1.0.0",
+    "astro-opengraph-example": "0.0.1",
+    "@altano/astro-opengraph": "0.0.1-alpha.0"
   },
-  "changesets": []
+  "changesets": [
+    "grumpy-boxes-send"
+  ]
 }

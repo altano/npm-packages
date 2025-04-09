@@ -1,4 +1,9 @@
-import { defineConfig, devices, type Project } from "@playwright/test";
+import {
+  defineConfig,
+  devices,
+  type PlaywrightTestConfig,
+  type Project,
+} from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -60,7 +65,7 @@ const projects = {
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+const config: PlaywrightTestConfig = defineConfig({
   testDir: "./tests/e2e",
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -98,7 +103,6 @@ export default defineConfig({
         projects.chromium,
         projects.webkit, // produces `[WebServer] 17:16:28 [ERROR] [toolbar] Failed to load dev toolbar app ...` errors but passes *shrug*
         projects.firefox,
-
         /* Test against mobile viewports. */
         // projects.mobileChrome,
         // projects.mobileSafari,
@@ -114,3 +118,5 @@ export default defineConfig({
     reuseExistingServer: false,
   },
 });
+
+export default config;
