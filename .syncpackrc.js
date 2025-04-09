@@ -12,7 +12,18 @@ function getPnpmCatalogPeerDependencies() {
   /**
    * @type {import("syncpack").RcFile['versionGroups']}
    */
-  return Object.entries(pnpmWorkspaceConfig.catalog).flatMap(
+  const specialCases = [
+    // special cases
+    {
+      label: `react peer deps for astro projects`,
+      packages: ["@altano/astro-**"],
+      dependencies: ["react", "react-dom", "@types/react", "@types/react-dom"],
+      dependencyTypes: ["peer"],
+      pinVersion: ">=18",
+    },
+  ];
+
+  const generalCases = Object.entries(pnpmWorkspaceConfig.catalog).flatMap(
     ([packageName, versionStr]) => {
       const minVersion = semver.minVersion(versionStr);
       if (minVersion == null) {
@@ -29,6 +40,7 @@ function getPnpmCatalogPeerDependencies() {
           dependencyTypes: ["!local", "!peer"],
           pinVersion: "catalog:",
         },
+        // general cases
         {
           label: `Enforce pnpm default catalog for ${packageName} (peer deps)`,
           dependencies: [packageName],
@@ -38,6 +50,8 @@ function getPnpmCatalogPeerDependencies() {
       ];
     },
   );
+
+  return [...specialCases, ...generalCases];
 }
 
 /** @type {import("syncpack").RcFile} */

@@ -125,9 +125,6 @@ importers:
       astro:
         specifier: 5.4.0
         version: 5.4.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0)
-      astro-meta-tags:
-        specifier: 0.3.1
-        version: 0.3.1(astro@5.4.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0))
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -196,6 +193,9 @@ importers:
       '@inox-tools/astro-tests':
         specifier: 0.5.1
         version: 0.5.1(astro@5.6.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0))
+      '@playwright/test':
+        specifier: 'catalog:'
+        version: 1.47.0
       '@types/he':
         specifier: ^1.2.3
         version: 1.2.3
@@ -205,6 +205,12 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.0.12
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.0.4(@types/react@19.0.12)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 3.1.1(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@1.21.6)(jsdom@26.0.0)(yaml@2.7.0))
@@ -217,6 +223,12 @@ importers:
       jest-image-snapshot:
         specifier: ^6.4.0
         version: 6.4.0
+      react:
+        specifier: 'catalog:'
+        version: 19.1.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.1.0(react@19.1.0)
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -2655,11 +2667,6 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
-
-  astro-meta-tags@0.3.1:
-    resolution: {integrity: sha512-6g/SfAVTV7BsGlfWU+s/Kvo6atyn9DpfI7Dq3fE/ck3ppfg30aoeT2Uxu7UH4yla3QXAUWaJIher7fGjewf0ew==}
-    peerDependencies:
-      astro: ^4.0.0 || ^5.0.0-beta.0
 
   astro@5.4.0:
     resolution: {integrity: sha512-7A//zrCtJUGfJcQAt6PDhMu4a6pogvnK54HLXnYlPnKSWQZu/tKIYWfyvocVnTuEYIPExIN3CpjNAFFLoweJVw==}
@@ -8549,10 +8556,6 @@ snapshots:
   ast-types-flow@0.0.8: {}
 
   astring@1.9.0: {}
-
-  astro-meta-tags@0.3.1(astro@5.4.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0)):
-    dependencies:
-      astro: 5.4.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0)
 
   astro@5.4.0(@types/node@22.13.10)(jiti@1.21.6)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.7.0):
     dependencies:
