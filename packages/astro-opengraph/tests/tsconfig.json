@@ -1,0 +1,12 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["unit", "../src/virtual.d.ts"],
+  "compilerOptions": {
+    "types": [
+      "astro/client",
+      "vitest/jsdom",
+      "vitest/globals",
+      "@altano/vitest-plugins/matchers"
+    ]
+  }
+}

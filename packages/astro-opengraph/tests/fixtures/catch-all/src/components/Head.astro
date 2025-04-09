@@ -1,0 +1,16 @@
+---
+// import OpenGraphMeta from "@altano/astro-opengraph/components/meta.astro";
+import OpenGraphMeta from "../../../../../components/meta.astro";
+
+interface Props {
+  children: any;
+  openGraphImage?: string;
+}
+
+const { openGraphImage } = Astro.props;
+---
+
+<head>
+  <OpenGraphMeta image={openGraphImage} />
+  <slot />
+</head>
