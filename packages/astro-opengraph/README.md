@@ -86,7 +86,7 @@ In order serve the component from the prior step as an image, you need a js/ts [
 
 ```ts
 import opengraphTemplate from "../components/opengraph.astro";
-import { makeOpengraphEndpoint } from "@altano/astro-opengraph";
+import { makeOpengraphEndpoint } from "@altano/astro-opengraph/endpoint";
 
 export const GET = makeOpengraphEndpoint({
   template: opengraphTemplate,
@@ -141,6 +141,8 @@ import OpenGraphMeta from "@altano/astro-opengraph/components/meta.astro";
   </body>
 </html>
 ```
+
+You can also provide an `alt` prop which would set the `og:image:alt` meta tag, but my understanding is that it isn't well supported, so feel free to omit this.
 
 If you want the `OpenGraphMeta` component to use a different set of defaults for your whole site, you can provide the `componentMetaTagFallbacks` integration config, e.g. to provide a default title:
 
@@ -274,7 +276,7 @@ It doesn't matter where you put your Open Graph component or endpoints, as long 
 ```ts
 // import your component, wherever it is
 import opengraphTemplate from "../components/my-custom-component.astro";
-import { makeOpengraphEndpoint } from "@altano/astro-opengraph";
+import { makeOpengraphEndpoint } from "@altano/astro-opengraph/endpoint";
 
 export const GET = makeOpengraphEndpoint({
   template: opengraphTemplate,

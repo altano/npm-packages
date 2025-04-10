@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 0.1.0-alpha.3
+
+### Minor Changes
+
+- e459146: add `alt` prop to component, test exports, etc
+
 ## 0.0.1-alpha.2
 
 ### Patch Changes

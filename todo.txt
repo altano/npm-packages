@@ -59,7 +59,7 @@ TODO: investigate going esm-only with require(esm) now landed
 astro-opengraph todo:
 TODO: Add tests for `componentMetaTagFallbacks` config
 TODO: look into injecting types automatically (either https://docs.astro.build/en/reference/integrations-reference/#injecttypes-options or https://astro-integration-kit.netlify.app)
-TODO: Run `astro check` on fixture directories (for typechecking etc)
+x 2025-04-09 TODO: Run `astro check` on fixture directories (for typechecking etc)
 x 2025-04-06 TODO: add a toolbar like the one in https://github.com/tombl/astro-opengraph-image (separate package?). document in readme.
 TODO: experiment with `<style is:inline />` (https://docs.astro.build/en/guides/styling/#raw-css-imports)
 x 2025-03-29 TODO: add tests (and documentation) for alternate image formats back in OR
