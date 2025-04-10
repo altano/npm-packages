@@ -1,7 +1,7 @@
-import type React from "react";
+import type Preact from "preact";
 import { ExternalLinkicon } from "./ExternalLinkicon.js";
 
-type LinkOrTextType = React.JSX.Element | string | null;
+type LinkOrTextType = Preact.JSX.Element | string | null;
 
 export function LinkOrText({
   maybeLinkText,

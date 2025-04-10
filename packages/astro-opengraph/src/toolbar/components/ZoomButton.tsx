@@ -1,4 +1,4 @@
-import type React from "react";
+import type Preact from "preact";
 import { ZoomLabel } from "./ZoomLabel.js";
 
 export function ZoomButton({
@@ -8,8 +8,8 @@ export function ZoomButton({
 }: {
   value: number;
   imageSize: number;
-  setImageSize: React.Dispatch<React.SetStateAction<number>>;
-}): React.JSX.Element {
+  setImageSize: (size: number) => void;
+}): Preact.JSX.Element {
   const isSelected = value === imageSize;
   return (
     <astro-dev-toolbar-button

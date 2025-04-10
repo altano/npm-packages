@@ -1,4 +1,4 @@
-import type React from "react";
+import type Preact from "preact";
 
 export function ExternalLinkicon({
   width = 27,
@@ -8,7 +8,7 @@ export function ExternalLinkicon({
   width?: number;
   height?: number;
   fill?: string;
-}): React.JSX.Element {
+}): Preact.JSX.Element {
   return (
     <span
       style={{

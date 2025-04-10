@@ -1,6 +1,10 @@
-import type React from "react";
+import type Preact from "preact";
 
-export function Summary({ children }: { children: string }): React.JSX.Element {
+export function Summary({
+  children,
+}: {
+  children: string;
+}): Preact.JSX.Element {
   return (
     <summary
       style={{

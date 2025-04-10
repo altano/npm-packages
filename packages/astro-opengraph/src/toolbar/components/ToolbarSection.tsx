@@ -1,12 +1,13 @@
-import type React from "react";
+import type { ComponentChildren } from "preact";
+import type Preact from "preact";
 
 export function ToolbarSection({
   icon,
   children,
 }: {
-  icon: React.ReactNode;
-  children: React.ReactNode;
-}): React.JSX.Element {
+  icon: Preact.JSX.Element;
+  children: ComponentChildren;
+}): Preact.JSX.Element {
   return (
     <div
       style={{

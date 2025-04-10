@@ -1,4 +1,4 @@
-import type React from "react";
+import type Preact from "preact";
 import { ZoomButton } from "./ZoomButton.js";
 import { ToolbarSection } from "./ToolbarSection.js";
 
@@ -9,8 +9,8 @@ export function ImageZoomToolbar({
 }: {
   isHovered: boolean;
   imageSize: number;
-  setImageSize: React.Dispatch<React.SetStateAction<number>>;
-}): React.JSX.Element {
+  setImageSize: (size: number) => void;
+}): Preact.JSX.Element {
   return (
     <ToolbarSection icon={<astro-dev-toolbar-icon icon="gear" />}>
       {!isHovered ? (

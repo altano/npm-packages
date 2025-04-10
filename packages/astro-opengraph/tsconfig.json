@@ -10,6 +10,7 @@
   "compilerOptions": {
     "lib": ["dom"],
     "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "types": ["astro/client"],
     "outDir": "dist"
   }

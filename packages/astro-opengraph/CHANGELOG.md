@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 0.1.0-alpha.4
+
+### Patch Changes
+
+- 12931cb: misc fixes for alpha.4 release
+
 ## 0.1.0-alpha.3
 
 ### Minor Changes
