@@ -1,0 +1,21 @@
+{
+  "name": "ui-frameworks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "astro check",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "@altano/assets": "workspace:",
+    "@altano/astro-opengraph": "workspace:",
+    "@astrojs/preact": "catalog:",
+    "@astrojs/svelte": "catalog:",
+    "@astrojs/vue": "catalog:",
+    "astro": "catalog:",
+    "svelte": "catalog:",
+    "typescript": "^5.8.3",
+    "vue": "catalog:"
+  }
+}

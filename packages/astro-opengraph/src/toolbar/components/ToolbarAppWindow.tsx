@@ -1,8 +1,8 @@
-import type React from "react";
+import type Preact from "preact";
 import { styles } from "../styles.js";
 import { ToolbarApp } from "./ToolbarApp.js";
 
-export function ToolbarAppWindow(): React.JSX.Element {
+export function ToolbarAppWindow(): Preact.JSX.Element {
   return (
     <astro-dev-toolbar-window>
       <style>{styles}</style>

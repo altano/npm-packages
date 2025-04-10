@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import type Preact from "preact";
+import { useRef, useEffect } from "preact/hooks";
 
 export function useHoverState<TElement extends HTMLElement>(
-  setHoverState: React.Dispatch<React.SetStateAction<boolean>>,
-): React.RefObject<TElement | null> {
+  setHoverState: (isHover: boolean) => void,
+): Preact.RefObject<TElement> {
   const ref = useRef<TElement>(null);
 
   useEffect(() => {

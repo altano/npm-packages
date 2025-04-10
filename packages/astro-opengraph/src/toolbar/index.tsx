@@ -1,4 +1,4 @@
-import { createRoot } from "react-dom/client";
+import { render } from "preact";
 
 import { defineToolbarApp } from "astro/toolbar";
 import { ToolbarAppWindow } from "./components/ToolbarAppWindow.js";
@@ -8,12 +8,10 @@ const SESSION_KEY_OPEN = "@altano/astro-opengraph/toolbar:is-open";
 
 const app: DevToolbarApp = defineToolbarApp({
   init(canvas, app) {
-    const root = createRoot(canvas);
-
     app.onToggled((event) => {
       if (event.state) {
         sessionStorage.setItem(SESSION_KEY_OPEN, "true");
-        root.render(<ToolbarAppWindow />);
+        render(<ToolbarAppWindow />, canvas);
       } else {
         sessionStorage.removeItem(SESSION_KEY_OPEN);
       }

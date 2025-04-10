@@ -27,6 +27,7 @@
   },
   "changesets": [
     "cruel-frogs-brake",
+    "eager-maps-fetch",
     "grumpy-boxes-send",
     "slick-wombats-cut"
   ]

@@ -21,6 +21,13 @@ function getPnpmCatalogPeerDependencies() {
       dependencyTypes: ["peer"],
       pinVersion: ">=18",
     },
+    {
+      label: `preact peer deps for astro projects`,
+      packages: ["@altano/astro-**"],
+      dependencies: ["preact"],
+      dependencyTypes: ["peer"],
+      pinVersion: ">=10",
+    },
   ];
 
   const generalCases = Object.entries(pnpmWorkspaceConfig.catalog).flatMap(

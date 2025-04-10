@@ -1,8 +1,8 @@
-import type React from "react";
+import type Preact from "preact";
 import { LinkOrText } from "./LinkOrText.js";
 import { useMetaTagInfo, type MetaTagInfo } from "../hooks/useMetaTagInfo.js";
 
-export function MetaTags(): React.JSX.Element {
+export function MetaTags(): Preact.JSX.Element {
   const tags = useMetaTagInfo();
 
   return (
@@ -23,7 +23,7 @@ export function MetaTags(): React.JSX.Element {
   );
 }
 
-function MetaTagContent({ tag }: { tag: MetaTagInfo }): React.JSX.Element {
+function MetaTagContent({ tag }: { tag: MetaTagInfo }): Preact.JSX.Element {
   const [content, property] = tag;
   return (
     <>
