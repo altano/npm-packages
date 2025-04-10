@@ -49,6 +49,11 @@ describe("Custom Dimensions", () => {
 
       expect(html).toContain(`<meta property="og:image:width" content="78">`);
       expect(html).toContain(`<meta property="og:image:height" content="911">`);
+
+      // doesn't belong here but check we can set the alt tag while we're here...
+      expect(html).toContain(
+        `<meta property="og:image:alt" content="alternative alt text">`,
+      );
     });
   });
 });

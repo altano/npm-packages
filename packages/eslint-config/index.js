@@ -106,9 +106,13 @@ export default {
         },
       },
 
-      // disabled rules for dev-only packages
+      // disabled rules for dev-only packages/modules
       {
-        files: ["packages/build-config/**/*", ".syncpackrc.js"],
+        files: [
+          "packages/build-config/**/*",
+          ".syncpackrc.js",
+          "packages/**/scripts/**/*",
+        ],
         rules: {
           "import-x/no-extraneous-dependencies": "off",
         },

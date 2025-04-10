@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-opengraph",
-  "version": "0.0.1-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Open Graph Tools for Astro",
   "keywords": [
     "astro",
@@ -36,6 +36,7 @@
   ],
   "scripts": {
     "build": "tsdown",
+    "check:types:astro": "node --experimental-strip-types ./scripts/check-fixtures.ts",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "check:unused-dependencies": "depcheck",
@@ -60,8 +61,10 @@
     "@altano/assets": "workspace:*",
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
+    "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
+    "@astrojs/check": "^0.9.4",
     "@inox-tools/astro-tests": "0.5.1",
     "@playwright/test": "catalog:",
     "@types/he": "^1.2.3",
@@ -79,7 +82,8 @@
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "zx": "^8.5.2"
   },
   "peerDependencies": {
     "@types/react": ">=18",

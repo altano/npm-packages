@@ -22,6 +22,10 @@ export type Props = {
    */
   image?: string;
   /**
+   * The specification says "A description of what is in the image (not a caption). If the page specifies an og:image it should specify og:image:alt." but people have found this to be poorly supported. Use if you want.
+   */
+  alt?: string;
+  /**
    * Override the width, which otherwise defaults to:
    *
    * - The width passed into the integration config in astro.config.ts, if set
@@ -42,9 +46,9 @@ export type Props = {
    */
   height?: number;
   /**
-   * Override the mimetype, which defaults to "image/png"
+   * Override `og:image:type` MIME type, which defaults to "image/png"
    */
-  mimeType?: string;
+  type?: string;
 };
 
 const { imageOptions, componentMetaTagFallbacks } = await getResolvedConfig();
@@ -56,12 +60,13 @@ const {
 } = componentMetaTagFallbacks;
 
 const {
+  alt,
   title = titleFallback,
   description = descriptionFallback,
   image = imageUrlFallback,
   width = imageOptions.width,
   height = imageOptions.height,
-  mimeType = "image/png",
+  type = "image/png",
 } = Astro.props;
 
 const urlStr = Astro.url.toString();
@@ -72,6 +77,7 @@ const opengraphImageUrl = new URL(image, urlWithTrailingSlash);
 {title && <meta property="og:title" content={title} />}
 {description && <meta property="og:description" content={description} />}
 <meta property="og:image" content={opengraphImageUrl.toString()} />
-<meta property="og:image:type" content={mimeType} />
+{alt && <meta property="og:image:alt" content={alt} />}
+<meta property="og:image:type" content={type} />
 <meta property="og:image:width" content={width.toString()} />
 <meta property="og:image:height" content={height.toString()} />

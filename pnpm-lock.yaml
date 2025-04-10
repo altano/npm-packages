@@ -215,12 +215,18 @@ importers:
       '@altano/testing':
         specifier: workspace:*
         version: link:../testing
+      '@altano/tiny-async-pool':
+        specifier: workspace:*
+        version: link:../tiny-async-pool
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@altano/vitest-plugins':
         specifier: workspace:*
         version: link:../vitest-plugins
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.4(prettier@3.5.3)(typescript@5.8.2)
       '@inox-tools/astro-tests':
         specifier: 0.5.1
         version: 0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
@@ -275,6 +281,9 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0)
+      zx:
+        specifier: ^8.5.2
+        version: 8.5.3
 
   packages/astro-prettier-response:
     dependencies:

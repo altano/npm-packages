@@ -26,6 +26,7 @@
     "@altano/astro-opengraph": "0.0.1-alpha.0"
   },
   "changesets": [
+    "cruel-frogs-brake",
     "grumpy-boxes-send",
     "slick-wombats-cut"
   ]

@@ -1,6 +1,12 @@
 {
   "extends": "@altano/tsconfig/node.json",
-  "include": ["src", "components", "src/virtual.d.ts", "*.config.ts"],
+  "include": [
+    "src",
+    "components",
+    "src/virtual.d.ts",
+    "*.config.ts",
+    "scripts"
+  ],
   "compilerOptions": {
     "lib": ["dom"],
     "jsx": "react-jsx",
