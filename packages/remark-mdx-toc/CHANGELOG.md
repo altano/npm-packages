@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc
 
+## 0.0.3
+
+### Patch Changes
+
+- 4ecba8a: add attributes to match new @types/estree type
+
 ## 0.0.2
 
 ### Patch Changes
