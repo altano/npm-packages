@@ -48,7 +48,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@types/debug": "^4.1.12",
     "@types/node": "catalog:",
-    "@types/unist": "^3.0.2",
+    "@types/unist": "^3.0.3",
     "depcheck": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:",

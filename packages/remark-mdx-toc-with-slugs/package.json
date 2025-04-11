@@ -63,7 +63,7 @@
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
-    "@types/unist": "^3.0.2",
+    "@types/unist": "^3.0.3",
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
     "prettier": "catalog:",

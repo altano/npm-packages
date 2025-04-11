@@ -158,6 +158,7 @@ const remarkMdxToc: RequiredReturn<PluginType> =
               type: "ExportNamedDeclaration",
               specifiers: [],
               source: null,
+              attributes: [],
               declaration: {
                 type: "VariableDeclaration",
                 kind: "const",
