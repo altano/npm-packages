@@ -1,5 +1,12 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 3.0.2
+
+### Patch Changes
+
+- Updated dependencies [4ecba8a]
+  - @altano/remark-mdx-toc@0.0.3
+
 ## 3.0.1
 
 ### Patch Changes

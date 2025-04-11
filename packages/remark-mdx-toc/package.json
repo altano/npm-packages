@@ -1,6 +1,6 @@
 {
   "name": "@altano/remark-mdx-toc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A remark plugin to generate toc and convert it into MDX export",
   "keywords": [
     "mdx",
