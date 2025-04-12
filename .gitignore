@@ -10,7 +10,6 @@ dist-ssr
 .cache
 server/dist
 public/dist
-.turbo
 .coverage
 tsconfig.tsbuildinfo
 .devbox

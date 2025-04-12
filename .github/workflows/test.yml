@@ -14,8 +14,9 @@ concurrency:
   group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || ''}}
   cancel-in-progress: true
 
-# To use Turborepo Remote Caching, set the following environment variables for the job.
+# Use Turborepo remote caching w/ custom cache server
 env:
+  TURBO_API: ${{ vars.TURBO_API }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 

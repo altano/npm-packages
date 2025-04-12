@@ -9,8 +9,9 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-# To use Turborepo Remote Caching, set the following environment variables for the job.
+# Use Turborepo remote caching w/ custom cache server
 env:
+  TURBO_API: ${{ vars.TURBO_API }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
