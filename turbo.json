@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/turbo/schema.json",
   "globalEnv": ["CI", "NODE_ENV"],
+  "remoteCache": {
+    // Not yet supported by ducktors/turborepo-remote-cache (https://github.com/ducktors/turborepo-remote-cache/issues/394)
+    "signature": false
+  },
   "tasks": {
     "build": {
       "outputs": ["dist/**", ".next/**"],
