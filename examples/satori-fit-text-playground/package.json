@@ -1,0 +1,29 @@
+{
+  "name": "satori-fit-text-playground-example",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Demo of @altano/satori-fit-text",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "start": "vite --strictPort --port 3717 ."
+  },
+  "dependencies": {
+    "@altano/satori-fit-text": "workspace:",
+    "@fontsource-variable/inter": "catalog:",
+    "@fontsource/inter": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "vite": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
+  },
+  "engines": {
+    "node": ">= 18.17.1"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

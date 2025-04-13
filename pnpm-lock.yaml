@@ -111,8 +111,36 @@ importers:
         specifier: 'workspace:'
         version: link:../../packages/satori-fit-text
       '@fontsource/inter':
-        specifier: 5.0.17
+        specifier: 'catalog:'
+        version: 5.2.5
+
+  examples/satori-fit-text-playground:
+    dependencies:
+      '@altano/satori-fit-text':
+        specifier: 'workspace:'
+        version: link:../../packages/satori-fit-text
+      '@fontsource-variable/inter':
+        specifier: 'catalog:'
+        version: 5.2.5
+      '@fontsource/inter':
+        specifier: 'catalog:'
         version: 5.0.17
+      react:
+        specifier: 'catalog:'
+        version: 19.1.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.1.0(react@19.1.0)
+      vite:
+        specifier: 'catalog:'
+        version: 6.2.5(@types/node@22.13.10)(jiti@1.21.6)(yaml@2.7.0)
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.0.12
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.0.4(@types/react@19.0.12)
 
   packages/assets:
     dependencies:
@@ -628,9 +656,6 @@ importers:
       react:
         specifier: 'catalog:'
         version: 19.1.0
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.1.0(react@19.1.0)
       typescript:
         specifier: 'catalog:'
         version: 5.8.2

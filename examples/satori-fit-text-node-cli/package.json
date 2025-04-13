@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@altano/satori-fit-text": "workspace:",
-    "@fontsource/inter": "5.0.17"
+    "@fontsource/inter": "catalog:"
   },
   "engines": {
     "node": ">= 18.17.1"
