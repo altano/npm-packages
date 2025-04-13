@@ -1,5 +1,11 @@
 # @altano/satori-fit-text
 
+## 1.0.2
+
+### Patch Changes
+
+- 84df5fe: Improve text measurement algorithm, same (better) results as pre-1.0 version, but with less code.
+
 ## 1.0.1
 
 ### Patch Changes
