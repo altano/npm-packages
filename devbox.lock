@@ -285,68 +285,6 @@
         }
       }
     },
-    "playwright-driver.browsers": {
-      "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#playwright-driver.browsers",
-      "source": "nixpkg",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "path": "/nix/store/j6fdya2dais8j41msnrhkahkmrd8dch7-playwright-browsers-1.47.0",
-              "default": true
-            }
-          ]
-        }
-      }
-    },
-    "playwright-driver@1.47.0": {
-      "last_modified": "2024-10-13T23:44:06Z",
-      "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#playwright-driver",
-      "source": "devbox-search",
-      "version": "1.47.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/85kk5v8633iackwhg84nbv1wrcnqzm67-playwright-core-1.47.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/85kk5v8633iackwhg84nbv1wrcnqzm67-playwright-core-1.47.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/3kz4qnn7bwbcr5hc36q2wx9phibjlqzc-playwright-core-1.47.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/3kz4qnn7bwbcr5hc36q2wx9phibjlqzc-playwright-core-1.47.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/981kzim3k612rqq0qdjdmp4xlvmdr313-playwright-core-1.47.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/981kzim3k612rqq0qdjdmp4xlvmdr313-playwright-core-1.47.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/4bxajgf2aibkxkzqq7pf2ad1hzjs6aw6-playwright-core-1.47.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/4bxajgf2aibkxkzqq7pf2ad1hzjs6aw6-playwright-core-1.47.0"
-        }
-      }
-    },
     "sapling@latest": {
       "last_modified": "2025-03-21T17:37:26Z",
       "resolved": "github:NixOS/nixpkgs/94c4dbe77c0740ebba36c173672ca15a7926c993#sapling",

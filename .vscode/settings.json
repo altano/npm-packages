@@ -21,8 +21,22 @@
   "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
   "prettier.prettierPath": "./node_modules/prettier/index.cjs",
   "files.associations": {
-    "turbo.json": "jsonc",
-    ".depcheckrc": "yaml"
+    ".depcheckrc": "yaml",
+    "devbox.json": "jsonc",
+    "turbo.json": "jsonc"
+  },
+  "files.readonlyInclude": {
+    "**/.astro/**": true,
+    "**/.coverage/**": true,
+    "**/.devbox/**": true,
+    "**/.turbo/**": true,
+    "**/build/**": true,
+    "**/CHANGELOG.md": true,
+    "**/dist/**": true,
+    "**/generated/**": true,
+    "**/node_modules/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true
   },
   "turbo.path": "./node_modules/.bin/turbo",
   "typescript.enablePromptUseWorkspaceTsdk": true,
