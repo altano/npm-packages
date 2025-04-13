@@ -419,6 +419,15 @@ export const GET: APIRoute = makeOpengraphDevEndpoint({
 });
 ```
 
+You'll probably want to include a remote stylesheet that has your font face so that it renders correctly in HTML, since the integration's font configuration doesn't affect the HTML rendered version. For example, you might include this in your `./_opengraph.astro`:
+
+```
+<link
+  href=" https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.2.5/index.min.css "
+  rel="stylesheet"
+/>
+```
+
 # FAQ
 
 ## Question: How does this work?
