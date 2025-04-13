@@ -45,10 +45,16 @@ console.log(largestUsableFontSize);
 
 ## Example Uses
 
-- [React Component (sandbox)](https://codesandbox.io/s/altano-satori-fit-text-browser-example-j2gvk6)
-- [Next.js Open Graph Card - Simple (codesandbox)](https://codesandbox.io/p/sandbox/altano-satori-fit-text-next-js-demo-sv4flc)
+### Code Sandboxes
+
+- [Playground with controls](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/examples/satori-fit-text-playground?file=%2Fpackage.json%3A1%2C1)
+- [React Component](https://codesandbox.io/s/altano-satori-fit-text-browser-example-j2gvk6)
+- [Node.js CLI App](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/examples/satori-fit-text-node-cli?file=%2Fpackage.json%3A1%2C1)
+- [Next.js Open Graph Card - Simple](https://codesandbox.io/p/sandbox/altano-satori-fit-text-next-js-demo-sv4flc)
+
+### Code
+
 - [Next.js Open Graph Card - Complex](https://github.com/altano/alan.norbauer.com/blob/main/src/components/opengraph/image.tsx#L29-L35)
-- [Node.js CLI App (codesandbox)](https://codesandbox.io/p/sandbox/github/altano/npm-packages/tree/main/examples/satori-fit-text-node-cli?file=%2Fpackage.json%3A1%2C1)
 
 ## Implementation
 

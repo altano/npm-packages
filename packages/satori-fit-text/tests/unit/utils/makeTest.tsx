@@ -20,21 +20,12 @@ type TestOptions = {
   snapshot?: boolean;
   findOptions: FindOptions;
   Component: TestComponent;
-  width: number;
-  height: number;
   only?: boolean;
 };
 
 export default function should(
   testName: string,
-  {
-    snapshot = true,
-    Component,
-    width,
-    height,
-    findOptions,
-    only = false,
-  }: TestOptions,
+  { snapshot = true, Component, findOptions, only = false }: TestOptions,
 ): void {
   async function run(): Promise<void> {
     const fontSize = await findLargestUsableFontSize(findOptions);
@@ -47,8 +38,8 @@ export default function should(
       // vnode => svg
       const svg = await satori(node, {
         fonts: [findOptions.font],
-        width,
-        height,
+        width: findOptions.maxWidth,
+        height: findOptions.maxHeight,
         debug: true,
       });
 

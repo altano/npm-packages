@@ -25,44 +25,33 @@ export abstract class TextMeasurer {
     return width <= this.maxWidth && height <= this.maxHeight;
   }
 
-  protected async generateSvg(fontSize: number): Promise<string> {
-    const node = {
+  protected async createSvgXmlString(fontSize: number): Promise<string> {
+    const node: React.ReactElement = {
       type: "div",
+      key: "satori-fit-text-measure-node",
       props: {
         style: {
-          all: "initial",
+          // Static styles
+          background: "white",
+          color: "black",
           display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          height: "100%",
+          flex: 1,
+          boxSizing: "border-box",
           margin: 0,
           padding: 0,
-        },
-        children: [
-          {
-            type: "div",
-            props: {
-              style: {
-                // Static styles
-                margin: 0,
-                padding: 0,
-                boxSizing: "border-box",
 
-                // Dynamic styles based on input
-                fontSize,
-                fontFamily: this.font.name,
-                maxWidth: this.maxWidth,
-                lineHeight: this.lineHeight,
-              },
-              children: this.text,
-            },
-          },
-        ],
+          // Dynamic styles based on input
+          fontSize,
+          fontFamily: this.font.name,
+          maxWidth: this.maxWidth,
+          lineHeight: this.lineHeight,
+        },
+        children: this.text,
       },
     } as const;
 
     // vnode => svg
-    return satori(node as React.ReactNode, {
+    return satori(node, {
       fonts: this.#fonts,
       width: this.maxWidth * 2,
       height: this.maxHeight * 2,
