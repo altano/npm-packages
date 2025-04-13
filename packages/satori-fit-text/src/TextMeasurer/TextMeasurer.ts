@@ -3,6 +3,11 @@ import satori from "satori";
 import type React from "react";
 import type { Dimensions, Font } from "../types.js";
 
+// getBBox seems to be off by a very tiny fraction with certain versions of
+// Inter. Maybe that makes sense... maybe there's a better way of measuring
+// things. But for now, fudge it...
+const epsilon = 0.0001;
+
 export abstract class TextMeasurer {
   #fonts: Font[];
   constructor(
@@ -22,7 +27,9 @@ export abstract class TextMeasurer {
 
   async doesSizeFit(fontSize: number): Promise<boolean> {
     const { width, height } = await this.getDimensions(fontSize);
-    return width <= this.maxWidth && height <= this.maxHeight;
+    return (
+      width - epsilon <= this.maxWidth && height - epsilon <= this.maxHeight
+    );
   }
 
   protected async createSvgXmlString(fontSize: number): Promise<string> {

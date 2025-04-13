@@ -9,6 +9,7 @@ export type Props = {
   height: number;
   background?: string;
   weight?: Font["weight"];
+  fontSizeOverride?: number | null;
 };
 
 export default function FitText({
@@ -18,6 +19,7 @@ export default function FitText({
   height,
   background = "orangered",
   weight = 600,
+  fontSizeOverride,
 }: Props): React.ReactElement {
   const [fontSize, setFontSize] = useState(0);
   const [timeToComputeMs, setTimeToComputeMs] = useState(0);
@@ -52,8 +54,12 @@ export default function FitText({
       );
     }
 
-    void findFontSize();
-  }, [height, lineHeight, text, weight, width]);
+    if (fontSizeOverride) {
+      setFontSize(fontSizeOverride);
+    } else {
+      void findFontSize();
+    }
+  }, [fontSizeOverride, height, lineHeight, text, weight, width]);
 
   const style = {
     marginBlock: "1rem",

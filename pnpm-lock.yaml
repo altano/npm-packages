@@ -10,11 +10,11 @@ catalogs:
       specifier: ^0.17.4
       version: 0.17.4
     '@fontsource-variable/inter':
-      specifier: ^5.2.5
-      version: 5.2.5
+      specifier: 5.2.6
+      version: 5.2.6
     '@fontsource/inter':
-      specifier: ^5.2.5
-      version: 5.2.5
+      specifier: 5.2.6
+      version: 5.2.6
     '@playwright/test':
       specifier: 1.51.1
       version: 1.51.1
@@ -115,7 +115,7 @@ importers:
         version: link:../../packages/satori-fit-text
       '@fontsource/inter':
         specifier: 'catalog:'
-        version: 5.2.5
+        version: 5.2.6
 
   examples/satori-fit-text-playground:
     dependencies:
@@ -124,10 +124,10 @@ importers:
         version: link:../../packages/satori-fit-text
       '@fontsource-variable/inter':
         specifier: 'catalog:'
-        version: 5.2.5
+        version: 5.2.6
       '@fontsource/inter':
         specifier: 'catalog:'
-        version: 5.0.17
+        version: 5.2.6
       react:
         specifier: 'catalog:'
         version: 19.1.0
@@ -149,7 +149,7 @@ importers:
     dependencies:
       '@fontsource/inter':
         specifier: 'catalog:'
-        version: 5.2.5
+        version: 5.2.6
     devDependencies:
       '@altano/build-config':
         specifier: workspace:*
@@ -702,10 +702,10 @@ importers:
         version: 0.17.4
       '@fontsource-variable/inter':
         specifier: 'catalog:'
-        version: 5.2.5
+        version: 5.2.6
       '@fontsource/inter':
         specifier: 'catalog:'
-        version: 5.2.5
+        version: 5.2.6
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.51.1
@@ -1675,14 +1675,11 @@ packages:
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/inter@5.2.5':
-    resolution: {integrity: sha512-TrWffUAFOnT8zroE9YmGybagoOgM/HjRqMQ8k9R0vVgXlnUh/vnpbGPAS/Caz1KIlOPnPGh6fvJbb7DHbFCncA==}
+  '@fontsource-variable/inter@5.2.6':
+    resolution: {integrity: sha512-jks/bficUPQ9nn7GvXvHtlQIPudW7Wx8CrlZoY8bhxgeobNxlQan8DclUJuYF2loYRrGpfrhCIZZspXYysiVGg==}
 
-  '@fontsource/inter@5.0.17':
-    resolution: {integrity: sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==}
-
-  '@fontsource/inter@5.2.5':
-    resolution: {integrity: sha512-kbsPKj0S4p44JdYRFiW78Td8Ge2sBVxi/PIBwmih+RpSXUdvS9nbs1HIiuUSPtRMi14CqLEZ/fbk7dj7vni1Sg==}
+  '@fontsource/inter@5.2.6':
+    resolution: {integrity: sha512-CZs9S1CrjD0jPwsNy9W6j0BhsmRSQrgwlTNkgQXTsAeDRM42LBRLo3eo9gCzfH4GvV7zpyf78Ozfl773826csw==}
 
   '@gofunky/trumpet@3.0.3':
     resolution: {integrity: sha512-XfZnWydBOaFyUMQM6jpyYQ6pp0nqCZUInaZAX2oBp7kq96sD4NvkvV2KAZnjLTk1xvrdPeSb5JChmzGLyixdKw==}
@@ -7880,11 +7877,9 @@ snapshots:
       '@eslint/core': 0.12.0
       levn: 0.4.1
 
-  '@fontsource-variable/inter@5.2.5': {}
+  '@fontsource-variable/inter@5.2.6': {}
 
-  '@fontsource/inter@5.0.17': {}
-
-  '@fontsource/inter@5.2.5': {}
+  '@fontsource/inter@5.2.6': {}
 
   '@gofunky/trumpet@3.0.3':
     dependencies:
