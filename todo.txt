@@ -61,7 +61,7 @@ TODO: unit => tests/unit
 TODO: e2e => tests/e2e
 TODO: playwright: factor out playwright config
 TODO: switch playwright tests to component tests (https://playwright.dev/docs/test-components#example)
-TODO: get linux into `playwright-driver.browsers` in devbox.lock, enable firefox/safari in playwright in CI
+x 2024-11-02 TODO: get linux into `playwright-driver.browsers` in devbox.lock, enable firefox/safari in playwright in CI
 TODO: cleanup all the extraneous css
 
 use-element-observer:

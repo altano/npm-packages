@@ -69,27 +69,19 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: isCI
-    ? [
-        // we can enable firefox/webkit when they ship in the `playwright-driver`
-        // nix linux derivation
-        //
-        // https://discourse.nixos.org/t/playwright-tests-on-multiple-browsers/41309
-        projects.chromium,
-      ]
-    : [
-        projects.chromium,
-        projects.firefox,
-        projects.webkit,
+  projects: [
+    projects.chromium,
+    projects.firefox,
+    projects.webkit,
 
-        /* Test against mobile viewports. */
-        // projects.mobileChrome,
-        // projects.mobileSafari,
+    /* Test against mobile viewports. */
+    // projects.mobileChrome,
+    // projects.mobileSafari,
 
-        /* Test against branded browsers. */
-        // projects.edge,
-        // projects.chrome,
-      ],
+    /* Test against branded browsers. */
+    // projects.edge,
+    // projects.chrome,
+  ],
 
   /* Run your local dev server before starting the tests */
   webServer: {

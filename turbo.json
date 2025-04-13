@@ -42,8 +42,17 @@
       "dependsOn": ["build"]
     },
     "test:e2e": {
-      "dependsOn": ["build"],
-      "env": ["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD", "PLAYWRIGHT_BROWSERS_PATH"]
+      "dependsOn": ["build", "//#install:playwright"],
+      "env": ["PLAYWRIGHT_*"]
+    },
+    "//#install:playwright": {
+      "inputs": [
+        "./devbox.lock",
+        "./package.json",
+        "./pnpm-lock.yaml",
+        "./pnpm-workspace.yaml"
+      ],
+      "env": ["PLAYWRIGHT_*"]
     },
     "lint": {
       "dependsOn": ["build"],
