@@ -44,7 +44,7 @@
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
     "test:e2e": "playwright test",
-    "test:e2e:server": "vite --strictPort --port 3717 ./tests/e2e",
+    "test:e2e:server": "pnpm --dir ../../examples/satori-fit-text-playground start",
     "test:e2e:ui": "playwright test --ui",
     "test:unit": "vitest --run",
     "test:unit:benchmark": "vitest --run bench",
@@ -78,7 +78,6 @@
     "jest-image-snapshot": "^6.4.0",
     "prettier": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

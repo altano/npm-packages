@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FitText from "./FitText.js";
-import type { Font } from "satori";
+import type { Font } from "@altano/satori-fit-text";
 
 function assertWeightValid(
   weight: number,
