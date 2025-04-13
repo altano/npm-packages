@@ -18,6 +18,7 @@ export default function Playground(): React.ReactElement {
   const [width, setWidth] = useState(1706);
   const [height, setHeight] = useState(500);
   const [weight, setWeight] = useState(600);
+  const [fontSizeOverride, setFontSizeOverride] = useState<number | null>(null);
 
   assertWeightValid(weight);
 
@@ -27,12 +28,12 @@ export default function Playground(): React.ReactElement {
         className="settings"
         style={{
           display: "grid",
-          gridTemplateColumns: "max-content max-content max-content",
+          gridTemplateColumns: "max-content 75px",
           gridGap: 5,
           marginBottom: "2rem",
         }}
       >
-        <label style={{ textAlign: "right" }}>
+        <label style={{ textAlign: "right", gridColumn: "span 2" }}>
           Text:
           <input
             type="text"
@@ -42,7 +43,6 @@ export default function Playground(): React.ReactElement {
             style={{ width: 600 }}
           />
         </label>
-        <span></span>
         <label style={{ textAlign: "right" }}>
           Width:
           <input
@@ -89,6 +89,19 @@ export default function Playground(): React.ReactElement {
           />
         </label>
         {weight}
+        <label style={{ textAlign: "right" }}>
+          Font Size Override:
+          <input
+            type="number"
+            value={fontSizeOverride ?? ""}
+            onChange={(el) =>
+              setFontSizeOverride(
+                el.target.value ? Number(el.target.value) : null,
+              )
+            }
+          />
+        </label>
+        {fontSizeOverride ? `${fontSizeOverride}px` : "none"}
       </div>
       <FitText
         lineHeight={lineHeight}
@@ -97,6 +110,7 @@ export default function Playground(): React.ReactElement {
         text={text}
         weight={weight}
         background="skyblue"
+        fontSizeOverride={fontSizeOverride}
       />
     </div>
   );
