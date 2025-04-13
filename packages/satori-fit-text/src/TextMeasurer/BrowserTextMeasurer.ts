@@ -4,11 +4,10 @@ import { TextMeasurer } from "./TextMeasurer.js";
 import type { Dimensions } from "../types.js";
 
 export default class BrowserTextMeasurer extends TextMeasurer {
-  #getSvgElement(svgText: string): SVGSVGElement {
-    const div = document.createElement("div");
-    div.style.position = "fixed";
-    div.innerHTML = svgText;
-    const svg = div.firstElementChild;
+  #createSvgElement(svgXML: string): SVGSVGElement {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = svgXML;
+    const svg = wrapper.firstElementChild;
     if (svg == null || !(svg instanceof SVGSVGElement)) {
       throw new Error(`Child should be svg element`);
     }
@@ -16,13 +15,14 @@ export default class BrowserTextMeasurer extends TextMeasurer {
   }
 
   async getDimensions(fontSize: number): Promise<Dimensions> {
-    const svgText = await this.generateSvg(fontSize);
-    const svg = this.#getSvgElement(svgText);
+    const svgXML = await this.createSvgXmlString(fontSize);
+    const svg = this.#createSvgElement(svgXML);
 
     try {
       document.body.appendChild(svg);
       const dimensions = svg.getBBox();
-      const { width, height } = dimensions;
+      const width = dimensions.width + Math.min(dimensions.x, 0);
+      const height = dimensions.height + Math.min(dimensions.y, 0);
 
       log({
         fontSize,
@@ -32,7 +32,7 @@ export default class BrowserTextMeasurer extends TextMeasurer {
         heightFits: `${height}px ${height <= this.maxHeight ? "DOES" : "does NOT"} fit in ${this.maxHeight}`,
       });
 
-      return dimensions;
+      return { width, height };
     } finally {
       svg.parentElement?.removeChild?.(svg);
     }

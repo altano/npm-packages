@@ -20,10 +20,10 @@ test("works in a real browser", async ({ page }) => {
         "asdofi ajsdofi ajpsdofi japsodif japsoid fjapoisd jfpaoisdj fpaoisd jfpoais djfpoia sdjfpoisadf",
       )
       .first(),
-  ).toHaveCSS("font-size", "117px");
+  ).toHaveCSS("font-size", "105px");
 
   await expect(page.getByText("Hello I am the heading").first()).toHaveCSS(
     "font-size",
-    "152px",
+    "146px",
   );
 });

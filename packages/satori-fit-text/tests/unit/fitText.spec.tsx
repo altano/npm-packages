@@ -21,8 +21,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 800,
         maxHeight: 450,
       },
-      width: 800,
-      height: 450,
       Component({ fontSize, children }) {
         return (
           <body
@@ -53,8 +51,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 300,
         maxHeight: 50,
       },
-      width: 300,
-      height: 50,
       Component({ fontSize, children }) {
         return (
           <body
@@ -85,8 +81,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 100,
         maxHeight: 600,
       },
-      width: 100,
-      height: 600,
       Component({ fontSize, children }) {
         return (
           <body
@@ -117,8 +111,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 1136,
         maxHeight: 429,
       },
-      width: 1136,
-      height: 429,
       Component({ fontSize, children }) {
         return (
           <div
@@ -144,8 +136,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 1136,
         maxHeight: 429,
       },
-      width: 1136,
-      height: 429,
       Component({ fontSize, children }) {
         return (
           <div
@@ -171,8 +161,6 @@ describe("findLargestUsableFontSize", async () => {
         maxWidth: 1706,
         maxHeight: 506,
       },
-      width: 1706,
-      height: 506,
       Component({ fontSize, children }) {
         return (
           <div

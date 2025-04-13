@@ -29,7 +29,8 @@ export default class HeadlessTextMeasurer extends TextMeasurer {
   async getDimensions(fontSize: number): Promise<Dimensions> {
     await this.#setFontSize(fontSize);
     const dimensions = this.#canvas.bbox();
-    const { width, height } = dimensions;
+    const width = dimensions.width + Math.min(dimensions.x, 0);
+    const height = dimensions.height + Math.min(dimensions.y, 0);
 
     log({
       fontSize,
@@ -39,12 +40,12 @@ export default class HeadlessTextMeasurer extends TextMeasurer {
       heightFits: `${height}px ${height <= this.maxHeight ? "DOES" : "does NOT"} fit in ${this.maxHeight}`,
     });
 
-    return dimensions;
+    return { width, height };
   }
 
   async #setFontSize(fontSize: number): Promise<void> {
-    const svgText = await this.generateSvg(fontSize);
+    const svgXML = await this.createSvgXmlString(fontSize);
     this.#canvas.clear();
-    this.#canvas.svg(svgText);
+    this.#canvas.svg(svgXML);
   }
 }
