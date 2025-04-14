@@ -1,0 +1,13 @@
+name: "Install a Devbox environment"
+description: "Install Devbox+Nix and setup the Devbox shell"
+runs:
+  using: "composite"
+  steps:
+    - name: Install Devbox
+      uses: jetpack-io/devbox-install-action@v0.12.0
+      with:
+        enable-cache: true
+        devbox-version: 0.14.0
+    - name: Install Dependencies
+      shell: bash
+      run: devbox run pnpm install

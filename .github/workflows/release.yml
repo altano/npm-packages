@@ -22,6 +22,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
       - run: echo 'The test workflow failed, not releasing'
+
   release-on-success:
     name: Release
     runs-on: ubuntu-latest
@@ -29,21 +30,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.12.0
-        with:
-          enable-cache: true
-          devbox-version: 0.14.0
-
-      - name: Install dependencies
-        run: devbox run pnpm install
-
+      - name: Prepare
+        uses: ./.github/actions/install-tools-and-deps
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: devbox run pnpm release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
