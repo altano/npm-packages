@@ -21,17 +21,19 @@ env:
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
+  # Having this as an explicit and independent job, despite the fact that
+  # turborepo knows building is a dependency of all the tasks below, is useful
+  # because it primes the turborepo remote cache and we can cache the devbox nix
+  # installation
   build:
-    # TODO: test running in devbox but with minimal devbox.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        # Runs OUTSIDE of Devbox b/c we want this to run as fast as possible.
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-devbox-slim
       - name: Build
-        run: pnpm turbo run build --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -42,9 +44,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-devbox-slim
       - name: Lint
-        run: pnpm turbo run lint --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run lint --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -55,9 +57,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-devbox-slim
       - name: Format
-        run: pnpm turbo run format --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run format --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -68,9 +70,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-devbox-slim
       - name: Check
-        run: pnpm turbo run check --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run check --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -81,10 +83,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        # Runs INSIDE Devbox
+        # Run inside full Devbox environment, unit tests need everything
         uses: ./.github/actions/install-devbox
       - name: Run tests
-        run: devbox run pnpm turbo run test:unit --summarize
+        run: devbox run --config ./devbox/configs/ci pnpm turbo run test:unit --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -97,6 +99,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
+        # Run outside of Devbox. Playwright and Devbox don't like each other.
         uses: ./.github/actions/install-tools-and-deps
       - name: Run tests
         run: pnpm turbo run test:e2e --summarize
@@ -109,10 +112,11 @@ jobs:
           path: "**/playwright-report/"
           retention-days: 30
 
-  # When this completes, all validation is. This is convenient because we can
-  # make one job required in the repository settings and have code here to
-  # define what that means, instead of having to define all the required jobs
-  # separately in the repository settings, in sync with this file.
+  # When this completes, all validation is successful. This job only exists so
+  # that we have *one* job we can make required in the repository settings. The
+  # alternative is to define all the required jobs (e.g. test-e2e, test-unit,
+  # lint, etc) separately in the repository settings, and manually keep that
+  # setting in sync with this file. Defining the list here in code is better.
   test:
     needs: [build, lint, format, check, test-unit, test-e2e]
     runs-on: ubuntu-latest

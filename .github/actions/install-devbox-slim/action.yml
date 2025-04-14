@@ -1,0 +1,14 @@
+name: "Install a Minimal Devbox environment"
+description: "Install Devbox+Nix and setup the Devbox shell. Leave out heavy things only needed for unit tests (e.g. version control systems)"
+runs:
+  using: "composite"
+  steps:
+    - name: Install Devbox
+      uses: jetpack-io/devbox-install-action@v0.12.0
+      with:
+        project-path: ./devbox/configs/ci-slim
+        enable-cache: true
+        devbox-version: 0.14.0
+    - name: Install Dependencies
+      shell: bash
+      run: devbox run --config ./devbox/configs/ci-slim pnpm install
