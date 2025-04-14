@@ -21,126 +21,87 @@ env:
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
-  # This combined task doesn't work, I get this error in github CI:
-  #   Testing stopped early after 1 maximum allowed failures.
-  #   1) [chromium] › tests/e2e/index.spec.ts:6:1 › should have correct font sizes ─────────────────────
-  #     Error: browserType.launch:
-  #     ╔══════════════════════════════════════════════════════╗
-  #     ║ Host system is missing dependencies to run browsers. ║
-  #     ║ Missing libraries:                                   ║
-  #     ║     libglib-2.0.so.0                                 ║
-  #     ║     libgobject-2.0.so.0                              ║
-  #     ║     libnss3.so                                       ║
-  #     ║     libnssutil3.so                                   ║
-  #     ║     libnspr4.so                                      ║
-  #     ║     libdbus-1.so.3                                   ║
-  #     ║     libatk-1.0.so.0                                  ║
-  #     ║     libatk-bridge-2.0.so.0                           ║
-  #     ║     libgio-2.0.so.0                                  ║
-  #     ║     libexpat.so.1                                    ║
-  #     ║     libatspi.so.0                                    ║
-  #     ║     libX11.so.6                                      ║
-  #     ║     libXcomposite.so.1                               ║
-  #     ║     libXdamage.so.1                                  ║
-  #     ║     libXext.so.6                                     ║
-  #     ║     libXfixes.so.3                                   ║
-  #     ║     libXrandr.so.2                                   ║
-  #     ║     libgbm.so.1                                      ║
-  #     ║     libxcb.so.1                                      ║
-  #     ║     libxkbcommon.so.0                                ║
-  #     ║     libudev.so.1                                     ║
-  #     ║     libasound.so.2                                   ║
-  #     ╚══════════════════════════════════════════════════════╝
-  #
-  # Separating the task into separate ones allows the playwright tests to run
-  # fine. So something about the devbox shell is making playwright not work in
-  # CI.
-  #
-  # test: name: Unit Tests, End-to-End Tests, Linting, etc runs-on:
-  #   ubuntu-latest
-  #
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
-  #
-  #     - name: Install devbox
-  #       uses: jetpack-io/devbox-install-action@v0.12.0
-  #       with:
-  #         enable-cache: true
-  #         devbox-version: 0.14.0
-  #
-  #     - name: Install dependencies
-  #       run: devbox run pnpm install
-  #
-  #     - name: Validate and Build
-  #       run: devbox run pnpm prep
-  #
-  #     - uses: actions/upload-artifact@v4
-  #       if: ${{ !cancelled() }}
-  #       with:
-  #         name: playwright-report
-  #         path: "**/playwright-report/"
-  #         retention-days: 30
-
-  test-misc:
-    # All non-E2E tests/validations. Runs inside Devbox.
-    name: Unit tests, linting, etc
+  build:
+    # TODO: test running in devbox but with minimal devbox.json
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.12.0
-        with:
-          enable-cache: true
-          devbox-version: 0.14.0
-
-      - name: Install dependencies
-        run: devbox run pnpm install
-
-      - name: Validate and Build
-        run: devbox run pnpm exec turbo run build test:unit lint format check:dependencies check:types check:exports --summarize
-
+      - name: Prepare
+        # Runs OUTSIDE of Devbox b/c we want this to run as fast as possible.
+        uses: ./.github/actions/install-tools-and-deps
+      - name: Build
+        run: pnpm turbo run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report
-          path: "**/playwright-report/"
-          retention-days: 30
-
-  test-e2e:
-    # These run outside of Devbox, since Devbox doesn't play well with Playwright
-    name: E2E tests
+  lint:
+    needs: build
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Prepare
+        uses: ./.github/actions/install-tools-and-deps
+      - name: Lint
+        run: pnpm turbo run lint --summarize
+      - name: Summarize Turbo
+        uses: ./.github/actions/turbo-summarize
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          # no version specified (uses version in packageManager field in
-          # package.json)
-          run_install: false
+  format:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Prepare
+        uses: ./.github/actions/install-tools-and-deps
+      - name: Format
+        run: pnpm turbo run format --summarize
+      - name: Summarize Turbo
+        uses: ./.github/actions/turbo-summarize
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.0 # keep in sync with devbox.json
-          cache: "pnpm"
+  check:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Prepare
+        uses: ./.github/actions/install-tools-and-deps
+      - name: Check
+        run: pnpm turbo run check --summarize
+      - name: Summarize Turbo
+        uses: ./.github/actions/turbo-summarize
 
-      - name: Install dependencies
-        run: pnpm install
+  test-unit:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Prepare
+        # Runs INSIDE Devbox
+        uses: ./.github/actions/install-devbox
+      - name: Run tests
+        run: devbox run pnpm turbo run test:unit --summarize
+      - name: Summarize Turbo
+        uses: ./.github/actions/turbo-summarize
 
-      - name: Validate and Build
-        run: pnpm exec turbo run test:e2e
-
+  # TODO Consider using playwright docker container
+  test-e2e:
+    # These have to run outside of Devbox, since Devbox doesn't play well with Playwright
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Prepare
+        uses: ./.github/actions/install-tools-and-deps
+      - name: Run tests
+        run: pnpm turbo run test:e2e --summarize
+      - name: Summarize Turbo
+        uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -153,7 +114,7 @@ jobs:
   # define what that means, instead of having to define all the required jobs
   # separately in the repository settings, in sync with this file.
   test:
-    needs: [test-misc, test-e2e]
+    needs: [build, lint, format, check, test-unit, test-e2e]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Done."

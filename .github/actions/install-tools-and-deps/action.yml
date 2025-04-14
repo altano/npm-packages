@@ -1,0 +1,19 @@
+name: "Install tools and dependencies"
+description: "Install tools and dependencies manually (w/o Devbox)"
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
+      with:
+        # no version specified (uses version in packageManager field in
+        # package.json)
+        run_install: false
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.14.0 # keep in sync with devbox.json
+        cache: "pnpm"
+    - name: Install Dependencies
+      shell: bash
+      run: pnpm install
