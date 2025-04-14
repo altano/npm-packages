@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "git@2.44.1",
+    "mercurialFull@latest",
+    "nodejs@22.14.0", // keep in sync with .github/actions/*.yml
+    "sapling@latest",
+    "subversion@latest"
+  ],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true"
+  }
+}

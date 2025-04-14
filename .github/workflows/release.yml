@@ -31,12 +31,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Prepare
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-devbox-slim
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release
+          publish: devbox run --config ./devbox/configs/ci-slim pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
