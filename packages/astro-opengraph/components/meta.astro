@@ -1,0 +1,77 @@
+---
+import { getResolvedConfig } from "../src/config";
+
+export type Props = {
+  /**
+   * Optional title. If provided, `<meta property="og:title" ... />` will be
+   * emitted.
+   */
+  title?: string;
+  /**
+   * Optional description. If provided, <meta property="og:description" ... />
+   * will be emitted.
+   */
+  description?: string;
+  /**
+   * Override the image url, which otherwise defaults to:
+   *
+   * - Config.componentMetaTagFallbacks."og:image" (the value passed into the
+   *   integration config in astro.config.ts, if set
+   * - Or the integration default of "/opengraph.png", which means the endpoint at the root of your site. If you named your endpoint
+   *   something else, provide the path to the resulting image here.
+   */
+  image?: string;
+  /**
+   * Override the width, which otherwise defaults to:
+   *
+   * - The width passed into the integration config in astro.config.ts, if set
+   * - Or the integration default of 1200
+   *
+   * If you customize the width by passing an override to
+   * `makeOpengraphEndpoint`, you must pass that in here to have it reflected in
+   * your html.
+   */
+  width?: number;
+  /**
+   * Override the height, which otherwise defaults to:
+   *
+   * - The height passed into the integration config in astro.config.ts, if set
+   * - Or the integration default of 630 If you customize the height by passing an
+   *   override to `makeOpengraphEndpoint`, you must pass that in here to have
+   *   it reflected in your html.
+   */
+  height?: number;
+  /**
+   * Override the mimetype, which defaults to "image/png"
+   */
+  mimeType?: string;
+};
+
+const { imageOptions, componentMetaTagFallbacks } = await getResolvedConfig();
+
+const {
+  "og:title": titleFallback,
+  "og:description": descriptionFallback,
+  "og:image": imageUrlFallback,
+} = componentMetaTagFallbacks;
+
+const {
+  title = titleFallback,
+  description = descriptionFallback,
+  image = imageUrlFallback,
+  width = imageOptions.width,
+  height = imageOptions.height,
+  mimeType = "image/png",
+} = Astro.props;
+
+const urlStr = Astro.url.toString();
+const urlWithTrailingSlash = urlStr.endsWith("/") ? urlStr : urlStr + "/";
+const opengraphImageUrl = new URL(image, urlWithTrailingSlash);
+---
+
+{title && <meta property="og:title" content={title} />}
+{description && <meta property="og:description" content={description} />}
+<meta property="og:image" content={opengraphImageUrl.toString()} />
+<meta property="og:image:type" content={mimeType} />
+<meta property="og:image:width" content={width.toString()} />
+<meta property="og:image:height" content={height.toString()} />
