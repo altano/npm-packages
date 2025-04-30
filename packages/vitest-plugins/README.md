@@ -1,5 +1,3 @@
-/_ eslint-disable @typescript-eslint/no-empty-object-type _/
-
 # vitest-plugins
 
 [![npm](https://badgen.net/npm/v/@altano/vitest-plugins)](https://www.npmjs.com/package/@altano/vitest-plugins) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/vitest-plugins) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
