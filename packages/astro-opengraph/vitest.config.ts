@@ -2,11 +2,20 @@ import { deriveConfig, type TestingConfig } from "@altano/testing";
 
 const config: TestingConfig = deriveConfig({
   test: {
+    root: ".",
     coverage: {
-      // TODO figure out how to enable coverage for code only exercised in astro
-      // build. See https://github.com/Fryuni/inox-tools/issues/214 for
-      // discussion.
-      enabled: false,
+      // toolbar is entirely e2e tested
+      exclude: [
+        "src/toolbar",
+        "**/tests/**",
+        "**/dist/**",
+        "**/tests/fixtures/**",
+        "**/vitest-plugins/**",
+        "**/scripts/**",
+        "**/astro-opengraph/*.ts",
+      ],
+      allowExternal: true,
+      skipFull: false,
     },
     setupFiles: ["./tests/unit/utils/setup.ts"],
     hookTimeout: 120_000, // building the astro test fixtures might take a while in ci

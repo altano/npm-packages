@@ -2,6 +2,8 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { loadFixture } from "@inox-tools/astro-tests/astroFixture";
 import type { Fixture } from "./utils/types.js";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
+import openGraph from "../../src/index.js";
+import { getInterPath } from "@altano/assets";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -12,6 +14,27 @@ describe("Catch-all", () => {
     fixture = await loadFixture({
       root: "../fixtures/catch-all/",
       output: "static",
+      integrations: [
+        // we add the integration here to make sure code coverage works
+        openGraph({
+          getImageOptions: async () => ({
+            fonts: [
+              {
+                name: "Inter",
+                path: getInterPath(400),
+                weight: 400,
+                style: "normal",
+              },
+              {
+                name: "Inter",
+                path: getInterPath(700),
+                weight: 800,
+                style: "normal",
+              },
+            ],
+          }),
+        }),
+      ],
     });
     await fixture.build({});
   });

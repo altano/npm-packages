@@ -2,6 +2,8 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { loadFixture } from "@inox-tools/astro-tests/astroFixture";
 import type { Fixture } from "./utils/types.js";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
+import openGraph from "../../src/index.js";
+import { getInterPath } from "@altano/assets";
 import "@altano/vitest-plugins/matchers";
 
 expect.extend({ toMatchImageSnapshot });
@@ -13,6 +15,28 @@ describe("Custom Dimensions", () => {
     fixture = await loadFixture({
       root: "../fixtures/custom-dimensions/",
       output: "static",
+      integrations: [
+        openGraph({
+          getImageOptions: async () => ({
+            width: 307,
+            height: 421,
+            fonts: [
+              {
+                name: "Inter",
+                path: getInterPath(400),
+                weight: 400,
+                style: "normal",
+              },
+              {
+                name: "Inter",
+                path: getInterPath(700),
+                weight: 800,
+                style: "normal",
+              },
+            ],
+          }),
+        }),
+      ],
     });
     await fixture.build({});
   });

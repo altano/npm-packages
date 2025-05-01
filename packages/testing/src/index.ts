@@ -24,12 +24,13 @@ const noPluginsConfig = defineConfig({
     dir: "tests/unit",
     coverage: {
       enabled: true,
-      include: ["src"],
+      // include: ["src"],
       provider: "v8",
       all: true,
       clean: true,
       thresholds: { "100": true },
       reportsDirectory: ".coverage",
+      // allowExternal: true,
     },
     typecheck: {
       tsconfig: "tests/tsconfig.json",

@@ -951,12 +951,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.3.4(vite@6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))
-      '@vitest/coverage-v8':
-        specifier: 3.x.x
-        version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
-      vitest:
-        specifier: 'catalog:'
-        version: 3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0)
     devDependencies:
       '@altano/build-config':
         specifier: workspace:*
@@ -970,6 +964,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
       depcheck:
         specifier: 'catalog:'
         version: 1.4.7
@@ -988,6 +985,9 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
+      vitest:
+        specifier: 'catalog:'
+        version: 3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0)
 
   packages/textfit:
     devDependencies:

@@ -33,20 +33,21 @@
   "dependencies": {
     "@altano/vitest-plugins": "workspace:*",
     "@testing-library/jest-dom": "^6.6.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "vitest": "catalog:"
+    "@vitejs/plugin-react": "^4.3.4"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "@vitest/coverage-v8": "3.x.x",

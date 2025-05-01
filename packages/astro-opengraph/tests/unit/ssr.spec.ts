@@ -5,6 +5,8 @@ import {
   type TestApp,
 } from "@inox-tools/astro-tests/astroFixture";
 import testAdapter from "@inox-tools/astro-tests/testAdapter";
+import openGraph from "../../src/index.js";
+import { getInterPath } from "@altano/assets";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -16,6 +18,26 @@ describe("SSR fetch files", async () => {
       root: "../fixtures/ssr/",
       output: "server",
       adapter: testAdapter(),
+      integrations: [
+        openGraph({
+          getImageOptions: async () => ({
+            fonts: [
+              {
+                name: "Inter",
+                path: getInterPath(400),
+                weight: 400,
+                style: "normal",
+              },
+              {
+                name: "Inter",
+                path: getInterPath(700),
+                weight: 800,
+                style: "normal",
+              },
+            ],
+          }),
+        }),
+      ],
     });
     await fixture.build({});
     app = await fixture.loadTestAdapterApp();

@@ -5,6 +5,8 @@ import {
 } from "@inox-tools/astro-tests/astroFixture";
 import type { Fixture } from "./utils/types.js";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
+import openGraph from "../../src/index.js";
+import { getInterPath } from "@altano/assets";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -16,6 +18,26 @@ describe("opengraph dev-only routes", () => {
     fixture = await loadFixture({
       root: "../fixtures/dev-routes/",
       output: "server",
+      integrations: [
+        openGraph({
+          getImageOptions: async () => ({
+            fonts: [
+              {
+                name: "Inter",
+                path: getInterPath(400),
+                weight: 400,
+                style: "normal",
+              },
+              {
+                name: "Inter",
+                path: getInterPath(700),
+                weight: 800,
+                style: "normal",
+              },
+            ],
+          }),
+        }),
+      ],
     });
     devServer = await fixture.startDevServer({});
   });

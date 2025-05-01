@@ -395,6 +395,17 @@ This plugin can only support what Satori supports, which means `<style>` tags an
 
 This integration makes use of the [experimental container APIs](https://docs.astro.build/en/reference/container-reference/) in Astro. Therefore, this plugin is also experimental and may experience breaking changes when you upgrade Astro (even minor or patch releases). This integration itself will remain stable across minor or patch releases.
 
+## Configuration
+
+If for any reason you need to access the configuration you passed into the integration during runtime, you can access it by calling `getResolvedConfig`:
+
+```ts
+import { getResolvedConfig } from "@altano/astro-opengraph/config";
+const config = await getResolvedConfig();
+```
+
+This is the "resolved" version of the config that Satori uses, e.g. some fields like `fonts[0].path` (the path to the font) are replaced with `fonts[0].data` (the font buffer).
+
 # Troubleshooting
 
 ## Astro Dev Toolbar
