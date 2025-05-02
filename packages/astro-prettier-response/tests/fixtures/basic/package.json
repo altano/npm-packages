@@ -1,0 +1,15 @@
+{
+  "name": "basic",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "astro check",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "@altano/assets": "workspace:",
+    "@altano/astro-prettier-response": "workspace:",
+    "astro": "catalog:"
+  }
+}

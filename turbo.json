@@ -22,7 +22,15 @@
       "dependsOn": ["build"]
     },
     "check:types": {
-      "dependsOn": ["check:types:src", "check:types:test"]
+      "dependsOn": [
+        "check:types:astro-fixtures",
+        "check:types:src",
+        "check:types:test"
+      ]
+    },
+
+    "check:types:astro-fixtures": {
+      "dependsOn": ["build"] // script uses other packages
     },
     "check:types:test": {
       "dependsOn": ["build"]

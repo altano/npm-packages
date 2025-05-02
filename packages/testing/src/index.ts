@@ -4,18 +4,22 @@ import react from "@vitejs/plugin-react";
 export const deriveConfig = (overrides: ViteUserConfig): ViteUserConfig =>
   mergeConfig(baseConfig, overrides);
 
+export const deriveConfigWithoutPlugins = (
+  overrides: ViteUserConfig,
+): ViteUserConfig => mergeConfig(noPluginsConfig, overrides);
+
 export const deriveReactLibraryConfig = (
   overrides: ViteUserConfig,
 ): ViteUserConfig => mergeConfig(reactBaseConfig, overrides);
 
-const baseConfig = defineConfig({
+const noPluginsConfig = defineConfig({
   // So we can use `using` in ts (https://github.com/vitejs/vite/issues/15464#issuecomment-1872485703)
+  // or top-level await in unit tests
   esbuild: {
-    target: "es2020",
+    target: "es2024",
   },
   test: {
     dir: "tests/unit",
-    setupFiles: ["@altano/testing/setup"],
     coverage: {
       enabled: true,
       include: ["src"],
@@ -29,6 +33,12 @@ const baseConfig = defineConfig({
       tsconfig: "tests/tsconfig.json",
       enabled: true,
     },
+  },
+});
+
+const baseConfig = mergeConfig(noPluginsConfig, {
+  test: {
+    setupFiles: ["@altano/testing/setup"],
   },
 });
 
