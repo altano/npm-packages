@@ -8,4 +8,6 @@ ignores:
   - "@vitest/*"
   - "vite"
   - "vitest"
+  - "@prettier/plugin-xml" # can't see prettier plugins as strings
+  - "@astrojs/check" # we use a CLI bin only from this guy
 skip-missing: true

@@ -1,0 +1,83 @@
+{
+  "name": "@altano/astro-prettier-response",
+  "version": "0.0.0",
+  "description": "Prettier html/css/js for your Astro site",
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "withastro"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-prettier-response",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/astro-prettier-response"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./middleware": "./dist/middleware/index.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup --config ./tsup.config.ts",
+    "build:types": "tsc --project tsconfig.declarations.json",
+    "check:types:astro-fixtures": "node --experimental-strip-types ./scripts/check-fixtures.ts",
+    "check:types:src": "tsc --noEmit",
+    "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
+    "check:unused-dependencies": "depcheck",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsup --watch",
+    "format": "prettier --write src",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "test:unit": "vitest --run",
+    "test:unit:watch": "vitest"
+  },
+  "dependencies": {
+    "@inox-tools/runtime-logger": "^0.4.2",
+    "astro-integration-kit": "^0.18.0",
+    "mime-types": "^3.0.1"
+  },
+  "devDependencies": {
+    "@altano/build-config": "workspace:*",
+    "@altano/testing": "workspace:*",
+    "@altano/tiny-async-pool": "workspace:*",
+    "@altano/tsconfig": "workspace:*",
+    "@astrojs/check": "^0.9.4",
+    "@inox-tools/astro-tests": "0.5.1",
+    "@prettier/plugin-xml": "^3.4.1",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "astro": "catalog:",
+    "depcheck": "catalog:",
+    "prettier": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "zx": "^8.5.2"
+  },
+  "peerDependencies": {
+    "astro": "5.x.x",
+    "prettier": "3.x.x"
+  },
+  "optionalDependencies": {
+    "@prettier/plugin-xml": "3.x.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

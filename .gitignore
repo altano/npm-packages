@@ -26,3 +26,7 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# astro test fixtures
+**/tests/fixtures/**/.astro/
+**/tests/fixtures/**/dist/

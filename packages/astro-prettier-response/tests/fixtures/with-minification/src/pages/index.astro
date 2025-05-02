@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+---
+
+<!DOCTYPE html><html>
+<head>
+{/* never let this get formatted by prettier when editing it! */}
+<title>Basic Example</title></head>
+<body><h1 class="main-heading">A Heading</h1><p>Hello!</p></body>
+</html>
+
+{/* This js should not be minified */}
+<script>
+  function doSomething(variable) {
+    console.log(variable);
+  }
+
+  doSomething("Hi how are you");
+</script>
+
+
+{/* This css should not be minified */}
+<style>
+  .main-heading {
+    color: red;
+  }
+
+  body {
+    font-size: 20px;
+  }
+</style>

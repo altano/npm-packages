@@ -1,0 +1,18 @@
+@layer global {
+  :root {
+    /* Typography and colors */
+    font-family: var(--font-inter);
+    background: var(--bg);
+    color: var(--text);
+
+    /* Headings */
+    h1 {
+      margin-top: 3rem;
+    }
+
+    /* Section headings and Table of Contents heading */
+    h2 {
+      margin-top: 2rem;
+    }
+  }
+}
