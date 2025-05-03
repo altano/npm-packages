@@ -66,7 +66,7 @@ export default defineIntegration({
           }
 
           addMiddleware({
-            entrypoint: resolve("./middleware/index.ts"),
+            entrypoint: resolve("./middleware/index.js"),
             order: "post",
           });
         },
