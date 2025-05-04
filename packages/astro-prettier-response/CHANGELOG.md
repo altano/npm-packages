@@ -1,5 +1,11 @@
 # @altano/astro-prettier-response
 
+## 0.0.3
+
+### Patch Changes
+
+- ce11a54: update readme
+
 ## 0.0.2
 
 ### Patch Changes
