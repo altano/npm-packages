@@ -95,7 +95,7 @@ export default defineConfig({
 });
 ```
 
-And if you like the behavior but you just hate seeing this logged every time you build, then configure Astro to disable minification yourself and the integration will stop logging:
+And if you like the default behavior but you just hate seeing this logged every time you build, then configure Astro to disable minification yourself and the integration will stop logging:
 
 ```js
 import prettierResponse from "@altano/astro-prettier-response";
@@ -112,7 +112,7 @@ export default defineConfig({
 });
 ```
 
-This will leave minification enabled but will still run your output through Prettier.
+This will do exactly the same thing (disable minification) and will still run your output through Prettier, but the log line will go away.
 
 ## How This Integration Works
 
