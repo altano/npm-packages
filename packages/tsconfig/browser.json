@@ -3,8 +3,7 @@
   "display": "Browser Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "lib": ["dom", "ES2023"],
-    "target": "ES2023",
+    "lib": ["es2023", "dom", "dom.iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler"
   }

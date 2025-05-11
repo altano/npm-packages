@@ -1,3 +1,8 @@
+/// <reference lib="dom" />
+
+// TODO Factor this out to a separate project so it doesn't infect the whole
+// project with the dom lib
+
 /* v8 ignore start */
 import log from "../log.js";
 import { TextMeasurer } from "./TextMeasurer.js";

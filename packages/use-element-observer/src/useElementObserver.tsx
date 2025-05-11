@@ -2,7 +2,8 @@ import React from "react";
 import { useSet } from "@uidotdev/usehooks";
 import { Observer } from "./Observer";
 import type { ReactElementWithRef } from "./types";
-export { ReactElementWithRef };
+
+export type { ReactElementWithRef };
 
 interface Context {
   mountedElements: Set<Element>;

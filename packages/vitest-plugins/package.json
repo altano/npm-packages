@@ -17,8 +17,8 @@
   "type": "module",
   "exports": {
     "./matchers": {
-      "default": "./src/matchers/setup.ts",
-      "types": "./src/matchers/types.d.ts"
+      "types": "./src/matchers/types.d.ts",
+      "default": "./src/matchers/setup.ts"
     },
     "./matchers/*": "./src/matchers/*.ts",
     "./matchers/types": "./src/matchers/types.d.ts",

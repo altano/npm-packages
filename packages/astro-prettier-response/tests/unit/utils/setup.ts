@@ -1,4 +1,4 @@
-import { AstroIntegrationLogger } from "astro";
+import type { AstroIntegrationLogger } from "astro";
 import { vi } from "vitest";
 
 export const loggerWithSpy: AstroIntegrationLogger = {

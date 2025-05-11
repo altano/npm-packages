@@ -30,8 +30,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup --config build-config/tsup.config.node.ts",
-    "build:types": "tsc --project tsconfig.declarations.json",
+    "build": "tsc --project ./tsconfig.build.json",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
