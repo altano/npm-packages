@@ -4,11 +4,6 @@
   "private": true,
   "license": "ISC",
   "type": "module",
-  "files": [
-    "tsup.config.ts",
-    "tsup.config.node.ts",
-    "tsup.config.browser.ts"
-  ],
   "scripts": {
     "check:types": "tsc --noEmit",
     "lint": "eslint",
@@ -17,7 +12,7 @@
   },
   "devDependencies": {
     "eslint": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   },
   "publishConfig": {

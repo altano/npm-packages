@@ -1,9 +1,9 @@
 import { visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
-import { MdxjsEsm } from "mdast-util-mdx";
+import type { MdxjsEsm } from "mdast-util-mdx";
 import { name as isIdentifierName } from "estree-util-is-identifier-name";
 import { valueToEstree } from "estree-util-value-to-estree";
-import { Plugin } from "unified";
+import type { Plugin } from "unified";
 
 import type { Node, Parent } from "unist";
 import type { MdxJsxFlowElement, MdxJsxAttribute } from "mdast-util-mdx-jsx";

@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import type { expect } from "vitest";
 
 type MatchersObject = Parameters<typeof expect.extend>[0];
 

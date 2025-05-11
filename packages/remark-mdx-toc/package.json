@@ -28,8 +28,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsup --config build-config/tsup.config.browser.ts",
-    "build:types": "tsc --project tsconfig.declarations.json",
+    "build": "tsdown --config ../build-config/tsdown.config.browser.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -65,6 +64,7 @@
     "depcheck": "catalog:",
     "mdast-util-mdx-jsx": "^3.2.0",
     "prettier": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

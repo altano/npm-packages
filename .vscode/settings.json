@@ -23,6 +23,7 @@
   "files.associations": {
     ".depcheckrc": "yaml",
     "devbox.json": "jsonc",
+    "**/tsconfig/*.json": "jsonc",
     "turbo.json": "jsonc"
   },
   "files.readonlyInclude": {

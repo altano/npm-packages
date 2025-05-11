@@ -1,26 +1,20 @@
-import { defineConfig, type Options } from "tsup";
+import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
 
-const config:
-  | Options
-  | Options[]
-  | ((
-      overrideOptions: Options,
-    ) => Options | Options[] | Promise<Options | Options[]>) = defineConfig({
+const config: UserConfig | UserConfigFn = defineConfig({
   entry: [
     // this can only export things that are safe to use from an astro config
     "src/index.ts",
     // this can import/export anything, including modules used during astro build, e.g. `astro:assets`
     "src/middleware/index.ts",
   ],
-  format: "esm",
-  onSuccess: "pnpm build:types",
-  dts: false,
+  dts: true,
   clean: true,
   platform: "node",
   external: [
+    // Astro's virtual modules
     "astro:middleware",
     "astro:assets",
-    // virtual modules
+    // this integration's virtual modules
     "@it-astro:logger:astro-prettier-response",
     "virtual:astro-prettier-response/config",
     // this is optionally in the consuming astro site. we shouldn't bundle it.

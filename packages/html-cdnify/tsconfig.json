@@ -2,6 +2,7 @@
   "extends": "@altano/tsconfig/node.json",
   "include": ["src", "types", "*.config.ts"],
   "compilerOptions": {
+    "lib": ["dom"],
     "outDir": "dist",
     "types": ["./types/trumpet.d.ts"]
   }

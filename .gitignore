@@ -12,10 +12,11 @@ server/dist
 public/dist
 .coverage
 tsconfig.tsbuildinfo
+tsconfig.*.tsbuildinfo
 .devbox
 
-# tsup config and temporary files
-.tsup
+# tsdown config, temporary files
+.tsdown
 packages/build-config/*.mjs
 
 # used in vitest typecheck run, don't want lint/format/etc tasks to see it

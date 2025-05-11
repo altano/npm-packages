@@ -1,9 +1,10 @@
+/// <reference no-default-lib="true"/>
+
 import { SVG, registerWindow, type Svg } from "@svgdotjs/svg.js";
 import { createSVGWindow } from "svgdom";
 import log from "../log.js";
-import type { Font } from "../types.js";
+import type { Dimensions, Font } from "../types.js";
 import { TextMeasurer } from "./TextMeasurer.js";
-import { Dimensions } from "../types.js";
 
 export default class HeadlessTextMeasurer extends TextMeasurer {
   #canvas: Svg;
@@ -36,8 +37,12 @@ export default class HeadlessTextMeasurer extends TextMeasurer {
       fontSize,
       width: `${width}px`,
       height: `${height}px`,
-      widthFits: `${width}px ${width <= this.maxWidth ? "DOES" : "does NOT"} fit in ${this.maxWidth}`,
-      heightFits: `${height}px ${height <= this.maxHeight ? "DOES" : "does NOT"} fit in ${this.maxHeight}`,
+      widthFits: `${width}px ${
+        width <= this.maxWidth ? "DOES" : "does NOT"
+      } fit in ${this.maxWidth}`,
+      heightFits: `${height}px ${
+        height <= this.maxHeight ? "DOES" : "does NOT"
+      } fit in ${this.maxHeight}`,
     });
 
     return { width, height };

@@ -6,3 +6,28 @@ x 2024-03-09 TODO: Upgrade turborepo
 x 2024-03-09 TODO: Switch to devbox github action
 x 2023-08-13 TODO: add declarationMap and make "go to definition" work across monorepo (https://tsup.egoist.dev/#generate-typescript-declaration-maps--d-ts-map)
 x 2023-08-13 TODO: Add type checking as build dependency (tsup/esbuild ignores types)
+x 2024-03-24 TODO: Investigate turborepo remote caching
+x 2024-03-24 TODO: remove unnecessary react imports
+x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
+x 2024-03-24 TODO: switch tests to use public package interface as appropriate (when new vitest >1.4.0 released)
+x 2024-10-26 TODO: factor out vitest config
+x 2025-05-10 tsup/tsconfig:
+x 2025-05-10 TODO: Revisit module/moduleResolution in all tsconfigs
+x 2025-05-10 TODO: check all test tsconfigs
+x 2025-05-10 TODO: Investigate replacing tsup to speed up build (slow .d.ts). maybe vite?
+x 2024-03-31 TODO: see if we can get tests typechecked too
+x 2025-05-10 TODO: ... or factor out tsup configuration to one place and make consistent
+x 2025-05-10 TODO: make sure all packages have declaration map
+x 2025-05-10 TODO: make sure all packages are typechecked
+x 2024-03-31 TODO: add `noEmit` to base tsconfig, make work with declaration map generation. maybe `emitDeclarationOnly`?
+x 2025-05-10 TODO: "moduleResolution": "bundler", in base config?
+x 2025-05-10 TODO: Base tsconfig: "jsx": "react-jsx" ?
+x 2025-05-10 TODO: Consolidate tsconfigs, remove unused ones
+x 2025-05-10 TODO: investigate tsup alternatives, e.g. vite 7 or parcel
+x 2025-05-10 TODO: investigate --isolated-decl and --erasable-syntax-only
+x 2024-03-22 TODO: satori-fit-text: get unit test coverage working again
+x 2024-03-23 TODO: satori-fit-text: revisit firefox 126 segmenter support and errors
+x 2024-03-24 TODO: add an e2e test
+x 2024-11-02 TODO: get linux into `playwright-driver.browsers` in devbox.lock, enable firefox/safari in playwright in CI
+x 2024-03-25 TODO: add tests
+x 2024-03-25 TODO: add tests

@@ -1,7 +1,4 @@
 TODO: fix tests/e2e react ts errors, figure out why they aren't typechecking
-x 2024-03-24 TODO: Investigate turborepo remote caching
-x 2024-03-24 TODO: remove unnecessary react imports
-x 2024-03-24 TODO: consider hoisting common deps (like tsup) to root
 TODO: Look into npm Provenance w/ github actions
 
 examples:
@@ -11,28 +8,14 @@ turbo:
 TODO: experiment with `turbo boundaries`
 
 vitest:
-x 2024-03-24 TODO: switch tests to use public package interface as appropriate (when new vitest >1.4.0 released)
-x 2024-10-26 TODO: factor out vitest config
 TODO: get vitest vscode extension working in monorepo (vitest workspaces conflict with turbo! can't have both atm.)
 TODO: add code coverage to all projects its missing from
 TODO: Investigate using restoreMocks everywhere
 TODO: once https://github.com/pnpm/pnpm/issues/8706 is fixed, consolidate vitest dependencies into test config project
 
-tsup/tsconfig:
-TODO: Revisit module/moduleResolution in all tsconfigs
-TODO: check all test tsconfigs
-TODO: Investigate replacing tsup to speed up build (slow .d.ts). maybe vite?
-x 2024-03-31 TODO: see if we can get tests typechecked too
-TODO: ... or factor out tsup configuration to one place and make consistent
-TODO: make sure all packages have declaration map
-TODO: make sure all packages are typechecked
-x 2024-03-31 TODO: add `noEmit` to base tsconfig, make work with declaration map generation. maybe `emitDeclarationOnly`?
-TODO: "moduleResolution": "bundler", in base config?
-TODO: Base tsconfig: "jsx": "react-jsx" ?
-TODO: Consolidate tsconfigs, remove unused ones
+
+build:
 TODO: remove extraneous fields from package.json in private packages
-TODO: investigate tsup alternatives, e.g. vite 7 or parcel
-TODO: investigate --isolated-decl and --erasable-syntax-only
 
 lint:
 TODO: Look into eslint flat config to see if we can reduce config repetition
@@ -45,8 +28,6 @@ TODO: satori-fit-text: codesandbox (share with test somehow?)
 TODO: woff files look at little off in screenshots: letters are leaving bounding box (including canvas) by a pixel or two.
 TODO: what's up with test lint config
 TODO: can vitest browser mode allow us to test browser text measurer?
-x 2024-03-22 TODO: satori-fit-text: get unit test coverage working again
-x 2024-03-23 TODO: satori-fit-text: revisit firefox 126 segmenter support and errors
 
 html-cdnify:
 TODO: update README examples
@@ -54,19 +35,15 @@ TODO: update README examples
 textfit:
 TODO: move example to codesandbox/stackblitz, up to examples dir
 TODO: update readme
-x 2024-03-24 TODO: add an e2e test
 
 tests:
 TODO: unit => tests/unit
 TODO: e2e => tests/e2e
 TODO: playwright: factor out playwright config
 TODO: switch playwright tests to component tests (https://playwright.dev/docs/test-components#example)
-x 2024-11-02 TODO: get linux into `playwright-driver.browsers` in devbox.lock, enable firefox/safari in playwright in CI
 TODO: cleanup all the extraneous css
 
 use-element-observer:
-x 2024-03-25 TODO: add tests
 
 use-visible-elements:
-x 2024-03-25 TODO: add tests
 TODO: fix broken readme example (hook must be used in tree)

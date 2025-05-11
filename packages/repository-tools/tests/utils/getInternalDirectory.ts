@@ -1,4 +1,4 @@
-import { RepositoryType } from "./../../src/types";
+import type { RepositoryType } from "./../../src/types";
 
 export function getInternalDirectory(type: RepositoryType): string {
   switch (type) {

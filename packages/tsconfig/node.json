@@ -2,11 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "@altano/tsconfig/node",
   "extends": "./base.json",
-  "lib": ["ESNext"],
   "compilerOptions": {
-    "moduleResolution": "NodeNext",
+    "lib": ["es2023"],
     "module": "NodeNext",
-    "target": "ESNext",
-    "resolveJsonModule": true
+    "moduleResolution": "NodeNext"
   }
 }
