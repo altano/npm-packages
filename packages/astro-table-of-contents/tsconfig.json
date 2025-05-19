@@ -1,0 +1,18 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["src", "stories", "*.config.ts"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "preserve",
+    "types": [
+      "astro/client",
+      "@altano/web-components/anchor-current-setter",
+      "@altano/web-components/visible-element-observer"
+    ],
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+    /* Can remove these when astrobook supports ts */
+    "checkJs": true,
+    "isolatedDeclarations": false,
+  }
+}

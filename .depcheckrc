@@ -2,6 +2,7 @@ ignores:
   - "@altano/assets"
   - "@altano/build-config" # depcheck can't see this being implicitly used in tsdown
   - "@altano/testing" # depcheck can't see vitest.config.ts setupFiles config array
+  - "@altano/web-components" # depcheck doesn't understand async await() in .astro files
   - "@astrojs/check" # we use a CLI bin only from this guy
   - "@fontsource-variable/inter" # depcheck won't parse astro files
   - "@fontsource/inter" # we dynamically resolve the path, depcheck can't detect

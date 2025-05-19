@@ -1,0 +1,54 @@
+{
+  "name": "@altano/web-components",
+  "version": "0.0.1",
+  "description": "Web Component Library",
+  "keywords": [
+    "web-components"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/web-components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/web-components"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "type": "module",
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.json"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "build:documentation:custom-elements-json": "wca dist/*.d.ts --outFile dist/custom-elements.json",
+    "build:documentation:readme": "wca dist/*.d.ts --outFile README.md",
+    "check:types:src": "tsc --noEmit",
+    "check:unused-dependencies": "depcheck",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsdown --watch",
+    "format": "prettier --write src",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*"
+  },
+  "devDependencies": {
+    "@altano/build-config": "workspace:*",
+    "@altano/tsconfig": "workspace:*",
+    "depcheck": "catalog:",
+    "prettier": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "web-component-analyzer": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

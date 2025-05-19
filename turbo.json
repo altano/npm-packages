@@ -10,6 +10,20 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^build"]
     },
+    "build:documentation": {
+      "dependsOn": [
+        "build:documentation:custom-elements-json",
+        "build:documentation:readme"
+      ]
+    },
+    "build:documentation:custom-elements-json": {
+      "outputs": ["dist/custom-elements.json"],
+      "dependsOn": ["build"]
+    },
+    "build:documentation:readme": {
+      "outputs": ["README.md"],
+      "dependsOn": ["build"]
+    },
     "check": {
       "dependsOn": [
         "//#check:dependencies",
@@ -22,14 +36,10 @@
       "dependsOn": ["build"]
     },
     "check:types": {
-      "dependsOn": [
-        "check:types:astro-fixtures",
-        "check:types:src",
-        "check:types:test"
-      ]
+      "dependsOn": ["check:types:astro", "check:types:src", "check:types:test"]
     },
 
-    "check:types:astro-fixtures": {
+    "check:types:astro": {
       "dependsOn": ["build"] // script uses other packages
     },
     "check:types:test": {

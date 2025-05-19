@@ -1,0 +1,43 @@
+---
+import ArticleSectionVisibilityObserver from "@altano/astro-table-of-contents/ArticleSectionVisibilityObserver.astro";
+import TableOfContentsWithScrollSpy from "@altano/astro-table-of-contents/TableOfContentsWithScrollSpy.astro";
+import { Content, getHeadings } from "./Article.md";
+
+const headings = getHeadings();
+---
+
+<style>
+  div {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    max-width: 900px;
+
+    nav {
+      position: sticky;
+      top: 0;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .toc {
+      a {
+        color: inherit;
+        opacity: 0.4;
+        text-decoration: none;
+        &[aria-current="true"] {
+          opacity: 1;
+          color: orangered;
+        }
+      }
+    }
+  }
+</style>
+
+<div>
+  <nav data-testid="table-of-contents">
+    <TableOfContentsWithScrollSpy {headings} class="toc" />
+  </nav>
+  <ArticleSectionVisibilityObserver>
+    <article><Content /></article>
+  </ArticleSectionVisibilityObserver>
+</div>

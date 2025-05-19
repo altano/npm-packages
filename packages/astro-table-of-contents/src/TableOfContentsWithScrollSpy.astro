@@ -1,0 +1,13 @@
+---
+import TableOfContents from "./TableOfContents.astro";
+
+export type { Props } from "./TableOfContents.astro";
+---
+
+<script>
+  import "@altano/web-components/anchor-current-setter.js";
+</script>
+
+<anchor-current-setter>
+  <TableOfContents {...Astro.props} />
+</anchor-current-setter>
