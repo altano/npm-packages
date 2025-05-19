@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build build:documentation",
     "changeset": "changeset",
     "check:dependencies": "syncpack lint",
     "check:dependencies:fix": "syncpack fix-mismatches",
@@ -19,7 +19,7 @@
     "lint": "eslint --no-error-on-unmatched-pattern *.json *.ts",
     "lint:inspect": "pnpm dlx @eslint/config-inspector@latest",
     "preinstall": "npx only-allow pnpm",
-    "prep": "turbo run build test lint format check --summarize",
+    "prep": "turbo run build build:documentation test lint format check --summarize",
     "release": "turbo run build && changeset publish",
     "test": "turbo run test",
     "update": "pnpm update --latest --interactive",

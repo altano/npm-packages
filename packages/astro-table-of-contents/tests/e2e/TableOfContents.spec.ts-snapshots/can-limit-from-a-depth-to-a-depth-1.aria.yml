@@ -1,0 +1,68 @@
+- navigation:
+  - list:
+    - listitem [level=1]:
+      - link "Logpoints / Tracepoints"
+      - list:
+        - listitem [level=2]:
+          - link "Watch Pane"
+        - listitem [level=2]:
+          - link "Tracing Callstacks"
+    - listitem [level=1]:
+      - link "Changing Program Behavior"
+    - listitem [level=1]:
+      - link "Quick and Dirty Performance Profiling"
+    - listitem [level=1]:
+      - link "Using Function Arity"
+      - list:
+        - listitem [level=2]:
+          - link "Break on Number of Arguments"
+        - listitem [level=2]:
+          - link "Break on Function Arity Mismatch"
+    - listitem [level=1]:
+      - link "Using Time"
+      - list:
+        - listitem [level=2]:
+          - link "Skip Page Load"
+        - listitem [level=2]:
+          - link "Skip N Seconds"
+    - listitem [level=1]:
+      - link "Using CSS"
+    - listitem [level=1]:
+      - link "Even Calls Only"
+    - listitem [level=1]:
+      - link "Break on Sample"
+    - listitem [level=1]:
+      - link "Never Pause Here"
+    - listitem [level=1]:
+      - link "Automatic Instance IDs"
+    - listitem [level=1]:
+      - link "Programmatically Toggle"
+      - list
+    - listitem [level=1]:
+      - link "From a Specific Instance"
+      - list:
+        - listitem [level=2]:
+          - link "Or from something else"
+    - listitem [level=1]:
+      - link "Use copy()"
+      - list
+    - listitem [level=1]:
+      - link "Inspect the DOM with JS Disabled"
+    - listitem [level=1]:
+      - link "Inspect an Elusive Element"
+    - listitem [level=1]:
+      - link "Record Snapshots of the DOM"
+    - listitem [level=1]:
+      - link "Monitor Focused Element"
+    - listitem [level=1]:
+      - link "Find Bold Elements"
+      - list:
+        - listitem [level=2]:
+          - link "Just Descendants"
+    - listitem [level=1]:
+      - link "Reference Currently Selected Element"
+      - list:
+        - listitem [level=2]:
+          - link "Previous Elements"
+        - listitem [level=2]:
+          - link "Get Event Listeners"

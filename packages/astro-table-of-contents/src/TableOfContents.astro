@@ -1,0 +1,70 @@
+---
+import type { MarkdownHeading } from "astro";
+
+export type Props = {
+  headings: MarkdownHeading[];
+  currentDepth?: number | undefined;
+  class?: string | undefined;
+  fromDepth?: number | undefined;
+  toDepth?: number | undefined;
+};
+
+function getLowestDepth(headings: MarkdownHeading[]) {
+  const depths = headings.map((it) => it.depth);
+  return Math.min(...depths);
+}
+
+const {
+  headings,
+  toDepth = Number.POSITIVE_INFINITY,
+  fromDepth = getLowestDepth(headings),
+  currentDepth = fromDepth,
+  class: className,
+  ...rest // not actually empty: preserves astro attributes like css data scope
+} = Astro.props;
+
+const currentDepthHeadings = headings.filter((it) => it.depth === currentDepth);
+
+// our aria-level is always 1-indexed, regardless of where we started in the tree
+const level = currentDepth - fromDepth + 1;
+---
+
+<style>
+  @layer table-of-contents {
+    ul {
+      list-style-type: var(--list-style-type, unset);
+      list-style-position: var(--list-style-position, unset);
+      margin: var(--list-margin, 0);
+      padding-block: var(--list-padding-block, 0);
+      padding-inline-start: var(--indent, 2rem);
+    }
+  }
+</style>
+
+<ul class:list={[className]} {...rest}>
+  {
+    currentDepthHeadings.map((it, idx) => {
+      const nextHeading = currentDepthHeadings[idx + 1];
+      const subHeadings = headings.slice(
+        headings.indexOf(it) + 1,
+        nextHeading ? headings.indexOf(nextHeading) : undefined,
+      );
+      const hasSubHeadings = subHeadings.length > 0;
+      const shouldRenderSubHeadings = toDepth > it.depth && hasSubHeadings;
+
+      return (
+        <li aria-level={level}>
+          {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
+          {shouldRenderSubHeadings ? (
+            <Astro.self
+              {...Astro.props}
+              headings={subHeadings}
+              currentDepth={it.depth + 1}
+              fromDepth={fromDepth}
+            />
+          ) : null}
+        </li>
+      );
+    })
+  }
+</ul>
