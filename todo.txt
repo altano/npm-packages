@@ -36,6 +36,9 @@ textfit:
 TODO: move example to codesandbox/stackblitz, up to examples dir
 TODO: update readme
 
+web-components:
+TODO: add direct tests (currently only indirectly tested through astro-components)
+
 tests:
 TODO: unit => tests/unit
 TODO: e2e => tests/e2e

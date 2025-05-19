@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "check:types:astro-fixtures": "node --experimental-strip-types ./scripts/check-fixtures.ts",
+    "check:types:astro": "node --experimental-strip-types ./scripts/check-fixtures.ts",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
     "check:unused-dependencies": "depcheck",

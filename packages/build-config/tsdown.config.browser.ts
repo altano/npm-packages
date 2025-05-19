@@ -7,7 +7,6 @@ const config: UserConfig | UserConfigFn = defineConfig({
   entry: ["./src/index.ts"],
   platform: "browser",
   minify: false,
-  target: "es2023",
 });
 
 export default config;

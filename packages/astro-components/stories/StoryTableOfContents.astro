@@ -1,0 +1,67 @@
+---
+import TableOfContents, {
+  type Props as TableOfContentProps,
+} from "@altano/astro-components/TableOfContents.astro";
+
+export type Props = TableOfContentProps & {
+  isStyled?: boolean;
+};
+
+const { isStyled = false, ...props } = Astro.props;
+---
+
+<style>
+  div {
+    color: rebeccapurple;
+  }
+
+  .toc {
+    --indent: 2rem;
+    --root-indent: 0.5rem;
+    --list-style-type: none;
+    --root-margin: 3rem;
+
+    color: green;
+    @media (width < 768px) {
+      --list-style-position: inside;
+      --list-style-type: square;
+    }
+
+    li:hover {
+      color: orangered;
+      &[aria-level="2"] {
+        color: blue;
+      }
+      &[aria-level="3"] {
+        color: cyan;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    li {
+      padding: 0.125rem
+      @media (width < 768px) {
+        &:not([aria-level="1"]) {
+          padding-left: var(--spacing-4);
+        }
+      }
+      @media (width > 1024px) {
+        color: gray;
+        transition: color 100ms;
+        &:not([aria-level="1"]) {
+          padding-left: 1.25rem;
+        }
+        &[aria-current="true"] {
+          color: blue;
+        }
+      }
+    }
+  }
+</style>
+
+<nav data-testid="table-of-contents">
+  <TableOfContents class:list={{ toc: isStyled }} {...props} />
+</nav>

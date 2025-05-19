@@ -1,0 +1,92 @@
+- navigation:
+  - list:
+    - listitem [level=1]:
+      - link "Advanced Conditional Breakpoints"
+      - list:
+        - listitem [level=2]:
+          - link "Logpoints / Tracepoints"
+          - list:
+            - listitem [level=3]:
+              - link "Watch Pane"
+            - listitem [level=3]:
+              - link "Tracing Callstacks"
+        - listitem [level=2]:
+          - link "Changing Program Behavior"
+        - listitem [level=2]:
+          - link "Quick and Dirty Performance Profiling"
+        - listitem [level=2]:
+          - link "Using Function Arity"
+          - list:
+            - listitem [level=3]:
+              - link "Break on Number of Arguments"
+            - listitem [level=3]:
+              - link "Break on Function Arity Mismatch"
+        - listitem [level=2]:
+          - link "Using Time"
+          - list:
+            - listitem [level=3]:
+              - link "Skip Page Load"
+            - listitem [level=3]:
+              - link "Skip N Seconds"
+        - listitem [level=2]:
+          - link "Using CSS"
+        - listitem [level=2]:
+          - link "Even Calls Only"
+        - listitem [level=2]:
+          - link "Break on Sample"
+        - listitem [level=2]:
+          - link "Never Pause Here"
+        - listitem [level=2]:
+          - link "Automatic Instance IDs"
+        - listitem [level=2]:
+          - link "Programmatically Toggle"
+    - listitem [level=1]:
+      - link "monitor() class Calls"
+      - list:
+        - listitem [level=2]:
+          - link "From a Specific Instance"
+          - list:
+            - listitem [level=3]:
+              - link "Or from something else"
+    - listitem [level=1]:
+      - link "Call and Debug a Function"
+    - listitem [level=1]:
+      - link "Pause Execution on URL Change"
+    - listitem [level=1]:
+      - link "Debugging Property Reads"
+      - list:
+        - listitem [level=2]:
+          - link "Use copy()"
+    - listitem [level=1]:
+      - link "Debugging HTML/CSS"
+      - list:
+        - listitem [level=2]:
+          - link "Inspect the DOM with JS Disabled"
+        - listitem [level=2]:
+          - link "Inspect an Elusive Element"
+        - listitem [level=2]:
+          - link "Record Snapshots of the DOM"
+        - listitem [level=2]:
+          - link "Monitor Focused Element"
+        - listitem [level=2]:
+          - link "Find Bold Elements"
+          - list:
+            - listitem [level=3]:
+              - link "Just Descendants"
+        - listitem [level=2]:
+          - link "Reference Currently Selected Element"
+          - list:
+            - listitem [level=3]:
+              - link "Previous Elements"
+            - listitem [level=3]:
+              - link "Get Event Listeners"
+              - list:
+                - listitem [level=4]:
+                  - link "Deeper Guy"
+                  - list:
+                    - listitem [level=5]:
+                      - link "Deepest Guy"
+                    - listitem [level=5]:
+                      - link "Monitor Events for Element"
+    - listitem [level=1]:
+      - link "Footnotes"

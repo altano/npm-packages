@@ -1,0 +1,63 @@
+{
+  "name": "@altano/astro-components",
+  "version": "0.0.1",
+  "description": "Components for Astro",
+  "keywords": [
+    "astro",
+    "components"
+  ],
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/astro-components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altano/npm-packages",
+    "directory": "packages/astro-components"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alan Norbauer",
+    "email": "altano@gmail.com",
+    "url": "https://alan.norbauer.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "files": [
+    "src/**/*.astro"
+  ],
+  "scripts": {
+    "check:types:astro": "astro check --root src",
+    "check:unused-dependencies": "depcheck",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "astro dev",
+    "format": "prettier --write src",
+    "lint": "eslint",
+    "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
+    "lint:timing": "TIMING=1 eslint src/**/*.ts*",
+    "test:e2e": "playwright test",
+    "test:e2e:server": "astro dev --strictPort --port 4783",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@altano/build-config": "workspace:*",
+    "@altano/testing": "workspace:*",
+    "@altano/tsconfig": "workspace:*",
+    "@altano/web-components": "workspace:*",
+    "@astrojs/check": "^0.9.4",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "astro": "catalog:",
+    "astrobook": "^0.8.0",
+    "depcheck": "catalog:",
+    "prettier": "catalog:",
+    "remark-sectionize": "^2.1.0",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "astro": "5.x.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
