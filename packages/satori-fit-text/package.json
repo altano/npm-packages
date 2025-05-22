@@ -30,7 +30,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsc --project ./tsconfig.build.json",
+    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -77,6 +77,7 @@
     "jest-image-snapshot": "^6.4.0",
     "prettier": "catalog:",
     "react": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

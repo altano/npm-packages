@@ -34,7 +34,6 @@
     "prettier": "catalog:",
     "semver": "^7.7.1",
     "syncpack": "^13.0.0",
-    "tsdown": "catalog:",
     "turbo": "^2.5.2",
     "typescript": "catalog:",
     "yaml": "^2.7.0"

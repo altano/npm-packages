@@ -30,7 +30,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsc --project ./tsconfig.build.json",
+    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -64,6 +64,7 @@
     "depcheck": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
