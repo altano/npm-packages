@@ -2,12 +2,13 @@ ignores:
   - "@altano/assets"
   - "@altano/build-config" # depcheck can't see this being implicitly used in tsdown
   - "@altano/testing" # depcheck can't see vitest.config.ts setupFiles config array
+  - "@astrojs/check" # we use a CLI bin only from this guy
   - "@fontsource-variable/inter" # depcheck won't parse astro files
   - "@fontsource/inter" # we dynamically resolve the path, depcheck can't detect
+  - "@prettier/plugin-xml" # can't see prettier plugins as strings
   - "@types/*"
   - "@vitest/*"
+  - "tsdown" # can't see a CLI bin
   - "vite"
   - "vitest"
-  - "@prettier/plugin-xml" # can't see prettier plugins as strings
-  - "@astrojs/check" # we use a CLI bin only from this guy
 skip-missing: true

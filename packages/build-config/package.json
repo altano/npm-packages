@@ -10,7 +10,7 @@
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint"
   },
-  "devDependencies": {
+  "dependencies": {
     "eslint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"

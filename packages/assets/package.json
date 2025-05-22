@@ -6,7 +6,7 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc --project ./tsconfig.build.json",
+    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:unused-dependencies": "depcheck",
@@ -26,6 +26,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
     "depcheck": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   },
   "publishConfig": {

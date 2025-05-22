@@ -66,6 +66,7 @@
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
     "prettier": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

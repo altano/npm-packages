@@ -3,11 +3,14 @@ import baseConfig from "./tsdown.config.base.js";
 
 const config: UserConfig | UserConfigFn = defineConfig({
   ...baseConfig,
-  // since we're bundling, index is the only entry
-  entry: ["./src/index.ts"],
-  platform: "browser",
+  entry: ["./src/*.ts"],
+  platform: "node",
+  // node-friendly, unbundled, unminified output
+  target: "node22",
+  hash: false,
   minify: false,
-  target: "es2023",
+  sourcemap: false,
+  unbundle: true,
 });
 
 export default config;
