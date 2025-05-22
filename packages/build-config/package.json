@@ -13,7 +13,8 @@
   "dependencies": {
     "eslint": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "unplugin-unused": "catalog:"
   },
   "publishConfig": {
     "access": "restricted"

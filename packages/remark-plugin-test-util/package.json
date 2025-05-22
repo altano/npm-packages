@@ -22,7 +22,6 @@
   },
   "scripts": {
     "check:types:src": "tsc --noEmit",
-    "check:unused-dependencies": "depcheck",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
@@ -38,7 +37,6 @@
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
     "@types/node": "catalog:",
-    "depcheck": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "tsdown": "catalog:",

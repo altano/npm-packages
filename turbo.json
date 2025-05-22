@@ -11,12 +11,7 @@
       "dependsOn": ["^build"]
     },
     "check": {
-      "dependsOn": [
-        "//#check:dependencies",
-        "check:exports",
-        "check:types",
-        "check:unused-dependencies"
-      ]
+      "dependsOn": ["//#check:dependencies", "check:exports", "check:types"]
     },
     "check:exports": {
       "dependsOn": ["build"]
@@ -37,9 +32,6 @@
     },
     "check:types:src": {
       "dependsOn": ["build"]
-    },
-    "check:unused-dependencies": {
-      "dependsOn": []
     },
     "format": {},
     "test": {
