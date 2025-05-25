@@ -1,5 +1,11 @@
 # @altano/satori-fit-text
 
+## 2.0.0
+
+### Major Changes
+
+- 38c79ef: build with tsc
+
 ## 1.0.2
 
 ### Patch Changes

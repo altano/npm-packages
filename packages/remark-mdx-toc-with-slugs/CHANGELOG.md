@@ -1,5 +1,16 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 4.0.0
+
+### Major Changes
+
+- 38c79ef: switch to tsdown bundler
+
+### Patch Changes
+
+- Updated dependencies [38c79ef]
+  - @altano/remark-mdx-toc@1.0.0
+
 ## 3.0.2
 
 ### Patch Changes
