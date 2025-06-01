@@ -1,5 +1,11 @@
 # @altano/use-element-observer
 
+## 4.0.0
+
+### Major Changes
+
+- 38c79ef: switch to tsdown bundler
+
 ## 3.0.0
 
 ### Major Changes
