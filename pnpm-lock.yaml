@@ -43,8 +43,8 @@ catalogs:
       specifier: ^3.1.4
       version: 3.1.4
     astro:
-      specifier: ^5.8.0
-      version: 5.8.1
+      specifier: ^5.10.1
+      version: 5.10.1
     debug:
       specifier: ^4.4.0
       version: 4.4.0
@@ -142,7 +142,7 @@ importers:
         version: 5.2.6
       astro:
         specifier: 'catalog:'
-        version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+        version: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       sharp:
         specifier: ^0.33.1
         version: 0.33.5
@@ -250,13 +250,13 @@ importers:
         version: 4.1.0(@babel/core@7.26.0)(@types/node@22.13.10)(jiti@2.4.2)(preact@10.26.9)(yaml@2.8.0)
       '@astrojs/svelte':
         specifier: 'catalog:'
-        version: 7.1.0(@types/node@22.13.10)(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.34.9)(typescript@5.8.2)(yaml@2.8.0)
+        version: 7.1.0(@types/node@22.13.10)(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.34.9)(typescript@5.8.2)(yaml@2.8.0)
       '@astrojs/vue':
         specifier: 'catalog:'
-        version: 5.1.0(@types/node@22.13.10)(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(rollup@4.38.0)(vue@3.5.17(typescript@5.8.2))(yaml@2.8.0)
+        version: 5.1.0(@types/node@22.13.10)(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(rollup@4.38.0)(vue@3.5.17(typescript@5.8.2))(yaml@2.8.0)
       '@inox-tools/astro-tests':
         specifier: 0.5.1
-        version: 0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+        version: 0.5.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.51.1
@@ -274,7 +274,7 @@ importers:
         version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
       astro:
         specifier: 'catalog:'
-        version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+        version: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       depcheck:
         specifier: 'catalog:'
         version: 1.4.7
@@ -313,10 +313,10 @@ importers:
     dependencies:
       '@inox-tools/runtime-logger':
         specifier: ^0.4.2
-        version: 0.4.2(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+        version: 0.4.2(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       astro-integration-kit:
         specifier: ^0.18.0
-        version: 0.18.0(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+        version: 0.18.0(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       mime-types:
         specifier: ^3.0.1
         version: 3.0.1
@@ -338,7 +338,7 @@ importers:
         version: 0.9.4(prettier@3.5.3)(typescript@5.8.2)
       '@inox-tools/astro-tests':
         specifier: 0.5.1
-        version: 0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+        version: 0.5.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       '@types/mime-types':
         specifier: ^2.1.4
         version: 2.1.4
@@ -350,7 +350,7 @@ importers:
         version: 3.1.4(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.13.10)(happy-dom@17.4.4)(jiti@2.4.2)(jsdom@26.0.0)(yaml@2.8.0))
       astro:
         specifier: 'catalog:'
-        version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+        version: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       depcheck:
         specifier: 'catalog:'
         version: 1.4.7
@@ -402,10 +402,10 @@ importers:
         version: 22.13.10
       astro:
         specifier: 'catalog:'
-        version: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+        version: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       astrobook:
         specifier: ^0.8.0
-        version: 0.8.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+        version: 0.8.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       depcheck:
         specifier: 'catalog:'
         version: 1.4.7
@@ -1365,6 +1365,9 @@ packages:
 
   '@astrojs/compiler@2.12.0':
     resolution: {integrity: sha512-7bCjW6tVDpUurQLeKBUN9tZ5kSv5qYrGmcn0sG0IwacL7isR2ZbyyA3AdZ4uxsuUFOS2SlgReTH7wkxO6zpqWA==}
+
+  '@astrojs/compiler@2.12.2':
+    resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
 
   '@astrojs/internal-helpers@0.5.1':
     resolution: {integrity: sha512-M7rAge1n2+aOSxNvKUFa0u/KFn0W+sZy7EW91KOSERotm2Ti8qs+1K0xx3zbOxtAVrmJb5/J98eohVvvEqtNkw==}
@@ -3410,8 +3413,8 @@ packages:
   astro-theme-toggle@0.6.0:
     resolution: {integrity: sha512-Pe2DTeckxJaspMXNWbHzhn3fQq6K4JTEZ/Gutehgty6qzfLWehsGPFtsKOhsS0r2EOK18MaUnONliE5+sDBLYw==}
 
-  astro@5.8.1:
-    resolution: {integrity: sha512-lkBg1smMRFW+FQ6i92SgEN53o4+ItRjlRt6Ck+rEjmTcb57Bid7faTNKUQNYuNnxiesTWw3NJDyVPQPbfKDyfw==}
+  astro@5.10.1:
+    resolution: {integrity: sha512-DJVmt+51jU1xmgmAHCDwuUgcG/5aVFSU+tcX694acAZqPVt8EMUAmUZcJDX36Z7/EztnPph9HR3pm72jS2EgHQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -8074,14 +8077,14 @@ snapshots:
 
   '@astrobook/types@0.8.1': {}
 
-  '@astrobook/ui@0.8.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
+  '@astrobook/ui@0.8.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
     dependencies:
       '@astrobook/core': 0.8.1
       '@astrobook/types': 0.8.1
       astro-theme-toggle: 0.6.0
       just-group-by: 2.2.0
     optionalDependencies:
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
 
   '@astrojs/check@0.9.4(prettier@3.5.3)(typescript@5.8.2)':
     dependencies:
@@ -8095,6 +8098,8 @@ snapshots:
       - prettier-plugin-astro
 
   '@astrojs/compiler@2.12.0': {}
+
+  '@astrojs/compiler@2.12.2': {}
 
   '@astrojs/internal-helpers@0.5.1': {}
 
@@ -8204,10 +8209,10 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/svelte@7.1.0(@types/node@22.13.10)(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.34.9)(typescript@5.8.2)(yaml@2.8.0)':
+  '@astrojs/svelte@7.1.0(@types/node@22.13.10)(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.34.9)(typescript@5.8.2)(yaml@2.8.0)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.1.0(svelte@5.34.9)(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       svelte: 5.34.9
       svelte2tsx: 0.7.40(svelte@5.34.9)(typescript@5.8.2)
       typescript: 5.8.2
@@ -8238,12 +8243,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vue@5.1.0(@types/node@22.13.10)(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(rollup@4.38.0)(vue@3.5.17(typescript@5.8.2))(yaml@2.8.0)':
+  '@astrojs/vue@5.1.0(@types/node@22.13.10)(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))(jiti@2.4.2)(rollup@4.38.0)(vue@3.5.17(typescript@5.8.2))(yaml@2.8.0)':
     dependencies:
       '@vitejs/plugin-vue': 5.2.1(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.2))
       '@vitejs/plugin-vue-jsx': 4.2.0(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.2))
       '@vue/compiler-sfc': 3.5.14
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       vite: 6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
       vite-plugin-vue-devtools: 7.7.7(rollup@4.38.0)(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.2))
       vue: 3.5.17(typescript@5.8.2)
@@ -9162,12 +9167,12 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@inox-tools/astro-tests@0.5.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
+  '@inox-tools/astro-tests@0.5.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
     dependencies:
       '@astrojs/internal-helpers': 0.5.1
       '@astrojs/markdown-remark': 5.3.0
       '@inox-tools/utils': 0.3.1
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       debug: 4.4.1
       fast-glob: 3.3.3
       shiki: 1.29.2
@@ -9177,21 +9182,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/modular-station@0.4.2(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
+  '@inox-tools/modular-station@0.4.2(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
     dependencies:
       '@inox-tools/utils': 0.3.1
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
-      astro-integration-kit: 0.18.0(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro-integration-kit: 0.18.0(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/runtime-logger@0.4.2(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
+  '@inox-tools/runtime-logger@0.4.2(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))':
     dependencies:
-      '@inox-tools/modular-station': 0.4.2(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      '@inox-tools/modular-station': 0.4.2(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
       '@inox-tools/utils': 0.3.1
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
-      astro-integration-kit: 0.18.0(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro-integration-kit: 0.18.0(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -10625,17 +10630,17 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-integration-kit@0.18.0(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
+  astro-integration-kit@0.18.0(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
     dependencies:
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
       pathe: 1.1.2
       recast: 0.23.11
 
   astro-theme-toggle@0.6.0: {}
 
-  astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0):
+  astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0):
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/markdown-remark': 6.3.2
       '@astrojs/telemetry': 3.3.0
@@ -10688,8 +10693,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.16.0
       vfile: 6.0.3
-      vite: 6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
-      vitefu: 1.0.6(vite@6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))
+      vite: 6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
+      vitefu: 1.0.6(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.2
@@ -10733,13 +10738,13 @@ snapshots:
       - uploadthing
       - yaml
 
-  astrobook@0.8.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
+  astrobook@0.8.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)):
     dependencies:
       '@astrobook/core': 0.8.1
       '@astrobook/types': 0.8.1
-      '@astrobook/ui': 0.8.1(astro@5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
+      '@astrobook/ui': 0.8.1(astro@5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0))
     optionalDependencies:
-      astro: 5.8.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
+      astro: 5.10.1(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.0)
 
   asynckit@0.4.0: {}
 
@@ -15978,10 +15983,6 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.4.2
       yaml: 2.8.0
-
-  vitefu@1.0.6(vite@6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)):
-    optionalDependencies:
-      vite: 6.3.4(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)
 
   vitefu@1.0.6(vite@6.3.5(@types/node@22.13.10)(jiti@2.4.2)(yaml@2.8.0)):
     optionalDependencies:
