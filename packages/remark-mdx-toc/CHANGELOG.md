@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc
 
+## 1.0.0
+
+### Major Changes
+
+- 38c79ef: switch to tsdown bundler
+
 ## 0.0.3
 
 ### Patch Changes

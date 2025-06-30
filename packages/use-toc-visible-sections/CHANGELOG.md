@@ -1,5 +1,16 @@
 # @altano/use-toc-visible-sections
 
+## 4.0.0
+
+### Major Changes
+
+- 38c79ef: switch to tsdown bundler
+
+### Patch Changes
+
+- Updated dependencies [38c79ef]
+  - @altano/use-visible-elements@4.0.0
+
 ## 3.0.0
 
 ### Major Changes

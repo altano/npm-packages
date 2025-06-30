@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 4.0.0
+
+### Major Changes
+
+- 38c79ef: build with tsc
+
 ## 3.0.5
 
 ### Patch Changes
