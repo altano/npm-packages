@@ -1,5 +1,15 @@
 # @altano/astro-prettier-response
 
+## 1.0.0
+
+### Major Changes
+
+- 38c79ef: switch to tsdown bundler
+
+### Patch Changes
+
+- ce11a54: update readme
+
 ## 0.0.2
 
 ### Patch Changes

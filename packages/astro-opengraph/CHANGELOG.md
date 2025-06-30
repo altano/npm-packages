@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 0.1.0
+
+### Patch Changes
+
+- 2360618: initial version
+
 ## 0.1.0-alpha.4
 
 ### Patch Changes
