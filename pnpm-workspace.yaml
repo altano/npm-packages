@@ -15,7 +15,7 @@ catalog:
   "@types/react": ^19.0.12
   "@vitest/coverage-v8": ^3.1.4
   "@vitest/expect": ^3.1.4
-  "astro": ^5.8.0
+  "astro": ^5.10.1
   "debug": ^4.4.0
   "depcheck": ^1.4.7
   "eslint": ^9.23.0
