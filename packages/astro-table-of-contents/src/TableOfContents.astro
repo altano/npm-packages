@@ -29,18 +29,6 @@ const currentDepthHeadings = headings.filter((it) => it.depth === currentDepth);
 const level = currentDepth - fromDepth + 1;
 ---
 
-<style>
-  @layer table-of-contents {
-    ul {
-      list-style-type: var(--list-style-type, unset);
-      list-style-position: var(--list-style-position, unset);
-      margin: var(--list-margin, 0);
-      padding-block: var(--list-padding-block, 0);
-      padding-inline-start: var(--indent, 2rem);
-    }
-  }
-</style>
-
 <ul class:list={[className]} {...rest}>
   {
     currentDepthHeadings.map((it, idx) => {
