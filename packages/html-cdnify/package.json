@@ -27,6 +27,7 @@
   "files": [
     "assets/logo.png",
     "dist/**/*.js",
+    "dist/**/*.js.map",
     "dist/**/*.d.ts"
   ],
   "scripts": {
