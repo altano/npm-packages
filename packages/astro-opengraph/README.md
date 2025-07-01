@@ -1,5 +1,3 @@
-> ⚠️ **EXPERIMENTAL**: This package uses experimental Astro APIs. Tread carefuly. [More info below](#experimental-container-apis).
-
 # astro-opengraph
 
 Your Open Graph toolkit 🧰 for Astro, including everything you need to:
