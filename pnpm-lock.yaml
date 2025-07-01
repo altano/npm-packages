@@ -378,6 +378,10 @@ importers:
         version: 3.4.1(prettier@3.5.3)
 
   packages/astro-table-of-contents:
+    dependencies:
+      '@altano/web-components':
+        specifier: workspace:*
+        version: link:../web-components
     devDependencies:
       '@altano/build-config':
         specifier: workspace:*
@@ -388,9 +392,6 @@ importers:
       '@altano/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      '@altano/web-components':
-        specifier: workspace:*
-        version: link:../web-components
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(prettier@3.5.3)(typescript@5.8.2)
