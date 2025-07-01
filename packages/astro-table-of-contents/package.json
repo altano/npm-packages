@@ -41,11 +41,13 @@
     "test:e2e:server": "astro dev --strictPort --port 4783",
     "test:e2e:ui": "playwright test --ui"
   },
+  "dependencies": {
+    "@altano/web-components": "workspace:*"
+  },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@altano/web-components": "workspace:*",
     "@astrojs/check": "^0.9.4",
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
