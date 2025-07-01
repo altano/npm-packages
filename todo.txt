@@ -1,3 +1,7 @@
+source maps:
+TODO: when https://github.com/rolldown/tsdown/issues/360 is fixed, remove `*.js.map` from all package.json files
+x 2025-07-06 TODO: whenever source maps are built, export them in package.json
+
 TODO: fix tests/e2e react ts errors, figure out why they aren't typechecking
 TODO: Look into npm Provenance w/ github actions
 
