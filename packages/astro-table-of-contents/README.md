@@ -68,12 +68,15 @@ const { headings } = await Astro.props.article.render();
 
   .toc {
     a {
-      color: inherit;
-      opacity: 0.4;
-      text-decoration: none;
-      &[aria-current="true"] {
-        opacity: 1;
-        color: orangered;
+      color: orangered;
+      /**
+       * different color based on nav level
+       */
+      &[aria-level="2"] {
+        color: blue;
+      }
+      &[aria-level="3"] {
+        color: cyan;
       }
     }
   }
@@ -86,6 +89,8 @@ const { headings } = await Astro.props.article.render();
 ```
 
 ## Styling Based On Visibility
+
+![Animation showing a page being scrolled from top-to-bottom, demonstrating the styling of links changing as the page scrolls down.](./assets/visibility-styling.avif)
 
 To style elements of your table of contents differently depending on whether or not the target section is visible, e.g. color links differently when the link target is visible, you must:
 
@@ -145,4 +150,4 @@ This uses a standard custom element (a web component) to monitor the visible art
 
 ## Live Demo
 
-You can see these components in use on [my personal site](https://alan.norbauer.com/articles/browser-debugging-tricks/). The source code for this site can be found [here](https://github.com/altano/alan.norbauer.com/tree/main/src).
+You can see these components in use on [my personal site](https://alan.norbauer.com/articles/browser-debugging-tricks/). The relevannt source code for this site can be found [here](https://github.com/altano/alan.norbauer.com/blob/aeea9daa9d336682b4c794fa26cdfdd361ad4160/src/components/article/TableOfContents.astro#L63) [here](https://github.com/altano/alan.norbauer.com/blob/aeea9daa9d336682b4c794fa26cdfdd361ad4160/src/pages/articles/%5Bslug%5D/index.astro#L412) and [here](https://github.com/altano/alan.norbauer.com/blob/aeea9daa9d336682b4c794fa26cdfdd361ad4160/src/layouts/ArticleLayout.astro#L159).
