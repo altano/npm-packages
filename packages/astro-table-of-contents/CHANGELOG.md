@@ -1,5 +1,11 @@
 # @altano/astro-table-of-contents
 
+## 0.1.1
+
+### Patch Changes
+
+- 0c4712e: tweak readme
+
 ## 0.1.0
 
 ### Minor Changes
