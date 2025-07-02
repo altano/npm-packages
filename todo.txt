@@ -38,6 +38,9 @@ textfit:
 TODO: move example to codesandbox/stackblitz, up to examples dir
 TODO: update readme
 
+table-of-contents:
+TODO: test styling (e.g. list type, indentation)
+
 web-components:
 TODO: add direct tests (currently only indirectly tested through astro-table-of-contents)
 
