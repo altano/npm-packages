@@ -1,7 +1,8 @@
 ---
+import { ComponentProps } from "astro/types";
 import TableOfContents from "./TableOfContents.astro";
 
-export type { Props } from "./TableOfContents.astro";
+export type Props = ComponentProps<typeof TableOfContents>;
 ---
 
 <script>
