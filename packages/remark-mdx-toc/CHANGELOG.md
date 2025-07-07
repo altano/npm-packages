@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc
 
+## 1.0.1
+
+### Patch Changes
+
+- 1ab88a4: export source maps
+
 ## 1.0.0
 
 ### Major Changes

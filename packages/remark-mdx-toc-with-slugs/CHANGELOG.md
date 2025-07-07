@@ -1,5 +1,13 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 4.0.1
+
+### Patch Changes
+
+- 1ab88a4: export source maps
+- Updated dependencies [1ab88a4]
+  - @altano/remark-mdx-toc@1.0.1
+
 ## 4.0.0
 
 ### Major Changes

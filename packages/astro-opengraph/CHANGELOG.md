@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 0.1.1
+
+### Patch Changes
+
+- 1ab88a4: export source maps
+
 ## 0.1.0
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-prettier-response",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prettier html/css/js for your Astro site",
   "keywords": [
     "astro",
