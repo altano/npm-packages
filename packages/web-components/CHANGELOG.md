@@ -1,5 +1,11 @@
 # @altano/web-components
 
+## 0.0.3
+
+### Patch Changes
+
+- de3f4d2: fix bug with aria-current setting
+
 ## 0.0.2
 
 ### Patch Changes

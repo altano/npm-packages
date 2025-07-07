@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 4.0.1
+
+### Patch Changes
+
+- 1ab88a4: export source maps
+
 ## 4.0.0
 
 ### Major Changes

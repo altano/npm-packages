@@ -1,5 +1,11 @@
 # @altano/satori-fit-text
 
+## 2.0.1
+
+### Patch Changes
+
+- 1ab88a4: export source maps
+
 ## 2.0.0
 
 ### Major Changes

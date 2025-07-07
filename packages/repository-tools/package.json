@@ -1,6 +1,6 @@
 {
   "name": "@altano/repository-tools",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
   "keywords": [
     "repository",
