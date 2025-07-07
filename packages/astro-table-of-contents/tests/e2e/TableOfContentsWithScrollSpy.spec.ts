@@ -66,3 +66,39 @@ test("should change the highlight when scrolling a little", async ({
     ).toHaveAttribute("aria-current", "true");
   }
 });
+
+/**
+ * Prevent regression of found bug.
+ */
+test("clicking on first sub-heading in section should not mark all sibling sub-headings as current", async ({
+  page,
+}) => {
+  const storyPage = new StoryPage(
+    page,
+    "table-of-contents-with-scroll-spy",
+    "basic",
+  );
+  await storyPage.goto();
+
+  await page
+    .getByRole("heading", { name: "Inspect the DOM with JS Disabled" })
+    .scrollIntoViewIfNeeded();
+  await expect(
+    page
+      .getByRole("navigation")
+      .locator("a", { hasText: "Inspect the DOM with JS Disabled" }),
+  ).toHaveAttribute("aria-current", "true");
+
+  const headingsThatShouldNotBeCurrent = [
+    "Record Snapshots of the DOM",
+    "Monitor Focused Element",
+    "Find Bold Elements",
+    "Just Descendants",
+    "Reference Currently Selected Element",
+  ];
+  for (const heading of headingsThatShouldNotBeCurrent) {
+    await expect(
+      page.getByRole("navigation").locator("a", { hasText: heading }),
+    ).not.toHaveAttribute("aria-current");
+  }
+});

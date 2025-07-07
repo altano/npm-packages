@@ -3,11 +3,14 @@ import type { VisibleElementChangedEvent } from "../types";
 const tag = "anchor-current-setter";
 
 /**
- * Make any descendant anchor have the `aria-current=true` attribute whenever its target (i.e. `<a href=#abc>...</a>` targets #abc) is visible (or whenever its target is the child of a visible element).
+ * When an element's visibility changes, get the first descendant with a `id`
+ * attribute and mark any links that target it (i.e. `<a href=#abc>...</a>`
+ * targets #abc) as having `aria-current=true`
  *
  * @element anchor-current-setter
  *
- * @slot - Arbitrary child nodes containing anchor elements. Will update descendant anchors as appropriate.
+ * @slot - Arbitrary child nodes containing anchor elements. Will update
+ * descendant anchors as appropriate.
  */
 export class AnchorCurrentSetter extends HTMLElement {
   static define(): void {
@@ -38,18 +41,34 @@ export class AnchorCurrentSetter extends HTMLElement {
   #handleVisibleElementChange(evt: VisibleElementChangedEvent): void {
     const visibleItem = evt.detail.item;
     const isAdding = evt.detail.isIntersecting === true;
-    const idElements = visibleItem.querySelectorAll("[id]");
-    const anchors = Array.from(idElements).flatMap((idElement) => {
-      const id = idElement.getAttribute("id");
-      if (id == null) {
-        return [];
-      }
-      return Array.from(this.querySelectorAll(`a[href="#${id}"]`));
-    });
+    // get the first descendant element with an id
+    const idElement = visibleItem.querySelector("[id]");
+    const id = idElement?.getAttribute("id");
+
+    // console.log({
+    //   visibleItem: `${visibleItem.tagName} ${visibleItem.firstElementChild?.tagName}[id=${visibleItem.firstElementChild?.id}]`,
+    //   isAdding,
+    //   idElement: `#${idElement?.id}`,
+    // });
+
+    if (id == null) {
+      return;
+    }
+
+    // Get all anchors that target that id
+    const anchors = this.querySelectorAll<HTMLAnchorElement>(
+      `a[href="#${id}"]`,
+    );
 
     if (isAdding) {
+      // anchors.forEach((a) => {
+      //   console.log(`${a.hash} => aria-current=true`);
+      // });
       anchors.forEach((a) => a.setAttribute("aria-current", "true"));
     } else {
+      // anchors.forEach((a) => {
+      //   console.log(`${a.hash} => invisible`);
+      // });
       anchors.forEach((a) => a.removeAttribute("aria-current"));
     }
   }
