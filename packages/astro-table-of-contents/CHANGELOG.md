@@ -1,5 +1,12 @@
 # @altano/astro-table-of-contents
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [f360b77]
+  - @altano/web-components@0.0.4
+
 ## 0.1.2
 
 ### Patch Changes

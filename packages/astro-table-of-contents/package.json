@@ -1,6 +1,6 @@
 {
   "name": "@altano/astro-table-of-contents",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Table of Contents components for Astro",
   "keywords": [
     "astro",

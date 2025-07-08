@@ -1,5 +1,11 @@
 # @altano/web-components
 
+## 0.0.4
+
+### Patch Changes
+
+- f360b77: export source maps
+
 ## 0.0.3
 
 ### Patch Changes

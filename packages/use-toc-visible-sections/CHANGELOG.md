@@ -1,5 +1,13 @@
 # @altano/use-toc-visible-sections
 
+## 4.0.1
+
+### Patch Changes
+
+- 769db1c: export source maps
+- Updated dependencies [769db1c]
+  - @altano/use-visible-elements@4.0.1
+
 ## 4.0.0
 
 ### Major Changes
