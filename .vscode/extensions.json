@@ -1,13 +1,14 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
+    "bierner.comment-tagged-templates",
     "bierner.github-markdown-preview",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
     "github.vscode-github-actions",
-    "ms-playwright.playwright",
-    "vitest.explorer",
-    "vercel.turbo-vsc",
     "graphite.gti-vscode",
-    "bierner.comment-tagged-templates"
+    "ms-playwright.playwright",
+    "streetsidesoftware.code-spell-checker",
+    "vercel.turbo-vsc",
+    "vitest.explorer"
   ]
 }

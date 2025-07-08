@@ -1,4 +1,5 @@
 {
+  "cSpell.enabled": true,
   "eslint.enable": true,
   "vitest.enable": false,
   "prettier.enable": true,
