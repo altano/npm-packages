@@ -1,5 +1,11 @@
 # @altano/use-element-observer
 
+## 4.0.1
+
+### Patch Changes
+
+- 769db1c: export source maps
+
 ## 4.0.0
 
 ### Major Changes

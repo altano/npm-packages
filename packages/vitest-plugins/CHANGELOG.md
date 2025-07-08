@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 1.1.1
+
+### Patch Changes
+
+- b461e76: fix readme
+
 ## 1.1.0
 
 ### Minor Changes
