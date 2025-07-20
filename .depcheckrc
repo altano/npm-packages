@@ -12,6 +12,7 @@ ignores:
   - "@prettier/plugin-xml" # can't see prettier plugins as strings
   - "@types/*"
   - "@vitest/*"
+  - "jsdom" # can't see vitest environment usage
   - "tsdown" # can't see a CLI bin
   - "preact" # depcheck can't see that we use this in a fixture
   - "svelte" # depcheck can't see that we use this in a fixture

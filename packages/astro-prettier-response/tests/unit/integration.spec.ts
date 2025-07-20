@@ -1,4 +1,11 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import {
+  afterEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type DeeplyAllowMatchers,
+} from "vitest";
 import prettierResponse from "../../src/index.js";
 import type {
   AstroConfig,
@@ -236,7 +243,9 @@ describe("integration", async () => {
 // Wrap vitest types with unknown to prevent valid unsafe assignment errors.
 //
 // See https://github.com/vitest-dev/vitest/issues/7015
-function objectContaining<T = unknown>(expected: T): unknown {
+function objectContaining<T = unknown>(
+  expected: DeeplyAllowMatchers<T>,
+): unknown {
   return expect.objectContaining(expected);
 }
 
