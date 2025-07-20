@@ -1,12 +1,14 @@
 # anchor-current-setter
 
-Make any descendant anchor have the `aria-current=true` attribute whenever its target (i.e. `<a href=#abc>...</a>` targets #abc) is visible (or whenever its target is the child of a visible element).
+When an element's visibility changes, get the first descendant with a `id`
+attribute and mark any links that target it (i.e. `<a href=#abc>...</a>`
+targets #abc) as having `aria-current=true`
 
 ## Slots
 
 | Name | Description                                      |
 |------|--------------------------------------------------|
-|      | Arbitrary child nodes containing anchor elements. Will update descendant anchors as appropriate. |
+|      | Arbitrary child nodes containing anchor elements. Will update<br />descendant anchors as appropriate. |
 
 
 # visible-element-observer

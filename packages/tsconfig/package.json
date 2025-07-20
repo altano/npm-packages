@@ -2,6 +2,7 @@
   "name": "@altano/tsconfig",
   "version": "0.0.1",
   "private": true,
+  "description": "TypeScript configuration files shared across the repo",
   "license": "ISC",
   "type": "module",
   "files": [

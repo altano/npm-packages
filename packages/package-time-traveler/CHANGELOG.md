@@ -39,7 +39,6 @@
 ### Major Changes
 
 - b8bc683: build/test overhaul
-
   - license change
   - consolidate on module exports
   - better build orchestration

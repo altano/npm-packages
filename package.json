@@ -2,6 +2,7 @@
   "name": "@altano/npm-packages",
   "version": "0.0.0",
   "private": true,
+  "description": "A collection of npm packages maintained by Alan Norbauer",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages.git"

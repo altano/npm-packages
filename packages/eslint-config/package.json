@@ -2,6 +2,7 @@
   "name": "@altano/eslint-config",
   "version": "0.0.1",
   "private": true,
+  "description": "ESLint configuration files shared across the repo",
   "license": "ISC",
   "type": "module",
   "exports": "./index.js",
