@@ -2,6 +2,7 @@
   "name": "@altano/assets",
   "version": "0.0.1",
   "private": true,
+  "description": "Assets (e.g. fonts) shared across the repo",
   "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",

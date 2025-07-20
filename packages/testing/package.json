@@ -2,6 +2,7 @@
   "name": "@altano/testing",
   "version": "0.0.1",
   "private": true,
+  "description": "Test configuration files shared across the repo",
   "license": "ISC",
   "type": "module",
   "exports": {

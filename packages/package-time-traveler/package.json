@@ -14,6 +14,7 @@
     "email": "altano@gmail.com",
     "url": "https://alan.norbauer.com"
   },
+  "type": "commonjs",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {

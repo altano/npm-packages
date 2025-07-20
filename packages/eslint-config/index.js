@@ -3,7 +3,7 @@
 import reactPlugin from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
-import importX from "eslint-plugin-import-x";
+import { importX } from "eslint-plugin-import-x";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier/recommended";
@@ -20,7 +20,6 @@ export default {
     all: tseslint.config(
       eslint.configs.recommended,
 
-      // @ts-expect-error the turbo types for severity are just 'string' so they don't line up
       ...turboConfig,
 
       // typescript-eslint
@@ -40,7 +39,10 @@ export default {
       ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
       ...eslintPluginJsonc.configs["flat/prettier"],
 
-      packageJson.configs.recommended,
+      {
+        ...packageJson.configs.recommended,
+        ignores: ["**/tests/fixtures/**/package.json"],
+      },
 
       {
         ...prettier,
