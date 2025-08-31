@@ -125,50 +125,50 @@
       "resolved": "github:NixOS/nixpkgs/eb0e0f21f15c559d2ac7633dc81d079d1caf5f5f?lastModified=1743259260&narHash=sha256-ArWLUgRm1tKHiqlhnymyVqi5kLNCK5ghvm06mfCl4QY%3D"
     },
     "graphite-cli@latest": {
-      "last_modified": "2025-07-13T22:45:35Z",
-      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#graphite-cli",
+      "last_modified": "2025-10-08T01:30:28Z",
+      "resolved": "github:NixOS/nixpkgs/8b5c9dd8856f0c0cf46cc91f2c21c106a9d42e25#graphite-cli",
       "source": "devbox-search",
-      "version": "1.6.6",
+      "version": "1.7.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/y8jz0iglmry9scnmakfs88rkzqizz14y-graphite-cli-1.6.6",
+              "path": "/nix/store/fs2plqgc56f7cjqvpsncda6ld5v14pzx-graphite-cli-1.7.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/y8jz0iglmry9scnmakfs88rkzqizz14y-graphite-cli-1.6.6"
+          "store_path": "/nix/store/fs2plqgc56f7cjqvpsncda6ld5v14pzx-graphite-cli-1.7.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/zpwbkccjqwj995lpr1cz4s66ihq12i9a-graphite-cli-1.6.6",
+              "path": "/nix/store/b9wkz6vzz3j5jp0kinamhrbr2gmy5r28-graphite-cli-1.7.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/zpwbkccjqwj995lpr1cz4s66ihq12i9a-graphite-cli-1.6.6"
+          "store_path": "/nix/store/b9wkz6vzz3j5jp0kinamhrbr2gmy5r28-graphite-cli-1.7.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/iwp223glqi5yip9h9c94zk9dmddkgm9q-graphite-cli-1.6.6",
+              "path": "/nix/store/d6nv7sjvrd16q84i5n03bnyg5msd51x6-graphite-cli-1.7.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/iwp223glqi5yip9h9c94zk9dmddkgm9q-graphite-cli-1.6.6"
+          "store_path": "/nix/store/d6nv7sjvrd16q84i5n03bnyg5msd51x6-graphite-cli-1.7.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/lw80xgc9yv0pj6d739h1z9vd4893c9ql-graphite-cli-1.6.6",
+              "path": "/nix/store/gqgy7bx8ps7y2c9sfz8v1xspxjx8slh2-graphite-cli-1.7.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/lw80xgc9yv0pj6d739h1z9vd4893c9ql-graphite-cli-1.6.6"
+          "store_path": "/nix/store/gqgy7bx8ps7y2c9sfz8v1xspxjx8slh2-graphite-cli-1.7.0"
         }
       }
     },
@@ -220,68 +220,84 @@
         }
       }
     },
-    "nodejs@22.14.0": {
-      "last_modified": "2025-02-23T09:42:26Z",
+    "nodejs@24.10.0": {
+      "last_modified": "2025-10-11T06:31:15Z",
       "plugin_version": "0.0.2",
-      "resolved": "github:NixOS/nixpkgs/2d068ae5c6516b2d04562de50a58c682540de9bf#nodejs_22",
+      "resolved": "github:NixOS/nixpkgs/362791944032cb532aabbeed7887a441496d5e6e#nodejs_24",
       "source": "devbox-search",
-      "version": "22.14.0",
+      "version": "24.10.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/91y8h7rysgi5cl8hsj2bmjd00dq2l9pk-nodejs-22.14.0",
+              "path": "/nix/store/355hbbr8bfhyij7vkqczbjmgqa9dbrsh-nodejs-24.10.0",
               "default": true
             },
             {
+              "name": "dev",
+              "path": "/nix/store/pfnl3nqxa7agrd4rw52z52pspss7nvbi-nodejs-24.10.0-dev"
+            },
+            {
               "name": "libv8",
-              "path": "/nix/store/slffbl0q14qc93dslaynyzh005rd869s-nodejs-22.14.0-libv8"
+              "path": "/nix/store/ch0ss8jqxs4dda64786ap78s3vrfi3kz-nodejs-24.10.0-libv8"
             }
           ],
-          "store_path": "/nix/store/91y8h7rysgi5cl8hsj2bmjd00dq2l9pk-nodejs-22.14.0"
+          "store_path": "/nix/store/355hbbr8bfhyij7vkqczbjmgqa9dbrsh-nodejs-24.10.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/ji8zs96759g59b4q6kz94pbfq6gvlazx-nodejs-22.14.0",
+              "path": "/nix/store/ybfap4y7drm5nbx358cj238ba87gp8bk-nodejs-24.10.0",
               "default": true
             },
             {
+              "name": "dev",
+              "path": "/nix/store/zdwjsr9hcb8ydkgwvljnm1rcbfg3336k-nodejs-24.10.0-dev"
+            },
+            {
               "name": "libv8",
-              "path": "/nix/store/zb1ly8w6vdw2pjxwkbm3vymyfxyy7af8-nodejs-22.14.0-libv8"
+              "path": "/nix/store/lmcnw7gwb71bfy15qb87b1cphsxvj5jp-nodejs-24.10.0-libv8"
             }
           ],
-          "store_path": "/nix/store/ji8zs96759g59b4q6kz94pbfq6gvlazx-nodejs-22.14.0"
+          "store_path": "/nix/store/ybfap4y7drm5nbx358cj238ba87gp8bk-nodejs-24.10.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/067kj1aav6z9jhqbkyapjwjjrgl38ihs-nodejs-22.14.0",
+              "path": "/nix/store/bgh57m6c4k348hd4wyb367xwkljq42ky-nodejs-24.10.0",
               "default": true
             },
             {
+              "name": "dev",
+              "path": "/nix/store/747r79izxv4jm0h1zn2qdyc7hbz06ckz-nodejs-24.10.0-dev"
+            },
+            {
               "name": "libv8",
-              "path": "/nix/store/24z3qqnvs154idkbbbpjd55m11clidad-nodejs-22.14.0-libv8"
+              "path": "/nix/store/2zb0z0qhzb29jlksjpc2vz0sk9icln1p-nodejs-24.10.0-libv8"
             }
           ],
-          "store_path": "/nix/store/067kj1aav6z9jhqbkyapjwjjrgl38ihs-nodejs-22.14.0"
+          "store_path": "/nix/store/bgh57m6c4k348hd4wyb367xwkljq42ky-nodejs-24.10.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/7l1wra7b87yci5dln0hm0k8rwww6f2xj-nodejs-22.14.0",
+              "path": "/nix/store/p2sk3402d788hqn5diy5gba8cskjffzz-nodejs-24.10.0",
               "default": true
             },
             {
+              "name": "dev",
+              "path": "/nix/store/fn613shrdw5k5d5is7h8rs3dmi9xrh37-nodejs-24.10.0-dev"
+            },
+            {
               "name": "libv8",
-              "path": "/nix/store/3ympkr1v1z4r3vfyc6ikhx1chq5g464l-nodejs-22.14.0-libv8"
+              "path": "/nix/store/y9km82y1yqw1r7ld0xcifpj9zfzfy0q3-nodejs-24.10.0-libv8"
             }
           ],
-          "store_path": "/nix/store/7l1wra7b87yci5dln0hm0k8rwww6f2xj-nodejs-22.14.0"
+          "store_path": "/nix/store/p2sk3402d788hqn5diy5gba8cskjffzz-nodejs-24.10.0"
         }
       }
     },
