@@ -1,6 +1,6 @@
 {
   "packages": [
-    "nodejs@22.14.0" // keep in sync with .github/actions/*.yml
+    "nodejs@24.10.0" // keep in sync with .github/actions/*.yml
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true"

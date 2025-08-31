@@ -1,5 +1,3 @@
-/* eslint-disable import-x/no-extraneous-dependencies */
-
 // astro.config.mjs
 import { defineConfig } from "astro/config";
 import astrobook from "astrobook";
