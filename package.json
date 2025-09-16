@@ -39,7 +39,7 @@
     "typescript": "catalog:",
     "yaml": "^2.8.0"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.16.0",
   "pnpm": {
     "supportedArchitectures": {
       "os": [
