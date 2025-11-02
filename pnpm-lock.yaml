@@ -25,8 +25,8 @@ catalogs:
       specifier: 5.2.6
       version: 5.2.6
     '@playwright/test':
-      specifier: 1.55.0
-      version: 1.55.0
+      specifier: 1.56.1
+      version: 1.56.1
     '@types/node':
       specifier: ^22.13.10
       version: 22.13.10
@@ -103,7 +103,7 @@ importers:
         version: 2.29.6(@types/node@22.13.10)
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.55.0
+        version: 1.56.1
       eslint:
         specifier: 'catalog:'
         version: 9.34.0(jiti@2.4.2)
@@ -259,7 +259,7 @@ importers:
         version: 0.5.1(astro@5.13.7(@types/node@22.13.10)(encoding@0.1.13)(jiti@2.4.2)(rollup@4.38.0)(typescript@5.8.2)(yaml@2.8.1))
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@types/he':
         specifier: ^1.2.3
         version: 1.2.3
@@ -397,7 +397,7 @@ importers:
         version: 0.9.4(prettier@3.5.3)(typescript@5.9.2)
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
@@ -887,7 +887,7 @@ importers:
         version: 5.2.6
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -1002,7 +1002,7 @@ importers:
         version: 0.17.4
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
@@ -1148,7 +1148,7 @@ importers:
         version: 0.17.4
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
@@ -1206,7 +1206,7 @@ importers:
         version: 0.17.4
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.51.1
+        version: 1.56.1
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.10
@@ -2443,13 +2443,8 @@ packages:
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.51.1':
-    resolution: {integrity: sha512-nM+kEaTSAoVlXmMPH10017vn3FSiFqr/bh4fKg9vmAdMfd9SDqRZNvPSiAHADc/itWak+qPvMPZQOPwCBW7k7Q==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  '@playwright/test@1.55.0':
-    resolution: {integrity: sha512-04IXzPwHrW69XusN/SIdDdKZBzMfOT9UNT/YiJit/xpy2VuAoB8NHc8Aplb96zsWDddLnbkPL3TsmrS04ZU2xQ==}
+  '@playwright/test@1.56.1':
+    resolution: {integrity: sha512-vSMYtL/zOcFpvJCW71Q/OEGQb7KYBPAdKh35WNSkaZA75JlAO8ED8UN6GUNTm3drWomcbcqRPFqQbLae8yBTdg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6190,23 +6185,13 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  playwright-core@1.51.1:
-    resolution: {integrity: sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw==}
+  playwright-core@1.56.1:
+    resolution: {integrity: sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-core@1.55.0:
-    resolution: {integrity: sha512-GvZs4vU3U5ro2nZpeiwyb0zuFaqb9sUiAJuyrWpcGouD8y9/HLgGbNRjIph7zU9D3hnPaisMl9zG9CgFi/biIg==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  playwright@1.51.1:
-    resolution: {integrity: sha512-kkx+MB2KQRkyxjYPc3a0wLZZoDczmppyGJIvQ43l+aZihkaVvmu/21kiyaHeHjiFxjxNNFnUncKmcGIyOojsaw==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  playwright@1.55.0:
-    resolution: {integrity: sha512-sdCWStblvV1YU909Xqx0DhOjPZE4/5lJsIS84IfN9dAZfcl/CIZ5O8l3o0j7hPMjDvqoTF8ZUcc+i/GL5erstA==}
+  playwright@1.56.1:
+    resolution: {integrity: sha512-aFi5B0WovBHTEvpM3DzXTUaeN6eN0qWnTkKx4NQaH4Wvcmc153PdaY2UBdSYKaGYw+UyWXSVyxDUg5DoPEttjw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9480,13 +9465,9 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
-  '@playwright/test@1.51.1':
+  '@playwright/test@1.56.1':
     dependencies:
-      playwright: 1.51.1
-
-  '@playwright/test@1.55.0':
-    dependencies:
-      playwright: 1.55.0
+      playwright: 1.56.1
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -14187,19 +14168,11 @@ snapshots:
       pathe: 2.0.3
     optional: true
 
-  playwright-core@1.51.1: {}
+  playwright-core@1.56.1: {}
 
-  playwright-core@1.55.0: {}
-
-  playwright@1.51.1:
+  playwright@1.56.1:
     dependencies:
-      playwright-core: 1.51.1
-    optionalDependencies:
-      fsevents: 2.3.2
-
-  playwright@1.55.0:
-    dependencies:
-      playwright-core: 1.55.0
+      playwright-core: 1.56.1
     optionalDependencies:
       fsevents: 2.3.2
 
