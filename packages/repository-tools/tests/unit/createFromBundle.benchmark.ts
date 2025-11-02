@@ -1,6 +1,6 @@
 import { describe, expect, bench } from "vitest";
 import path from "node:path";
-import { getDisposableDirectory } from "../utils/getDisposableDirectory.js";
+import { getDisposableDirectory } from "@altano/disposable-directory";
 import { createFromBundle } from "../utils/createFromBundle.js";
 import { repositoryTypes } from "../../src/types.js";
 

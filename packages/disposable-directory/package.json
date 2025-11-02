@@ -1,19 +1,17 @@
 {
-  "name": "@altano/repository-tools",
-  "version": "2.0.1",
-  "description": "Misc tools for dealing with repositories of multiple version control systems (git, svn, etc)",
+  "name": "@altano/disposable-directory",
+  "version": "0.0.1",
+  "description": "Create a temporary, disposable directory that automatically gets cleaned up when the function scope exits. Uses the new `Symbol.asyncDispose` APIs",
   "keywords": [
-    "repository",
-    "root",
-    "git",
-    "mercurial",
-    "sapling"
+    "directory",
+    "temporary",
+    "disposable"
   ],
-  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/repository-tools",
+  "homepage": "https://github.com/altano/npm-packages/tree/main/packages/disposable-directory",
   "repository": {
     "type": "git",
     "url": "https://github.com/altano/npm-packages",
-    "directory": "packages/repository-tools"
+    "directory": "packages/disposable-directory"
   },
   "license": "ISC",
   "author": {
@@ -50,12 +48,10 @@
     "lint:timing": "TIMING=1 pnpm lint",
     "test:build": "./tests/scripts/createRepositoryBundles.ts",
     "test:unit": "vitest --run",
-    "test:unit:benchmark": "vitest --run bench",
     "test:unit:watch": "vitest"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
-    "@altano/disposable-directory": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
@@ -64,14 +60,14 @@
     "@vitest/expect": "catalog:",
     "depcheck": "catalog:",
     "eslint": "catalog:",
-    "find-cache-dir": "^5.0.0",
-    "memize": "^2.1.0",
     "prettier": "catalog:",
-    "ts-assert-unreachable": "^0.0.9",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "publishConfig": {
     "access": "public"
