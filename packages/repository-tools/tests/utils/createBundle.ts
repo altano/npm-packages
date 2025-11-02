@@ -1,6 +1,6 @@
 import type { RepositoryType } from "../../src/types";
 import fs from "node:fs/promises";
-import { getDisposableDirectory } from "./getDisposableDirectory";
+import { getDisposableDirectory } from "@altano/disposable-directory";
 import { unreachableCase } from "ts-assert-unreachable";
 import { createExecForDirectory } from "../../src/repositoryCommand";
 

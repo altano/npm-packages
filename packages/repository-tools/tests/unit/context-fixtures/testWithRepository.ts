@@ -1,5 +1,5 @@
 import { test } from "vitest";
-import { getDisposableDirectory } from "../../utils/getDisposableDirectory";
+import { getDisposableDirectory } from "@altano/disposable-directory";
 import { createFromBundle } from "../../utils/createFromBundle";
 import path from "node:path";
 

@@ -8,7 +8,7 @@ type DisposableDirectory = {
 };
 
 export async function getDisposableDirectory(
-  prefix: string,
+  prefix: string = "disposable-directory-",
 ): Promise<DisposableDirectory> {
   const tempDir = await fs.mkdtemp(nodePath.join(os.tmpdir(), prefix));
   return {
