@@ -1,6 +1,6 @@
 import { createExecForDirectory } from "../../src/repositoryCommand";
 import type { RepositoryType } from "../../src/types";
-import { getDisposableDirectory } from "./getDisposableDirectory";
+import { getDisposableDirectory } from "@altano/disposable-directory";
 import { getBundlePath } from "./globalSetup";
 import { unreachableCase } from "ts-assert-unreachable";
 
