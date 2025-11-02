@@ -1,5 +1,5 @@
 import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
-import browserConfig from "@altano/build-config/tsdown.config.browser.js";
+import browserConfig from "./tsdown.config.browser.js";
 
 const config: UserConfig | UserConfigFn = defineConfig({
   ...browserConfig,
