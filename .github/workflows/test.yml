@@ -3,6 +3,7 @@ name: test
 # As recommended by Graphite
 # (https://graphite.dev/docs/github-configuration-guidelines#github-actions)
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
@@ -33,7 +34,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Build
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run build --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo -vv run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -46,7 +47,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Lint
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run lint --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo -vv run lint --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -59,7 +60,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Format
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run format --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo -vv run format --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -72,7 +73,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Check
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run check --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo -vv run check --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -86,7 +87,7 @@ jobs:
         # Run inside full Devbox environment, unit tests need everything
         uses: ./.github/actions/install-devbox
       - name: Run tests
-        run: devbox run --config ./devbox/configs/ci pnpm turbo run test:unit --summarize
+        run: devbox run --config ./devbox/configs/ci pnpm turbo -vv run test:unit --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -102,7 +103,7 @@ jobs:
         # Run outside of Devbox. Playwright and Devbox don't like each other.
         uses: ./.github/actions/install-tools-and-deps
       - name: Run tests
-        run: pnpm turbo run test:e2e --summarize
+        run: pnpm turbo -vv run test:e2e --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@v4
