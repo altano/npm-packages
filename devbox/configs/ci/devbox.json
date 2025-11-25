@@ -2,7 +2,13 @@
   "packages": [
     "git@2.44.1",
     "mercurialFull@latest",
-    "nodejs@22.14.0", // keep in sync with .github/actions/*.yml
+
+    // keep in sync with .github/actions/*.yml.
+    //
+    // need to run `devbox update` in each devbox/configs/XXX dir to pick up the
+    // new version in devbox.lock.
+    "nodejs@24.11.1",
+
     "sapling@latest",
     "subversion@latest"
   ],

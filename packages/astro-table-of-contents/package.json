@@ -37,7 +37,7 @@
     "lint": "eslint",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*",
-    "test:e2e": "playwright test",
+    "test:e2e": "NODE_OPTIONS='--no-experimental-strip-types' playwright test",
     "test:e2e:server": "astro dev --strictPort --port 4783",
     "test:e2e:ui": "playwright test --ui"
   },
