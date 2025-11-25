@@ -35,7 +35,7 @@
     "prettier": "catalog:",
     "semver": "^7.7.2",
     "syncpack": "^13.0.4",
-    "turbo": "^2.5.3",
+    "turbo": "^2.6.1",
     "typescript": "catalog:",
     "yaml": "^2.8.0"
   },
