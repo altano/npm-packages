@@ -1,5 +1,11 @@
 # @altano/astro-table-of-contents
 
+## 0.1.4
+
+### Patch Changes
+
+- 5eb9c09: fix typo in readme
+
 ## 0.1.3
 
 ### Patch Changes
