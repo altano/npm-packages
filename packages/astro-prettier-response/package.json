@@ -68,7 +68,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:",
-    "zx": "^8.5.2"
+    "zx": "^8.8.5"
   },
   "peerDependencies": {
     "astro": "5.x.x",
