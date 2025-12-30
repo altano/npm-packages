@@ -1,6 +1,6 @@
 {
   "version": "0.2",
-  "ignorePaths": [],
+  "ignorePaths": ["./pnpm-workspace.yaml"],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
