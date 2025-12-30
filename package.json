@@ -29,15 +29,15 @@
   "devDependencies": {
     "@altano/eslint-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@changesets/cli": "^2.29.4",
+    "@changesets/cli": "^2.29.6",
     "@playwright/test": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "semver": "^7.7.2",
     "syncpack": "^13.0.4",
-    "turbo": "^2.5.3",
+    "turbo": "^2.6.1",
     "typescript": "catalog:",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.1"
   },
   "packageManager": "pnpm@10.16.0",
   "pnpm": {

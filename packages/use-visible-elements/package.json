@@ -36,7 +36,7 @@
     "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint",
-    "test:e2e": "playwright test",
+    "test:e2e": "NODE_OPTIONS='--no-experimental-strip-types' playwright test",
     "test:e2e:server": "vite --strictPort --port 3820 ./tests/e2e",
     "test:e2e:ui": "playwright test --ui"
   },

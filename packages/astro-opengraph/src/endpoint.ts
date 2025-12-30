@@ -74,7 +74,7 @@ export function makeOpengraphEndpoint({
     };
     const png = await htmlToPNG(templateStr, imageOptions);
 
-    return new Response(png.data, {
+    return new Response(new Uint8Array(png.data), {
       headers: {
         "Content-Type": contentType,
       },
