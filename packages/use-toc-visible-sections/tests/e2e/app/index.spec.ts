@@ -10,7 +10,7 @@ test("initial load has current headings", async ({ page }) => {
     "Quam aut alias excepturi. Eligendi?",
   ];
   for (const heading of currentHeadings) {
-    await expect(page.getByRole("heading", { name: heading })).toBeVisible();
+    await expect(page.getByRole("heading", { name: heading })).toBeInViewport();
     await expect(
       page.getByRole("navigation").locator("li", { hasText: heading }),
     ).toHaveAttribute("aria-current");
