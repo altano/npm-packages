@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@gofunky/trumpet": "^3.0.3",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "stream-to-promise": "^3.0.0",
     "streamifier": "^0.1.1"
   },
