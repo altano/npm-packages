@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@gofunky/trumpet": "^3.0.3",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "stream-to-promise": "^3.0.0",
     "streamifier": "^0.1.1"
   },
@@ -57,9 +57,9 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
-    "@types/lodash": "^4.14.202",
+    "@types/lodash": "^4.17.23",
     "@types/node": "catalog:",
-    "@types/stream-to-promise": "^2.2.4",
+    "@types/stream-to-promise": "^2.2.5",
     "@types/streamifier": "^0.1.2",
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",

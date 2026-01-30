@@ -9,7 +9,7 @@
     "start": "vite --strictPort --port 3717 ."
   },
   "dependencies": {
-    "@altano/satori-fit-text": "workspace:",
+    "@altano/satori-fit-text": "workspace:^",
     "@fontsource-variable/inter": "catalog:",
     "@fontsource/inter": "catalog:",
     "react": "catalog:",
