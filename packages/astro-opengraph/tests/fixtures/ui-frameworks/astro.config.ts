@@ -7,6 +7,16 @@ import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 
 const config: AstroUserConfig = defineConfig({
+  vite: {
+    // https://github.com/withastro/astro/issues/15857
+    optimizeDeps: {
+      include: [
+        "astro/toolbar",
+        "astro/runtime/client/dev-toolbar/entrypoint.js",
+        "preact/hooks",
+      ],
+    },
+  },
   integrations: [
     // Make sure we play nice with ui frameworks ...
     svelte(),

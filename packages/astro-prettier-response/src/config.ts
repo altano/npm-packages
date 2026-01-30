@@ -7,16 +7,7 @@ export const ConfigSchema: z.ZodDefault<
         disableMinifiers: z.ZodDefault<z.ZodBoolean>;
         formatXml: z.ZodDefault<z.ZodBoolean>;
       },
-      "strict",
-      z.ZodTypeAny,
-      {
-        disableMinifiers: boolean;
-        formatXml: boolean;
-      },
-      {
-        disableMinifiers?: boolean | undefined;
-        formatXml?: boolean | undefined;
-      }
+      z.core.$strict
     >
   >
 > = z
@@ -51,6 +42,6 @@ export const ConfigSchema: z.ZodDefault<
   })
   .strict()
   .optional()
-  .default({});
+  .default({ disableMinifiers: true, formatXml: false });
 
 export type AstroPrettierResponseConfig = z.infer<typeof ConfigSchema>;

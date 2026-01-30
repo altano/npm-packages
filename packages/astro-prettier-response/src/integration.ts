@@ -62,6 +62,34 @@ const integration: (options?: {
               });
             }
 
+            // Astro 6 hardcodes minify: true for the client environment,
+            // ignoring vite.build.minify. Use a plugin to override it.
+            if (
+              config?.vite?.environments?.["client"]?.build?.minify !== false
+            ) {
+              didConfigOverride = true;
+              updateConfig({
+                vite: {
+                  plugins: [
+                    {
+                      name: "astro-prettier-response-disable-client-minify",
+                      config() {
+                        return {
+                          environments: {
+                            client: {
+                              build: {
+                                minify: false,
+                              },
+                            },
+                          },
+                        };
+                      },
+                    },
+                  ],
+                },
+              });
+            }
+
             if (didConfigOverride) {
               logger.info(
                 `Disabling minification of html/css/js in Astro config (https://github.com/altano/npm-packages/tree/main/packages/astro-prettier-response#config-overrides)`,

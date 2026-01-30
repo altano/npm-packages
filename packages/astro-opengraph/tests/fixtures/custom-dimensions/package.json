@@ -7,8 +7,8 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "@altano/assets": "workspace:",
-    "@altano/astro-opengraph": "workspace:",
+    "@altano/assets": "workspace:^",
+    "@altano/astro-opengraph": "workspace:^",
     "astro": "catalog:"
   }
 }

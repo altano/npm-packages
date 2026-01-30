@@ -29,7 +29,7 @@
     "src/**/*.astro"
   ],
   "scripts": {
-    "check:types:astro": "astro check --root src",
+    "check:types:astro": "astro check --tsconfig tsconfig.astro.json",
     "check:unused-dependencies": "depcheck",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "astro dev",
@@ -48,7 +48,7 @@
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "catalog:",
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
     "astro": "catalog:",
@@ -59,7 +59,7 @@
     "vite": "catalog:"
   },
   "peerDependencies": {
-    "astro": "5.x.x"
+    "astro": "6.x.x"
   },
   "publishConfig": {
     "access": "public"

@@ -8,14 +8,14 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "@altano/assets": "workspace:",
-    "@altano/astro-opengraph": "workspace:",
+    "@altano/assets": "workspace:^",
+    "@altano/astro-opengraph": "workspace:^",
     "@astrojs/preact": "catalog:",
     "@astrojs/svelte": "catalog:",
     "@astrojs/vue": "catalog:",
     "astro": "catalog:",
     "svelte": "catalog:",
-    "typescript": "^5.8.3",
+    "typescript": "5.9.3",
     "vue": "catalog:"
   }
 }

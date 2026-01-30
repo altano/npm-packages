@@ -203,6 +203,13 @@ describe("integration", async () => {
           minify: false,
           cssMinify: false,
         },
+        environments: {
+          client: {
+            build: {
+              minify: false,
+            },
+          },
+        },
       },
       compressHTML: false,
     });

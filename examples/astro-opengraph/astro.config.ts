@@ -3,6 +3,12 @@ import opengraph from "@altano/astro-opengraph";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    // https://github.com/withastro/astro/issues/15857
+    optimizeDeps: {
+      include: ["astro/toolbar"],
+    },
+  },
   integrations: [
     opengraph({
       componentMetaTagFallbacks: {
