@@ -55,7 +55,7 @@
     "@altano/testing": "workspace:*",
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "catalog:",
     "@inox-tools/astro-tests": "0.5.1",
     "@prettier/plugin-xml": "^3.4.1",
     "@types/mime-types": "^2.1.4",
@@ -71,7 +71,7 @@
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "astro": "5.x.x",
+    "astro": "6.x.x",
     "prettier": "3.x.x"
   },
   "optionalDependencies": {

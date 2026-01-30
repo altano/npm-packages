@@ -4,6 +4,12 @@ import openGraph from "../../../src/index.js";
 import { getInterPath } from "@altano/assets";
 
 const config: AstroUserConfig = defineConfig({
+  vite: {
+    // https://github.com/withastro/astro/issues/15857
+    optimizeDeps: {
+      include: ["astro/toolbar"],
+    },
+  },
   integrations: [
     openGraph({
       getImageOptions: async () => ({

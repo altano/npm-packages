@@ -11,21 +11,25 @@ import type { DevToolbarRadioCheckbox } from "astro/runtime/client/dev-toolbar/u
 // e.g. DevToolbarButton: node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.d.ts
 
 interface DevToolbarIconAttributes
-  extends Preact.JSX.HTMLAttributes<HTMLElement>,
+  extends
+    Preact.JSX.HTMLAttributes<HTMLElement>,
     Partial<Pick<DevToolbarIcon, "icon">> {}
 
 interface DevToolbarButtonAttributes
-  extends Preact.JSX.HTMLAttributes<HTMLElement>,
+  extends
+    Preact.JSX.HTMLAttributes<HTMLElement>,
     Partial<
       Pick<DevToolbarButton, "size" | "buttonStyle" | "buttonBorderRadius">
     > {}
 
 interface DevToolbarWindowAttributes
-  extends Preact.JSX.HTMLAttributes<HTMLElement>,
+  extends
+    Preact.JSX.HTMLAttributes<HTMLElement>,
     Partial<Pick<DevToolbarWindow, "placement">> {}
 
 interface DevToolbarRadioCheckboxAttributes
-  extends Preact.JSX.HTMLAttributes<HTMLElement>,
+  extends
+    Preact.JSX.HTMLAttributes<HTMLElement>,
     Partial<Pick<DevToolbarRadioCheckbox, "radioStyle">> {}
 
 interface AstroIntrinsicElements {

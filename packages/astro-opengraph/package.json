@@ -69,7 +69,7 @@
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@altano/vitest-plugins": "workspace:*",
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "catalog:",
     "@astrojs/preact": "catalog:",
     "@astrojs/svelte": "catalog:",
     "@astrojs/vue": "catalog:",
@@ -93,7 +93,7 @@
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "astro": "5.x.x",
+    "astro": "6.x.x",
     "preact": ">=10"
   },
   "publishConfig": {

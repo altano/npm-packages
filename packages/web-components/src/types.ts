@@ -3,8 +3,7 @@ type EventDetail = {
   isIntersecting: boolean;
 };
 
-export interface VisibleElementChangedEvent
-  extends CustomEventInit<EventDetail> {
+export interface VisibleElementChangedEvent extends CustomEventInit<EventDetail> {
   // Make detail required
   detail: EventDetail;
 }

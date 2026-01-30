@@ -85,7 +85,9 @@ class OptionsMerger {
  * attributes that identify CDN-able resources converted to
  * use the given CDN URL.
  */
-export class CDNTransformer extends HtmlAttributeStreamTransformer.HtmlAttributeStreamTransformer {
+export class CDNTransformer
+  extends HtmlAttributeStreamTransformer.HtmlAttributeStreamTransformer
+{
   public cdnOptions: Required<CDNTransformerOptions>;
 
   constructor(cdnOptions: CDNTransformerOptions) {
