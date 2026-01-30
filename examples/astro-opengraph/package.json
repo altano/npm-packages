@@ -2,6 +2,7 @@
   "name": "astro-opengraph-example",
   "version": "0.0.1",
   "private": true,
+  "description": "",
   "type": "module",
   "scripts": {
     "astro": "astro",
@@ -11,12 +12,12 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@altano/assets": "workspace:",
-    "@altano/astro-opengraph": "workspace:",
-    "@altano/satori-fit-text": "workspace:",
+    "@altano/assets": "workspace:^",
+    "@altano/astro-opengraph": "workspace:^",
+    "@altano/satori-fit-text": "workspace:^",
     "@fontsource/inter": "catalog:",
     "astro": "catalog:",
-    "sharp": "^0.33.1"
+    "sharp": "^0.33.5"
   },
   "publishConfig": {
     "access": "restricted"

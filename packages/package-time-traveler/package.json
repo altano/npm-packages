@@ -26,10 +26,10 @@
   },
   "dependencies": {
     "@altano/tiny-async-pool": "workspace:*",
-    "pacote": "^21.0.0"
+    "pacote": "^21.1.0"
   },
   "devDependencies": {
     "eslint": "catalog:",
-    "prettier": "^3.3.3"
+    "prettier": "^3.8.1"
   }
 }

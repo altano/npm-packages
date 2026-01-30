@@ -10,7 +10,7 @@
     "start": "node cli.mjs --width 500 --height 100 --text hello"
   },
   "dependencies": {
-    "@altano/satori-fit-text": "workspace:",
+    "@altano/satori-fit-text": "workspace:^",
     "@fontsource/inter": "catalog:"
   },
   "engines": {

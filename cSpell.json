@@ -1,6 +1,8 @@
 {
   "version": "0.2",
-  "ignorePaths": ["./pnpm-workspace.yaml"],
+  "ignorePaths": [
+    "./pnpm-workspace.yaml"
+  ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
@@ -9,7 +11,9 @@
     "exifr",
     "Norbauer",
     "opengraph",
+    "syncpack",
     "tsdown",
+    "unminified",
     "withastro"
   ],
   "ignoreWords": [],

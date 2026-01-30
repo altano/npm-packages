@@ -48,14 +48,14 @@
   "dependencies": {
     "@inox-tools/runtime-logger": "^0.4.2",
     "astro-integration-kit": "^0.18.0",
-    "mime-types": "^3.0.1"
+    "mime-types": "^3.0.2"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
     "@altano/testing": "workspace:*",
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.6",
     "@inox-tools/astro-tests": "0.5.1",
     "@prettier/plugin-xml": "^3.4.1",
     "@types/mime-types": "^2.1.4",
@@ -75,7 +75,7 @@
     "prettier": "3.x.x"
   },
   "optionalDependencies": {
-    "@prettier/plugin-xml": "3.x.x"
+    "@prettier/plugin-xml": "3.4.2"
   },
   "publishConfig": {
     "access": "public"

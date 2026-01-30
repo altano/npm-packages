@@ -29,18 +29,21 @@
   "devDependencies": {
     "@altano/eslint-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@changesets/cli": "^2.29.6",
+    "@changesets/cli": "^2.29.8",
     "@playwright/test": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "semver": "^7.7.2",
+    "semver": "^7.7.3",
     "syncpack": "^13.0.4",
-    "turbo": "^2.6.1",
+    "turbo": "^2.8.0",
     "typescript": "catalog:",
-    "yaml": "^2.8.1"
+    "yaml": "^2.8.2"
   },
   "packageManager": "pnpm@10.16.0",
   "pnpm": {
+    "overrides": {
+      "rolldown-plugin-dts": "0.13.13"
+    },
     "supportedArchitectures": {
       "os": [
         "current",

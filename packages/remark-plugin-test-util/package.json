@@ -31,7 +31,7 @@
     "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^3.1.0",
+    "@mdx-js/mdx": "^3.1.1",
     "vfile": "^6.0.3",
     "vitest": "catalog:"
   },
