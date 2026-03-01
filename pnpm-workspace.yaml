@@ -32,7 +32,7 @@ catalog:
   "react-dom": ^19.1.0
   "react": ^19.1.0
   "satori": ^0.12.2
-  "svelte": "^5.25.12"
+  "svelte": "^5.53.5"
   "tsdown": ^0.12.9
   "typescript": ^5.8.2
   "vite": ^6.3.5
