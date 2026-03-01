@@ -27,7 +27,7 @@ catalog:
   "debug": ^4.4.0
   "depcheck": ^1.4.7
   "eslint": ^9.31.0
-  "preact": ^10.26.5
+  "preact": ^10.26.10
   "prettier": ^3.5.3
   "react-dom": ^19.1.0
   "react": ^19.1.0
