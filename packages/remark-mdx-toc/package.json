@@ -29,7 +29,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsdown --config ../build-config/tsdown.config.browser.ts",
+    "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.browser.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -48,7 +48,6 @@
     "estree-util-value-to-estree": "^3.5.0",
     "mdast-util-mdx": "^3.0.0",
     "mdast-util-to-string": "^4.0.0",
-    "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
@@ -58,17 +57,24 @@
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/estree": "^1.0.8",
-    "@types/mdast": "^4.0.4",
+    "@types/mdast": "catalog:",
     "@types/node": "catalog:",
-    "@types/unist": "^3.0.3",
+    "@types/unist": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
-    "mdast-util-mdx-jsx": "^3.2.0",
+    "mdast-util-mdx-jsx": "catalog:",
     "prettier": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
+    "unified": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@types/mdast": "catalog:peers",
+    "@types/unist": "catalog:peers",
+    "mdast-util-mdx-jsx": "catalog:peers",
+    "unified": "catalog:peers"
   },
   "publishConfig": {
     "access": "public"

@@ -6,9 +6,11 @@ import type { ImageOptions } from "./types.js";
 import { htmlToPNG } from "./image.js";
 
 type Options = {
-  // We don't just type this as `AstroComponentFactory` because astro typing is
-  // hard to get right and simply importing a .astro file doesn't give you
-  // something typed as a factory.
+  /**
+   * We don't just type this as `AstroComponentFactory` because astro typing is
+   * hard to get right and simply importing a .astro file doesn't give you
+   * something typed as a factory.
+   */
   template: unknown;
   /**
    * Custom "Content-Type" header, only used in SSR. Defaults to "image/png"

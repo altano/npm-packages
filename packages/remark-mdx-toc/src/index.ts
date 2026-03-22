@@ -11,16 +11,16 @@ import type { Heading } from "mdast";
 
 export type TocEntry = {
   depth: number;
-  // value of the heading
+  /* value of the heading */
   value: string;
   attributes: { [key: string]: string };
   children: TocEntry[];
 };
 
 export type CustomTag = {
-  /// regex to match the tag name
+  /* regex to match the tag name */
   name: RegExp;
-  /// get depth from name
+  /* get depth from name */
   depth: (name: string) => number;
 };
 

@@ -1,6 +1,8 @@
 import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
+import baseConfig from "../build-config/tsdown.config.base.js";
 
 const config: UserConfig | UserConfigFn = defineConfig({
+  ...baseConfig,
   entry: [
     // this can only export things that are safe to use from an astro config
     "src/index.ts",
@@ -11,8 +13,6 @@ const config: UserConfig | UserConfigFn = defineConfig({
     // this can import/export, but be careful: this is loaded in the user's site!
     "src/toolbar/index.tsx",
   ],
-  dts: true,
-  clean: true,
   platform: "node",
   external: [
     "astro:middleware",

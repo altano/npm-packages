@@ -40,7 +40,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown --config-loader unrun",
     "check:types:astro": "node --experimental-strip-types ./scripts/check-fixtures.ts",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",

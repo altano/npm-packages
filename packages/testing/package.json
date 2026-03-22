@@ -19,7 +19,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
+    "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.node.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:unused-dependencies": "depcheck",
@@ -35,6 +35,7 @@
     "@altano/vitest-plugins": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
     "@vitejs/plugin-react": "^4.7.0",
+    "vite": "catalog:",
     "vitest": "catalog:"
   },
   "devDependencies": {
@@ -46,8 +47,7 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
     "@vitest/coverage-v8": "4.x.x",
