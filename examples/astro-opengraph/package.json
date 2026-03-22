@@ -2,7 +2,7 @@
   "name": "astro-opengraph-example",
   "version": "0.0.1",
   "private": true,
-  "description": "",
+  "description": "Example for @altano/astro-opengraph",
   "type": "module",
   "scripts": {
     "astro": "astro",
