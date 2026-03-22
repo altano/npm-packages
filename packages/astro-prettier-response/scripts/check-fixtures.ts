@@ -1,8 +1,5 @@
 #!/usr/bin/env zx
 
-/* this is a dev-only script */
-/* eslint-disable import-x/no-extraneous-dependencies */
-
 import { $, echo, glob, os, path } from "zx";
 import { doWork } from "@altano/tiny-async-pool";
 

@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@arethetypeswrong/cli':
-      specifier: ^0.17.4
-      version: 0.17.4
+      specifier: ^0.18.2
+      version: 0.18.2
     '@astrojs/check':
       specifier: ^0.9.8
       version: 0.9.8
@@ -201,7 +201,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.15
@@ -210,7 +210,7 @@ importers:
         version: 1.4.7
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -295,7 +295,7 @@ importers:
         version: 5.53.6
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -362,7 +362,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -430,7 +430,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -509,7 +509,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/lodash':
         specifier: ^4.17.23
         version: 4.17.23
@@ -536,7 +536,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -598,7 +598,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/estree':
         specifier: ^1.0.8
         version: 1.0.8
@@ -625,7 +625,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -677,7 +677,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.15
@@ -695,7 +695,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -726,7 +726,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -744,7 +744,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -787,7 +787,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -811,7 +811,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.15
@@ -841,7 +841,7 @@ importers:
         version: 0.0.9
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -881,7 +881,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@fontsource-variable/inter':
         specifier: 'catalog:'
         version: 5.2.6
@@ -932,7 +932,7 @@ importers:
         version: 19.2.4
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -969,7 +969,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.15
@@ -984,7 +984,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1002,7 +1002,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.58.2
@@ -1014,7 +1014,7 @@ importers:
         version: 1.4.7
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1038,7 +1038,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.19.15
@@ -1056,7 +1056,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1093,7 +1093,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@testing-library/react':
         specifier: ^16.3.2
         version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1123,7 +1123,7 @@ importers:
         version: 19.2.4
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1148,7 +1148,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.58.2
@@ -1178,7 +1178,7 @@ importers:
         version: 19.2.4(react@19.2.4)
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1206,7 +1206,7 @@ importers:
         version: link:../tsconfig
       '@arethetypeswrong/cli':
         specifier: 'catalog:'
-        version: 0.17.4
+        version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.58.2
@@ -1236,7 +1236,7 @@ importers:
         version: 19.2.4(react@19.2.4)
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1309,7 +1309,7 @@ importers:
         version: 3.8.1
       tsdown:
         specifier: 'catalog:'
-        version: 0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1328,14 +1328,14 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/cli@0.17.4':
-    resolution: {integrity: sha512-AeiKxtf67XD/NdOqXgBOE5TZWH3EOCt+0GkbUpekOzngc+Q/cRZ5azjWyMxISxxfp0EItgm5NoSld9p7BAA5xQ==}
-    engines: {node: '>=18'}
+  '@arethetypeswrong/cli@0.18.2':
+    resolution: {integrity: sha512-PcFM20JNlevEDKBg4Re29Rtv2xvjvQZzg7ENnrWFSS0PHgdP2njibVFw+dRUhNkPgNfac9iUqO0ohAXqQL4hbw==}
+    engines: {node: '>=20'}
     hasBin: true
 
-  '@arethetypeswrong/core@0.17.4':
-    resolution: {integrity: sha512-Izvir8iIoU+X4SKtDAa5kpb+9cpifclzsbA8x/AZY0k0gIfXYQ1fa1B6Epfe6vNA2YfDX8VtrZFgvnXB6aPEoQ==}
-    engines: {node: '>=18'}
+  '@arethetypeswrong/core@0.18.2':
+    resolution: {integrity: sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==}
+    engines: {node: '>=20'}
 
   '@asamuzakjp/css-color@3.1.1':
     resolution: {integrity: sha512-hpRD68SV2OMcZCsrbdkccTw5FXjNDLo5OuqSHyHZfwweGsDWZwDJ2+gONyNAbazZclobMirACLw0lk8WVxIqxA==}
@@ -7517,9 +7517,9 @@ snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/cli@0.17.4':
+  '@arethetypeswrong/cli@0.18.2':
     dependencies:
-      '@arethetypeswrong/core': 0.17.4
+      '@arethetypeswrong/core': 0.18.2
       chalk: 4.1.2
       cli-table3: 0.6.5
       commander: 10.0.1
@@ -7527,13 +7527,13 @@ snapshots:
       marked-terminal: 7.1.0(marked@9.1.6)
       semver: 7.7.4
 
-  '@arethetypeswrong/core@0.17.4':
+  '@arethetypeswrong/core@0.18.2':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.4
       cjs-module-lexer: 1.4.3
       fflate: 0.8.2
-      lru-cache: 10.4.3
+      lru-cache: 11.2.2
       semver: 7.7.4
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
@@ -14165,7 +14165,7 @@ snapshots:
       strip-bom: 3.0.0
     optional: true
 
-  tsdown@0.12.9(typescript@5.9.3)(unplugin-unused@0.5.0):
+  tsdown@0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.9.3)(unplugin-unused@0.5.0):
     dependencies:
       ansis: 4.1.0
       cac: 6.7.14
@@ -14181,6 +14181,7 @@ snapshots:
       tinyglobby: 0.2.15
       unconfig: 7.3.2
     optionalDependencies:
+      '@arethetypeswrong/core': 0.18.2
       typescript: 5.9.3
       unplugin-unused: 0.5.0
     transitivePeerDependencies:
