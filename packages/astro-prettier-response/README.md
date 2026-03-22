@@ -107,6 +107,13 @@ export default defineConfig({
       minify: false,
       cssMinify: false,
     },
+    environments: {
+      client: {
+        build: {
+          minify: false,
+        },
+      },
+    },
   },
   compressHTML: false,
 });
