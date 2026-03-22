@@ -63,7 +63,6 @@ function getPnpmCatalogPeerDependencies() {
 
 /** @type {import("syncpack").RcFile} */
 const config = {
-  lintFormatting: false,
   semverGroups: [
     {
       packages: ["package-time-traveler"],
