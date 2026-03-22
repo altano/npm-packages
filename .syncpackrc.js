@@ -30,6 +30,8 @@ function getPnpmCatalogPeerDependencies() {
     },
   ];
 
+  const peersCatalog = pnpmWorkspaceConfig.catalogs?.peers ?? {};
+
   const generalCases = Object.entries(pnpmWorkspaceConfig.catalog).flatMap(
     ([packageName, versionStr]) => {
       const minVersion = semver.minVersion(versionStr);
@@ -47,18 +49,43 @@ function getPnpmCatalogPeerDependencies() {
           dependencyTypes: ["!local", "!peer"],
           pinVersion: "catalog:",
         },
-        // general cases
-        {
-          label: `Enforce pnpm default catalog for ${packageName} (peer deps)`,
-          dependencies: [packageName],
-          dependencyTypes: ["peer"],
-          pinVersion: `${minVersion.major}.x.x`,
-        },
+        packageName in peersCatalog
+          ? {
+              label: `Enforce pnpm peers catalog for ${packageName} (peer deps)`,
+              dependencies: [packageName],
+              dependencyTypes: ["peer"],
+              pinVersion: "catalog:peers",
+            }
+          : {
+              label: `Enforce pnpm pinned version for ${packageName} (peer deps)`,
+              dependencies: [packageName],
+              dependencyTypes: ["peer"],
+              pinVersion: `${minVersion.major}.x.x`,
+            },
       ];
     },
   );
 
-  return [...specialCases, ...generalCases];
+  // Packages only in the peers catalog should use catalog:peers for peer deps
+  // and should not appear as production dependencies.
+  const peersOnlyCases = Object.keys(peersCatalog)
+    .filter((packageName) => !(packageName in pnpmWorkspaceConfig.catalog))
+    .flatMap((packageName) => [
+      {
+        label: `Enforce pnpm peers catalog for ${packageName} (peer deps)`,
+        dependencies: [packageName],
+        dependencyTypes: ["peer"],
+        pinVersion: "catalog:peers",
+      },
+      {
+        label: `${packageName} should not be a production dependency (use peer + dev dep instead)`,
+        dependencies: [packageName],
+        dependencyTypes: ["prod"],
+        isBanned: true,
+      },
+    ]);
+
+  return [...specialCases, ...generalCases, ...peersOnlyCases];
 }
 
 /** @type {import("syncpack").RcFile} */

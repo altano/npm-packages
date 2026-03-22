@@ -31,7 +31,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
+    "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.node.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -82,6 +82,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@types/react": "catalog:peers"
   },
   "publishConfig": {
     "access": "public"

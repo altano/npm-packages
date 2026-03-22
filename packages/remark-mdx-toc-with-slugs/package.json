@@ -31,7 +31,7 @@
     "dist/**/*.d.ts"
   ],
   "scripts": {
-    "build": "tsdown --config ../build-config/tsdown.config.browser.ts",
+    "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.browser.ts",
     "check:exports": "attw --pack . --profile esm-only --quiet",
     "check:types:src": "tsc --noEmit",
     "check:types:test": "tsc --noEmit --project ./tests/tsconfig.json",
@@ -53,7 +53,7 @@
     "estree-util-visit": "^2.0.0",
     "github-slugger": "^2.0.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
-    "unified": "^11.0.5",
+    "unified": "catalog:",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
@@ -63,7 +63,7 @@
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@types/node": "catalog:",
-    "@types/unist": "^3.0.3",
+    "@types/unist": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
     "prettier": "catalog:",
@@ -71,6 +71,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@types/unist": "catalog:peers"
   },
   "publishConfig": {
     "access": "public"

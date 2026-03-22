@@ -1,14 +1,14 @@
 import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
+import baseConfig from "../build-config/tsdown.config.base.js";
 
 const config: UserConfig | UserConfigFn = defineConfig({
+  ...baseConfig,
   entry: [
     // this can only export things that are safe to use from an astro config
     "src/index.ts",
     // this can import/export anything, including modules used during astro build, e.g. `astro:assets`
     "src/middleware/index.ts",
   ],
-  dts: true,
-  clean: true,
   platform: "node",
   external: [
     // Astro's virtual modules

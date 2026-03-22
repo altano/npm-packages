@@ -87,7 +87,7 @@ export default {
           "import-x/no-named-as-default-member": "off",
           "import-x/no-extraneous-dependencies": [
             "error",
-            { devDependencies: false },
+            { devDependencies: false, includeTypes: true },
           ],
         },
       },
