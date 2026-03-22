@@ -10,7 +10,7 @@ packages:
 minimum-release-age-exclude: 4320
 
 catalog:
-  "@arethetypeswrong/cli": ^0.17.4
+  "@arethetypeswrong/cli": ^0.18.2
   "@astrojs/check": ^0.9.8
   "@astrojs/preact": ^5.0.2
   "@astrojs/svelte": ^8.0.3
