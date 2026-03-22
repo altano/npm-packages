@@ -8,8 +8,8 @@ catalog:
   "@astrojs/preact": ^5.0.2
   "@astrojs/svelte": ^8.0.3
   "@astrojs/vue": ^6.0.1
-  "@fontsource-variable/inter": 5.2.6
-  "@fontsource/inter": 5.2.6
+  "@fontsource-variable/inter": 5.2.8
+  "@fontsource/inter": 5.2.8
   "@playwright/test": 1.58.2
   "@types/mdast": ^4.0.4
   "@types/node": ^25.5.0
@@ -27,7 +27,9 @@ catalog:
   prettier: ^3.8.1
   react: ^19.2.4
   react-dom: ^19.2.4
-  satori: ^0.12.2
+  # https://github.com/vercel/satori/issues/738
+  # satori 0.18.0+ references process.env at module scope, breaking browser usage
+  satori: ^0.26.0
   svelte: ^5.53.5
   tsdown: ^0.21.4
   typescript: ^5.9.3
