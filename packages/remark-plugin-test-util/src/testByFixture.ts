@@ -1,6 +1,6 @@
 import { compile } from "@mdx-js/mdx";
 import { promises as fs } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import { expect, test } from "vitest";
 import { VFile } from "vfile";
 
@@ -56,7 +56,9 @@ export async function getFixtureCompiler(
   const fixtureDir = join(fixturesDir, fixture);
   const inputMdx = await fs.readFile(join(fixtureDir, "input.mdx"));
   const inputMdxPath = join(fixtureDir, `input.mdx`);
-  const optionsImport: unknown = await import(join(fixtureDir, "options.js"));
+  const optionsImport: unknown = await import(
+    resolve(join(fixtureDir, "options.js"))
+  );
   assertFixtureOptions(optionsImport);
   const fixtureOptions = optionsImport.default;
   const options = {

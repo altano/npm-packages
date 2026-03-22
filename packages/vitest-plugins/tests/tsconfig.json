@@ -4,6 +4,6 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": "..",
-    "types": ["../src/matchers/types"]
+    "types": ["node", "../src/matchers/types"]
   }
 }
