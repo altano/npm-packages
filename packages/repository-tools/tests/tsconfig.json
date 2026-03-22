@@ -2,7 +2,7 @@
   "extends": "@altano/tsconfig/tests.json",
   "include": ["."],
   "compilerOptions": {
-    "types": ["@altano/testing/types"],
+    "types": ["node", "@altano/testing/types"],
     "moduleResolution": "Bundler",
     "target": "ESNext",
     "module": "ESNext"

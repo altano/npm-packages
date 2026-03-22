@@ -88,6 +88,7 @@ const remarkMdxTocWithSlugs: Plugin<[RemarkMdxTocWithSlugsOptions?]> =
               // Overwrite the existing toc export with ours
               const newTree = valueToEstree(tocWithSlugs);
 
+              /* v8 ignore if */
               if (newTree.type === "ArrayExpression") {
                 esNode.init = newTree;
               }

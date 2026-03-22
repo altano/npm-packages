@@ -143,13 +143,18 @@ function _createMdxContent(props) {
       p: "p",
       ...props.components,
     },
-    { H1, H2 } = _components;
+    { H1, H2, NotAHeading } = _components;
   if (!H1) _missingMdxReference("H1", true);
   if (!H2) _missingMdxReference("H2", true);
+  if (!NotAHeading) _missingMdxReference("NotAHeading", true);
   return (
     <>
       <_components.p>
         {"const H2 = ("}
+        {children}
+        {") => "}
+        <h2>{children}</h2>
+        {"\\nconst NotAHeading = ("}
         {children}
         {") => "}
         <h2>{children}</h2>
@@ -166,6 +171,8 @@ function _createMdxContent(props) {
       </_components.h2>
       {"\\n"}
       <H2>{"Custom Sub-Heading"}</H2>
+      {"\\n"}
+      <NotAHeading>{"Not a heading"}</NotAHeading>
     </>
   );
 }

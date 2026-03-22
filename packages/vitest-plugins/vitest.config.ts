@@ -7,7 +7,6 @@ const config: ViteUserConfig = defineConfig({
       enabled: true,
       include: ["src"],
       provider: "v8",
-      all: true,
       clean: true,
       skipFull: true,
       thresholds: { "100": true },

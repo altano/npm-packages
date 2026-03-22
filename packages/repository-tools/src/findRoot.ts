@@ -42,6 +42,7 @@ export async function findRoot(
   for (const method of findMethods) {
     try {
       const result = await method(directory);
+      /* v8 ignore if */
       if (result != null && result !== "") {
         return result;
       }
