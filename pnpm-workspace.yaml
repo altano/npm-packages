@@ -2,13 +2,6 @@ packages:
   - examples/*
   - packages/*
 
-# Specifies the number of minutes that must pass after a version is published
-# before pnpm will install it. For example, setting minimumReleaseAge: 1440
-# ensures that only packages released at least one day ago can be installed.
-#
-# https://github.com/pnpm/pnpm/releases/tag/v10.16.0
-minimum-release-age-exclude: 4320
-
 catalog:
   "@arethetypeswrong/cli": ^0.18.2
   "@astrojs/check": ^0.9.8
@@ -19,17 +12,17 @@ catalog:
   "@fontsource/inter": 5.2.6
   "@playwright/test": 1.58.2
   "@types/mdast": ^4.0.4
-  "@types/node": ^22.13.10
-  "@types/unist": ^3.0.3
-  mdast-util-mdx-jsx: ^3.2.0
+  "@types/node": ^25.5.0
   "@types/react": ^19.2.10
   "@types/react-dom": ^19.2.3
+  "@types/unist": ^3.0.3
   "@vitest/coverage-v8": ^4.1.0
   "@vitest/expect": ^4.1.0
   astro: ^6.0.8
   debug: ^4.4.3
   depcheck: ^1.4.7
-  eslint: ^9.39.2
+  eslint: ^9.39.4
+  mdast-util-mdx-jsx: ^3.2.0
   preact: ^10.28.2
   prettier: ^3.8.1
   react: ^19.2.4
@@ -53,3 +46,10 @@ catalogs:
     prettier: 3.x.x
     unified: 11.x.x
     vfile: 6.x.x
+
+# Specifies the number of minutes that must pass after a version is published
+# before pnpm will install it. For example, setting minimumReleaseAge: 1440
+# ensures that only packages released at least one day ago can be installed.
+#
+# https://github.com/pnpm/pnpm/releases/tag/v10.16.0
+minimum-release-age-exclude: 4320
