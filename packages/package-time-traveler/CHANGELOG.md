@@ -1,5 +1,14 @@
 # package-time-traveler
 
+## 3.0.6
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+- Updated dependencies [fb3c931]
+  - @altano/tiny-async-pool@4.0.2
+
 ## 3.0.5
 
 ### Patch Changes

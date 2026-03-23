@@ -1,5 +1,11 @@
 # @altano/tiny-async-pool
 
+## 4.0.2
+
+### Patch Changes
+
+- fb3c931: upgrade tsdown
+
 ## 4.0.1
 
 ### Patch Changes
@@ -29,7 +35,6 @@
 ### Major Changes
 
 - b8bc683: build/test overhaul
-
   - consolidate on module exports
   - better build orchestration
   - more extensive testing (both unit and browser testing)

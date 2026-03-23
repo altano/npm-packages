@@ -1,5 +1,12 @@
 # @altano/remark-mdx-toc
 
+## 1.0.2
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+
 ## 1.0.1
 
 ### Patch Changes

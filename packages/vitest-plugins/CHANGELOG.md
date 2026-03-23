@@ -1,5 +1,12 @@
 # @altano/vitest-plugins
 
+## 1.1.2
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+
 ## 1.1.1
 
 ### Patch Changes
