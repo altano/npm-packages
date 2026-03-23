@@ -30,12 +30,12 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v1.7.0
         with:
           publish: devbox run --config ./devbox/configs/ci-slim pnpm release
         env:
