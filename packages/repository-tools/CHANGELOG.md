@@ -1,5 +1,11 @@
 # @altano/repository-tools
 
+## 2.0.3
+
+### Patch Changes
+
+- b04392f: externalize @altano/disposable-directory
+
 ## 2.0.2
 
 ### Patch Changes
