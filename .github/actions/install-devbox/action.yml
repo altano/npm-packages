@@ -4,7 +4,7 @@ runs:
   using: "composite"
   steps:
     - name: Install Devbox
-      uses: jetpack-io/devbox-install-action@v0.14.0
+      uses: jetpack-io/devbox-install-action@8c6a66ed6273138b1915457069de78cb52fe3bd7 # ~v0.14.0
       with:
         project-path: ./devbox/configs/ci
         enable-cache: true
