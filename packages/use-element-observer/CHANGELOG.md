@@ -1,5 +1,12 @@
 # @altano/use-element-observer
 
+## 4.0.2
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+
 ## 4.0.1
 
 ### Patch Changes
@@ -29,7 +36,6 @@
 ### Major Changes
 
 - b8bc683: build/test overhaul
-
   - license change
   - consolidate on module exports
   - better build orchestration

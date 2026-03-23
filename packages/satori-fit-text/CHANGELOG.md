@@ -1,5 +1,12 @@
 # @altano/satori-fit-text
 
+## 2.0.2
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+
 ## 2.0.1
 
 ### Patch Changes
@@ -47,7 +54,6 @@
 ### Patch Changes
 
 - b8bc683: build/test overhaul
-
   - consolidate on module exports
   - better build orchestration
   - more extensive testing (both unit and browser testing)

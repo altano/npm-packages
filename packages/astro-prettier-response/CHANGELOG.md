@@ -1,5 +1,17 @@
 # @altano/astro-prettier-response
 
+## 2.0.0
+
+### Major Changes
+
+- 72b15cc: support astro v6
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- 7fbebe1: readme tweak
+- fb3c931: upgrade tsdown
+
 ## 1.0.1
 
 ### Patch Changes

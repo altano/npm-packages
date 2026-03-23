@@ -1,5 +1,11 @@
 # @altano/textfit
 
+## 1.0.1
+
+### Patch Changes
+
+- fb3c931: upgrade tsdown
+
 ## 1.0.0
 
 ### Major Changes
@@ -11,7 +17,6 @@
 ### Patch Changes
 
 - b8bc683: build/test overhaul
-
   - consolidate on module exports
   - better build orchestration
   - more extensive testing (both unit and browser testing)

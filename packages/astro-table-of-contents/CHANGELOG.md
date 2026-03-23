@@ -1,5 +1,21 @@
 # @altano/astro-table-of-contents
 
+## 1.0.0
+
+### Major Changes
+
+- 72b15cc: support astro v6
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- 7fbebe1: restore tsconfig back to what it was
+- 5eb9c09: fix typo in readme
+- fb3c931: upgrade tsdown
+- Updated dependencies [72b15cc]
+- Updated dependencies [fb3c931]
+  - @altano/web-components@0.0.5
+
 ## 0.1.3
 
 ### Patch Changes

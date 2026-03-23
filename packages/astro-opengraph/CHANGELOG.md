@@ -1,5 +1,16 @@
 # @altano/astro-opengraph
 
+## 1.0.0
+
+### Major Changes
+
+- 72b15cc: support astro v6
+
+### Patch Changes
+
+- 72b15cc: update dependencies
+- fb3c931: upgrade tsdown
+
 ## 0.1.1
 
 ### Patch Changes
