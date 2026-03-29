@@ -26,6 +26,7 @@
     "check": {
       "dependsOn": [
         "//#check:dependencies",
+        "//#check:dependency-resolution",
         "check:exports",
         "check:types",
         "check:unused-dependencies"
@@ -82,6 +83,7 @@
     "//#lint": {},
     "//#check:dependencies": {},
     "//#check:dependencies:fix": {},
+    "//#check:dependency-resolution": {},
     "dev": {
       "cache": false
     },
