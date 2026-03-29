@@ -46,7 +46,7 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "@inox-tools/runtime-logger": "^0.8.1",
+    "@inox-tools/runtime-logger": "^1.0.0",
     "astro-integration-kit": "^0.20.0",
     "mime-types": "^3.0.2"
   },
@@ -56,7 +56,7 @@
     "@altano/tiny-async-pool": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@astrojs/check": "catalog:",
-    "@inox-tools/astro-tests": "^0.9.1",
+    "@inox-tools/astro-tests": "^1.0.0",
     "@prettier/plugin-xml": "^3.4.1",
     "@types/mime-types": "^2.1.4",
     "@types/node": "catalog:",
