@@ -73,7 +73,7 @@
     "@astrojs/preact": "catalog:",
     "@astrojs/svelte": "catalog:",
     "@astrojs/vue": "catalog:",
-    "@inox-tools/astro-tests": "^0.9.1",
+    "@inox-tools/astro-tests": "^1.0.0",
     "@playwright/test": "catalog:",
     "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.1",
