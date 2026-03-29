@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 1.0.1
+
+### Patch Changes
+
+- 2d1852b: Actually support Astro v6 (fix peer deps error)
+
 ## 1.0.0
 
 ### Major Changes
