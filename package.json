@@ -40,17 +40,5 @@
     "typescript": "catalog:",
     "yaml": "^2.8.3"
   },
-  "packageManager": "pnpm@10.32.1",
-  "pnpm": {
-    "supportedArchitectures": {
-      "os": [
-        "current",
-        "linux"
-      ],
-      "cpu": [
-        "current",
-        "x64"
-      ]
-    }
-  }
+  "packageManager": "pnpm@10.32.1"
 }

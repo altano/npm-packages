@@ -58,3 +58,11 @@ minimum-release-age-exclude: 4320
 # future.
 # https://github.com/pnpm/pnpm/issues/10824
 strict-peer-dependencies: true
+
+supportedArchitectures:
+  cpu:
+    - current
+    - x64
+  os:
+    - current
+    - linux
