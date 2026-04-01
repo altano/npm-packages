@@ -52,7 +52,7 @@ catalogs:
 # ensures that only packages released at least one day ago can be installed.
 #
 # https://github.com/pnpm/pnpm/releases/tag/v10.16.0
-minimumReleaseAge: 4320
+minimumReleaseAge: 10080
 
 # doesn't catch my invalid deps right now but hopefully that'll be fixed in the
 # future.
