@@ -34,7 +34,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Build
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run build --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -47,7 +47,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Lint
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run lint --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run lint --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -60,7 +60,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Format
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run format --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run format --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -73,7 +73,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/install-devbox-slim
       - name: Check
-        run: devbox run --config ./devbox/configs/ci-slim pnpm turbo run check --summarize
+        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run check --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -87,7 +87,7 @@ jobs:
         # Run inside full Devbox environment, unit tests need everything
         uses: ./.github/actions/install-devbox
       - name: Run tests
-        run: devbox run --config ./devbox/configs/ci pnpm turbo run test:unit --summarize
+        run: devbox run --config ./devbox/configs/ci pnpm --dir="$GITHUB_WORKSPACE" turbo run test:unit --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 

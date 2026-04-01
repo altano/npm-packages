@@ -11,4 +11,4 @@ runs:
         devbox-version: 0.17.0
     - name: Install Dependencies
       shell: bash
-      run: devbox run --config ./devbox/configs/ci pnpm install
+      run: devbox run --config ./devbox/configs/ci pnpm --dir="$GITHUB_WORKSPACE" install
