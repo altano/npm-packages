@@ -17,10 +17,10 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "format": "turbo run format",
-    "install:playwright": "playwright install --with-deps",
-    "lint": "eslint --no-error-on-unmatched-pattern *.json *.ts",
-    "lint:inspect": "pnpm dlx @eslint/config-inspector@latest",
     "preinstall": "npx only-allow pnpm",
+    "install:playwright": "playwright install --with-deps",
+    "lint": "eslint .github/**/*.yml && eslint --no-warn-ignored --no-error-on-unmatched-pattern *.json *.ts *.yaml",
+    "lint:inspect": "pnpm dlx @eslint/config-inspector@latest",
     "prep": "turbo run build build:documentation test lint format check --summarize",
     "release": "turbo run build && changeset publish",
     "test": "turbo run test",
@@ -40,17 +40,5 @@
     "typescript": "catalog:",
     "yaml": "^2.8.3"
   },
-  "packageManager": "pnpm@10.32.1",
-  "pnpm": {
-    "supportedArchitectures": {
-      "os": [
-        "current",
-        "linux"
-      ],
-      "cpu": [
-        "current",
-        "x64"
-      ]
-    }
-  }
+  "packageManager": "pnpm@10.32.1"
 }

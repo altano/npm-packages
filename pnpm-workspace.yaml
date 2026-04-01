@@ -52,9 +52,17 @@ catalogs:
 # ensures that only packages released at least one day ago can be installed.
 #
 # https://github.com/pnpm/pnpm/releases/tag/v10.16.0
-minimum-release-age-exclude: 4320
+minimumReleaseAge: 4320
 
 # doesn't catch my invalid deps right now but hopefully that'll be fixed in the
 # future.
 # https://github.com/pnpm/pnpm/issues/10824
-strict-peer-dependencies: true
+strictPeerDependencies: true
+
+supportedArchitectures:
+  cpu:
+    - current
+    - x64
+  os:
+    - current
+    - linux

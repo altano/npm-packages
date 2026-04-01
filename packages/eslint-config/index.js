@@ -14,6 +14,12 @@ import { includeIgnoreFile } from "@eslint/compat";
 import gitignorePath from "./gitignorePath.js";
 import turboConfig from "eslint-config-turbo/flat";
 import playwright from "eslint-plugin-playwright";
+import pluginPnpm from "eslint-plugin-pnpm";
+import * as jsoncParser from "jsonc-eslint-parser";
+import * as yamlParser from "yaml-eslint-parser";
+import { globalIgnores } from "eslint/config";
+import eslintPluginYml from "eslint-plugin-yml";
+import eslintPluginJsonSchemaValidator from "eslint-plugin-json-schema-validator";
 
 export default {
   configs: {
@@ -35,6 +41,8 @@ export default {
 
       // ignore everything in the gitignore
       includeIgnoreFile(gitignorePath),
+
+      globalIgnores(["pnpm-lock.yaml"]),
 
       ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
       ...eslintPluginJsonc.configs["flat/prettier"],
@@ -159,8 +167,8 @@ export default {
         },
       },
       {
-        // in js files ...
-        files: ["**/*.{js,mjs,json}"],
+        // in non-ts files ...
+        files: ["**/*.{js,mjs,json,yml,yaml}"],
         // ... disable type-aware linting
         ...tseslint.configs.disableTypeChecked,
         // ... disable type-syntax-requiring rules
@@ -185,6 +193,48 @@ export default {
           ...playwright.configs["flat/recommended"].rules,
           // Customize Playwright rules
           // ...
+        },
+      },
+
+      {
+        name: "pnpm/package.json",
+        files: ["package.json", "**/package.json"],
+        languageOptions: {
+          parser: jsoncParser,
+        },
+        plugins: {
+          pnpm: pluginPnpm,
+        },
+        rules: {
+          "pnpm/json-enforce-catalog": "off",
+          "pnpm/json-valid-catalog": "error",
+          "pnpm/json-prefer-workspace-settings": "error",
+        },
+      },
+      {
+        name: "pnpm/pnpm-workspace-yaml",
+        files: ["pnpm-workspace.yaml"],
+        languageOptions: {
+          parser: yamlParser,
+        },
+        plugins: {
+          pnpm: pluginPnpm,
+        },
+        rules: {
+          "pnpm/yaml-no-unused-catalog-item": "error",
+          "pnpm/yaml-no-duplicate-catalog-item": "off",
+          "pnpm/yaml-valid-packages": "error",
+        },
+      },
+
+      // Lint yaml files
+      ...eslintPluginYml.configs.recommended,
+
+      // Lint json files by schema
+      ...eslintPluginJsonSchemaValidator.configs.recommended,
+      {
+        rules: {
+          "json-schema-validator/no-invalid": "error",
         },
       },
     ),
