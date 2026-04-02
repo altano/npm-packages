@@ -25,7 +25,9 @@
     "url": "https://alan.norbauer.com"
   },
   "contributors": [
-    "Rafael Xavier de Souza"
+    {
+      "name": "Rafael Xavier de Souza"
+    }
   ],
   "sideEffects": false,
   "type": "module",
