@@ -1,5 +1,11 @@
 # @altano/web-components
 
+## 0.0.6
+
+### Patch Changes
+
+- 791f005: explicitly declare sideEffects=true in package.json
+
 ## 0.0.5
 
 ### Patch Changes
