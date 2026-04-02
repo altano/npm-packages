@@ -17,7 +17,9 @@
   "license": "GPL-3.0",
   "author": "Alan Norbauer <alan@norbauer.com> (https://alan.norbauer.com/)",
   "contributors": [
-    "DCsunset"
+    {
+      "name": "DCsunset"
+    }
   ],
   "sideEffects": false,
   "type": "module",
