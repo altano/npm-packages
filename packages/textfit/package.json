@@ -16,7 +16,11 @@
   "license": "MIT",
   "author": "Alan Norbauer <alan@norbauer.com> (https://alan.norbauer.com/)",
   "contributors": [
-    "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)"
+    {
+      "name": "Samuel Reed",
+      "email": "samuel.trace.reed@gmail.com",
+      "url": "http://strml.net"
+    }
   ],
   "sideEffects": false,
   "type": "module",
