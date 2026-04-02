@@ -15,6 +15,10 @@
     "url": "https://alan.norbauer.com"
   },
   "type": "module",
+  "sideEffects": true,
+  "files": [
+    "src/**/*.ts"
+  ],
   "exports": {
     "./matchers": {
       "types": "./src/matchers/types.d.ts",
@@ -43,8 +47,7 @@
     "@prettier/sync": "^0.5.5",
     "exifr": "^7.1.3",
     "serialize-error": "^11.0.3",
-    "vfile": "catalog:",
-    "vitest": "catalog:"
+    "vfile": "catalog:"
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
@@ -59,7 +62,8 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "prettier": "catalog:peers"
+    "prettier": "catalog:peers",
+    "vitest": "4.x.x"
   },
   "publishConfig": {
     "access": "public"
