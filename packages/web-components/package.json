@@ -18,6 +18,7 @@
     "url": "https://alan.norbauer.com"
   },
   "type": "module",
+  "sideEffects": true,
   "exports": {
     "./*": "./dist/*"
   },
