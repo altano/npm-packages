@@ -9,6 +9,7 @@
     "ms-playwright.playwright",
     "streetsidesoftware.code-spell-checker",
     "vercel.turbo-vsc",
-    "vitest.explorer"
+    "vitest.explorer",
+    "redhat.vscode-yaml"
   ]
 }
