@@ -14,9 +14,12 @@
     "email": "alan@norbauer.com",
     "url": "https://alan.norbauer.com"
   },
+  "sideEffects": true,
+  "exports": "./index.js",
   "type": "commonjs",
   "main": "index.js",
   "bin": "index.js",
+  "files": [],
   "scripts": {
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
