@@ -13,7 +13,9 @@ public/dist
 .coverage
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
-.devbox
+.direnv
+bin/
+result
 
 # tsdown config, temporary files
 .tsdown
@@ -30,3 +32,6 @@ playwright/.cache/
 
 # astro test fixtures, astrobook
 .astro/
+
+# claude code per-user settings
+.claude/settings.local.json

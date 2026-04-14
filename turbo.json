@@ -60,18 +60,8 @@
       "dependsOn": ["build"]
     },
     "test:e2e": {
-      "dependsOn": ["build", "//#install:playwright"],
-      "env": ["PLAYWRIGHT_*"]
-    },
-    "//#install:playwright": {
-      "cache": false,
-      "inputs": [
-        "./devbox.lock",
-        "./package.json",
-        "./pnpm-lock.yaml",
-        "./pnpm-workspace.yaml"
-      ],
-      "env": ["PLAYWRIGHT_*"]
+      "dependsOn": ["build"],
+      "env": ["PLAYWRIGHT_*", "__EGL_VENDOR_LIBRARY_FILENAMES"]
     },
     "lint": {
       "dependsOn": ["build"],

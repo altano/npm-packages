@@ -18,7 +18,6 @@
     "dev": "turbo run dev --no-cache --parallel --continue",
     "format": "turbo run format",
     "preinstall": "npx only-allow pnpm",
-    "install:playwright": "playwright install --with-deps",
     "lint": "eslint .github/**/*.yml && eslint --no-warn-ignored --no-error-on-unmatched-pattern *.json *.ts *.yaml",
     "lint:inspect": "pnpm dlx @eslint/config-inspector@latest",
     "prep": "turbo run build build:documentation test lint format check --summarize",

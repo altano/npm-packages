@@ -91,25 +91,18 @@ const config: PlaywrightTestConfig = defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: isCI
-    ? [
-        // we can enable firefox/webkit when they ship in the `playwright-driver`
-        // nix linux derivation
-        //
-        // https://discourse.nixos.org/t/playwright-tests-on-multiple-browsers/41309
-        projects.chromium,
-      ]
-    : [
-        projects.chromium,
-        projects.webkit, // produces `[WebServer] 17:16:28 [ERROR] [toolbar] Failed to load dev toolbar app ...` errors but passes *shrug*
-        projects.firefox,
-        /* Test against mobile viewports. */
-        // projects.mobileChrome,
-        // projects.mobileSafari,
-        /* Test against branded browsers. */
-        // projects.edge,
-        // projects.chrome,
-      ],
+  projects: [
+    projects.chromium,
+    projects.firefox,
+    projects.webkit, // produces `[WebServer] 17:16:28 [ERROR] [toolbar] Failed to load dev toolbar app ...` errors but passes *shrug*
+
+    /* Test against mobile viewports. */
+    // projects.mobileChrome,
+    // projects.mobileSafari,
+    /* Test against branded browsers. */
+    // projects.edge,
+    // projects.chrome,
+  ],
 
   /* Run your local dev server before starting the tests */
   webServer: {

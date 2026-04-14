@@ -5,11 +5,13 @@
 
 ## Development Environment
 
-[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
+This repository uses a [Nix flake](./flake.nix) for reproducible development environments. With [direnv](https://direnv.net/) installed, all tools are available automatically when you `cd` into the repository.
 
-This repository has a [`devbox.json`](./devbox/configs/local-dev/devbox.json) which means you can trivially create a development environment for it. That environment is also used in GitHub action workflows.
+Alternatively, enter the dev shell manually:
 
-Read the [Devbox quickstart](https://jetpack.io/devbox/docs/contributor-quickstart/) or read more about why Devbox is fantastic [on my website](https://alan.norbauer.com/articles/devbox-intro).
+```sh
+nix develop .#local-dev
+```
 
 ## Contributing
 
@@ -29,8 +31,8 @@ NOTE: I have to manually close and re-open these PRs to make the required `test`
 
 Runs various lint, type-checks, unit tests, e2e tests, etc. Merging pull requests requires this job to complete.
 
-How jobs have their environment prepared:
+All jobs use the [`install-nix`](./.github/actions/install-nix/) composite action with a named [devShell](./flake.nix):
 
-- The `test-unit` job (since it requires _everything_ to be installed) uses the [`install-devbox`](./.github/actions/install-devbox/) GitHub composite action which uses [./devbox/configs/ci/devbox.json](./devbox/configs/ci/devbox.json).
-- The `test-e2e` job (since Playwright and Devbox don't work well together) uses the [`install-tools-and-deps`](./.github/actions/install-tools-and-deps) GitHub composite action which manually installs Node.js, pnpm, Playwright, etc.
-- Everything else uses the [`install-devbox-slim`](./.github/actions/install-devbox-slim/) GitHub composite action which uses [./devbox/configs/ci-slim/devbox.json](./devbox/configs/ci-slim/devbox.json).
+- `ci` — Node.js + pnpm (build, lint, format, check, release)
+- `test-unit` — adds VCS tools (git, mercurial, sapling, subversion)
+- `test-e2e` — adds Playwright browsers from Nix
