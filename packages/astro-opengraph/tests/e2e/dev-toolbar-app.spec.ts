@@ -103,7 +103,15 @@ test.describe("dev toolbar", () => {
     await expect(devPage.opengraphImage).toHaveCSS("width", "590px");
   });
 
-  test("should have a button for copying the image URL", async ({ page }) => {
+  test("should have a button for copying the image URL", async ({
+    page,
+    browserName,
+  }) => {
+    // eslint-disable-next-line playwright/no-skipped-test -- WebKit blocks programmatic navigator.clipboard.readText() without a user gesture
+    test.skip(
+      browserName === "webkit",
+      "WebKit blocks programmatic navigator.clipboard.readText() without a user gesture",
+    );
     const devPage = new PlaywrightDevPage(page);
     await devPage.goto();
     await devPage.openToolbar();
