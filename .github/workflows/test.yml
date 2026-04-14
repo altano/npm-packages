@@ -24,17 +24,18 @@ env:
 jobs:
   # Having this as an explicit and independent job, despite the fact that
   # turborepo knows building is a dependency of all the tasks below, is useful
-  # because it primes the turborepo remote cache and we can cache the devbox nix
-  # installation
+  # because it primes the turborepo remote cache and we can cache the nix store
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        uses: ./.github/actions/install-devbox-slim
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: ci
       - name: Build
-        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run build --summarize
+        run: nix develop .#ci --command pnpm turbo run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -45,9 +46,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        uses: ./.github/actions/install-devbox-slim
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: ci
       - name: Lint
-        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run lint --summarize
+        run: nix develop .#ci --command pnpm turbo run lint --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -58,9 +61,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        uses: ./.github/actions/install-devbox-slim
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: ci
       - name: Format
-        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run format --summarize
+        run: nix develop .#ci --command pnpm turbo run format --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -71,9 +76,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        uses: ./.github/actions/install-devbox-slim
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: ci
       - name: Check
-        run: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" turbo run check --summarize
+        run: nix develop .#ci --command pnpm turbo run check --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
@@ -84,26 +91,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        # Run inside full Devbox environment, unit tests need everything
-        uses: ./.github/actions/install-devbox
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: test-unit
       - name: Run tests
-        run: devbox run --config ./devbox/configs/ci pnpm --dir="$GITHUB_WORKSPACE" turbo run test:unit --summarize
+        run: nix develop .#test-unit --command pnpm turbo run test:unit --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
-  # TODO Consider using playwright docker container
   test-e2e:
-    # These have to run outside of Devbox, since Devbox doesn't play well with Playwright
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        # Run outside of Devbox. Playwright and Devbox don't like each other.
-        uses: ./.github/actions/install-tools-and-deps
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: test-e2e
+      - name: Install Playwright system dependencies
+        run: nix develop .#test-e2e --command pnpm exec playwright install-deps
       - name: Run tests
-        run: pnpm turbo run test:e2e --summarize
+        run: nix develop .#test-e2e --command pnpm turbo run test:e2e --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0

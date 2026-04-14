@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git ls-remote:*)"
+      "Bash(git ls-remote:*)",
+      "Bash(nix flake:*)"
     ]
   }
 }

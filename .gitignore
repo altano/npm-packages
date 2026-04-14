@@ -13,7 +13,9 @@ public/dist
 .coverage
 tsconfig.tsbuildinfo
 tsconfig.*.tsbuildinfo
-.devbox
+.direnv
+bin/
+result
 
 # tsdown config, temporary files
 .tsdown
