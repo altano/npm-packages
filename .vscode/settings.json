@@ -13,24 +13,17 @@
   },
   "todo-tree.filtering.excludeGlobs": ["**/node_modules"],
   "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-  "terminal.integrated.profiles.osx": {
-    "devboxCompatibleShell": {
-      "path": "/bin/zsh",
-      "args": []
-    }
-  },
-  "terminal.integrated.defaultProfile.osx": "devboxCompatibleShell",
   "prettier.prettierPath": "./node_modules/prettier/index.cjs",
   "files.associations": {
     ".depcheckrc": "yaml",
-    "devbox.json": "jsonc",
     "**/tsconfig/*.json": "jsonc",
     "turbo.json": "jsonc"
   },
   "files.readonlyInclude": {
     "**/.astro/**": true,
     "**/.coverage/**": true,
-    "**/.devbox/**": true,
+    "**/.direnv/**": true,
+    "**/result/**": true,
     "**/.turbo/**": true,
     "**/build/**": true,
     "**/CHANGELOG.md": true,
@@ -43,5 +36,13 @@
   "turbo.path": "./node_modules/.bin/turbo",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "vitest.disableWorkspaceWarning": true
+  "vitest.disableWorkspaceWarning": true,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "${workspaceFolder}/bin/nil",
+  "nix.serverSettings": {
+    "nil": "${workspaceFolder}/bin/nil"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  }
 }

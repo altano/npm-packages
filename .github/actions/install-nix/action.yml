@@ -1,0 +1,19 @@
+name: "Install Nix environment"
+description: "Install Nix via Determinate Systems installer, enable caching, and install npm dependencies"
+inputs:
+  devshell:
+    description: "Flake devShell name (ci, test-unit, test-e2e)"
+    required: true
+    default: "ci"
+runs:
+  using: "composite"
+  steps:
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
+    - name: Enable Nix Cache
+      uses: DeterminateSystems/magic-nix-cache-action@565684385bcd71bad329742eefe8d12f2e765b39 # v13
+      with:
+        use-flakehub: false
+    - name: Install Dependencies
+      shell: bash
+      run: nix develop .#${{ inputs.devshell }} --command pnpm install
