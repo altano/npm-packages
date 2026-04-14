@@ -109,10 +109,20 @@ jobs:
         uses: ./.github/actions/install-nix
         with:
           devshell: test-e2e
-      - name: Install Playwright system dependencies
-        run: nix develop .#test-e2e --command pnpm exec playwright install-deps
+      - name: Debug Playwright browsers
+        run: |
+          nix develop .#test-e2e --command bash -c '
+            echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+            ls -la "$PLAYWRIGHT_BROWSERS_PATH"/
+            echo "--- webkit contents ---"
+            ls -la "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/
+            echo "--- testing webkit binary ---"
+            ldd "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/minibrowser-wpe/MiniBrowser 2>&1 | grep "not found" || echo "all libs found"
+          '
       - name: Run tests
         run: nix develop .#test-e2e --command pnpm turbo run test:e2e --summarize
+        env:
+          DEBUG: "pw:browser*"
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0

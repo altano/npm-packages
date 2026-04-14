@@ -4,17 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # Pinned nixpkgs commit with playwright-driver matching @playwright/test in
-    # pnpm-workspace.yaml. When updating @playwright/test, find a matching
-    # nixpkgs commit at https://www.nixhub.io and update this pin.
-    nixpkgs-playwright.url = "github:NixOS/nixpkgs/13043924aaa7375ce482ebe2494338e058282925";
+    # Pinned to match @playwright/test version in pnpm-lock.yaml.
+    # When updating @playwright/test, update this tag to match.
+    # Available tags: https://github.com/pietdevries94/playwright-web-flake/tags
+    playwright.url = "github:pietdevries94/playwright-web-flake/1.58.2";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-playwright,
+      playwright,
     }:
     let
       supportedSystems = [
@@ -33,8 +33,12 @@
                 builtins.elem (nixpkgs.lib.getName pkg) [
                   "graphite-cli"
                 ];
+              overlays = [
+                (final: prev: {
+                  inherit (playwright.packages.${system}) playwright-test playwright-driver;
+                })
+              ];
             };
-            pkgs-playwright = import nixpkgs-playwright { inherit system; };
             inherit system;
           }
         );
@@ -52,19 +56,19 @@
     in
     {
       devShells = forEachSystem (
-        { pkgs, pkgs-playwright, ... }:
+        { pkgs, ... }:
         let
-          # Assert playwright-driver version matches @playwright/test from pnpm-workspace.yaml
+          # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
-              pkgs-playwright.playwright-driver.version == expectedPlaywrightVersion
+              pkgs.playwright-driver.version == expectedPlaywrightVersion
               || builtins.throw ''
                 Playwright version mismatch!
-                  nixpkgs-playwright has: ${pkgs-playwright.playwright-driver.version}
+                  playwright-web-flake has: ${pkgs.playwright-driver.version}
                   pnpm-lock.yaml expects: ${expectedPlaywrightVersion}
 
-                Fix: find a nixpkgs commit with playwright-driver ${expectedPlaywrightVersion}
-                at https://www.nixhub.io and update the nixpkgs-playwright input in flake.nix.
+                Fix: update the playwright input tag in flake.nix to ${expectedPlaywrightVersion}.
+                Available tags: https://github.com/pietdevries94/playwright-web-flake/tags
               '';
             true;
 
@@ -80,9 +84,9 @@
             pkgs.subversion
           ];
 
-          playwright =
+          playwrightBrowsers =
             assert playwrightVersionCheck;
-            pkgs-playwright.playwright-driver.browsers;
+            pkgs.playwright-driver.browsers;
 
           localExtras = [
             pkgs.difftastic
@@ -92,14 +96,15 @@
           ];
 
           playwrightShellHook = ''
-            export PLAYWRIGHT_BROWSERS_PATH="${playwright}"
+            export PLAYWRIGHT_BROWSERS_PATH="${playwrightBrowsers}"
             export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+            export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
           '';
         in
         {
           # Local development — everything
           local-dev = pkgs.mkShell {
-            buildInputs = base ++ vcs ++ [ playwright ] ++ localExtras;
+            buildInputs = base ++ vcs ++ [ playwrightBrowsers ] ++ localExtras;
             shellHook = playwrightShellHook;
           };
 
@@ -115,7 +120,7 @@
 
           # CI: e2e tests (needs playwright browsers)
           test-e2e = pkgs.mkShell {
-            buildInputs = base ++ [ playwright ];
+            buildInputs = base ++ [ playwrightBrowsers ];
             shellHook = playwrightShellHook;
           };
         }
