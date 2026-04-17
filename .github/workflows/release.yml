@@ -36,12 +36,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Prepare
-        uses: ./.github/actions/install-devbox-slim
+        uses: ./.github/actions/install-nix
+        with:
+          devshell: ci
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
         with:
-          publish: devbox run --config ./devbox/configs/ci-slim pnpm --dir="$GITHUB_WORKSPACE" release
+          publish: nix develop .#ci --command pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
