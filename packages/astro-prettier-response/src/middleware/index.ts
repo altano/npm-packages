@@ -7,7 +7,7 @@ import { logger } from "@it-astro:logger:astro-prettier-response";
 import type { MiddlewareHandler } from "astro";
 
 export const onRequest: MiddlewareHandler = defineMiddleware(
-  async (context, next) => {
+  async (_context, next) => {
     const response = await next();
 
     // Only attempt formatting on Responses that are OK or have a 400 error (e.g.

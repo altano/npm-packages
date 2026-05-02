@@ -375,7 +375,7 @@ describe("CDNTransformer", function () {
       await verify(
         {
           cdnUrl: "//cdn.com",
-          transformFunction: (cdnUrl, oldUrl, bufferPath) => {
+          transformFunction: (_cdnUrl, oldUrl, bufferPath) => {
             const customCdnBaseUrl = oldUrl.endsWith(".png")
               ? "//imagecdn.com"
               : "//assetcdn.com";
@@ -483,7 +483,7 @@ describe("CDNTransformer", function () {
         await verify(
           {
             cdnUrl: "//cdn.com/cdn/",
-            transformFunction: (cdnUrl, oldUrl) => oldUrl.toUpperCase(),
+            transformFunction: (_cdnUrl, oldUrl) => oldUrl.toUpperCase(),
             transformDefinitions: [
               {
                 selector: "img[src][data-cdn-ignore]",
