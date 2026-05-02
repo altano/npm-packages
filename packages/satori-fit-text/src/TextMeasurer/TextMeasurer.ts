@@ -9,14 +9,27 @@ import type { Dimensions, Font } from "../types.js";
 const epsilon = 0.0001;
 
 export abstract class TextMeasurer {
+  protected text: string;
+  protected font: Font;
+  protected maxWidth: number;
+  protected maxHeight: number;
+  protected lineHeight: number | "normal";
+
   #fonts: Font[];
+
   constructor(
-    protected text: string,
-    protected font: Font,
-    protected maxWidth: number,
-    protected maxHeight: number,
-    protected lineHeight: number | "normal",
+    text: string,
+    font: Font,
+    maxWidth: number,
+    maxHeight: number,
+    lineHeight: number | "normal",
   ) {
+    this.text = text;
+    this.font = font;
+    this.maxWidth = maxWidth;
+    this.maxHeight = maxHeight;
+    this.lineHeight = lineHeight;
+
     // Satori keeps a WeakMap of fonts arrays. Adding a new font is very
     // expensive, so let's make sure we always return the (referentially) same
     // array if the font is the same, to improve performance.

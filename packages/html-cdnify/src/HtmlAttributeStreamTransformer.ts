@@ -33,9 +33,12 @@ export interface AttributeParsers {
  */
 export class HtmlAttributeStreamTransformer extends HtmlTransformer {
   public condensedTransformOptions: TransformDefinition[] = [];
+  public options: HtmlAttributeStreamTransformerOptions;
 
-  constructor(public options: HtmlAttributeStreamTransformerOptions) {
+  constructor(options: HtmlAttributeStreamTransformerOptions) {
     super();
+
+    this.options = options;
 
     this.processTransforms();
 
