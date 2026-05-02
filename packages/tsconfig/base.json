@@ -33,7 +33,10 @@
     /* Output */
     "noEmitOnError": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+
+    /* Misc */
+    "erasableSyntaxOnly": true
   },
   "exclude": ["node_modules"]
 }
