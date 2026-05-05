@@ -18,7 +18,7 @@ catalog:
   "@types/unist": ^3.0.3
   "@vitest/coverage-v8": ^4.1.0
   "@vitest/expect": ^4.1.0
-  astro: ^6.0.8
+  astro: ^6.1.6
   debug: ^4.4.3
   depcheck: ^1.4.7
   eslint: ^9.39.4
