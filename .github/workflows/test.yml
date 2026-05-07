@@ -22,105 +22,140 @@ env:
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
-  # Having this as an explicit and independent job, despite the fact that
-  # turborepo knows building is a dependency of all the tasks below, is useful
-  # because it primes the turborepo remote cache and we can cache the nix store
-  build:
+  # Build the dev image from this commit's flake.nix and push to GHCR. The
+  # image is tagged by a content hash (nix2container's imageTag) so identical
+  # contents short-circuit; only commits that actually change the image rebuild
+  # it. Logic lives in a reusable composite action so release.yml can do the
+  # same lookup independently.
+  build-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.build.outputs.image }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
+      - name: Build dev image
+        id: build
+        uses: ./.github/actions/build-dev-image
         with:
-          devshell: ci
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: build-image
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Build
-        run: nix develop .#ci --command pnpm turbo run build --summarize
+        run: pnpm turbo run build --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
   lint:
-    needs: build
+    needs: [build-image, build]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
-        with:
-          devshell: ci
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Lint
-        run: nix develop .#ci --command pnpm turbo run lint --summarize
+        run: pnpm turbo run lint --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
   format:
-    needs: build
+    needs: [build-image, build]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
-        with:
-          devshell: ci
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Format
-        run: nix develop .#ci --command pnpm turbo run format --summarize
+        run: pnpm turbo run format --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
   check:
-    needs: build
+    needs: [build-image, build]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
-        with:
-          devshell: ci
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Check
-        run: nix develop .#ci --command pnpm turbo run check --summarize
+        run: pnpm turbo run check --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
   test-unit:
-    needs: build
+    needs: [build-image, build]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
-        with:
-          devshell: test-unit
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Run tests
-        run: nix develop .#test-unit --command pnpm turbo run test:unit --summarize
+        run: pnpm turbo run test:unit --summarize
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
 
   test-e2e:
-    needs: build
+    needs: [build-image, build]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
-        with:
-          devshell: test-e2e
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Debug Playwright browsers
         run: |
-          nix develop .#test-e2e --command bash -c '
-            echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
-            ls -la "$PLAYWRIGHT_BROWSERS_PATH"/
-            echo "--- webkit contents ---"
-            ls -la "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/
-            echo "--- testing webkit binary ---"
-            ldd "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/minibrowser-wpe/MiniBrowser 2>&1 | grep "not found" || echo "all libs found"
-          '
+          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
+          ls -la "$PLAYWRIGHT_BROWSERS_PATH"/
+          echo "--- webkit contents ---"
+          ls -la "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/
+          echo "--- testing webkit binary ---"
+          ldd "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/minibrowser-wpe/MiniBrowser 2>&1 | grep "not found" || echo "all libs found"
       - name: Run tests
-        run: nix develop .#test-e2e --command pnpm turbo run test:e2e --summarize
+        run: pnpm turbo run test:e2e --summarize
         # env:
         #   DEBUG: "pw:browser*"
       - name: Summarize Turbo

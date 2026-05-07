@@ -24,26 +24,56 @@ jobs:
     steps:
       - run: echo 'The test workflow failed, not releasing'
 
+  # Resolve (or build) the dev image for this commit. Independent of test.yml —
+  # if test.yml already pushed the same content, this is a fast no-op via the
+  # composite action's "skip if already in registry" check.
+  build-image:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.build.outputs.image }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          # The flake snapshot must match the commit the test workflow ran on.
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Build dev image
+        id: build
+        uses: ./.github/actions/build-dev-image
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   release-on-success:
     name: Release
+    needs: build-image
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: write
       pull-requests: write
       id-token: write
+      packages: read
+    container:
+      image: ${{ needs.build-image.outputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Prepare
-        uses: ./.github/actions/install-nix
         with:
-          devshell: ci
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
         with:
-          publish: nix develop .#ci --command pnpm release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
