@@ -141,11 +141,27 @@ jobs:
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+      # SYS_ADMIN: Playwright launches Firefox/Chromium with content-process
+      # sandboxing, which uses Linux user namespaces (CLONE_NEWUSER). Default
+      # GHA container capabilities don't allow this.
+      # ipc=host: share the host's IPC namespace. Chromium's renderer<->browser
+      # IPC exhausts Docker's per-container IPC limits in seconds, causing
+      # "Object not bound" disconnects mid-navigation; sharing the host
+      # namespace fixes this and is Playwright's documented recommendation.
+      # apparmor/seccomp unconfined: Ubuntu 24.04 hosts run docker with default
+      # AppArmor + seccomp profiles that block userns creation even with
+      # SYS_ADMIN, killing Chromium's zygote on page load.
+      options: --cap-add=SYS_ADMIN --ipc=host --security-opt apparmor=unconfined --security-opt seccomp=unconfined
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Take ownership of HOME for Firefox
+        # Firefox refuses to launch if $HOME isn't owned by the current user.
+        # The container runs as root (uid 0) but GHA mounts /github/home from
+        # the runner host where it's owned by uid 1001.
+        run: chown -R "$(id -u):$(id -g)" "$HOME"
       - name: Debug Playwright browsers
         run: |
           echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH"
@@ -156,8 +172,8 @@ jobs:
           ldd "$PLAYWRIGHT_BROWSERS_PATH"/webkit-*/minibrowser-wpe/MiniBrowser 2>&1 | grep "not found" || echo "all libs found"
       - name: Run tests
         run: pnpm turbo run test:e2e --summarize
-        # env:
-        #   DEBUG: "pw:browser*"
+        env:
+          DEBUG: "pw:browser*"
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
