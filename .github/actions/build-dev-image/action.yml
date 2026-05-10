@@ -1,0 +1,70 @@
+name: "Build dev image"
+description: "Build the npm-packages dev container image (or no-op if it already exists in GHCR), and output its full reference."
+
+inputs:
+  github-token:
+    description: "Token with `packages: write` for ghcr.io"
+    required: true
+
+outputs:
+  image:
+    description: "Full image reference (registry/path:flake-hash) of the built or cached image"
+    value: ${{ steps.compute.outputs.image }}
+
+runs:
+  using: "composite"
+  steps:
+    # Hash the inputs that determine the image content. flake.nix + flake.lock
+    # fully describe the closure. We deliberately don't hash pnpm-lock.yaml:
+    # flake.nix reads it for an assertion that npm @playwright/test matches
+    # the nixpkgs playwright-driver version, but skipping that assertion only
+    # delays the same failure to the e2e tests at runtime — which is fine.
+    - name: Compute image reference
+      id: compute
+      shell: bash
+      run: |
+        HASH=$(sha256sum flake.nix flake.lock | sha256sum | awk '{print $1}' | head -c 16)
+        REPO=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+        IMAGE="ghcr.io/${REPO}-dev:${HASH}"
+        echo "image=${IMAGE}" >> "$GITHUB_OUTPUT"
+        echo "Image reference: ${IMAGE}"
+
+    - name: Login to GHCR
+      uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ inputs.github-token }}
+
+    - name: Check whether image already exists
+      id: check
+      shell: bash
+      run: |
+        if docker manifest inspect "${{ steps.compute.outputs.image }}" >/dev/null 2>&1; then
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+          echo "Image already present in registry; skipping build."
+        else
+          echo "exists=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    # The remaining steps only run on cache miss. On cache hit the action
+    # finishes here in ~5 seconds without ever installing Nix.
+
+    - name: Install Nix
+      if: steps.check.outputs.exists != 'true'
+      uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
+
+    - name: Enable Nix Cache
+      if: steps.check.outputs.exists != 'true'
+      uses: DeterminateSystems/magic-nix-cache-action@565684385bcd71bad329742eefe8d12f2e765b39 # v13
+      with:
+        use-flakehub: false
+
+    - name: Build and push image
+      if: steps.check.outputs.exists != 'true'
+      shell: bash
+      run: |
+        # skopeo (used by nix2container's copyTo) reads creds from
+        # REGISTRY_AUTH_FILE; point it at docker/login-action's auth file.
+        export REGISTRY_AUTH_FILE="$HOME/.docker/config.json"
+        nix run .#dev-image.copyTo -- "docker://${{ steps.compute.outputs.image }}"
