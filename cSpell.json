@@ -22,6 +22,8 @@
     "opengraph",
     "pkgs",
     "Prefs",
+    "svnadmin",
+    "svnrdump",
     "syncpack",
     "tsdown",
     "turborepo",
