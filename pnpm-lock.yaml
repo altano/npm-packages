@@ -332,9 +332,6 @@ importers:
       '@inox-tools/runtime-logger':
         specifier: ^1.0.0
         version: 1.0.0(astro@6.0.8(@types/node@25.5.0)(jiti@2.4.2)(rollup@4.60.0)(typescript@5.9.3)(yaml@2.8.3))
-      astro-integration-kit:
-        specifier: ^0.20.0
-        version: 0.20.0(astro@6.0.8(@types/node@25.5.0)(jiti@2.4.2)(rollup@4.60.0)(typescript@5.9.3)(yaml@2.8.3))
       mime-types:
         specifier: ^3.0.2
         version: 3.0.2

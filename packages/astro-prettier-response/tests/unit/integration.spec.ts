@@ -7,6 +7,7 @@ import {
   type DeeplyAllowMatchers,
 } from "vitest";
 import prettierResponse from "../../src/index.js";
+import { virtualConfigPlugin } from "../../src/integration.js";
 import type {
   AstroConfig,
   AstroIntegration,
@@ -244,6 +245,26 @@ describe("integration", async () => {
     expect(loggerWithSpy.info).not.toHaveBeenCalledWith(
       expect.stringContaining("Disabling minification of html/css/js"),
     );
+  });
+});
+
+describe("virtualConfigPlugin", () => {
+  const VIRTUAL_MODULE_ID = "virtual:astro-prettier-response/config";
+  const RESOLVED_VIRTUAL_MODULE_ID = `\0${VIRTUAL_MODULE_ID}`;
+
+  it("resolves and loads the virtual config module", () => {
+    const contents = `export default ${JSON.stringify({ formatXml: true })}`;
+    const plugin = virtualConfigPlugin(contents);
+
+    expect(plugin.resolveId(VIRTUAL_MODULE_ID)).toBe(RESOLVED_VIRTUAL_MODULE_ID);
+    expect(plugin.load(RESOLVED_VIRTUAL_MODULE_ID)).toBe(contents);
+  });
+
+  it("ignores unrelated module ids", () => {
+    const plugin = virtualConfigPlugin("export default {}");
+
+    expect(plugin.resolveId("some-other-module")).toBeUndefined();
+    expect(plugin.load("some-other-module")).toBeUndefined();
   });
 });
 

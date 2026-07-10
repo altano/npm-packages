@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "@inox-tools/runtime-logger": "^1.0.0",
-    "astro-integration-kit": "^0.20.0",
     "mime-types": "^3.0.2"
   },
   "devDependencies": {
