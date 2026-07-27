@@ -13,7 +13,7 @@ catalog:
   "@playwright/test": 1.59.1
   "@types/mdast": ^4.0.4
   "@types/node": ^26.1.1
-  "@types/react": ^19.2.10
+  "@types/react": ^19.2.17
   "@types/react-dom": ^19.2.3
   "@types/unist": ^3.0.3
   "@vitest/coverage-v8": ^4.1.0
@@ -23,19 +23,20 @@ catalog:
   depcheck: ^1.4.7
   eslint: ^9.39.4
   mdast-util-mdx-jsx: ^3.2.0
-  preact: ^10.28.2
+
+  preact: ^10.29.7
   prettier: 3.8.1
-  react: ^19.2.4
-  react-dom: ^19.2.4
+  react: ^19.2.8
+  react-dom: ^19.2.8
   satori: ^0.12.2
-  svelte: ^5.53.5
+  svelte: ^5.56.6
   tsdown: ^0.21.4
   typescript: ^5.9.3
   unified: ^11.0.5
   vfile: ^6.0.3
   vite: ^8.1.5
   vitest: ^4.1.0
-  vue: ^3.5.27
+  vue: ^3.5.40
 
 catalogs:
   peers:
