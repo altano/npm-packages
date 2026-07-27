@@ -70,8 +70,8 @@ catalogs:
       specifier: ^10.29.7
       version: 10.29.7
     prettier:
-      specifier: 3.8.1
-      version: 3.8.1
+      specifier: 3.9.6
+      version: 3.9.6
     react:
       specifier: ^19.2.8
       version: 19.2.8
@@ -127,7 +127,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       semver:
         specifier: 7.8.5
         version: 7.8.5
@@ -262,7 +262,7 @@ importers:
         version: link:../vitest-plugins
       '@astrojs/check':
         specifier: 'catalog:'
-        version: 0.9.9(prettier@3.8.1)(typescript@5.9.3)
+        version: 0.9.9(prettier@3.9.6)(typescript@5.9.3)
       '@astrojs/preact':
         specifier: 'catalog:'
         version: 6.0.1(@babel/core@7.29.0(supports-color@7.2.0))(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.4.2)(preact@10.29.7)(rollup@4.60.0)(supports-color@7.2.0)(yaml@2.9.0)
@@ -304,7 +304,7 @@ importers:
         version: 10.29.7(preact-render-to-string@6.6.6)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -353,7 +353,7 @@ importers:
         version: link:../tsconfig
       '@astrojs/check':
         specifier: 'catalog:'
-        version: 0.9.9(prettier@3.8.1)(typescript@5.9.3)
+        version: 0.9.9(prettier@3.9.6)(typescript@5.9.3)
       '@inox-tools/astro-tests':
         specifier: ^2.0.0
         version: 2.0.0(astro@7.1.1(@astrojs/markdown-remark@7.2.1(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.1)(jiti@2.4.2)(rollup@4.60.0)(yaml@2.9.0))(supports-color@7.2.0)
@@ -374,7 +374,7 @@ importers:
         version: 1.4.7(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -393,7 +393,7 @@ importers:
     optionalDependencies:
       '@prettier/plugin-xml':
         specifier: 3.4.2
-        version: 3.4.2(prettier@3.8.1)
+        version: 3.4.2(prettier@3.9.6)
 
   packages/astro-table-of-contents:
     dependencies:
@@ -412,7 +412,7 @@ importers:
         version: link:../tsconfig
       '@astrojs/check':
         specifier: 'catalog:'
-        version: 0.9.9(prettier@3.8.1)(typescript@5.9.3)
+        version: 0.9.9(prettier@3.9.6)(typescript@5.9.3)
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.61.1
@@ -430,7 +430,7 @@ importers:
         version: 1.4.7(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
@@ -490,7 +490,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -544,7 +544,7 @@ importers:
         version: 1.6.0(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0)))(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))(prettier@3.8.1)
+        version: 5.5.5(eslint-config-prettier@9.1.0(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0)))(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))(prettier@3.9.6)
       eslint-plugin-react:
         specifier: 7.37.5
         version: 7.37.5(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))
@@ -569,7 +569,7 @@ importers:
     devDependencies:
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
 
   packages/html-cdnify:
     dependencies:
@@ -621,7 +621,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -691,7 +691,7 @@ importers:
         version: 3.2.0(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -764,7 +764,7 @@ importers:
         version: 1.4.7(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -813,7 +813,7 @@ importers:
         version: 1.4.7(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -856,7 +856,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -910,7 +910,7 @@ importers:
         version: 2.1.1
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       ts-assert-unreachable:
         specifier: ^0.0.9
         version: 0.0.9
@@ -1001,7 +1001,7 @@ importers:
         version: 6.5.2
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       react:
         specifier: 'catalog:'
         version: 19.2.8
@@ -1059,7 +1059,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -1134,7 +1134,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -1155,7 +1155,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
 
   packages/use-element-observer:
     dependencies:
@@ -1198,7 +1198,7 @@ importers:
         version: 26.1.0(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       react:
         specifier: 'catalog:'
         version: 19.2.8
@@ -1253,7 +1253,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       react:
         specifier: 'catalog:'
         version: 19.2.8
@@ -1314,7 +1314,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       react:
         specifier: 'catalog:'
         version: 19.2.8
@@ -1337,8 +1337,8 @@ importers:
   packages/vitest-plugins:
     dependencies:
       '@prettier/sync':
-        specifier: ^0.5.5
-        version: 0.5.5(prettier@3.8.1)
+        specifier: ^0.6.1
+        version: 0.6.1(prettier@3.9.6)
       exifr:
         specifier: ^7.1.3
         version: 7.1.3
@@ -1369,7 +1369,7 @@ importers:
         version: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1393,7 +1393,7 @@ importers:
         version: 1.4.7(supports-color@7.2.0)
       prettier:
         specifier: 'catalog:'
-        version: 3.8.1
+        version: 3.9.6
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.5)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -2638,8 +2638,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.0
 
-  '@prettier/sync@0.5.5':
-    resolution: {integrity: sha512-6BMtNr7aQhyNcGzmumkL0tgr1YQGfm9d7ZdmRpWqWuqpc9vZBind4xMe5NMiRECOhjuSiWHfBWLBnXkpeE90bw==}
+  '@prettier/sync@0.6.1':
+    resolution: {integrity: sha512-yF9G8vK/LYUTF3Cijd7VC9La3b20F20/J/fgoR4H0B8JGOWnZVZX6+I6+vODPosjmMcpdlUV+gUqJQZp3kLOcw==}
     peerDependencies:
       prettier: '*'
 
@@ -5645,8 +5645,8 @@ packages:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
 
-  make-synchronized@0.4.2:
-    resolution: {integrity: sha512-EwEJSg8gSGLicKXp/VzNi1tvzhdmNBxOzslkkJSoNUCQFZKH/NIUIp7xlfN+noaHrz4BJDN73gne8IHnjl/F/A==}
+  make-synchronized@0.8.0:
+    resolution: {integrity: sha512-DZu4lwc0ffoFz581BSQa/BJl+1ZqIkoRQ+VejMlH0VrP4E86StAODnZujZ4sepumQj8rcP7wUnUBGM8Gu+zKUA==}
 
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
@@ -6291,13 +6291,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.8.1:
-    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
-    engines: {node: '>=14'}
-    hasBin: true
-
-  prettier@3.9.5:
-    resolution: {integrity: sha512-/FVl766LpUfB5vXgCYOYa0MeV/441Ia99AeICQIQFTY/Nw0roZwULcXpku5i1/m5kt/baz+s4Zogspd839HSMg==}
+  prettier@3.9.6:
+    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7909,9 +7904,9 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/check@0.9.9(prettier@3.8.1)(typescript@5.9.3)':
+  '@astrojs/check@0.9.9(prettier@3.9.6)(typescript@5.9.3)':
     dependencies:
-      '@astrojs/language-server': 2.16.12(prettier@3.8.1)(typescript@5.9.3)
+      '@astrojs/language-server': 2.16.12(prettier@3.9.6)(typescript@5.9.3)
       chokidar: 4.0.3
       kleur: 4.1.5
       typescript: 5.9.3
@@ -7987,7 +7982,7 @@ snapshots:
       smol-toml: 1.6.0
       unified: 11.0.5
 
-  '@astrojs/language-server@2.16.12(prettier@3.8.1)(typescript@5.9.3)':
+  '@astrojs/language-server@2.16.12(prettier@3.9.6)(typescript@5.9.3)':
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/yaml2ts': 0.2.4
@@ -8001,14 +7996,14 @@ snapshots:
       volar-service-css: 0.0.71(@volar/language-service@2.4.28)
       volar-service-emmet: 0.0.71(@volar/language-service@2.4.28)
       volar-service-html: 0.0.71(@volar/language-service@2.4.28)
-      volar-service-prettier: 0.0.71(@volar/language-service@2.4.28)(prettier@3.8.1)
+      volar-service-prettier: 0.0.71(@volar/language-service@2.4.28)(prettier@3.9.6)
       volar-service-typescript: 0.0.71(@volar/language-service@2.4.28)
       volar-service-typescript-twoslash-queries: 0.0.71(@volar/language-service@2.4.28)
       volar-service-yaml: 0.0.71(@volar/language-service@2.4.28)
       vscode-html-languageservice: 5.6.2
       vscode-uri: 3.1.0
     optionalDependencies:
-      prettier: 3.8.1
+      prettier: 3.9.6
     transitivePeerDependencies:
       - typescript
 
@@ -9202,16 +9197,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@prettier/plugin-xml@3.4.2(prettier@3.8.1)':
+  '@prettier/plugin-xml@3.4.2(prettier@3.9.6)':
     dependencies:
       '@xml-tools/parser': 1.0.11
-      prettier: 3.8.1
+      prettier: 3.9.6
     optional: true
 
-  '@prettier/sync@0.5.5(prettier@3.8.1)':
+  '@prettier/sync@0.6.1(prettier@3.9.6)':
     dependencies:
-      make-synchronized: 0.4.2
-      prettier: 3.8.1
+      make-synchronized: 0.8.0
+      prettier: 3.9.6
 
   '@quansync/fs@1.0.0':
     dependencies:
@@ -11301,10 +11296,10 @@ snapshots:
       yaml: 2.9.0
       yaml-eslint-parser: 2.0.0
 
-  eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.0(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0)))(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))(prettier@3.8.1):
+  eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.0(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0)))(eslint@9.39.4(jiti@2.4.2)(supports-color@7.2.0))(prettier@3.9.6):
     dependencies:
       eslint: 9.39.4(jiti@2.4.2)(supports-color@7.2.0)
-      prettier: 3.8.1
+      prettier: 3.9.6
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.12
     optionalDependencies:
@@ -12470,7 +12465,7 @@ snapshots:
     dependencies:
       semver: 7.8.5
 
-  make-synchronized@0.4.2: {}
+  make-synchronized@0.8.0: {}
 
   markdown-extensions@2.0.0: {}
 
@@ -13477,9 +13472,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.8.1: {}
-
-  prettier@3.9.5: {}
+  prettier@3.9.6: {}
 
   pretty-format@27.5.1:
     dependencies:
@@ -15032,12 +15025,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.28
 
-  volar-service-prettier@0.0.71(@volar/language-service@2.4.28)(prettier@3.8.1):
+  volar-service-prettier@0.0.71(@volar/language-service@2.4.28)(prettier@3.9.6):
     dependencies:
       vscode-uri: 3.1.0
     optionalDependencies:
       '@volar/language-service': 2.4.28
-      prettier: 3.8.1
+      prettier: 3.9.6
 
   volar-service-typescript-twoslash-queries@0.0.71(@volar/language-service@2.4.28):
     dependencies:
@@ -15244,7 +15237,7 @@ snapshots:
       ajv: 8.18.0
       ajv-draft-04: 1.0.0(ajv@8.18.0)
       ajv-i18n: 4.2.0(ajv@8.18.0)
-      prettier: 3.9.5
+      prettier: 3.9.6
       request-light: 0.5.8
       vscode-json-languageservice: 4.1.8
       vscode-languageserver: 9.0.1

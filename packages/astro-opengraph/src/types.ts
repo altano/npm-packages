@@ -61,8 +61,7 @@ export type OpengraphImageConfigSerializable = {
 };
 
 export type OpengraphImageConfigSerializableMaybeMocked =
-  | OpengraphImageConfigSerializable
-  | (() => OpengraphImageConfigSerializable);
+  OpengraphImageConfigSerializable | (() => OpengraphImageConfigSerializable);
 
 export type OpengraphImageConfigDeserialized = {
   imageOptions: ImageOptionsWithFontBuffers;
