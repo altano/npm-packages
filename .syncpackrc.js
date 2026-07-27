@@ -46,7 +46,16 @@ function getPnpmCatalogPeerDependencies() {
           label: `Enforce pnpm default catalog for ${packageName} (regular deps)`,
           packages: ["!**/*-example"], // excludes example w/ exact versions
           dependencies: [packageName],
-          dependencyTypes: ["!local", "!peer"],
+          // syncpack >=15 surfaces the catalog entries in pnpm-workspace.yaml
+          // as instances of their own (`pnpmCatalog`, `pnpmCatalog:<name>`).
+          // Those are the definitions this group pins everything else *to*, so
+          // they must be excluded or they'd be told to point at themselves.
+          dependencyTypes: [
+            "!local",
+            "!peer",
+            "!pnpmCatalog",
+            "!pnpmCatalog:peers",
+          ],
           pinVersion: "catalog:",
         },
         packageName in peersCatalog
