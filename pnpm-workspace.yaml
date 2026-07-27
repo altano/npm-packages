@@ -30,7 +30,7 @@ catalog:
   react-dom: ^19.2.8
   satori: ^0.12.2
   svelte: ^5.56.6
-  tsdown: ^0.21.4
+  tsdown: ^0.22.13
   typescript: ^5.9.3
   unified: ^11.0.5
   vfile: ^6.0.3
