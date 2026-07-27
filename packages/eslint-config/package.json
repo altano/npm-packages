@@ -32,7 +32,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-yml": "^3.6.0",
     "jsonc-eslint-parser": "^3.1.0",
-    "typescript-eslint": "^8.64.0",
+    "typescript-eslint": "^8.65.0",
     "yaml-eslint-parser": "^2.1.0"
   },
   "devDependencies": {
