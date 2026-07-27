@@ -14,7 +14,7 @@
     "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
-    "@eslint/compat": "^1.4.1",
+    "@eslint/compat": "^2.1.0",
     "@eslint/js": "^9.39.2",
     "eslint": "catalog:",
     "eslint-config-turbo": "^2.10.5",
