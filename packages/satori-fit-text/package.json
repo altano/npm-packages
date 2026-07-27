@@ -51,10 +51,10 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.5",
+    "@svgdotjs/svg.js": "^3.2.7",
     "debug": "catalog:",
     "satori": "catalog:",
-    "svgdom": "^0.1.23"
+    "svgdom": "^0.1.27"
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",

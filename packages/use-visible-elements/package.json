@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@altano/use-element-observer": "workspace:*",
-    "react-use": "^17.6.0"
+    "react-use": "^17.6.1"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
