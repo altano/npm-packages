@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "preact/hooks";
 import type Preact from "preact";
-import type { MouseEventHandler } from "preact/compat";
 import type { DevToolbarButton } from "astro/runtime/client/dev-toolbar/ui-library/button.js";
 import { useImageURL } from "../hooks/useImageURL.js";
 import { ToolbarSection } from "./ToolbarSection.js";
@@ -23,7 +22,7 @@ export function CopyImageUrlButton(): Preact.JSX.Element {
     }
   }, [wasRecentlyClicked]);
 
-  const handleClick: MouseEventHandler<DevToolbarButton> = useCallback(
+  const handleClick: Preact.MouseEventHandler<DevToolbarButton> = useCallback(
     (evt) => {
       // Copy the text inside the text field
       void navigator.clipboard.writeText(imageUrl);

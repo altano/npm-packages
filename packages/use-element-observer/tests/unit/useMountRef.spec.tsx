@@ -23,8 +23,8 @@ describe("useMountRef", async () => {
     const onMount = vi.fn((_: HTMLDivElement) => {});
     const onUnmount = vi.fn((_: HTMLDivElement) => {});
     render(<BadComponent onMount={onMount} onUnmount={onUnmount} />);
-    expect(onMount).not.toBeCalled();
-    expect(onUnmount).not.toBeCalled();
+    expect(onMount).not.toHaveBeenCalled();
+    expect(onUnmount).not.toHaveBeenCalled();
   });
 
   it("should handle the initial state", () => {
@@ -33,10 +33,10 @@ describe("useMountRef", async () => {
     const { unmount } = render(
       <Component onMount={onMount} onUnmount={onUnmount} />,
     );
-    expect(onMount).toBeCalledTimes(1);
+    expect(onMount).toHaveBeenCalledTimes(1);
     expect(onMount.mock.calls[0]![0]).toHaveTextContent(`Hello`);
 
-    expect(onUnmount).not.toBeCalled();
+    expect(onUnmount).not.toHaveBeenCalled();
     unmount();
     expect(onUnmount).toHaveBeenCalledTimes(1);
   });

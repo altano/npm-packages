@@ -77,12 +77,12 @@ describe("integration", async () => {
       makeConfig(updateConfig, {}),
     );
 
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         compressHTML: false,
       }),
     );
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -91,7 +91,7 @@ describe("integration", async () => {
         }),
       }),
     );
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -118,12 +118,12 @@ describe("integration", async () => {
     });
     await integration.hooks["astro:config:setup"]?.(config);
 
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       expect.objectContaining({
         compressHTML: false,
       }),
     );
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -132,7 +132,7 @@ describe("integration", async () => {
         }),
       }),
     );
-    expect(updateConfig).toBeCalledWith(
+    expect(updateConfig).toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -162,12 +162,12 @@ describe("integration", async () => {
     expect(loggerWithSpy.info).not.toHaveBeenCalled();
     await integration.hooks["astro:config:setup"]?.(config);
 
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       expect.objectContaining({
         compressHTML: anything(),
       }),
     );
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -176,7 +176,7 @@ describe("integration", async () => {
         }),
       }),
     );
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -217,12 +217,12 @@ describe("integration", async () => {
 
     await integration.hooks["astro:config:setup"]?.(config);
 
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       expect.objectContaining({
         compressHTML: anything(),
       }),
     );
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({
@@ -231,7 +231,7 @@ describe("integration", async () => {
         }),
       }),
     );
-    expect(updateConfig).not.toBeCalledWith(
+    expect(updateConfig).not.toHaveBeenCalledWith(
       objectContaining({
         vite: objectContaining({
           build: objectContaining({

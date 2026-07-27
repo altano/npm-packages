@@ -157,6 +157,8 @@ export default {
             },
           ],
           "@typescript-eslint/no-floating-promises": "error",
+          // not in recommended-type-checked (it's a strict-type-checked rule)
+          "@typescript-eslint/no-deprecated": "error",
         },
       },
       {
