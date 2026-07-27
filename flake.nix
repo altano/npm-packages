@@ -3,12 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
+    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nixpkgs-playwright-1-59-1,
     }:
     let
       supportedSystems = [
@@ -32,21 +35,22 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
+          pkgsPlaywright159 = import nixpkgs-playwright-1-59-1 { inherit system; };
           # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
-              pkgs.playwright-driver.version == expectedPlaywrightVersion
+              pkgsPlaywright159.playwright-driver.version == expectedPlaywrightVersion
               || builtins.throw ''
                 Playwright version mismatch!
-                  nixpkgs has: ${pkgs.playwright-driver.version}
+                  nixpkgs-playwright-1-59-1 has: ${pkgsPlaywright159.playwright-driver.version}
                   pnpm-lock.yaml expects: ${expectedPlaywrightVersion}
 
-                Fix: update the nixpkgs input or the Playwright npm dependency so both resolve to the same version.
+                Fix: update the nixpkgs-playwright-1-59-1 input or the Playwright npm dependency so both resolve to the same version.
               '';
             true;
 
           base = [
-            pkgs.nodejs_25
+            pkgs.nodejs_26
             pkgs.pnpm
           ];
 
@@ -66,7 +70,7 @@
 
           playwrightBrowsers =
             assert playwrightVersionCheck;
-            pkgs.playwright-driver.browsers;
+            pkgsPlaywright159.playwright-driver.browsers;
 
           localExtras = [
             pkgs.difftastic
