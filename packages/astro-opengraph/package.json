@@ -82,7 +82,7 @@
     "@vitest/coverage-v8": "catalog:",
     "astro": "catalog:",
     "depcheck": "catalog:",
-    "jest-image-snapshot": "^6.5.1",
+    "jest-image-snapshot": "^6.5.2",
     "preact": "catalog:",
     "prettier": "catalog:",
     "sharp": "^0.33.5",

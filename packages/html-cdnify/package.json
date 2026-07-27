@@ -57,7 +57,7 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
-    "@types/lodash": "^4.17.23",
+    "@types/lodash": "^4.17.24",
     "@types/node": "catalog:",
     "@types/stream-to-promise": "^2.2.5",
     "@types/streamifier": "^0.1.2",
