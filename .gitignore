@@ -21,8 +21,21 @@ result
 .tsdown
 packages/build-config/*.mjs
 
+# pnpm writes files atomically via a `_tmp_<pid>_<hash>` scratch file next to
+# the target (e.g. pnpm-lock.yaml). They're short-lived but long enough for
+# file watchers (e.g. jj's working-copy snapshot) to pick them up.
+_tmp_*
+
+# `attw --pack .` (check:exports) runs `npm pack` in the package root, leaving a
+# `<name>-<version>.tgz` behind until it finishes.
+*.tgz
+
 # used in vitest typecheck run, don't want lint/format/etc tasks to see it
 tsconfig.vitest-temp.json
+
+# jest-image-snapshot writes these next to the committed baselines whenever a
+# comparison fails. They're diagnostic output, not fixtures.
+__diff_output__/
 
 # playwright
 test-results/
