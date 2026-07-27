@@ -58,7 +58,7 @@
     "@astrojs/check": "catalog:",
     "@inox-tools/astro-tests": "^2.0.0",
     "@prettier/plugin-xml": "^3.4.1",
-    "@types/mime-types": "^2.1.4",
+    "@types/mime-types": "^3.0.1",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "astro": "catalog:",
