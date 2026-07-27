@@ -1,5 +1,5 @@
 import path from "node:path";
-import findCacheDirectory from "find-cache-dir";
+import findCacheDirectory from "find-cache-directory";
 import { bundleSupportingRepositoryTypes, createBundle } from "./createBundle";
 import { type RepositoryType } from "../../src/types";
 import crypto from "node:crypto";
