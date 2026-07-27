@@ -39,10 +39,8 @@ export function useMetaTagInfo(): MetaTagInfo[] {
   //   opengraphMetaTags: opengraphMetaTags,
   //   opengraphMetaTagsLength: opengraphMetaTags.length,
   // });
-  return Array.from(opengraphMetaTags).map(
-    (tag: Element): MetaTagInfo => [
-      tag.getAttribute("content"),
-      tag.getAttribute("property"),
-    ],
-  );
+  return Array.from(opengraphMetaTags).map((tag: Element): MetaTagInfo => [
+    tag.getAttribute("content"),
+    tag.getAttribute("property"),
+  ]);
 }
