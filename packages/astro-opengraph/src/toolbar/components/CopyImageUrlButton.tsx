@@ -10,15 +10,17 @@ type Timer = ReturnType<typeof setTimeout>;
 export function CopyImageUrlButton(): Preact.JSX.Element {
   const imageUrl = useImageURL();
   const [wasRecentlyClicked, setWasRecentlyClicked] = useState(false);
-  const checkTimer = useRef<Timer | null>(null);
+  // Named `...Ref` so the react-hooks compiler rules recognize it as a ref.
+  // `useRef` here is preact's, which they can't otherwise infer.
+  const checkTimerRef = useRef<Timer | null>(null);
 
   useEffect(() => {
-    if (wasRecentlyClicked && checkTimer.current == null) {
-      checkTimer.current = setTimeout(() => {
+    if (wasRecentlyClicked && checkTimerRef.current == null) {
+      checkTimerRef.current = setTimeout(() => {
         setWasRecentlyClicked(false);
         // TODO investigate
         // eslint-disable-next-line react-compiler/react-compiler
-        checkTimer.current = null;
+        checkTimerRef.current = null;
       }, 3_000);
     }
   }, [wasRecentlyClicked]);

@@ -33,7 +33,11 @@ const useHeadObserver = (): React.RefObject<HTMLHeadElement | null> => {
 
 export function useMetaTagInfo(): MetaTagInfo[] {
   const headRef = useHeadObserver();
+  // TODO investigate: reading a ref during render. It works because the
+  // MutationObserver above forces a re-render on every <head> change, but the
+  // supported shape for this is useSyncExternalStore.
   const opengraphMetaTags =
+    // eslint-disable-next-line react-hooks/refs
     headRef?.current?.querySelectorAll("meta[property^='og:']") ?? [];
   // console.log({
   //   opengraphMetaTags: opengraphMetaTags,
