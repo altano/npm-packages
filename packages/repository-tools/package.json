@@ -64,7 +64,7 @@
     "@vitest/expect": "catalog:",
     "depcheck": "catalog:",
     "eslint": "catalog:",
-    "find-cache-dir": "^5.0.0",
+    "find-cache-directory": "^6.0.0",
     "memize": "^2.1.1",
     "prettier": "catalog:",
     "ts-assert-unreachable": "^0.0.9",
