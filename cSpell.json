@@ -7,6 +7,7 @@
     "altano",
     "astrobook",
     "attw",
+    "cdnify",
     "devshell",
     "difftastic",
     "direnv",
@@ -27,6 +28,7 @@
     "unminified",
     "unstub",
     "vitest",
+    "WHATWG",
     "withastro",
     "worktree"
   ],

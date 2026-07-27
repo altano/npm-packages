@@ -254,7 +254,7 @@ describe("CDNTransformer", function () {
             },
           ],
         });
-      }).toThrowError(Error);
+      }).toThrow(Error);
     });
   });
 
@@ -272,7 +272,7 @@ describe("CDNTransformer", function () {
             },
           ],
         });
-      }).toThrowError(Error);
+      }).toThrow(Error);
     });
   });
 
@@ -291,7 +291,7 @@ describe("CDNTransformer", function () {
             },
           ],
         });
-      }).toThrowError(Error);
+      }).toThrow(Error);
     });
   });
 
@@ -300,7 +300,7 @@ describe("CDNTransformer", function () {
       expect(() => {
         // @ts-expect-error testing error path
         new CDNTransformer({});
-      }).toThrowError(Error);
+      }).toThrow(Error);
     });
 
     it("should default to '.'", async function () {
