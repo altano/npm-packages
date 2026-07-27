@@ -54,7 +54,7 @@
     "@svgdotjs/svg.js": "^3.2.7",
     "debug": "catalog:",
     "satori": "catalog:",
-    "svgdom": "^0.1.27"
+    "svgdom": "^0.1.28"
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
