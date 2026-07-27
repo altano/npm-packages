@@ -53,7 +53,7 @@
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
     "astro": "catalog:",
-    "astrobook": "^0.12.4",
+    "astrobook": "^0.13.2",
     "depcheck": "catalog:",
     "prettier": "catalog:",
     "remark-sectionize": "^2.1.0",
