@@ -3,7 +3,7 @@ import { vi } from "vitest";
 
 export const loggerWithSpy: AstroIntegrationLogger = {
   options: {
-    dest: { write: () => true },
+    destination: { write: () => true },
     level: "debug",
   },
   label: "astro-prettier-response-tests",
@@ -12,6 +12,12 @@ export const loggerWithSpy: AstroIntegrationLogger = {
   warn: vi.fn(() => {}),
   debug: vi.fn(() => {}),
   fork() {
+    throw new Error(`not impl`);
+  },
+  flush() {
+    throw new Error(`not impl`);
+  },
+  close() {
     throw new Error(`not impl`);
   },
 };

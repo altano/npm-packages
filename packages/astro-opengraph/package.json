@@ -73,7 +73,7 @@
     "@astrojs/preact": "catalog:",
     "@astrojs/svelte": "catalog:",
     "@astrojs/vue": "catalog:",
-    "@inox-tools/astro-tests": "^1.0.0",
+    "@inox-tools/astro-tests": "^2.0.0",
     "@playwright/test": "catalog:",
     "@types/he": "^1.2.3",
     "@types/jest-image-snapshot": "^6.4.1",
@@ -93,7 +93,7 @@
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "astro": "6.x.x",
+    "astro": "7.x.x",
     "preact": ">=10"
   },
   "publishConfig": {
