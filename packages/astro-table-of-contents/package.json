@@ -59,7 +59,7 @@
     "vite": "catalog:"
   },
   "peerDependencies": {
-    "astro": "6.x.x"
+    "astro": "7.x.x"
   },
   "publishConfig": {
     "access": "public"

@@ -34,7 +34,7 @@
   "dependencies": {
     "@altano/vitest-plugins": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^6.0.3",
     "vite": "catalog:"
   },
   "devDependencies": {

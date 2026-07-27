@@ -39,9 +39,15 @@ async function bufferToTransformedPNG(
 ): ReturnType<LocalImageService["transform"]> {
   const imageService = (await getConfiguredImageService()) as LocalImageService;
 
+  // Astro 7 disables SVG rasterization in the sharp image service by default
+  // (`image.dangerouslyProcessSVG`). Our input is an SVG we produced ourselves
+  // with satori, so enable rasterization for *this transform only* by passing a
+  // scoped config override. We intentionally do NOT flip the global
+  // `image.dangerouslyProcessSVG` config, which is a project-wide security
+  // decision the user must make for the other SVGs they process.
   return imageService.transform(
     imageBuffer,
     { src: "", format: "png" },
-    imageConfig,
+    { ...imageConfig, dangerouslyProcessSVG: true },
   );
 }

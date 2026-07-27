@@ -5,20 +5,7 @@ import "../styles/global.css";
 <!DOCTYPE html><html>
 <head>
 {/* never let this get formatted by prettier when editing it! */}
-<title>Basic Example</title></head>
-<body><h1 class="main-heading">A Heading</h1><p>Hello!</p></body>
-</html>
-
-{/* This js should not be minified */}
-<script>
-  function doSomething(variable: string) {
-    console.log(variable);
-  }
-
-  doSomething("Hi how are you");
-</script>
-
-
+<title>Basic Example</title>
 {/* This css should not be minified */}
 <style>
   .main-heading {
@@ -29,3 +16,14 @@ import "../styles/global.css";
     font-size: 20px;
   }
 </style>
+</head>
+<body><h1 class="main-heading">A Heading</h1><p>Hello!</p>
+{/* This js should not be minified */}
+<script>
+  function doSomething(variable: string) {
+    console.log(variable);
+  }
+
+  doSomething("Hi how are you");
+</script></body>
+</html>

@@ -37,7 +37,7 @@ describe("with-minification", () => {
     //
     expect(contents).toMatchInlineSnapshot(`
       "<!doctype html>
-      <html data-astro-cid-j7pv25f6>
+      <html data-astro-cid-lcdefpme>
         <head>
           <title>Basic Example</title>
           <style>
@@ -46,15 +46,15 @@ describe("with-minification", () => {
                 font-family: var(--font-inter);
                 background: var(--bg);
                 color: var(--text);
-                h1 {
+                & h1 {
                   margin-top: 3rem;
                 }
-                h2 {
+                & h2 {
                   margin-top: 2rem;
                 }
               }
             }
-            .main-heading[data-astro-cid-j7pv25f6] {
+            .main-heading[data-astro-cid-lcdefpme] {
               color: red;
             }
             body {
@@ -62,14 +62,14 @@ describe("with-minification", () => {
             }
           </style>
         </head>
-        <body data-astro-cid-j7pv25f6>
-          <h1 class="main-heading" data-astro-cid-j7pv25f6>A Heading</h1>
-          <p data-astro-cid-j7pv25f6>Hello!</p>
+        <body data-astro-cid-lcdefpme>
+          <h1 class="main-heading" data-astro-cid-lcdefpme>A Heading</h1>
+          <p data-astro-cid-lcdefpme>Hello!</p>
           <script type="module">
-            function n(o) {
-              console.log(o);
+            function e(e) {
+              console.log(e);
             }
-            n("Hi how are you");
+            e(\`Hi how are you\`);
           </script>
         </body>
       </html>

@@ -33,9 +33,10 @@ describe("basic", () => {
     //
     expect(contents).toMatchInlineSnapshot(`
       "<!doctype html>
-      <html data-astro-cid-j7pv25f6>
+      <html data-astro-cid-lcdefpme>
         <head>
           <title>Basic Example</title>
+
           <style>
             @layer global {
               :root {
@@ -55,22 +56,26 @@ describe("basic", () => {
                 }
               }
             }
-            .main-heading[data-astro-cid-j7pv25f6] {
+            .main-heading[data-astro-cid-lcdefpme] {
               color: red;
             }
+
             body {
               font-size: 20px;
             }
           </style>
         </head>
-        <body data-astro-cid-j7pv25f6>
-          <h1 class="main-heading" data-astro-cid-j7pv25f6>A Heading</h1>
-          <p data-astro-cid-j7pv25f6>Hello!</p>
+        <body data-astro-cid-lcdefpme>
+          <h1 class="main-heading" data-astro-cid-lcdefpme>A Heading</h1>
+          <p data-astro-cid-lcdefpme>Hello!</p>
+
           <script type="module">
+            //#region tests/fixtures/basic/src/pages/index.astro?astro&type=script&index=0&lang.ts
             function doSomething(variable) {
               console.log(variable);
             }
             doSomething("Hi how are you");
+            //#endregion
           </script>
         </body>
       </html>
