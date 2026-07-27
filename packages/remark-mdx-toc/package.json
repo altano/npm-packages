@@ -58,7 +58,7 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
-    "@types/estree": "^1.0.8",
+    "@types/estree": "^1.0.9",
     "@types/mdast": "catalog:",
     "@types/node": "catalog:",
     "@types/unist": "catalog:",
