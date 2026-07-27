@@ -10,9 +10,9 @@ catalog:
   "@astrojs/vue": ^7.0.1
   "@fontsource-variable/inter": 5.2.6
   "@fontsource/inter": 5.2.6
-  "@playwright/test": 1.59.1
+  "@playwright/test": 1.61.1
   "@types/mdast": ^4.0.4
-  "@types/node": ^25.5.0
+  "@types/node": ^26.1.1
   "@types/react": ^19.2.10
   "@types/react-dom": ^19.2.3
   "@types/unist": ^3.0.3

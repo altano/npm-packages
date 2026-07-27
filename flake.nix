@@ -46,7 +46,7 @@
             true;
 
           base = [
-            pkgs.nodejs_25
+            pkgs.nodejs_26
             pkgs.pnpm
           ];
 
