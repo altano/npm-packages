@@ -85,7 +85,7 @@
     "jest-image-snapshot": "^6.5.2",
     "preact": "catalog:",
     "prettier": "catalog:",
-    "sharp": "^0.33.5",
+    "sharp": "^0.35.3",
     "svelte": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
