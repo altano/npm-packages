@@ -23,7 +23,7 @@
     "eslint-plugin-json-schema-validator": "^6.3.0",
     "eslint-plugin-jsonc": "^3.3.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-package-json": "^0.91.1",
+    "eslint-plugin-package-json": "^1.6.0",
     "eslint-plugin-playwright": "^2.10.5",
     "eslint-plugin-pnpm": "^1.6.1",
     "eslint-plugin-prettier": "^5.5.6",
