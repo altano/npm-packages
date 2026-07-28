@@ -256,7 +256,9 @@ describe("virtualConfigPlugin", () => {
     const contents = `export default ${JSON.stringify({ formatXml: true })}`;
     const plugin = virtualConfigPlugin(contents);
 
-    expect(plugin.resolveId(VIRTUAL_MODULE_ID)).toBe(RESOLVED_VIRTUAL_MODULE_ID);
+    expect(plugin.resolveId(VIRTUAL_MODULE_ID)).toBe(
+      RESOLVED_VIRTUAL_MODULE_ID,
+    );
     expect(plugin.load(RESOLVED_VIRTUAL_MODULE_ID)).toBe(contents);
   });
 

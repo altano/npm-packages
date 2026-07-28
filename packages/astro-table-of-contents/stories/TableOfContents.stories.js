@@ -1,5 +1,5 @@
 import StoryTableOfContents from "./StoryTableOfContents.astro";
-import {getHeadings} from "./Article.md";
+import { getHeadings } from "./Article.md";
 
 const headings = getHeadings();
 

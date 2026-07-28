@@ -8,7 +8,9 @@ describe("serializers", () => {
     it("should remove the port in a localhost http[s] url", () => {
       expect(
         `String with http://localhost:1234/path/to/face url`,
-      ).toMatchInlineSnapshot(`"String with http://localhost/path/to/face url"`);
+      ).toMatchInlineSnapshot(
+        `"String with http://localhost/path/to/face url"`,
+      );
     });
   });
 });

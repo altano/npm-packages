@@ -20,9 +20,8 @@ describe("remark-mdx-toc-with-slugs", async () => {
         };
       });
 
-      const { default: remarkMdxTocWithSlugs } = await import(
-        "../../src/index.js"
-      );
+      const { default: remarkMdxTocWithSlugs } =
+        await import("../../src/index.js");
       const compileWithPlugin = await getFixtureCompiler(
         remarkMdxTocWithSlugs,
         "basic",
@@ -56,9 +55,8 @@ describe("remark-mdx-toc-with-slugs", async () => {
       });
 
       // load this after the mocking so it sees the mock
-      const { default: remarkMdxTocWithSlugs } = await import(
-        "../../src/index.js"
-      );
+      const { default: remarkMdxTocWithSlugs } =
+        await import("../../src/index.js");
       const compileWithPlugin = await getFixtureCompiler(
         remarkMdxTocWithSlugs,
         "basic",

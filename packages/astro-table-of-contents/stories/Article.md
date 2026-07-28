@@ -52,9 +52,9 @@ Leverage a global boolean variable to selectively enable or disable one or more 
 
 To implement this, you can programmatically toggle the boolean value using a variety of methods to suit different debugging scenarios, such as manual intervention, timed triggers, or custom logic. For example, you can toggle breakpoints through the following approaches, each offering unique advantages depending on your debugging context:
 
-*   Manually toggling the boolean from the console to gain immediate control over breakpoint behavior and test specific conditions on demand. Placeholder text for manual console toggle.
-*   Using a timer in the console to automatically toggle the boolean after a specified delay, enabling time-based debugging for scenarios like delayed events or asynchronous operations. Placeholder text for timer-based toggle.
-*   Implementing custom mechanisms, such as event listeners or external triggers, to toggle breakpoints based on application-specific conditions, providing maximum flexibility for advanced debugging workflows.
+- Manually toggling the boolean from the console to gain immediate control over breakpoint behavior and test specific conditions on demand. Placeholder text for manual console toggle.
+- Using a timer in the console to automatically toggle the boolean after a specified delay, enabling time-based debugging for scenarios like delayed events or asynchronous operations. Placeholder text for timer-based toggle.
+- Implementing custom mechanisms, such as event listeners or external triggers, to toggle breakpoints based on application-specific conditions, providing maximum flexibility for advanced debugging workflows.
 
 ## monitor() class Calls
 
