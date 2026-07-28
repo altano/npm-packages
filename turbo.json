@@ -28,6 +28,7 @@
       "dependsOn": [
         "//#check:dependencies",
         "//#check:dependency-resolution",
+        "//#check:peers",
         "check:exports",
         "check:types",
         "check:unused-dependencies"
@@ -85,6 +86,7 @@
     "//#check:dependencies": {},
     "//#check:dependencies:fix": {},
     "//#check:dependency-resolution": {},
+    "//#check:peers": {},
     "dev": {
       "cache": false
     },
