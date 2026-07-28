@@ -92,10 +92,6 @@ function getPnpmCatalogPeerDependencies() {
 const config = {
   semverGroups: [
     {
-      packages: ["package-time-traveler"],
-      isIgnored: true,
-    },
-    {
       dependencyTypes: ["local"],
       isIgnored: true,
     },
@@ -106,10 +102,6 @@ const config = {
     },
   ],
   versionGroups: [
-    {
-      packages: ["package-time-traveler"],
-      isIgnored: true,
-    },
     {
       dependencyTypes: ["local"],
       isIgnored: true,
