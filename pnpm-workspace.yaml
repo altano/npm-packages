@@ -60,6 +60,21 @@ minimumReleaseAge: 10080
 # https://github.com/pnpm/pnpm/issues/10824
 strictPeerDependencies: true
 
+# pnpm 11 defaults `strictDepBuilds` to true, so every dependency with a build
+# script has to be explicitly reviewed or the install fails.
+#
+# All of these ship their native binaries as prebuilt, platform-specific
+# optionalDependencies (@esbuild/*, @img/sharp-*, @unrs/resolver-binding-*),
+# which pnpm installs directly. Their install scripts are only the
+# compile-from-source fallback, so there's nothing to gain by running them.
+# These builds were already being skipped under pnpm 10; this just records that.
+#
+# https://pnpm.io/settings#allowbuilds
+allowBuilds:
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
+
 supportedArchitectures:
   cpu:
     - current
