@@ -1,4 +1,43 @@
+# NOTE: this file is symlinked into every package that runs prettier (see
+# packages/*/.prettierignore). Prettier resolves ignore files relative to the
+# cwd and never searches parent directories, so a package running
+# `prettier --check .` sees neither this file nor the root .gitignore unless it
+# has its own copy. Two consequences:
+#
+#   1. every rule here has to make sense from a package root as well as from the
+#      repo root, so keep the patterns path-agnostic -- `dist/`, never
+#      `packages/*/dist`
+#   2. prettier does read .gitignore by default, but it finds it the same way --
+#      cwd only -- so the root .gitignore is invisible from a package too. Every
+#      gitignored path that can show up inside a package has to be repeated
+#      here, dot-prefixed ones included: `prettier --check .` walks into
+#      .coverage/ and .astro/ just like any other directory.
+
 .direnv
 result
-dist/
 node_modules/
+
+# build output
+.next/
+.tsdown/
+dist/
+tsconfig.vitest-temp.json
+
+# tool caches
+.astro/
+.cache/
+.turbo/
+playwright/.cache/
+
+# test output
+.coverage/
+__diff_output__/
+blob-report/
+playwright-report/
+test-results/
+*.tgz
+
+# generated -- reformatting these just creates churn the next time they're
+# regenerated
+pnpm-lock.yaml
+**/*-snapshots/

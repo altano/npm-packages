@@ -13,7 +13,7 @@
   },
   "todo-tree.filtering.excludeGlobs": ["**/node_modules"],
   "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "prettier.prettierPath": "./node_modules/prettier/index.mjs",
   "files.associations": {
     ".depcheckrc": "yaml",
     "**/tsconfig/*.json": "jsonc",

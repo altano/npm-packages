@@ -31,12 +31,13 @@
   "scripts": {
     "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.web-component.ts",
     "build:documentation:custom-elements-json": "wca dist/*.d.ts --outFile dist/custom-elements.json",
-    "build:documentation:readme": "wca dist/*.d.ts --outFile README.md",
+    "build:documentation:readme": "wca dist/*.d.ts --outFile README.md && prettier --write README.md",
     "check:types:src": "tsc --noEmit",
     "check:unused-dependencies": "depcheck",
     "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
     "dev": "tsdown --watch",
-    "format": "prettier --write src",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint",
     "lint:fix": "TIMING=1 eslint src/**/*.ts* --fix",
     "lint:timing": "TIMING=1 eslint src/**/*.ts*"

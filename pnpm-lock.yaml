@@ -70,7 +70,7 @@ catalogs:
       specifier: ^10.28.2
       version: 10.29.0
     prettier:
-      specifier: ^3.8.1
+      specifier: 3.8.1
       version: 3.8.1
     react:
       specifier: ^19.2.4
@@ -302,6 +302,9 @@ importers:
       preact:
         specifier: 'catalog:'
         version: 10.29.0
+      prettier:
+        specifier: 'catalog:'
+        version: 3.8.1
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -554,6 +557,10 @@ importers:
       yaml-eslint-parser:
         specifier: ^2.0.0
         version: 2.0.0
+    devDependencies:
+      prettier:
+        specifier: 'catalog:'
+        version: 3.8.1
 
   packages/html-cdnify:
     dependencies:

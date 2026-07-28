@@ -51,7 +51,17 @@
     "check:unused-dependencies": {
       "dependsOn": []
     },
-    "format": {},
+    "format": {
+      // packages/*/.prettierignore is a symlink to the root file, so its git
+      // blob is just the target path -- editing the root file changes no
+      // package input. These root globs are what actually invalidate the cache.
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/.editorconfig",
+        "$TURBO_ROOT$/.prettierignore",
+        "$TURBO_ROOT$/.prettierrc.json"
+      ]
+    },
     "test": {
       "dependsOn": ["test:unit", "test:e2e"]
     },

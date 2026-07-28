@@ -13,7 +13,10 @@ React hook to faciliate observing the visibility of elements in a React tree, by
 ### Component.jsx
 
 ```jsx
-import { VisibleElementObserver, useVisibleElements } from "@altano/use-visible-elements";
+import {
+  VisibleElementObserver,
+  useVisibleElements,
+} from "@altano/use-visible-elements";
 
 function Component() {
   const visibleElements = useVisibleElements();

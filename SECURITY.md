@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-I make no claims to support any package out of this repository, including support for security issues. This is a hobby repository and those who need support or security promises *must* look elsewhere.
+I make no claims to support any package out of this repository, including support for security issues. This is a hobby repository and those who need support or security promises _must_ look elsewhere.
 
 ## Reporting a Vulnerability
 

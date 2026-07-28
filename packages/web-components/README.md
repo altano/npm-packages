@@ -6,10 +6,9 @@ targets #abc) as having `aria-current=true`
 
 ## Slots
 
-| Name | Description                                      |
-|------|--------------------------------------------------|
+| Name | Description                                                                                           |
+| ---- | ----------------------------------------------------------------------------------------------------- |
 |      | Arbitrary child nodes containing anchor elements. Will update<br />descendant anchors as appropriate. |
-
 
 # visible-element-observer
 
@@ -17,18 +16,18 @@ Observes its children for visibility using IntersectionObserver. An event is fir
 
 ## Attributes
 
-| Attribute       | Type     | Description                                      |
-|-----------------|----------|--------------------------------------------------|
+| Attribute       | Type     | Description                                                                                                                                               |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `data-selector` | `String` | Only descendant elements which match this selector will have their visibility observed. Can be ommitted (or set to `*`) to match all descendant elements. |
 
 ## Events
 
-| Event                    | Description                                      |
-|--------------------------|--------------------------------------------------|
+| Event                    | Description                                                                    |
+| ------------------------ | ------------------------------------------------------------------------------ |
 | `visible-element-change` | Event that is fired whenever the visibility of an observed descendant changes. |
 
 ## Slots
 
-| Name | Description                                      |
-|------|--------------------------------------------------|
+| Name | Description                                                     |
+| ---- | --------------------------------------------------------------- |
 |      | Arbitrary child nodes. Will be observed for visibility changes. |

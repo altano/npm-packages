@@ -12,8 +12,8 @@
     "check:types:src": "tsc --noEmit",
     "check:unused-dependencies": "depcheck",
     "dev": "pnpm run build --watch",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint"
