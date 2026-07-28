@@ -9,8 +9,10 @@
   },
   "type": "module",
   "scripts": {
-    "build": "turbo run build build:documentation",
+    "build": "turbo run build",
+    "build:documentation": "turbo run build:documentation",
     "changeset": "changeset",
+    "check": "turbo run check",
     "check:dependencies": "syncpack lint",
     "check:dependencies:fix": "syncpack fix",
     "check:dependency-resolution": "pnpm install --resolution-only --no-frozen-lockfile",
@@ -35,7 +37,7 @@
     "prettier": "catalog:",
     "semver": "7.7.4",
     "syncpack": "^14.2.1",
-    "turbo": "^2.8.20",
+    "turbo": "^2.10.5",
     "typescript": "catalog:",
     "yaml": "^2.8.3"
   },
