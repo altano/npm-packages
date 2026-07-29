@@ -3,6 +3,7 @@
   "include": ["."],
   "compilerOptions": {
     "noEmit": true,
+    "rootDir": "..",
     "jsx": "react-jsx",
     "types": ["@altano/testing/vitest/types-dom"]
   }
