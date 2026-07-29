@@ -28,7 +28,7 @@ catalog:
   prettier: 3.9.6
   react: ^19.2.8
   react-dom: ^19.2.8
-  satori: ^0.12.2
+  satori: ^0.29.0
   svelte: ^5.56.7
   tsdown: ^0.22.13
   typescript: ^5.9.3
@@ -55,6 +55,15 @@ catalogs:
 #
 # https://github.com/pnpm/pnpm/releases/tag/v10.16.0
 minimumReleaseAge: 10080
+
+# Never silently auto-approve an immature version. pnpm already infers this
+# because `minimumReleaseAge` is set explicitly above, but without it the
+# default is "loose": pnpm appends whatever it picked to
+# `minimumReleaseAgeExclude` and carries on, which quietly defeats the quarantine.
+# Strict mode prompts instead, and declining aborts before anything is written.
+#
+# https://pnpm.io/settings#minimumreleaseagestrict
+minimumReleaseAgeStrict: true
 
 # doesn't catch my invalid deps right now but hopefully that'll be fixed in the
 # future.
