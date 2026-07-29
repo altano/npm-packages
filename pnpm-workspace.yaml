@@ -28,7 +28,7 @@ catalog:
   prettier: 3.9.6
   react: ^19.2.8
   react-dom: ^19.2.8
-  satori: ^0.12.2
+  satori: ^0.29.0
   svelte: ^5.56.7
   tsdown: ^0.22.13
   typescript: ^5.9.3
@@ -55,6 +55,25 @@ catalogs:
 #
 # https://github.com/pnpm/pnpm/releases/tag/v10.16.0
 minimumReleaseAge: 10080
+
+# Never silently auto-approve an immature version. pnpm already infers this
+# because `minimumReleaseAge` is set explicitly above, but without it the
+# default is "loose": pnpm appends whatever it picked to
+# `minimumReleaseAgeExclude` and carries on, which quietly defeats the quarantine.
+# Strict mode prompts instead, and declining aborts before anything is written.
+#
+# https://pnpm.io/settings#minimumreleaseagestrict
+minimumReleaseAgeStrict: true
+
+# Deliberate, reviewed exemptions from the quarantine above. Each entry is
+# `<name>@<version union>` and should say why it's worth the risk.
+minimumReleaseAgeExclude:
+  # satori 0.28.1 and earlier read `process.env.SATORI_STANDALONE` at module
+  # scope, which throws `process is not defined` the moment the browser bundle is
+  # imported (vercel/satori#738). 0.29.0 removes that read, and it's the only
+  # fix -- the alternative is `satori/standalone`, which requires hand-loading
+  # the wasm blob. Published 2026-07-23; matures 2026-07-30.
+  - satori@0.29.0
 
 # doesn't catch my invalid deps right now but hopefully that'll be fixed in the
 # future.
