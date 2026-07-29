@@ -1,6 +1,6 @@
 import os from "node:os";
 import { describe, expect, it } from "vitest";
-import "../../../src/matchers/setup";
+import "../../../src/matchers/setup.js";
 
 describe("matchers", () => {
   describe("toBeDirectory", () => {

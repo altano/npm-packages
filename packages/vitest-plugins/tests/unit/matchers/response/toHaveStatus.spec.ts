@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import "../../../../src/matchers/setup";
+import "../../../../src/matchers/setup.js";
 
 const getResponse = (status: number): Response =>
   new Response("", {

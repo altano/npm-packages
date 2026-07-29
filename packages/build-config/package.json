@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@altano/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
     "depcheck": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
