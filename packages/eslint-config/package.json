@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@eslint/compat": "^2.1.0",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^9.39.5",
     "eslint": "catalog:",
     "eslint-config-turbo": "^2.10.5",
     "eslint-import-resolver-typescript": "^4.4.5",
