@@ -3,7 +3,7 @@ import { VFile } from "vfile";
 
 // We're not testing the absolute path serializer, but the test isn't
 // reproducible without it. So just add both.
-import "../../../src/serializers/setup";
+import "../../../src/serializers/setup.js";
 
 describe("serializers", () => {
   describe("vFile", () => {

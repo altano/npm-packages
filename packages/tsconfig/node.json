@@ -5,6 +5,10 @@
   "compilerOptions": {
     "lib": ["es2023"],
     "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    // TypeScript 6 stopped implicitly including every `@types/*` package it
+    // could find in node_modules. Node's builtins have to be asked for by name
+    // now, or `import "node:fs"` fails to resolve.
+    "types": ["node"]
   }
 }
