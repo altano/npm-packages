@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
+    "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
     "@playwright/test": "catalog:",

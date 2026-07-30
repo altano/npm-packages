@@ -2,7 +2,7 @@ import { defineConfig, mergeConfig, type ViteUserConfig } from "vitest/config";
 import type { Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
-export type { ViteUserConfig as TestingConfig } from "vitest/config";
+export type { ViteUserConfig } from "vitest/config";
 
 /**
  * Vite plugin that marks v8 coverage ignore comments with @preserve so
@@ -62,7 +62,7 @@ const noPluginsConfig = defineConfig({
 
 const baseConfig = mergeConfig(noPluginsConfig, {
   test: {
-    setupFiles: ["@altano/testing/setup"],
+    setupFiles: ["@altano/testing/vitest/setup"],
   },
 });
 
@@ -73,7 +73,7 @@ const reactBaseConfig = mergeConfig(
     test: {
       globals: true, // required by testing-library setup
       environment: "jsdom",
-      setupFiles: ["@altano/testing/setup-dom"],
+      setupFiles: ["@altano/testing/vitest/setup-dom"],
       restoreMocks: true,
     },
   }),
