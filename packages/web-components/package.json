@@ -29,7 +29,7 @@
     "dist/**/*.json"
   ],
   "scripts": {
-    "build": "tsdown --config-loader unrun --config ../build-config/tsdown.config.web-component.ts",
+    "build": "tsdown",
     "build:documentation:custom-elements-json": "wca dist/*.d.ts --outFile dist/custom-elements.json",
     "build:documentation:readme": "wca dist/*.d.ts --outFile README.md && prettier --write README.md",
     "check:types:src": "tsc --noEmit",

@@ -1,5 +1,5 @@
 import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
-import nodeConfig from "../build-config/tsdown.config.node.js";
+import nodeConfig from "@altano/build-config/node";
 
 const config: UserConfig | UserConfigFn = defineConfig({
   ...nodeConfig,

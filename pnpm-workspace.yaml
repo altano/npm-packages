@@ -44,6 +44,7 @@ catalogs:
     "@types/unist": 3.x.x
     mdast-util-mdx-jsx: 3.x.x
     prettier: 3.x.x
+    tsdown: 0.x.x
     unified: 11.x.x
     vfile: 6.x.x
 

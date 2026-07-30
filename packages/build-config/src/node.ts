@@ -1,7 +1,7 @@
-import { defineConfig, type UserConfig, type UserConfigFn } from "tsdown";
-import baseConfig from "./tsdown.config.base.js";
+import type { UserConfig } from "tsdown";
+import baseConfig from "./base.js";
 
-const config: UserConfig | UserConfigFn = defineConfig({
+const config: UserConfig = {
   ...baseConfig,
   entry: ["./src/*.ts"],
   platform: "node",
@@ -11,6 +11,6 @@ const config: UserConfig | UserConfigFn = defineConfig({
   minify: false,
   sourcemap: false,
   unbundle: true,
-});
+};
 
 export default config;
