@@ -439,10 +439,19 @@ importers:
         version: 8.1.5(@types/node@25.5.0)(esbuild@0.28.1)(jiti@2.4.2)(yaml@2.8.3)
 
   packages/build-config:
-    dependencies:
+    devDependencies:
+      '@altano/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      depcheck:
+        specifier: 'catalog:'
+        version: 1.4.7
       eslint:
         specifier: 'catalog:'
         version: 9.39.4(jiti@2.4.2)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.8.1
       tsdown:
         specifier: 'catalog:'
         version: 0.21.4(@arethetypeswrong/core@0.18.2)(synckit@0.11.12)(typescript@5.9.3)(unplugin-unused@0.5.0)
@@ -5975,11 +5984,6 @@ packages:
       react: '*'
       react-dom: '*'
 
-  nanoid@3.3.11:
-    resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-
   nanoid@3.3.16:
     resolution: {integrity: sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -6273,10 +6277,6 @@ packages:
 
   postcss@8.5.20:
     resolution: {integrity: sha512-lW616l85ucIQL+FocMmL7pQFPqBmwejrCMg+iPxyImlrANNJG9NHq/RkyCZopDhd8C3LA03PHRJDjkbGu8vvug==}
-    engines: {node: ^10 || ^12 || >=14}
-
-  postcss@8.5.8:
-    resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
     engines: {node: ^10 || ^12 || >=14}
 
   powershell-utils@0.1.0:
@@ -7897,8 +7897,8 @@ snapshots:
       '@astrobook/types': 0.12.4(astro@7.1.1(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.5.0)(jiti@2.4.2)(rollup@4.60.0)(yaml@2.8.3))
       '@sveltejs/acorn-typescript': 1.0.9(acorn@8.16.0)
       acorn: 8.16.0
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.5)
+      picomatch: 4.0.5
       slash: 5.1.0
       valibot: 1.3.1(typescript@5.9.3)
       yoctocolors: 2.1.2
@@ -10132,7 +10132,7 @@ snapshots:
       '@vue/shared': 3.5.30
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.8
+      postcss: 8.5.20
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.30':
@@ -13215,8 +13215,6 @@ snapshots:
       stacktrace-js: 2.0.2
       stylis: 4.3.1
 
-  nanoid@3.3.11: {}
-
   nanoid@3.3.16: {}
 
   napi-postinstall@0.3.2: {}
@@ -13518,12 +13516,6 @@ snapshots:
   postcss@8.5.20:
     dependencies:
       nanoid: 3.3.16
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
-  postcss@8.5.8:
-    dependencies:
-      nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
 

@@ -3,18 +3,32 @@
   "version": "0.0.1",
   "private": true,
   "description": "Build configuration files shared across the repo",
-  "license": "ISC",
   "type": "module",
+  "exports": {
+    "./*": "./dist/*.js"
+  },
   "scripts": {
-    "check:types": "tsc --noEmit",
+    "build": "rm -rf dist && tsc",
+    "check:types:src": "tsc --noEmit",
+    "check:unused-dependencies": "depcheck",
+    "clean": "rm -rf .turbo && rm -rf .tsbuildinfo && rm -rf node_modules && rm -rf dist",
+    "dev": "pnpm run build --watch",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint",
     "lint:fix": "TIMING=1 pnpm lint --fix",
     "lint:timing": "TIMING=1 pnpm lint"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@altano/tsconfig": "workspace:*",
+    "depcheck": "catalog:",
     "eslint": "catalog:",
+    "prettier": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "tsdown": "catalog:peers"
   },
   "publishConfig": {
     "access": "restricted"
