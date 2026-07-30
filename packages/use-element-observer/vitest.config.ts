@@ -1,5 +1,8 @@
-import { deriveReactLibraryConfig, type TestingConfig } from "@altano/testing";
+import {
+  deriveReactLibraryConfig,
+  type ViteUserConfig,
+} from "@altano/testing/vitest";
 
-const config: TestingConfig = deriveReactLibraryConfig({});
+const config: ViteUserConfig = deriveReactLibraryConfig({});
 
 export default config;

@@ -1,6 +1,6 @@
-import { deriveConfig, type TestingConfig } from "@altano/testing";
+import { deriveConfig, type ViteUserConfig } from "@altano/testing/vitest";
 
-const config: TestingConfig = deriveConfig({
+const config: ViteUserConfig = deriveConfig({
   test: {
     coverage: {
       // TODO figure out how to enable coverage for code only exercised in astro
