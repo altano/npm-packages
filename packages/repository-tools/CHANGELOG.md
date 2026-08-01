@@ -1,5 +1,12 @@
 # @altano/repository-tools
 
+## 2.0.4
+
+### Patch Changes
+
+- 1884663: replace the `find-cache-dir` dev dependency with `find-cache-directory`. `find-cache-dir@6` is deprecated in favor of the renamed package; the API is unchanged.
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+
 ## 2.0.3
 
 ### Patch Changes
