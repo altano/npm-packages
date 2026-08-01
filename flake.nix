@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
     nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
+    # Negative control: known-bad mesa 26.1.1, forced onto LD_LIBRARY_PATH over
+    # the otherwise-good 1.59.1/26.0.6 combo above, to check that the
+    # LD_LIBRARY_PATH override mechanism actually takes effect at runtime.
+    nixpkgs-mesa-26-1-1.url = "github:NixOS/nixpkgs/5f85796ab70f9a6ac935b366065d4565288947ac";
   };
 
   outputs =
@@ -12,6 +16,7 @@
       self,
       nixpkgs,
       nixpkgs-playwright-1-59-1,
+      nixpkgs-mesa-26-1-1,
     }:
     let
       supportedSystems = [
@@ -36,6 +41,7 @@
         let
           pkgs = import nixpkgs { inherit system; };
           pkgsPlaywright159 = import nixpkgs-playwright-1-59-1 { inherit system; };
+          pkgsBadMesa = import nixpkgs-mesa-26-1-1 { inherit system; };
           # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
@@ -102,6 +108,7 @@
             PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
             PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
             PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
+            LD_LIBRARY_PATH = "${pkgsBadMesa.mesa}/lib";
           };
         }
       );

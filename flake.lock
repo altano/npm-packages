@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-mesa-26-1-1": {
+      "locked": {
+        "lastModified": 1780271817,
+        "narHash": "sha256-LSTTcdkGRXfAxoshh6ljRedRjBGWRg9/J54ZGW7BwF8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f85796ab70f9a6ac935b366065d4565288947ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f85796ab70f9a6ac935b366065d4565288947ac",
+        "type": "github"
+      }
+    },
     "nixpkgs-playwright-1-59-1": {
       "locked": {
         "lastModified": 1777918403,
@@ -35,6 +51,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
+        "nixpkgs-mesa-26-1-1": "nixpkgs-mesa-26-1-1",
         "nixpkgs-playwright-1-59-1": "nixpkgs-playwright-1-59-1"
       }
     }
