@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc
 
+## 1.0.3
+
+### Patch Changes
+
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+
 ## 1.0.2
 
 ### Patch Changes

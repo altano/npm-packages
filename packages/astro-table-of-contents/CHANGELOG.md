@@ -1,5 +1,16 @@
 # @altano/astro-table-of-contents
 
+## 2.0.0
+
+### Major Changes
+
+- 0a65ab2: upgrade to Astro v7
+
+### Patch Changes
+
+- Updated dependencies [4818735]
+  - @altano/web-components@0.0.7
+
 ## 1.0.1
 
 ### Patch Changes

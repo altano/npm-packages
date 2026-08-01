@@ -1,5 +1,16 @@
 # @altano/astro-prettier-response
 
+## 3.0.0
+
+### Major Changes
+
+- 0a65ab2: upgrade to Astro v7
+
+### Patch Changes
+
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+- 7dc8055: remove `astro-integration-kit` dependency
+
 ## 2.0.1
 
 ### Patch Changes

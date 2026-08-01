@@ -1,5 +1,12 @@
 # @altano/vitest-plugins
 
+## 1.1.3
+
+### Patch Changes
+
+- 373eb96: update `serialize-error` to v13
+- 7d9ffbd: update `prettier` to 3.9.5 and `@prettier/sync` to 0.6.1
+
 ## 1.1.2
 
 ### Patch Changes

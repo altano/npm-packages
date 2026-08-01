@@ -1,5 +1,11 @@
 # @altano/web-components
 
+## 0.0.7
+
+### Patch Changes
+
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+
 ## 0.0.6
 
 ### Patch Changes

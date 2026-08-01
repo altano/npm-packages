@@ -1,5 +1,38 @@
 # @altano/satori-fit-text
 
+## 3.0.0
+
+### Major Changes
+
+- 9f5d200: update `satori` to 0.29.0 (from 0.12.2)
+
+  Fixes:
+
+  - restores browser support: satori 0.28.1 and earlier read
+    `process.env.SATORI_STANDALONE` at module scope, which throws `process is not
+defined` as soon as the bundle is imported in a browser. 0.29.0 removes that
+    read, so `satori-fit-text` works in a browser again. See
+    [vercel/satori#738](https://github.com/vercel/satori/issues/738) for more info.
+
+  Breaking Changes:
+
+  - rendering output shifts very slightly (glyph-edge antialiasing and debug bbox
+    overlays).
+
+  Non-breaking Changes:
+
+  - both packages re-export satori's types as part of their public API (`Font` and
+    `SatoriOptions` respectively). `Font` is unchanged. `SatoriOptions` has one
+    additive change: 0.29.0 adds `pointScaleFactor?: number` (this is
+    backwards-compatible).
+
+### Patch Changes
+
+- 46e1795: update `astro` to 7.1.3, `svelte` to 5.56.7, `svgdom` to 0.1.28, and
+  `typescript-eslint` to 8.65.0
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+- 86f585d: update dependencies: `lodash`, `react-use`, `svgdom`, `@svgdotjs/svg.js`
+
 ## 2.0.2
 
 ### Patch Changes

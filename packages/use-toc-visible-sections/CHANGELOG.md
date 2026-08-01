@@ -1,5 +1,14 @@
 # @altano/use-toc-visible-sections
 
+## 4.0.3
+
+### Patch Changes
+
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+- Updated dependencies [4818735]
+- Updated dependencies [86f585d]
+  - @altano/use-visible-elements@4.0.3
+
 ## 4.0.2
 
 ### Patch Changes

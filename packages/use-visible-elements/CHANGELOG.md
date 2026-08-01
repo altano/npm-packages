@@ -1,5 +1,14 @@
 # @altano/use-visible-elements
 
+## 4.0.3
+
+### Patch Changes
+
+- 4818735: update `tsdown` to 0.22, which builds the published `dist/` output
+- 86f585d: update dependencies: `lodash`, `react-use`, `svgdom`, `@svgdotjs/svg.js`
+- Updated dependencies [4818735]
+  - @altano/use-element-observer@4.0.3
+
 ## 4.0.2
 
 ### Patch Changes
