@@ -87,6 +87,16 @@ export const deriveConfig = (
         command: "pnpm run test:e2e:server",
         url: baseURL,
         reuseExistingServer: false,
+        env: {
+          // Astro 7 auto-detects AI agent environments (Claude Code, etc.) and
+          // silently runs `astro dev` as a detached background process, which
+          // breaks Playwright: the server it starts never becomes the process
+          // Playwright is supervising, and a relative `--root` gets resolved a
+          // second time against the child's new cwd, doubling the path. This is
+          // Astro's documented opt-out; it keeps the dev server in the
+          // foreground where Playwright can manage its lifecycle.
+          ASTRO_DEV_BACKGROUND: "0",
+        },
       },
     },
     overrides,

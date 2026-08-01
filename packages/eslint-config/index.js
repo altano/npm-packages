@@ -75,7 +75,7 @@ export default {
       reactCompiler.configs.recommended,
 
       // react hooks
-      reactHooks.configs["recommended-latest"],
+      reactHooks.configs.flat["recommended-latest"],
 
       {
         rules: {
