@@ -3,15 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
-    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
+    # Bisection experiment: playwright 1.61.1 (current/latest) unmodified, but
+    # force the old (known-working) mesa 26.0.6 onto LD_LIBRARY_PATH ahead of
+    # whatever mesa 1.61.1's own nixpkgs revision would otherwise provide.
+    nixpkgs-mesa-26-0-6.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-playwright-1-59-1,
+      nixpkgs-mesa-26-0-6,
     }:
     let
       supportedSystems = [
@@ -35,17 +37,17 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
-          pkgsPlaywright159 = import nixpkgs-playwright-1-59-1 { inherit system; };
+          pkgsOldMesa = import nixpkgs-mesa-26-0-6 { inherit system; };
           # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
-              pkgsPlaywright159.playwright-driver.version == expectedPlaywrightVersion
+              pkgs.playwright-driver.version == expectedPlaywrightVersion
               || builtins.throw ''
                 Playwright version mismatch!
-                  nixpkgs-playwright-1-59-1 has: ${pkgsPlaywright159.playwright-driver.version}
+                  nixpkgs has: ${pkgs.playwright-driver.version}
                   pnpm-lock.yaml expects: ${expectedPlaywrightVersion}
 
-                Fix: update the nixpkgs-playwright-1-59-1 input or the Playwright npm dependency so both resolve to the same version.
+                Fix: update the nixpkgs input or the Playwright npm dependency so both resolve to the same version.
               '';
             true;
 
@@ -70,7 +72,7 @@
 
           playwrightBrowsers =
             assert playwrightVersionCheck;
-            pkgsPlaywright159.playwright-driver.browsers;
+            pkgs.playwright-driver.browsers;
 
           localExtras = [
             pkgs.difftastic
@@ -102,6 +104,7 @@
             PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
             PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
             PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
+            LD_LIBRARY_PATH = "${pkgsOldMesa.mesa}/lib";
           };
         }
       );

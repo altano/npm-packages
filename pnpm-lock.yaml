@@ -28,8 +28,8 @@ catalogs:
       specifier: 5.2.6
       version: 5.2.6
     '@playwright/test':
-      specifier: 1.59.1
-      version: 1.59.1
+      specifier: 1.61.1
+      version: 1.61.1
     '@types/mdast':
       specifier: ^4.0.4
       version: 4.0.4
@@ -121,7 +121,7 @@ importers:
         version: 2.30.0(@types/node@26.1.1)
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       eslint:
         specifier: 'catalog:'
         version: 9.39.4(jiti@2.4.2)
@@ -277,7 +277,7 @@ importers:
         version: 2.0.0(astro@7.1.1(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.1)(jiti@2.4.2)(rollup@4.60.0)(yaml@2.8.3))
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/he':
         specifier: ^1.2.3
         version: 1.2.3
@@ -415,7 +415,7 @@ importers:
         version: 0.9.9(prettier@3.8.1)(typescript@5.9.3)
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -965,7 +965,7 @@ importers:
         version: 5.2.6
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -1044,7 +1044,7 @@ importers:
         version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -1086,7 +1086,7 @@ importers:
         version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -1235,7 +1235,7 @@ importers:
         version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -1296,7 +1296,7 @@ importers:
         version: 0.18.2
       '@playwright/test':
         specifier: 'catalog:'
-        version: 1.59.1
+        version: 1.61.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
@@ -2583,8 +2583,8 @@ packages:
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.59.1':
-    resolution: {integrity: sha512-PG6q63nQg5c9rIi4/Z5lR5IVF7yU5MqmKaPOe0HSc0O2cX1fPi96sUQu5j7eo4gKCkB2AnNGoWt7y4/Xx3Kcqg==}
+  '@playwright/test@1.61.1':
+    resolution: {integrity: sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6214,13 +6214,13 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  playwright-core@1.59.1:
-    resolution: {integrity: sha512-HBV/RJg81z5BiiZ9yPzIiClYV/QMsDCKUyogwH9p3MCP6IYjUFu/MActgYAvK0oWyV9NlwM3GLBjADyWgydVyg==}
+  playwright-core@1.61.1:
+    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.59.1:
-    resolution: {integrity: sha512-C8oWjPR3F81yljW9o5OxcWzfh6avkVwDD2VYdwIGqTkl+OGFISgypqzfu7dOe4QNLL2aqcWBmI3PMtLIK233lw==}
+  playwright@1.61.1:
+    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9120,9 +9120,9 @@ snapshots:
 
   '@pkgr/core@0.2.9': {}
 
-  '@playwright/test@1.59.1':
+  '@playwright/test@1.61.1':
     dependencies:
-      playwright: 1.59.1
+      playwright: 1.61.1
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -13401,11 +13401,11 @@ snapshots:
       pathe: 2.0.3
     optional: true
 
-  playwright-core@1.59.1: {}
+  playwright-core@1.61.1: {}
 
-  playwright@1.59.1:
+  playwright@1.61.1:
     dependencies:
-      playwright-core: 1.59.1
+      playwright-core: 1.61.1
     optionalDependencies:
       fsevents: 2.3.2
 
