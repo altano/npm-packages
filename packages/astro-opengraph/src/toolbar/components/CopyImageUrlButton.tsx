@@ -1,25 +1,17 @@
-import { useState, useRef, useEffect, useCallback } from "preact/hooks";
+import { useState, useEffect, useCallback } from "preact/hooks";
 import type Preact from "preact";
 import type { DevToolbarButton } from "astro/runtime/client/dev-toolbar/ui-library/button.js";
 import { useImageURL } from "../hooks/useImageURL.js";
 import { ToolbarSection } from "./ToolbarSection.js";
 
-type Timer = ReturnType<typeof setTimeout>;
-
 export function CopyImageUrlButton(): Preact.JSX.Element {
   const imageUrl = useImageURL();
   const [wasRecentlyClicked, setWasRecentlyClicked] = useState(false);
-  const checkTimer = useRef<Timer | null>(null);
 
   useEffect(() => {
-    if (wasRecentlyClicked && checkTimer.current == null) {
-      checkTimer.current = setTimeout(() => {
-        setWasRecentlyClicked(false);
-        // TODO investigate
-        // eslint-disable-next-line react-compiler/react-compiler
-        checkTimer.current = null;
-      }, 3_000);
-    }
+    if (!wasRecentlyClicked) return;
+    const timer = setTimeout(() => setWasRecentlyClicked(false), 3_000);
+    return () => clearTimeout(timer);
   }, [wasRecentlyClicked]);
 
   const handleClick: Preact.MouseEventHandler<DevToolbarButton> = useCallback(

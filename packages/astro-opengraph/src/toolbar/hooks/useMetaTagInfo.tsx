@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 
 export type MetaTagInfo = [content: string | null, property: string | null];
 
@@ -33,8 +33,13 @@ const useHeadObserver = (): React.RefObject<HTMLHeadElement | null> => {
 
 export function useMetaTagInfo(): MetaTagInfo[] {
   const headRef = useHeadObserver();
-  const opengraphMetaTags =
-    headRef?.current?.querySelectorAll("meta[property^='og:']") ?? [];
+  // TODO: This works because the MutationObserver above forces a re-render on
+  // every <head> change, but the supported shape for this is
+  // useSyncExternalStore.
+  const opengraphMetaTags = useMemo(() => {
+    return headRef?.current?.querySelectorAll("meta[property^='og:']") ?? [];
+  }, [headRef]);
+
   // console.log({
   //   opengraphMetaTags: opengraphMetaTags,
   //   opengraphMetaTagsLength: opengraphMetaTags.length,

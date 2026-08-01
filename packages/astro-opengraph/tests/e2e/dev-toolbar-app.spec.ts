@@ -107,7 +107,7 @@ test.describe("dev toolbar", () => {
     page,
     browserName,
   }) => {
-    // eslint-disable-next-line playwright/no-skipped-test -- WebKit blocks programmatic navigator.clipboard.readText() without a user gesture
+    // eslint-disable-next-line playwright/no-skipped-test
     test.skip(
       browserName === "webkit",
       "WebKit blocks programmatic navigator.clipboard.readText() without a user gesture",
@@ -131,6 +131,39 @@ test.describe("dev toolbar", () => {
     await expect(devPage.copyImageURLButton).toHaveText("Copy image URL", {
       timeout: 5_000, // must be longer than actual setTimeout used by button
     });
+  });
+
+  test("clicking again mid-revert should not restart the revert timer", async ({
+    page,
+  }) => {
+    // Drive the button's revert timer by hand rather than waiting on it. Note
+    // that the clock keeps ticking with real time, since `install()` only swaps
+    // in fake timer functions. It deliberately isn't paused, because a frozen
+    // clock stops the dev toolbar from ever rendering.
+    const devPage = new PlaywrightDevPage(page);
+    await page.clock.install();
+    await devPage.goto();
+    await devPage.openToolbar();
+
+    await devPage.copyImageURLButton.click();
+    await expect(devPage.copyImageURLButton).toHaveText("Copied to clipboard");
+
+    // Click again partway through the revert window ...
+    await page.clock.runFor(2_000);
+    await devPage.copyImageURLButton.click();
+    await expect(devPage.copyImageURLButton).toHaveText("Copied to clipboard");
+
+    // ... and 3s after the FIRST click it should revert anyway, rather than the
+    // second click pushing the deadline out another 3s.
+    await page.clock.runFor(1_100);
+
+    // Read the text once, with no retrying. `toHaveText` would poll for up to
+    // 5s, and since the clock still advances in real time it would eventually
+    // see a restarted timer revert too, passing on exactly the regression this
+    // test exists to catch.
+    expect(await devPage.copyImageURLButton.textContent()).toContain(
+      "Copy image URL",
+    );
   });
 
   test("open/close state should persist across page loads", async ({
