@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
-    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
+    # Bisection experiment: same playwright-driver version (1.59.1) as ryp, but
+    # from a newer nixpkgs revision (mesa 26.1.1 instead of 26.0.6) to test
+    # whether mesa itself, not playwright, causes webkit e2e to fail in CI.
+    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/5f85796ab70f9a6ac935b366065d4565288947ac";
   };
 
   outputs =

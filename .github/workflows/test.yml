@@ -121,8 +121,8 @@ jobs:
           '
       - name: Run tests
         run: nix develop .#test-e2e --command pnpm turbo run test:e2e --summarize
-        # env:
-        #   DEBUG: "pw:browser*"
+        env:
+          DEBUG: "pw:browser*"
       - name: Summarize Turbo
         uses: ./.github/actions/turbo-summarize
       - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
