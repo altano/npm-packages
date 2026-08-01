@@ -3,15 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
-    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
+    # Bisection experiment: try playwright 1.60.0 (between the known-good 1.59.1
+    # and known-bad 1.61.1) for webkit e2e in GitHub Actions.
+    nixpkgs-playwright-1-60-0.url = "github:NixOS/nixpkgs/2e7f66d83c4577494e221f3dc4111d18b0e299cd";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-playwright-1-59-1,
+      nixpkgs-playwright-1-60-0,
     }:
     let
       supportedSystems = [
@@ -35,17 +36,17 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
-          pkgsPlaywright159 = import nixpkgs-playwright-1-59-1 { inherit system; };
+          pkgsPlaywright160 = import nixpkgs-playwright-1-60-0 { inherit system; };
           # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
-              pkgsPlaywright159.playwright-driver.version == expectedPlaywrightVersion
+              pkgsPlaywright160.playwright-driver.version == expectedPlaywrightVersion
               || builtins.throw ''
                 Playwright version mismatch!
-                  nixpkgs-playwright-1-59-1 has: ${pkgsPlaywright159.playwright-driver.version}
+                  nixpkgs-playwright-1-60-0 has: ${pkgsPlaywright160.playwright-driver.version}
                   pnpm-lock.yaml expects: ${expectedPlaywrightVersion}
 
-                Fix: update the nixpkgs-playwright-1-59-1 input or the Playwright npm dependency so both resolve to the same version.
+                Fix: update the nixpkgs-playwright-1-60-0 input or the Playwright npm dependency so both resolve to the same version.
               '';
             true;
 
@@ -70,7 +71,7 @@
 
           playwrightBrowsers =
             assert playwrightVersionCheck;
-            pkgsPlaywright159.playwright-driver.browsers;
+            pkgsPlaywright160.playwright-driver.browsers;
 
           localExtras = [
             pkgs.difftastic

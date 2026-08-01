@@ -16,26 +16,26 @@
         "type": "github"
       }
     },
-    "nixpkgs-playwright-1-59-1": {
+    "nixpkgs-playwright-1-60-0": {
       "locked": {
-        "lastModified": 1777918403,
-        "narHash": "sha256-7QiZv0LcW1yIOLo2LNuCQjWon1Z1r99FwK24hbtBOF4=",
+        "lastModified": 1783295695,
+        "narHash": "sha256-qTNhR1aNRKTcB1Wy2weveF3jDyNKJIYlsYDFtfx6Ky4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "afc5551119aae6eab73a95c1960891cfe63204f6",
+        "rev": "2e7f66d83c4577494e221f3dc4111d18b0e299cd",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "afc5551119aae6eab73a95c1960891cfe63204f6",
+        "rev": "2e7f66d83c4577494e221f3dc4111d18b0e299cd",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "nixpkgs-playwright-1-59-1": "nixpkgs-playwright-1-59-1"
+        "nixpkgs-playwright-1-60-0": "nixpkgs-playwright-1-60-0"
       }
     }
   },
