@@ -65,6 +65,11 @@ minimumReleaseAge: 10080
 # https://pnpm.io/settings#minimumreleaseagestrict
 minimumReleaseAgeStrict: true
 
+# Deliberate exceptions to the quarantine above. Helps get clean `pnpm audit`
+# Removable once the whole graph has moved to brace-expansion 5.x.
+minimumReleaseAgeExclude:
+  - brace-expansion@1.1.18 || 2.1.4
+
 # doesn't catch my invalid deps right now but hopefully that'll be fixed in the
 # future.
 # https://github.com/pnpm/pnpm/issues/10824
