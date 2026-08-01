@@ -9,6 +9,12 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+# Default the GITHUB_TOKEN to read-only. The release job below opts into the
+# broader scopes it needs (job-level permissions replace this, not merge with
+# it).
+permissions:
+  contents: read
+
 # Use Turborepo remote caching w/ custom cache server
 env:
   TURBO_API: ${{ vars.TURBO_API }}
