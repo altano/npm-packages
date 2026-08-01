@@ -8,6 +8,13 @@ on:
   push:
     branches: [main]
 
+# Restrict the default GITHUB_TOKEN to the least privilege every job here
+# needs: reading the repo. Nothing in this workflow writes back to GitHub
+# (turbo-summarize writes to $GITHUB_STEP_SUMMARY, and upload-artifact uses the
+# Actions runtime token, neither of which needs GITHUB_TOKEN scopes).
+permissions:
+  contents: read
+
 # Cancel in-progress jobs for the same work
 # (https://graphite.dev/docs/troubleshooting#why-are-my-actions-running-twice)
 concurrency:
