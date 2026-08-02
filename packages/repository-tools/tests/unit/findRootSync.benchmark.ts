@@ -32,6 +32,9 @@ describe("findRootSync", async () => {
 
     // assert file exists
     const testFilePath = path.join(tempDir.path, "test-file.txt");
+    // Has to live out here for the same reason the setup above does: `bench`
+    // doesn't support `beforeAll`.
+    // eslint-disable-next-line vitest/no-standalone-expect
     expect(testFilePath).toBeFile();
 
     bench(`findRootSync (${type})`, () => {

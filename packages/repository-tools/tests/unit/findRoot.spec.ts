@@ -11,9 +11,9 @@ describe("findRoot", function () {
   });
 
   it("should error if given a filename (instead of a directory)", async () => {
-    await expect(async () => {
-      await findRoot(import.meta.filename);
-    }).rejects.toThrow(`Given path isn't a directory`);
+    await expect(findRoot(import.meta.filename)).rejects.toThrow(
+      `Given path isn't a directory`,
+    );
   });
 
   it("should return no repositories at the drive root", async () => {
