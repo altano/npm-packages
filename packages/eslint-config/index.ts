@@ -1,6 +1,5 @@
 import path from "node:path";
 import reactPlugin from "eslint-plugin-react";
-import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
 import { importX } from "eslint-plugin-import-x";
 import eslint from "@eslint/js";
@@ -72,10 +71,9 @@ export default {
         },
       },
 
-      // react compiler
-      reactCompiler.configs.recommended,
-
-      // react hooks
+      // react hooks (also supplies the React Compiler diagnostics, which used
+      // to come from the separate eslint-plugin-react-compiler)
+      // https://react.dev/blog/2025/10/07/react-compiler-1#migrating-from-eslint-plugin-react-compiler-to-eslint-plugin-react-hooks
       reactHooks.configs.flat["recommended-latest"],
 
       {
