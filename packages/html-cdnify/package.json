@@ -49,7 +49,6 @@
   "dependencies": {
     "@gofunky/trumpet": "^3.0.3",
     "lodash": "^4.18.1",
-    "stream-to-promise": "^3.0.0",
     "streamifier": "^0.1.1"
   },
   "devDependencies": {
@@ -59,7 +58,6 @@
     "@arethetypeswrong/cli": "catalog:",
     "@types/lodash": "^4.17.24",
     "@types/node": "catalog:",
-    "@types/stream-to-promise": "^2.2.5",
     "@types/streamifier": "^0.1.2",
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
@@ -71,7 +69,7 @@
     "vitest": "catalog:"
   },
   "engines": {
-    "node": ">=5.10.1"
+    "node": ">=16.7.0"
   },
   "publishConfig": {
     "access": "public"

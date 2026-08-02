@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CDNTransformer, cdnify } from "../../src/index.js";
 import type { CDNTransformerOptions, CdnifyOptions } from "../../src/index.js";
 import * as stream from "node:stream";
-import streamToPromise from "stream-to-promise";
+import { text } from "node:stream/consumers";
 import streamifier from "streamifier";
 
 async function verify(
@@ -601,9 +601,7 @@ describe("CDNTransformer", function () {
         )
         .pipe(transformer.stream);
 
-      const result = streamToPromise(outputStream).then((buffer: Buffer) =>
-        buffer.toString(),
-      );
+      const result = text(outputStream);
 
       await expect(result).resolves.to
         .toEqual(`<some:namespace foo="//cdn.com/cdn/value">
