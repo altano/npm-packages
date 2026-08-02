@@ -1,5 +1,5 @@
 import trumpet, { type Trumpet } from "@gofunky/trumpet";
-import streamToPromise from "stream-to-promise";
+import { buffer } from "node:stream/consumers";
 
 export type TrumpetTransformStream = Trumpet;
 
@@ -21,6 +21,6 @@ export default class HtmlTransformer {
    * Get a promise to the complete output Buffer (alternative API to dealing with stream)
    */
   get outputBufferPromise(): Promise<Buffer> {
-    return streamToPromise(this.stream);
+    return buffer(this.stream);
   }
 }
