@@ -5,8 +5,9 @@
   "description": "ESLint configuration files shared across the repo",
   "license": "ISC",
   "type": "module",
-  "exports": "./index.js",
+  "exports": "./index.ts",
   "scripts": {
+    "check:types:src": "tsc --noEmit",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint",
@@ -14,7 +15,7 @@
     "lint:timing": "TIMING=1 pnpm lint"
   },
   "dependencies": {
-    "@eslint/compat": "^2.1.0",
+    "@eslint/config-helpers": "^0.7.0",
     "@eslint/js": "^9.39.5",
     "@vitest/eslint-plugin": "^1.6.24",
     "eslint": "catalog:",
@@ -38,7 +39,11 @@
     "yaml-eslint-parser": "^2.1.0"
   },
   "devDependencies": {
-    "prettier": "catalog:"
+    "@altano/tsconfig": "workspace:*",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.1",
+    "@types/node": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "restricted"

@@ -1,5 +1,4 @@
-// @ts-check
-
+import path from "node:path";
 import reactPlugin from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -10,21 +9,20 @@ import prettier from "eslint-plugin-prettier/recommended";
 import packageJson from "eslint-plugin-package-json";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
-import { includeIgnoreFile } from "@eslint/compat";
-import gitignorePath from "./gitignorePath.js";
+import { includeIgnoreFile } from "@eslint/config-helpers";
 import turboConfig from "eslint-config-turbo/flat";
 import playwright from "eslint-plugin-playwright";
 import vitest from "@vitest/eslint-plugin";
 import pluginPnpm from "eslint-plugin-pnpm";
 import * as jsoncParser from "jsonc-eslint-parser";
 import * as yamlParser from "yaml-eslint-parser";
-import { globalIgnores } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import eslintPluginYml from "eslint-plugin-yml";
 import eslintPluginJsonSchemaValidator from "eslint-plugin-json-schema-validator";
 
 export default {
   configs: {
-    all: tseslint.config(
+    all: defineConfig(
       eslint.configs.recommended,
 
       ...turboConfig,
@@ -41,7 +39,9 @@ export default {
       },
 
       // ignore everything in the gitignore
-      includeIgnoreFile(gitignorePath),
+      includeIgnoreFile(
+        path.resolve(import.meta.dirname, "..", "..", ".gitignore"),
+      ),
 
       globalIgnores(["pnpm-lock.yaml"]),
 
@@ -63,7 +63,7 @@ export default {
 
       // react
       {
-        ...reactPlugin.configs.flat.recommended,
+        ...reactPlugin.configs.flat["recommended"],
         ...reactPlugin.configs.flat["jsx-runtime"],
         settings: {
           react: {
