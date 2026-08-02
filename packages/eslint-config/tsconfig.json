@@ -1,0 +1,11 @@
+{
+  "extends": "@altano/tsconfig/node.json",
+  "include": ["index.ts"],
+  "compilerOptions": {
+    "noEmit": true,
+    // This package is never built -- `exports` points at index.ts directly, so
+    // no declarations are ever emitted and isolatedDeclarations just forces an
+    // annotation on the config object for no benefit.
+    "isolatedDeclarations": false
+  }
+}
