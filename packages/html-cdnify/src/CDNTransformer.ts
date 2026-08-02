@@ -1,4 +1,4 @@
-import { unionBy, merge, mergeWith, type MergeWithCustomizer } from "lodash";
+import { unionBy, merge, mergeWith } from "lodash-es";
 import urlConverter from "./urlConverter.js";
 
 import * as HtmlAttributeStreamTransformer from "./HtmlAttributeStreamTransformer.js";
@@ -45,7 +45,7 @@ class OptionsMerger {
     );
   }
 
-  static mergeCustomizer: MergeWithCustomizer = (objValue, srcValue) => {
+  static mergeCustomizer = (objValue: unknown, srcValue: unknown): unknown => {
     if (
       OptionsMerger.isTransformDefinitions(objValue) &&
       OptionsMerger.isTransformDefinitions(srcValue)
