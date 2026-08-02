@@ -80,7 +80,7 @@ class OptionsMerger {
 }
 
 /**
- * Wraps a node-trumpet Transform stream, w/ HTML as input and
+ * Wraps an HtmlRewriteStream, w/ HTML as input and
  * HTML as output. The output will have all non-absolute-URL
  * attributes that identify CDN-able resources converted to
  * use the given CDN URL.
