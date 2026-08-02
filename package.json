@@ -24,6 +24,7 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint .github/**/*.yml && eslint --no-warn-ignored --no-error-on-unmatched-pattern *.json *.ts *.yaml",
     "lint:inspect": "pnpm dlx @eslint/config-inspector@latest",
+    "list:deprecated": "pnpm up -r --no-save --no-lockfile --reporter=ndjson 2>/dev/null | jq -rs 'map(select(.name==\"pnpm:deprecation\"))|unique_by(.pkgId)|sort_by(.depth,.pkgId)|if length==0 then \"No deprecated packages.\" else .[]|\"\\(.pkgId) [\\(if .depth==0 then \"direct\" else \"transitive\" end)]\\n  \\(.deprecated)\" end'",
     "prep": "turbo run build build:documentation test lint format check --summarize",
     "release": "turbo run build && changeset publish",
     "test": "turbo run test",

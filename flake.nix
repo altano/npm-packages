@@ -52,6 +52,7 @@
           base = [
             pkgs.nodejs_26
             pkgs.pnpm
+            pkgs.jq
           ];
 
           vcs = [
