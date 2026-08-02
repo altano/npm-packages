@@ -52,9 +52,16 @@ export default function should(
         .asPng();
       const imageBuffer = Buffer.from(imageResvgArr);
 
+      // `snapshot` is a fixed property of each generated test, not a runtime
+      // condition, so this isn't the flaky "assert only if we got here" the
+      // rule guards against.
+      // eslint-disable-next-line vitest/no-conditional-expect
       expect(imageBuffer).toMatchImageSnapshot({ runInProcess: true });
     }
   }
 
+  // This is a test factory: the assertions live in `run`, which the rule can't
+  // see into from the `test()` call.
+  // eslint-disable-next-line vitest/expect-expect
   test(testName, { only }, run);
 }

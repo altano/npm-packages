@@ -14,6 +14,7 @@ import { includeIgnoreFile } from "@eslint/compat";
 import gitignorePath from "./gitignorePath.js";
 import turboConfig from "eslint-config-turbo/flat";
 import playwright from "eslint-plugin-playwright";
+import vitest from "@vitest/eslint-plugin";
 import pluginPnpm from "eslint-plugin-pnpm";
 import * as jsoncParser from "jsonc-eslint-parser";
 import * as yamlParser from "yaml-eslint-parser";
@@ -195,6 +196,58 @@ export default {
           ...playwright.configs["flat/recommended"].rules,
           // Customize Playwright rules
           // ...
+        },
+      },
+
+      {
+        ...vitest.configs.recommended,
+        // Where vitest looks for tests (`test.dir` in the shared vitest
+        // config). e2e tests are playwright's, above.
+        files: ["packages/*/tests/unit/**/*"],
+        settings: {
+          vitest: {
+            // recognize expectTypeOf()/assertType() in *.test-d.* files
+            typecheck: true,
+          },
+        },
+        rules: {
+          ...vitest.configs.recommended.rules,
+          // Customize vitest rules
+          "vitest/expect-expect": [
+            "error",
+            {
+              // Assertions often live in a helper rather than inline in the
+              // test body.
+              assertFunctionNames: [
+                "expect",
+                "expectTypeOf",
+                "assertType",
+                "verify",
+                "*Verify",
+              ],
+            },
+          ],
+          // skipped/focused tests don't belong on a branch
+          "vitest/no-disabled-tests": "error",
+          "vitest/no-standalone-expect": [
+            "error",
+            {
+              additionalTestBlockFunctions: [
+                // test.extend() fixtures are test blocks too, as is bench()
+                "bench",
+                "testWithRepository",
+                // Assertions in hooks are a normal pattern and vitest reports
+                // them properly: a failed *Each assertion fails the test it
+                // ran for, and a failed *All assertion fails the suite.
+                "beforeAll",
+                "beforeEach",
+                "afterEach",
+                "afterAll",
+              ],
+            },
+          ],
+          // test factories build their title rather than hardcoding it
+          "vitest/valid-title": ["error", { allowArguments: true }],
         },
       },
 

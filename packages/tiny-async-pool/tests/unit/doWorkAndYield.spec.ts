@@ -31,19 +31,17 @@ describe("doWorkAndYield", function () {
   it("should be using a fake timer", async () => {
     expect(setTimeoutSpy).toHaveBeenCalledTimes(0);
 
-    const r = expect(
-      new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(100);
-        }, 300);
-      }),
-    ).resolves.toEqual(100);
+    const promise = new Promise<number>((resolve) => {
+      setTimeout(() => {
+        resolve(100);
+      }, 300);
+    });
 
     vi.runAllTimers();
 
     expect(setTimeoutSpy).toHaveBeenCalledTimes(1);
 
-    await r;
+    await expect(promise).resolves.toEqual(100);
   });
 
   it("only runs as many promises in parallel as given by the pool limit", async function () {

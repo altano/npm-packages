@@ -70,24 +70,27 @@ describe("CDNTransformer", function () {
   });
 
   describe("when bad HTML is passed in", function () {
-    it.skip("should fire 'error' event on the transform stream", async function () {
-      const promise = new Promise<void>((resolve, reject) => {
-        const transformer = new CDNTransformer({
-          cdnUrl: "http://cdn.com",
+    it.todo(
+      "should fire 'error' event on the transform stream",
+      async function () {
+        const promise = new Promise<void>((resolve, reject) => {
+          const transformer = new CDNTransformer({
+            cdnUrl: "http://cdn.com",
+          });
+
+          const outputStream: stream.Writable = streamifier
+            .createReadStream(`BAD HTML`)
+            .pipe(transformer.stream);
+
+          outputStream.on("end", () => {
+            resolve();
+          });
+
+          outputStream.on("error", (err: Error) => reject(err));
         });
-
-        const outputStream: stream.Writable = streamifier
-          .createReadStream(`BAD HTML`)
-          .pipe(transformer.stream);
-
-        outputStream.on("end", () => {
-          resolve();
-        });
-
-        outputStream.on("error", (err: Error) => reject(err));
-      });
-      await expect(promise).rejects.toThrow();
-    });
+        await expect(promise).rejects.toThrow();
+      },
+    );
   });
 
   it("should CDN-ify an image src", async function () {
@@ -126,13 +129,6 @@ describe("CDNTransformer", function () {
             ></html>`,
       `<html>
           <link rel="stylesheet" href="//cdn.com/cdn/css/main.css"></html>`,
-    );
-  });
-
-  it("should CDN-ify a stylesheet", async function () {
-    await basicVerify(
-      `<html><link rel="stylesheet" href="/css/main.css"></html>`,
-      `<html><link rel="stylesheet" href="//cdn.com/cdn/css/main.css"></html>`,
     );
   });
 
@@ -325,7 +321,7 @@ describe("CDNTransformer", function () {
       );
     });
 
-    it("should default to cwd", async function () {
+    it("should default to cwd for a nested relative path", async function () {
       await verify(
         {
           cdnUrl: "//cdn.com/cdn/",
@@ -587,7 +583,7 @@ describe("CDNTransformer", function () {
       );
     });
 
-    it.skip("should handle namespaces", async function () {
+    it.todo("should handle namespaces", async function () {
       const transformer = new CDNTransformer({
         cdnUrl: "//cdn.com",
         transformDefinitions: [

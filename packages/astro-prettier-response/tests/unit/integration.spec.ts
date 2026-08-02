@@ -106,7 +106,7 @@ describe("integration", async () => {
     );
   });
 
-  it("should update all config options", async () => {
+  it("should update all config options when vite.build already exists", async () => {
     const updateConfig = vi.fn<UpdateConfig>();
     const integration = prettierResponse({
       disableMinifiers: true,
