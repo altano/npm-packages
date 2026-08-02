@@ -1,19 +1,16 @@
-import trumpet, { type Trumpet } from "@gofunky/trumpet";
 import { buffer } from "node:stream/consumers";
+import { HtmlRewriteStream } from "./HtmlRewriteStream.js";
 
-export type TrumpetTransformStream = Trumpet;
+export type { SelectedElement, SelectionHandler } from "./HtmlRewriteStream.js";
+export { HtmlRewriteStream } from "./HtmlRewriteStream.js";
 
 export default class HtmlTransformer {
-  private transformStream: TrumpetTransformStream;
-
-  constructor(/*public inputPath: string*/) {
-    this.transformStream = trumpet();
-  }
+  private transformStream: HtmlRewriteStream = new HtmlRewriteStream();
 
   /**
    * Get the underlying transform stream
    */
-  get stream(): Trumpet {
+  get stream(): HtmlRewriteStream {
     return this.transformStream;
   }
 

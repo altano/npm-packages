@@ -2,19 +2,32 @@
 
 ![logo](./assets/logo.png)
 
-[![npm](https://badgen.net/npm/v/@altano/html-cdnify)](https://www.npmjs.com/package/@altano/html-cdnify) ![Typed with TypeScript](https://badgen.net/npm/types/@altano/html-cdnify) ![ESM only](https://badgen.net/badge/module/esm%20only?icon=js)
+[![npm][npm-badge]][npm-url]
+![Typed with TypeScript][types-badge]
+![ESM only][esm-badge]
 
-Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets, images) to use your CDN URL.
+[npm-badge]: https://badgen.net/npm/v/@altano/html-cdnify
+[npm-url]: https://www.npmjs.com/package/@altano/html-cdnify
+[types-badge]: https://badgen.net/npm/types/@altano/html-cdnify
+[esm-badge]: https://badgen.net/badge/module/esm%20only?icon=js
 
-- Uses a real HTML parser, [trumpet](https://www.npmjs.com/package/trumpet), not regular expressions.
-- Doesn't require changes to your HTML, is a purely post-process transformation.
+Transform the relative URLs in your HTML markup (e.g. scripts, stylesheets,
+images) to use your CDN URL.
+
+- Uses a real HTML parser, [parse5](https://www.npmjs.com/package/parse5), not
+  regular expressions.
+- Doesn't require changes to your HTML, is a purely post-process
+  transformation.
 - Supports relative URLs in your HTML.
-- Will perform minimal modifications to your HTML, only modifying the element that is having an attribute cdnified.
-- Like [grunt-cdnify](https://www.npmjs.com/package/grunt-cdnify) but usable with or without grunt.
-- Like [cdnify](https://www.npmjs.com/package/cdnify) but you don't have to mark up your HTML with magic attributes.
+- Will perform minimal modifications to your HTML, only modifying the element
+  that is having an attribute cdnified.
+- Like [grunt-cdnify](https://www.npmjs.com/package/grunt-cdnify) but usable
+  with or without grunt.
+- Like [cdnify](https://www.npmjs.com/package/cdnify) but you don't have to
+  mark up your HTML with magic attributes.
 - This library's scope is limited to HTML and is not meant to process CSS.
 
-# Simplest usage
+## Simplest usage
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -30,42 +43,49 @@ cdnify({
 // <img src="//cdn.com/face.png">
 ```
 
-# What gets cdnified
+## What gets cdnified
 
-Any URLs where only the path (and after) is specified which are found in the following locations will be cdnified:
+Any URLs where only the path (and after) is specified which are found in the
+following locations will be cdnified:
 
-       <img data-src="____">
-       <img src="____">
-       <img srcset="____">
-     <video poster="____">
-    <script src="____">
-    <source src="____">
-      <link rel="apple-touch-icon" href="____">
-      <link rel="icon" href="____">
-      <link rel="shortcut icon" href="____">
-      <link rel="stylesheet" href="____">
+```text
+   <img data-src="____">
+   <img src="____">
+   <img srcset="____">
+ <video poster="____">
+<script src="____">
+<source src="____">
+  <link rel="apple-touch-icon" href="____">
+  <link rel="icon" href="____">
+  <link rel="shortcut icon" href="____">
+  <link rel="stylesheet" href="____">
+```
 
-## Will be cdnified
+### Will be cdnified
 
 - `<img src="/logo.png">`
 - `<script src="jquery.js"></script>`
 - `<link rel="stylesheet" href="main.css"></script>`
 
-## Won't be cdnified
+### Won't be cdnified
 
-| HTMLElement                           | Reason not cdnified                         |
-| ------------------------------------- | ------------------------------------------- |
-| `<img src="http://foo.com/logo.png">` | Absolute URL specified                      |
-| `<img src="//foo.com/logo.png">`      | Scheme-relative/agnostic URL specified      |
-| `<img custom="/logo.png">`            | "custom" attribute not among those cdnified |
+| HTMLElement                           | Reason not cdnified    |
+| ------------------------------------- | ---------------------- |
+| `<img src="http://foo.com/logo.png">` | Absolute URL           |
+| `<img src="//foo.com/logo.png">`      | Scheme-relative URL    |
+| `<img custom="/logo.png">`            | Attribute not cdnified |
 
-Adding the `data-cdn-ignore` attribute to any element will cause the element to be skipped during cdnification, and the `data-cdn-ignore` attribute will be removed to clean up your HTML.
+Adding the `data-cdn-ignore` attribute to any element will cause the element to
+be skipped during cdnification, and the `data-cdn-ignore` attribute will be
+removed to clean up your HTML.
 
-# More Examples
+## More Examples
 
-## Using `bufferPath` to deal with subdirectories
+### Using `bufferPath` to deal with subdirectories
 
-You can specify `bufferPath`, the relative path to the buffer being processed. If this isn't specified, all resources with relative paths will be assumed to be at the root of the domain before being cdnified.
+You can specify `bufferPath`, the relative path to the buffer being processed.
+If this isn't specified, all resources with relative paths will be assumed to
+be at the root of the domain before being cdnified.
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -99,7 +119,9 @@ _Without_ `bufferPath`, the output would be:
 // <img src="//cdn.com/images/logo.png">
 ```
 
-If your CDN has a path specified, it is assumed that both relative URLs AND root-relative URLs in your HTML are relative to the CDN directory. In other words, the CDN subdirectory will always be in the final URL. For example:
+If your CDN has a path specified, it is assumed that both relative URLs AND
+root-relative URLs in your HTML are relative to the CDN directory. In other
+words, the CDN subdirectory will always be in the final URL. For example:
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -120,15 +142,20 @@ outputPromise.then((output) => console.log(output));
 
 // Output:
 // <img src="//cdn.com/sub/directory/in/cdn/is/always/present/article/figure1.png">
-// <img src="//cdn.com/sub/directory/in/cdn/is/always/present/article/articleSubDirectory/figure2.png">
+// <img src="//cdn.com/sub/.../article/articleSubDirectory/figure2.png">
 // <img src="//cdn.com/sub/directory/in/cdn/is/always/present/images/logo.png">
 ```
 
-It should usually be the expectation that a CDN subdir is always present in the cdnified result. If you need to specify a CDN subdirectory AND you need to sometimes escape URLs in your HTML to the root of the CDN domain, you'll have to write a custom transformFunction.
+It should usually be the expectation that a CDN subdir is always present in the
+cdnified result. If you need to specify a CDN subdirectory AND you need to
+sometimes escape URLs in your HTML to the root of the CDN domain, you'll have
+to write a custom transformFunction.
 
-## Using the underlying stream instead of a Promise
+### Using the underlying stream instead of a Promise
 
-If you are dealing with large files or network IO and would like to use the underlying NodeJS Transform Stream rather than buffering all of the input and output, feel free:
+If you are dealing with large files or network IO and would like to use the
+underlying NodeJS Transform Stream rather than buffering all of the input and
+output, feel free:
 
 ```js
 import streamifier from "streamifier";
@@ -154,7 +181,7 @@ outputStream.pipe(process.stdout);
 // <img src="http://cdn.com/face3.png">
 ```
 
-## Specifying a transform defintion to add `<custom-element src="____">` to the list of attributes to be cdnified
+### Adding `<custom-element src="____">` via a transform definition
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -176,7 +203,7 @@ outputPromise.then((output) => console.log(output));
 // <custom-element src="//cdn.com/cdn/face7.png">
 ```
 
-## Specifying a custom transform function
+### Specifying a custom transform function
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -195,7 +222,7 @@ outputPromise.then((output) => console.log(output));
 // <img src="//cdn.com/subdir/logo.png">
 ```
 
-## Specifying a custom transform function that delegates to the default
+### Specifying a custom transform function that delegates to the default
 
 If your assets are on different CDNs, you might need to write something like:
 
@@ -210,7 +237,11 @@ var outputPromise = cdnify({
     } else {
       var customCdnBaseUrl = "//assetcdn.com";
     }
-    return CDNTransformer.defaultTransformFunction(customCdnBaseUrl, oldUrl, bufferPath);
+    return CDNTransformer.defaultTransformFunction(
+      customCdnBaseUrl,
+      oldUrl,
+      bufferPath,
+    );
   },
   buffer: `<img src="logo.png"><script src="main.js"></script>`,
 }).then((buffer) => buffer.toString());
@@ -221,9 +252,11 @@ outputPromise.then((output) => console.log(output));
 // <img src="//imagecdn.com/logo.png"><script src="//assetcdn.com/main.js"></script>
 ```
 
-## Specifying a custom attributeParser
+### Specifying a custom attributeParser
 
-A custom attributeParser is like a custom transformFunction, but is scoped to just one selector rather than being applied to every attribute transformation. For example, to uppercase only PNG image names before cdnifying:
+A custom attributeParser is like a custom transformFunction, but is scoped to
+just one selector rather than being applied to every attribute transformation.
+For example, to uppercase only PNG image names before cdnifying:
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -234,7 +267,8 @@ var outputPromise = cdnify({
     {
       selector: `img[src$="png"]`,
       attribute: "src",
-      attributeParser: (oldAttribute, transformFunction) => transformFunction(oldAttribute.toUpperCase()),
+      attributeParser: (oldAttribute, transformFunction) =>
+        transformFunction(oldAttribute.toUpperCase()),
     },
   ],
   buffer: `<img src="/logo.gif"><img src="/logo.png">`,
@@ -246,7 +280,7 @@ outputPromise.then((output) => console.log(output));
 // <img src="//cdn.com/logo.gif"><img src="//cdn.com/LOGO.PNG">
 ```
 
-## Overriding an existing transform
+### Overriding an existing transform
 
 The default transformDefinitions array is:
 
@@ -301,7 +335,9 @@ The default transformDefinitions array is:
 ];
 ```
 
-If you'd like to ovverride any of these, specify the same selector and attribute but a different attributeParser. For example:
+Note that any `transformDefinitions` you pass are **merged with** these
+defaults rather than replacing them. To override one, specify the same selector
+and attribute but a different attributeParser. For example:
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -326,9 +362,9 @@ outputPromise.then((output) => console.log(output));
 // <img src="logo.gif">
 ```
 
-# API
+## API
 
-## Promise-based API (recommended for simplicity)
+### Promise-based API (recommended for simplicity)
 
 ```js
 import { cdnify } from "@altano/html-cdnify");
@@ -336,17 +372,21 @@ import { cdnify } from "@altano/html-cdnify");
 cdnify({ ... Options ...}) => Promise<Buffer>
 ```
 
-### Options
+#### Promise-based options
 
-Same options as stream-based API (see below), plus:
+Same options as the stream-based API (see below), plus:
 
-| Property | Type             | Optional                                 | Description |
-| -------- | ---------------- | ---------------------------------------- | ----------- |
-| buffer   | Buffer or string | The content that is going to be cdnified |
+| Property | Type               | Required | Description        |
+| -------- | ------------------ | -------- | ------------------ |
+| `buffer` | `Buffer \| string` | yes      | Content to cdnify. |
 
-## Stream-based API
+### Stream-based API
 
-use the stream-based API when you are dealing with large files or network IO and would like to use the underlying NodeJS Transform Stream rather than buffering all of the input and output. The Promisebased API is simpler but the input/output must be completely buffered, which is obviously fine most of the time.
+Use the stream-based API when you are dealing with large files or network IO
+and would like to use the underlying NodeJS Transform Stream rather than
+buffering all of the input and output. The Promise-based API is simpler but the
+input/output must be completely buffered, which is obviously fine most of the
+time.
 
 ```js
 import { CDNTransformer } from "@altano/html-cdnify");
@@ -355,45 +395,82 @@ var transformer = new CDNTransformer({ ... Options ... }) => CDNTransformer
 transformer.stream => NodeJS TransformStream
 ```
 
-### Options
+#### Stream-based options
 
-| Property             | Type                 | Optional | Description                                                                                                                                                                        |
-| -------------------- | -------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cdnUrl               | string               |          | The absolute (or scheme-relative/agnostic) URL to your CDN.                                                                                                                        |
-| bufferPath           | string               | Y        | The relative path to the buffer being processed. If this isn't specified, all resources with relative paths will be assumed to be at the root of the domain before being cdnified. |
-| transformDefinitions | TransformDefinition  | Y        | See below...                                                                                                                                                                       |
-| transformFunction    | CDNTransformFunction | Y        | See below...                                                                                                                                                                       |
+| Property               | Type                    | Required |
+| ---------------------- | ----------------------- | -------- |
+| `cdnUrl`               | `string`                | yes      |
+| `bufferPath`           | `string`                | no       |
+| `transformDefinitions` | `TransformDefinition[]` | no       |
+| `transformFunction`    | `CDNTransformFunction`  | no       |
 
-### TransformDefinition
+- **`cdnUrl`** — the absolute (or scheme-relative/agnostic) URL to your CDN.
+- **`bufferPath`** — the relative path to the buffer being processed. If this
+  isn't specified, all resources with relative paths will be assumed to be at
+  the root of the domain before being cdnified.
+- **`transformDefinitions`** — see below.
+- **`transformFunction`** — see below.
 
-```
+#### TransformDefinition
+
+```ts
 interface TransformDefinition {
   selector: string;
   attribute: string;
-  attributeParser?: (oldAttribute: string, transformFunction: TransformFunction) => string;
+  attributeParser?: (
+    oldAttribute: string,
+    transformFunction: TransformFunction,
+  ) => string;
 }
 ```
 
 The default attributeParser when one isn't specified is:
 
-```
+```js
 HtmlAttributeStreamTransformerOptions.attributeParsers = {
-  default: (attr, transformFunction) => transformFunction(attr)
+  default: (attr, transformFunction) => transformFunction(attr),
 };
 ```
 
-### CDNTransformFunction
+##### Selector support
 
-```
+Selectors are matched against each start tag on its own, as the document
+streams past. That means **only element-local selectors work** — a tag name
+plus any number of attribute predicates:
+
+| Selector                     | Works | Kind               |
+| ---------------------------- | ----- | ------------------ |
+| `img`                        | yes   | tag name           |
+| `*[src]`                     | yes   | universal          |
+| `img[src]`                   | yes   | attribute presence |
+| `link[rel="stylesheet"]`     | yes   | attribute equals   |
+| `img[src$="png"]`            | yes   | substring match    |
+| `img:not([data-cdn-ignore])` | yes   | negation           |
+| `div img`                    | no    | descendant         |
+| `div > img`                  | no    | child combinator   |
+| `p + img`                    | no    | sibling combinator |
+
+A selector using a combinator **will not throw — it will simply never match**,
+so nothing gets cdnified. If a transform silently does nothing, check whether
+its selector reaches outside the element.
+
+This is a deliberate trade: matching one tag at a time is what lets the
+transform stream, and lets everything a selector doesn't touch pass through
+byte-for-byte.
+
+#### CDNTransformFunction
+
+```ts
 (cdnUrl: string, oldUrl: string, bufferPath: string) => string;
 ```
 
-### TransformFunction
+#### TransformFunction
 
-```
+```ts
 (oldAttribute: string) => string;
 ```
 
 ---
 
-Shield (in logo) by [Flaticon](http://www.flaticon.com) from [Freepik](http://www.freepik.com)
+Shield (in logo) by [Flaticon](http://www.flaticon.com) from
+[Freepik](http://www.freepik.com)
