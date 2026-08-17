@@ -14,6 +14,24 @@ export async function createFromBundle(
     case "git":
       await exec(`git`, ["clone", "--quiet", getBundlePath("git"), "."]);
       break;
+    case "jujutsu":
+      // jj has no bundle format of its own, but `jj git clone` reads a git
+      // bundle directly, so the cached git bundle is all we need.
+      //
+      // `--no-colocate` is the point of this fixture rather than an
+      // implementation detail. A colocated repo (jj's default) also has a
+      // .git, so findRoot would answer from the git check and never exercise
+      // the jj one. Without it the working copy has only a .jj, which git
+      // cannot see.
+      await exec(`jj`, [
+        "git",
+        "clone",
+        "--quiet",
+        "--no-colocate",
+        getBundlePath("git"),
+        ".",
+      ]);
+      break;
     case "sapling":
       {
         // We can go from git bundle => git repo => sl clone. It's about 2.5x

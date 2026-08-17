@@ -4,6 +4,8 @@ export function getInternalDirectory(type: RepositoryType): string {
   switch (type) {
     case "git":
       return ".git";
+    case "jujutsu":
+      return ".jj";
     case "mercurial":
       return ".hg";
     case "sapling":

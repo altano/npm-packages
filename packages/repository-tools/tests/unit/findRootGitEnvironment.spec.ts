@@ -3,6 +3,7 @@ import { afterEach, describe, expect, vi } from "vitest";
 import { getDisposableDirectory } from "@altano/disposable-directory";
 import { findRoot, findRootSync } from "../../src";
 import { createExecForDirectory } from "../../src/repositoryCommand";
+import { createSecondaryWorkingCopy } from "../utils/createSecondaryWorkingCopy";
 import { testWithRepository } from "./context-fixtures/testWithRepository";
 
 /**
@@ -86,6 +87,39 @@ describe("finding a root with git environment variables set (issue #299)", () =>
       expect(findRootSync(getDeepSubdirectory(worktree))).toBePath(worktree);
       await expect(findRoot(getDeepSubdirectory(worktree))).resolves.toBePath(
         worktree,
+      );
+    },
+  );
+
+  testWithRepository(
+    "should return the workspace root given a subdirectory of a jj workspace and an absolute GIT_DIR",
+    async ({ repository }) => {
+      const { directory } = await repository({ type: "jujutsu" });
+
+      // A jj workspace is the jj counterpart of a linked worktree, and holds
+      // nothing but a .jj.
+      await using workspaceParent =
+        await getDisposableDirectory("test-workspace-");
+      const workspace = path.join(workspaceParent.path, "secondary-workspace");
+      await createSecondaryWorkingCopy("jujutsu", directory, workspace);
+
+      // Git has no claim on a directory like that -- unless it inherits
+      // GIT_DIR, which turns discovery off and makes it call whatever
+      // directory it was run in the top level. Pointed at an unrelated
+      // repository, which is the shape of what a hook exports, git answers for
+      // the jj subdirectory itself and does it before jj is ever asked.
+      await using unrelatedRepository = await getDisposableDirectory(
+        "test-unrelated-git-repository-",
+      );
+      await createExecForDirectory(unrelatedRepository.path)("git", [
+        "init",
+        "--quiet",
+      ]);
+      vi.stubEnv("GIT_DIR", path.join(unrelatedRepository.path, ".git"));
+
+      expect(findRootSync(getDeepSubdirectory(workspace))).toBePath(workspace);
+      await expect(findRoot(getDeepSubdirectory(workspace))).resolves.toBePath(
+        workspace,
       );
     },
   );

@@ -7,6 +7,7 @@ Misc tools for dealing with repositories of multiple version control systems
 ## Supported Version Control Systems
 
 - git
+- jujutsu (jj), colocated with git or not
 - mercurial
 - sapling
 - subversion

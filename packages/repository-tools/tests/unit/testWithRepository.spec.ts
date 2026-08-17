@@ -7,7 +7,7 @@ import { getInternalDirectory } from "../utils/getInternalDirectory";
 // some basic tests of the test fixture itself
 describe("testWithRepository", () => {
   it("should support multiple repository types", () => {
-    expect(repositoryTypes).toHaveLength(4);
+    expect(repositoryTypes).toHaveLength(5);
   });
 
   for (const type of repositoryTypes) {
