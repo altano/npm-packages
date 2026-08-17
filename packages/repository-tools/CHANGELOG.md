@@ -1,5 +1,15 @@
 # @altano/repository-tools
 
+## 2.1.0
+
+### Minor Changes
+
+- a243a02: feat: support jujutsu (jj) repositories in `findRoot` and `findRootSync`
+
+  Colocated jj repos were already found by way of their `.git`. This adds a `jj`
+  check, so non-colocated repos and `jj workspace` working copies (ones with only
+  `.jj` and not `.git` directory) are found too.
+
 ## 2.0.5
 
 ### Patch Changes
