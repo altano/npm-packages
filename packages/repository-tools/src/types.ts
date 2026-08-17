@@ -1,5 +1,6 @@
 export const repositoryTypes = [
   "git",
+  "jujutsu",
   "mercurial",
   "sapling",
   "subversion",

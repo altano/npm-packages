@@ -106,6 +106,12 @@ export const bundleSupportingRepositoryTypes = [
   // repository before a working copy can be generated.
   "subversion",
 
+  // jj has no bundle format of its own. It doesn't need one: `jj git clone`
+  // reads the git bundle above directly, so `createFromBundle` builds a jj
+  // repo from that.
+  //
+  // "jujutsu"
+
   // Sapling's bundle + clone functionality isn't fully implemented:
   // https://discord.com/channels/1042527964224557107/1042527965256364157/1225467868532179085
   //

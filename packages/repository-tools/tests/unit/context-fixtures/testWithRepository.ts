@@ -5,6 +5,7 @@ import path from "node:path";
 
 type RepositoryOptions =
   | { type: "git" }
+  | { type: "jujutsu" }
   | { type: "mercurial" }
   | { type: "sapling" }
   | { type: "subversion" };

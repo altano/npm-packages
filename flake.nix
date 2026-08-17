@@ -57,6 +57,7 @@
 
           vcs = [
             pkgs.git
+            pkgs.jujutsu
             pkgs.mercurialFull
             pkgs.sapling
             pkgs.subversion

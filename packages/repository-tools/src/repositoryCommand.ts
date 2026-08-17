@@ -1,7 +1,8 @@
 import { execFileAsync, execFileSync } from "./exec.js";
 import {} from "child_process";
 
-type RepositoryCommand = "git" | "hg" | "sl" | "svn" | "svnadmin" | "svnrdump";
+type RepositoryCommand =
+  "git" | "hg" | "jj" | "sl" | "svn" | "svnadmin" | "svnrdump";
 
 const environment = {
   git: {
@@ -15,6 +16,14 @@ const environment = {
     GIT_COMMITTER_EMAIL: "alan@example.com",
     GIT_AUTHOR_NAME: "alan",
     GIT_AUTHOR_EMAIL: "alan@example.com",
+  },
+  jj: {
+    // don't use global config
+    JJ_CONFIG: "/dev/null",
+    // user config. Without an identity jj warns on stderr, which we treat as a
+    // failed command.
+    JJ_USER: "alan",
+    JJ_EMAIL: "alan@example.com",
   },
   hg: {
     // don't use global config
@@ -74,6 +83,11 @@ const gitRepositoryVariables = [
  */
 const removedEnvironment = {
   git: gitRepositoryVariables,
+  // jj takes a repository with -R/--repository and finds one by walking up to
+  // the closest .jj, a search git's variables have no say in. Verified: from a
+  // subdirectory of a colocated repo, `jj root` answers correctly with GIT_DIR
+  // set to a value that makes git itself bail out.
+  jj: [],
   hg: [],
   sl: [],
   svn: [],
