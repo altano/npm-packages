@@ -134,6 +134,7 @@ export function repositoryExecSync(
     cwd: cwd,
     encoding: "utf8",
     env: getEnvironment(command),
+    stdio: ["ignore", "pipe", "pipe"],
   }).trim();
   // console.timeEnd(msg);
   return result;
