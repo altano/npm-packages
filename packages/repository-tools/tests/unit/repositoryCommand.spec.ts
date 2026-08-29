@@ -25,10 +25,19 @@ describe("repositoryCommand", () => {
     );
   });
   describe("synchronous", () => {
-    it("should reject with errors", () => {
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it("should reject with errors without writing them to stderr", () => {
+      const standardErrorWrite = vi
+        .spyOn(process.stderr, "write")
+        .mockImplementation(() => true);
+
       expect(() => {
         repositoryExecSync(import.meta.dirname, "git", ["face"]);
       }).toThrow(/Command failed/);
+      expect(standardErrorWrite).not.toHaveBeenCalled();
     });
   });
   describe("environment", () => {
