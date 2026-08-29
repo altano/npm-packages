@@ -1,5 +1,11 @@
 # @altano/repository-tools
 
+## 2.1.1
+
+### Patch Changes
+
+- b304b52: Prevent synchronous repository commands from writing expected failures to stderr (@sophalter).
+
 ## 2.1.0
 
 ### Minor Changes
