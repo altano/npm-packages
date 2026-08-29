@@ -7,11 +7,20 @@ import {
 import { testWithRepository } from "./context-fixtures/testWithRepository";
 
 describe("repositoryCommand", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   describe("asynchronous", () => {
-    it("should reject with error", async () => {
+    it("should reject with errors without writing them to stderr", async () => {
+      const standardErrorWrite = vi
+        .spyOn(process.stderr, "write")
+        .mockImplementation(() => true);
+
       await expect(
         repositoryExec(import.meta.dirname, "git", ["face"]),
       ).rejects.toThrow(/Command failed/);
+      expect(standardErrorWrite).not.toHaveBeenCalled();
     });
     testWithRepository(
       "should reject with error when 0 exit code but stderr is not empty",
@@ -25,10 +34,6 @@ describe("repositoryCommand", () => {
     );
   });
   describe("synchronous", () => {
-    afterEach(() => {
-      vi.restoreAllMocks();
-    });
-
     it("should reject with errors without writing them to stderr", () => {
       const standardErrorWrite = vi
         .spyOn(process.stderr, "write")
