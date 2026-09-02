@@ -16,9 +16,3 @@ Notes:
 
 - Shared dependency versions live in `pnpm-workspace.yaml` under `catalog:` /
   `catalogs:`.
-
-## Version control
-
-If the working copy has a `.jj/` directory, it's a jj clone of this git repo:
-use `jj` (`jj status`, `jj log`, `jj diff`, `jj describe`, `jj new`,
-`jj squash`), never `git`. Otherwise use `git`.
