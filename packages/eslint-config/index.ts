@@ -6,7 +6,6 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier/recommended";
 import packageJson from "eslint-plugin-package-json";
-import jsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { includeIgnoreFile } from "@eslint/config-helpers";
 import turboConfig from "eslint-config-turbo/flat";
@@ -180,11 +179,6 @@ export default {
           "@typescript-eslint/explicit-module-boundary-types": "off",
           "@typescript-eslint/parameter-properties": "off",
         },
-      },
-
-      {
-        files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
-        ...jsxA11y.flatConfigs.recommended,
       },
 
       {
