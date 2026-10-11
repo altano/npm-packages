@@ -51,10 +51,10 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.7",
+    "@svgdotjs/svg.js": "^3.2.8",
     "debug": "catalog:",
     "satori": "catalog:",
-    "svgdom": "^0.1.28"
+    "svgdom": "^0.1.29"
   },
   "devDependencies": {
     "@altano/assets": "workspace:*",
@@ -68,7 +68,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "@types/debug": "^4.1.13",
     "@types/he": "^1.2.3",
-    "@types/jest-image-snapshot": "^6.4.1",
+    "@types/jest-image-snapshot": "^6.4.2",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

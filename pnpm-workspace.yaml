@@ -4,39 +4,39 @@ packages:
 
 catalog:
   "@arethetypeswrong/cli": ^0.18.5
-  "@astrojs/check": ^0.9.9
-  "@astrojs/preact": ^6.0.1
+  "@astrojs/check": ^0.9.10
+  "@astrojs/preact": ^6.0.5
   "@astrojs/svelte": ^9.0.1
-  "@astrojs/vue": ^7.0.1
+  "@astrojs/vue": ^7.0.3
   "@fontsource-variable/inter": 5.3.0
   "@fontsource/inter": 5.3.0
   "@playwright/test": 1.59.1
   "@types/mdast": ^4.0.4
-  "@types/node": ^26.1.1
-  "@types/react": ^19.2.17
-  "@types/react-dom": ^19.2.3
+  "@types/node": ^26.6.4
+  "@types/react": ^19.3.0
+  "@types/react-dom": ^19.3.0
   "@types/unist": ^3.0.3
   "@vitest/coverage-v8": ^4.1.10
   "@vitest/expect": ^4.1.10
-  astro: ^7.1.3
+  astro: ^7.3.5
   debug: ^4.4.3
   depcheck: ^1.4.7
   eslint: ^10.12.0
   mdast-util-mdx-jsx: ^3.2.0
 
   preact: ^10.29.7
-  prettier: 3.9.6
-  react: ^19.2.8
-  react-dom: ^19.2.8
+  prettier: 3.9.9
+  react: ^19.3.0
+  react-dom: ^19.3.0
   satori: ^0.29.0
-  svelte: ^5.56.8
-  tsdown: ^0.22.14
+  svelte: ^5.57.1
+  tsdown: ^0.23.0
   typescript: ^6.0.3
   unified: ^11.0.5
   vfile: ^6.0.3
-  vite: ^8.1.5
+  vite: ^8.3.2
   vitest: ^4.1.10
-  vue: ^3.5.40
+  vue: ^3.5.43
 
 catalogs:
   peers:
