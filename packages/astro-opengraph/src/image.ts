@@ -31,6 +31,16 @@ export async function htmlToPNG(
   return bufferToTransformedPNG(uint8Array);
 }
 
+type Logger = Parameters<LocalImageService["transform"]>[3];
+
+const consoleLogger: Logger = {
+  /* eslint-disable no-console */
+  info: (msg) => console.info(msg),
+  warn: (msg) => console.warn(msg),
+  error: (msg) => console.error(msg),
+  /* eslint-enable no-console */
+};
+
 /**
  * Convert a buffer to an image using the astro local image service
  */
@@ -49,5 +59,8 @@ async function bufferToTransformedPNG(
     imageBuffer,
     { src: "", format: "png" },
     { ...imageConfig, dangerouslyProcessSVG: true },
+    // Astro 7.3 added a required logger parameter (the sharp service calls
+    // `logger.warn`). Older Astro versions ignore the extra argument.
+    consoleLogger,
   );
 }

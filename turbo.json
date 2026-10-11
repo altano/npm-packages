@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/turbo/schema.json",
+  "agentGuidance": false,
   "globalEnv": ["CI", "DEBUG", "NODE_ENV"],
   "globalDependencies": ["flake.lock"],
   "remoteCache": {

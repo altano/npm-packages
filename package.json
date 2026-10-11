@@ -34,15 +34,15 @@
   "devDependencies": {
     "@altano/eslint-config": "workspace:*",
     "@altano/tsconfig": "workspace:*",
-    "@changesets/cli": "^2.31.1",
+    "@changesets/cli": "^3.0.3",
     "@playwright/test": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "semver": "7.8.5",
-    "syncpack": "^15.3.2",
-    "turbo": "^2.10.7",
+    "syncpack": "^15.3.3",
+    "turbo": "^2.11.7",
     "typescript": "catalog:",
-    "yaml": "^2.9.0"
+    "yaml": "^2.9.1"
   },
   "packageManager": "pnpm@11.17.0"
 }
