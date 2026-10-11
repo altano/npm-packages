@@ -18,6 +18,8 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import eslintPluginYml from "eslint-plugin-yml";
 import eslintPluginJsonSchemaValidator from "eslint-plugin-json-schema-validator";
 
+const eslintReactRecommended = eslintReact.configs["recommended-typescript"];
+
 export default {
   configs: {
     all: defineConfig(
@@ -60,7 +62,7 @@ export default {
       },
 
       // react
-      eslintReact.configs["recommended-typescript"],
+      eslintReactRecommended,
 
       // react hooks (also supplies the React Compiler diagnostics, which used
       // to come from the separate eslint-plugin-react-compiler)
@@ -71,6 +73,21 @@ export default {
         rules: {
           "react-hooks/exhaustive-deps": "error",
         },
+      },
+
+      // @eslint-react ports several react-hooks rules, but its ports are
+      // partial or experimental. Turn off every enabled @eslint-react rule that
+      // react-hooks also provides, so each problem is reported once, by the
+      // more complete implementation.
+      {
+        rules: Object.fromEntries(
+          Object.keys(reactHooks.rules)
+            .filter(
+              (name) =>
+                `@eslint-react/${name}` in (eslintReactRecommended.rules ?? {}),
+            )
+            .map((name) => [`@eslint-react/${name}`, "off"]),
+        ),
       },
 
       // import: must declare deps
