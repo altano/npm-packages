@@ -1,5 +1,5 @@
 import path from "node:path";
-import reactPlugin from "eslint-plugin-react";
+import eslintReact from "@eslint-react/eslint-plugin";
 import reactHooks from "eslint-plugin-react-hooks";
 import { importX } from "eslint-plugin-import-x";
 import eslint from "@eslint/js";
@@ -60,15 +60,7 @@ export default {
       },
 
       // react
-      {
-        ...reactPlugin.configs.flat["recommended"],
-        ...reactPlugin.configs.flat["jsx-runtime"],
-        settings: {
-          react: {
-            version: "detect",
-          },
-        },
-      },
+      eslintReact.configs["recommended-typescript"],
 
       // react hooks (also supplies the React Compiler diagnostics, which used
       // to come from the separate eslint-plugin-react-compiler)
