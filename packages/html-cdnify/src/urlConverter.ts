@@ -54,7 +54,7 @@ export default (
     return oldUrl;
   } else {
     oldUrl = oldUrl.trim();
-    let relativePath = ".";
+    let relativePath: string;
 
     if (pathOldUrlIsRelativeTo) {
       const isDirAlready = pathOldUrlIsRelativeTo.endsWith("/");

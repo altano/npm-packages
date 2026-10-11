@@ -4,7 +4,7 @@ export type MetaTagInfo = [content: string | null, property: string | null];
 
 const useHeadObserver = (): React.RefObject<HTMLHeadElement | null> => {
   const [_generation, setGeneration] = useState<number>(0);
-  const forceRerender = (): void => setGeneration((old) => ++old);
+  const forceRerender = (): void => setGeneration((old) => old + 1);
   const headRef = useRef(document.querySelector("head"));
 
   // useEffect(() => {
