@@ -65,7 +65,9 @@ export function findRootSync(
     } catch (e: unknown) {
       if (e instanceof Error && "code" in e && e.code === "ENOTDIR") {
         // rethrow error when given directory path isn't a directory
-        throw new Error(`Given path isn't a directory: ${directory}`);
+        throw new Error(`Given path isn't a directory: ${directory}`, {
+          cause: e,
+        });
       }
     }
   }
