@@ -16,8 +16,8 @@ catalog:
   "@types/react": ^19.3.0
   "@types/react-dom": ^19.3.0
   "@types/unist": ^3.0.3
-  "@vitest/coverage-v8": ^4.1.10
-  "@vitest/expect": ^4.1.10
+  "@vitest/coverage-v8": ^5.0.3
+  "@vitest/expect": ^5.0.3
   astro: ^7.3.5
   debug: ^4.4.3
   depcheck: ^1.4.7
@@ -35,7 +35,7 @@ catalog:
   unified: ^11.0.5
   vfile: ^6.0.3
   vite: ^8.3.2
-  vitest: ^4.1.10
+  vitest: ^5.0.3
   vue: ^3.5.43
 
 catalogs:

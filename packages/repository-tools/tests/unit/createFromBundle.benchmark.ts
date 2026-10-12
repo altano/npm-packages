@@ -1,4 +1,4 @@
-import { describe, expect, bench } from "vitest";
+import { describe, expect, test } from "vitest";
 import path from "node:path";
 import { getDisposableDirectory } from "@altano/disposable-directory";
 import { createFromBundle } from "../utils/createFromBundle.js";
@@ -13,11 +13,13 @@ describe("createFromBundle", async () => {
   );
 
   for (const type of repositoryTypes) {
-    bench(`createFromBundle (${type})`, async () => {
-      await using tempDir = await getDisposableDirectory("test-repository-");
-      await createFromBundle(type, templateDirectory, tempDir.path);
-      const testFilePath = path.join(tempDir.path, "test-file.txt");
-      expect(testFilePath).toBeFile();
-    });
+    test(`createFromBundle (${type})`, async ({ bench }) => {
+      await bench(`createFromBundle (${type})`, async () => {
+        await using tempDir = await getDisposableDirectory("test-repository-");
+        await createFromBundle(type, templateDirectory, tempDir.path);
+        const testFilePath = path.join(tempDir.path, "test-file.txt");
+        expect(testFilePath).toBeFile();
+      }).run();
+    }, 300_000);
   }
 });

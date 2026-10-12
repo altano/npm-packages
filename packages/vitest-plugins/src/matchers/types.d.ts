@@ -1,6 +1,6 @@
 // Have to import these to get declaration merging.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import type { Assertion, AsymmetricMatchersContaining } from "vitest";
+import type { Matchers } from "vitest";
 
 interface CustomMatchers<R = unknown> {
   /**
@@ -52,9 +52,10 @@ interface ResponseMatchers<R = unknown> {
   toHaveStatus(expectedStatus: number): R;
 }
 
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 declare module "vitest" {
-  interface Assertion<T> extends CustomMatchers<T> {}
-  interface Assertion<T> extends ResponseMatchers<T> {}
-  interface AsymmetricMatchersContaining extends CustomMatchers {}
+  // Type parameters must match the original declaration exactly, so the
+  // unused `T` has to stay.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface Matchers<R extends void | Promise<void>, T>
+    extends CustomMatchers<R>, ResponseMatchers<R> {}
 }

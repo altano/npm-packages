@@ -47,7 +47,7 @@
     "test:e2e:server": "pnpm --dir ../../examples/satori-fit-text-playground start",
     "test:e2e:ui": "playwright test --ui",
     "test:unit": "vitest --run",
-    "test:unit:benchmark": "vitest --run bench",
+    "test:unit:benchmark": "vitest bench --run",
     "test:unit:watch": "vitest"
   },
   "dependencies": {
