@@ -52,7 +52,7 @@
     "lint:timing": "TIMING=1 pnpm lint",
     "test:build": "./tests/scripts/createRepositoryBundles.ts",
     "test:unit": "vitest --run",
-    "test:unit:benchmark": "vitest --run bench",
+    "test:unit:benchmark": "vitest bench --run",
     "test:unit:watch": "vitest"
   },
   "devDependencies": {

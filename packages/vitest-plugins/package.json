@@ -63,7 +63,7 @@
   },
   "peerDependencies": {
     "prettier": "catalog:peers",
-    "vitest": "4.x.x"
+    "vitest": "5.x.x"
   },
   "publishConfig": {
     "access": "public"

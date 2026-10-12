@@ -1,4 +1,4 @@
-import { describe, expect, bench } from "vitest";
+import { describe, expect, test } from "vitest";
 import path from "node:path";
 import { getDisposableDirectory } from "@altano/disposable-directory";
 import { createFromBundle } from "../utils/createFromBundle.js";
@@ -14,34 +14,19 @@ describe("findRootSync", async () => {
   );
 
   for (const type of repositoryTypes) {
-    // create the repository
-    //
-    // NOTE: We're intentionally not using `using` to get scope-based cleanup.
-    // That's because `bench` will collect all the async callbacks and run them
-    // after the `using` finalization.
-    //
-    // NOTE: This (intentionally) NEVER gets cleaned up, because vitest gives us
-    // no hook to run cleanup after all `bench` tests run (`beforeAll` and
-    // `afterAll` are not supported with `bench`). Redo this when `beforeAll` is
-    // supported with `bench`:
-    //
-    //   1. Move the code below into a `beforeAll` function above
-    //   2. In `beforeAll` we can return an async callback that does the cleanup
-    const tempDir = await getDisposableDirectory("test-repository-");
-    await createFromBundle(type, templateDirectory, tempDir.path);
+    test(`findRootSync (${type})`, async ({ bench }) => {
+      await using tempDir = await getDisposableDirectory("test-repository-");
+      await createFromBundle(type, templateDirectory, tempDir.path);
 
-    // assert file exists
-    const testFilePath = path.join(tempDir.path, "test-file.txt");
-    // Has to live out here for the same reason the setup above does: `bench`
-    // doesn't support `beforeAll`.
-    // eslint-disable-next-line vitest/no-standalone-expect
-    expect(testFilePath).toBeFile();
+      const testFilePath = path.join(tempDir.path, "test-file.txt");
+      expect(testFilePath).toBeFile();
 
-    bench(`findRootSync (${type})`, () => {
-      const root = findRootSync(tempDir.path);
-      expect(root).not.toBeNull();
-      expect(root).toBeDefined();
-      expect(root).toBePath(tempDir.path);
+      await bench(`findRootSync (${type})`, () => {
+        const root = findRootSync(tempDir.path);
+        expect(root).not.toBeNull();
+        expect(root).toBeDefined();
+        expect(root).toBePath(tempDir.path);
+      }).run();
     });
   }
 });
