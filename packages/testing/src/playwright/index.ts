@@ -1,6 +1,10 @@
+import { mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   defineConfig,
   devices,
+  type LaunchOptions,
   type PlaywrightTestConfig,
   type Project,
 } from "@playwright/test";
@@ -14,6 +18,34 @@ export type { PlaywrightTestConfig } from "@playwright/test";
 export const isCI: boolean = !!process.env["CI"];
 
 type ProjectUse = NonNullable<Project["use"]>;
+
+/**
+ * On macOS 27, Firefox can't read `~/Library/Application Support/Firefox` when
+ * it is started from a terminal that lacks full disk access, so it exits with
+ * "Could not find profile folder" (or hangs, on older builds). Every Firefox
+ * build uses that directory even when Playwright passes `-profile`.
+ * `MOZ_APP_DATA` moves it somewhere Firefox can read, and the profile itself
+ * still lives in Playwright's own temporary directory.
+ */
+const firefoxEnv = (): Record<string, string> => {
+  if (process.platform !== "darwin") {
+    return {};
+  }
+  const appData = join(tmpdir(), "playwright-firefox-app-data");
+  mkdirSync(appData, { recursive: true });
+  return { MOZ_APP_DATA: appData };
+};
+
+/** `projectUse.firefox` with `firefoxEnv` merged into its launch options. */
+const withFirefoxEnv = (
+  use: ProjectUse & { launchOptions?: LaunchOptions } = {},
+): ProjectUse => ({
+  ...use,
+  launchOptions: {
+    ...use.launchOptions,
+    env: { ...process.env, ...firefoxEnv(), ...use.launchOptions?.env },
+  },
+});
 
 /** Browsers every package tests against. */
 type BrowserName = "chromium" | "firefox" | "webkit";
@@ -74,7 +106,10 @@ export const deriveConfig = (
         },
         {
           name: "firefox",
-          use: { ...devices["Desktop Firefox"], ...projectUse.firefox },
+          use: {
+            ...devices["Desktop Firefox"],
+            ...withFirefoxEnv(projectUse.firefox),
+          },
         },
         {
           name: "webkit",
