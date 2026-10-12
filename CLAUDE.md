@@ -52,6 +52,23 @@ catches violations.
 
 ## Deferred upgrades
 
+- **satori > 0.29**: keep `satori: ^0.29.0` in `pnpm-workspace.yaml` until
+  [vercel/satori#881](https://github.com/vercel/satori/issues/881) is fixed. 0.47.1
+  throws `Buffer is not defined` when imported in a browser, which fails the
+  `satori-fit-text` e2e test (the layout wasm is decoded with `Buffer.from`).
+  Versions before that fail differently: 0.33 to 0.35.1 can't find `hb.wasm` when
+  bundled for a browser, and 0.35.2 throws `__dirname is not defined` in Node ESM.
+  When retrying, expect updated image snapshots.
+- **playwright > 1.59.1**: keep `@playwright/test` at 1.59.1 in `pnpm-workspace.yaml`
+  and the `nixpkgs-playwright-1-59-1` pin in `flake.nix` (the flake fails to
+  evaluate if the two versions differ). On GitHub Actions (Linux), webkit e2e
+  tests fail with `browserContext.newPage` timing out or closing on 1.60.0, 1.62.1
+  and 1.63.0, and per `flake.nix` on 1.61.1. Chromium and firefox pass, and
+  everything passes on macOS. The cause is unknown and I found no upstream report
+  of this symptom. nixpkgs didn't package 1.64 yet on 2026-10-11. To retry, point
+  a nixpkgs input at the new version, bump the catalog, and check the `test-e2e`
+  job on a PR. That job replays cached results for unchanged packages, so confirm
+  webkit actually ran.
 - **typescript 7**: `typescript-eslint` and others cap their peers at `<6.1.0`.
 - **typescript 6**: installs, but needs a migration. It stops auto-including
   `@types/*` (set `"types": ["node"]` in `@altano/tsconfig/node.json`) and requires

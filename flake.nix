@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Pin playwright to 1.59.1. On 1.61.1, webkit e2e tests stop working in GitHub Actions.
+    # Pin playwright to 1.59.1. On 1.60.0, 1.61.1, 1.62.1 and 1.63.0, webkit e2e tests
+    # stop working in GitHub Actions.
     nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
   };
 
