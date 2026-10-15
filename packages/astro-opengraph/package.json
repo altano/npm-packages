@@ -59,7 +59,7 @@
     "test:unit:watch": "vitest"
   },
   "dependencies": {
-    "he": "^1.2.0",
+    "he": "^2.0.0",
     "satori": "catalog:",
     "satori-html": "^0.3.2"
   },
