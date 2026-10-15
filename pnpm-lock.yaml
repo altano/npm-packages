@@ -233,8 +233,8 @@ importers:
   packages/astro-opengraph:
     dependencies:
       he:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^2.0.0
+        version: 2.0.0
       satori:
         specifier: 'catalog:'
         version: 0.55.5
@@ -4797,6 +4797,11 @@ packages:
 
   he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+
+  he@2.0.0:
+    resolution: {integrity: sha512-0jE+JPv08nhXWmI1dULybzqNt34RbkH6Ul6V4cmDONpjYx1SfyObKF38FJLaJ1K7WWD93LWL9lewzk4E1Ria4A==}
+    engines: {node: '>=22'}
     hasBin: true
 
   hermes-estree@0.25.1:
@@ -10680,6 +10685,8 @@ snapshots:
       space-separated-tokens: 2.0.2
 
   he@1.2.0: {}
+
+  he@2.0.0: {}
 
   hermes-estree@0.25.1: {}
 

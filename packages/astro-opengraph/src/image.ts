@@ -1,7 +1,7 @@
 import { getConfiguredImageService, imageConfig } from "astro:assets";
 import satori, { type SatoriOptions } from "satori";
 import { html as htmlToVNode } from "satori-html";
-import he from "he";
+import { decode } from "he";
 
 import type { LocalImageService } from "astro";
 
@@ -13,7 +13,7 @@ export async function htmlToPNG(
   satoriOptions: SatoriOptions,
 ): Promise<ReturnType<LocalImageService["transform"]>> {
   // html text => vnode
-  const responseTextWithDecodedHtmlEntities = he.decode(html);
+  const responseTextWithDecodedHtmlEntities = decode(html);
   const vnode = htmlToVNode(responseTextWithDecodedHtmlEntities);
 
   // vnode => svg
