@@ -49,6 +49,9 @@ jobs:
         id: changesets
         uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
+          # `changeset version` formats what it writes by running `pnpm exec
+          # prettier`, and pnpm is only on PATH inside the devshell.
+          version: nix develop .#ci --command pnpm version-packages
           publish: nix develop .#ci --command pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
