@@ -26,4 +26,4 @@ exports[`findLargestUsableFontSize > misc > should always return >= font sizes a
 
 exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=3000 1`] = `152`;
 
-exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=5000 1`] = `220`;
+exports[`findLargestUsableFontSize > misc > should always return >= font sizes as width increases, width=5000 1`] = `219`;

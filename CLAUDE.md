@@ -52,13 +52,6 @@ catches violations.
 
 ## Deferred upgrades
 
-- **satori > 0.29**: keep `satori: ^0.29.0` in `pnpm-workspace.yaml` until
-  [vercel/satori#881](https://github.com/vercel/satori/issues/881) is fixed. 0.47.1
-  throws `Buffer is not defined` when imported in a browser, which fails the
-  `satori-fit-text` e2e test (the layout wasm is decoded with `Buffer.from`).
-  Versions before that fail differently: 0.33 to 0.35.1 can't find `hb.wasm` when
-  bundled for a browser, and 0.35.2 throws `__dirname is not defined` in Node ESM.
-  When retrying, expect updated image snapshots.
 - **playwright > 1.59.1**: keep `@playwright/test` at 1.59.1 in `pnpm-workspace.yaml`
   and the `nixpkgs-playwright-1-59-1` pin in `flake.nix` (the flake fails to
   evaluate if the two versions differ). On GitHub Actions (Linux), webkit e2e
