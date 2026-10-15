@@ -1,5 +1,11 @@
 # @altano/html-cdnify
 
+## 6.0.1
+
+### Patch Changes
+
+- 7b7f317: fix: lint fixes for eslint 10
+
 ## 6.0.0
 
 ### Major Changes

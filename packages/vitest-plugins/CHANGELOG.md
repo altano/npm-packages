@@ -1,5 +1,15 @@
 # @altano/vitest-plugins
 
+## 2.0.0
+
+### Major Changes
+
+- 6318772: BREAKING: require vitest 5 (the `vitest` peer dependency is now `5.x.x`). The custom matchers' types now extend vitest's `Matchers<R, T>` instead of `Assertion<T>`, as vitest 5 requires.
+
+### Patch Changes
+
+- 94305ae: update `serialize-error` to 13.0.2
+
 ## 1.1.3
 
 ### Patch Changes
