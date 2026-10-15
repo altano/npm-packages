@@ -1,5 +1,11 @@
 # @altano/repository-tools
 
+## 2.1.2
+
+### Patch Changes
+
+- 7b7f317: fix: `findRoot` and `findRootSync` now attach the original error as `cause` when rejecting a path that isn't a directory
+
 ## 2.1.1
 
 ### Patch Changes

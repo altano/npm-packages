@@ -1,5 +1,15 @@
 # @altano/satori-fit-text
 
+## 3.1.0
+
+### Minor Changes
+
+- 84444ca: update `satori` to 0.55. Its layout engine changed (Taffy replaces Yoga) and it follows CSS defaults more closely, so rendered images can shift by a few pixels, and `findLargestUsableFontSize` can return a font size that differs by 1px.
+
+### Patch Changes
+
+- 94305ae: update `@svgdotjs/svg.js` and `svgdom`
+
 ## 3.0.0
 
 ### Major Changes

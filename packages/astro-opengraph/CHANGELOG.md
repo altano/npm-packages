@@ -1,5 +1,20 @@
 # @altano/astro-opengraph
 
+## 3.0.0
+
+### Major Changes
+
+- b30311c: BREAKING: require Node 22 or later, because `he` is updated to v2, which is ESM-only and requires it
+
+### Minor Changes
+
+- 84444ca: update `satori` to 0.55. Its layout engine changed (Taffy replaces Yoga) and it follows CSS defaults more closely, so rendered images can shift by a few pixels, and `findLargestUsableFontSize` can return a font size that differs by 1px.
+
+### Patch Changes
+
+- 94305ae: fix: pass a logger to Astro's image service `transform`, which Astro 7.3 requires
+- 7b7f317: fix: lint fixes for eslint 10
+
 ## 2.0.0
 
 ### Major Changes
