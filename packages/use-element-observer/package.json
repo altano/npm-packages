@@ -53,7 +53,7 @@
     "@vitest/coverage-v8": "catalog:",
     "depcheck": "catalog:",
     "eslint": "catalog:",
-    "jsdom": "^30.1.2",
+    "jsdom": "^30.1.3",
     "prettier": "catalog:",
     "react": "catalog:",
     "tsdown": "catalog:",
