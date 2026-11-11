@@ -1,5 +1,11 @@
 # @altano/astro-prettier-response
 
+## 3.0.1
+
+### Patch Changes
+
+- af1907e: rebuild with tsdown 0.23.5. The published files differ only in comments, import order and empty `export {}` statements, with no change in behavior.
+
 ## 3.0.0
 
 ### Major Changes

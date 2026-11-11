@@ -1,5 +1,11 @@
 # @altano/vitest-plugins
 
+## 2.0.1
+
+### Patch Changes
+
+- a860404: update `serialize-error` to 13.1.0
+
 ## 2.0.0
 
 ### Major Changes
