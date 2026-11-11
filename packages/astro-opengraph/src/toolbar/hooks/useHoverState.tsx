@@ -3,7 +3,7 @@ import { useRef, useEffect } from "preact/hooks";
 
 export function useHoverState<TElement extends HTMLElement>(
   setHoverState: (isHover: boolean) => void,
-): Preact.RefObject<TElement> {
+): Preact.RefObject<TElement | null> {
   const ref = useRef<TElement>(null);
 
   useEffect(() => {

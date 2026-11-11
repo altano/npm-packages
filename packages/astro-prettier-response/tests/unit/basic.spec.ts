@@ -70,12 +70,11 @@ describe("basic", () => {
           <p data-astro-cid-lcdefpme>Hello!</p>
 
           <script type="module">
-            //#region tests/fixtures/basic/src/pages/index.astro?astro&type=script&index=0&lang.ts
+            // tests/fixtures/basic/src/pages/index.astro?astro&type=script&index=0&lang.ts
             function doSomething(variable) {
               console.log(variable);
             }
             doSomething("Hi how are you");
-            //#endregion
           </script>
         </body>
       </html>

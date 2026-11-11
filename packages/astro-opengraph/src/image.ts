@@ -31,6 +31,7 @@ export async function htmlToPNG(
   return bufferToTransformedPNG(uint8Array);
 }
 
+type TransformImageConfig = Parameters<LocalImageService["transform"]>[2];
 type Logger = Parameters<LocalImageService["transform"]>[3];
 
 const consoleLogger: Logger = {
@@ -58,7 +59,10 @@ async function bufferToTransformedPNG(
   return imageService.transform(
     imageBuffer,
     { src: "", format: "png" },
-    { ...imageConfig, dangerouslyProcessSVG: true },
+    // Astro 7.4 types `imageConfig.service` as either one service or a
+    // `{ build, runtime }` pair, but the `astro:assets` module always exports
+    // the single service it resolved for the current environment.
+    { ...imageConfig, dangerouslyProcessSVG: true } as TransformImageConfig,
     // Astro 7.3 added a required logger parameter (the sharp service calls
     // `logger.warn`). Older Astro versions ignore the extra argument.
     consoleLogger,
