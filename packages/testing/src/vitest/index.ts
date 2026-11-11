@@ -40,7 +40,7 @@ const noPluginsConfig = defineConfig({
   plugins: [preserveV8IgnoreComments()],
   // So we can use `using` in ts (https://github.com/vitejs/vite/issues/15464#issuecomment-1872485703)
   // or top-level await in unit tests
-  esbuild: {
+  oxc: {
     target: "es2024",
   },
   test: {

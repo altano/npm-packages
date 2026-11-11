@@ -55,15 +55,12 @@ catches violations.
 - **playwright > 1.59.1**: keep `@playwright/test` at 1.59.1 in `pnpm-workspace.yaml`
   and the `nixpkgs-playwright-1-59-1` pin in `flake.nix` (the flake fails to
   evaluate if the two versions differ). On GitHub Actions (Linux), webkit e2e
-  tests fail with `browserContext.newPage` timing out or closing on 1.60.0, 1.62.1
-  and 1.63.0, and per `flake.nix` on 1.61.1. Chromium and firefox pass, and
-  everything passes on macOS. The cause is unknown and I found no upstream report
-  of this symptom. nixpkgs didn't package 1.64 yet on 2026-10-11. To retry, point
-  a nixpkgs input at the new version, bump the catalog, and check the `test-e2e`
-  job on a PR. That job replays cached results for unchanged packages, so confirm
-  webkit actually ran.
-- **typescript 7**: `typescript-eslint` and others cap their peers at `<6.1.0`.
-- **typescript 6**: installs, but needs a migration. It stops auto-including
-  `@types/*` (set `"types": ["node"]` in `@altano/tsconfig/node.json`) and requires
-  explicit `.js` extensions on relative ESM imports (about 11 files in
-  `packages/vitest-plugins/tests`).
+  tests fail with `browserContext.newPage` timing out or closing on 1.60.0, 1.62.1,
+  1.63.0 and 1.64.1 (tried 2026-11-10 in altano/npm-packages#381), and per
+  `flake.nix` on 1.61.1. Chromium and firefox pass, and everything passes on macOS.
+  The cause is unknown and I found no upstream report of this symptom. To retry,
+  point a nixpkgs input at the new version, bump the catalog, and check the
+  `test-e2e` job on a PR. That job replays cached results for unchanged packages,
+  so confirm webkit actually ran.
+- **typescript 7**: on 2026-11-10, `typescript-eslint` 8.72.1 still capped its
+  `typescript` peer at `<6.1.0`, and `@astrojs/check` 0.9.12 at `^5.0.0 || ^6.0.0`.
