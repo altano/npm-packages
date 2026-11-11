@@ -34,7 +34,7 @@ catalog:
   typescript: ^6.0.3
   unified: ^11.0.5
   vfile: ^6.0.3
-  vite: ^8.3.2
+  vite: ^8.3.3
   vitest: ^5.0.3
   vue: ^3.5.43
 
