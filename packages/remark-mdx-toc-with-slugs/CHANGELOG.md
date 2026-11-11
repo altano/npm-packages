@@ -1,5 +1,15 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 4.0.4
+
+### Patch Changes
+
+- a860404: update `unist-util-visit` to 5.2.0
+- af1907e: rebuild with tsdown 0.23.5. The published files differ only in comments, import order and empty `export {}` statements, with no change in behavior.
+- Updated dependencies [a860404]
+- Updated dependencies [af1907e]
+  - @altano/remark-mdx-toc@1.0.4
+
 ## 4.0.3
 
 ### Patch Changes

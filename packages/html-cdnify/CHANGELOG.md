@@ -1,5 +1,12 @@
 # @altano/html-cdnify
 
+## 6.0.2
+
+### Patch Changes
+
+- a860404: update `parse5-html-rewriting-stream` to 8.1.0
+- af1907e: rebuild with tsdown 0.23.5. The published files differ only in comments, import order and empty `export {}` statements, with no change in behavior.
+
 ## 6.0.1
 
 ### Patch Changes
