@@ -79,8 +79,8 @@ catalogs:
       specifier: ^19.3.0
       version: 19.3.0
     satori:
-      specifier: ^0.55.5
-      version: 0.55.5
+      specifier: ^0.63.2
+      version: 0.63.2
     svelte:
       specifier: ^5.57.1
       version: 5.57.1
@@ -237,7 +237,7 @@ importers:
         version: 2.0.0
       satori:
         specifier: 'catalog:'
-        version: 0.55.5
+        version: 0.63.2
       satori-html:
         specifier: ^0.3.2
         version: 0.3.2
@@ -949,7 +949,7 @@ importers:
         version: 4.4.3(supports-color@7.2.0)
       satori:
         specifier: 'catalog:'
-        version: 0.55.5
+        version: 0.63.2
       svgdom:
         specifier: ^0.1.29
         version: 0.1.29
@@ -5971,8 +5971,8 @@ packages:
   satori-html@0.3.2:
     resolution: {integrity: sha512-wjTh14iqADFKDK80e51/98MplTGfxz2RmIzh0GqShlf4a67+BooLywF17TvJPD6phO0Hxm7Mf1N5LtRYvdkYRA==}
 
-  satori@0.55.5:
-    resolution: {integrity: sha512-5p/YHJumR0wVzmFVJGXp2eavCpS+VWSQTPkk0INbVv9W9B7kM5Vmg0T/oB5uMzGDM/amRjzEONdhkjDM1rWm2g==}
+  satori@0.63.2:
+    resolution: {integrity: sha512-h7dm4BRMo8F53l9vOXOIfJoqeVXuZvyz13VsvVuwJb72sLfq+8uddJIJcjLKLv2BqWzDvYIpzi3rvBBS+ETuvw==}
     engines: {node: '>=16'}
 
   satteri@0.10.5:
@@ -12144,7 +12144,7 @@ snapshots:
     dependencies:
       ultrahtml: 1.7.0
 
-  satori@0.55.5:
+  satori@0.63.2:
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0
       css-background-parser: 0.1.0
