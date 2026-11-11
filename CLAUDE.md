@@ -24,6 +24,13 @@ devshell: `nix develop --command bash -c '...'`. Outside it, `tree` and `hg` are
 missing and `PLAYWRIGHT_BROWSERS_PATH` points at a stale store path, so e2e fails
 with "Executable doesn't exist".
 
+turbo runs in strict env mode: a task only sees the environment variables that
+`turbo.json` declares in `globalEnv`, or in the task's `env` or `passThroughEnv`.
+A variable the devshell exports therefore reaches a `nix develop --command` step
+but not the turbo task it runs. For example, Linux WebKit aborts with "Could not
+create EGL display" in CI unless `test:e2e` passes through the Mesa variables
+that `llvmpipeHook` sets (see `flake.nix`).
+
 ## Dependency age gate
 
 `pnpm-workspace.yaml` sets `minimumReleaseAge: 10080` (7 days). To land a version
@@ -52,15 +59,5 @@ catches violations.
 
 ## Deferred upgrades
 
-- **playwright > 1.59.1**: keep `@playwright/test` at 1.59.1 in `pnpm-workspace.yaml`
-  and the `nixpkgs-playwright-1-59-1` pin in `flake.nix` (the flake fails to
-  evaluate if the two versions differ). On GitHub Actions (Linux), webkit e2e
-  tests fail with `browserContext.newPage` timing out or closing on 1.60.0, 1.62.1,
-  1.63.0 and 1.64.1 (tried 2026-11-10 in altano/npm-packages#381), and per
-  `flake.nix` on 1.61.1. Chromium and firefox pass, and everything passes on macOS.
-  The cause is unknown and I found no upstream report of this symptom. To retry,
-  point a nixpkgs input at the new version, bump the catalog, and check the
-  `test-e2e` job on a PR. That job replays cached results for unchanged packages,
-  so confirm webkit actually ran.
 - **typescript 7**: on 2026-11-10, `typescript-eslint` 8.72.1 still capped its
   `typescript` peer at `<6.1.0`, and `@astrojs/check` 0.9.12 at `^5.0.0 || ^6.0.0`.
