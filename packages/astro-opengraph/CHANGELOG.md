@@ -1,5 +1,11 @@
 # @altano/astro-opengraph
 
+## 3.1.0
+
+### Minor Changes
+
+- d2e75de: update `satori` to 0.63.2
+
 ## 3.0.0
 
 ### Major Changes
