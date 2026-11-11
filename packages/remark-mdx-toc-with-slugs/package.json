@@ -54,7 +54,7 @@
     "github-slugger": "^2.0.0",
     "mdast-util-mdxjs-esm": "^2.0.1",
     "unified": "catalog:",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.2.0"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",

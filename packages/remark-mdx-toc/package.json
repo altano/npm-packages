@@ -50,7 +50,7 @@
     "estree-util-value-to-estree": "^3.5.0",
     "mdast-util-mdx": "^3.0.0",
     "mdast-util-to-string": "^4.0.0",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.2.0"
   },
   "devDependencies": {
     "@altano/build-config": "workspace:*",
@@ -58,7 +58,7 @@
     "@altano/testing": "workspace:*",
     "@altano/tsconfig": "workspace:*",
     "@arethetypeswrong/cli": "catalog:",
-    "@types/estree": "^1.0.9",
+    "@types/estree": "^1.0.10",
     "@types/mdast": "catalog:",
     "@types/node": "catalog:",
     "@types/unist": "catalog:",
