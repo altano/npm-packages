@@ -85,7 +85,20 @@
     },
     "test:e2e": {
       "dependsOn": ["build"],
-      "env": ["PLAYWRIGHT_*"]
+      "env": ["PLAYWRIGHT_*"],
+      // Renderer settings that the devshell's `llvmpipeHook` exports. Linux
+      // WebKit needs them to find Mesa's software EGL, and strict env mode
+      // would otherwise drop them before Playwright starts.
+      "passThroughEnv": [
+        "__EGL_VENDOR_LIBRARY_FILENAMES",
+        "__GLX_VENDOR_LIBRARY_NAME",
+        "GBM_BACKEND",
+        "GBM_BACKENDS_PATH",
+        "LD_LIBRARY_PATH",
+        "LIBGL_ALWAYS_SOFTWARE",
+        "LIBGL_DRIVERS_PATH",
+        "VK_DRIVER_FILES"
+      ]
     },
     "lint": {
       "dependsOn": ["build"],

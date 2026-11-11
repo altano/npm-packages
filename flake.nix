@@ -3,16 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Pin playwright to 1.59.1. On 1.60.0, 1.61.1, 1.62.1 and 1.63.0, webkit e2e tests
-    # stop working in GitHub Actions.
-    nixpkgs-playwright-1-59-1.url = "github:NixOS/nixpkgs/afc5551119aae6eab73a95c1960891cfe63204f6";
+    # Pin playwright separately from the rest of nixpkgs, so its version moves only
+    # together with `@playwright/test` in pnpm-workspace.yaml. This revision has
+    # 1.64.1.
+    nixpkgs-playwright.url = "github:NixOS/nixpkgs/4fe25e12eb9f4c744966dd3de5a05246cf098601";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-playwright-1-59-1,
+      nixpkgs-playwright,
     }:
     let
       supportedSystems = [
@@ -36,17 +37,17 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
-          pkgsPlaywright159 = import nixpkgs-playwright-1-59-1 { inherit system; };
+          pkgsPlaywright = import nixpkgs-playwright { inherit system; };
           # Assert playwright-driver version matches @playwright/test from pnpm-lock.yaml
           playwrightVersionCheck =
             assert
-              pkgsPlaywright159.playwright-driver.version == expectedPlaywrightVersion
+              pkgsPlaywright.playwright-driver.version == expectedPlaywrightVersion
               || builtins.throw ''
                 Playwright version mismatch!
-                  nixpkgs-playwright-1-59-1 has: ${pkgsPlaywright159.playwright-driver.version}
+                  nixpkgs-playwright has: ${pkgsPlaywright.playwright-driver.version}
                   pnpm-lock.yaml expects: ${expectedPlaywrightVersion}
 
-                Fix: update the nixpkgs-playwright-1-59-1 input or the Playwright npm dependency so both resolve to the same version.
+                Fix: update the nixpkgs-playwright input or the Playwright npm dependency so both resolve to the same version.
               '';
             true;
 
@@ -73,7 +74,19 @@
 
           playwrightBrowsers =
             assert playwrightVersionCheck;
-            pkgsPlaywright159.playwright-driver.browsers;
+            pkgsPlaywright.playwright-driver.browsers;
+
+          # Linux WebKit (the WPE build) renders through EGL. nixpkgs' WebKit wrapper
+          # used to fall back to Mesa when the host has no EGL vendor config, until
+          # NixOS/nixpkgs#518611 removed that fallback and pointed users at
+          # `llvmpipeHook`, which selects Mesa's software renderer through
+          # environment variables. GitHub runners have no EGL vendor config, so
+          # without this WebKit aborts with "Could not create EGL display". turbo.json
+          # passes these variables through to `test:e2e`. The darwin WebKit doesn't
+          # use EGL.
+          playwrightRenderHooks = pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+            pkgsPlaywright.mesa.llvmpipeHook
+          ];
 
           localExtras = [
             pkgs.difftastic
@@ -84,6 +97,7 @@
           # Local development — everything. This is the default `nix develop` shell.
           default = pkgs.mkShell {
             buildInputs = base ++ vcs ++ testDeps ++ [ playwrightBrowsers ] ++ localExtras;
+            nativeBuildInputs = playwrightRenderHooks;
             PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
             PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
             PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
@@ -102,6 +116,7 @@
           # CI: e2e tests (needs playwright browsers)
           test-e2e = pkgs.mkShell {
             buildInputs = base ++ [ playwrightBrowsers ];
+            nativeBuildInputs = playwrightRenderHooks;
             PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
             PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
             PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
