@@ -38,9 +38,9 @@
     "@playwright/test": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "semver": "7.8.5",
+    "semver": "7.8.6",
     "syncpack": "^15.3.3",
-    "turbo": "^2.11.7",
+    "turbo": "^2.11.10",
     "typescript": "catalog:",
     "yaml": "^2.9.1"
   },

@@ -47,12 +47,14 @@ jobs:
           devshell: ci
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
+        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           # `changeset version` formats what it writes by running `pnpm exec
           # prettier`, and pnpm is only on PATH inside the devshell.
-          version: nix develop .#ci --command pnpm version-packages
-          publish: nix develop .#ci --command pnpm release
+          # `nix develop` keeps the caller's environment, so the
+          # `CHANGESETS_OUTPUT` variable the action sets reaches the
+          # Changesets CLI, which v2 needs to report what was published.
+          version-script: nix develop .#ci --command pnpm version-packages
+          publish-script: nix develop .#ci --command pnpm release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
