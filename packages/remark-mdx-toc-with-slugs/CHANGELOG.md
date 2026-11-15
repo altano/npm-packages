@@ -1,5 +1,11 @@
 # @altano/remark-mdx-toc-with-slugs
 
+## 4.0.5
+
+### Patch Changes
+
+- c80610b: use a JSX heading's `id` attribute as its `slug`, such as `setup` for `<h2 id="setup">`, and no longer count its text toward duplicate slugs, so a later heading with the same text no longer gets a `-1` suffix that its rendered id lacks (#392)
+
 ## 4.0.4
 
 ### Patch Changes
