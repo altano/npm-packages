@@ -152,7 +152,85 @@ export default function MDXContent(props = {}) {
 }
 `;
 
-exports[`remark-mdx-toc-with-slugs > [test #2] use-default-name 1`] = `
+exports[`remark-mdx-toc-with-slugs > [test #2] jsx-heading-id 1`] = `
+FormattedVFile {
+  "cwd": "<cwd>",
+  "data": {},
+  "history": [
+    "tests/unit/__fixtures__/jsx-heading-id/input.mdx",
+    "tests/unit/__fixtures__/jsx-heading-id/input.js",
+  ],
+  "map": undefined,
+  "messages": [],
+  "value": "/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
+export const toc = [
+  {
+    depth: 2,
+    value: "Getting started",
+    attributes: {
+      id: "setup",
+    },
+    children: [],
+    slug: "setup",
+  },
+  {
+    depth: 2,
+    value: "Getting started",
+    attributes: {},
+    children: [
+      {
+        depth: 3,
+        value: "Getting started",
+        attributes: {},
+        children: [],
+        slug: "getting-started-1",
+      },
+      {
+        depth: 3,
+        value: "Empty id",
+        attributes: {
+          id: "",
+        },
+        children: [],
+        slug: "empty-id",
+      },
+    ],
+    slug: "getting-started",
+  },
+];
+function _createMdxContent(props) {
+  const _components = {
+    h2: "h2",
+    h3: "h3",
+    ...props.components,
+  };
+  return (
+    <>
+      <h2 id="setup">{"Getting started"}</h2>
+      {"\\n"}
+      <_components.h2>{"Getting started"}</_components.h2>
+      {"\\n"}
+      <_components.h3>{"Getting started"}</_components.h3>
+      {"\\n"}
+      <h3 id="">{"Empty id"}</h3>
+    </>
+  );
+}
+export default function MDXContent(props = {}) {
+  const { wrapper: MDXLayout } = props.components || {};
+  return MDXLayout ? (
+    <MDXLayout {...props}>
+      <_createMdxContent {...props} />
+    </MDXLayout>
+  ) : (
+    _createMdxContent(props)
+  );
+}",
+}
+`;
+
+exports[`remark-mdx-toc-with-slugs > [test #3] use-default-name 1`] = `
 FormattedVFile {
   "cwd": "<cwd>",
   "data": {},

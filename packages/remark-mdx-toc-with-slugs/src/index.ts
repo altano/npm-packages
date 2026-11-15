@@ -26,9 +26,15 @@ function sluggifyTocEntry(
   entry: TocEntry,
   headingSlugger: GithubSlugger,
 ): TableOfContentsEntry {
+  // A heading written with an id, such as `<h2 id="setup">`, is rendered with
+  // that id, so it is the slug. Don't pass it through the slugger: that would
+  // record its text as used, and give the next heading with the same text a
+  // `-1` suffix the rendered page doesn't have.
+  const id = entry.attributes["id"];
+  const explicitId = typeof id === "string" && id !== "" ? id : undefined;
   return {
     ...entry,
-    slug: headingSlugger.slug(entry.value),
+    slug: explicitId ?? headingSlugger.slug(entry.value),
     children: sluggifyTocEntries(entry.children, headingSlugger),
   };
 }
